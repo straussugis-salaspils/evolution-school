@@ -208,6 +208,9 @@
       radial-gradient(ellipse 46% 40% at 78% 74%, rgba(82, 103, 125, 0.18) 0%, transparent 58%),
       linear-gradient(160deg, #FBFCFD 0%, #EEF1F4 32%, #C8D0D8 66%, #52677D 100%);
   }
+  /* Zeus photo: figure stands in the left third of the frame — shift the crop focus
+     left so he stays the visual subject instead of leaving empty sky on screen */
+  .ph--zeus img { object-position: 14% center; }
 
   /* Hades — depth, silver glints, hidden resource: navy/graphite, not darkness for its own sake */
   .ph--hades {
@@ -684,15 +687,6 @@
   .result-card .result-ph {
     border-radius: calc(var(--radius-lg) - 6px);
   }
-  .result-body { padding: 22px 12px 10px; }
-  .result-title {
-    font-family: var(--font-heading);
-    font-style: italic;
-    font-size: 1.2rem;
-    margin-bottom: 8px;
-    color: var(--navy);
-  }
-  .result-body p { font-size: 14.5px; margin: 0; }
   @media (max-width: 768px) { .results-grid { grid-template-columns: 1fr; gap: 24px; } }
 
   /* ===== Format ===== */
@@ -1043,7 +1037,6 @@
   @media (max-width: 900px) {
     .hero-grid, .pain-grid, .svetlana-grid { grid-template-columns: 1fr; }
     .hero-grid { gap: 40px; }
-    .pain-grid > div:last-child { order: -1; }
     .ph--hero-space { min-height: 380px; }
     .ph--pain-space { min-height: 280px; }
   }
@@ -1269,36 +1262,20 @@
         <div class="ph result-ph ph--decision">
           <img src="Images/optimized/decision.webp" alt="Ясное решение — не из страха и не из доказательства, а из внутренней опоры" loading="lazy">
         </div>
-        <div class="result-body">
-          <h3 class="result-title">Ясное решение</h3>
-          <p>Не из страха и не из доказательства, а из внутренней опоры.</p>
-        </div>
       </div>
       <div class="result-card fade">
         <div class="ph result-ph ph--money">
           <img src="Images/optimized/money.webp" alt="Спокойное право на деньги — ресурс для жизни, дела, отношений, творчества и пространства" loading="lazy">
-        </div>
-        <div class="result-body">
-          <h3 class="result-title">Право на деньги</h3>
-          <p>Ресурс для жизни, дела, отношений, творчества и пространства.</p>
         </div>
       </div>
       <div class="result-card fade">
         <div class="ph result-ph ph--partner">
           <img src="Images/optimized/partner.webp" alt="Новый контакт с партнёром — не через претензию, а через более точное понимание" loading="lazy">
         </div>
-        <div class="result-body">
-          <h3 class="result-title">Новый контакт с партнёром</h3>
-          <p>Не через претензию, а через более точное понимание.</p>
-        </div>
       </div>
       <div class="result-card fade">
         <div class="ph result-ph ph--authorship">
           <img src="Images/optimized/authorship.webp" alt="Чувство авторства — не просто справляться, а начинать создавать" loading="lazy">
-        </div>
-        <div class="result-body">
-          <h3 class="result-title">Чувство авторства</h3>
-          <p>Не просто справляться, а начинать создавать.</p>
         </div>
       </div>
     </div>
