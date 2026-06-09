@@ -46,8 +46,11 @@
   .paths {
     flex: 1;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 0;
+  }
+  @media (max-width: 1040px) {
+    .paths { grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 760px) {
     .paths { grid-template-columns: 1fr; }
@@ -83,6 +86,9 @@
   .path-card--strength .veil {
     background: linear-gradient(180deg, rgba(14,26,42,0.25) 0%, rgba(14,26,42,0.86) 100%);
   }
+  .path-card--retreats .veil {
+    background: linear-gradient(180deg, rgba(18,44,44,0.18) 0%, rgba(18,44,44,0.84) 100%);
+  }
 
   .path-content {
     padding: 40px 44px 48px;
@@ -97,6 +103,7 @@
   }
   .path-card--lightness .path-tag { color: #E8C9A8; }
   .path-card--strength .path-tag { color: #C8D0D8; }
+  .path-card--retreats .path-tag { color: #D9C489; }
 
   .path-content h2 {
     font-size: clamp(1.8rem, 4vw, 2.6rem);
@@ -150,7 +157,7 @@
   </div>
 
   <div class="paths">
-    <a class="path-card path-card--lightness" href="lightness/index.html">
+    <a class="path-card path-card--lightness" href="/lightness/">
       <div class="bg" style="background-image: url('lightness/Images/optimized/hero.webp');"></div>
       <div class="veil"></div>
       <div class="path-content">
@@ -161,7 +168,7 @@
       </div>
     </a>
 
-    <a class="path-card path-card--strength" href="strength/index.html">
+    <a class="path-card path-card--strength" href="/strength/">
       <div class="bg" style="background-image: url('strength/Images/optimized/hero.webp');"></div>
       <div class="veil"></div>
       <div class="path-content">
@@ -169,6 +176,17 @@
         <h2>Вкус силы</h2>
         <p>Сила, опора, деньги, глубина и способность создавать. Семь дней с Зевсом и Гадесом.</p>
         <span class="path-cta">Войти в неделю силы <span class="arrow">&rarr;</span></span>
+      </div>
+    </a>
+
+    <a class="path-card path-card--retreats" href="/retreats/">
+      <div class="bg" style="background-image: url('retreats/assets/images/hero-living-route.png');"></div>
+      <div class="veil"></div>
+      <div class="path-content">
+        <p class="path-tag">Пхукет · Лангкави</p>
+        <h2>Острова Везения</h2>
+        <p>Ретритный маршрут для тех, кто чувствует своё &laquo;да&raquo;, но хочет вернуться на свою линию и собрать силу для следующего уровня.</p>
+        <span class="path-cta">Перейти к ретритам <span class="arrow">&rarr;</span></span>
       </div>
     </a>
   </div>
