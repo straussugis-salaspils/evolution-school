@@ -3,62 +3,109 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Evolution — Вкус лёгкости и Вкус силы</title>
-<meta name="description" content="Две недели трансформации: «Вкус лёгкости» и «Вкус силы». Выберите свой путь.">
+<title>Evolution School - архетипические программы Светланы Страусс</title>
+<meta name="description" content="Evolution School: недели архетипов, менторинг Высокая Глубина и ретриты. Если вы пришли впервые, начните с одной из коротких недель.">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body {
-    font-family: 'Georgia', 'Times New Roman', serif;
-    background: #161616;
+    font-family: Georgia, "Times New Roman", serif;
+    background: #141414;
     color: #F4EEE4;
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
   }
+  a { color: inherit; }
 
   .hero {
+    position: relative;
+    overflow: hidden;
+    padding: 72px 24px 54px;
     text-align: center;
-    padding: 80px 24px 56px;
+    background:
+      radial-gradient(circle at 18% 0%, rgba(196, 168, 97, 0.14), transparent 32%),
+      radial-gradient(circle at 82% 12%, rgba(111, 143, 151, 0.14), transparent 34%),
+      #161616;
   }
-  .hero .eyebrow {
+  .hero-inner {
+    width: min(980px, 100%);
+    margin: 0 auto;
+  }
+  .eyebrow {
     font-size: 12px;
-    letter-spacing: 0.3em;
+    letter-spacing: 0.28em;
     text-transform: uppercase;
     color: #B8A46A;
     margin-bottom: 18px;
   }
-  .hero h1 {
-    font-size: clamp(2.4rem, 7vw, 4.2rem);
+  h1 {
+    font-size: clamp(2.45rem, 6.2vw, 4.55rem);
     font-style: italic;
     font-weight: 600;
-    letter-spacing: 0.05em;
-    margin-bottom: 18px;
+    letter-spacing: 0.02em;
+    line-height: 0.98;
+    margin-bottom: 20px;
   }
-  .hero p {
-    max-width: 560px;
+  .hero-lead {
+    max-width: 680px;
     margin: 0 auto;
-    font-size: 17px;
-    line-height: 1.6;
-    color: #C8C0B6;
+    font-size: clamp(17px, 2vw, 20px);
+    line-height: 1.55;
+    color: #D9D0C4;
+  }
+  .start-note {
+    width: min(760px, 100%);
+    margin: 30px auto 0;
+    padding: 20px 22px;
+    border: 1px solid rgba(184, 164, 106, 0.34);
+    border-radius: 16px;
+    background: rgba(244, 238, 228, 0.06);
+    color: #E9E0D4;
+    font-size: 16px;
+    line-height: 1.55;
+  }
+  .start-note strong {
+    color: #F7E8B5;
+    font-weight: 600;
+  }
+
+  .guide {
+    padding: 34px 24px;
+    background: #F2EEE6;
+    color: #25221F;
+  }
+  .guide-inner {
+    width: min(1120px, 100%);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 18px;
+  }
+  .guide-card {
+    border-left: 1px solid rgba(184, 164, 106, 0.55);
+    padding: 6px 0 6px 20px;
+  }
+  .guide-card span {
+    display: block;
+    margin-bottom: 8px;
+    color: #9E8545;
+    font: 700 11px/1.2 Arial, sans-serif;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .guide-card p {
+    font-size: 16px;
+    line-height: 1.48;
+    color: #47413B;
   }
 
   .paths {
-    flex: 1;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    min-height: 580px;
   }
-  @media (max-width: 1040px) {
-    .paths { grid-template-columns: 1fr 1fr; }
-  }
-  @media (max-width: 760px) {
-    .paths { grid-template-columns: 1fr; }
-  }
-
   .path-card {
     position: relative;
-    min-height: 420px;
+    min-height: 560px;
     display: flex;
     align-items: flex-end;
     text-decoration: none;
@@ -70,7 +117,7 @@
     inset: 0;
     background-size: cover;
     background-position: center;
-    transition: transform 0.6s ease;
+    transition: transform 0.65s ease, filter 0.65s ease;
     z-index: -2;
   }
   .path-card .veil {
@@ -78,120 +125,202 @@
     inset: 0;
     z-index: -1;
   }
-  .path-card:hover .bg { transform: scale(1.05); }
-
+  .path-card:hover .bg {
+    transform: scale(1.045);
+    filter: saturate(1.04);
+  }
   .path-card--lightness .veil {
-    background: linear-gradient(180deg, rgba(42,32,26,0.15) 0%, rgba(42,32,26,0.78) 100%);
+    background: linear-gradient(180deg, rgba(45, 34, 26, 0.12) 0%, rgba(45, 34, 26, 0.82) 100%);
   }
   .path-card--strength .veil {
-    background: linear-gradient(180deg, rgba(14,26,42,0.25) 0%, rgba(14,26,42,0.86) 100%);
+    background: linear-gradient(180deg, rgba(14, 26, 42, 0.18) 0%, rgba(14, 26, 42, 0.88) 100%);
+  }
+  .path-card--mentoring .veil {
+    background: linear-gradient(180deg, rgba(18, 21, 24, 0.12) 0%, rgba(18, 21, 24, 0.88) 100%);
   }
   .path-card--retreats .veil {
-    background: linear-gradient(180deg, rgba(18,44,44,0.18) 0%, rgba(18,44,44,0.84) 100%);
+    background: linear-gradient(180deg, rgba(18, 44, 44, 0.16) 0%, rgba(18, 44, 44, 0.86) 100%);
   }
 
   .path-content {
-    padding: 40px 44px 48px;
     width: 100%;
+    padding: 38px 34px 44px;
   }
   .path-tag {
-    font-size: 11px;
-    letter-spacing: 0.28em;
+    font: 700 11px/1.2 Arial, sans-serif;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     margin-bottom: 12px;
-    opacity: 0.75;
+    opacity: 0.86;
   }
   .path-card--lightness .path-tag { color: #E8C9A8; }
   .path-card--strength .path-tag { color: #C8D0D8; }
+  .path-card--mentoring .path-tag { color: #D7C07D; }
   .path-card--retreats .path-tag { color: #D9C489; }
-
   .path-content h2 {
-    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    color: #FAF7F2;
+    font-size: clamp(1.72rem, 3vw, 2.45rem);
     font-style: italic;
     font-weight: 600;
-    margin-bottom: 10px;
-    color: #FAF7F2;
+    line-height: 1.05;
+    margin-bottom: 12px;
   }
   .path-content p {
+    max-width: 390px;
+    min-height: 120px;
+    color: #DDD6CB;
     font-size: 15px;
-    line-height: 1.6;
-    color: #D8D2C8;
-    max-width: 420px;
+    line-height: 1.55;
     margin-bottom: 22px;
   }
   .path-cta {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    font-size: 13px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: #FAF7F2;
-    border: 1px solid rgba(250, 247, 242, 0.4);
+    min-height: 44px;
+    border: 1px solid rgba(250, 247, 242, 0.44);
     border-radius: 999px;
-    padding: 13px 28px;
+    padding: 12px 22px;
+    color: #FAF7F2;
+    font: 700 12px/1.2 Arial, sans-serif;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
     transition: background 0.3s ease, border-color 0.3s ease;
   }
   .path-card:hover .path-cta {
     background: rgba(250, 247, 242, 0.12);
-    border-color: rgba(250, 247, 242, 0.7);
+    border-color: rgba(250, 247, 242, 0.72);
   }
-  .path-cta .arrow { transition: transform 0.3s ease; }
-  .path-card:hover .path-cta .arrow { transform: translateX(4px); }
+  .arrow { transition: transform 0.3s ease; }
+  .path-card:hover .arrow { transform: translateX(4px); }
 
-  footer {
+  .bottom-note {
+    padding: 42px 24px 34px;
     text-align: center;
-    padding: 28px 24px;
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    color: #6E685F;
+    background: #141414;
+  }
+  .bottom-note p {
+    width: min(680px, 100%);
+    margin: 0 auto;
+    color: #BDB4A9;
+    font-size: 15px;
+    line-height: 1.55;
+  }
+  footer {
+    padding: 20px 24px 30px;
+    text-align: center;
+    color: #766F66;
+    font: 700 11px/1.4 Arial, sans-serif;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 1180px) {
+    .paths { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .path-card { min-height: 500px; }
+  }
+  @media (max-width: 820px) {
+    .hero { padding: 56px 18px 38px; }
+    .guide-inner { grid-template-columns: 1fr; gap: 16px; }
+    .guide-card { padding-left: 16px; }
+    .paths { grid-template-columns: 1fr; }
+    .path-card { min-height: 470px; }
+    .path-content { padding: 34px 26px 38px; }
+    .path-content p { min-height: 0; }
+  }
+  @media (max-width: 480px) {
+    .hero { padding-top: 44px; }
+    .eyebrow { letter-spacing: 0.2em; }
+    h1 { font-size: 1.92rem; line-height: 1.08; }
+    .start-note { padding: 18px 16px; border-radius: 14px; }
+    .path-card { min-height: 440px; }
+    .path-content { padding: 30px 20px 34px; }
+    .path-cta { width: 100%; justify-content: center; padding-inline: 16px; }
   }
 </style>
 </head>
 <body>
 
-  <div class="hero">
-    <p class="eyebrow">Evolution &mdash; путь в двух главах</p>
-    <h1>Лёгкость и сила</h1>
-    <p>Два пути трансформации, которые можно пройти отдельно или вместе: неделя &laquo;Вкус лёгкости&raquo; и неделя &laquo;Вкус силы&raquo;. Выберите, с чего начать.</p>
-  </div>
+  <header class="hero">
+    <div class="hero-inner">
+      <p class="eyebrow">Evolution School</p>
+      <h1>Архетипы, тело и путь к своей силе</h1>
+      <p class="hero-lead">Программы Светланы Страусс для женщин, которые хотят не просто понять себя, а начать жить из своей природы: мягче, точнее, глубже и сильнее.</p>
+      <div class="start-note">
+        <strong>Если вы пришли из Facebook или здесь впервые, начните с одной из коротких недель.</strong>
+        Это самый понятный вход в метод: вы почувствуете архетипы через тело, практики и живой опыт, а уже потом сможете выбрать более глубокий формат.
+      </div>
+    </div>
+  </header>
 
-  <div class="paths">
-    <a class="path-card path-card--lightness" href="/lightness/">
+  <section class="guide" aria-label="Как выбрать программу">
+    <div class="guide-inner">
+      <div class="guide-card">
+        <span>Новый вход</span>
+        <p>Для холодного знакомства лучше всего подходят недели: там быстро становится ясно, откликается ли вам метод и поле.</p>
+      </div>
+      <div class="guide-card">
+        <span>Глубокий запрос</span>
+        <p>Если у вас уже есть одна важная тема, которая давно не двигается, смотрите менторинг “Высокая Глубина”.</p>
+      </div>
+      <div class="guide-card">
+        <span>Полное погружение</span>
+        <p>Ретриты подходят, когда хочется выйти из обычной среды и прожить переход телом, пространством и маршрутом.</p>
+      </div>
+    </div>
+  </section>
+
+  <main class="paths" aria-label="Программы Evolution School">
+    <a class="path-card path-card--lightness" href="lightness/">
       <div class="bg" style="background-image: url('lightness/Images/optimized/hero.webp');"></div>
       <div class="veil"></div>
       <div class="path-content">
-        <p class="path-tag">Глава первая</p>
+        <p class="path-tag">Лучший старт</p>
         <h2>Вкус лёгкости</h2>
-        <p>Лёгкость, желание, тело, красота и живое &laquo;я хочу&raquo;. Семь дней с Афродитой и Персефоной.</p>
-        <span class="path-cta">Войти в неделю лёгкости <span class="arrow">&rarr;</span></span>
+        <p>Неделя с Афродитой и Персефоной. Желание, тело, красота, чувствительность и живое “я хочу”. Подходит как первый вход в женские архетипы.</p>
+        <span class="path-cta">Начать с лёгкости <span class="arrow">&rarr;</span></span>
       </div>
     </a>
 
-    <a class="path-card path-card--strength" href="/strength/">
+    <a class="path-card path-card--strength" href="strength/">
       <div class="bg" style="background-image: url('strength/Images/optimized/hero.webp');"></div>
       <div class="veil"></div>
       <div class="path-content">
-        <p class="path-tag">Глава вторая</p>
+        <p class="path-tag">Следующий вкус</p>
         <h2>Вкус силы</h2>
-        <p>Сила, опора, деньги, глубина и способность создавать. Семь дней с Зевсом и Гадесом.</p>
-        <span class="path-cta">Войти в неделю силы <span class="arrow">&rarr;</span></span>
+        <p>Неделя про опору, деньги, масштаб, глубину и способность создавать. Подходит тем, кто хочет почувствовать мужские архетипы и свою внутреннюю силу.</p>
+        <span class="path-cta">Перейти к силе <span class="arrow">&rarr;</span></span>
       </div>
     </a>
 
-    <a class="path-card path-card--retreats" href="/retreats/">
+    <a class="path-card path-card--mentoring" href="mentoring/">
+      <div class="bg" style="background-image: url('mentoring/assets/images/hero-alchemical-atelier.jpg');"></div>
+      <div class="veil"></div>
+      <div class="path-content">
+        <p class="path-tag">2 месяца сопровождения</p>
+        <h2>Высокая Глубина</h2>
+        <p>Менторинг по женским и мужским архетипам. Для женщины, у которой есть одна ключевая задача: отношения, деньги, реализация, тело, материнство или внутренний выбор.</p>
+        <span class="path-cta">Смотреть менторинг <span class="arrow">&rarr;</span></span>
+      </div>
+    </a>
+
+    <a class="path-card path-card--retreats" href="retreats/">
       <div class="bg" style="background-image: url('retreats/assets/images/hero-living-route.png');"></div>
       <div class="veil"></div>
       <div class="path-content">
         <p class="path-tag">Пхукет · Лангкави</p>
         <h2>Острова Везения</h2>
-        <p>Ретритный маршрут для тех, кто чувствует своё &laquo;да&raquo;, но хочет вернуться на свою линию и собрать силу для следующего уровня.</p>
-        <span class="path-cta">Перейти к ретритам <span class="arrow">&rarr;</span></span>
+        <p>Ретритный маршрут для тех, кто хочет выйти из привычной среды, вернуться на свою линию и собрать силу для следующего уровня жизни.</p>
+        <span class="path-cta">Смотреть ретриты <span class="arrow">&rarr;</span></span>
       </div>
     </a>
-  </div>
+  </main>
 
-  <footer>EVOLUTION &mdash; ВКУС ЛЁГКОСТИ &amp; ВКУС СИЛЫ</footer>
+  <section class="bottom-note">
+    <p>Не нужно выбирать “правильный” путь навсегда. Начните с того формата, который соответствует вашему состоянию сейчас: одна из коротких недель, глубокий менторинг или ретритное погружение.</p>
+  </section>
+
+  <footer>Evolution School · Светлана Страусс</footer>
 
 </body>
 </html>
