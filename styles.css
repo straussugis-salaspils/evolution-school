@@ -17434,6 +17434,29 @@ body.about-page .about-fit-card--other .about-fit-list p::before {
   }
 }
 
+/* On phones the path cards need to read as complete choices, not as a cramped
+   desktop side-by-side layout. Keep the image as a clear opening of each card
+   and let the copy use the full available width below it. */
+@media (max-width: 680px) {
+  body.home-page .home-zone--paths .home-path-card {
+    display: flex !important;
+    flex-direction: column !important;
+    grid-template-columns: none !important;
+    min-height: 0;
+  }
+
+  body.home-page .home-zone--paths .home-path-card img {
+    width: 100%;
+    height: 184px !important;
+    min-height: 0 !important;
+    flex: 0 0 184px;
+  }
+
+  body.home-page .home-zone--paths .home-path-card > div {
+    min-height: 0;
+  }
+}
+
 @media (max-width: 1180px) {
   body.about-page .about-difference-system {
     grid-template-columns: repeat(2, minmax(0, 1fr));
