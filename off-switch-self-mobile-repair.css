@@ -1,0 +1,90 @@
+/* Phone-only layout corrections for the self-paced Off-Switch page. */
+@media (max-width: 760px) {
+  body.off-switch-self-v3 main .os-split--problem .os-lead {
+    margin-bottom: 26px !important;
+    font-size: 19px !important;
+  }
+
+  body.off-switch-self-v3 main .os-split--problem .os-signal-list {
+    margin-top: 0 !important;
+  }
+
+  body.off-switch-self-v3 main .os-story-row .os-media--mobile-portrait {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16 / 9 !important;
+  }
+
+  body.off-switch-self-v3 main .os-story-row .os-media--mobile-portrait img {
+    width: 100% !important;
+    height: 100% !important;
+    aspect-ratio: auto !important;
+    object-fit: cover !important;
+  }
+
+  body.off-switch-self-v3 main .os-origin__portrait {
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    height: auto !important;
+    aspect-ratio: 1 / 1 !important;
+  }
+
+  body.off-switch-self-v3 main .os-origin__portrait img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+  }
+
+  body.off-switch-self-v3 main #options .os-section-head--offer {
+    margin-bottom: 22px !important;
+    text-align: left !important;
+  }
+
+  body.off-switch-self-v3 main #options .os-section-head--offer h2 {
+    max-width: 13ch !important;
+    margin-inline: 0 !important;
+    font-size: 32px !important;
+    line-height: 1.1 !important;
+  }
+
+  body.off-switch-self-v3 main #options .os-price {
+    display: block !important;
+    padding: 26px 22px !important;
+  }
+
+  body.off-switch-self-v3 main #options .os-price__summary {
+    padding-bottom: 24px !important;
+    border-bottom: 1px solid var(--os-line) !important;
+  }
+
+  body.off-switch-self-v3 main #options .os-price__details {
+    display: block !important;
+    padding: 24px 0 0 !important;
+    border: 0 !important;
+  }
+
+  body.off-switch-self-v3 main #options .os-price h3 {
+    max-width: none !important;
+    font-size: 29px !important;
+  }
+
+  body.off-switch-self-v3 main #options .os-price__lead {
+    margin-top: 14px !important;
+    font-size: 17px !important;
+  }
+
+  body.off-switch-self-v3 main #options .os-price__amount {
+    margin-top: 18px !important;
+    font-size: 56px !important;
+  }
+
+  body.off-switch-self-v3 main #options .os-price ul {
+    margin: 0 0 22px !important;
+  }
+
+  body.off-switch-self-v3 main #options .os-price .fs-button {
+    margin-top: 0 !important;
+  }
+}

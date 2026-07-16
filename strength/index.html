@@ -2745,6 +2745,19 @@ body > .nav {
 body.eh-standalone-retreat {
   padding-top: 0 !important;
 }
+
+/* Mobile: reading comes before the second photo; preserve Zeus in the square crop. */
+@media (max-width: 900px) {
+  body.eh-context--archetypes.eh-archetype-bg--strength .pain-grid > div:last-child {
+    order: 0 !important;
+  }
+}
+
+@media (max-width: 768px) {
+  body.eh-context--archetypes.eh-archetype-bg--strength .arch-card--zeus .ph--zeus img {
+    object-position: left center !important;
+  }
+}
 </style>
   <link rel="icon" type="image/png" href="/assets/evolution-house-logo-approved.png">
 </head>

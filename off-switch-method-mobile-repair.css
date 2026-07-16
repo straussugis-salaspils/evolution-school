@@ -1,0 +1,21 @@
+/* Phone-only repair for the Method evidence cards. */
+@media (max-width: 680px) {
+  html body.off-switch-method-v3 main .om-cases .om-cases__grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  html body.off-switch-method-v3 main .om-cases .om-cases__grid article:last-child {
+    display: block !important;
+    grid-column: auto !important;
+    grid-template-columns: none !important;
+    grid-template-rows: none !important;
+    min-height: 0 !important;
+  }
+
+  html body.off-switch-method-v3 main .om-cases .om-cases__grid article:last-child > * {
+    grid-area: auto !important;
+    grid-column: auto !important;
+    grid-row: auto !important;
+    align-self: auto !important;
+  }
+}

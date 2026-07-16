@@ -701,6 +701,14 @@ body.off-switch-group-v3 .gg-emotion-callouts--hero {
   }
 }
 
+/* Mobile uses the same direct callouts as desktop. Their compact positions
+   are defined in the character layer, so no detached legend is needed. */
+@media (max-width: 680px) {
+  body.off-switch-group-v3 .gg-emotion-callouts--hero {
+    display: block !important;
+  }
+}
+
 /* Recognition: four separate cards, never one framed table. */
 body.off-switch-group-v3 .gg-problems {
   background: #fff !important;

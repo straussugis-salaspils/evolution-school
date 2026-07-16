@@ -104,4 +104,43 @@ body.off-switch-method-page .os-character-intro--scope [data-character="memory"]
   body.off-switch-method-page .os-character-intro--scope [data-character="memory"] {
     padding-bottom: 6px !important;
   }
+
+  /* Self-study: names stay attached to the five characters, rather than
+     disappearing into a separate rail below the mobile illustration. */
+  body.off-switch-self-v3 .os-emotion-callouts--hero {
+    position: absolute !important;
+    inset: 0 0 auto !important;
+    display: block !important;
+    width: 100% !important;
+    height: 220px !important;
+    padding: 0 !important;
+    background: transparent !important;
+  }
+
+  body.off-switch-self-v3 .os-emotion-callouts--hero .os-emotion-callout {
+    position: absolute !important;
+    left: var(--x) !important;
+    top: var(--y) !important;
+    display: block !important;
+    min-height: 0 !important;
+    padding: 3px 4px !important;
+    border-left-width: 2px !important;
+    border-radius: 1px !important;
+    background: rgba(255, 255, 255, .94) !important;
+    font-size: clamp(7px, 2.1vw, 10px) !important;
+    line-height: 1.12 !important;
+    white-space: nowrap !important;
+    transform: translate(-50%, -100%) !important;
+  }
+
+  body.off-switch-self-v3 .os-emotion-callouts--hero .os-emotion-callout::after {
+    display: block !important;
+    height: 7px !important;
+  }
+
+  body.off-switch-self-v3 .os-emotion-callouts--hero [data-tone="anxiety"] { --x: 16%; --y: 34%; }
+  body.off-switch-self-v3 .os-emotion-callouts--hero [data-tone="guilt"] { --x: 32%; --y: 29%; }
+  body.off-switch-self-v3 .os-emotion-callouts--hero [data-tone="fear"] { --x: 47%; --y: 34%; }
+  body.off-switch-self-v3 .os-emotion-callouts--hero [data-tone="anger"] { --x: 62%; --y: 29%; }
+  body.off-switch-self-v3 .os-emotion-callouts--hero [data-tone="resentment"] { --x: 78%; --y: 34%; }
 }

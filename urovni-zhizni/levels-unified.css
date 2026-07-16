@@ -1202,3 +1202,61 @@ body.life-levels-page.levels-retreat-page main .retreat-final-layout > .life-pro
     aspect-ratio: 16 / 10 !important;
   }
 }
+
+/* Mobile layout fixes for the approved individual-retreat composition. */
+@media (max-width: 620px) {
+  body.life-levels-page.levels-retreat-page main .retreat-recognition__grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-areas:
+      "head"
+      "visual"
+      "cards" !important;
+  }
+
+  body.life-levels-page.levels-retreat-page main .retreat-recognition__grid .section-head {
+    grid-area: head !important;
+    width: 100% !important;
+  }
+
+  body.life-levels-page.levels-retreat-page main .retreat-recognition__list {
+    grid-area: cards !important;
+    width: 100% !important;
+    height: auto !important;
+    grid-template-rows: none !important;
+    gap: 14px !important;
+  }
+
+  body.life-levels-page.levels-retreat-page main .retreat-recognition__list article {
+    min-height: 0 !important;
+    align-content: start !important;
+  }
+
+  body.life-levels-page.levels-retreat-page main .retreat-boundaries-cards {
+    gap: 14px !important;
+  }
+}
+
+/* Quantum Activation: the mobile second section reads before showing its image. */
+@media (max-width: 760px) {
+  body.life-levels-page.quantum-page main .quantum-time-copy {
+    order: 1 !important;
+  }
+
+  body.life-levels-page.quantum-page main .quantum-time-layout .quantum-scene--resistance {
+    order: 2 !important;
+  }
+
+  body.life-levels-page.quantum-page main .quantum-pattern-layout {
+    box-sizing: border-box !important;
+    padding-inline: 24px !important;
+  }
+
+  /* Keep a text beat between the transition map and the next visual. */
+  body.life-levels-page.levels-method-page main .method-levels-section .method-section-head {
+    order: 1 !important;
+  }
+
+  body.life-levels-page.levels-method-page main .method-levels-section .method-visual--levels {
+    order: 2 !important;
+  }
+}

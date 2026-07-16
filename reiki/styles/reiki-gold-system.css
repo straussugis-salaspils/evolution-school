@@ -2764,4 +2764,160 @@ body.reiki-method-page main > section.faq-section .faq-grid {
   body.reiki-method-page main > section[aria-labelledby="days-title"] .method-split {
     grid-template-columns: 1fr !important;
   }
+
+  /* Let the FAQ title card breathe before the first question on mobile. */
+  html[data-level="reiki-method"] main > section.faq-section .faq,
+  body.reiki-method-page main > section.faq-section .faq {
+    margin-top: 20px !important;
+  }
+
+  /* Reiki I: the hero photo remains clean on mobile. */
+  html[data-level="reiki-1"] main .hero .hero-mentor,
+  body[data-level="reiki-1"] main .hero .hero-mentor {
+    display: none !important;
+  }
+
+  /* Master-Teacher: undo the desktop roadmap grids that were collapsing at phone widths. */
+  html[data-level="master-teacher"] main > section.teacher-roadmap-section .teacher-roadmap,
+  body[data-level="master-teacher"] main > section.teacher-roadmap-section .teacher-roadmap {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-areas:
+      "copy"
+      "image"
+      "notes" !important;
+    gap: 16px !important;
+    align-items: start !important;
+  }
+
+  html[data-level="master-teacher"] main > section.teacher-roadmap-section .teacher-roadmap__intro,
+  body[data-level="master-teacher"] main > section.teacher-roadmap-section .teacher-roadmap__intro {
+    grid-area: copy !important;
+  }
+
+  html[data-level="master-teacher"] main > section.teacher-roadmap-section .teacher-roadmap__image,
+  body[data-level="master-teacher"] main > section.teacher-roadmap-section .teacher-roadmap__image {
+    grid-area: image !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    aspect-ratio: 4 / 3 !important;
+  }
+
+  html[data-level="master-teacher"] main > section.teacher-roadmap-section .teacher-roadmap__image img,
+  body[data-level="master-teacher"] main > section.teacher-roadmap-section .teacher-roadmap__image img {
+    min-height: 0 !important;
+    height: 100% !important;
+  }
+
+  html[data-level="master-teacher"] main > section.teacher-roadmap-section .teacher-roadmap__notes,
+  body[data-level="master-teacher"] main > section.teacher-roadmap-section .teacher-roadmap__notes {
+    grid-area: notes !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    margin-top: 0 !important;
+  }
+
+  /* Put the teacher's explanation between the route photo and her portrait. */
+  html[data-level="master-teacher"] main > section.svetlana-section .svetlana-layout,
+  body[data-level="master-teacher"] main > section.svetlana-section .svetlana-layout {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  html[data-level="master-teacher"] main > section.svetlana-section .copy,
+  body[data-level="master-teacher"] main > section.svetlana-section .copy {
+    order: -1 !important;
+  }
+
+  /* The later repeat of Svetlana's portrait adds no information on a phone. */
+  html[data-level="master-teacher"] main > section.not-section .teacher-support-photo,
+  body[data-level="master-teacher"] main > section.not-section .teacher-support-photo {
+    display: none !important;
+  }
+
+  /* After the video each column becomes a complete card, not a squeezed strip. */
+  html[data-level="master-teacher"] main > section.direction-section .direction-grid,
+  body[data-level="master-teacher"] main > section.direction-section .direction-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  /* Multidimensional Master: a mobile portrait, not a wide scenic crop. */
+  html[data-level="multidimensional-master"] main > section.master-author-section .master-author-card__photo img,
+  body[data-level="multidimensional-master"] main > section.master-author-section .master-author-card__photo img {
+    transform: scale(1.34) !important;
+    transform-origin: 50% 80% !important;
+  }
+
+  /* Keep the spoken introduction inside its existing video-section card on mobile. */
+  html[data-level="multidimensional-master"] main > section.reiki-master-video-section .reiki-master-video-layout > .copy,
+  body[data-level="multidimensional-master"] main > section.reiki-master-video-section .reiki-master-video-layout > .copy {
+    padding-inline: 20px !important;
+  }
+}
+
+/* This stylesheet is loaded after the shared shell: retain its compact phone
+   footer after level-specific footer styles declared above. */
+@media (max-width: 760px) {
+  html[data-level] .eh-global-footer,
+  body[data-level] .eh-global-footer { padding-block: 22px 18px !important; }
+
+  html[data-level] .eh-global-footer__grid,
+  body[data-level] .eh-global-footer__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 18px 16px !important;
+  }
+
+  html[data-level] .eh-global-footer__brand,
+  body[data-level] .eh-global-footer__brand {
+    grid-column: 1 / -1 !important;
+    gap: 7px !important;
+  }
+
+  html[data-level] .eh-global-footer__logo,
+  body[data-level] .eh-global-footer__logo {
+    width: 150px !important;
+    max-height: 32px !important;
+    margin: 0 !important;
+  }
+
+  html[data-level] .eh-global-footer__brand p,
+  body[data-level] .eh-global-footer__brand p {
+    max-width: 31rem !important;
+    font-size: 11px !important;
+    line-height: 1.42 !important;
+  }
+
+  html[data-level] .eh-global-footer__nav,
+  body[data-level] .eh-global-footer__nav {
+    gap: 5px !important;
+    font-size: 12px !important;
+    line-height: 1.28 !important;
+  }
+
+  html[data-level] .eh-global-footer__nav strong,
+  body[data-level] .eh-global-footer__nav strong {
+    margin-bottom: 2px !important;
+    font-size: 10px !important;
+    letter-spacing: .08em !important;
+    color: var(--eh-context-primary, #315a3d) !important;
+  }
+
+  html[data-level] .eh-global-footer__nav a,
+  body[data-level] .eh-global-footer__nav a {
+    color: var(--eh-context-primary, #315a3d) !important;
+    font-weight: 550 !important;
+  }
+
+  html[data-level] .eh-global-footer__bottom,
+  body[data-level] .eh-global-footer__bottom {
+    gap: 4px !important;
+    margin-top: 18px !important;
+  }
+
+  html[data-level] .eh-global-footer__bottom p,
+  html[data-level] .eh-global-footer__legal,
+  html[data-level] .eh-global-footer__privacy,
+  body[data-level] .eh-global-footer__bottom p,
+  body[data-level] .eh-global-footer__legal,
+  body[data-level] .eh-global-footer__privacy {
+    font-size: 10.5px !important;
+    line-height: 1.38 !important;
+  }
 }

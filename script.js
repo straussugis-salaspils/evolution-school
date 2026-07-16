@@ -18,7 +18,6 @@ dropdownItems.forEach((item) => {
   const trigger = item.querySelector('.dropdown-trigger');
   if (!trigger) return;
   trigger.addEventListener('click', (event) => {
-    if (window.matchMedia('(max-width: 1080px)').matches) return;
     event.preventDefault();
     const open = !item.classList.contains('is-open');
     closeDropdowns(item);

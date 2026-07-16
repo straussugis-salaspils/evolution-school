@@ -9910,9 +9910,9 @@ body.eh-context--freedom .off-switch-signal-band article > .eyebrow {
   height: 250px;
 }
 .direction-card-grid--overview .card:nth-child(1) .card__image { object-position: center 36%; }
-.direction-card-grid--overview .card:nth-child(2) .card__image { object-position: center 34%; }
-.direction-card-grid--overview .card:nth-child(3) .card__image { object-position: center 38%; }
-.direction-card-grid--overview .card:nth-child(4) .card__image { object-position: center 28%; }
+.direction-card-grid--overview .card:nth-child(2) .card__image { object-position: center 28%; }
+.direction-card-grid--overview .card:nth-child(3) .card__image { object-position: center 48%; }
+.direction-card-grid--overview .card:nth-child(4) .card__image { object-position: center 38%; }
 .direction-card-grid--overview .card h3 {
   min-height: 72px;
   font-size: clamp(29px, 2.7vw, 36px);
@@ -13760,6 +13760,22 @@ body.eh-context--archetypes .method-entry-map__method .eyebrow {
     display: none;
   }
 
+  .eh-shell-nav .has-dropdown.is-open .dropdown-menu {
+    position: static;
+    display: grid;
+    width: min(20rem, calc(100vw - 2.5rem));
+    min-width: 0;
+    margin-top: 0.25rem;
+    padding: 0.5rem;
+    border: 1px solid rgba(221, 216, 208, .86);
+    border-radius: 0.75rem;
+    background: #fff;
+    box-shadow: 0 1.125rem 3.375rem rgba(36, 25, 75, .12);
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+
   .eh-shell-nav::-webkit-scrollbar,
   .eh-cross-nav::-webkit-scrollbar {
     display: none;
@@ -13795,6 +13811,21 @@ body.eh-context--archetypes .method-entry-map__method .eyebrow {
     gap: 10px;
     padding-bottom: 2px;
     font-size: 12px;
+  }
+
+  .eh-shell-nav {
+    flex-wrap: wrap;
+    overflow: visible;
+  }
+
+  .eh-shell-nav .has-dropdown.is-open {
+    flex: 1 1 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .eh-shell-nav .has-dropdown.is-open .dropdown-menu {
+    width: min(100%, 20rem);
   }
 
   .eh-shell-nav .nav-item {
@@ -14905,6 +14936,7 @@ body.direction-page--overview .direction-card-grid--overview .card__image {
 }
 
 body.direction-page--overview .direction-card-grid--overview .card h3 {
+  margin-top: 28px;
   color: var(--neutral-deep);
 }
 
@@ -18408,6 +18440,21 @@ body.programs-page .program-row {
 
 body.home-page .home-program-note {
   border-left: 4px solid var(--neutral-primary) !important;
+}
+
+@media (max-width: 680px) {
+  body.home-page .home-program-shell {
+    row-gap: 36px;
+  }
+
+  /* The stacked mobile layout already supplies its own gap. */
+  body.home-page .home-entry-zone__layout {
+    row-gap: 18px;
+  }
+
+  body.home-page .home-entry-zone__intro {
+    margin-bottom: 0 !important;
+  }
 }
 
 body.home-page .home-story-card span {
@@ -62417,6 +62464,14 @@ body.personal-route-final-polish-page .route-toolkit .route-toolkit-grid {
   margin-top: clamp(28px, 3.4vw, 44px) !important;
 }
 
+/* Personal route: keep the foundations heading above its mobile card stack. */
+@media (max-width: 1180px) {
+  body.personal-route-final-polish-page main.personal-route-storyboard > .route-foundations-section > .container.route-split .route-section-head,
+  body.personal-route-final-polish-page main.personal-route-storyboard > .route-foundations-section > .container.route-split .route-card-grid--one {
+    grid-area: auto !important;
+  }
+}
+
 body.personal-route-final-polish-page .route-check-grid,
 body.personal-route-final-polish-page .route-change-check-grid {
   gap: 1px !important;
@@ -65933,4 +65988,128 @@ body.gc-payment-modal-is-open {
   max-width: 100%;
   border: 0;
   background: transparent !important;
+}
+
+/* Shared public footer: compact and legible on phones. */
+@media (max-width: 680px) {
+  .eh-global-footer {
+    padding-block: 22px 18px !important;
+  }
+
+  .eh-global-footer__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 18px 16px !important;
+  }
+
+  .eh-global-footer__brand {
+    grid-column: 1 / -1;
+  }
+
+  .eh-global-footer__logo {
+    width: 150px !important;
+    max-height: 32px !important;
+    margin: 0 !important;
+  }
+
+  .eh-global-footer__brand p {
+    margin-top: 7px !important;
+    max-width: 48ch !important;
+    font-size: 11px !important;
+    line-height: 1.42 !important;
+  }
+
+  .eh-global-footer__nav {
+    gap: 5px !important;
+    font-size: 12px !important;
+    line-height: 1.3 !important;
+  }
+
+  .eh-global-footer__nav strong {
+    margin-bottom: 1px;
+    color: var(--shell-context-primary) !important;
+    font-size: 10px !important;
+    letter-spacing: .07em !important;
+  }
+
+  .eh-global-footer__nav a {
+    color: var(--shell-context-primary) !important;
+    font-weight: 720 !important;
+  }
+
+  .eh-global-footer__bottom {
+    gap: 5px !important;
+    margin-top: 18px !important;
+    padding-top: 12px !important;
+  }
+
+  .eh-global-footer__bottom p,
+  .eh-global-footer__legal,
+  .eh-global-footer__privacy {
+    font-size: 10.5px !important;
+    line-height: 1.38 !important;
+  }
+}
+
+/* About the School: mobile fixes for the approved content only. */
+@media (max-width: 680px) {
+  body.about-page .about-topic-ribbon {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  body.about-page .about-topic-ribbon span {
+    min-width: 0;
+  }
+
+  /* Keep the founder portrait broad enough to read as a page visual on a phone. */
+  body.about-page .about-approved-hero .about-founder-visual {
+    width: calc(100% + 48px) !important;
+    margin-inline: -24px !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+  }
+
+  body.about-page .about-approved-hero .about-founder-visual img {
+    height: 285px !important;
+    border-radius: 0 !important;
+  }
+
+  body.about-page .about-approved-hero .about-founder-visual figcaption {
+    padding: 14px 24px 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+  }
+
+  /* Author cards become a single reading column: image, role, name, then copy. */
+  body.about-page .about-person-card--author {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-rows: auto auto auto auto 1fr !important;
+    min-height: 0 !important;
+  }
+
+  body.about-page .about-person-card--author img {
+    grid-column: 1 !important;
+    grid-row: auto !important;
+    width: 100% !important;
+    height: 250px !important;
+    min-height: 0 !important;
+  }
+
+  body.about-page .about-person-card--author > span,
+  body.about-page .about-person-card--author > strong,
+  body.about-page .about-person-card--author > em,
+  body.about-page .about-person-card--author > p {
+    grid-column: 1 !important;
+    margin-right: 18px !important;
+    margin-left: 18px !important;
+  }
+
+  body.about-page .about-person-card--author > span {
+    margin-top: 18px !important;
+  }
+
+  body.about-page .about-person-card--author > p {
+    margin-bottom: 20px !important;
+  }
 }
