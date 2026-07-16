@@ -748,3 +748,97 @@ body.direction-map-page .direction-summary > a.clickable-card[href] {
 body.direction-map-page .direction-summary > a.clickable-card[href] + a.clickable-card[href] {
   border-left: 1px solid var(--map-line) !important;
 }
+
+/* Freedom map: the approved Off-Switch character names stay attached to the
+   people they describe in the map hero and in each of its three format scenes. */
+body.direction-page--freedom .hero__visual,
+body.direction-page--freedom .roadmap-step__media {
+  position: relative;
+}
+
+body.direction-page--freedom .freedom-character-callouts {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+body.direction-page--freedom .freedom-character-callout {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  padding: 5px 8px;
+  border-left: 3px solid currentColor;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, .92);
+  color: var(--tag-color);
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1.15;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transform: translate(-50%, -100%);
+}
+
+body.direction-page--freedom .freedom-character-callout::after {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 1px;
+  height: var(--stem, 14px);
+  background: currentColor;
+  opacity: .72;
+  content: "";
+}
+
+body.direction-page--freedom .freedom-character-callout[data-tone="anxiety"] { --tag-color: #b56f21; }
+body.direction-page--freedom .freedom-character-callout[data-tone="guilt"] { --tag-color: #66727a; }
+body.direction-page--freedom .freedom-character-callout[data-tone="fear"] { --tag-color: #2f7188; }
+body.direction-page--freedom .freedom-character-callout[data-tone="anger"] { --tag-color: #a24e3c; }
+body.direction-page--freedom .freedom-character-callout[data-tone="resentment"] { --tag-color: #76558d; }
+body.direction-page--freedom .freedom-character-callout[data-tone="tension"] { --tag-color: #6f7a3f; }
+body.direction-page--freedom .freedom-character-callout[data-tone="shame"] { --tag-color: #a6656d; }
+body.direction-page--freedom .freedom-character-callout[data-tone="memory"] { --tag-color: #51493f; }
+
+body.direction-page--freedom .freedom-character-callouts--hero [data-tone="anxiety"] { --x: 14%; --y: 48%; }
+body.direction-page--freedom .freedom-character-callouts--hero [data-tone="guilt"] { --x: 33%; --y: 56%; }
+body.direction-page--freedom .freedom-character-callouts--hero [data-tone="fear"] { --x: 50%; --y: 46%; }
+body.direction-page--freedom .freedom-character-callouts--hero [data-tone="anger"] { --x: 67%; --y: 55%; }
+body.direction-page--freedom .freedom-character-callouts--hero [data-tone="resentment"] { --x: 85%; --y: 47%; }
+
+body.direction-page--freedom .roadmap-step__media .freedom-character-callout {
+  padding: 3px 4px;
+  border-left-width: 2px;
+  font-size: 8px;
+  --stem: 8px;
+}
+
+body.direction-page--freedom .freedom-character-callouts--self [data-tone="anxiety"] { --x: 21%; --y: 34%; }
+body.direction-page--freedom .freedom-character-callouts--self [data-tone="guilt"] { --x: 38%; --y: 34%; }
+body.direction-page--freedom .freedom-character-callouts--self [data-tone="fear"] { --x: 53%; --y: 34%; }
+body.direction-page--freedom .freedom-character-callouts--self [data-tone="anger"] { --x: 67%; --y: 34%; }
+body.direction-page--freedom .freedom-character-callouts--self [data-tone="resentment"] { --x: 82%; --y: 34%; }
+
+body.direction-page--freedom .freedom-character-callouts--group [data-tone="anxiety"] { --x: 43%; --y: 25%; }
+body.direction-page--freedom .freedom-character-callouts--group [data-tone="fear"] { --x: 66%; --y: 27%; }
+body.direction-page--freedom .freedom-character-callouts--group [data-tone="memory"] { --x: 18%; --y: 46%; transform: translate(0, -100%); }
+body.direction-page--freedom .freedom-character-callouts--group [data-tone="memory"]::after { left: 0; }
+body.direction-page--freedom .freedom-character-callouts--group [data-tone="guilt"] { --x: 47%; --y: 51%; }
+body.direction-page--freedom .freedom-character-callouts--group [data-tone="resentment"] { --x: 79%; --y: 50%; }
+body.direction-page--freedom .freedom-character-callouts--group [data-tone="anger"] { --x: 51%; --y: 64%; }
+body.direction-page--freedom .freedom-character-callouts--group [data-tone="tension"] { --x: 67%; --y: 64%; }
+body.direction-page--freedom .freedom-character-callouts--group [data-tone="shame"] { --x: 90%; --y: 72%; }
+
+body.direction-page--freedom .freedom-character-callouts--personal [data-tone="anxiety"] { --x: 43%; --y: 61%; }
+body.direction-page--freedom .freedom-character-callouts--personal [data-tone="tension"] { --x: 58%; --y: 74%; }
+body.direction-page--freedom .freedom-character-callouts--personal [data-tone="memory"] { --x: 77%; --y: 60%; }
+body.direction-page--freedom .freedom-character-callouts--personal [data-tone="guilt"] { --x: 39%; --y: 76%; }
+
+@media (max-width: 640px) {
+  body.direction-page--freedom .hero__visual .freedom-character-callout {
+    padding: 3px 4px;
+    border-left-width: 2px;
+    font-size: 8px;
+    --stem: 9px;
+  }
+}
