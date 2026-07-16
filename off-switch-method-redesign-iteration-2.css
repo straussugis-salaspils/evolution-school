@@ -1,0 +1,608 @@
+/* Method prototype — art-direction pass 2.
+   Isolated from the live route and removable as one stylesheet. */
+
+body.off-switch-method-redesign-page {
+  --om2-paper: #fffdf6;
+  --om2-cream: #faf7e9;
+  --om2-mint: #e8f1dd;
+  --om2-lime: #ddef9d;
+  --om2-green: #286b47;
+  --om2-deep: #17482f;
+  --om2-ink: #173c2b;
+  --om2-muted: #536b5b;
+  --om2-line: rgba(29, 75, 47, .18);
+  --om2-shadow: 0 18px 42px rgba(31, 65, 39, .1);
+}
+
+/* Smaller editorial section titles. */
+body.off-switch-method-redesign-page .om-section h2,
+body.off-switch-method-redesign-page .om-formats h2 {
+  max-width: 19ch;
+  font-size: clamp(2.35rem, 5.2vw, 3.55rem) !important;
+  line-height: .98 !important;
+  letter-spacing: -.035em !important;
+}
+
+body.off-switch-method-redesign-page .om-section-head {
+  margin-bottom: clamp(2rem, 4vw, 3.5rem) !important;
+}
+
+/* Hero: the complete artwork is a separate right-hand card, never a cropped background. */
+body.off-switch-method-redesign-page .om-hero {
+  min-height: 0 !important;
+  overflow: visible !important;
+  background: #bfe674 !important;
+}
+
+body.off-switch-method-redesign-page .om-hero__inner {
+  position: relative !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 1.5rem !important;
+  width: min(100% - 2rem, 1180px) !important;
+  max-width: 1180px !important;
+  min-height: 0 !important;
+  margin-inline: auto !important;
+  padding: clamp(2.75rem, 8vw, 5rem) 0 1.5rem !important;
+}
+
+body.off-switch-method-redesign-page .om-hero__copy {
+  position: relative !important;
+  z-index: 2 !important;
+  width: 100% !important;
+  max-width: 34rem !important;
+}
+
+body.off-switch-method-redesign-page .om-hero__visual {
+  position: relative !important;
+  inset: auto !important;
+  width: 100% !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  border: 1px solid rgba(30, 70, 42, .16) !important;
+  border-radius: 1rem 0 0 1rem !important;
+  background: #f2eee5 !important;
+  box-shadow: var(--om2-shadow) !important;
+  aspect-ratio: 16 / 9 !important;
+}
+
+body.off-switch-method-redesign-page .om-hero__visual > img {
+  position: static !important;
+  inset: auto !important;
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  transform: none !important;
+}
+
+/* Scope: picture and conclusion on the left, four numbered cards on the right. */
+body.off-switch-method-redesign-page .om-scope__groups {
+  counter-reset: om2-scope;
+  gap: .7rem !important;
+}
+
+body.off-switch-method-redesign-page .om-scope__groups > article {
+  counter-increment: om2-scope;
+  padding: 1.1rem 1.15rem 1.1rem 3.45rem !important;
+  border: 1px solid var(--om2-line) !important;
+  border-top: 3px solid rgba(71, 132, 75, .52) !important;
+  border-radius: .35rem !important;
+  background: var(--om2-paper) !important;
+  box-shadow: 0 10px 26px rgba(35, 68, 40, .06) !important;
+}
+
+body.off-switch-method-redesign-page .om-scope__groups > article:nth-child(even) {
+  background: #f1f5df !important;
+}
+
+body.off-switch-method-redesign-page .om-scope__groups > article::before {
+  content: counter(om2-scope, decimal-leading-zero) !important;
+  position: absolute !important;
+  top: 1.18rem !important;
+  left: 1.1rem !important;
+  display: block !important;
+  width: auto !important;
+  height: auto !important;
+  background: none !important;
+  color: #5d9049 !important;
+  font: 800 .76rem/1 "Segoe UI", sans-serif !important;
+  letter-spacing: .08em !important;
+}
+
+body.off-switch-method-redesign-page .om-scope__result {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 1rem 0 0 !important;
+  padding: 1.2rem 1.35rem !important;
+  border: 0 !important;
+  border-left: 4px solid #6f9e52 !important;
+  border-radius: 0 !important;
+  background: rgba(255, 253, 246, .72) !important;
+  box-shadow: none !important;
+  font-size: 1rem !important;
+}
+
+/* Technique: one non-instructional scene, three context cards, five steps in a line. */
+body.off-switch-method-redesign-page .om-tool > .om-container {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 1rem !important;
+}
+
+body.off-switch-method-redesign-page .om-tool .om-section-head {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+}
+
+body.off-switch-method-redesign-page .om-tool__layout {
+  display: contents !important;
+}
+
+body.off-switch-method-redesign-page .om-tool__media {
+  grid-column: 1 !important;
+  grid-row: 2 !important;
+  overflow: hidden !important;
+  border: 1px solid var(--om2-line) !important;
+  border-radius: .8rem !important;
+  background: #f1eee5 !important;
+  box-shadow: var(--om2-shadow) !important;
+  aspect-ratio: 16 / 9 !important;
+}
+
+body.off-switch-method-redesign-page .om-technique-photos {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  padding: 0 !important;
+  background-color: #f1eee5 !important;
+  background-image: url("visual-package/off-switch-method/selected/web/01-method-hero-technique-v2.png") !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: contain !important;
+}
+
+body.off-switch-method-redesign-page .om-technique-frame {
+  display: none !important;
+}
+
+body.off-switch-method-redesign-page .om-tool__notes {
+  grid-column: 1 !important;
+  grid-row: 3 !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: .7rem !important;
+  margin: 0 !important;
+}
+
+body.off-switch-method-redesign-page .om-tool__autonomy,
+body.off-switch-method-redesign-page .om-tool__privacy,
+body.off-switch-method-redesign-page .om-speed {
+  padding: 1.25rem 1.35rem !important;
+  border: 1px solid var(--om2-line) !important;
+  border-radius: .35rem !important;
+  background: var(--om2-paper) !important;
+  box-shadow: none !important;
+  font-size: .96rem !important;
+  line-height: 1.55 !important;
+}
+
+body.off-switch-method-redesign-page .om-speed {
+  display: block !important;
+  background: var(--om2-deep) !important;
+  color: #fff !important;
+}
+
+body.off-switch-method-redesign-page .om-speed > div,
+body.off-switch-method-redesign-page .om-speed > p {
+  display: block !important;
+  width: auto !important;
+  margin: 0 !important;
+}
+
+body.off-switch-method-redesign-page .om-speed > p {
+  margin-top: 1rem !important;
+}
+
+body.off-switch-method-redesign-page .om-speed strong {
+  font-size: clamp(1.7rem, 4vw, 2.35rem) !important;
+}
+
+body.off-switch-method-redesign-page .om-tool__copy {
+  grid-column: 1 !important;
+  grid-row: 4 !important;
+  margin-top: .75rem !important;
+}
+
+body.off-switch-method-redesign-page .om-steps--compact {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: .65rem !important;
+}
+
+body.off-switch-method-redesign-page .om-steps--compact > li {
+  display: block !important;
+  padding: 1.15rem !important;
+  border: 1px solid var(--om2-line) !important;
+  border-top: 3px solid #7da45a !important;
+  border-radius: .3rem !important;
+  background: var(--om2-paper) !important;
+}
+
+body.off-switch-method-redesign-page .om-steps--compact > li > span {
+  display: block !important;
+  width: auto !important;
+  height: auto !important;
+  margin-bottom: .8rem !important;
+  background: transparent !important;
+  color: #638b4d !important;
+  font-size: .78rem !important;
+  text-align: left !important;
+}
+
+body.off-switch-method-redesign-page .om-steps--compact strong {
+  font-size: 1rem !important;
+}
+
+body.off-switch-method-redesign-page .om-steps--compact p {
+  font-size: .9rem !important;
+}
+
+/* Mechanism: heading and image on the left; cards begin at the top right. */
+body.off-switch-method-redesign-page .om-mechanism__media {
+  aspect-ratio: 16 / 9 !important;
+  background: transparent !important;
+}
+
+body.off-switch-method-redesign-page .om-mechanism__media > img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+}
+
+body.off-switch-method-redesign-page .om-chain > article {
+  padding: 1.1rem 1.25rem 1.1rem 3.75rem !important;
+  border: 1px solid var(--om2-line) !important;
+  border-radius: .35rem !important;
+  background: rgba(255, 253, 246, .92) !important;
+  box-shadow: none !important;
+}
+
+body.off-switch-method-redesign-page .om-chain > article > span {
+  position: absolute !important;
+  top: 1.3rem !important;
+  left: 1.25rem !important;
+  color: #6f9850 !important;
+}
+
+body.off-switch-method-redesign-page .om-chain > article > strong {
+  font-size: 1.25rem !important;
+}
+
+body.off-switch-method-redesign-page .om-chain > article.om-chain__stop {
+  background: var(--om2-deep) !important;
+  border-color: var(--om2-deep) !important;
+}
+
+body.off-switch-method-redesign-page .om-chain > article.om-chain__stop span,
+body.off-switch-method-redesign-page .om-chain > article.om-chain__stop strong,
+body.off-switch-method-redesign-page .om-chain > article.om-chain__stop p,
+body.off-switch-method-redesign-page .om-chain > article.om-chain__stop em {
+  color: #fffef8 !important;
+}
+
+body.off-switch-method-redesign-page .om-chain > article.om-chain__stop b {
+  color: var(--om2-lime) !important;
+}
+
+body.off-switch-method-redesign-page .om-chain[data-card-role="sequence"] > article.om-chain__stop > p,
+body.off-switch-method-redesign-page .om-chain[data-card-role="sequence"] > article.om-chain__stop .om-chain__switch,
+body.off-switch-method-redesign-page .om-chain[data-card-role="sequence"] > article.om-chain__stop .om-chain__switch em {
+  color: #fffef8 !important;
+}
+
+html body.off-switch-method-redesign-page main .om-mechanism .om-chain[data-card-role="sequence"] > article.om-chain__stop > p,
+html body.off-switch-method-redesign-page main .om-mechanism .om-chain[data-card-role="sequence"] > article.om-chain__stop .om-chain__switch,
+html body.off-switch-method-redesign-page main .om-mechanism .om-chain[data-card-role="sequence"] > article.om-chain__stop .om-chain__switch em {
+  color: #fffef8 !important;
+  -webkit-text-fill-color: #fffef8 !important;
+  opacity: 1 !important;
+}
+
+body.off-switch-method-redesign-page .om-interrupt {
+  width: 100% !important;
+  margin: 1rem 0 0 !important;
+  padding: 1.25rem 1.4rem !important;
+  border: 1px solid rgba(43, 91, 56, .24) !important;
+  border-left: 4px solid #6f9850 !important;
+  border-radius: 0 !important;
+  background: rgba(255, 253, 246, .55) !important;
+  box-shadow: none !important;
+}
+
+/* Story sections: smaller headings, aligned content, timeline cards. */
+body.off-switch-method-redesign-page .om-dog__story > article,
+body.off-switch-method-redesign-page .om-dog__story > article:nth-child(2),
+body.off-switch-method-redesign-page .om-dog__story > article:last-child {
+  padding: 1.1rem 1.15rem 1.1rem 3.45rem !important;
+  border-radius: .35rem !important;
+  background: var(--om2-paper) !important;
+}
+
+body.off-switch-method-redesign-page .om-dog__story > article::before {
+  top: 1.28rem !important;
+  left: 1.2rem !important;
+  width: .6rem !important;
+  height: .6rem !important;
+  border-width: 2px !important;
+}
+
+body.off-switch-method-redesign-page .om-map__note {
+  padding: 1.2rem 1.35rem !important;
+  border-left: 4px solid #739b52 !important;
+  border-radius: 0 !important;
+  background: rgba(255, 253, 246, .66) !important;
+}
+
+/* Evidence cards: four equal compact cases, no oversized feature card. */
+body.off-switch-method-redesign-page .om-cases__grid {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: .85rem !important;
+}
+
+body.off-switch-method-redesign-page .om-cases__grid > article,
+body.off-switch-method-redesign-page .om-cases__grid > article:first-child,
+body.off-switch-method-redesign-page .om-cases__grid > article:not(:first-child) {
+  grid-column: auto !important;
+  grid-row: auto !important;
+  min-height: 0 !important;
+  padding: 1.45rem 1.5rem !important;
+  border: 1px solid var(--om2-line) !important;
+  border-top: 4px solid #78a253 !important;
+  border-radius: .4rem !important;
+  background: var(--om2-paper) !important;
+  box-shadow: 0 12px 30px rgba(34, 67, 39, .07) !important;
+}
+
+body.off-switch-method-redesign-page .om-cases__grid > article:nth-child(even) {
+  background: #f1f5df !important;
+}
+
+body.off-switch-method-redesign-page .om-cases__grid strong,
+body.off-switch-method-redesign-page .om-cases__grid > article:first-child strong {
+  margin: .9rem 0 .2rem !important;
+  font-size: clamp(2.35rem, 7vw, 3.35rem) !important;
+  line-height: .95 !important;
+}
+
+body.off-switch-method-redesign-page .om-cases__grid h3 {
+  margin-top: 1rem !important;
+  font-size: 1.15rem !important;
+  line-height: 1.25 !important;
+}
+
+body.off-switch-method-redesign-page .om-cases__grid p {
+  font-size: .95rem !important;
+  line-height: 1.55 !important;
+}
+
+/* Tablet. */
+@media (min-width: 768px) {
+  body.off-switch-method-redesign-page .om-steps--compact {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  body.off-switch-method-redesign-page .om-cases__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+/* Desktop compositions. */
+@media (min-width: 1024px) {
+  body.off-switch-method-redesign-page .om-hero__inner {
+    grid-template-columns: minmax(25rem, .78fr) minmax(0, 1.38fr) !important;
+    gap: 1.5rem !important;
+    width: 100% !important;
+    max-width: none !important;
+    padding: clamp(3.5rem, 6vw, 5.25rem) 0 clamp(3.5rem, 6vw, 5.25rem) max(2rem, calc((100vw - 1180px) / 2)) !important;
+    align-items: center !important;
+  }
+
+  body.off-switch-method-redesign-page .om-hero__visual {
+    justify-self: end !important;
+    width: 100% !important;
+    border-radius: 1rem 0 0 1rem !important;
+  }
+
+  body.off-switch-method-redesign-page .om-scope > .om-container {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1.22fr) minmax(22rem, .78fr) !important;
+    gap: 0 clamp(2.5rem, 5vw, 4.75rem) !important;
+    align-items: start !important;
+  }
+
+  body.off-switch-method-redesign-page .om-scope .om-section-head {
+    grid-column: 1 / -1 !important;
+    grid-row: 1 !important;
+  }
+
+  body.off-switch-method-redesign-page .om-scope h2 {
+    max-width: 25ch !important;
+    font-size: 3rem !important;
+  }
+
+  body.off-switch-method-redesign-page .om-scope__composition {
+    display: contents !important;
+  }
+
+  body.off-switch-method-redesign-page .om-scope__media {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+  }
+
+  body.off-switch-method-redesign-page .om-scope__groups {
+    grid-column: 2 !important;
+    grid-row: 2 / span 2 !important;
+  }
+
+  body.off-switch-method-redesign-page .om-scope__result {
+    grid-column: 1 !important;
+    grid-row: 3 !important;
+  }
+
+  body.off-switch-method-redesign-page .om-tool > .om-container {
+    grid-template-columns: minmax(0, 1.32fr) minmax(20rem, .68fr) !important;
+    gap: 1rem clamp(2rem, 4vw, 3.75rem) !important;
+  }
+
+  body.off-switch-method-redesign-page .om-tool .om-section-head {
+    grid-column: 1 / -1 !important;
+  }
+
+  body.off-switch-method-redesign-page .om-tool__media {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+  }
+
+  body.off-switch-method-redesign-page .om-tool__notes {
+    grid-column: 2 !important;
+    grid-row: 2 !important;
+  }
+
+  body.off-switch-method-redesign-page .om-tool__copy {
+    grid-column: 1 / -1 !important;
+    grid-row: 3 !important;
+  }
+
+  body.off-switch-method-redesign-page .om-steps--compact {
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  }
+
+  body.off-switch-method-redesign-page .om-mechanism > .om-container {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1.08fr) minmax(22rem, .92fr) !important;
+    gap: .75rem clamp(2.5rem, 5vw, 4.5rem) !important;
+    align-items: start !important;
+  }
+
+  body.off-switch-method-redesign-page .om-mechanism .om-section-head {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    margin: 0 !important;
+  }
+
+  body.off-switch-method-redesign-page .om-mechanism h2 {
+    max-width: 12ch !important;
+  }
+
+  body.off-switch-method-redesign-page .om-chain {
+    display: contents !important;
+  }
+
+  body.off-switch-method-redesign-page .om-chain[data-card-role="sequence"] > figure.om-mechanism__media {
+    grid-column: 1 !important;
+    grid-row: 2 / span 3 !important;
+    align-self: start !important;
+    margin: 0 !important;
+    aspect-ratio: 16 / 9 !important;
+  }
+
+  body.off-switch-method-redesign-page .om-chain > article {
+    grid-column: 2 !important;
+  }
+
+  body.off-switch-method-redesign-page .om-chain > article:nth-of-type(1) { grid-row: 1 !important; }
+  body.off-switch-method-redesign-page .om-chain > article:nth-of-type(2) { grid-row: 2 !important; }
+  body.off-switch-method-redesign-page .om-chain > article:nth-of-type(3) { grid-row: 3 !important; }
+  body.off-switch-method-redesign-page .om-chain > article:nth-of-type(4) { grid-row: 4 !important; }
+
+  body.off-switch-method-redesign-page .om-interrupt {
+    grid-column: 1 / -1 !important;
+    grid-row: 5 !important;
+  }
+
+  body.off-switch-method-redesign-page .om-dog > .om-container,
+  body.off-switch-method-redesign-page .om-map > .om-container {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1.18fr) minmax(22rem, .82fr) !important;
+    gap: 1.5rem clamp(2.5rem, 5vw, 4.5rem) !important;
+    align-items: start !important;
+  }
+
+  body.off-switch-method-redesign-page .om-dog .om-section-head,
+  body.off-switch-method-redesign-page .om-map .om-section-head,
+  body.off-switch-method-redesign-page .om-dog__composition,
+  body.off-switch-method-redesign-page .om-map__layout {
+    display: contents !important;
+  }
+
+  body.off-switch-method-redesign-page .om-dog .om-section-head > div,
+  body.off-switch-method-redesign-page .om-map .om-section-head > div {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+  }
+
+  body.off-switch-method-redesign-page .om-dog .om-section-head > p,
+  body.off-switch-method-redesign-page .om-map .om-section-head > p {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    align-self: end !important;
+    margin: 0 !important;
+  }
+
+  body.off-switch-method-redesign-page .om-dog__media,
+  body.off-switch-method-redesign-page .om-map__media {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+  }
+
+  body.off-switch-method-redesign-page .om-dog__story,
+  body.off-switch-method-redesign-page .om-map__copy {
+    grid-column: 2 !important;
+    grid-row: 2 !important;
+  }
+
+  body.off-switch-method-redesign-page .om-sequence > .om-container {
+    display: grid !important;
+    grid-template-columns: minmax(20rem, .72fr) minmax(0, 1.28fr) !important;
+    gap: 1.25rem clamp(2.5rem, 5vw, 4.5rem) !important;
+    align-items: start !important;
+  }
+
+  body.off-switch-method-redesign-page .om-sequence .om-section-head {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+  }
+
+  body.off-switch-method-redesign-page .om-depth {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: .75rem !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  body.off-switch-method-redesign-page .om-depth__visual {
+    grid-column: 2 !important;
+    grid-row: 1 / span 2 !important;
+    align-self: center !important;
+    margin: 0 !important;
+    aspect-ratio: 16 / 9 !important;
+  }
+}
+
+@media (max-width: 767px) {
+  body.off-switch-method-redesign-page .om-hero__visual {
+    border-radius: .75rem !important;
+  }
+
+  body.off-switch-method-redesign-page .om-hero__visual .os-character-label {
+    padding: .25rem .08rem !important;
+    font-size: .52rem !important;
+  }
+}

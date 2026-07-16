@@ -5,6 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Вкус лёгкости — 7 дней с Афродитой и Персефоной</title>
   <meta name="description" content="Онлайн-неделя для женщин, которые хотят снова почувствовать вкус, желание и себя живую. 10–16 сентября. 150 евро.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://evolution.yourbalancerestored.com/lightness/">
+  <meta property="og:title" content="Вкус лёгкости — 7 дней с Афродитой и Персефоной">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:site_name" content="Evolution House">
+  <meta property="og:image" content="/assets/evolution-house-logo-approved.png">
+  <meta property="og:url" content="https://evolution.yourbalancerestored.com/lightness/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:description" content="Онлайн-неделя для женщин, которые хотят снова почувствовать вкус, желание и себя живую. 10–16 сентября. 150 евро.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
@@ -17,9 +27,9 @@
       --sand:        #DDD0B8;
       --peach:       #E8C9A8;
       --peach-light: #F2DED0;
-      --sage:        #A8B89A;
-      --sage-light:  #D0DCC8;
-      --sage-dark:   #6E8860;
+      --sage:        #C98D9A;
+      --sage-light:  #F3DDE4;
+      --sage-dark:   #9F6574;
       --gold:        #C09050;
       --gold-light:  #D4A870;
       --ochre:       #B87050;
@@ -99,7 +109,8 @@
       box-shadow: 0 10px 30px rgba(192, 144, 80, 0.35);
     }
 
-    /* ===== PLACEHOLDERS ===== */
+    
+
     .ph {
       width: 100%;
       border-radius: var(--radius);
@@ -861,7 +872,8 @@
     footer .foot-name { font-family: var(--font-heading); font-style: italic; font-size: 1.1rem; margin-bottom: 6px; }
     footer .foot-meta { font-size: 13px; color: var(--text-muted); }
 
-    /* ===== DIVIDER ===== */
+    
+
     .hr { width: 48px; height: 1px; background: var(--sand); margin: 0 auto 32px; }
 
     /* ===== RESPONSIVE ===== */
@@ -896,28 +908,1755 @@
       .format-items { grid-template-columns: 1fr; }
     }
   </style>
-</head>
-<body>
+<style id="eh-shared-shell-css">
 
-<!-- NAV -->
-<nav class="nav" id="nav">
-  <div class="container">
-    <div class="nav-inner">
-      <a href="#" class="nav-logo">Вкус лёгкости</a>
-      <button class="btn btn--primary" onclick="openModal()">Забронировать место</button>
+/* Evolution House shared shell */
+:root {
+  --eh-canvas: #F7F5F1;
+  --eh-surface: #FFFFFF;
+  --eh-ink: #17151B;
+  --eh-ink-soft: #5A5661;
+  --eh-line: #DDD8D0;
+  --eh-brand: #0F625E;
+  --eh-brand-hover: #0A4F4C;
+  --eh-brand-deep: #073E3B;
+  --eh-gold: #B88F49;
+  --eh-brand-soft: #DCEDEA;
+  --eh-brand-wash: #F1F7F5;
+}
+.eh-shell-header,
+.eh-shell-breadcrumb,
+.eh-local-strip {
+  --shell-context-primary: var(--eh-brand);
+  --shell-context-hover: var(--eh-brand-hover);
+  --shell-context-deep: var(--eh-brand-deep);
+  --shell-context-soft: var(--eh-brand-soft);
+  --shell-context-wash: var(--eh-brand-wash);
+}
+.eh-context--archetypes,
+body.eh-context--archetypes .eh-shell-header,
+body.eh-context--archetypes .eh-shell-breadcrumb,
+body.eh-context--archetypes .eh-local-strip {
+  --shell-context-primary: #5B2D68;
+  --shell-context-hover: #4B2459;
+  --shell-context-deep: #24152F;
+  --shell-context-soft: #EFE4F2;
+  --shell-context-wash: #F8F1F8;
+}
+.eh-context--freedom,
+body.eh-context--freedom .eh-shell-header,
+body.eh-context--freedom .eh-shell-breadcrumb,
+body.eh-context--freedom .eh-local-strip {
+  --shell-context-primary: #536A86;
+  --shell-context-hover: #435772;
+  --shell-context-deep: #243247;
+  --shell-context-soft: #C9D3E2;
+  --shell-context-wash: #F3F6FA;
+}
+.eh-context--reiki,
+body.eh-context--reiki .eh-shell-header,
+body.eh-context--reiki .eh-shell-breadcrumb,
+body.eh-context--reiki .eh-local-strip {
+  --shell-context-primary: #7E6A22;
+  --shell-context-hover: #665519;
+  --shell-context-deep: #4C4218;
+  --shell-context-soft: #F1E6B5;
+  --shell-context-wash: #FFF9E8;
+}
+html[data-level] .eh-shell-header,
+html[data-level] .eh-shell-breadcrumb,
+html[data-level] .eh-local-strip,
+body[data-level] .eh-shell-header,
+body[data-level] .eh-shell-breadcrumb,
+body[data-level] .eh-local-strip {
+  --shell-context-primary: #7E6A22;
+  --shell-context-hover: #665519;
+  --shell-context-deep: #4C4218;
+  --shell-context-soft: #F1E6B5;
+  --shell-context-wash: #FFF9E8;
+}
+body.eh-context--archetypes {
+  --arch-ink: #24152F;
+  --arch-deep: #2A1734;
+  --arch-primary: #5B2D68;
+  --arch-violet: #6A4D76;
+  --arch-lilac: #EEE6F3;
+  --arch-lilac-2: #F6F0FA;
+  --arch-porcelain: #FBF8FC;
+  --arch-paper: #FFFDFB;
+  --arch-lightness: #C98D9A;
+  --arch-lightness-soft: #F7E9ED;
+  --arch-strength: #9A7B6B;
+  --arch-strength-soft: #E7DED8;
+  --arch-depth: #5B2D68;
+  --arch-depth-soft: #EEE5F2;
+  --arch-retreat: #7A5C89;
+  --arch-retreat-soft: #F4ECF7;
+  --arch-gold: #B88F49;
+  --arch-gold-soft: rgba(184,143,73,.16);
+  --arch-line: rgba(91,45,104,.18);
+  --primary: #5B2D68;
+  --primary-hover: #4B2459;
+  --deep: #24152F;
+  --soft: #EFE4F2;
+  --wash: #F8F1F8;
+  --accent: #B88F49;
+}
+body.eh-context--freedom {
+  --primary: #536A86;
+  --primary-hover: #435772;
+  --deep: #243247;
+  --soft: #C9D3E2;
+  --wash: #F3F6FA;
+  --accent: #D6A06F;
+}
+body.eh-context--freedom.eh-freedom-bg--map {
+  background:
+    radial-gradient(circle at 92% 8%, rgba(83,106,134,.08), transparent 28%),
+    linear-gradient(180deg, #FFFFFF 0%, #F3F6FA 44%, #F8F4EF 100%) !important;
+}
+body.eh-context--reiki {
+  --primary: #7E6A22;
+  --primary-hover: #665519;
+  --deep: #4C4218;
+  --soft: #F1E6B5;
+  --wash: #FFF9E8;
+  --accent: #D8BF63;
+}
+body.eh-context--reiki.eh-reiki-bg--map {
+  background:
+    radial-gradient(circle at 92% 8%, rgba(216,191,99,.10), transparent 28%),
+    linear-gradient(180deg, #FFFDF4 0%, #FFF9E8 46%, #F1E6B5 100%) !important;
+}
+body[data-level] {
+  --primary: var(--level-primary);
+  --primary-hover: var(--level-primary-hover);
+  --deep: var(--level-deep);
+  --soft: var(--level-soft);
+  --wash: var(--level-wash);
+  --accent: var(--level-accent, #D8BF63);
+}
+html[data-level] body,
+body[data-level] {
+  background:
+    radial-gradient(circle at 92% 8%, color-mix(in srgb, var(--level-accent) 11%, transparent), transparent 28%),
+    linear-gradient(180deg, var(--level-wash) 0%, #FFFFFF 46%, color-mix(in srgb, var(--level-soft) 42%, #FFFFFF) 100%) !important;
+}
+html[data-level] .hero,
+body[data-level] .hero {
+  background:
+    radial-gradient(circle at 82% 16%, rgba(255,255,255,.34), transparent 30%),
+    radial-gradient(circle at 14% 78%, color-mix(in srgb, var(--level-accent) 20%, transparent), transparent 34%),
+    linear-gradient(135deg, var(--level-wash) 0%, var(--level-soft) 52%, var(--level-accent) 100%) !important;
+}
+html[data-level] .hero-visual,
+body[data-level] .hero-visual,
+html[data-level] .hero__visual,
+body[data-level] .hero__visual {
+  box-shadow: 0 28px 76px color-mix(in srgb, var(--level-deep) 13%, transparent) !important;
+}
+html[data-level] .hero-facts,
+body[data-level] .hero-facts,
+html[data-level] .hero-panel,
+body[data-level] .hero-panel,
+html[data-level] .hero-trust,
+body[data-level] .hero-trust {
+  border-color: color-mix(in srgb, var(--level-primary) 20%, rgba(221,216,208,.76)) !important;
+  background: rgba(255,255,255,.72) !important;
+}
+html[data-level] main > section:nth-of-type(even),
+body[data-level] main > section:nth-of-type(even) {
+  background:
+    radial-gradient(circle at 90% 10%, color-mix(in srgb, var(--level-accent) 9%, transparent), transparent 28%),
+    linear-gradient(135deg, #FFFFFF 0%, color-mix(in srgb, var(--level-wash) 72%, #FFFFFF) 100%) !important;
+}
+html[data-level] main > section:nth-of-type(4n),
+body[data-level] main > section:nth-of-type(4n) {
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--level-soft) 38%, #FFFFFF) 0%, #FFFFFF 100%) !important;
+}
+.eh-shell-container {
+  width: min(100% - 48px, 1160px);
+  margin-inline: auto;
+}
+
+.eh-shell-header {
+  position: sticky;
+  top: 0;
+  z-index: 120;
+  border-bottom: 1px solid rgba(221, 216, 208, 0.76);
+  background: rgba(247, 245, 241, 0.94);
+  color: #17151b;
+  font-family: Inter, "Segoe UI", system-ui, sans-serif;
+  backdrop-filter: blur(18px);
+  overflow: visible;
+}
+
+.eh-shell-header__inner {
+  min-height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.eh-shell-brand {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.eh-shell-brand img {
+  width: min(238px, 32vw);
+  max-height: 58px;
+  object-fit: contain;
+  filter: saturate(1.18) contrast(1.34) brightness(.82);
+  opacity: 1;
+}
+
+.eh-shell-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-left: auto;
+  color: #5f625f;
+  font-size: 13px;
+  font-weight: 760;
+  line-height: 1.2;
+}
+
+.eh-shell-nav .nav-item {
+  position: relative;
+  display: flex;
+  min-height: 42px;
+  align-items: center;
+}
+
+.eh-shell-nav a,
+.eh-local-strip a,
+.eh-shell-cta,
+.eh-global-footer a {
+  text-decoration: none;
+}
+
+.eh-shell-nav a {
+  padding: 8px 0;
+  border-bottom: 2px solid transparent;
+  color: inherit;
+}
+
+.eh-shell-nav a:hover,
+.eh-shell-nav a:focus-visible,
+.eh-shell-nav a.is-active,
+.eh-shell-nav a[aria-current="page"] {
+  color: var(--shell-context-deep);
+  border-color: var(--shell-context-primary);
+}
+
+.eh-shell-nav .dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  z-index: 150;
+  width: max-content;
+  min-width: 260px;
+  max-width: min(320px, calc(100vw - 36px));
+  display: grid;
+  gap: 4px;
+  padding: 10px;
+  border: 1px solid rgba(221, 216, 208, 0.86);
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 18px 54px rgba(36, 25, 75, 0.12);
+  opacity: 0;
+  transform: translate(-50%, -4px);
+  pointer-events: none;
+  transition: opacity .08s ease, transform .08s ease;
+}
+
+.eh-shell-nav .dropdown-menu a {
+  --menu-direction-primary: var(--shell-context-primary);
+  --menu-direction-deep: var(--shell-context-deep);
+  --menu-direction-wash: var(--shell-context-wash);
+  position: relative;
+  display: block;
+  padding: 10px 12px 10px 30px;
+  border: 0;
+  border-radius: 8px;
+  color: #17151b;
+  line-height: 1.25;
+  white-space: normal;
+}
+
+.eh-shell-nav .dropdown-menu a[href$="arhetipy.html"] {
+  --menu-direction-primary: #5B2D68;
+  --menu-direction-deep: #24152F;
+  --menu-direction-wash: #F8F1F8;
+}
+
+.eh-shell-nav .dropdown-menu a[href$="vnutrennyaya-svoboda.html"] {
+  --menu-direction-primary: #147C9C;
+  --menu-direction-deep: #103746;
+  --menu-direction-wash: #F1FBFC;
+}
+
+.eh-shell-nav .dropdown-menu a[href$="reiki-napravlenie.html"] {
+  --menu-direction-primary: #7E6A22;
+  --menu-direction-deep: #4C4218;
+  --menu-direction-wash: #FFF9E8;
+}
+
+.eh-shell-nav .dropdown-menu a[href*="urovni-zhizni"] {
+  --menu-direction-primary: #8A3442;
+  --menu-direction-deep: #3B1821;
+  --menu-direction-wash: #FBF4F5;
+}
+
+.eh-shell-nav .dropdown-menu a::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 12px;
+  width: 4px;
+  border-radius: 999px;
+  background: var(--menu-direction-primary);
+  opacity: .62;
+}
+
+.eh-shell-nav .dropdown-menu a:hover,
+.eh-shell-nav .dropdown-menu a:focus-visible,
+.eh-shell-nav .dropdown-menu a.is-active,
+.eh-shell-nav .dropdown-menu a[aria-current="page"] {
+  border: 0;
+  background: color-mix(in srgb, var(--menu-direction-wash) 84%, #FFFFFF);
+  color: var(--menu-direction-deep);
+}
+
+.eh-shell-nav .dropdown-menu a:hover::before,
+.eh-shell-nav .dropdown-menu a:focus-visible::before,
+.eh-shell-nav .dropdown-menu a.is-active::before,
+.eh-shell-nav .dropdown-menu a[aria-current="page"]::before {
+  opacity: 1;
+}
+
+.eh-shell-nav .has-dropdown:hover .dropdown-menu,
+.eh-shell-nav .has-dropdown:focus-within .dropdown-menu,
+.eh-shell-nav .has-dropdown.is-open .dropdown-menu {
+  opacity: 1;
+  transform: translate(-50%, 0);
+  pointer-events: auto;
+}
+
+.eh-shell-cta {
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 15px;
+  border-radius: 999px;
+  background: var(--shell-context-primary);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 820;
+  white-space: nowrap;
+}
+
+.eh-shell-cta:hover,
+.eh-shell-cta:focus-visible {
+  background: var(--shell-context-hover);
+}
+
+.eh-local-strip {
+  display: block !important;
+  position: relative;
+  z-index: 96;
+  border-top: 1px solid rgba(221, 216, 208, 0.68);
+  border-bottom: 1px solid color-mix(in srgb, var(--shell-context-primary) 18%, rgba(221,216,208,.72));
+  background: linear-gradient(90deg, color-mix(in srgb, var(--shell-context-wash) 88%, #fff), rgba(255,255,255,.9));
+}
+
+.eh-local-strip .eh-shell-container {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  box-shadow: inset 4px 0 0 var(--shell-context-primary);
+  padding-left: 12px;
+  color: #5f625f;
+  font-size: 13px;
+  font-weight: 760;
+  white-space: nowrap;
+  scrollbar-width: none;
+}
+
+.eh-local-strip .eh-shell-container::-webkit-scrollbar {
+  display: none;
+}
+
+.eh-local-strip a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 0 10px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.eh-local-strip a:hover,
+.eh-local-strip a:focus-visible {
+  color: var(--shell-context-primary);
+  background: color-mix(in srgb, var(--shell-context-wash) 76%, transparent);
+}
+
+.eh-local-strip a[aria-current="page"] {
+  color: var(--shell-context-deep);
+  font-weight: 860;
+  border-color: color-mix(in srgb, var(--shell-context-primary) 22%, transparent);
+  background: var(--shell-context-wash);
+}
+
+.eh-direction-bridge {
+  border-bottom: 1px solid color-mix(in srgb, var(--shell-context-primary) 28%, #DDD8D0);
+  background:
+    radial-gradient(circle at 84% 18%, color-mix(in srgb, var(--eh-gold) 20%, transparent), transparent 32%),
+    linear-gradient(120deg, var(--shell-context-deep), var(--shell-context-primary));
+  color: #fff;
+  font-family: Inter, "Segoe UI", system-ui, sans-serif;
+}
+
+.eh-direction-bridge__inner {
+  min-height: 74px;
+  display: grid;
+  grid-template-columns: auto auto minmax(0, 1fr);
+  gap: 12px 16px;
+  align-items: center;
+}
+
+.eh-direction-bridge__path {
+  color: #fff;
+  font-size: 13px;
+  font-weight: 860;
+  letter-spacing: .06em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.eh-direction-bridge__current {
+  display: inline-flex;
+  min-height: 30px;
+  align-items: center;
+  padding: 0 11px;
+  border: 1px solid rgba(255,255,255,.24);
+  border-radius: 999px;
+  background: rgba(255,255,255,.11);
+  color: #FFFFFF;
+  font-size: 13px;
+  font-weight: 780;
+  white-space: nowrap;
+}
+
+.eh-direction-bridge p {
+  margin: 0;
+  color: rgba(255,255,255,.78);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.eh-direction-bridge--archetypes {
+  --shell-context-primary: #5B2D68;
+  --shell-context-deep: #24152F;
+}
+
+.eh-direction-bridge--freedom {
+  --shell-context-primary: #536A86;
+  --shell-context-deep: #243247;
+}
+
+.eh-direction-bridge--reiki {
+  --shell-context-primary: #7E6A22;
+  --shell-context-deep: #4C4218;
+}
+
+body.eh-context--archetypes .btn--primary,
+body.eh-context--archetypes .button--primary,
+body.eh-context--archetypes .btn:not(.btn--outline):not(.btn--secondary):not(.btn--ghost),
+body.eh-context--archetypes .pricing-cta {
+  background: #5B2D68 !important;
+  border-color: #5B2D68 !important;
+  color: #fff !important;
+}
+
+body.eh-context--archetypes .btn--primary:hover,
+body.eh-context--archetypes .button--primary:hover,
+body.eh-context--archetypes .btn:not(.btn--outline):not(.btn--secondary):not(.btn--ghost):hover {
+  background: #4B2459 !important;
+  border-color: #4B2459 !important;
+  color: #fff !important;
+}
+
+body.eh-context--archetypes .btn--outline,
+body.eh-context--archetypes .button--secondary,
+body.eh-context--archetypes .text-link {
+  border-color: color-mix(in srgb, #5B2D68 42%, transparent) !important;
+  color: #5B2D68 !important;
+}
+
+body.eh-context--archetypes .hero-eyebrow,
+body.eh-context--archetypes .section-eyebrow,
+body.eh-context--archetypes .eyebrow {
+  color: #5B2D68 !important;
+}
+
+body.eh-context--freedom .button--primary,
+body.eh-context--freedom .btn--primary {
+  background: #536A86 !important;
+  border-color: #536A86 !important;
+  color: #fff !important;
+}
+
+body.eh-context--freedom .button--primary:hover,
+body.eh-context--freedom .btn--primary:hover,
+body.eh-context--freedom .button--primary:focus-visible,
+body.eh-context--freedom .btn--primary:focus-visible {
+  background: #435772 !important;
+  border-color: #435772 !important;
+  color: #fff !important;
+}
+
+body.eh-context--freedom .button--secondary,
+body.eh-context--freedom .btn--outline,
+body.eh-context--freedom .text-link {
+  border-color: color-mix(in srgb, #536A86 42%, transparent) !important;
+  color: #536A86 !important;
+}
+
+body.direction-page--freedom .hero.hero--dark .button--secondary {
+  background: rgba(255,255,255,.82) !important;
+  border-color: rgba(36,50,71,.20) !important;
+  color: #243247 !important;
+}
+
+body.direction-page--freedom .hero.hero--dark .button--secondary:hover,
+body.direction-page--freedom .hero.hero--dark .button--secondary:focus-visible {
+  background: #FFFFFF !important;
+  border-color: rgba(36,50,71,.32) !important;
+  color: #243247 !important;
+}
+
+body.eh-context--freedom .hero .eyebrow,
+body.eh-context--freedom .method-hero .eyebrow {
+  color: #243247 !important;
+}
+
+body.eh-context--reiki .button--primary,
+html[data-level] .button--primary,
+body[data-level] .button--primary,
+body.eh-context--reiki .btn--primary,
+html[data-level] .btn--primary,
+body[data-level] .btn--primary {
+  background: #7E6A22 !important;
+  border-color: #7E6A22 !important;
+  color: #fff !important;
+}
+
+body.eh-context--reiki .button--primary:hover,
+html[data-level] .button--primary:hover,
+body[data-level] .button--primary:hover,
+body.eh-context--reiki .btn--primary:hover,
+html[data-level] .btn--primary:hover,
+body[data-level] .btn--primary:hover,
+body.eh-context--reiki .button--primary:focus-visible,
+html[data-level] .button--primary:focus-visible,
+body[data-level] .button--primary:focus-visible,
+body.eh-context--reiki .btn--primary:focus-visible,
+html[data-level] .btn--primary:focus-visible,
+body[data-level] .btn--primary:focus-visible {
+  background: #665519 !important;
+  border-color: #665519 !important;
+  color: #fff !important;
+}
+
+body.eh-context--reiki .button--secondary,
+html[data-level] .button--secondary,
+body[data-level] .button--secondary,
+body.eh-context--reiki .text-link,
+html[data-level] .text-link,
+body[data-level] .text-link {
+  border-color: color-mix(in srgb, #7E6A22 42%, transparent) !important;
+  color: #7E6A22 !important;
+}
+
+body.eh-context--archetypes .hero--dark .button--primary,
+body.eh-context--freedom .hero--dark .button--primary,
+body.eh-context--reiki .hero--dark .button--primary,
+html[data-level] .hero--dark .button--primary,
+body[data-level] .hero--dark .button--primary {
+  background: #F8F1E5 !important;
+  border-color: #F8F1E5 !important;
+  color: var(--shell-context-deep, #17151B) !important;
+}
+
+body.eh-context--archetypes .hero--dark .button--primary:hover,
+body.eh-context--freedom .hero--dark .button--primary:hover,
+body.eh-context--reiki .hero--dark .button--primary:hover,
+html[data-level] .hero--dark .button--primary:hover,
+body[data-level] .hero--dark .button--primary:hover {
+  background: #FFFFFF !important;
+  border-color: #FFFFFF !important;
+}
+
+body.eh-context--reiki .hero--dark .button--primary,
+html[data-level] .hero--dark .button--primary,
+body[data-level] .hero--dark .button--primary {
+  background: #7E6A22 !important;
+  border-color: #7E6A22 !important;
+  color: #fff !important;
+}
+
+body.eh-context--reiki .hero--dark .button--primary:hover,
+html[data-level] .hero--dark .button--primary:hover,
+body[data-level] .hero--dark .button--primary:hover,
+body.eh-context--reiki .hero--dark .button--primary:focus-visible,
+html[data-level] .hero--dark .button--primary:focus-visible,
+body[data-level] .hero--dark .button--primary:focus-visible {
+  background: #665519 !important;
+  border-color: #665519 !important;
+  color: #fff !important;
+}
+
+body.eh-context--archetypes .hero--dark .button--secondary,
+body.eh-context--freedom .hero--dark .button--secondary,
+body.eh-context--reiki .hero--dark .button--secondary,
+html[data-level] .hero--dark .button--secondary,
+body[data-level] .hero--dark .button--secondary {
+  background: rgba(255,255,255,.08) !important;
+  border-color: rgba(255,255,255,.56) !important;
+  color: #FFFFFF !important;
+}
+
+body.eh-context--reiki .hero--dark .button--secondary,
+html[data-level] .hero--dark .button--secondary,
+body[data-level] .hero--dark .button--secondary {
+  background: rgba(255,255,255,.56) !important;
+  border-color: rgba(126,106,34,.34) !important;
+  color: #4C4218 !important;
+}
+
+body.eh-context--archetypes .roadmap-step__body .button,
+body.eh-context--freedom .roadmap-step__body .button,
+body.eh-context--reiki .roadmap-step__body .button {
+  background: var(--direction-primary) !important;
+  border-color: var(--direction-primary) !important;
+  color: #FFFFFF !important;
+}
+
+body.eh-context--archetypes .roadmap-step__body .button:hover,
+body.eh-context--freedom .roadmap-step__body .button:hover,
+body.eh-context--reiki .roadmap-step__body .button:hover,
+body.eh-context--archetypes .roadmap-step__body .button:focus-visible,
+body.eh-context--freedom .roadmap-step__body .button:focus-visible,
+body.eh-context--reiki .roadmap-step__body .button:focus-visible {
+  background: var(--direction-deep) !important;
+  border-color: var(--direction-deep) !important;
+  color: #FFFFFF !important;
+}
+
+/* Archetype path background logic:
+   method = inner system, lightness = warm body/desire, strength = structure/action,
+   depth = deep personal work, retreats = land/place/integration. */
+body.eh-context--archetypes.eh-archetype-bg--map {
+  background:
+    radial-gradient(circle at 92% 8%, rgba(91,45,104,.08), transparent 28%),
+    linear-gradient(180deg, #FBF8FC 0%, #F2EAF4 46%, #F3E3C4 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--method {
+  background:
+    linear-gradient(180deg, #FAFAFC 0%, #F5F0F8 44%, #ECE3F3 78%, #F7F1DF 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--method .method-hero,
+body.eh-context--archetypes.eh-archetype-bg--method .hero.method-hero {
+  background:
+    radial-gradient(circle at 82% 16%, rgba(184,143,73,.14), transparent 28%),
+    radial-gradient(circle at 12% 26%, rgba(91,45,104,.11), transparent 34%),
+    linear-gradient(135deg, #FAFAFC 0%, #E9E7F0 52%, #CFC9DD 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--method .section:nth-of-type(even) {
+  background:
+    linear-gradient(135deg, #F5F0F8, #ECE3F3) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--method .section:nth-of-type(4n) {
+  background:
+    linear-gradient(135deg, #FFFFFF 0%, #F7F1DF 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--method .method-work__lead,
+body.eh-context--archetypes.eh-archetype-bg--method .method-definition,
+body.eh-context--archetypes.eh-archetype-bg--method .method-authority article,
+body.eh-context--archetypes.eh-archetype-bg--method .text-panel {
+  background: rgba(255,255,255,.86) !important;
+  border-color: rgba(91,45,104,.16) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--method .method-recognition span,
+body.eh-context--archetypes.eh-archetype-bg--method .method-work__steps span,
+body.eh-context--archetypes.eh-archetype-bg--method .method-mechanics span {
+  background: #5B2D68 !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--method .method-system-visual__map::before {
+  border-color: rgba(91,45,104,.24) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--method .method-author-profile {
+  background: linear-gradient(145deg, rgba(255,255,255,.94), rgba(246,240,250,.82)) !important;
+  border-color: rgba(91,45,104,.18) !important;
+  box-shadow: 0 18px 52px rgba(36,21,47,.075) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--method .method-author-profile__facts span {
+  background: rgba(238,230,243,.86) !important;
+  border-color: rgba(91,45,104,.18) !important;
+  color: #24152F !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--method .method-system-visual__map {
+  background: radial-gradient(circle at center, rgba(184,143,73,.18), rgba(255,255,255,.9) 48%, rgba(246,240,250,.86)) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--method .method-system-card--center,
+body.eh-context--archetypes.eh-archetype-bg--method .method-dual-system__center {
+  background:
+    radial-gradient(circle at 82% 12%, rgba(184,143,73,.16), transparent 30%),
+    linear-gradient(135deg, #4A3658, #6A4D76) !important;
+  border-color: rgba(184,143,73,.28) !important;
+  color: #FFFDF8 !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--method .method-system-card--center *,
+body.eh-context--archetypes.eh-archetype-bg--method .method-dual-system__center * {
+  color: #FFFDF8 !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--method .method-entry-map__method {
+  background:
+    radial-gradient(circle at 86% 14%, rgba(184,143,73,.16), transparent 32%),
+    linear-gradient(135deg, #5B2D68, #6A4D76) !important;
+  border-color: rgba(184,143,73,.28) !important;
+  box-shadow: 0 18px 44px rgba(91,45,104,.14) !important;
+}
+
+.ar-zone {
+  position: relative;
+  border-top: 1px solid rgba(91,45,104,.12);
+}
+
+.ar-zone::before {
+  content: none;
+}
+
+.ar-zone--diagnosis {
+  background:
+    radial-gradient(circle at 84% 12%, rgba(91,45,104,.06), transparent 26%),
+    linear-gradient(180deg, #FFFCF8 0%, #F4EEF7 100%) !important;
+}
+
+.ar-zone--principle {
+  background:
+    linear-gradient(180deg, #FFFFFF 0%, #F8EFD9 100%) !important;
+}
+
+.ar-zone--choice {
+  background:
+    radial-gradient(circle at 14% 18%, rgba(184,143,73,.12), transparent 26%),
+    linear-gradient(180deg, #F4EEF7 0%, #E8DFF0 100%) !important;
+}
+
+.ar-zone--practical {
+  background:
+    linear-gradient(180deg, #FFFCF8 0%, #E8DFF0 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .card--warm {
+  background: linear-gradient(135deg, #EEE6F3 0%, #F8F4FA 100%) !important;
+  border-color: rgba(91,45,104,.22) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--lightness {
+  --ivory: #FFFCFB;
+  --cream: #FFF9F7;
+  --cream-deep: #F1D3DB;
+  --sand: #FAEED7;
+  --peach: #C98798;
+  --peach-light: #F5DCE4;
+  --sage: #C98798;
+  --sage-dark: #9F6574;
+  --sage-light: #F8E4EA;
+  --gold: #B88F49;
+  background: linear-gradient(180deg, #FFF9F7 0%, #F8E4EA 52%, #FAEED7 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--lightness .hero {
+  background:
+    radial-gradient(circle at 78% 16%, rgba(201,135,152,.22), transparent 30%),
+    linear-gradient(150deg, #FFFCFB 0%, #F5DCE4 48%, #C98798 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--lightness .section--cream {
+  background: linear-gradient(135deg, #F8E4EA, #FFF9F7) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--lightness .hero-eyebrow,
+body.eh-context--archetypes.eh-archetype-bg--lightness .format-badge--sage,
+body.eh-context--archetypes.eh-archetype-bg--lightness .pricing-list li::before,
+body.eh-context--archetypes.eh-archetype-bg--lightness .bundle-card strong {
+  color: #9F6574 !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--lightness .format-badge--sage,
+body.eh-context--archetypes.eh-archetype-bg--lightness .bundle-card {
+  background: linear-gradient(135deg, #FFF9F7, #F1D3DB) !important;
+  border-color: rgba(201,135,152,.28) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--strength {
+  --bg-main: #FBF7F2;
+  --bg-alt: #E5D8CD;
+  --bg-deep: #24152F;
+  --navy: #5B2D68;
+  --blue-gray: #B89A8B;
+  --marble: #FFFAF4;
+  --accent-gold: #B88F49;
+  background: linear-gradient(180deg, #FFFAF4 0%, #EDE0D4 52%, #F2E4C7 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--strength .hero {
+  background:
+    radial-gradient(circle at 82% 18%, rgba(184,143,73,.16), transparent 30%),
+    linear-gradient(155deg, #FBF7F2 0%, #E5D8CD 52%, #B89A8B 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--strength .section--cream {
+  background:
+    linear-gradient(135deg, #EDE0D4, #FFFAF4) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--strength .ph--hero-space {
+  background:
+    radial-gradient(ellipse 18% 14% at 86% 26%, rgba(184,143,73,.18) 0%, transparent 70%),
+    radial-gradient(ellipse 92% 48% at 50% 0%, rgba(255,255,255,.78) 0%, transparent 54%),
+    linear-gradient(174deg, #FBF7F2 0%, #EDE0D4 30%, #D8C3B5 62%, #B89A8B 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--strength .ph--pain-space {
+  background:
+    radial-gradient(ellipse 58% 40% at 28% 18%, rgba(184,143,73,.16) 0%, transparent 56%),
+    linear-gradient(165deg, #D8C3B5 0%, #B89A8B 48%, #9D8276 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--strength .ph--zeus,
+body.eh-context--archetypes.eh-archetype-bg--strength .ph--hades {
+  background:
+    radial-gradient(ellipse 80% 56% at 50% 4%, rgba(255,255,255,.86) 0%, transparent 56%),
+    radial-gradient(ellipse 46% 40% at 78% 74%, rgba(184,143,73,.18) 0%, transparent 58%),
+    linear-gradient(160deg, #FFFAF4 0%, #EDE0D4 38%, #D8C3B5 70%, #B89A8B 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--strength .distortion-col--creates {
+  background: linear-gradient(155deg, #FFFFFF 0%, #F8F1EA 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--strength .distortion-col--defends {
+  background:
+    radial-gradient(circle at 82% 12%, rgba(184,143,73,.14), transparent 30%),
+    linear-gradient(155deg, #6A4D76 0%, #5B2D68 100%) !important;
+  border-left-color: rgba(91,45,104,.24) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--strength .arch-card--zeus .arch-accent,
+body.eh-context--archetypes.eh-archetype-bg--strength .distortion-col--creates .distortion-title,
+body.eh-context--archetypes.eh-archetype-bg--strength .distortion-col--creates .distortion-list li::before {
+  color: #5B2D68 !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--strength .distortion-grid {
+  border-color: rgba(91,45,104,.18) !important;
+  box-shadow: 0 26px 64px -30px rgba(91,45,104,.20) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--strength .distortion-quote {
+  background:
+    radial-gradient(circle at 18% 12%, rgba(184,143,73,.16), transparent 28%),
+    linear-gradient(155deg, #5B2D68 0%, #6A4D76 100%) !important;
+  box-shadow: 0 26px 60px -30px rgba(91,45,104,.30) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth {
+  --porcelain: #FBF6FA;
+  --mineral: #DED3E8;
+  --paper: #FBF6FA;
+  --ink: #221B28;
+  --graphite: #574263;
+  --steel: #A88BB8;
+  --wine: #684A73;
+  --wine-soft: #DED3E8;
+  --gold: #B99349;
+  background: linear-gradient(180deg, #FBF6FA 0%, #DED3E8 46%, #A88BB8 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .hero {
+  background:
+    radial-gradient(circle at 14% 14%, rgba(185,147,73,.18), transparent 30%),
+    radial-gradient(circle at 86% 12%, rgba(104,74,115,.20), transparent 34%),
+    linear-gradient(135deg, #F6EEF5 0%, #C5B4D2 48%, #684A73 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .hero h1,
+body.eh-context--archetypes.eh-archetype-bg--depth .hero .hero-sub,
+body.eh-context--archetypes.eh-archetype-bg--depth .hero .hero-body,
+body.eh-context--archetypes.eh-archetype-bg--depth .hero .hero-note {
+  color: #221B28 !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .hero .hero-sub {
+  color: #574263 !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .section--mineral {
+  background:
+    linear-gradient(135deg, #DED3E8, #FBF6FA) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .section--ink {
+  background:
+    radial-gradient(circle at 82% 18%, rgba(185,147,73,.16), transparent 30%),
+    linear-gradient(135deg, #574263, #684A73 58%, #A88BB8) !important;
+  color: #FFFDF8 !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .section--ink h2,
+body.eh-context--archetypes.eh-archetype-bg--depth .section--ink h3,
+body.eh-context--archetypes.eh-archetype-bg--depth .section--ink p,
+body.eh-context--archetypes.eh-archetype-bg--depth .section--ink li,
+body.eh-context--archetypes.eh-archetype-bg--depth .section--ink .method-visual__caption {
+  color: #FFFDF8 !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .section--ink .soft-panel,
+body.eh-context--archetypes.eh-archetype-bg--depth .section--ink .method-visual {
+  background: rgba(255,253,248,.10) !important;
+  border-color: rgba(255,253,248,.20) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .hero-card,
+body.eh-context--archetypes.eh-archetype-bg--depth .card--deep,
+body.eh-context--archetypes.eh-archetype-bg--depth .change-card,
+body.eh-context--archetypes.eh-archetype-bg--depth .price-card--featured {
+  background:
+    radial-gradient(circle at 90% 8%, rgba(185,147,73,.16), transparent 30%),
+    linear-gradient(135deg, #574263 0%, #684A73 100%) !important;
+  border-color: rgba(185,147,73,.28) !important;
+  color: #FFFDF8 !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .hero-card *,
+body.eh-context--archetypes.eh-archetype-bg--depth .card--deep *,
+body.eh-context--archetypes.eh-archetype-bg--depth .change-card *,
+body.eh-context--archetypes.eh-archetype-bg--depth .price-card--featured * {
+  color: #FFFDF8 !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .final {
+  background:
+    radial-gradient(circle at 16% 20%, rgba(185,147,73,.16), transparent 30%),
+    linear-gradient(135deg, #574263, #684A73) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .atlas {
+  border-color: rgba(184,143,73,.42) !important;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(184,143,73,.20), transparent 30%),
+    radial-gradient(circle at 18% 18%, rgba(104,74,115,.20), transparent 25%),
+    linear-gradient(145deg, #574263, #684A73 62%, #A88BB8) !important;
+  box-shadow: 0 28px 68px rgba(87,66,99,.20) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .atlas-center {
+  background: rgba(87,66,99,.72) !important;
+  border-color: rgba(184,143,73,.62) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .atlas::before {
+  border-color: rgba(184,143,73,.34) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .atlas::after {
+  border-color: rgba(255,253,248,.22) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .orbit {
+  background: rgba(255,253,248,.12) !important;
+  border-color: rgba(184,143,73,.46) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .change-caption {
+  background: rgba(87,66,99,.84) !important;
+  border-color: rgba(255,253,248,.30) !important;
+  box-shadow: 0 18px 44px rgba(87,66,99,.26) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .hero .btn--outline {
+  background: rgba(255,255,255,.86) !important;
+  border-color: rgba(91,45,104,.28) !important;
+  color: #24152F !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .archetype-card span {
+  color: #24152F !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .case-card p,
+body.eh-context--archetypes.eh-archetype-bg--depth .testimonial p {
+  color: #4F4657 !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .master-role {
+  color: #24152F !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .final .btn--outline,
+body.eh-context--archetypes.eh-archetype-bg--depth .final .btn--light {
+  background: rgba(255,255,255,.88) !important;
+  border-color: rgba(91,45,104,.30) !important;
+  color: #24152F !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats {
+  --bg: #FFF6EA;
+  --bg2: #DDEDE8;
+  --ink: #24152F;
+  --green: #8AAFA6;
+  --gold: #C9A24D;
+  --gold2: #D7B05F;
+  --sand: #F1E2CF;
+  --sea: #DDEDE8;
+  background: linear-gradient(180deg, #FFFAF1 0%, #F1E2CF 44%, #DDEDE8 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .hero {
+  background:
+    radial-gradient(circle at 78% 18%, rgba(201,162,77,.22), transparent 30%),
+    radial-gradient(circle at 18% 80%, rgba(191,220,212,.34), transparent 34%),
+    linear-gradient(145deg, #FFF6EA 0%, #F4D9BD 50%, #BFDCD4 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats section[id="navigator"],
+body.eh-context--archetypes.eh-archetype-bg--retreats section[id="route-map"] {
+  background:
+    linear-gradient(135deg, #DDEDE8, #FFFAF1) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .choice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .choice-card {
+  background: linear-gradient(135deg, rgba(255,255,255,.92), #DDEDE8) !important;
+  border: 1px solid rgba(138,175,166,.24) !important;
+  box-shadow: 0 18px 46px rgba(36,21,47,.08) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .choice-card,
+body.eh-context--archetypes.eh-archetype-bg--retreats .nav-card,
+body.eh-context--archetypes.eh-archetype-bg--retreats .hw-card,
+body.eh-context--archetypes.eh-archetype-bg--retreats .summary-card.card--gold,
+body.eh-context--archetypes.eh-archetype-bg--retreats .card--sand {
+  background: linear-gradient(135deg, #FFFFFF, #F4ECF7) !important;
+  border-color: rgba(91,45,104,.18) !important;
+  color: #24152F !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .choice-card .label,
+body.eh-context--archetypes.eh-archetype-bg--retreats .choice-card h4,
+body.eh-context--archetypes.eh-archetype-bg--retreats .nav-card .label,
+body.eh-context--archetypes.eh-archetype-bg--retreats .nav-card h2,
+body.eh-context--archetypes.eh-archetype-bg--retreats .nav-card .hero-sub,
+body.eh-context--archetypes.eh-archetype-bg--retreats .hw-card h4,
+body.eh-context--archetypes.eh-archetype-bg--retreats .summary-card .s-key,
+body.eh-context--archetypes.eh-archetype-bg--retreats .card--gold .label,
+body.eh-context--archetypes.eh-archetype-bg--retreats .card--sand .label {
+  color: #24152F !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .choice-card p,
+body.eh-context--archetypes.eh-archetype-bg--retreats .nav-card p,
+body.eh-context--archetypes.eh-archetype-bg--retreats .hw-card p,
+body.eh-context--archetypes.eh-archetype-bg--retreats .summary-card p,
+body.eh-context--archetypes.eh-archetype-bg--retreats .card--gold p,
+body.eh-context--archetypes.eh-archetype-bg--retreats .card--sand p {
+  color: #4F4657 !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .hw-central.card--dark {
+  background:
+    radial-gradient(circle at 84% 18%, rgba(184,143,73,.22), transparent 34%),
+    linear-gradient(135deg, #24152F, #5B2D68) !important;
+  border-color: rgba(255,255,255,.22) !important;
+  color: #FFFFFF !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .hw-central.card--dark .label {
+  color: #F3D8A1 !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .hw-central.card--dark h3,
+body.eh-context--archetypes.eh-archetype-bg--retreats .hw-central.card--dark p {
+  color: #FFFFFF !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .choice-card--needs {
+  background: linear-gradient(135deg, #FFFAF1, #F6E7B8) !important;
+  border-color: rgba(201,162,77,.28) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .ar-zone--diagnosis {
+  background:
+    radial-gradient(circle at 84% 12%, rgba(191,220,212,.22), transparent 26%),
+    linear-gradient(180deg, #FFFAF1 0%, #F1E2CF 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .ar-zone--principle {
+  background:
+    linear-gradient(180deg, #FFFFFF 0%, #DDEDE8 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .ar-zone--choice {
+  background:
+    radial-gradient(circle at 14% 18%, rgba(201,162,77,.14), transparent 26%),
+    linear-gradient(180deg, #F1E2CF 0%, #DDEDE8 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .ar-zone--practical {
+  background:
+    linear-gradient(180deg, #FFFAF1 0%, #F6E7B8 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .choice-card,
+body.eh-context--archetypes.eh-archetype-bg--retreats .choice-card--needs,
+body.eh-context--archetypes.eh-archetype-bg--retreats .choice-card--wants,
+body.eh-context--archetypes.eh-archetype-bg--retreats .nav-card,
+body.eh-context--archetypes.eh-archetype-bg--retreats .hw-card,
+body.eh-context--archetypes.eh-archetype-bg--retreats .sync__lost,
+body.eh-context--archetypes.eh-archetype-bg--retreats .sync__found,
+body.eh-context--archetypes.eh-archetype-bg--retreats .break-card,
+body.eh-context--archetypes.eh-archetype-bg--retreats .summary-card.card--gold,
+body.eh-context--archetypes.eh-archetype-bg--retreats .card--gold,
+body.eh-context--archetypes.eh-archetype-bg--retreats .card--sand {
+  background: linear-gradient(135deg, #FFFFFF 0%, #F4ECF7 100%) !important;
+  border-color: rgba(91,45,104,.20) !important;
+  color: #24152F !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .choice-card .label,
+body.eh-context--archetypes.eh-archetype-bg--retreats .choice-card h4,
+body.eh-context--archetypes.eh-archetype-bg--retreats .nav-card .label,
+body.eh-context--archetypes.eh-archetype-bg--retreats .nav-card h2,
+body.eh-context--archetypes.eh-archetype-bg--retreats .nav-card .hero-sub,
+body.eh-context--archetypes.eh-archetype-bg--retreats .hw-card h4,
+body.eh-context--archetypes.eh-archetype-bg--retreats .sync__label,
+body.eh-context--archetypes.eh-archetype-bg--retreats .sync__found h3,
+body.eh-context--archetypes.eh-archetype-bg--retreats .break-card h3,
+body.eh-context--archetypes.eh-archetype-bg--retreats .summary-card .s-key,
+body.eh-context--archetypes.eh-archetype-bg--retreats .summary-card .s-title,
+body.eh-context--archetypes.eh-archetype-bg--retreats .card--gold .label,
+body.eh-context--archetypes.eh-archetype-bg--retreats .card--sand .label {
+  color: #24152F !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .choice-card p,
+body.eh-context--archetypes.eh-archetype-bg--retreats .nav-card p,
+body.eh-context--archetypes.eh-archetype-bg--retreats .hw-card p,
+body.eh-context--archetypes.eh-archetype-bg--retreats .sync__lost p,
+body.eh-context--archetypes.eh-archetype-bg--retreats .sync__found p,
+body.eh-context--archetypes.eh-archetype-bg--retreats .break-card p,
+body.eh-context--archetypes.eh-archetype-bg--retreats .summary-card p,
+body.eh-context--archetypes.eh-archetype-bg--retreats .card--gold p,
+body.eh-context--archetypes.eh-archetype-bg--retreats .card--sand p {
+  color: #4F4657 !important;
+}
+
+body.eh-context--archetypes .method-entry-map__method .eyebrow {
+  color: #FFFFFF !important;
+}
+
+@media (max-width: 768px) {
+  body.eh-context--archetypes.eh-archetype-bg--retreats .choice-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.eh-shell-breadcrumb {
+  border-bottom: 1px solid rgba(221, 216, 208, 0.62);
+  background: rgba(255, 255, 255, 0.58);
+  color: #5f625f;
+  font-family: Inter, "Segoe UI", system-ui, sans-serif;
+}
+
+.eh-shell-breadcrumb .eh-shell-container {
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  font-size: 13px;
+  line-height: 1.25;
+  white-space: nowrap;
+  scrollbar-width: none;
+}
+
+.eh-shell-breadcrumb .eh-shell-container::-webkit-scrollbar {
+  display: none;
+}
+
+.eh-shell-breadcrumb a {
+  color: var(--shell-context-primary);
+  font-weight: 760;
+  text-decoration: none;
+}
+
+.eh-shell-breadcrumb a:hover,
+.eh-shell-breadcrumb a:focus-visible {
+  color: var(--shell-context-deep);
+}
+
+.eh-shell-breadcrumb span:last-child {
+  color: #17151b;
+  font-weight: 760;
+}
+
+.eh-global-footer {
+  padding-block: clamp(32px, 4vw, 48px);
+  border-top: 1px solid #ddd8d0;
+  background: #f7f5f1;
+  color: #5f625f;
+  font-family: Inter, "Segoe UI", system-ui, sans-serif;
+}
+
+.eh-global-footer__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.36fr) repeat(3, minmax(150px, 0.64fr));
+  gap: clamp(22px, 3vw, 34px);
+  align-items: start;
+}
+
+.eh-global-footer__logo {
+  width: min(240px, 64vw);
+  max-height: 72px;
+  object-fit: contain;
+  margin-bottom: 14px;
+  filter: saturate(1.18) contrast(1.34) brightness(.82);
+  opacity: 1;
+}
+
+.eh-global-footer h2 {
+  margin: 0;
+  color: #17151b;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(24px, 3vw, 34px);
+  line-height: 1.08;
+  font-weight: 500;
+}
+
+.eh-global-footer p {
+  margin: 12px 0 0;
+  max-width: 520px;
+  color: #5f625f;
+  font-size: 15px;
+  line-height: 1.58;
+}
+
+.eh-global-footer__context {
+  display: inline-flex;
+  margin-top: 14px;
+  padding: 7px 11px;
+  border: 1px solid color-mix(in srgb, var(--shell-context-primary) 18%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--shell-context-wash) 78%, #fff);
+  color: var(--shell-context-deep);
+  font-size: 13px;
+  font-weight: 780;
+}
+
+.eh-global-footer__nav {
+  display: grid;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.eh-global-footer__nav strong {
+  color: var(--shell-context-deep);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.eh-global-footer a {
+  color: var(--shell-context-primary);
+  font-weight: 720;
+}
+
+.eh-global-footer a:hover,
+.eh-global-footer a:focus-visible {
+  color: var(--shell-context-hover);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.eh-global-footer__bottom {
+  display: grid;
+  gap: 8px;
+  margin-top: 30px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(221, 216, 208, 0.9);
+}
+
+.eh-global-footer__bottom p {
+  margin: 0;
+  max-width: 980px;
+  font-size: 13px;
+  line-height: 1.48;
+}
+
+.eh-global-footer__legal {
+  color: rgba(95, 98, 95, 0.82);
+}
+
+.eh-cross-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+  color: #5f625f;
+  font-size: 13px;
+  font-weight: 760;
+  white-space: nowrap;
+}
+
+.eh-cross-nav a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.eh-cross-nav a:hover,
+.eh-cross-nav a:focus-visible {
+  color: #0f625e;
+}
+
+.site-header__inner--with-cross-nav {
+  flex-wrap: wrap;
+  row-gap: 8px;
+  padding-block: 8px;
+}
+
+.site-header__inner--with-cross-nav .brand {
+  order: 1;
+}
+
+.site-header__inner--with-cross-nav .site-nav {
+  order: 2;
+  flex: 0 0 auto;
+  margin-left: auto;
+}
+
+.site-header__inner--with-cross-nav .site-header__cta {
+  order: 3;
+}
+
+.site-header__inner--with-cross-nav .eh-cross-nav {
+  order: 4;
+  flex: 1 1 100%;
+  margin-left: 0;
+  padding-top: 8px;
+  border-top: 1px solid rgba(221, 216, 208, 0.68);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.site-header__inner--with-cross-nav .eh-cross-nav::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 1120px) {
+  .eh-shell-header__inner {
+    flex-wrap: wrap;
+    padding: 10px 0;
+  }
+
+  .eh-shell-nav,
+  .eh-cross-nav {
+    order: 3;
+    flex: 1 1 100%;
+    justify-content: flex-start;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+  }
+
+  .eh-shell-nav .dropdown-menu {
+    display: none;
+  }
+
+  .eh-shell-nav::-webkit-scrollbar,
+  .eh-cross-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .eh-global-footer__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 680px) {
+  .eh-shell-container {
+    width: calc(100% - 40px);
+  }
+
+  .eh-shell-header__inner {
+    min-height: 62px;
+    gap: 10px;
+  }
+
+  .eh-shell-brand img {
+    width: min(178px, 58vw);
+    max-height: 50px;
+  }
+
+  .eh-shell-cta {
+    min-height: 38px;
+    padding: 0 12px;
+    font-size: 13px;
+  }
+
+  .eh-global-footer {
+    padding-block: 32px;
+  }
+
+  .eh-global-footer__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .eh-direction-bridge__inner {
+    min-height: 0;
+    grid-template-columns: 1fr;
+    padding-block: 16px;
+  }
+
+  .eh-direction-bridge__current {
+    width: fit-content;
+    white-space: normal;
+  }
+}
+
+
+body.eh-standalone-archetype {
+  --eh-standalone-section-y: clamp(40px, 5vw, 64px);
+  --eh-standalone-section-y-compact: clamp(32px, 4vw, 48px);
+  --eh-standalone-section-y-large: clamp(52px, 6vw, 78px);
+  --section: var(--eh-standalone-section-y);
+  --sg: var(--eh-standalone-section-y);
+}
+body.eh-standalone-archetype .section {
+  padding-block: var(--eh-standalone-section-y) !important;
+}
+body.eh-standalone-archetype .final,
+body.eh-standalone-archetype #pricing {
+  padding-block: var(--eh-standalone-section-y-large) !important;
+}
+body.eh-standalone-retreat .ar-zone {
+  padding-block: var(--eh-standalone-section-y) !important;
+}
+
+.archetype-testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 28px;
+}
+.archetype-testimonial-grid--two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.archetype-testimonial-grid figure {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  margin: 0;
+  padding: clamp(20px, 2.4vw, 28px);
+  border: 1px solid color-mix(in srgb, var(--direction-primary, var(--primary, #5B2D68)) 20%, var(--eh-line, rgba(221,216,208,.88)));
+  border-radius: var(--radius-md, 18px);
+  background: rgba(255,255,255,.82);
+  box-shadow: 0 16px 42px rgba(36,21,47,.06);
+}
+.archetype-testimonial-grid .testimonial-signal {
+  margin: 0 0 14px;
+  color: var(--direction-primary, var(--primary, #5B2D68));
+  font-size: 12px;
+  font-weight: 820;
+  letter-spacing: .08em;
+  line-height: 1.32;
+  text-transform: uppercase;
+}
+.archetype-testimonial-grid blockquote {
+  margin: 0;
+  color: var(--ink, #17151B);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(19px, 1.75vw, 25px);
+  line-height: 1.34;
+}
+.archetype-testimonial-grid figcaption {
+  margin-top: auto;
+  padding-top: 18px;
+  color: var(--ink-soft, #5A5661);
+  font-size: 13px;
+  line-height: 1.45;
+}
+.archetype-video-testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 30px;
+}
+.archetype-video-testimonial-card {
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--direction-primary, var(--primary, #5B2D68)) 20%, var(--eh-line, rgba(221,216,208,.88)));
+  border-radius: var(--radius-md, 18px);
+  background: rgba(255,255,255,.86);
+  box-shadow: 0 18px 48px rgba(36,21,47,.08);
+}
+.archetype-video-testimonial-frame {
+  aspect-ratio: 16 / 9;
+  background: #24152F;
+}
+.archetype-video-testimonial-frame iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.archetype-video-testimonial-copy {
+  padding: 18px 20px 20px;
+}
+.archetype-video-testimonial-copy h3 {
+  margin: 0 0 8px;
+  color: var(--ink, #17151B);
+  font-size: 22px;
+  line-height: 1.2;
+}
+.archetype-video-testimonial-copy p {
+  margin: 0;
+  color: var(--ink-soft, #5A5661);
+  font-size: 15px;
+  line-height: 1.55;
+}
+@media (max-width: 920px) {
+  .archetype-testimonial-grid,
+  .archetype-testimonial-grid--two,
+  .archetype-video-testimonial-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  body.eh-standalone-archetype {
+    --eh-standalone-section-y: 40px;
+    --eh-standalone-section-y-compact: 32px;
+    --eh-standalone-section-y-large: 52px;
+  }
+}
+
+.archetype-written-testimonials,
+.archetype-testimonial-grid {
+  --proof-primary: var(--direction-primary, var(--green, var(--sage-dark, #5B2D68)));
+  --proof-deep: var(--direction-deep, #24152F);
+  --proof-soft: var(--direction-soft, var(--sage-light, #EFE4F2));
+  --proof-wash: var(--direction-wash, var(--ivory, #FBF8FC));
+  --proof-accent: var(--direction-accent, var(--gold, #C79A3B));
+}
+
+.archetype-testimonial-grid figure.proof-card {
+  position: relative !important;
+  overflow: hidden !important;
+  padding: clamp(22px, 2.8vw, 32px) !important;
+  border: 1px solid color-mix(in srgb, var(--proof-primary) 22%, rgba(221,216,208,.88)) !important;
+  border-radius: 8px !important;
+  background:
+    radial-gradient(circle at 92% 8%, color-mix(in srgb, var(--proof-accent) 16%, transparent), transparent 30%),
+    linear-gradient(180deg, color-mix(in srgb, var(--proof-wash) 58%, #fff 42%), color-mix(in srgb, var(--proof-soft) 26%, #fff 74%)) !important;
+  box-shadow: 0 18px 54px color-mix(in srgb, var(--proof-deep) 8%, transparent) !important;
+}
+
+.archetype-testimonial-grid figure.proof-card::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 auto 0 0 !important;
+  width: 5px !important;
+  border-radius: 8px 0 0 8px !important;
+  background: var(--proof-primary) !important;
+}
+
+.archetype-testimonial-grid figure.proof-card::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 0 auto 0 !important;
+  height: 3px !important;
+  background: linear-gradient(90deg, var(--proof-primary), color-mix(in srgb, var(--proof-accent) 72%, #fff)) !important;
+}
+
+.archetype-testimonial-grid .testimonial-signal {
+  display: inline-flex !important;
+  width: fit-content !important;
+  min-height: 28px !important;
+  align-items: center !important;
+  padding: 0 10px !important;
+  border: 1px solid color-mix(in srgb, var(--proof-primary) 20%, transparent) !important;
+  border-radius: 999px !important;
+  background: color-mix(in srgb, var(--proof-soft) 50%, #fff 50%) !important;
+  color: var(--proof-primary) !important;
+}
+
+.archetype-testimonial-grid figure.proof-card blockquote {
+  position: relative !important;
+  z-index: 1 !important;
+  padding-top: 18px !important;
+  font-family: Inter, system-ui, sans-serif !important;
+  font-size: clamp(16.5px, 1.25vw, 18.5px) !important;
+  line-height: 1.62 !important;
+}
+
+.archetype-testimonial-grid figure.proof-card blockquote::before {
+  content: "“" !important;
+  position: absolute !important;
+  z-index: -1 !important;
+  top: -20px !important;
+  right: 0 !important;
+  color: color-mix(in srgb, var(--proof-primary) 16%, transparent) !important;
+  font-family: Georgia, "Times New Roman", serif !important;
+  font-size: 84px !important;
+  line-height: 1 !important;
+}
+
+.archetype-testimonial-grid figure.proof-card figcaption {
+  color: var(--proof-primary) !important;
+  font-weight: 760 !important;
+}
+
+
+body > .eh-shell-header + .nav {
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  z-index: 20 !important;
+}
+body > .eh-shell-header + .nav,
+body > nav.nav,
+body > .nav#nav,
+body > .nav {
+  display: none !important;
+}
+body.eh-standalone-retreat {
+  padding-top: 0 !important;
+}
+</style>
+  <link rel="icon" type="image/png" href="/assets/evolution-house-logo-approved.png">
+</head>
+<body class="eh-context--archetypes eh-archetype-bg--lightness eh-standalone-archetype">
+<header class="eh-shell-header eh-context--archetypes">
+    <div class="eh-shell-container eh-shell-header__inner">
+      <a class="eh-shell-brand" href="../index.html" aria-label="Evolution House">
+        <img width="736" height="144" src="../assets/evolution-house-header-logo-v2.png" alt="Evolution House">
+      </a>
+      <nav class="eh-shell-nav" aria-label="Навигация Evolution House">
+        <a href="../index.html">Главная</a>
+        <a href="../pervyi-shag.html">С чего начать</a>
+        <div class="nav-item has-dropdown">
+    <a class="dropdown-trigger is-active" href="../napravleniya.html" aria-haspopup="true" aria-expanded="false">Направления</a>
+    <div class="dropdown-menu" aria-label="Направления">
+      <a href="../arhetipy.html" class="is-active">Путь архетипов</a>
+      <a href="../urovni-zhizni/index.html">Пересборка жизни</a>
+      <a href="../vnutrennyaya-svoboda.html">Путь свободы от травм</a>
+      <a href="../reiki-napravlenie.html">Путь Reiki</a>
     </div>
   </div>
-</nav>
-
+        <a href="../o-shkole.html">О школе</a>
+      </nav>
+      <a class="eh-shell-cta" href="../otkrytye-programmy.html">Открытые программы</a>
+    </div>
+    <nav class="eh-local-strip" aria-label="Маршрут страницы">
+        <div class="eh-shell-container">
+          <a href="../arhetipy.html">Карта пути</a><a href="../arhetipy-method.html">Метод</a><a href="../lightness/index.html" aria-current="page">Вкус лёгкости</a><a href="../strength/index.html">Вкус силы</a><a href="../mentoring/">Высокая Глубина</a><a href="../retreats/index.html">Острова Везения</a>
+        </div>
+      </nav>
+  </header>
+  <script>
+  (() => {
+    const items = [...document.querySelectorAll('.eh-shell-header .has-dropdown')];
+    const close = (except) => items.forEach((item) => {
+      if (item === except) return;
+      item.classList.remove('is-open');
+      item.querySelector('.dropdown-trigger')?.setAttribute('aria-expanded', 'false');
+    });
+    items.forEach((item) => {
+      const trigger = item.querySelector('.dropdown-trigger');
+      if (!trigger) return;
+      trigger.addEventListener('click', (event) => {
+        if (window.matchMedia('(max-width: 1080px)').matches) return;
+        event.preventDefault();
+        const open = !item.classList.contains('is-open');
+        close(item);
+        item.classList.toggle('is-open', open);
+        trigger.setAttribute('aria-expanded', String(open));
+      });
+    });
+    document.addEventListener('click', (event) => {
+      if (!event.target.closest('.eh-shell-header .has-dropdown')) close();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') close();
+    });
+  })();
+  </script>
+<nav class="eh-shell-breadcrumb" aria-label="Путь страницы">
+    <div class="eh-shell-container">
+      <a href="../napravleniya.html">Направления</a>
+      <span>→</span>
+      <a href="../arhetipy.html">Путь архетипов</a>
+      <span>→</span>
+      <span>Вкус лёгкости</span>
+    </div>
+  </nav>
+<main id="top">
 <!-- STICKY MOBILE BAR -->
 <div class="sticky-bar" id="stickyBar">
-  <button class="btn btn--primary" onclick="openModal()">Забронировать место — 150 евро</button>
+  <button class="btn btn--primary" type="button" onclick="openModal()">Забронировать место — 150 евро</button>
 </div>
 
 <!-- PURCHASE MODALS (GetCourse widgets load inside on demand, after the modal is visible) -->
 <div class="modal-overlay" id="modalSingle" onclick="handleOverlayClick(event, 'modalSingle')">
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalSingleTitle">
-    <button class="modal-close" onclick="closeModal('modalSingle')" aria-label="Закрыть">×</button>
+    <button class="modal-close" type="button" onclick="closeModal('modalSingle')" aria-label="Закрыть">×</button>
     <div class="modal-header">
       <span class="label-tag">Участие в неделе</span>
       <h3 id="modalSingleTitle">Вкус лёгкости</h3>
@@ -929,7 +2668,7 @@
 
 <div class="modal-overlay" id="modalBundle" onclick="handleOverlayClick(event, 'modalBundle')">
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalBundleTitle">
-    <button class="modal-close" onclick="closeModal('modalBundle')" aria-label="Закрыть">×</button>
+    <button class="modal-close" type="button" onclick="closeModal('modalBundle')" aria-label="Закрыть">×</button>
     <div class="modal-header">
       <span class="label-tag">Можно пройти две недели вместе</span>
       <h3 id="modalBundleTitle">Вкус лёгкости + Вкус силы</h3>
@@ -961,7 +2700,7 @@
           <span class="hero-pill">Камерная группа</span>
         </div>
         <p class="hero-price">Участие — 150 евро</p>
-        <button class="btn btn--primary" onclick="openModal()">Хочу войти в неделю лёгкости</button>
+        <button class="btn btn--primary" type="button" onclick="openModal()">Хочу войти в неделю лёгкости</button>
         <p class="hero-note">Не нужно уметь танцевать. Не нужно верить в архетипы.<br>Можно просто прийти и почувствовать.</p>
       </div>
 
@@ -1239,7 +2978,7 @@
 
       <p class="format-note">Это не интенсив, где нужно всё бросить. Это неделя, в которой энергия начинает присутствовать в вашей обычной жизни.</p>
       <div class="format-cta">
-        <button class="btn btn--primary" onclick="openModal()">Хочу войти в неделю лёгкости</button>
+        <button class="btn btn--primary" type="button" onclick="openModal()">Хочу войти в неделю лёгкости</button>
       </div>
     </div>
   </div>
@@ -1258,7 +2997,7 @@
       <div class="honest-block honest-block--dance fade" style="transition-delay:.1s">
         <span class="honest-symbol">
           <svg width="40" height="26" viewBox="0 0 40 26" fill="none" aria-hidden="true">
-            <path d="M4 22 Q12 4 20 13 Q28 22 36 6" stroke="#6E8860" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+            <path d="M4 22 Q12 4 20 13 Q28 22 36 6" stroke="#9F6574" stroke-width="1.4" stroke-linecap="round" fill="none"/>
           </svg>
         </span>
         <h3>Не нужно уметь танцевать</h3>
@@ -1355,13 +3094,49 @@
 <!-- ================================================ -->
 <!-- SECTION 11: SVETLANA -->
 <!-- ================================================ -->
+<section class="section section--cream archetype-written-testimonials ">
+    <div class="container">
+      <div class="fade">
+        <span class="label-tag">Живой опыт</span>
+        <h2>Ещё несколько фрагментов из практики</h2>
+        <p>Короткие отзывы показывают не теорию, а маленькие телесные сдвиги: когда появляется улыбка, лёгкость, время для себя и контакт с желанием.</p>
+      </div>
+      <div class="archetype-testimonial-grid">
+    <figure class="proof-card proof-card--text">
+      <p class="testimonial-signal">Лёгкость</p>
+      <blockquote>Ноги сначала казались тяжёлыми, но когда я улетела вместе с ветром, всё стало легче. После танца на лице появилась улыбка и лёгкость.</blockquote>
+      <figcaption>участница</figcaption>
+    </figure>
+    <figure class="proof-card proof-card--text">
+      <p class="testimonial-signal">Тело и душа</p>
+      <blockquote>Я нашла время для себя там, где его вроде бы нет. В итоге и протанцевала, и перетанцевала. Время находится для того, с чем совпадает желание души.</blockquote>
+      <figcaption>участница</figcaption>
+    </figure>
+    <figure class="proof-card proof-card--text">
+      <p class="testimonial-signal">Живое «нет»</p>
+      <blockquote>На следующий день я трижды сказала «нет» в ситуациях, где раньше не смогла бы отказать. И почувствовала ось: ещё не баланс, но ту самую выстроенность.</blockquote>
+      <figcaption>участница женской практики</figcaption>
+    </figure>
+    <figure class="proof-card proof-card--text">
+      <p class="testimonial-signal">Гестия и тело</p>
+      <blockquote>Когда читала описание Гестии, я видела себя в самом начале. Потом протанцевала два раза подряд и почувствовала всё по-другому. Тело само позвало танцевать.</blockquote>
+      <figcaption>участница</figcaption>
+    </figure>
+    <figure class="proof-card proof-card--text">
+      <p class="testimonial-signal">Энергия</p>
+      <blockquote>У меня появились энергия, уверенность, устойчивость и радость к жизни. В медитации я чувствовала поток, а состояние изменилось эмоционально и на уровне тела.</blockquote>
+      <figcaption>участница</figcaption>
+    </figure>
+  </div>
+    </div>
+  </section>
 <section class="section" id="svetlana">
   <div class="container">
     <div class="svetlana-grid">
 
       <div class="fade">
         <div class="svetlana-photo-wrap">
-          <img src="Images/optimized/svetlana.webp"
+          <img src="Images/optimized/svetlana-lightness.jpg"
                alt="Светлана Страусс" class="svetlana-img" loading="lazy">
           <span class="svetlana-photo-caption">Светлана Страусс</span>
         </div>
@@ -1420,10 +3195,10 @@
         <li>Доступ к записям</li>
         <li>Чат</li>
         <li>Практики и задания в повседневной жизни</li>
-        <li>Разборы и обратная связь мастеров</li>
+        <li>Разборы и обратная связь Мастеров</li>
         <li>Доступ к полю в течение 3 месяцев</li>
       </ul>
-      <button class="btn btn--primary pricing-cta" onclick="openModal()">Забронировать место</button>
+      <button class="btn btn--primary pricing-cta" type="button" onclick="openModal()">Забронировать место</button>
       <p class="pricing-note">
         Группа камерная. Количество мест ограничено.<br>
         После регистрации вы получите доступ к чату, встречам и практикам недели.
@@ -1447,16 +3222,46 @@
         <p class="bundle-final-tag">за две недели вместе</p>
       </div>
       <p class="bundle-note">Отдельно каждая неделя стоит 150 €. Если хотите пройти обе недели как единый путь, можно сразу выбрать оба участия и сэкономить.</p>
-      <button class="btn btn--primary" onclick="openBundleModal()">Выбрать две недели</button>
+      <button class="btn btn--primary" type="button" onclick="openBundleModal()">Выбрать две недели</button>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <p class="foot-name">Вкус лёгкости</p>
-  <p class="foot-meta">Светлана Страусс · 10–16 сентября · 150 евро</p>
-</footer>
+</main>
+<footer class="eh-global-footer" aria-label="Evolution House">
+    <div class="eh-shell-container eh-global-footer__grid">
+      <section class="eh-global-footer__brand">
+        <img width="736" height="144" class="eh-global-footer__logo" src="../assets/evolution-house-header-logo-v2.png" alt="Evolution House">
+        <p>Evolution House помогает проходить жизненные переходы: увидеть свою точку, выбрать подходящий путь и идти дальше с практиками, Мастерами и ясной опорой.</p>
+      </section>
+      <nav class="eh-global-footer__nav" aria-label="Начать">
+        <strong>Начать</strong>
+        <a href="../index.html">Главная</a>
+        <a href="../pervyi-shag.html">С чего начать</a>
+        <a href="../otkrytye-programmy.html">Открытые программы</a>
+      </nav>
+      <nav class="eh-global-footer__nav" aria-label="Направления">
+        <strong>Направления</strong>
+        <a href="../arhetipy.html">Путь архетипов</a>
+        <a href="../urovni-zhizni/index.html">Пересборка жизни</a>
+        <a href="../vnutrennyaya-svoboda.html">Путь свободы от травм</a>
+        <a href="../reiki-napravlenie.html">Путь Reiki</a>
+      </nav>
+      <nav class="eh-global-footer__nav" aria-label="Школа">
+        <strong>Школа</strong>
+        <a href="../o-shkole.html">О школе</a>
+        
+        
+        
+      </nav>
+    </div>
+    <div class="eh-shell-container eh-global-footer__bottom">
+      <p>© 2026 Evolution House, Дом Эволюции</p>
+      <p class="eh-global-footer__legal">Operated by Resulta Consulting FZ-LLC · FDBC0803, Compass Building, Al Shohada Road, AL Hamra Industrial Zone-FZ, Ras Al Khaimah, United Arab Emirates · Tax Reg. No: 105211901100001</p>
+    
+      <p class="eh-global-footer__legal eh-global-footer__privacy"><a href="/privacy-policy/">Политика конфиденциальности</a></p>
+    </div>
+  </footer>
 
 <!-- ================================================ -->
 <!-- SCRIPTS -->

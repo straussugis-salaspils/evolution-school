@@ -1,0 +1,3110 @@
+/* Final cold-visitor and composition pass for /off-switch-method.
+   Card geometry below is transferred from existing Self page components:
+   scale panel (6px / neutral border) and problem card (3px / soft shadow). */
+
+body.off-switch-method-page {
+  --om-self-card-radius: 6px;
+  --om-self-card-border: 1px solid rgba(21, 59, 66, .20);
+  --om-self-card-bg: rgba(255, 255, 255, .62);
+  --om-self-card-shadow: 0 18px 46px rgba(60, 88, 38, .09);
+}
+
+/* Hero: copy and the full uncropped scene share one canvas. */
+body.off-switch-method-page .om-hero {
+  position: relative;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  background: #f2ebe4 !important;
+}
+
+body.off-switch-method-page .om-hero::before {
+  display: none !important;
+}
+
+body.off-switch-method-page .om-hero__inner {
+  position: relative !important;
+  display: block !important;
+  min-height: 690px !important;
+  padding-block: 62px !important;
+}
+
+body.off-switch-method-page .om-hero__copy {
+  position: relative !important;
+  z-index: 3;
+  width: min(52%, 650px) !important;
+  max-width: 650px !important;
+  padding: 0 !important;
+}
+
+body.off-switch-method-page .om-hero h1 {
+  max-width: 650px !important;
+  font-size: clamp(49px, 4vw, 58px) !important;
+  line-height: 1.01 !important;
+}
+
+body.off-switch-method-page .om-hero__lead {
+  max-width: 570px !important;
+  font-size: clamp(18px, 1.38vw, 20px) !important;
+  line-height: 1.48 !important;
+}
+
+body.off-switch-method-page .om-hero__method {
+  max-width: 560px !important;
+  font-size: 17px !important;
+  line-height: 1.48 !important;
+}
+
+body.off-switch-method-page .om-hero__visual {
+  position: absolute !important;
+  z-index: 1;
+  inset: 0 0 0 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  overflow: visible !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body.off-switch-method-page .om-hero__visual::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg, #f2ebe4 0%, rgba(242, 235, 228, .97) 29%, rgba(242, 235, 228, .55) 43%, transparent 56%);
+}
+
+body.off-switch-method-page .om-hero__visual > img {
+  display: block !important;
+  width: calc(100% - 72px) !important;
+  height: 100% !important;
+  margin-left: auto !important;
+  object-fit: contain !important;
+  object-position: right center !important;
+}
+
+body.off-switch-method-page .om-hero .os-character-intro--hero {
+  z-index: 4 !important;
+  inset: 0 !important;
+  bottom: 20px !important;
+  width: 100% !important;
+  padding-inline: 0 !important;
+}
+
+body.off-switch-method-page .om-hero .os-character-label {
+  min-width: 0 !important;
+  font-size: 13px !important;
+  white-space: nowrap;
+}
+
+body.off-switch-method-page .om-hero__facts > div {
+  padding-top: 17px !important;
+}
+
+body.off-switch-method-page .om-hero__facts span {
+  font-size: 15px !important;
+  line-height: 1.4 !important;
+}
+
+/* Early definition. */
+body.off-switch-method-page .om-thesis__inner {
+  align-items: start !important;
+  gap: 12px !important;
+  padding-block: 30px !important;
+}
+
+body.off-switch-method-page .om-thesis__inner p {
+  font-size: 14px !important;
+  line-height: 1.35 !important;
+}
+
+body.off-switch-method-page .om-thesis__inner strong {
+  max-width: 1080px !important;
+  font-size: clamp(24px, 2.5vw, 34px) !important;
+  line-height: 1.28 !important;
+}
+
+/* Scope: existing Self scale-panel cards, aligned to the visual. */
+body.off-switch-method-page .om-scope__composition {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.34fr) minmax(330px, .66fr) !important;
+  gap: var(--off-switch-text-media) !important;
+  align-items: stretch !important;
+}
+
+body.off-switch-method-page .om-scope__media {
+  min-height: 520px !important;
+  margin: 0 !important;
+}
+
+body.off-switch-method-page .om-scope__media > img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+body.off-switch-method-page .om-scope__groups {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  grid-auto-rows: 1fr;
+  gap: 12px !important;
+}
+
+body.off-switch-method-page .om-scope__groups > article,
+body.off-switch-method-page .om-concepts > article,
+body.off-switch-method-page .om-tool__notes > article,
+body.off-switch-method-page .om-dog__story > article {
+  min-height: 0 !important;
+  padding: 20px 22px !important;
+  border: var(--om-self-card-border) !important;
+  border-radius: var(--om-self-card-radius) !important;
+  background: var(--om-self-card-bg) !important;
+  box-shadow: none !important;
+  color: #173f31 !important;
+}
+
+body.off-switch-method-page .om-scope__groups > article::before,
+body.off-switch-method-page .om-concepts > article::before,
+body.off-switch-method-page .om-tool__notes > article::before,
+body.off-switch-method-page .om-dog__story > article::before,
+body.off-switch-method-page .om-dog__story > article::after {
+  display: none !important;
+}
+
+body.off-switch-method-page .om-scope__groups strong,
+body.off-switch-method-page .om-concepts strong,
+body.off-switch-method-page .om-tool__notes strong,
+body.off-switch-method-page .om-dog__story strong {
+  display: block;
+  margin-bottom: 7px;
+  color: #173f31 !important;
+  font-size: 19px !important;
+  line-height: 1.22 !important;
+}
+
+body.off-switch-method-page .om-scope__groups p,
+body.off-switch-method-page .om-concepts p,
+body.off-switch-method-page .om-tool__notes p,
+body.off-switch-method-page .om-dog__story p {
+  margin: 0 !important;
+  color: #52665a !important;
+  font-size: 16px !important;
+  line-height: 1.48 !important;
+}
+
+body.off-switch-method-page .om-scope__result {
+  max-width: 1040px !important;
+  margin: 28px 0 0 !important;
+  padding-left: 24px !important;
+  border-left-width: 3px !important;
+  font-size: 17px !important;
+  line-height: 1.55 !important;
+}
+
+body.off-switch-method-page .om-concepts {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 14px !important;
+  margin-top: 28px !important;
+}
+
+body.off-switch-method-page .om-concepts > article {
+  position: relative;
+  padding-top: 52px !important;
+  background: rgba(255, 254, 248, .88) !important;
+}
+
+body.off-switch-method-page .om-concepts > article > span {
+  position: absolute;
+  top: 18px;
+  left: 22px;
+  color: #6f944f !important;
+  font-size: 14px !important;
+  font-weight: 800;
+  letter-spacing: .08em;
+}
+
+/* Technique: principle rather than a five-step tutorial. */
+body.off-switch-method-page .om-tool .om-section-head {
+  margin-bottom: var(--off-switch-text-media) !important;
+}
+
+body.off-switch-method-page .om-tool__layout {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.28fr) minmax(330px, .72fr) !important;
+  gap: var(--off-switch-text-media) !important;
+  align-items: center !important;
+}
+
+body.off-switch-method-page .om-tool__media {
+  min-height: 0 !important;
+  margin: 0 !important;
+  aspect-ratio: 16 / 9 !important;
+  overflow: hidden !important;
+}
+
+body.off-switch-method-page .om-tool__media > img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+body.off-switch-method-page .om-tool__copy {
+  padding: 0 !important;
+}
+
+body.off-switch-method-page .om-tool__intro {
+  margin: 0 !important;
+  color: #274b35 !important;
+  font-size: 19px !important;
+  line-height: 1.52 !important;
+}
+
+body.off-switch-method-page .om-tool__principles {
+  display: grid;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+body.off-switch-method-page .om-tool__principles p {
+  margin: 0 !important;
+  color: #52665a !important;
+  font-size: 16px !important;
+  line-height: 1.5 !important;
+}
+
+body.off-switch-method-page .om-tool__principles strong {
+  color: #173f31 !important;
+}
+
+body.off-switch-method-page .om-tool__notes {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 14px !important;
+  margin-top: 28px !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+
+/* Signal sequence: four equal Self-style panels, no CTA card. */
+body.off-switch-method-page .om-chain[data-card-role="sequence"] {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 14px !important;
+  align-items: stretch !important;
+}
+
+body.off-switch-method-page .om-chain::before,
+body.off-switch-method-page .om-chain > article::before,
+body.off-switch-method-page .om-chain > article::after {
+  display: none !important;
+}
+
+body.off-switch-method-page .om-chain > figure {
+  grid-column: 1 / -1 !important;
+  min-height: 0 !important;
+  margin: 0 0 28px !important;
+  aspect-ratio: 16 / 7 !important;
+  border-radius: var(--om-self-card-radius) !important;
+}
+
+body.off-switch-method-page .om-chain > figure > img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+body.off-switch-method-page .om-chain > article,
+body.off-switch-method-page .om-chain > article.om-chain__stop {
+  display: block !important;
+  min-height: 218px !important;
+  padding: 24px !important;
+  border: var(--om-self-card-border) !important;
+  border-radius: var(--om-self-card-radius) !important;
+  background: rgba(255, 255, 255, .62) !important;
+  box-shadow: none !important;
+  color: #173f31 !important;
+  transform: none !important;
+}
+
+body.off-switch-method-page .om-chain > article.om-chain__stop {
+  background: rgba(232, 244, 211, .92) !important;
+}
+
+body.off-switch-method-page .om-chain > article > span,
+body.off-switch-method-page .om-chain > article.om-chain__stop > span {
+  display: block !important;
+  margin: 0 0 20px !important;
+  color: #6f944f !important;
+  font-size: 14px !important;
+  line-height: 1 !important;
+  letter-spacing: .08em !important;
+}
+
+body.off-switch-method-page .om-chain > article > strong,
+body.off-switch-method-page .om-chain > article.om-chain__stop > strong {
+  display: block;
+  color: #173f31 !important;
+  font-size: 21px !important;
+  line-height: 1.2 !important;
+}
+
+body.off-switch-method-page .om-chain > article > p,
+body.off-switch-method-page .om-chain > article.om-chain__stop > p {
+  margin-top: 10px !important;
+  color: #52665a !important;
+  font-size: 16px !important;
+  line-height: 1.48 !important;
+}
+
+body.off-switch-method-page .om-interrupt {
+  max-width: 980px !important;
+  margin: 28px 0 0 !important;
+}
+
+body.off-switch-method-page .om-interrupt p {
+  font-size: 17px !important;
+}
+
+/* Win over legacy grid-placement rules that used the image as column 01. */
+html body.off-switch-method-page main .om-mechanism .om-chain[data-card-role="sequence"] {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  grid-auto-flow: row !important;
+}
+
+html body.off-switch-method-page main .om-mechanism .om-chain[data-card-role="sequence"] > figure.om-mechanism__media {
+  grid-column: 1 / -1 !important;
+  grid-row: 1 !important;
+  width: 100% !important;
+}
+
+html body.off-switch-method-page main .om-mechanism .om-chain[data-card-role="sequence"] > article,
+html body.off-switch-method-page main .om-mechanism .om-chain[data-card-role="sequence"] > article:nth-of-type(1),
+html body.off-switch-method-page main .om-mechanism .om-chain[data-card-role="sequence"] > article:nth-of-type(2),
+html body.off-switch-method-page main .om-mechanism .om-chain[data-card-role="sequence"] > article:nth-of-type(3),
+html body.off-switch-method-page main .om-mechanism .om-chain[data-card-role="sequence"] > article:nth-of-type(4) {
+  grid-column: auto !important;
+  grid-row: 2 !important;
+}
+
+html body.off-switch-method-page main .om-mechanism .om-chain[data-card-role="sequence"] > article,
+html body.off-switch-method-page main .om-mechanism .om-chain[data-card-role="sequence"] > article:nth-of-type(1),
+html body.off-switch-method-page main .om-mechanism .om-chain[data-card-role="sequence"] > article:nth-of-type(2),
+html body.off-switch-method-page main .om-mechanism .om-chain[data-card-role="sequence"] > article:nth-of-type(3),
+html body.off-switch-method-page main .om-mechanism .om-chain[data-card-role="sequence"] > article:nth-of-type(4),
+html body.off-switch-method-page main .om-mechanism .om-chain[data-card-role="sequence"] > article.om-chain__stop {
+  display: block !important;
+  min-height: 218px !important;
+  padding: 24px !important;
+  border: var(--om-self-card-border) !important;
+  border-radius: var(--om-self-card-radius) !important;
+  background: rgba(255, 255, 255, .62) !important;
+  box-shadow: none !important;
+  color: #173f31 !important;
+  transform: none !important;
+}
+
+html body.off-switch-method-page main .om-mechanism .om-chain[data-card-role="sequence"] > article::before,
+html body.off-switch-method-page main .om-mechanism .om-chain[data-card-role="sequence"] > article::after {
+  display: none !important;
+}
+
+html body.off-switch-method-page main .om-mechanism .om-chain[data-card-role="sequence"] > article > span,
+html body.off-switch-method-page main .om-mechanism .om-chain[data-card-role="sequence"] > article > strong,
+html body.off-switch-method-page main .om-mechanism .om-chain[data-card-role="sequence"] > article > p,
+html body.off-switch-method-page main .om-mechanism .om-chain[data-card-role="sequence"] > article.om-chain__stop > span,
+html body.off-switch-method-page main .om-mechanism .om-chain[data-card-role="sequence"] > article.om-chain__stop > strong,
+html body.off-switch-method-page main .om-mechanism .om-chain[data-card-role="sequence"] > article.om-chain__stop > p {
+  color: #173f31 !important;
+}
+
+html body.off-switch-method-page main .om-mechanism .om-chain[data-card-role="sequence"] > article > span,
+html body.off-switch-method-page main .om-mechanism .om-chain[data-card-role="sequence"] > article.om-chain__stop > span {
+  color: #6f944f !important;
+}
+
+/* Episode chain: standard media weight plus three compact process cards. */
+body.off-switch-method-page .om-dog__composition {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.42fr) minmax(310px, .58fr) !important;
+  gap: var(--off-switch-text-media) !important;
+  align-items: start !important;
+}
+
+body.off-switch-method-page .om-dog__media {
+  min-height: 500px !important;
+  margin: 0 !important;
+  border-radius: var(--om-self-card-radius) !important;
+}
+
+body.off-switch-method-page .om-dog__media > img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+body.off-switch-method-page .om-dog__story[data-card-role="sequence"] {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 14px !important;
+  margin: 0 !important;
+}
+
+body.off-switch-method-page .om-dog__story > article {
+  padding: 22px !important;
+}
+
+body.off-switch-method-page .om-dog__story > article > span {
+  display: block;
+  margin-bottom: 14px;
+  color: #6f944f !important;
+  font-size: 14px !important;
+  font-weight: 800;
+}
+
+body.off-switch-method-page .om-sequence__intro {
+  max-width: 830px;
+  margin: 0 0 28px !important;
+  color: #52665a !important;
+  font-size: 18px !important;
+  line-height: 1.55 !important;
+}
+
+/* What the technique does: equal cards using the Self problem-card geometry. */
+body.off-switch-method-page .om-limits .om-section-head {
+  max-width: 900px !important;
+}
+
+body.off-switch-method-page .om-limits h2 {
+  font-size: clamp(38px, 4.2vw, 58px) !important;
+}
+
+body.off-switch-method-page .om-limits__grid[data-card-role="signals"] {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 18px !important;
+  margin-top: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+
+body.off-switch-method-page .om-limits__grid > article {
+  position: relative;
+  min-height: 252px !important;
+  padding: 62px 26px 28px !important;
+  border: 1px solid rgba(21, 59, 66, .14) !important;
+  border-radius: 3px !important;
+  background: #fffef8 !important;
+  box-shadow: var(--om-self-card-shadow) !important;
+}
+
+body.off-switch-method-page .om-limits__grid > article::before {
+  display: none !important;
+}
+
+body.off-switch-method-page .om-limits__grid > article > span {
+  position: absolute;
+  top: 24px;
+  left: 26px;
+  color: #6f944f !important;
+  font-size: 14px !important;
+  font-weight: 800;
+  letter-spacing: .08em;
+}
+
+body.off-switch-method-page .om-limits__grid > article > strong {
+  display: block;
+  margin: 0 0 12px !important;
+  color: #173f31 !important;
+  font-family: Georgia, "Times New Roman", serif !important;
+  font-size: clamp(24px, 2.15vw, 31px) !important;
+  font-weight: 500 !important;
+  line-height: 1.12 !important;
+}
+
+body.off-switch-method-page .om-limits__grid > article > p {
+  max-width: none !important;
+  margin: 0 !important;
+  color: #52665a !important;
+  font-family: Arial, sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  line-height: 1.5 !important;
+}
+
+body.off-switch-method-page .om-limits__note {
+  max-width: 860px !important;
+  margin: 28px 0 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  color: #52665a !important;
+  font-size: 17px !important;
+  line-height: 1.5 !important;
+}
+
+/* Three equal levels and explicit directional arrows. */
+body.off-switch-method-page .om-measure__grid[data-card-role="levels"] {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 34px !important;
+  align-items: stretch !important;
+  margin-top: 0 !important;
+}
+
+body.off-switch-method-page .om-measure__grid > article,
+body.off-switch-method-page .om-measure__grid > article:nth-child(2),
+body.off-switch-method-page .om-measure__grid > article:nth-child(3) {
+  position: relative;
+  display: block !important;
+  min-height: 230px !important;
+  margin: 0 !important;
+  padding: 28px !important;
+  border: 1px solid rgba(255, 255, 255, .24) !important;
+  border-radius: var(--om-self-card-radius) !important;
+  background: rgba(255, 255, 255, .09) !important;
+  box-shadow: none !important;
+  color: #fff !important;
+}
+
+body.off-switch-method-page .om-measure__grid > article:nth-child(3) {
+  background: #d8f08a !important;
+  color: #173f31 !important;
+}
+
+body.off-switch-method-page .om-measure__grid > article:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  top: 50%;
+  right: -27px;
+  color: #d8f08a;
+  font-size: 27px;
+  line-height: 1;
+  transform: translateY(-50%);
+}
+
+body.off-switch-method-page .om-measure__number,
+body.off-switch-method-page .om-measure__grid > article:last-child .om-measure__number {
+  display: block;
+  margin-bottom: 36px;
+  color: #d8f08a !important;
+  font-size: 14px !important;
+  font-weight: 800;
+  letter-spacing: .08em;
+}
+
+body.off-switch-method-page .om-measure__grid > article:nth-child(3) .om-measure__number {
+  color: #4c7438 !important;
+}
+
+body.off-switch-method-page .om-measure__grid strong,
+body.off-switch-method-page .om-measure__grid > article:last-child strong {
+  display: block;
+  color: #fff !important;
+  font-size: 28px !important;
+  line-height: 1.15 !important;
+}
+
+body.off-switch-method-page .om-measure__grid > article:nth-child(3) strong,
+body.off-switch-method-page .om-measure__grid > article:nth-child(3) p {
+  color: #173f31 !important;
+}
+
+body.off-switch-method-page .om-measure__grid p {
+  margin-top: 13px !important;
+  color: rgba(255, 255, 255, .78) !important;
+  font-size: 16px !important;
+  line-height: 1.5 !important;
+}
+
+body.off-switch-method-page .om-measure__life {
+  max-width: 960px !important;
+  margin: 28px 0 0 !important;
+  color: rgba(255, 255, 255, .86) !important;
+  font-size: 17px !important;
+  line-height: 1.55 !important;
+}
+
+/* Evidence: exact image fit and a two-level numeric hierarchy. */
+body.off-switch-method-page .om-ukraine__host {
+  overflow: hidden !important;
+  aspect-ratio: 4 / 3 !important;
+}
+
+html body.off-switch-method-page main .om-ukraine .om-ukraine__host {
+  top: 18% !important;
+  right: auto !important;
+  bottom: auto !important;
+  left: 50% !important;
+  width: clamp(280px, 25vw, 340px) !important;
+  height: auto !important;
+  transform: translateX(-50%) !important;
+}
+
+body.off-switch-method-page .om-ukraine__host > img {
+  position: absolute !important;
+  inset: 0 !important;
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  object-fit: cover !important;
+  object-position: 50% 24% !important;
+}
+
+body.off-switch-method-page .om-ukraine__host figcaption {
+  z-index: 2;
+}
+
+body.off-switch-method-page .om-ukraine__stats[data-card-role="evidence"] {
+  display: grid !important;
+  grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+  gap: 14px !important;
+  margin: 22px 0 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body.off-switch-method-page .om-ukraine__stats > article,
+body.off-switch-method-page .om-ukraine__stats > article:first-child {
+  min-height: 118px !important;
+  padding: 22px !important;
+  border: var(--om-self-card-border) !important;
+  border-radius: var(--om-self-card-radius) !important;
+  background: rgba(255, 255, 255, .68) !important;
+  box-shadow: none !important;
+  color: #173f31 !important;
+}
+
+body.off-switch-method-page .om-ukraine__stats > article:nth-child(1),
+body.off-switch-method-page .om-ukraine__stats > article:nth-child(2) {
+  grid-column: span 3;
+  min-height: 162px !important;
+  padding: 28px !important;
+}
+
+body.off-switch-method-page .om-ukraine__stats > article:nth-child(n + 3) {
+  grid-column: span 2;
+}
+
+body.off-switch-method-page .om-ukraine__stats > article:nth-child(1) {
+  background: #1f593b !important;
+  color: #fff !important;
+}
+
+body.off-switch-method-page .om-ukraine__stats > article:nth-child(2) {
+  background: #e6f0bd !important;
+}
+
+body.off-switch-method-page .om-ukraine__stats > article strong,
+body.off-switch-method-page .om-ukraine__stats > article:first-child strong {
+  display: block;
+  color: #315d36 !important;
+  font-size: 32px !important;
+  line-height: 1 !important;
+}
+
+body.off-switch-method-page .om-ukraine__stats > article:nth-child(1) strong,
+body.off-switch-method-page .om-ukraine__stats > article:nth-child(2) strong {
+  font-size: clamp(48px, 5vw, 70px) !important;
+}
+
+body.off-switch-method-page .om-ukraine__stats > article:nth-child(1) strong,
+body.off-switch-method-page .om-ukraine__stats > article:nth-child(1) span {
+  color: #fff !important;
+}
+
+body.off-switch-method-page .om-ukraine__stats > article span,
+body.off-switch-method-page .om-ukraine__stats > article:first-child span {
+  display: block;
+  margin-top: 10px;
+  color: #557058 !important;
+  font-size: 16px !important;
+  line-height: 1.42 !important;
+}
+
+body.off-switch-method-page .om-evidence-note,
+body.off-switch-method-page .om-evidence-note--context {
+  max-width: 980px !important;
+  margin: 18px 0 0 !important;
+  text-align: left !important;
+  font-size: 16px !important;
+  line-height: 1.55 !important;
+}
+
+/* Proof: a coloured main card and three readable supporting cases. */
+body.off-switch-method-page .om-cases__grid[data-card-role="evidence"] {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.18fr) repeat(3, minmax(0, .82fr)) !important;
+  gap: 14px !important;
+  margin-top: 0 !important;
+  border: 0 !important;
+}
+
+html body.off-switch-method-page main .om-cases .om-cases__grid[data-card-role="evidence"] {
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr) !important;
+  grid-template-rows: repeat(3, auto) !important;
+}
+
+html body.off-switch-method-page main .om-cases .om-cases__grid[data-card-role="evidence"] > article:first-child {
+  grid-column: 1 !important;
+  grid-row: 1 / span 3 !important;
+}
+
+html body.off-switch-method-page main .om-cases .om-cases__grid[data-card-role="evidence"] > article:nth-child(2) {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+}
+
+html body.off-switch-method-page main .om-cases .om-cases__grid[data-card-role="evidence"] > article:nth-child(3) {
+  grid-column: 2 !important;
+  grid-row: 2 !important;
+}
+
+html body.off-switch-method-page main .om-cases .om-cases__grid[data-card-role="evidence"] > article:nth-child(4) {
+  grid-column: 2 !important;
+  grid-row: 3 !important;
+}
+
+body.off-switch-method-page .om-cases__grid > article,
+body.off-switch-method-page .om-cases__grid > article:nth-child(2n),
+body.off-switch-method-page .om-cases__grid > article:first-child {
+  min-height: 0 !important;
+  padding: 26px !important;
+  border: 1px solid rgba(21, 59, 66, .14) !important;
+  border-radius: 3px !important;
+  background: #fffdf5 !important;
+  box-shadow: var(--om-self-card-shadow) !important;
+}
+
+body.off-switch-method-page .om-cases__grid > article:first-child {
+  background: #edf5d2 !important;
+}
+
+body.off-switch-method-page .om-cases__grid > article:first-child {
+  display: grid !important;
+  grid-template-columns: minmax(0, .78fr) minmax(0, 1.22fr);
+  grid-template-rows: auto auto auto;
+  align-content: center;
+  column-gap: 30px;
+}
+
+body.off-switch-method-page .om-cases__grid > article:first-child > span {
+  grid-column: 1 / -1;
+}
+
+body.off-switch-method-page .om-cases__grid > article:first-child > strong {
+  grid-column: 1;
+  grid-row: 2;
+  align-self: end;
+}
+
+body.off-switch-method-page .om-cases__grid > article:first-child > small {
+  grid-column: 1;
+  grid-row: 3;
+}
+
+body.off-switch-method-page .om-cases__grid > article:first-child > h3 {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: end;
+}
+
+body.off-switch-method-page .om-cases__grid > article:first-child > p {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+body.off-switch-method-page .om-cases__grid article > span {
+  color: #607461 !important;
+  font-size: 15px !important;
+  line-height: 1.42 !important;
+}
+
+body.off-switch-method-page .om-cases__grid article > strong,
+body.off-switch-method-page .om-cases__grid article:not(:first-child) > strong {
+  display: block;
+  margin-top: 18px !important;
+  color: #315d36 !important;
+  font-size: 34px !important;
+  line-height: 1 !important;
+}
+
+body.off-switch-method-page .om-cases__grid article:first-child > strong {
+  font-size: clamp(52px, 5vw, 72px) !important;
+}
+
+body.off-switch-method-page .om-cases__grid small {
+  display: block;
+  margin-top: 7px;
+  color: #607461 !important;
+  font-size: 14px !important;
+  line-height: 1.3 !important;
+}
+
+body.off-switch-method-page .om-cases__grid h3 {
+  margin-top: 20px !important;
+  color: #294c30 !important;
+  font-size: 21px !important;
+  line-height: 1.25 !important;
+}
+
+body.off-switch-method-page .om-cases__grid p {
+  color: #617561 !important;
+  font-size: 16px !important;
+  line-height: 1.5 !important;
+}
+
+/* Meaningful copy never falls below the Self page's 15px card baseline. */
+body.off-switch-method-page main p:not(.om-eyebrow),
+body.off-switch-method-page main li,
+body.off-switch-method-page main small,
+body.off-switch-method-page main figcaption:not(.os-character-intro) {
+  font-size: max(15px, 1em);
+}
+
+body.off-switch-method-page .om-format-door > small {
+  font-size: 14px !important;
+}
+
+@media (max-width: 1120px) {
+  body.off-switch-method-page .om-hero__inner {
+    min-height: 720px !important;
+  }
+
+  body.off-switch-method-page .om-hero__copy {
+    width: 60% !important;
+  }
+
+  body.off-switch-method-page .om-hero h1 {
+    font-size: 48px !important;
+  }
+
+  body.off-switch-method-page .om-scope__composition,
+  body.off-switch-method-page .om-tool__layout {
+    grid-template-columns: minmax(0, 1.15fr) minmax(300px, .85fr) !important;
+  }
+
+  body.off-switch-method-page .om-dog__composition {
+    grid-template-columns: minmax(0, 1.2fr) minmax(300px, .8fr) !important;
+  }
+
+  html body.off-switch-method-page main .om-cases .om-cases__grid[data-card-role="evidence"] {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+  }
+}
+
+@media (max-width: 900px) {
+  body.off-switch-method-page .om-hero__inner {
+    display: flex !important;
+    min-height: 0 !important;
+    flex-direction: column;
+    padding-block: 50px 20px !important;
+  }
+
+  body.off-switch-method-page .om-hero__copy {
+    width: 100% !important;
+    max-width: 650px !important;
+  }
+
+  body.off-switch-method-page .om-hero h1 {
+    font-size: 48px !important;
+  }
+
+  body.off-switch-method-page .om-hero__visual {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 30px 0 0 !important;
+    aspect-ratio: 16 / 9 !important;
+  }
+
+  body.off-switch-method-page .om-hero__visual > img {
+    width: 100% !important;
+    margin-left: 0 !important;
+  }
+
+  body.off-switch-method-page .om-hero__visual::before {
+    display: none;
+  }
+
+  body.off-switch-method-page .om-scope__composition,
+  body.off-switch-method-page .om-tool__layout,
+  body.off-switch-method-page .om-dog__composition {
+    grid-template-columns: 1fr !important;
+  }
+
+  body.off-switch-method-page .om-scope__groups {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  body.off-switch-method-page .om-dog__story[data-card-role="sequence"] {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+
+  body.off-switch-method-page .om-limits__grid[data-card-role="signals"],
+  body.off-switch-method-page .om-measure__grid[data-card-role="levels"] {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+
+  body.off-switch-method-page .om-limits__grid > article {
+    min-height: 278px !important;
+    padding-inline: 22px !important;
+  }
+
+  body.off-switch-method-page .om-limits__grid > article > strong {
+    font-size: 24px !important;
+  }
+}
+
+@media (max-width: 760px) {
+  body.off-switch-method-page .om-hero__inner {
+    display: flex !important;
+    min-height: 0 !important;
+    flex-direction: column;
+    padding-block: 44px 20px !important;
+  }
+
+  body.off-switch-method-page .om-hero__copy {
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  body.off-switch-method-page .om-hero h1 {
+    max-width: 540px !important;
+    font-size: clamp(40px, 11.3vw, 50px) !important;
+    line-height: 1.02 !important;
+  }
+
+  body.off-switch-method-page .om-hero__lead {
+    font-size: 18px !important;
+  }
+
+  body.off-switch-method-page .om-hero__visual {
+    position: relative !important;
+    inset: auto !important;
+    width: calc(100% + 40px) !important;
+    height: auto !important;
+    margin: 28px -20px 0 !important;
+    aspect-ratio: 16 / 9 !important;
+  }
+
+  body.off-switch-method-page .om-hero__visual > img {
+    width: 100% !important;
+    margin-left: 0 !important;
+  }
+
+  body.off-switch-method-page .om-hero__visual::before {
+    display: none;
+  }
+
+  body.off-switch-method-page .om-hero .os-character-intro--hero {
+    inset: 0 !important;
+    bottom: 8px !important;
+    width: 100% !important;
+  }
+
+  body.off-switch-method-page .om-hero .os-character-label {
+    font-size: 11px !important;
+    line-height: 1.12 !important;
+    white-space: normal !important;
+  }
+
+  html body.off-switch-method-page main .om-hero__visual .os-character-intro--hero .os-character-label,
+  html body.off-switch-method-page main .om-scope__media .os-character-intro--scope .os-character-label {
+    font-size: 11px !important;
+    line-height: 1.12 !important;
+  }
+
+  body.off-switch-method-page .os-character-intro--scope .os-character-label {
+    font-size: 11px !important;
+    line-height: 1.12 !important;
+  }
+
+  body.off-switch-method-page .om-hero__facts {
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+  }
+
+  body.off-switch-method-page .om-hero__facts > div,
+  body.off-switch-method-page .om-hero__facts > div:first-child {
+    padding: 14px 0 !important;
+    border-right: 0 !important;
+    border-bottom: 1px solid rgba(23, 63, 49, .18) !important;
+  }
+
+  body.off-switch-method-page .om-hero__facts > div:last-child {
+    border-bottom: 0 !important;
+  }
+
+  body.off-switch-method-page .om-thesis__inner strong {
+    font-size: 23px !important;
+  }
+
+  body.off-switch-method-page .om-section h2,
+  body.off-switch-method-page .om-formats h2 {
+    font-size: clamp(28px, 8.2vw, 34px) !important;
+    line-height: 1.08 !important;
+  }
+
+  body.off-switch-method-page .om-scope__media,
+  body.off-switch-method-page .om-dog__media {
+    min-height: 0 !important;
+    aspect-ratio: 16 / 10 !important;
+  }
+
+  body.off-switch-method-page .om-scope__groups,
+  body.off-switch-method-page .om-concepts,
+  body.off-switch-method-page .om-tool__notes,
+  body.off-switch-method-page .om-dog__story[data-card-role="sequence"],
+  body.off-switch-method-page .om-limits__grid[data-card-role="signals"],
+  body.off-switch-method-page .om-measure__grid[data-card-role="levels"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  body.off-switch-method-page .om-chain[data-card-role="sequence"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  html body.off-switch-method-page main .om-mechanism .om-chain[data-card-role="sequence"] > figure.om-mechanism__media,
+  html body.off-switch-method-page main .om-mechanism .om-chain[data-card-role="sequence"] > article,
+  html body.off-switch-method-page main .om-mechanism .om-chain[data-card-role="sequence"] > article:nth-of-type(1),
+  html body.off-switch-method-page main .om-mechanism .om-chain[data-card-role="sequence"] > article:nth-of-type(2),
+  html body.off-switch-method-page main .om-mechanism .om-chain[data-card-role="sequence"] > article:nth-of-type(3),
+  html body.off-switch-method-page main .om-mechanism .om-chain[data-card-role="sequence"] > article:nth-of-type(4) {
+    grid-column: 1 !important;
+    grid-row: auto !important;
+  }
+
+  body.off-switch-method-page .om-chain > figure {
+    aspect-ratio: 16 / 10 !important;
+  }
+
+  body.off-switch-method-page .om-chain > article,
+  body.off-switch-method-page .om-chain > article.om-chain__stop,
+  body.off-switch-method-page .om-limits__grid > article,
+  body.off-switch-method-page .om-measure__grid > article,
+  body.off-switch-method-page .om-measure__grid > article:nth-child(2),
+  body.off-switch-method-page .om-measure__grid > article:nth-child(3) {
+    min-height: 0 !important;
+  }
+
+  body.off-switch-method-page .om-measure__grid > article:not(:last-child)::after {
+    content: "↓";
+    top: auto;
+    right: 50%;
+    bottom: -28px;
+    transform: translateX(50%);
+  }
+
+  body.off-switch-method-page .om-ukraine__stats[data-card-role="evidence"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  html body.off-switch-method-page main .om-ukraine .om-ukraine__host {
+    width: 210px !important;
+  }
+
+  body.off-switch-method-page .om-ukraine__stats > article,
+  body.off-switch-method-page .om-ukraine__stats > article:nth-child(1),
+  body.off-switch-method-page .om-ukraine__stats > article:nth-child(2),
+  body.off-switch-method-page .om-ukraine__stats > article:nth-child(n + 3) {
+    grid-column: auto !important;
+    min-height: 0 !important;
+  }
+
+  body.off-switch-method-page .om-cases__grid[data-card-role="evidence"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  html body.off-switch-method-page main .om-cases .om-cases__grid[data-card-role="evidence"] {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: none !important;
+  }
+
+  html body.off-switch-method-page main .om-cases .om-cases__grid[data-card-role="evidence"] > article,
+  html body.off-switch-method-page main .om-cases .om-cases__grid[data-card-role="evidence"] > article:first-child,
+  html body.off-switch-method-page main .om-cases .om-cases__grid[data-card-role="evidence"] > article:nth-child(2),
+  html body.off-switch-method-page main .om-cases .om-cases__grid[data-card-role="evidence"] > article:nth-child(3),
+  html body.off-switch-method-page main .om-cases .om-cases__grid[data-card-role="evidence"] > article:nth-child(4) {
+    grid-column: 1 !important;
+    grid-row: auto !important;
+  }
+
+  body.off-switch-method-page .om-cases__grid > article,
+  body.off-switch-method-page .om-cases__grid > article:first-child {
+    min-height: 0 !important;
+  }
+
+  body.off-switch-method-page .om-cases__grid > article:first-child {
+    display: block !important;
+  }
+}
+
+@media (max-width: 430px) {
+  body.off-switch-method-page .om-hero h1 {
+    font-size: 32px !important;
+  }
+
+  body.off-switch-method-page .om-section h2,
+  body.off-switch-method-page .om-formats h2 {
+    font-size: 24px !important;
+    line-height: 1.1 !important;
+  }
+
+  body.off-switch-method-page .om-hero__visual {
+    width: calc(100% + 24px) !important;
+    margin-inline: -12px !important;
+  }
+
+  body.off-switch-method-page .om-hero .os-character-intro--hero {
+    inset: 0 !important;
+    width: 100% !important;
+  }
+
+  body.off-switch-method-page .om-hero .os-character-label {
+    font-size: 10.5px !important;
+  }
+}
+
+/* Final cascade guard: keep the approved point-pass above every legacy Method rule. */
+html body.off-switch-method-page main .om-dog .om-dog__composition {
+  align-items: stretch !important;
+}
+
+html body.off-switch-method-page main .om-dog .om-dog__media {
+  align-self: start !important;
+  height: auto !important;
+  aspect-ratio: 16 / 9 !important;
+}
+
+html body.off-switch-method-page main .om-dog .om-dog__story[data-card-role="sequence"] {
+  min-height: 0 !important;
+  height: 100% !important;
+}
+
+html body.off-switch-method-page main .om-dog .om-dog__story > article {
+  min-height: 0 !important;
+  overflow: hidden !important;
+  padding: 14px 18px !important;
+}
+
+html body.off-switch-method-page main .om-measure .om-measure__grid[data-card-role="levels"] {
+  align-items: stretch !important;
+  gap: 18px !important;
+}
+
+html body.off-switch-method-page main .om-measure .om-measure__grid[data-card-role="levels"] > article,
+html body.off-switch-method-page main .om-measure .om-measure__grid[data-card-role="levels"] > article:nth-child(2),
+html body.off-switch-method-page main .om-measure .om-measure__grid[data-card-role="levels"] > article:nth-child(3) {
+  top: auto !important;
+  min-height: 220px !important;
+  padding: 26px 28px !important;
+  border: var(--om-brief-card-border) !important;
+  border-radius: var(--om-brief-card-radius) !important;
+  background: var(--om-brief-card-bg) !important;
+  box-shadow: var(--om-brief-card-shadow) !important;
+  color: #173f31 !important;
+  transform: none !important;
+}
+
+html body.off-switch-method-page main .om-measure .om-measure__grid[data-card-role="levels"] > article::after {
+  display: none !important;
+  content: none !important;
+}
+
+html body.off-switch-method-page main .om-measure .om-measure__grid .om-measure__number,
+html body.off-switch-method-page main .om-measure .om-measure__grid > article:nth-child(3) .om-measure__number {
+  color: #5b793f !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  letter-spacing: .08em !important;
+}
+
+html body.off-switch-method-page main .om-ukraine .om-ukraine__stage .om-ukraine__host {
+  top: 18% !important;
+  right: auto !important;
+  bottom: auto !important;
+  left: 50% !important;
+  width: clamp(280px, 25vw, 340px) !important;
+  min-width: 0 !important;
+  height: auto !important;
+  aspect-ratio: 4 / 3 !important;
+  border: 0 !important;
+  border-radius: 14px !important;
+  background: #d6d8d5 !important;
+  box-shadow: 0 18px 50px rgba(20, 45, 35, .18) !important;
+  transform: translateX(-50%) !important;
+}
+
+html body.off-switch-method-page main .om-ukraine .om-ukraine__stats > article strong,
+html body.off-switch-method-page main .om-ukraine .om-ukraine__stats > article:first-child strong,
+html body.off-switch-method-page main .om-ukraine .om-ukraine__stats > article:nth-child(n) strong {
+  color: #173f31 !important;
+  opacity: 1 !important;
+}
+
+html body.off-switch-method-page main .om-ukraine .om-ukraine__stats > article span,
+html body.off-switch-method-page main .om-ukraine .om-ukraine__stats > article:nth-child(n) span {
+  color: #536258 !important;
+  opacity: 1 !important;
+}
+
+html body.off-switch-method-page main .om-cases .om-cases__grid[data-card-role="evidence"] > article,
+html body.off-switch-method-page main .om-cases .om-cases__grid[data-card-role="evidence"] > article:first-child,
+html body.off-switch-method-page main .om-cases .om-cases__grid[data-card-role="evidence"] > article:nth-child(2),
+html body.off-switch-method-page main .om-cases .om-cases__grid[data-card-role="evidence"] > article:nth-child(3),
+html body.off-switch-method-page main .om-cases .om-cases__grid[data-card-role="evidence"] > article:nth-child(4) {
+  display: grid !important;
+  min-height: 420px !important;
+  grid-template-rows: 72px 44px 22px 76px 1fr !important;
+  align-content: start !important;
+  padding: 24px !important;
+  border: var(--om-brief-card-border) !important;
+  border-radius: var(--om-brief-card-radius) !important;
+  background: var(--om-brief-card-bg) !important;
+  box-shadow: var(--om-brief-card-shadow) !important;
+}
+
+html body.off-switch-method-page main .om-cases .om-cases__grid > article > span,
+html body.off-switch-method-page main .om-cases .om-cases__grid > article > strong,
+html body.off-switch-method-page main .om-cases .om-cases__grid > article > small,
+html body.off-switch-method-page main .om-cases .om-cases__grid > article > h3,
+html body.off-switch-method-page main .om-cases .om-cases__grid > article > p {
+  margin: 0 !important;
+}
+
+html body.off-switch-method-page main .om-cases .om-cases__grid > article > strong {
+  align-self: center !important;
+  font-size: 32px !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+}
+
+html body.off-switch-method-page main .om-cases .om-cases__grid > article > h3 {
+  align-self: start !important;
+  font-size: 19px !important;
+  line-height: 1.25 !important;
+}
+
+html body.off-switch-method-page main .om-formats .om-format-door > span {
+  position: static !important;
+  display: inline-flex !important;
+  width: max-content !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  align-items: center !important;
+  order: 2 !important;
+  margin: 0 !important;
+  padding: 5px 8px !important;
+  border: 1px solid rgba(83, 119, 67, .24) !important;
+  border-radius: 999px !important;
+  background: #f5f8ee !important;
+  color: #355742 !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  line-height: 1 !important;
+  letter-spacing: .08em !important;
+  transform: none !important;
+}
+
+@media (max-width: 900px) {
+  html body.off-switch-method-page main .om-dog .om-dog__story[data-card-role="sequence"] {
+    height: auto !important;
+  }
+}
+
+@media (max-width: 680px) {
+  html body.off-switch-method-page main .om-ukraine .om-ukraine__stage .om-ukraine__host {
+    width: 210px !important;
+  }
+
+  html body.off-switch-method-page main .om-cases .om-cases__grid[data-card-role="evidence"] > article,
+  html body.off-switch-method-page main .om-cases .om-cases__grid[data-card-role="evidence"] > article:nth-child(n) {
+    min-height: 0 !important;
+    grid-template-rows: auto !important;
+    gap: 10px !important;
+  }
+}
+
+/* 2026-07-16: Method hero character labels reuse the approved Group callout system. */
+body.off-switch-method-page .om-hero__visual .os-character-intro--hero {
+  position: absolute !important;
+  z-index: 4 !important;
+  inset: 0 !important;
+  display: block !important;
+  padding: 0 !important;
+}
+
+body.off-switch-method-page .om-hero__visual .os-character-intro--hero .os-character-label {
+  position: absolute !important;
+  left: var(--x) !important;
+  top: var(--y) !important;
+  display: block !important;
+  width: auto !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 5px 8px !important;
+  border: 0 !important;
+  border-left: 3px solid currentColor !important;
+  border-radius: 2px !important;
+  background: rgba(255, 255, 255, .92) !important;
+  box-shadow: none !important;
+  color: var(--tag-color) !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
+  letter-spacing: .02em !important;
+  text-align: left !important;
+  text-transform: uppercase !important;
+  white-space: nowrap !important;
+  transform: translate(-50%, -100%) !important;
+}
+
+body.off-switch-method-page .om-hero__visual .os-character-intro--hero .os-character-label::after {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 1px;
+  height: var(--stem, 9px);
+  background: currentColor;
+  opacity: .72;
+  content: "";
+}
+
+body.off-switch-method-page .os-character-intro--hero [data-character="anxiety"] {
+  --x: 47%;
+  --y: 43%;
+  --tag-color: #b56f21;
+  transform: translate(0, -100%) !important;
+}
+
+body.off-switch-method-page .os-character-intro--hero [data-character="anxiety"]::after {
+  left: 8px !important;
+}
+
+body.off-switch-method-page .os-character-intro--hero [data-character="fear"] {
+  --x: 55.5%;
+  --y: 41%;
+  --tag-color: #2f7188;
+}
+
+body.off-switch-method-page .os-character-intro--hero [data-character="guilt"] {
+  --x: 77.3%;
+  --y: 40%;
+  --tag-color: #66727a;
+}
+
+body.off-switch-method-page .os-character-intro--hero [data-character="anger"] {
+  --x: 87.8%;
+  --y: 43%;
+  --tag-color: #a24e3c;
+}
+
+body.off-switch-method-page .os-character-intro--hero [data-character="resentment"] {
+  --x: 98.4%;
+  --y: 43%;
+  --tag-color: #76558d;
+  transform: translate(-100%, -100%) !important;
+}
+
+body.off-switch-method-page .os-character-intro--hero [data-character="resentment"]::after {
+  left: calc(100% - 8px) !important;
+}
+
+@media (min-width: 1101px) {
+  body.off-switch-method-page .om-hero__visual > img {
+    transform: translateX(clamp(54px, 4.5vw, 66px)) !important;
+  }
+}
+
+@media (max-width: 1100px) {
+  body.off-switch-method-page .om-hero {
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  body.off-switch-method-page .om-hero__inner {
+    display: grid !important;
+    height: auto !important;
+    min-height: 0 !important;
+    grid-template-columns: 1fr !important;
+    padding-bottom: 58px !important;
+  }
+
+  body.off-switch-method-page .om-hero__copy {
+    width: min(100%, 650px) !important;
+    margin-inline: auto !important;
+  }
+
+  body.off-switch-method-page .om-hero__visual {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16 / 9 !important;
+    margin-top: 48px !important;
+  }
+
+  body.off-switch-method-page .om-hero__visual > img {
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    transform: none !important;
+  }
+
+  body.off-switch-method-page .os-character-intro--hero [data-character="anxiety"] { --x: 37.8%; }
+  body.off-switch-method-page .os-character-intro--hero [data-character="fear"] { --x: 47%; }
+  body.off-switch-method-page .os-character-intro--hero [data-character="guilt"] { --x: 69.7%; }
+  body.off-switch-method-page .os-character-intro--hero [data-character="anger"] { --x: 80.2%; }
+  body.off-switch-method-page .os-character-intro--hero [data-character="resentment"] { --x: 91.7%; }
+}
+
+@media (max-width: 680px) {
+  body.off-switch-method-page .om-hero__inner {
+    padding-bottom: 46px !important;
+  }
+
+  body.off-switch-method-page .om-hero__visual {
+    margin-top: 28px !important;
+  }
+
+  body.off-switch-method-page .om-hero__visual .os-character-intro--hero .os-character-label {
+    padding: 3px 4px !important;
+    border-left-width: 2px !important;
+    border-radius: 1px !important;
+    font-size: clamp(7px, 2.1vw, 10px) !important;
+    line-height: 1.12 !important;
+    letter-spacing: 0 !important;
+    --stem: 7px;
+  }
+}
+
+@media (max-width: 380px) {
+  body.off-switch-method-page .os-character-intro--hero [data-character="resentment"] {
+    --y: 25%;
+    --stem: 44px;
+  }
+}
+
+/* 2026-07-16: precise card, evidence and rhythm pass from the approved Method brief. */
+body.off-switch-method-page {
+  --om-brief-card-bg: #fffef8;
+  --om-brief-card-border: 1px solid rgba(21, 59, 66, .16);
+  --om-brief-card-radius: 3px;
+  --om-brief-card-shadow: 0 18px 46px rgba(60, 88, 38, .09);
+}
+
+/* Reiki 1 section rhythm: 64px desktop, 56px mobile, with a stable heading gap. */
+html body.off-switch-method-page main .om-section,
+html body.off-switch-method-page main .om-formats {
+  padding-block: 64px !important;
+}
+
+body.off-switch-method-page .om-section-head {
+  margin-bottom: 36px !important;
+}
+
+body.off-switch-method-page .om-section-head .om-eyebrow {
+  margin-bottom: 0 !important;
+}
+
+body.off-switch-method-page .om-section-head .om-eyebrow + h2 {
+  margin-top: 14px !important;
+}
+
+/* Scope: four independent Self-style cards. */
+html body.off-switch-method-page main .om-scope .om-scope__groups {
+  gap: 14px !important;
+  background: transparent !important;
+}
+
+html body.off-switch-method-page main .om-scope .om-scope__groups > article {
+  overflow: hidden !important;
+  border: var(--om-brief-card-border) !important;
+  border-radius: var(--om-brief-card-radius) !important;
+  background: var(--om-brief-card-bg) !important;
+  box-shadow: var(--om-brief-card-shadow) !important;
+}
+
+/* Technique notes: equal, readable cards instead of a flat lower strip. */
+html body.off-switch-method-page main .om-tool .om-tool__notes {
+  gap: 14px !important;
+  background: transparent !important;
+}
+
+html body.off-switch-method-page main .om-tool .om-tool__notes > article {
+  min-height: 138px !important;
+  padding: 24px 26px !important;
+  border: var(--om-brief-card-border) !important;
+  border-radius: var(--om-brief-card-radius) !important;
+  background: var(--om-brief-card-bg) !important;
+  box-shadow: var(--om-brief-card-shadow) !important;
+}
+
+/* Signal: one image, four separate sequence cards and one calm result card. */
+html body.off-switch-method-page main .om-mechanism .om-chain[data-card-role="sequence"] {
+  gap: 14px !important;
+}
+
+html body.off-switch-method-page main .om-mechanism .om-chain[data-card-role="sequence"] > article {
+  padding: 20px 22px !important;
+  border: var(--om-brief-card-border) !important;
+  border-radius: var(--om-brief-card-radius) !important;
+  background: var(--om-brief-card-bg) !important;
+  box-shadow: var(--om-brief-card-shadow) !important;
+}
+
+html body.off-switch-method-page main .om-mechanism .om-chain[data-card-role="sequence"] > article.om-chain__stop {
+  background: #fbf8e8 !important;
+}
+
+body.off-switch-method-page .om-mechanism__media,
+body.off-switch-method-page .om-dog__media {
+  aspect-ratio: 16 / 9 !important;
+  height: auto !important;
+}
+
+body.off-switch-method-page .om-mechanism__media > img,
+body.off-switch-method-page .om-dog__media > img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+}
+
+html body.off-switch-method-page main .om-mechanism .om-interrupt {
+  display: block !important;
+  padding: 24px 28px !important;
+  border: var(--om-brief-card-border) !important;
+  border-left: 4px solid #6f873d !important;
+  border-radius: var(--om-brief-card-radius) !important;
+  background: #f7f3e4 !important;
+  box-shadow: 0 14px 36px rgba(60, 88, 38, .07) !important;
+}
+
+body.off-switch-method-page .om-interrupt::before {
+  display: none !important;
+}
+
+body.off-switch-method-page .om-interrupt p {
+  max-width: 900px !important;
+  color: #173f31 !important;
+  font-size: 18px !important;
+  font-weight: 650 !important;
+  line-height: 1.5 !important;
+}
+
+/* Linked episodes: match the visual weight and proportions of the Signal composition. */
+html body.off-switch-method-page main .om-dog .om-dog__composition {
+  grid-template-columns: minmax(0, 1.1fr) minmax(340px, .9fr) !important;
+  gap: 20px !important;
+}
+
+body.off-switch-method-page .om-dog__story[data-card-role="sequence"] {
+  height: 100% !important;
+  grid-template-rows: repeat(3, minmax(0, 1fr)) !important;
+  gap: 14px !important;
+}
+
+html body.off-switch-method-page main .om-dog .om-dog__story > article {
+  min-height: 0 !important;
+  padding: 18px 20px !important;
+  border: var(--om-brief-card-border) !important;
+  border-radius: var(--om-brief-card-radius) !important;
+  background: var(--om-brief-card-bg) !important;
+  box-shadow: var(--om-brief-card-shadow) !important;
+}
+
+body.off-switch-method-page .om-dog__story strong {
+  font-size: 19px !important;
+  line-height: 1.2 !important;
+}
+
+body.off-switch-method-page .om-dog__story p {
+  font-size: 15px !important;
+  line-height: 1.42 !important;
+}
+
+/* Whole chain: two equal normal cards, not narrow comparison bars. */
+body.off-switch-method-page .om-ratio[data-card-role="comparison"] {
+  display: grid !important;
+  height: auto !important;
+  grid-template-columns: 1fr !important;
+  grid-template-rows: repeat(2, minmax(0, 1fr)) !important;
+  gap: 14px !important;
+  background: transparent !important;
+}
+
+html body.off-switch-method-page main .om-map .om-ratio > div {
+  min-height: 132px !important;
+  padding: 24px !important;
+  border: var(--om-brief-card-border) !important;
+  border-radius: var(--om-brief-card-radius) !important;
+  background: var(--om-brief-card-bg) !important;
+  box-shadow: var(--om-brief-card-shadow) !important;
+}
+
+/* One cycle: the approved bypass illustration already shows the disabled route and its live detour. */
+html body.off-switch-method-page main .om-sequence .om-depth[data-card-role="comparison"] {
+  gap: 14px !important;
+  background: transparent !important;
+}
+
+html body.off-switch-method-page main .om-sequence .om-depth > article {
+  min-height: 138px !important;
+  padding: 24px 26px !important;
+  border: var(--om-brief-card-border) !important;
+  border-radius: var(--om-brief-card-radius) !important;
+  background: var(--om-brief-card-bg) !important;
+  box-shadow: var(--om-brief-card-shadow) !important;
+}
+
+/* Technique outcomes: Self-style cards, normal type and quiet numbering. */
+html body.off-switch-method-page main .om-limits .om-limits__grid[data-card-role="signals"] {
+  gap: 18px !important;
+  background: transparent !important;
+}
+
+html body.off-switch-method-page main .om-limits .om-limits__grid > article {
+  padding: 62px 24px 26px !important;
+  border: var(--om-brief-card-border) !important;
+  border-radius: var(--om-brief-card-radius) !important;
+  background: var(--om-brief-card-bg) !important;
+  box-shadow: var(--om-brief-card-shadow) !important;
+}
+
+body.off-switch-method-page .om-limits__grid > article > span {
+  top: 24px !important;
+  left: 24px !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  line-height: 1 !important;
+  letter-spacing: .08em !important;
+}
+
+body.off-switch-method-page .om-limits__grid > article > strong {
+  color: #173f31 !important;
+  font-family: Georgia, "Times New Roman", serif !important;
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+
+body.off-switch-method-page .om-limits__grid > article > p {
+  color: #536258 !important;
+  font-size: 16px !important;
+  line-height: 1.5 !important;
+}
+
+/* Three evidence levels: equal light cards on one baseline. */
+html body.off-switch-method-page main .om-measure .om-measure__grid[data-card-role="levels"] {
+  align-items: stretch !important;
+  gap: 18px !important;
+}
+
+html body.off-switch-method-page main .om-measure .om-measure__grid > article,
+html body.off-switch-method-page main .om-measure .om-measure__grid > article:nth-child(2),
+html body.off-switch-method-page main .om-measure .om-measure__grid > article:nth-child(3) {
+  min-height: 220px !important;
+  padding: 26px 28px !important;
+  border: var(--om-brief-card-border) !important;
+  border-radius: var(--om-brief-card-radius) !important;
+  background: var(--om-brief-card-bg) !important;
+  box-shadow: var(--om-brief-card-shadow) !important;
+  color: #173f31 !important;
+  transform: none !important;
+}
+
+body.off-switch-method-page .om-measure__grid > article::after {
+  display: none !important;
+}
+
+body.off-switch-method-page .om-measure__number,
+body.off-switch-method-page .om-measure__grid > article:nth-child(3) .om-measure__number {
+  color: #5b793f !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  letter-spacing: .08em !important;
+}
+
+body.off-switch-method-page .om-measure__grid strong {
+  color: #173f31 !important;
+  font-family: Georgia, "Times New Roman", serif !important;
+  font-size: 24px !important;
+  font-weight: 700 !important;
+}
+
+body.off-switch-method-page .om-measure__grid p {
+  color: #536258 !important;
+  opacity: 1 !important;
+}
+
+/* Online programme: restore the larger Ugis frame and use dark, legible statistic type. */
+html body.off-switch-method-page main .om-ukraine .om-ukraine__host {
+  top: 18% !important;
+  width: clamp(280px, 25vw, 340px) !important;
+  aspect-ratio: 4 / 3 !important;
+  border: 0 !important;
+  border-radius: 14px !important;
+  background: #d6d8d5 !important;
+  box-shadow: 0 18px 50px rgba(20, 45, 35, .18) !important;
+}
+
+body.off-switch-method-page .om-ukraine__host > img {
+  object-fit: cover !important;
+  object-position: 50% 24% !important;
+}
+
+html body.off-switch-method-page main .om-ukraine .om-ukraine__stats[data-card-role="evidence"] {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 14px !important;
+}
+
+html body.off-switch-method-page main .om-ukraine .om-ukraine__stats > article,
+html body.off-switch-method-page main .om-ukraine .om-ukraine__stats > article:nth-child(1),
+html body.off-switch-method-page main .om-ukraine .om-ukraine__stats > article:nth-child(2),
+html body.off-switch-method-page main .om-ukraine .om-ukraine__stats > article:nth-child(n + 3) {
+  grid-column: auto !important;
+  min-height: 170px !important;
+  padding: 24px !important;
+  border: var(--om-brief-card-border) !important;
+  border-radius: var(--om-brief-card-radius) !important;
+  background: var(--om-brief-card-bg) !important;
+  box-shadow: var(--om-brief-card-shadow) !important;
+  color: #173f31 !important;
+}
+
+body.off-switch-method-page .om-ukraine__stats > article strong,
+body.off-switch-method-page .om-ukraine__stats > article:first-child strong,
+body.off-switch-method-page .om-ukraine__stats > article:nth-child(2) strong,
+body.off-switch-method-page .om-ukraine__stats > article:nth-child(n + 3) strong {
+  color: #173f31 !important;
+}
+
+body.off-switch-method-page .om-ukraine__stats > article span {
+  color: #536258 !important;
+  opacity: 1 !important;
+}
+
+/* Proof cases: align labels, figures, qualifiers and titles across the full row. */
+html body.off-switch-method-page main .om-cases .om-cases__grid[data-card-role="evidence"] {
+  gap: 14px !important;
+}
+
+html body.off-switch-method-page main .om-cases .om-cases__grid[data-card-role="evidence"] > article,
+html body.off-switch-method-page main .om-cases .om-cases__grid[data-card-role="evidence"] > article:first-child,
+html body.off-switch-method-page main .om-cases .om-cases__grid[data-card-role="evidence"] > article:nth-child(n + 2) {
+  display: grid !important;
+  min-height: 420px !important;
+  grid-template-rows: 72px 44px 22px 76px 1fr !important;
+  align-content: start !important;
+  padding: 24px !important;
+  border: var(--om-brief-card-border) !important;
+  border-radius: var(--om-brief-card-radius) !important;
+  background: var(--om-brief-card-bg) !important;
+  box-shadow: var(--om-brief-card-shadow) !important;
+}
+
+body.off-switch-method-page .om-cases__grid article > span,
+body.off-switch-method-page .om-cases__grid article > strong,
+body.off-switch-method-page .om-cases__grid article > small,
+body.off-switch-method-page .om-cases__grid article > h3,
+body.off-switch-method-page .om-cases__grid article > p {
+  margin: 0 !important;
+}
+
+body.off-switch-method-page .om-cases__grid article > span {
+  align-self: start !important;
+  line-height: 1.3 !important;
+}
+
+body.off-switch-method-page .om-cases__grid article > strong,
+body.off-switch-method-page .om-cases__grid article:not(:first-child) > strong,
+body.off-switch-method-page .om-cases__grid article:first-child > strong {
+  align-self: center !important;
+  font-size: 32px !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+}
+
+body.off-switch-method-page .om-cases__grid article > small {
+  align-self: start !important;
+}
+
+body.off-switch-method-page .om-cases__grid article > h3 {
+  align-self: start !important;
+  font-size: 19px !important;
+  line-height: 1.25 !important;
+}
+
+body.off-switch-method-page .om-cases__grid article > p {
+  align-self: start !important;
+  font-size: 15px !important;
+  line-height: 1.5 !important;
+}
+
+/* Formats: reuse the established Levels Method product-card treatment and interaction. */
+html body.off-switch-method-page main .om-formats .om-format-doors {
+  gap: 28px !important;
+}
+
+html body.off-switch-method-page main .om-formats .om-format-door {
+  display: grid !important;
+  min-height: 560px !important;
+  grid-template-rows: 220px auto auto 1fr auto !important;
+  padding: 0 26px 28px !important;
+  overflow: hidden !important;
+  border: 1px solid rgba(83, 119, 67, .18) !important;
+  border-radius: 8px !important;
+  background: rgba(255, 255, 255, .9) !important;
+  box-shadow: 0 22px 64px rgba(35, 64, 45, .09) !important;
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease !important;
+}
+
+body.off-switch-method-page .om-format-door > figure {
+  order: 1 !important;
+  height: 220px !important;
+  margin: 0 -26px 22px !important;
+  overflow: hidden !important;
+}
+
+body.off-switch-method-page .om-format-door > figure img {
+  width: 112% !important;
+  max-width: none !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  transform: translateX(-7%) !important;
+}
+
+body.off-switch-method-page .om-format-door > span {
+  order: 2 !important;
+  margin: 0 !important;
+}
+
+body.off-switch-method-page .om-format-door > h3 {
+  order: 3 !important;
+  margin: 12px 0 0 !important;
+  font-size: 28px !important;
+  line-height: 1.12 !important;
+}
+
+body.off-switch-method-page .om-format-door > p {
+  order: 4 !important;
+  margin: 14px 0 0 !important;
+}
+
+body.off-switch-method-page .om-format-door > small {
+  order: 5 !important;
+  margin-top: 20px !important;
+  padding-top: 18px !important;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  html body.off-switch-method-page main .om-formats .om-format-door:hover,
+  html body.off-switch-method-page main .om-formats .om-format-door:focus,
+  html body.off-switch-method-page main .om-formats .om-format-door:focus-visible {
+    transform: translate(6px, -8px) !important;
+    border-color: rgba(83, 119, 67, .5) !important;
+    box-shadow: inset 4px 0 0 #547646, inset 0 4px 0 #d7bd67, 0 24px 58px rgba(35, 64, 45, .18) !important;
+  }
+}
+
+@media (max-width: 1120px) {
+  html body.off-switch-method-page main .om-ukraine .om-ukraine__stats[data-card-role="evidence"] {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 900px) {
+  html body.off-switch-method-page main .om-dog .om-dog__composition {
+    grid-template-columns: 1fr !important;
+  }
+
+  body.off-switch-method-page .om-dog__story[data-card-role="sequence"] {
+    height: auto !important;
+    grid-template-rows: none !important;
+  }
+}
+
+@media (max-width: 680px) {
+  html body.off-switch-method-page main .om-section,
+  html body.off-switch-method-page main .om-formats {
+    padding-block: 56px !important;
+  }
+
+  body.off-switch-method-page .om-section-head {
+    margin-bottom: 28px !important;
+  }
+
+  html body.off-switch-method-page main .om-tool .om-tool__notes > article,
+  html body.off-switch-method-page main .om-sequence .om-depth > article,
+  html body.off-switch-method-page main .om-ukraine .om-ukraine__stats > article,
+  html body.off-switch-method-page main .om-ukraine .om-ukraine__stats > article:nth-child(n) {
+    min-height: 0 !important;
+  }
+
+  html body.off-switch-method-page main .om-ukraine .om-ukraine__host {
+    width: 210px !important;
+  }
+
+  html body.off-switch-method-page main .om-cases .om-cases__grid[data-card-role="evidence"] > article,
+  html body.off-switch-method-page main .om-cases .om-cases__grid[data-card-role="evidence"] > article:nth-child(n) {
+    min-height: 0 !important;
+    grid-template-rows: auto !important;
+    gap: 10px !important;
+  }
+
+  html body.off-switch-method-page main .om-formats .om-format-door {
+    min-height: 0 !important;
+    grid-template-rows: 200px auto auto auto auto !important;
+  }
+
+  body.off-switch-method-page .om-format-door > figure {
+    height: 200px !important;
+  }
+}
+
+/* Responsive label placement: preserve the Hero copy and keep every callout attached to its figure. */
+@media (min-width: 1101px) and (max-width: 1350px) {
+  body.off-switch-method-page .os-character-intro--hero [data-character="anxiety"] {
+    --y: 39%;
+    --stem: 38px;
+  }
+}
+
+@media (max-width: 1100px) {
+  body.off-switch-method-page .os-character-intro--hero [data-character="anxiety"] {
+    transform: translate(-50%, -100%) !important;
+  }
+
+  body.off-switch-method-page .os-character-intro--hero [data-character="anxiety"]::after {
+    left: 50% !important;
+  }
+}
+
+@media (max-width: 900px) {
+  body.off-switch-method-page .os-character-intro--hero [data-character="anxiety"] { --y: 34%; --stem: 25px; }
+  body.off-switch-method-page .os-character-intro--hero [data-character="fear"] { --y: 43%; --stem: 9px; }
+  body.off-switch-method-page .os-character-intro--hero [data-character="guilt"] { --y: 33%; --stem: 25px; }
+  body.off-switch-method-page .os-character-intro--hero [data-character="anger"] { --y: 43%; --stem: 9px; }
+  body.off-switch-method-page .os-character-intro--hero [data-character="resentment"] { --y: 36%; --stem: 22px; }
+}
+
+@media (max-width: 680px) {
+  html body.off-switch-method-page main .om-hero .om-hero__inner {
+    display: flex !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    flex-direction: column !important;
+  }
+
+  html body.off-switch-method-page main .om-hero .om-hero__copy {
+    order: 1 !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    margin-inline: 0 !important;
+  }
+
+  html body.off-switch-method-page main .om-hero .om-hero__visual {
+    order: 2 !important;
+    width: calc(100vw - 4px) !important;
+    min-width: 0 !important;
+    max-width: calc(100vw - 4px) !important;
+    height: auto !important;
+    aspect-ratio: 1672 / 941 !important;
+    margin: 28px calc(50% - 50vw + 2px) 0 !important;
+  }
+}
+
+/* Resolve high-specificity legacy declarations left by earlier Method iterations. */
+html body.off-switch-method-page main .om-limits .om-limits__grid[data-card-role="signals"] > article,
+html body.off-switch-method-page main .om-limits .om-limits__grid[data-card-role="signals"] > article:nth-child(1),
+html body.off-switch-method-page main .om-limits .om-limits__grid[data-card-role="signals"] > article:nth-child(2),
+html body.off-switch-method-page main .om-limits .om-limits__grid[data-card-role="signals"] > article:nth-child(3) {
+  min-height: 0 !important;
+  padding: 64px 22px 24px !important;
+  border: 1px solid rgba(21, 59, 66, .16) !important;
+  border-top: 4px solid #2f7882 !important;
+  border-radius: 6px !important;
+  background: linear-gradient(160deg, rgba(47, 120, 130, .08) 0, #fff 42%) !important;
+  box-shadow: 0 14px 34px rgba(21, 59, 66, .07) !important;
+}
+
+html body.off-switch-method-page main .om-limits .om-limits__grid[data-card-role="signals"] > article > p,
+html body.off-switch-method-page main .om-limits .om-limits__grid[data-card-role="signals"] > article:nth-child(3) > p {
+  margin: 0 !important;
+  color: #52665a !important;
+  font-family: Arial, sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  line-height: 1.5 !important;
+}
+
+html body.off-switch-method-page main .om-measure .om-measure__grid[data-card-role="levels"] > article,
+html body.off-switch-method-page main .om-measure .om-measure__grid[data-card-role="levels"] > article:nth-child(1),
+html body.off-switch-method-page main .om-measure .om-measure__grid[data-card-role="levels"] > article:nth-child(2) {
+  border: 1px solid rgba(255, 255, 255, .28) !important;
+  border-radius: 6px !important;
+  background: rgba(255, 255, 255, .94) !important;
+  color: #173f31 !important;
+}
+
+html body.off-switch-method-page main .om-measure .om-measure__grid[data-card-role="levels"] > article:nth-child(3) {
+  border: 1px solid rgba(216, 240, 138, .7) !important;
+  border-radius: 6px !important;
+  background: #d8f08a !important;
+  color: #173f31 !important;
+}
+
+html body.off-switch-method-page main .om-measure .om-measure__grid[data-card-role="levels"] > article strong,
+html body.off-switch-method-page main .om-measure .om-measure__grid[data-card-role="levels"] > article p {
+  color: #173f31 !important;
+}
+
+html body.off-switch-method-page main .om-dog .om-dog__story[data-card-role="sequence"] {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  grid-template-rows: repeat(3, minmax(0, 1fr)) !important;
+  gap: 10px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+
+html body.off-switch-method-page main .om-dog .om-dog__story[data-card-role="sequence"] > article,
+html body.off-switch-method-page main .om-dog .om-dog__story[data-card-role="sequence"] > article:nth-child(1),
+html body.off-switch-method-page main .om-dog .om-dog__story[data-card-role="sequence"] > article:nth-child(2),
+html body.off-switch-method-page main .om-dog .om-dog__story[data-card-role="sequence"] > article:nth-child(3) {
+  min-height: 0 !important;
+  padding: 18px 20px !important;
+  border: 1px solid rgba(21, 59, 66, .20) !important;
+  border-radius: 6px !important;
+  background: #f7f9f8 !important;
+  box-shadow: none !important;
+  color: #173f31 !important;
+}
+
+html body.off-switch-method-page main .om-map .om-ratio[data-card-role="comparison"] > div,
+html body.off-switch-method-page main .om-map .om-ratio[data-card-role="comparison"] > .om-ratio__broad,
+html body.off-switch-method-page main .om-map .om-ratio[data-card-role="comparison"] > .om-ratio__precise {
+  min-height: 0 !important;
+  padding: 22px !important;
+  border: 1px solid rgba(21, 59, 66, .20) !important;
+  border-radius: 6px !important;
+  background: #fffef8 !important;
+  box-shadow: none !important;
+  color: #173f31 !important;
+}
+
+html body.off-switch-method-page main .om-map .om-ratio[data-card-role="comparison"] > div > span,
+html body.off-switch-method-page main .om-map .om-ratio[data-card-role="comparison"] > div > p {
+  color: #173f31 !important;
+}
+
+html body.off-switch-method-page main .om-map .om-ratio[data-card-role="comparison"] > div > span {
+  color: #2f7882 !important;
+}
+
+html body.off-switch-method-page main .om-sequence .om-depth[data-card-role="comparison"] {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 10px !important;
+  margin-top: 28px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+
+html body.off-switch-method-page main .om-sequence .om-depth[data-card-role="comparison"] > article,
+html body.off-switch-method-page main .om-sequence .om-depth[data-card-role="comparison"] > article:first-child,
+html body.off-switch-method-page main .om-sequence .om-depth[data-card-role="comparison"] > article:last-child {
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 24px !important;
+  border: 1px solid rgba(21, 59, 66, .20) !important;
+  border-radius: 6px !important;
+  background: #f7f9f8 !important;
+  box-shadow: none !important;
+  color: #173f31 !important;
+}
+
+html body.off-switch-method-page main .om-sequence .om-depth[data-card-role="comparison"] > article > strong,
+html body.off-switch-method-page main .om-sequence .om-depth[data-card-role="comparison"] > article > p {
+  color: #173f31 !important;
+}
+
+@media (max-width: 900px) {
+  html body.off-switch-method-page main .om-dog .om-dog__story[data-card-role="sequence"] {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    grid-template-rows: auto !important;
+  }
+}
+
+@media (max-width: 680px) {
+  html body.off-switch-method-page main .om-dog .om-dog__story[data-card-role="sequence"],
+  html body.off-switch-method-page main .om-sequence .om-depth[data-card-role="comparison"] {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto !important;
+  }
+}
+
+/* 2026-07-16: final implementation of the approved Method-only brief. */
+body.off-switch-method-page main .om-section:not(.om-formats) {
+  padding-block: clamp(76px, 7.5vw, 112px) !important;
+}
+
+body.off-switch-method-page main .om-section-head {
+  margin-bottom: clamp(30px, 3.4vw, 48px) !important;
+}
+
+body.off-switch-method-page main .om-section-head h2 {
+  max-width: 920px;
+  text-wrap: balance;
+}
+
+/* Hero: one editorial canvas, not a media card. */
+body.off-switch-method-page .om-hero__inner {
+  min-height: 680px !important;
+  padding-block: 58px !important;
+}
+
+body.off-switch-method-page .om-hero__copy {
+  width: min(48%, 620px) !important;
+}
+
+body.off-switch-method-page .om-hero h1 {
+  max-width: 610px !important;
+  font-size: clamp(46px, 3.75vw, 56px) !important;
+  line-height: 1.02 !important;
+  text-wrap: balance;
+}
+
+body.off-switch-method-page .om-hero__visual > img {
+  width: 96% !important;
+  max-width: none !important;
+  object-position: 100% 50% !important;
+  transform: translateX(1.5%);
+}
+
+body.off-switch-method-page .om-hero__visual::before {
+  background: linear-gradient(90deg, #f2ebe4 0%, rgba(242, 235, 228, .985) 25%, rgba(242, 235, 228, .78) 36%, rgba(242, 235, 228, .18) 51%, transparent 62%) !important;
+}
+
+body.off-switch-method-page .om-hero .os-character-label {
+  padding: 6px 9px !important;
+  border-radius: 4px !important;
+  background: rgba(255, 253, 247, .94) !important;
+  box-shadow: 0 5px 15px rgba(40, 49, 35, .10) !important;
+  font-size: 13px !important;
+}
+
+/* Definition strip: short eyebrow plus a readable two-to-three-line definition. */
+body.off-switch-method-page .om-thesis__inner {
+  display: grid !important;
+  grid-template-columns: minmax(170px, .28fr) minmax(0, 1.72fr) !important;
+  gap: 34px !important;
+  align-items: start !important;
+  padding-block: 34px !important;
+}
+
+body.off-switch-method-page .om-thesis__inner p {
+  margin: 2px 0 0 !important;
+  font-size: 15px !important;
+  line-height: 1.4 !important;
+}
+
+body.off-switch-method-page .om-thesis__inner strong {
+  max-width: 1040px !important;
+  font-size: clamp(19px, 1.55vw, 23px) !important;
+  line-height: 1.45 !important;
+}
+
+/* Every story image below the hero keeps the original 16:9 frame. */
+body.off-switch-method-page .om-scope__media,
+body.off-switch-method-page .om-tool__media,
+body.off-switch-method-page .om-mechanism__media,
+body.off-switch-method-page .om-dog__media,
+body.off-switch-method-page .om-map__media,
+body.off-switch-method-page .om-depth__visual,
+body.off-switch-method-page .om-ukraine__stage,
+body.off-switch-method-page .om-ukraine__network {
+  min-height: 0 !important;
+  aspect-ratio: 16 / 9 !important;
+}
+
+body.off-switch-method-page .om-scope__media > img,
+body.off-switch-method-page .om-tool__media > img,
+body.off-switch-method-page .om-mechanism__media > img,
+body.off-switch-method-page .om-dog__media > img,
+body.off-switch-method-page .om-map__media > img,
+body.off-switch-method-page .om-depth__visual > img,
+body.off-switch-method-page .om-ukraine__network > img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  transform: none !important;
+}
+
+/* Scope: definitions beside the image; four recognizable life examples below. */
+body.off-switch-method-page .om-scope__composition {
+  grid-template-columns: minmax(0, 1.36fr) minmax(310px, .64fr) !important;
+  gap: 26px !important;
+  align-items: stretch !important;
+}
+
+body.off-switch-method-page .om-scope__media {
+  align-self: center;
+  margin: 0 !important;
+}
+
+body.off-switch-method-page .om-concepts {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  gap: 10px !important;
+  margin: 0 !important;
+}
+
+body.off-switch-method-page .om-concepts > article {
+  position: relative;
+  padding: 44px 20px 18px !important;
+  border: 1px solid rgba(21, 59, 66, .20) !important;
+  border-radius: 6px !important;
+  background: #f7f9f8 !important;
+  box-shadow: none !important;
+}
+
+body.off-switch-method-page .om-concepts > article > span {
+  top: 17px !important;
+  left: 20px !important;
+  color: #2f7882 !important;
+  font-size: 12px !important;
+}
+
+body.off-switch-method-page .om-concepts strong {
+  font-size: 20px !important;
+}
+
+body.off-switch-method-page .om-concepts p {
+  font-size: 15px !important;
+  line-height: 1.5 !important;
+}
+
+body.off-switch-method-page .om-scope__groups {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 10px !important;
+  margin-top: 30px !important;
+}
+
+body.off-switch-method-page .om-scope__groups > article {
+  --problem-accent: #2f7882;
+  position: relative;
+  overflow: hidden;
+  padding: 64px 20px 22px !important;
+  border: 1px solid rgba(21, 59, 66, .16) !important;
+  border-top: 4px solid var(--problem-accent) !important;
+  border-radius: 6px !important;
+  background: linear-gradient(160deg, color-mix(in srgb, var(--problem-accent) 10%, #fff) 0, #fff 42%) !important;
+  box-shadow: 0 14px 34px rgba(21, 59, 66, .07) !important;
+}
+
+body.off-switch-method-page .om-scope__groups > article:nth-child(1) { --problem-accent: #9a5f52; }
+body.off-switch-method-page .om-scope__groups > article:nth-child(2) { --problem-accent: #2f7882; }
+body.off-switch-method-page .om-scope__groups > article:nth-child(3) { --problem-accent: #b2762e; }
+body.off-switch-method-page .om-scope__groups > article:nth-child(4) { --problem-accent: #6c5a87; }
+
+body.off-switch-method-page .om-scope__groups > article > span {
+  position: absolute;
+  top: 18px;
+  left: 20px;
+  color: var(--problem-accent);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 28px;
+  line-height: 1;
+}
+
+body.off-switch-method-page .om-scope__groups strong {
+  min-height: 2.45em;
+  font-size: 20px !important;
+}
+
+body.off-switch-method-page .om-scope__groups p {
+  font-size: 15px !important;
+  line-height: 1.5 !important;
+}
+
+body.off-switch-method-page .om-scope__result {
+  max-width: 1060px !important;
+  margin: 26px 0 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  font-size: 17px !important;
+}
+
+/* Technique: main approved image plus a compact explanation. */
+body.off-switch-method-page .om-tool__layout {
+  grid-template-columns: minmax(0, 1.34fr) minmax(320px, .66fr) !important;
+  gap: 34px !important;
+  align-items: center !important;
+}
+
+body.off-switch-method-page .om-tool__principles {
+  gap: 12px !important;
+  margin-top: 22px !important;
+}
+
+body.off-switch-method-page .om-tool__principles p {
+  padding: 0 !important;
+  border: 0 !important;
+}
+
+body.off-switch-method-page .om-tool__principles p::before,
+body.off-switch-method-page .om-tool__principles p::after {
+  display: none !important;
+}
+
+body.off-switch-method-page .om-tool__notes > article {
+  padding: 22px 24px !important;
+  border: 1px solid rgba(21, 59, 66, .20) !important;
+  border-radius: 6px !important;
+  background: #f7f9f8 !important;
+}
+
+/* Signal: standard image at left and four independent Self-style cards at right. */
+html body.off-switch-method-page main .om-mechanism .om-chain[data-card-role="sequence"] {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.25fr) repeat(2, minmax(0, .5fr)) !important;
+  grid-template-rows: repeat(2, minmax(0, 1fr)) !important;
+  gap: 10px !important;
+  align-items: stretch !important;
+}
+
+html body.off-switch-method-page main .om-mechanism .om-chain[data-card-role="sequence"] > figure.om-mechanism__media {
+  grid-column: 1 !important;
+  grid-row: 1 / span 2 !important;
+  width: 100% !important;
+  height: auto !important;
+  margin: 0 !important;
+  align-self: center !important;
+  aspect-ratio: 16 / 9 !important;
+}
+
+html body.off-switch-method-page main .om-mechanism .om-chain[data-card-role="sequence"] > figure.om-mechanism__media > img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+}
+
+html body.off-switch-method-page main .om-mechanism .om-chain[data-card-role="sequence"] > article,
+html body.off-switch-method-page main .om-mechanism .om-chain[data-card-role="sequence"] > article:nth-of-type(1),
+html body.off-switch-method-page main .om-mechanism .om-chain[data-card-role="sequence"] > article:nth-of-type(2),
+html body.off-switch-method-page main .om-mechanism .om-chain[data-card-role="sequence"] > article:nth-of-type(3),
+html body.off-switch-method-page main .om-mechanism .om-chain[data-card-role="sequence"] > article:nth-of-type(4),
+html body.off-switch-method-page main .om-mechanism .om-chain[data-card-role="sequence"] > article.om-chain__stop {
+  grid-column: auto !important;
+  grid-row: auto !important;
+  min-height: 0 !important;
+  padding: 19px 20px !important;
+  border: 1px solid rgba(21, 59, 66, .20) !important;
+  border-radius: 6px !important;
+  background: #f7f9f8 !important;
+  box-shadow: none !important;
+}
+
+html body.off-switch-method-page main .om-mechanism .om-chain[data-card-role="sequence"] > article.om-chain__stop {
+  background: #e7f2c3 !important;
+}
+
+html body.off-switch-method-page main .om-mechanism .om-chain[data-card-role="sequence"] > article > span {
+  margin-bottom: 12px !important;
+  font-size: 12px !important;
+}
+
+html body.off-switch-method-page main .om-mechanism .om-chain[data-card-role="sequence"] > article > strong {
+  font-size: 18px !important;
+  line-height: 1.22 !important;
+}
+
+html body.off-switch-method-page main .om-mechanism .om-chain[data-card-role="sequence"] > article > p {
+  margin-top: 7px !important;
+  font-size: 15px !important;
+  line-height: 1.42 !important;
+}
+
+body.off-switch-method-page .om-interrupt {
+  max-width: 100% !important;
+  margin: 24px 0 0 !important;
+  padding: 24px 28px !important;
+  border: 1px solid rgba(21, 59, 66, .18) !important;
+  border-radius: 6px !important;
+  background: #edf5d2 !important;
+}
+
+body.off-switch-method-page .om-interrupt > span {
+  display: none !important;
+}
+
+body.off-switch-method-page .om-interrupt p {
+  max-width: 1040px;
+  margin: 0 !important;
+  color: #284b33 !important;
+  font-size: 18px !important;
+  line-height: 1.55 !important;
+}
+
+/* Three linked episodes: image and card column share one visual height. */
+body.off-switch-method-page .om-dog__composition {
+  grid-template-columns: minmax(0, 1.34fr) minmax(330px, .66fr) !important;
+  gap: 26px !important;
+  align-items: stretch !important;
+}
+
+body.off-switch-method-page .om-dog__story[data-card-role="sequence"] {
+  grid-template-columns: 1fr !important;
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  gap: 10px !important;
+}
+
+body.off-switch-method-page .om-dog__story > article {
+  padding: 18px 20px !important;
+  border: 1px solid rgba(21, 59, 66, .20) !important;
+  border-radius: 6px !important;
+  background: #f7f9f8 !important;
+}
+
+body.off-switch-method-page .om-dog__story > article > span {
+  margin-bottom: 9px !important;
+  font-size: 12px !important;
+}
+
+body.off-switch-method-page .om-dog__story strong {
+  font-size: 18px !important;
+}
+
+body.off-switch-method-page .om-dog__story p {
+  font-size: 15px !important;
+  line-height: 1.42 !important;
+}
+
+/* Whole chain: the unchanged full scene and two diagnostic cards. */
+body.off-switch-method-page .om-map__layout {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.3fr) minmax(330px, .7fr) !important;
+  gap: 26px !important;
+  align-items: stretch !important;
+}
+
+body.off-switch-method-page .om-map__copy {
+  display: grid !important;
+  grid-template-rows: auto 1fr;
+  gap: 16px !important;
+}
+
+body.off-switch-method-page .om-ratio {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 10px !important;
+}
+
+body.off-switch-method-page .om-ratio > div {
+  display: block !important;
+  min-height: 0 !important;
+  padding: 22px !important;
+  border: 1px solid rgba(21, 59, 66, .20) !important;
+  border-radius: 6px !important;
+  background: #fffef8 !important;
+  color: #173f31 !important;
+  box-shadow: none !important;
+}
+
+body.off-switch-method-page .om-ratio > div::before,
+body.off-switch-method-page .om-ratio > div::after {
+  display: none !important;
+}
+
+body.off-switch-method-page .om-ratio span {
+  display: block;
+  margin: 0 0 10px !important;
+  color: #2f7882 !important;
+  font-size: 13px !important;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+
+body.off-switch-method-page .om-ratio p,
+body.off-switch-method-page .om-map__note {
+  margin: 0 !important;
+  font-size: 16px !important;
+  line-height: 1.5 !important;
+}
+
+body.off-switch-method-page .om-map__note {
+  align-self: end;
+  padding: 0 !important;
+  border: 0 !important;
+}
+
+/* Pattern: explanation and new bypass scene form one two-column composition. */
+body.off-switch-method-page .om-sequence__composition {
+  display: grid;
+  grid-template-columns: minmax(300px, .68fr) minmax(0, 1.32fr);
+  gap: 34px;
+  align-items: center;
+}
+
+body.off-switch-method-page .om-sequence__intro {
+  max-width: 520px !important;
+  margin: 0 !important;
+  font-size: 18px !important;
+  line-height: 1.58 !important;
+}
+
+body.off-switch-method-page .om-depth__visual {
+  width: 100% !important;
+  height: auto !important;
+  margin: 0 !important;
+}
+
+body.off-switch-method-page .om-depth[data-card-role="comparison"] {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 10px !important;
+  margin-top: 28px !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+
+body.off-switch-method-page .om-depth > article {
+  padding: 24px !important;
+  border: 1px solid rgba(21, 59, 66, .20) !important;
+  border-radius: 6px !important;
+  background: #f7f9f8 !important;
+}
+
+body.off-switch-method-page .om-depth > article::before,
+body.off-switch-method-page .om-depth > article::after {
+  display: none !important;
+}
+
+body.off-switch-method-page .om-depth strong {
+  margin: 0 !important;
+  color: #173f31 !important;
+  font-size: 23px !important;
+  line-height: 1.2 !important;
+}
+
+body.off-switch-method-page .om-depth p {
+  margin: 10px 0 0 !important;
+  color: #52665a !important;
+  font-size: 16px !important;
+  line-height: 1.5 !important;
+}
+
+/* Self problem-card geometry for the three method outcomes. */
+body.off-switch-method-page .om-limits__grid > article {
+  min-height: 0 !important;
+  padding: 64px 22px 24px !important;
+  border: 1px solid rgba(21, 59, 66, .16) !important;
+  border-top: 4px solid #2f7882 !important;
+  border-radius: 6px !important;
+  background: linear-gradient(160deg, rgba(47, 120, 130, .08) 0, #fff 42%) !important;
+  box-shadow: 0 14px 34px rgba(21, 59, 66, .07) !important;
+}
+
+body.off-switch-method-page .om-limits__grid > article > span {
+  top: 20px !important;
+  left: 22px !important;
+  color: #2f7882 !important;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 28px !important;
+}
+
+body.off-switch-method-page .om-limits__grid > article > strong {
+  font-family: inherit !important;
+  font-size: 23px !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+}
+
+/* Result levels: two light Self cards, one calm accent, explicit arrows. */
+body.off-switch-method-page .om-measure__grid > article,
+body.off-switch-method-page .om-measure__grid > article:nth-child(2) {
+  border: 1px solid rgba(255, 255, 255, .28) !important;
+  border-radius: 6px !important;
+  background: rgba(255, 255, 255, .94) !important;
+  color: #173f31 !important;
+}
+
+body.off-switch-method-page .om-measure__grid > article:nth-child(3) {
+  border: 1px solid rgba(216, 240, 138, .7) !important;
+  border-radius: 6px !important;
+  background: #d8f08a !important;
+  color: #173f31 !important;
+}
+
+body.off-switch-method-page .om-measure__number,
+body.off-switch-method-page .om-measure__grid > article:last-child .om-measure__number,
+body.off-switch-method-page .om-measure__grid > article:nth-child(3) .om-measure__number {
+  color: #4c7438 !important;
+}
+
+body.off-switch-method-page .om-measure__grid strong,
+body.off-switch-method-page .om-measure__grid > article:last-child strong,
+body.off-switch-method-page .om-measure__grid > article p {
+  color: #173f31 !important;
+}
+
+body.off-switch-method-page .om-measure__grid > article p {
+  opacity: .82;
+}
+
+/* Evidence scene remains uncropped; real Uģis fills the actual central screen. */
+body.off-switch-method-page .om-ukraine__visual {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 36px 0 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body.off-switch-method-page .om-ukraine__stage {
+  position: relative !important;
+  width: 100% !important;
+  height: auto !important;
+  overflow: hidden !important;
+}
+
+body.off-switch-method-page .om-ukraine__network {
+  position: absolute !important;
+  inset: 0 !important;
+  margin: 0 !important;
+  border-radius: 6px !important;
+}
+
+body.off-switch-method-page .om-ukraine__network::after {
+  display: none !important;
+}
+
+html body.off-switch-method-page main .om-ukraine .om-ukraine__host {
+  position: absolute !important;
+  z-index: 3 !important;
+  top: 26.7% !important;
+  right: auto !important;
+  bottom: auto !important;
+  left: 50% !important;
+  width: 12.7% !important;
+  min-width: 0 !important;
+  height: auto !important;
+  aspect-ratio: 1.2 / 1 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  border: 0 !important;
+  border-radius: 18% / 20% !important;
+  background: #d6d8d5 !important;
+  box-shadow: none !important;
+  transform: translateX(-50%) !important;
+}
+
+body.off-switch-method-page .om-ukraine__host > img {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: 50% 28% !important;
+}
+
+body.off-switch-method-page .om-ukraine__host figcaption {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+}
+
+body.off-switch-method-page .om-ukraine__stats[data-card-role="evidence"] {
+  grid-template-columns: 1.2fr 1fr 1fr 1fr !important;
+  gap: 10px !important;
+  margin: 16px 0 0 !important;
+}
+
+body.off-switch-method-page .om-ukraine__stats > article,
+body.off-switch-method-page .om-ukraine__stats > article:first-child,
+body.off-switch-method-page .om-ukraine__stats > article:nth-child(1),
+body.off-switch-method-page .om-ukraine__stats > article:nth-child(2),
+body.off-switch-method-page .om-ukraine__stats > article:nth-child(n + 3) {
+  grid-column: auto !important;
+  min-height: 156px !important;
+  padding: 24px !important;
+  border: 1px solid rgba(21, 59, 66, .16) !important;
+  border-radius: 6px !important;
+  box-shadow: none !important;
+}
+
+body.off-switch-method-page .om-ukraine__stats > article:nth-child(1) strong {
+  font-size: clamp(46px, 4.5vw, 64px) !important;
+}
+
+body.off-switch-method-page .om-ukraine__stats > article:nth-child(2) strong {
+  font-size: clamp(38px, 3.5vw, 52px) !important;
+}
+
+body.off-switch-method-page .om-ukraine__stats > article:nth-child(3) strong {
+  font-size: clamp(31px, 2.5vw, 40px) !important;
+}
+
+body.off-switch-method-page .om-ukraine__stats > article:nth-child(4) strong {
+  font-size: 24px !important;
+  line-height: 1.15 !important;
+}
+
+/* Four equal proof cards; no single oversized case. */
+html body.off-switch-method-page main .om-cases .om-cases__grid[data-card-role="evidence"] {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  grid-template-rows: 1fr !important;
+  gap: 10px !important;
+}
+
+html body.off-switch-method-page main .om-cases .om-cases__grid[data-card-role="evidence"] > article,
+html body.off-switch-method-page main .om-cases .om-cases__grid[data-card-role="evidence"] > article:first-child,
+html body.off-switch-method-page main .om-cases .om-cases__grid[data-card-role="evidence"] > article:nth-child(2),
+html body.off-switch-method-page main .om-cases .om-cases__grid[data-card-role="evidence"] > article:nth-child(3),
+html body.off-switch-method-page main .om-cases .om-cases__grid[data-card-role="evidence"] > article:nth-child(4) {
+  grid-column: auto !important;
+  grid-row: auto !important;
+  display: flex !important;
+  min-height: 100% !important;
+  flex-direction: column;
+  padding: 22px !important;
+  border: 1px solid rgba(21, 59, 66, .16) !important;
+  border-radius: 6px !important;
+  background: #f7f9f8 !important;
+  box-shadow: none !important;
+}
+
+body.off-switch-method-page .om-cases__grid article > strong,
+body.off-switch-method-page .om-cases__grid article:not(:first-child) > strong,
+body.off-switch-method-page .om-cases__grid article:first-child > strong {
+  margin-top: 18px !important;
+  font-size: 34px !important;
+}
+
+body.off-switch-method-page .om-cases__grid h3 {
+  margin-top: 18px !important;
+  font-size: 20px !important;
+}
+
+body.off-switch-method-page .om-cases__grid p {
+  margin-top: 10px !important;
+  font-size: 15px !important;
+  line-height: 1.5 !important;
+}
+
+@media (max-width: 1120px) {
+  body.off-switch-method-page .om-hero__copy {
+    width: 55% !important;
+  }
+
+  body.off-switch-method-page .om-hero h1 {
+    font-size: 45px !important;
+  }
+
+  body.off-switch-method-page .om-scope__composition,
+  body.off-switch-method-page .om-tool__layout,
+  body.off-switch-method-page .om-dog__composition,
+  body.off-switch-method-page .om-map__layout {
+    grid-template-columns: minmax(0, 1.12fr) minmax(290px, .88fr) !important;
+  }
+
+  body.off-switch-method-page .om-scope__groups,
+  html body.off-switch-method-page main .om-cases .om-cases__grid[data-card-role="evidence"] {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    grid-template-rows: auto !important;
+  }
+
+  body.off-switch-method-page .om-ukraine__stats[data-card-role="evidence"] {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 900px) {
+  body.off-switch-method-page .om-hero__copy {
+    width: 100% !important;
+  }
+
+  body.off-switch-method-page .om-hero__visual > img {
+    width: 100% !important;
+    transform: none;
+  }
+
+  body.off-switch-method-page .om-thesis__inner {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  body.off-switch-method-page .om-scope__composition,
+  body.off-switch-method-page .om-tool__layout,
+  body.off-switch-method-page .om-dog__composition,
+  body.off-switch-method-page .om-map__layout,
+  body.off-switch-method-page .om-sequence__composition {
+    grid-template-columns: 1fr !important;
+  }
+
+  body.off-switch-method-page .om-concepts,
+  body.off-switch-method-page .om-dog__story[data-card-role="sequence"] {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    grid-template-rows: auto !important;
+  }
+
+  html body.off-switch-method-page main .om-mechanism .om-chain[data-card-role="sequence"] {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    grid-template-rows: auto !important;
+  }
+
+  html body.off-switch-method-page main .om-mechanism .om-chain[data-card-role="sequence"] > figure.om-mechanism__media {
+    grid-column: 1 / -1 !important;
+    grid-row: auto !important;
+  }
+
+  body.off-switch-method-page .om-limits__grid[data-card-role="signals"],
+  body.off-switch-method-page .om-measure__grid[data-card-role="levels"] {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 680px) {
+  body.off-switch-method-page main .om-section:not(.om-formats) {
+    padding-block: 64px !important;
+  }
+
+  body.off-switch-method-page .om-hero h1 {
+    font-size: clamp(34px, 9.7vw, 43px) !important;
+  }
+
+  body.off-switch-method-page .om-hero .os-character-label {
+    padding: 4px 6px !important;
+    font-size: 10px !important;
+  }
+
+  body.off-switch-method-page .om-scope__groups,
+  body.off-switch-method-page .om-concepts,
+  body.off-switch-method-page .om-dog__story[data-card-role="sequence"],
+  body.off-switch-method-page .om-limits__grid[data-card-role="signals"],
+  body.off-switch-method-page .om-measure__grid[data-card-role="levels"],
+  body.off-switch-method-page .om-depth[data-card-role="comparison"],
+  body.off-switch-method-page .om-ukraine__stats[data-card-role="evidence"],
+  html body.off-switch-method-page main .om-cases .om-cases__grid[data-card-role="evidence"] {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto !important;
+  }
+
+  html body.off-switch-method-page main .om-mechanism .om-chain[data-card-role="sequence"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  html body.off-switch-method-page main .om-mechanism .om-chain[data-card-role="sequence"] > figure.om-mechanism__media,
+  html body.off-switch-method-page main .om-mechanism .om-chain[data-card-role="sequence"] > article {
+    grid-column: 1 !important;
+    grid-row: auto !important;
+  }
+
+  body.off-switch-method-page .om-scope__groups strong {
+    min-height: 0;
+  }
+
+  body.off-switch-method-page .om-interrupt {
+    padding: 20px !important;
+  }
+
+  body.off-switch-method-page .om-measure__grid > article:not(:last-child)::after {
+    content: "↓" !important;
+    top: auto !important;
+    right: 50% !important;
+    bottom: -29px !important;
+    transform: translateX(50%) !important;
+  }
+
+  body.off-switch-method-page .om-ukraine__stats > article,
+  body.off-switch-method-page .om-ukraine__stats > article:first-child,
+  body.off-switch-method-page .om-ukraine__stats > article:nth-child(1),
+  body.off-switch-method-page .om-ukraine__stats > article:nth-child(2),
+  body.off-switch-method-page .om-ukraine__stats > article:nth-child(n + 3) {
+    min-height: 0 !important;
+  }
+
+  html body.off-switch-method-page main .om-ukraine .om-ukraine__host {
+    width: 12.7% !important;
+  }
+}
+
+@media (max-width: 430px) {
+  body.off-switch-method-page .om-hero h1 {
+    font-size: 32px !important;
+  }
+
+  body.off-switch-method-page .om-section h2,
+  body.off-switch-method-page .om-formats h2 {
+    font-size: 26px !important;
+    line-height: 1.08 !important;
+  }
+}
+
+/* EOF priority fixes for legacy selectors with matching specificity. */
+html body.off-switch-method-page main .om-measure .om-measure__grid[data-card-role="levels"] > article,
+html body.off-switch-method-page main .om-measure .om-measure__grid[data-card-role="levels"] > article:nth-child(2),
+html body.off-switch-method-page main .om-measure .om-measure__grid[data-card-role="levels"] > article:nth-child(3) {
+  top: auto !important;
+  min-height: 220px !important;
+  padding: 26px 28px !important;
+  border: 1px solid rgba(21, 59, 66, .16) !important;
+  border-radius: 3px !important;
+  background: #fffef8 !important;
+  box-shadow: 0 18px 46px rgba(60, 88, 38, .09) !important;
+  color: #173f31 !important;
+  transform: none !important;
+}
+
+html body.off-switch-method-page main .om-measure .om-measure__grid[data-card-role="levels"] > article::after {
+  display: none !important;
+  content: none !important;
+}
+
+html body.off-switch-method-page main .om-cases .om-cases__grid[data-card-role="evidence"] > article,
+html body.off-switch-method-page main .om-cases .om-cases__grid[data-card-role="evidence"] > article:first-child,
+html body.off-switch-method-page main .om-cases .om-cases__grid[data-card-role="evidence"] > article:nth-child(2),
+html body.off-switch-method-page main .om-cases .om-cases__grid[data-card-role="evidence"] > article:nth-child(3),
+html body.off-switch-method-page main .om-cases .om-cases__grid[data-card-role="evidence"] > article:nth-child(4) {
+  display: grid !important;
+  min-height: 420px !important;
+  grid-template-rows: 72px 44px 22px 76px 1fr !important;
+  align-content: start !important;
+  padding: 24px !important;
+  border: 1px solid rgba(21, 59, 66, .16) !important;
+  border-radius: 3px !important;
+  background: #fffef8 !important;
+  box-shadow: 0 18px 46px rgba(60, 88, 38, .09) !important;
+}
+
+html body.off-switch-method-page main .om-cases .om-cases__grid > article > span,
+html body.off-switch-method-page main .om-cases .om-cases__grid > article > strong,
+html body.off-switch-method-page main .om-cases .om-cases__grid > article > small,
+html body.off-switch-method-page main .om-cases .om-cases__grid > article > h3,
+html body.off-switch-method-page main .om-cases .om-cases__grid > article > p {
+  margin: 0 !important;
+}
+
+html body.off-switch-method-page main .om-cases .om-cases__grid > article > strong {
+  align-self: center !important;
+  font-size: 32px !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+}
+
+html body.off-switch-method-page main .om-cases .om-cases__grid > article > h3 {
+  align-self: start !important;
+  font-size: 19px !important;
+  line-height: 1.25 !important;
+}
+
+@media (max-width: 680px) {
+  html body.off-switch-method-page main .om-cases .om-cases__grid[data-card-role="evidence"] > article,
+  html body.off-switch-method-page main .om-cases .om-cases__grid[data-card-role="evidence"] > article:nth-child(n) {
+    min-height: 0 !important;
+    grid-template-rows: auto !important;
+    gap: 10px !important;
+  }
+}
+
+html body.off-switch-method-page main .om-measure .om-measure__grid[data-card-role="levels"] > article:first-child {
+  background: #fffef8 !important;
+}
+
+html body.off-switch-method-page main .om-cases .om-cases__grid[data-card-role="evidence"] > article:first-child > * {
+  position: static !important;
+  grid-column: auto !important;
+  grid-row: auto !important;
+  transform: none !important;
+}
+
+html body.off-switch-method-page main .om-cases .om-cases__grid[data-card-role="evidence"] > article,
+html body.off-switch-method-page main .om-cases .om-cases__grid[data-card-role="evidence"] > article:first-child {
+  grid-template-columns: minmax(0, 1fr) !important;
+}
+
+/* Final Hero callout guard: exact approved Group-label language, without a bottom rail. */
+html body.off-switch-method-page main .om-hero .om-hero__visual .os-character-intro--hero .os-character-label {
+  padding: 5px 8px !important;
+  border-left-width: 3px !important;
+  border-radius: 2px !important;
+  background: rgba(255, 255, 255, .92) !important;
+  box-shadow: none !important;
+  font-size: 12px !important;
+  line-height: 1.2 !important;
+}
+
+@media (min-width: 1101px) {
+  html body.off-switch-method-page main .om-hero .os-character-intro--hero [data-character="anxiety"] {
+    --x: 49.1%;
+  }
+
+  html body.off-switch-method-page main .om-hero .os-character-intro--hero [data-character="resentment"] {
+    --x: 97.1%;
+  }
+}
+
+@media (max-width: 680px) {
+  html body.off-switch-method-page main .om-hero .om-hero__visual .os-character-intro--hero .os-character-label {
+    padding: 3px 4px !important;
+    border-left-width: 2px !important;
+    border-radius: 1px !important;
+    font-size: clamp(7px, 2.1vw, 10px) !important;
+    line-height: 1.12 !important;
+  }
+}
+
+@media (max-width: 380px) {
+  html body.off-switch-method-page main .om-hero .os-character-intro--hero [data-character="resentment"] {
+    --y: 22%;
+    --stem: 36px;
+  }
+}
+
+/* Reiki 1 rhythm: one predictable vertical cadence across the Method sections. */
+html body.off-switch-method-page main .om-section,
+html body.off-switch-method-page main .om-section:not(.om-formats),
+html body.off-switch-method-page main .om-formats {
+  padding-block: 64px !important;
+}
+
+@media (max-width: 680px) {
+  html body.off-switch-method-page main .om-section,
+  html body.off-switch-method-page main .om-section:not(.om-formats),
+  html body.off-switch-method-page main .om-formats {
+    padding-block: 56px !important;
+  }
+}

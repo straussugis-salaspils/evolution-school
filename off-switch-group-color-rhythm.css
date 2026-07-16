@@ -1,0 +1,13 @@
+/*
+ * Off-Switch group: section color rhythm only.
+ * Loaded after the shared color system so this page can keep its own
+ * green identity without changing layout, typography, cards, or content.
+ */
+
+body.off-switch-group-v3 .gg-depth-section {
+  background: linear-gradient(145deg, #f0f6e8 0%, #dce9cf 100%) !important;
+}
+
+body.off-switch-group-v3 .gg-shared {
+  background: linear-gradient(145deg, #f6f4dc 0%, #e8f1cf 100%) !important;
+}

@@ -1,0 +1,255 @@
+/* Off-Switch 1:1 — critical visual story and character labels, 2026-07-14. */
+
+body.off-switch-personal-v3 .pp-scene--annotated {
+  position: relative;
+}
+
+body.off-switch-personal-v3 .pp-character-callouts {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+
+body.off-switch-personal-v3 .pp-character-callout {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  padding: 6px 9px 5px;
+  border-left: 3px solid currentColor;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 5px 16px rgba(31, 49, 44, 0.12);
+  color: var(--tag-color);
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transform: translate(-50%, -100%);
+}
+
+body.off-switch-personal-v3 .pp-character-callout::after {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 1px;
+  height: 20px;
+  background: currentColor;
+  opacity: 0.7;
+  content: "";
+}
+
+body.off-switch-personal-v3 .pp-character-callout[data-tone="anxiety"] {
+  --tag-color: #a96520;
+}
+
+body.off-switch-personal-v3 .pp-character-callout[data-tone="tension"] {
+  --tag-color: #66733a;
+}
+
+body.off-switch-personal-v3 .pp-character-callout[data-tone="guilt"] {
+  --tag-color: #5f6c73;
+}
+
+body.off-switch-personal-v3 .pp-character-callout[data-tone="memory"] {
+  --tag-color: #50463d;
+}
+
+body.off-switch-personal-v3 .pp-character-callouts--hero [data-tone="anxiety"] {
+  --x: 49%;
+  --y: 60%;
+  transform: translate(0, -100%);
+}
+
+body.off-switch-personal-v3 .pp-character-callouts--hero [data-tone="tension"] {
+  --x: 64.5%;
+  --y: 58%;
+}
+
+body.off-switch-personal-v3 .pp-character-callouts--hero [data-tone="guilt"] {
+  --x: 46%;
+  --y: 79%;
+  transform: translate(0, -100%);
+}
+
+body.off-switch-personal-v3 .pp-character-callouts--hero [data-tone="memory"] {
+  --x: 73.5%;
+  --y: 69%;
+}
+
+body.off-switch-personal-v3 .pp-character-callouts--hero [data-tone="anxiety"]::after,
+body.off-switch-personal-v3 .pp-character-callouts--hero [data-tone="guilt"]::after {
+  left: 12px;
+}
+
+body.off-switch-personal-v3 .pp-character-callouts--system [data-tone="anxiety"] {
+  --x: 41%;
+  --y: 44%;
+}
+
+body.off-switch-personal-v3 .pp-character-callouts--entry [data-tone="anxiety"] {
+  --x: 14%;
+  --y: 57%;
+}
+
+body.off-switch-personal-v3 .pp-character-callouts--entry [data-tone="guilt"] {
+  --x: 22%;
+  --y: 67%;
+}
+
+body.off-switch-personal-v3 .pp-character-callouts--entry [data-tone="memory"] {
+  --x: 68%;
+  --y: 68%;
+}
+
+body.off-switch-personal-v3 .pp-process-logic__visual {
+  grid-column: 1 / -1;
+  margin: 0;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  border-bottom: 1px solid rgba(36, 70, 63, 0.2);
+  background: #e7eddf;
+}
+
+body.off-switch-personal-v3 .pp-process-logic__visual img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 900px) {
+  body.off-switch-personal-v3 .pp-story-visual.pp-scene--annotated {
+    aspect-ratio: auto !important;
+  }
+
+  body.off-switch-personal-v3 .pp-story-visual.pp-scene--annotated > img {
+    display: block;
+    width: 100%;
+    height: auto !important;
+    aspect-ratio: 16 / 9;
+    object-fit: contain;
+  }
+
+  body.off-switch-personal-v3 .pp-character-callouts--system,
+  body.off-switch-personal-v3 .pp-character-callouts--entry {
+    position: relative;
+    inset: auto;
+    display: grid;
+    gap: 1px;
+    padding-top: 1px;
+    background: rgba(32, 61, 58, 0.16);
+  }
+
+  body.off-switch-personal-v3 .pp-character-callouts--system {
+    grid-template-columns: 1fr;
+  }
+
+  body.off-switch-personal-v3 .pp-character-callouts--entry {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  body.off-switch-personal-v3 .pp-character-callouts--system .pp-character-callout,
+  body.off-switch-personal-v3 .pp-character-callouts--entry .pp-character-callout {
+    position: static;
+    display: flex;
+    min-height: 38px;
+    align-items: center;
+    padding: 7px 9px;
+    border-radius: 0;
+    background: #fff;
+    box-shadow: none;
+    font-size: 10px;
+    white-space: normal;
+    transform: none;
+  }
+
+  body.off-switch-personal-v3 .pp-character-callouts--system .pp-character-callout::after,
+  body.off-switch-personal-v3 .pp-character-callouts--entry .pp-character-callout::after {
+    display: none;
+  }
+
+  body.off-switch-personal-v3 .pp-character-callouts--entry [data-tone="memory"] {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 680px) {
+  body.off-switch-personal-v3 .pp-hero::after {
+    display: none !important;
+  }
+
+  body.off-switch-personal-v3 .pp-hero::before {
+    background: linear-gradient(
+      180deg,
+      rgba(36, 70, 63, 1) 0%,
+      rgba(36, 70, 63, 1) 43%,
+      rgba(36, 70, 63, 0.92) 48%,
+      rgba(36, 70, 63, 0.28) 52%,
+      transparent 56%
+    ) !important;
+  }
+
+  body.off-switch-personal-v3 .pp-hero__picture {
+    inset: auto auto 82px 50% !important;
+    width: min(100%, 520px) !important;
+    height: auto !important;
+    aspect-ratio: 1122 / 1402 !important;
+    transform: translateX(-50%);
+  }
+
+  body.off-switch-personal-v3 .pp-hero__picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  body.off-switch-personal-v3 .pp-hero__copy {
+    padding-bottom: clamp(570px, 140vw, 730px) !important;
+  }
+
+  body.off-switch-personal-v3 .pp-character-callouts--hero {
+    inset: auto auto 0 50%;
+    display: grid;
+    width: min(100%, 520px);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1px;
+    background: rgba(32, 61, 58, 0.22);
+    transform: translateX(-50%);
+  }
+
+  body.off-switch-personal-v3 .pp-character-callouts--hero .pp-character-callout {
+    position: static;
+    display: flex;
+    min-height: 40px;
+    align-items: center;
+    padding: 7px 9px;
+    border-radius: 0;
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: none;
+    font-size: 9px;
+    white-space: normal;
+    transform: none;
+  }
+
+  body.off-switch-personal-v3 .pp-character-callouts--hero .pp-character-callout::after {
+    display: none;
+  }
+
+  body.off-switch-personal-v3 .pp-final__picture {
+    width: min(100%, 520px) !important;
+    height: auto !important;
+    aspect-ratio: 1003 / 1568;
+    margin-inline: auto;
+    background: #eee8dc;
+  }
+
+  body.off-switch-personal-v3 .pp-final__picture img {
+    display: block;
+    width: 100%;
+    height: auto !important;
+    object-fit: contain;
+  }
+}

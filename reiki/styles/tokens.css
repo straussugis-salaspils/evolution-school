@@ -1,0 +1,72 @@
+:root {
+  color-scheme: light;
+  --canvas: #F7F5F1;
+  --surface: #FFFFFF;
+  --ink: #17151B;
+  --ink-soft: #5A5661;
+  --line: #DDD8D0;
+  --paper-dark: #EDE9E2;
+  --shadow-soft: 0 22px 60px rgba(36, 25, 75, 0.08);
+  --shadow-card: 0 16px 44px rgba(23, 21, 27, 0.08);
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --max-page: 1160px;
+  --section-y: clamp(40px, 5vw, 64px);
+  --gutter: clamp(18px, 5vw, 48px);
+}
+
+[data-level="reiki-1"] {
+  --level-primary: #9A6A1E;
+  --level-primary-hover: #7F5710;
+  --level-accent: #F2C777;
+  --level-soft: #F4D9A5;
+  --level-wash: #FFF9EA;
+  --level-deep: #5E3F08;
+}
+
+[data-level="reiki-2"] {
+  --level-primary: #8F650F;
+  --level-primary-hover: #7F5710;
+  --level-accent: #E4A72E;
+  --level-soft: #F1CE79;
+  --level-wash: #FFF8E3;
+  --level-deep: #553A08;
+}
+
+[data-level="master-life"] {
+  --level-primary: #9F7D22;
+  --level-primary-hover: #806519;
+  --level-accent: #DDBB4F;
+  --level-soft: #EEDC8D;
+  --level-wash: #FFF8DC;
+  --level-deep: #5E4A10;
+}
+
+[data-level="master-teacher"] {
+  --level-primary: #806F2B;
+  --level-primary-hover: #66571E;
+  --level-accent: #BFA858;
+  --level-soft: #DED39A;
+  --level-wash: #FAF4DC;
+  --level-deep: #4A3F16;
+}
+
+[data-level="multidimensional-master"] {
+  --level-primary: #5D5534;
+  --level-primary-hover: #4C4529;
+  --level-accent: #8C7E52;
+  --level-soft: #AFA06D;
+  --level-wash: #F3E8C6;
+  --level-deep: #2A2514;
+}
+
+
+[data-level="reiki-method"] {
+  --level-primary: #7E6A22;
+  --level-primary-hover: #665519;
+  --level-accent: #FFF6CF;
+  --level-soft: #F5EBC4;
+  --level-wash: #FFFDF4;
+  --level-deep: #4C4218;
+}

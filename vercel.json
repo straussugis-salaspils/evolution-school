@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/vysokaya-glubina.html",
+      "destination": "/mentoring/",
+      "permanent": true
+    }
+  ]
+}

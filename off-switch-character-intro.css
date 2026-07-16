@@ -1,0 +1,107 @@
+/* Shared Off-Switch character introductions.
+   Names appear only at first contact on the Method page; later scenes rely on recognition. */
+
+:is(
+  .om-character-callouts,
+  .os-emotion-callouts,
+  .gg-emotion-callouts,
+  .pp-character-callouts
+) {
+  display: none !important;
+}
+
+.os-character-intro {
+  pointer-events: none;
+}
+
+.os-character-label {
+  position: static !important;
+  z-index: 1;
+  display: block;
+  width: auto !important;
+  min-width: 0;
+  min-height: 0 !important;
+  margin: 0;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: #5f685f !important;
+  box-shadow: none !important;
+  font: 400 12px/1.25 Arial, sans-serif !important;
+  letter-spacing: .01em;
+  text-align: center;
+  text-transform: none;
+  white-space: normal;
+  transform: none !important;
+}
+
+/* Hero: one quiet caption rail follows the order of figures in the composite image. */
+body.off-switch-method-page .om-hero__visual .os-character-intro--hero {
+  position: absolute;
+  z-index: 4;
+  inset: 0;
+  display: grid !important;
+  grid-template-columns: 30fr 11fr 10fr 14fr 11fr 12fr 12fr;
+  align-items: end;
+  padding: 0 0 22px;
+}
+
+body.off-switch-method-page .os-character-intro--hero [data-character="anxiety"] { grid-column: 2; }
+body.off-switch-method-page .os-character-intro--hero [data-character="fear"] { grid-column: 3; }
+body.off-switch-method-page .os-character-intro--hero [data-character="guilt"] { grid-column: 5; }
+body.off-switch-method-page .os-character-intro--hero [data-character="anger"] { grid-column: 6; }
+body.off-switch-method-page .os-character-intro--hero [data-character="resentment"] { grid-column: 7; }
+
+/* Second introduction: labels occupy stable cells immediately below the two new figures. */
+body.off-switch-method-page .om-scope__media .os-character-intro--scope {
+  position: absolute;
+  z-index: 4;
+  inset: 0;
+  display: grid !important;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-rows: repeat(8, minmax(0, 1fr));
+}
+
+body.off-switch-method-page .os-character-intro--scope [data-character="tension"] {
+  grid-column: 9 / 12;
+  grid-row: 4;
+  align-self: end;
+  padding-bottom: 3px !important;
+}
+
+body.off-switch-method-page .os-character-intro--scope [data-character="memory"] {
+  grid-column: 9 / 13;
+  grid-row: 8;
+  align-self: end;
+  padding-bottom: 12px !important;
+}
+
+@media (max-width: 680px) {
+  body.off-switch-method-page .om-hero__visual > img {
+    object-position: 100% 48% !important;
+  }
+
+  body.off-switch-method-page .om-hero__visual .os-character-intro--hero {
+    grid-template-columns: 5fr 14fr 14fr 20fr 15fr 17fr 15fr;
+    column-gap: 1px;
+    padding-bottom: 9px;
+  }
+
+  body.off-switch-method-page .os-character-intro--hero .os-character-label {
+    padding-inline: 2px !important;
+    color: #596259 !important;
+    font-size: 9.5px !important;
+    line-height: 1.15 !important;
+  }
+
+  body.off-switch-method-page .os-character-intro--scope .os-character-label {
+    padding-inline: 3px !important;
+    font-size: 9.5px !important;
+    line-height: 1.15 !important;
+  }
+
+  body.off-switch-method-page .os-character-intro--scope [data-character="memory"] {
+    padding-bottom: 6px !important;
+  }
+}

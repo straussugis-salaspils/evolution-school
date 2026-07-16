@@ -1,0 +1,226 @@
+/* Shared composition rules for direction maps and method entry pages. */
+
+:is(
+  body.direction-page--archetypes.eh-archetype-bg--map,
+  body.direction-page--reiki.eh-reiki-bg--map,
+  body.direction-page--freedom.eh-freedom-bg--map,
+  body.life-levels-page.levels-map-page
+) main > .hero {
+  padding-top: 64px !important;
+  padding-bottom: 64px !important;
+}
+
+:is(
+  body.direction-page--archetypes.eh-archetype-bg--map,
+  body.direction-page--reiki.eh-reiki-bg--map,
+  body.direction-page--freedom.eh-freedom-bg--map,
+  body.life-levels-page.levels-map-page
+) main > .hero .hero__grid {
+  grid-template-columns: minmax(0, 1.146fr) minmax(0, 1fr) !important;
+  gap: 64px !important;
+  align-items: center !important;
+}
+
+:is(
+  body.direction-page--archetypes.eh-archetype-bg--map,
+  body.direction-page--reiki.eh-reiki-bg--map,
+  body.direction-page--freedom.eh-freedom-bg--map,
+  body.life-levels-page.levels-map-page
+) main > .hero .hero__copy {
+  align-self: center !important;
+}
+
+:is(
+  body.direction-page--archetypes.eh-archetype-bg--map,
+  body.direction-page--reiki.eh-reiki-bg--map,
+  body.direction-page--freedom.eh-freedom-bg--map,
+  body.life-levels-page.levels-map-page
+) main > .hero h1 {
+  max-width: 12ch !important;
+  font-size: 58px !important;
+  line-height: 1.04 !important;
+  letter-spacing: 0 !important;
+}
+
+:is(
+  body.direction-page--archetypes.eh-archetype-bg--map,
+  body.direction-page--reiki.eh-reiki-bg--map,
+  body.direction-page--freedom.eh-freedom-bg--map,
+  body.life-levels-page.levels-map-page
+) main > .hero .eyebrow {
+  margin: 0 0 14px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  font-size: 12px !important;
+  line-height: 1.25 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase;
+}
+
+body.direction-page--freedom.eh-freedom-bg--map main > .hero .hero__visual,
+body.direction-page--freedom.eh-freedom-bg--map main > .hero .hero__visual img {
+  min-height: 0 !important;
+}
+
+body.direction-page--freedom.eh-freedom-bg--map main > .hero .hero__visual img {
+  object-position: 68% center !important;
+}
+
+body.direction-page--freedom.eh-freedom-bg--map main .direction-summary--three {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+
+body.life-levels-page.levels-map-page main > .levels-hero .levels-hero__visual {
+  justify-self: center !important;
+}
+
+body.life-levels-page.levels-map-page main .roadmap-step {
+  border-radius: 14px !important;
+}
+
+/* Method pages: the label is always a quiet eyebrow, never a pill. */
+:is(
+  body.method-page.archetype-method-v2,
+  body.reiki-method-page,
+  body.life-levels-page.levels-method-page
+) main > .hero {
+  padding-top: 64px !important;
+  padding-bottom: 64px !important;
+}
+
+body.method-page.archetype-method-v2 main > .archetype-method-hero .archetype-method-hero__grid,
+body.reiki-method-page main > .hero .hero__grid,
+body.life-levels-page.levels-method-page main > .method-hero .method-hero__grid {
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr) !important;
+  gap: 48px !important;
+  align-items: center !important;
+}
+
+body.method-page.archetype-method-v2 main > .archetype-method-hero .eyebrow,
+body.reiki-method-page main > .hero .hero-kicker,
+body.life-levels-page.levels-method-page main > .method-hero .eyebrow {
+  display: block !important;
+  width: fit-content !important;
+  margin: 0 0 14px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: currentColor !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  line-height: 1.25 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  box-shadow: none !important;
+}
+
+body.method-page.archetype-method-v2 main > .archetype-method-hero h1,
+body.reiki-method-page main > .hero h1.hero-title,
+body.life-levels-page.levels-method-page.method-rebuild-page main > .method-hero h1 {
+  max-width: 12ch !important;
+  font-size: 72px !important;
+  line-height: 1 !important;
+  letter-spacing: 0 !important;
+  text-wrap: balance;
+}
+
+body.method-page.archetype-method-v2 main > .archetype-method-hero figure,
+body.reiki-method-page main > .hero figure,
+body.life-levels-page.levels-method-page main > .method-hero figure {
+  border-radius: 8px !important;
+  overflow: hidden !important;
+}
+
+body.method-page.archetype-method-v2 main > .method-turn-section h2,
+body.reiki-method-page main > .hero + section h2,
+body.life-levels-page.levels-method-page main > .method-transition-section h2 {
+  font-size: 46px !important;
+  line-height: 1.08 !important;
+  letter-spacing: 0 !important;
+}
+
+@media (max-width: 980px) {
+  :is(
+    body.direction-page--archetypes.eh-archetype-bg--map,
+    body.direction-page--reiki.eh-reiki-bg--map,
+    body.direction-page--freedom.eh-freedom-bg--map,
+    body.life-levels-page.levels-map-page
+  ) main > .hero .hero__grid,
+  body.method-page.archetype-method-v2 main > .archetype-method-hero .archetype-method-hero__grid,
+  body.reiki-method-page main > .hero .hero__grid,
+  body.life-levels-page.levels-method-page main > .method-hero .method-hero__grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  body.method-page.archetype-method-v2 main > .archetype-method-hero h1,
+  body.reiki-method-page main > .hero h1.hero-title,
+  body.life-levels-page.levels-method-page.method-rebuild-page main > .method-hero h1 {
+    font-size: clamp(48px, 8vw, 64px) !important;
+  }
+}
+
+@media (max-width: 1080px) {
+  body.direction-page--freedom.eh-freedom-bg--map main .direction-summary--three {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 720px) {
+  body.direction-page--freedom.eh-freedom-bg--map main .direction-summary--three {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
+@media (max-width: 680px) {
+  body.direction-page--freedom.eh-freedom-bg--map main > .hero .hero__visual {
+    display: block !important;
+  }
+}
+
+@media (max-width: 640px) {
+  :is(
+    body.direction-page--archetypes.eh-archetype-bg--map,
+    body.direction-page--reiki.eh-reiki-bg--map,
+    body.direction-page--freedom.eh-freedom-bg--map,
+    body.life-levels-page.levels-map-page,
+    body.method-page.archetype-method-v2,
+    body.reiki-method-page,
+    body.life-levels-page.levels-method-page
+  ) main > .hero {
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+  }
+
+  :is(
+    body.direction-page--archetypes.eh-archetype-bg--map,
+    body.direction-page--reiki.eh-reiki-bg--map,
+    body.direction-page--freedom.eh-freedom-bg--map,
+    body.life-levels-page.levels-map-page
+  ) main > .hero .hero__grid {
+    gap: 30px !important;
+  }
+
+  :is(
+    body.direction-page--archetypes.eh-archetype-bg--map,
+    body.direction-page--reiki.eh-reiki-bg--map,
+    body.direction-page--freedom.eh-freedom-bg--map,
+    body.life-levels-page.levels-map-page
+  ) main > .hero h1 {
+    font-size: clamp(40px, 11.5vw, 46px) !important;
+  }
+
+  body.method-page.archetype-method-v2 main > .archetype-method-hero h1,
+  body.reiki-method-page main > .hero h1.hero-title,
+  body.life-levels-page.levels-method-page.method-rebuild-page main > .method-hero h1 {
+    font-size: clamp(40px, 11.5vw, 48px) !important;
+  }
+
+  body.method-page.archetype-method-v2 main > .method-turn-section h2,
+  body.reiki-method-page main > .hero + section h2,
+  body.life-levels-page.levels-method-page main > .method-transition-section h2 {
+    font-size: clamp(34px, 9.5vw, 40px) !important;
+  }
+}

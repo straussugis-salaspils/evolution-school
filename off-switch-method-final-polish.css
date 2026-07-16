@@ -1,0 +1,106 @@
+/* Final page-only polish for Off-Switch — Method. */
+
+/* Category names are now clearly above the explanatory copy. */
+body.off-switch-method-v3 .om-scope .om-scope__groups article > strong {
+  color: var(--om-ink);
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+}
+
+/* A compact autonomy note remains part of the existing technique block. */
+body.off-switch-method-v3 .om-tool .om-tool__autonomy {
+  max-width: 960px;
+  margin: 28px 0 0;
+  padding-left: 18px;
+  border-left: 3px solid color-mix(in srgb, var(--om-teal) 58%, transparent);
+  color: var(--om-muted) !important;
+  font-size: 16px !important;
+  line-height: 1.62 !important;
+}
+
+/* The fourth step remains the culmination, but belongs to the same row. */
+body.off-switch-method-v3 .om-mechanism .om-chain article.om-chain__stop {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--om-deep) 38%, transparent);
+  border-top-color: var(--om-sun);
+  background: linear-gradient(
+    150deg,
+    color-mix(in srgb, var(--om-deep) 78%, var(--om-ink)),
+    color-mix(in srgb, var(--om-deep) 86%, var(--om-mint-soft))
+  );
+  box-shadow: 0 14px 30px rgba(38, 54, 31, 0.1);
+}
+
+body.off-switch-method-v3 .om-mechanism .om-chain__stop > span {
+  color: var(--om-sun);
+}
+
+body.off-switch-method-v3 .om-mechanism .om-chain__stop > strong {
+  color: var(--om-paper);
+}
+
+body.off-switch-method-v3 .om-mechanism .om-chain__stop > p {
+  color: var(--osys-contrast-muted) !important;
+}
+
+body.off-switch-method-v3 .om-mechanism .om-chain__stop .om-chain__switch {
+  background: color-mix(in srgb, var(--om-paper) 13%, transparent);
+  box-shadow: none;
+}
+
+/* More breathing room without turning the outcome panel into a new section. */
+body.off-switch-method-v3 .om-limits {
+  padding-block: clamp(68px, 8vw, 108px);
+}
+
+body.off-switch-method-v3 .om-limits .om-section-head {
+  margin-bottom: 44px;
+}
+
+body.off-switch-method-v3 .om-limits .om-limits__grid li {
+  padding: 29px 28px 29px 68px;
+}
+
+/* The already-featured 79 → 4 case receives one final, restrained lift. */
+@media (min-width: 901px) {
+  body.off-switch-method-v3 .om-cases .om-cases__grid article:first-child {
+    min-height: 268px;
+    column-gap: 58px;
+    padding: 44px 48px;
+    border-left-width: 10px !important;
+    box-shadow: 0 22px 48px rgba(38, 54, 31, 0.13) !important;
+  }
+
+  body.off-switch-method-v3 .om-cases .om-cases__grid article:first-child > strong {
+    font-size: 70px;
+  }
+}
+
+@media (max-width: 1020px) {
+  body.off-switch-method-v3 .om-mechanism .om-chain article.om-chain__stop {
+    transform: none;
+    border-left-color: var(--om-sun);
+  }
+}
+
+@media (max-width: 680px) {
+  body.off-switch-method-v3 .om-tool .om-tool__autonomy {
+    margin-top: 22px;
+    padding-left: 14px;
+    font-size: 15px !important;
+  }
+
+  body.off-switch-method-v3 .om-limits {
+    padding-block: 68px;
+  }
+
+  body.off-switch-method-v3 .om-limits .om-section-head {
+    margin-bottom: 34px;
+  }
+
+  body.off-switch-method-v3 .om-limits .om-limits__grid li {
+    padding: 25px 20px 25px 58px;
+  }
+}

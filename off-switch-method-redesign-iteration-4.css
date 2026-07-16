@@ -1,0 +1,1662 @@
+/* Method redesign — final system polish.
+   Card values are reused from /off-switch-samostoyatelno:
+   information panel, open process rail, proof dashboard and case card. */
+
+body.off-switch-method-redesign-page {
+  --om4-paper: var(--osys-paper, #fffef8);
+  --om4-paper-quiet: var(--osys-paper-quiet, #fafbf2);
+  --om4-ink: var(--osys-ink, #26361f);
+  --om4-muted: var(--osys-muted, #536149);
+  --om4-green: var(--osys-action, #457f37);
+  --om4-deep: var(--osys-contrast-a, #467d3a);
+  --om4-soft: var(--osys-contrast-muted, #edf5cf);
+  --om4-sun: var(--osys-sun, #e6cf4e);
+  --om4-line: color-mix(in srgb, var(--path-detail, #598036) 19%, transparent);
+  --om4-process-line: rgba(21, 59, 66, .2);
+  --om4-card-shadow: var(--osys-card-shadow, 0 18px 46px rgba(60, 88, 38, .09));
+  --om4-soft-shadow: 0 16px 34px rgba(58, 101, 44, .1);
+  --om4-card-radius: 7px;
+  --om4-case-radius: 3px;
+}
+
+/* ========================================================================== */
+/* Method brief — exact project-component reuse pass                          */
+/* ========================================================================== */
+
+body.off-switch-method-redesign-page {
+  --om4-min-text: 1rem;
+  --om4-self-radius: 3px;
+  --om4-self-padding: 1.9rem;
+}
+
+/* Group-Hero composition: a joined text-and-scene stage, not a media card. */
+html body.off-switch-method-redesign-page main .om-hero {
+  overflow: hidden !important;
+}
+
+html body.off-switch-method-redesign-page main .om-hero__inner {
+  align-items: center !important;
+  gap: 0 !important;
+  width: min(100% - 3rem, 1320px) !important;
+  max-width: 1320px !important;
+  min-height: clamp(650px, 54vw, 760px) !important;
+  padding-block: clamp(3rem, 5vw, 5rem) !important;
+}
+
+html body.off-switch-method-redesign-page main .om-hero__copy {
+  max-width: none !important;
+  padding-right: clamp(1.5rem, 3vw, 3.25rem) !important;
+}
+
+html body.off-switch-method-redesign-page main .om-hero h1 {
+  max-width: none !important;
+  margin-bottom: 1.35rem !important;
+  font-size: clamp(3.15rem, 4vw, 4.1rem) !important;
+  line-height: .94 !important;
+}
+
+html body.off-switch-method-redesign-page main .om-hero__visual {
+  align-self: stretch !important;
+  width: calc(100% + clamp(1rem, 3vw, 2.75rem)) !important;
+  min-height: 560px !important;
+  margin: 0 calc(clamp(1rem, 3vw, 2.75rem) * -1) 0 0 !important;
+  overflow: visible !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  aspect-ratio: auto !important;
+}
+
+html body.off-switch-method-redesign-page main .om-hero__visual > img {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 560px !important;
+  object-fit: cover !important;
+  object-position: 72% center !important;
+}
+
+html body.off-switch-method-redesign-page main .om-hero__lead,
+html body.off-switch-method-redesign-page main .om-hero__method,
+html body.off-switch-method-redesign-page main .om-hero__facts span {
+  font-size: var(--om4-min-text) !important;
+}
+
+/* One mechanism: the left image + conclusion and right stack share one edge. */
+html body.off-switch-method-redesign-page main .om-scope > .om-container {
+  display: block !important;
+}
+
+html body.off-switch-method-redesign-page main .om-scope__composition {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.12fr) minmax(20rem, .88fr) !important;
+  gap: clamp(1.5rem, 3vw, 2.5rem) !important;
+  align-items: stretch !important;
+}
+
+html body.off-switch-method-redesign-page main .om-scope__left {
+  display: flex !important;
+  min-width: 0 !important;
+  flex-direction: column !important;
+}
+
+html body.off-switch-method-redesign-page main .om-scope__left .om-scope__media {
+  max-width: none !important;
+}
+
+html body.off-switch-method-redesign-page main .om-scope__left .om-scope__result {
+  flex: 1 0 auto !important;
+  margin-top: 1rem !important;
+  font-size: var(--om4-min-text) !important;
+}
+
+html body.off-switch-method-redesign-page main .om-scope__groups {
+  display: grid !important;
+  grid-template-rows: repeat(4, minmax(0, 1fr)) !important;
+  gap: .85rem !important;
+  align-self: stretch !important;
+}
+
+html body.off-switch-method-redesign-page main .om-scope__groups > article {
+  display: flex !important;
+  padding: 1.35rem 1.35rem 1.35rem 3.45rem !important;
+  justify-content: center !important;
+  flex-direction: column !important;
+  border-radius: var(--om4-self-radius) !important;
+}
+
+html body.off-switch-method-redesign-page main .om-scope__groups p {
+  font-size: var(--om4-min-text) !important;
+}
+
+/* Technique: one approved scene and two Self-style information cards. */
+html body.off-switch-method-redesign-page main .om-tool > .om-container {
+  display: block !important;
+}
+
+html body.off-switch-method-redesign-page main .om-tool__layout--scene {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.22fr) minmax(20rem, .78fr) !important;
+  gap: clamp(1.5rem, 3vw, 3rem) !important;
+  align-items: stretch !important;
+}
+
+html body.off-switch-method-redesign-page main .om-tool figure.om-tool__scene {
+  max-width: none !important;
+  min-height: 470px !important;
+  overflow: hidden !important;
+  border-radius: 6px !important;
+  aspect-ratio: 16 / 10 !important;
+}
+
+html body.off-switch-method-redesign-page main .om-tool figure.om-tool__scene > img {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 470px !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+html body.off-switch-method-redesign-page main .om-tool__copy--principle {
+  display: flex !important;
+  padding: clamp(1.5rem, 3vw, 2.5rem) 0 !important;
+  justify-content: center !important;
+  flex-direction: column !important;
+}
+
+html body.off-switch-method-redesign-page main .om-tool__principle {
+  margin: 0 !important;
+  color: var(--om4-ink) !important;
+  font: 400 clamp(1.45rem, 2vw, 1.85rem)/1.35 Georgia, "Times New Roman", serif !important;
+}
+
+html body.off-switch-method-redesign-page main .om-tool__points {
+  display: grid !important;
+  gap: .8rem !important;
+  margin: 1.5rem 0 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+
+html body.off-switch-method-redesign-page main .om-tool__points li {
+  position: relative !important;
+  padding-left: 1.5rem !important;
+  color: var(--om4-muted) !important;
+  font-size: var(--om4-min-text) !important;
+  line-height: 1.6 !important;
+}
+
+html body.off-switch-method-redesign-page main .om-tool__points li::before {
+  content: "";
+  position: absolute;
+  top: .62em;
+  left: 0;
+  width: .55rem;
+  height: .55rem;
+  border-radius: 50%;
+  background: var(--om4-green);
+}
+
+html body.off-switch-method-redesign-page main .om-tool__notes--brief {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 1rem !important;
+  margin-top: 1rem !important;
+}
+
+html body.off-switch-method-redesign-page main .om-tool__brief-card,
+html body.off-switch-method-redesign-page main .om-sequence__card {
+  min-width: 0 !important;
+  padding: var(--om4-self-padding) !important;
+  border: 0 !important;
+  border-radius: var(--om4-self-radius) !important;
+  background: var(--om4-paper) !important;
+  box-shadow: var(--om4-card-shadow) !important;
+}
+
+html body.off-switch-method-redesign-page main .om-tool__brief-card > span,
+html body.off-switch-method-redesign-page main .om-sequence__card > span {
+  color: var(--om4-green) !important;
+  font: 800 .8rem/1.2 "Segoe UI", sans-serif !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase !important;
+}
+
+html body.off-switch-method-redesign-page main .om-tool__brief-card h3,
+html body.off-switch-method-redesign-page main .om-sequence__card h3 {
+  margin: .6rem 0 0 !important;
+  color: var(--om4-ink) !important;
+  font: 400 clamp(1.35rem, 2vw, 1.75rem)/1.2 Georgia, "Times New Roman", serif !important;
+}
+
+html body.off-switch-method-redesign-page main .om-tool__brief-card p,
+html body.off-switch-method-redesign-page main .om-sequence__card p {
+  margin: .65rem 0 0 !important;
+  color: var(--om4-muted) !important;
+  font-size: var(--om4-min-text) !important;
+  line-height: 1.58 !important;
+}
+
+/* Signal remains, automatic continuation breaks: image + four Self cards. */
+html body.off-switch-method-redesign-page main .om-mechanism > .om-container {
+  display: block !important;
+}
+
+html body.off-switch-method-redesign-page main .om-mechanism__top {
+  display: grid !important;
+  grid-template-columns: minmax(22rem, .86fr) minmax(0, 1.14fr) !important;
+  gap: clamp(1.5rem, 4vw, 4rem) !important;
+  align-items: center !important;
+}
+
+html body.off-switch-method-redesign-page main .om-mechanism__top .om-section-head {
+  margin: 0 !important;
+}
+
+html body.off-switch-method-redesign-page main .om-mechanism__top .om-mechanism__media {
+  max-width: none !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  border-radius: 6px !important;
+  aspect-ratio: 16 / 9 !important;
+}
+
+html body.off-switch-method-redesign-page main .om-mechanism__top .om-mechanism__media > img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+html body.off-switch-method-redesign-page main .om-mechanism .om-chain {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 1rem !important;
+  margin-top: clamp(1.5rem, 3vw, 2.5rem) !important;
+}
+
+html body.off-switch-method-redesign-page main .om-mechanism .om-chain > article,
+html body.off-switch-method-redesign-page main .om-mechanism .om-chain > article.om-chain__stop {
+  display: block !important;
+  min-height: 0 !important;
+  padding: 1.55rem 1.35rem !important;
+  border: 0 !important;
+  border-radius: var(--om4-self-radius) !important;
+  background: var(--om4-paper) !important;
+  box-shadow: var(--om4-card-shadow) !important;
+}
+
+html body.off-switch-method-redesign-page main .om-mechanism .om-chain > article > span {
+  position: static !important;
+  display: block !important;
+  width: auto !important;
+  height: auto !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  color: var(--om4-green) !important;
+  font-size: 1.8rem !important;
+}
+
+html body.off-switch-method-redesign-page main .om-mechanism .om-chain > article > strong {
+  display: block !important;
+  min-height: 0 !important;
+  margin: .65rem 0 0 !important;
+  color: var(--om4-ink) !important;
+  font: 400 1.25rem/1.25 Georgia, "Times New Roman", serif !important;
+}
+
+html body.off-switch-method-redesign-page main .om-mechanism .om-chain > article > p {
+  display: block !important;
+  margin: .55rem 0 0 !important;
+  color: var(--om4-muted) !important;
+  font-size: var(--om4-min-text) !important;
+  line-height: 1.5 !important;
+}
+
+html body.off-switch-method-redesign-page main .om-interrupt {
+  margin-top: 1.25rem !important;
+  font-size: var(--om4-min-text) !important;
+}
+
+/* Several episodes: a medium illustration beside three independent cards. */
+html body.off-switch-method-redesign-page main .om-dog__composition {
+  display: grid !important;
+  grid-template-columns: minmax(0, .9fr) minmax(22rem, 1.1fr) !important;
+  gap: clamp(1.5rem, 3vw, 2.75rem) !important;
+  align-items: center !important;
+}
+
+html body.off-switch-method-redesign-page main .om-dog__media {
+  max-width: none !important;
+}
+
+html body.off-switch-method-redesign-page main .om-dog__story {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: .9rem !important;
+  border: 0 !important;
+}
+
+html body.off-switch-method-redesign-page main .om-dog__story > article,
+html body.off-switch-method-redesign-page main .om-dog__story > article:nth-child(2),
+html body.off-switch-method-redesign-page main .om-dog__story > article:last-child {
+  display: grid !important;
+  grid-template-columns: 3rem minmax(0, 1fr) !important;
+  padding: 1.4rem 1.5rem !important;
+  border: 0 !important;
+  border-radius: var(--om4-self-radius) !important;
+  background: var(--om4-paper) !important;
+  box-shadow: var(--om4-card-shadow) !important;
+}
+
+html body.off-switch-method-redesign-page main .om-dog__story span {
+  grid-row: 1 / span 2 !important;
+  color: var(--om4-green) !important;
+  font-size: 1.45rem !important;
+}
+
+html body.off-switch-method-redesign-page main .om-dog__story strong {
+  color: var(--om4-ink) !important;
+  font: 400 1.25rem/1.25 Georgia, "Times New Roman", serif !important;
+}
+
+html body.off-switch-method-redesign-page main .om-dog__story p {
+  display: block !important;
+  margin: .35rem 0 0 !important;
+  color: var(--om4-muted) !important;
+  font-size: var(--om4-min-text) !important;
+  line-height: 1.5 !important;
+}
+
+/* One trigger versus a pattern: the required two-level explanation. */
+html body.off-switch-method-redesign-page main .om-sequence__layout {
+  display: grid !important;
+  grid-template-columns: minmax(0, .88fr) minmax(0, 1.12fr) !important;
+  gap: clamp(1.5rem, 4vw, 4rem) !important;
+  align-items: stretch !important;
+}
+
+html body.off-switch-method-redesign-page main .om-sequence__left,
+html body.off-switch-method-redesign-page main .om-sequence__right {
+  display: flex !important;
+  min-width: 0 !important;
+  flex-direction: column !important;
+}
+
+html body.off-switch-method-redesign-page main .om-sequence__left .om-section-head {
+  margin-bottom: 1.25rem !important;
+}
+
+html body.off-switch-method-redesign-page main .om-sequence__intro {
+  margin: 0 0 1.4rem !important;
+  color: var(--om4-muted) !important;
+  font-size: var(--om4-min-text) !important;
+  line-height: 1.65 !important;
+}
+
+html body.off-switch-method-redesign-page main .om-sequence__card--trigger {
+  margin-top: auto !important;
+  border-top: 4px solid var(--om4-sun) !important;
+}
+
+html body.off-switch-method-redesign-page main .om-sequence__right .om-depth__visual {
+  max-width: none !important;
+  margin: 0 !important;
+}
+
+html body.off-switch-method-redesign-page main .om-sequence__card--pattern {
+  margin-top: 1rem !important;
+  border-top: 4px solid var(--om4-green) !important;
+  background: color-mix(in srgb, var(--om4-soft) 68%, var(--om4-paper)) !important;
+}
+
+/* What Off-Switch does: three Self process cards. */
+html body.off-switch-method-redesign-page main .om-limits__grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 1rem !important;
+  border: 0 !important;
+}
+
+html body.off-switch-method-redesign-page main .om-limits__grid > article {
+  display: block !important;
+  min-width: 0 !important;
+  padding: var(--om4-self-padding) !important;
+  border: 0 !important;
+  border-radius: var(--om4-self-radius) !important;
+  background: var(--om4-paper) !important;
+  box-shadow: var(--om4-card-shadow) !important;
+}
+
+html body.off-switch-method-redesign-page main .om-limits__grid strong {
+  color: var(--om4-green) !important;
+  font-size: 2rem !important;
+}
+
+html body.off-switch-method-redesign-page main .om-limits__grid h3 {
+  margin-top: 1rem !important;
+}
+
+html body.off-switch-method-redesign-page main .om-limits__grid p,
+html body.off-switch-method-redesign-page main .om-limits__note {
+  font-size: var(--om4-min-text) !important;
+}
+
+/* Three result levels: cards and functional arrows, never a staircase. */
+html body.off-switch-method-redesign-page main .om-measure__grid {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr) !important;
+  gap: .75rem !important;
+  align-items: stretch !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html body.off-switch-method-redesign-page main .om-measure__grid > article,
+html body.off-switch-method-redesign-page main .om-measure__grid > article:nth-child(2),
+html body.off-switch-method-redesign-page main .om-measure__grid > article:nth-child(3),
+html body.off-switch-method-redesign-page main .om-measure__grid > article:nth-child(4),
+html body.off-switch-method-redesign-page main .om-measure__grid > article:nth-child(5) {
+  width: auto !important;
+  min-width: 0 !important;
+  padding: var(--om4-self-padding) !important;
+  border: 0 !important;
+  border-radius: var(--om4-self-radius) !important;
+  background: rgba(255, 255, 255, .1) !important;
+  box-shadow: none !important;
+}
+
+html body.off-switch-method-redesign-page main .om-measure__grid > article:last-of-type {
+  background: var(--om4-soft) !important;
+}
+
+html body.off-switch-method-redesign-page main .om-measure__grid > article p {
+  font-size: var(--om4-min-text) !important;
+  line-height: 1.55 !important;
+}
+
+html body.off-switch-method-redesign-page main .om-measure__arrow {
+  display: grid !important;
+  place-items: center !important;
+  color: var(--om4-sun) !important;
+  font-size: 1.75rem !important;
+}
+
+html body.off-switch-method-redesign-page main .om-measure__life {
+  font-size: var(--om4-min-text) !important;
+}
+
+/* Programme evidence: exact photo crop and readable left-aligned context. */
+html body.off-switch-method-redesign-page main .om-ukraine h2 > span {
+  display: block !important;
+}
+
+html body.off-switch-method-redesign-page main .om-ukraine__context,
+html body.off-switch-method-redesign-page main .om-evidence-note {
+  max-width: 58rem !important;
+  margin-inline: 0 !important;
+  text-align: left !important;
+  font-size: var(--om4-min-text) !important;
+  line-height: 1.6 !important;
+}
+
+html body.off-switch-method-redesign-page main .om-ukraine__stage {
+  overflow: hidden !important;
+}
+
+html body.off-switch-method-redesign-page main .om-ukraine__host {
+  overflow: hidden !important;
+}
+
+html body.off-switch-method-redesign-page main .om-ukraine__host img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: 50% 28% !important;
+}
+
+html body.off-switch-method-redesign-page main .om-ukraine__stats span {
+  font-size: var(--om4-min-text) !important;
+}
+
+/* Proof: the primary case reads as a card and the disclaimer follows the grid. */
+html body.off-switch-method-redesign-page main .om-cases__grid > article:first-child {
+  background: color-mix(in srgb, var(--om4-soft) 70%, var(--om4-paper)) !important;
+}
+
+html body.off-switch-method-redesign-page main .om-cases__grid p,
+html body.off-switch-method-redesign-page main .om-cases__grid small,
+html body.off-switch-method-redesign-page main .om-cases > .om-container > .om-evidence-note {
+  font-size: var(--om4-min-text) !important;
+  line-height: 1.55 !important;
+}
+
+html body.off-switch-method-redesign-page main .om-cases > .om-container > .om-evidence-note {
+  max-width: 58rem !important;
+  margin-left: 0 !important;
+  text-align: left !important;
+}
+
+/* Formats: direct structure and interaction from Пересборка жизни. */
+html body.off-switch-method-redesign-page main .method-formats-section {
+  padding-block: clamp(4.5rem, 8vw, 7.5rem) !important;
+}
+
+html body.off-switch-method-redesign-page main .method-formats-section > .om-container {
+  width: min(100% - 3rem, 1180px) !important;
+  margin-inline: auto !important;
+}
+
+html body.off-switch-method-redesign-page main .method-formats-head {
+  max-width: 54rem !important;
+  margin-bottom: clamp(24px, 3vw, 40px) !important;
+}
+
+html body.off-switch-method-redesign-page main .method-formats-head h2 {
+  margin: .65rem 0 0 !important;
+  color: var(--om4-ink) !important;
+  font: 400 clamp(2.35rem, 4vw, 3.55rem)/1 Georgia, "Times New Roman", serif !important;
+  letter-spacing: -.035em !important;
+}
+
+html body.off-switch-method-redesign-page main .method-formats-head > p:last-child {
+  margin: 1rem 0 0 !important;
+  color: var(--om4-muted) !important;
+  font-size: var(--om4-min-text) !important;
+  line-height: 1.65 !important;
+}
+
+html body.off-switch-method-redesign-page main .method-product-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: clamp(16px, 2vw, 26px) !important;
+  margin-top: 0 !important;
+}
+
+html body.off-switch-method-redesign-page main .method-product-card {
+  position: relative !important;
+  display: grid !important;
+  min-width: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  color: inherit !important;
+  text-decoration: none !important;
+  border: 1px solid var(--om4-line) !important;
+  border-radius: 8px !important;
+  background: rgba(255, 255, 255, .9) !important;
+  box-shadow: var(--om4-card-shadow) !important;
+  cursor: pointer !important;
+  align-content: start !important;
+  transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease, background .18s ease !important;
+}
+
+html body.off-switch-method-redesign-page main .method-product-card figure {
+  width: 100% !important;
+  aspect-ratio: 16 / 10 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  background: var(--om4-paper-quiet) !important;
+}
+
+html body.off-switch-method-redesign-page main .method-product-card figure img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+html body.off-switch-method-redesign-page main .method-product-card:nth-child(1) figure img {
+  object-position: 58% center !important;
+}
+
+html body.off-switch-method-redesign-page main .method-product-card:nth-child(2) figure img {
+  object-position: 61% center !important;
+}
+
+html body.off-switch-method-redesign-page main .method-product-card:nth-child(3) figure img {
+  object-position: 58% center !important;
+}
+
+html body.off-switch-method-redesign-page main .method-product-card > span,
+html body.off-switch-method-redesign-page main .method-product-card h3,
+html body.off-switch-method-redesign-page main .method-product-card > p,
+html body.off-switch-method-redesign-page main .method-product-card dl {
+  margin-inline: clamp(20px, 2.2vw, 30px) !important;
+}
+
+html body.off-switch-method-redesign-page main .method-product-card > span {
+  margin-top: clamp(18px, 2vw, 26px) !important;
+  color: var(--om4-green) !important;
+  font-size: .82rem !important;
+  font-weight: 700 !important;
+  letter-spacing: .08em !important;
+}
+
+html body.off-switch-method-redesign-page main .method-product-card h3 {
+  margin-top: .6rem !important;
+  margin-bottom: 0 !important;
+  color: var(--om4-ink) !important;
+  font: 400 clamp(1.45rem, 2vw, 1.8rem)/1.08 Georgia, "Times New Roman", serif !important;
+}
+
+html body.off-switch-method-redesign-page main .method-product-card > p {
+  margin-top: .8rem !important;
+  margin-bottom: 0 !important;
+  color: var(--om4-muted) !important;
+  font-size: var(--om4-min-text) !important;
+  line-height: 1.52 !important;
+}
+
+html body.off-switch-method-redesign-page main .method-product-card dl {
+  display: grid !important;
+  gap: 10px !important;
+  margin-top: 1rem !important;
+  margin-bottom: clamp(22px, 2.4vw, 32px) !important;
+}
+
+html body.off-switch-method-redesign-page main .method-product-card dl div {
+  display: grid !important;
+  gap: 3px !important;
+  padding-top: 10px !important;
+  border-top: 1px solid var(--om4-line) !important;
+}
+
+html body.off-switch-method-redesign-page main .method-product-card dt {
+  color: var(--om4-green) !important;
+  font-size: .78rem !important;
+  font-weight: 700 !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase !important;
+}
+
+html body.off-switch-method-redesign-page main .method-product-card dd {
+  margin: 0 !important;
+  color: var(--om4-muted) !important;
+  font-size: var(--om4-min-text) !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  html body.off-switch-method-redesign-page main .method-product-card:hover {
+    transform: translate3d(6px, -8px, 0) !important;
+    border-color: color-mix(in srgb, var(--om4-green) 48%, var(--om4-line)) !important;
+    background: #fffef8 !important;
+    box-shadow: inset 4px 0 0 var(--om4-green), 0 30px 78px rgba(34, 74, 43, .18) !important;
+  }
+}
+
+html body.off-switch-method-redesign-page main .method-product-card:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--om4-sun) 72%, #fff) !important;
+  outline-offset: 4px !important;
+  transform: translate3d(6px, -8px, 0) !important;
+  box-shadow: inset 4px 0 0 var(--om4-green), 0 30px 78px rgba(34, 74, 43, .18) !important;
+}
+
+/* Page-wide semantic type floor. */
+html body.off-switch-method-redesign-page main .om-section-head > p,
+html body.off-switch-method-redesign-page main .om-section-head > div + p,
+html body.off-switch-method-redesign-page main .om-map p,
+html body.off-switch-method-redesign-page main .om-ukraine p,
+html body.off-switch-method-redesign-page main .om-cases p {
+  font-size: var(--om4-min-text) !important;
+}
+
+@media (min-width: 1024px) {
+  html body.off-switch-method-redesign-page main .om-hero__inner {
+    grid-template-columns: minmax(31rem, .96fr) minmax(0, 1.04fr) !important;
+  }
+
+  html body.off-switch-method-redesign-page main .om-hero h1 > span {
+    white-space: nowrap !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  html body.off-switch-method-redesign-page main .om-hero__inner,
+  html body.off-switch-method-redesign-page main .om-scope__composition,
+  html body.off-switch-method-redesign-page main .om-tool__layout--scene,
+  html body.off-switch-method-redesign-page main .om-mechanism__top,
+  html body.off-switch-method-redesign-page main .om-dog__composition,
+  html body.off-switch-method-redesign-page main .om-sequence__layout {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  html body.off-switch-method-redesign-page main .om-hero__inner {
+    min-height: 0 !important;
+    gap: 1.5rem !important;
+    width: min(100% - 2rem, 760px) !important;
+  }
+
+  html body.off-switch-method-redesign-page main .om-hero__copy {
+    padding-right: 0 !important;
+  }
+
+  html body.off-switch-method-redesign-page main .om-hero__visual {
+    width: 100% !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    aspect-ratio: 16 / 10 !important;
+  }
+
+  html body.off-switch-method-redesign-page main .om-hero__visual > img {
+    min-height: 0 !important;
+  }
+
+  html body.off-switch-method-redesign-page main .om-scope__groups,
+  html body.off-switch-method-redesign-page main .om-dog__story {
+    grid-template-rows: none !important;
+  }
+
+  html body.off-switch-method-redesign-page main .om-tool__copy--principle {
+    padding-block: 0 !important;
+  }
+
+  html body.off-switch-method-redesign-page main .om-mechanism .om-chain,
+  html body.off-switch-method-redesign-page main .om-limits__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  html body.off-switch-method-redesign-page main .method-product-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
+@media (max-width: 767px) {
+  html body.off-switch-method-redesign-page main .om-hero__inner,
+  html body.off-switch-method-redesign-page main .method-formats-section > .om-container {
+    width: min(100% - 1.5rem, 100%) !important;
+  }
+
+  html body.off-switch-method-redesign-page main .om-hero h1 {
+    font-size: clamp(2.25rem, 10.5vw, 2.8rem) !important;
+    line-height: .98 !important;
+  }
+
+  html body.off-switch-method-redesign-page main .om-hero h1 > span {
+    white-space: normal !important;
+  }
+
+  html body.off-switch-method-redesign-page main .om-tool__notes--brief,
+  html body.off-switch-method-redesign-page main .om-mechanism .om-chain,
+  html body.off-switch-method-redesign-page main .om-limits__grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  html body.off-switch-method-redesign-page main .om-tool figure.om-tool__scene,
+  html body.off-switch-method-redesign-page main .om-tool figure.om-tool__scene > img {
+    min-height: 0 !important;
+  }
+
+  html body.off-switch-method-redesign-page main .om-tool figure.om-tool__scene {
+    aspect-ratio: 4 / 3 !important;
+  }
+
+  html body.off-switch-method-redesign-page main .om-measure__grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  html body.off-switch-method-redesign-page main .om-measure__arrow {
+    transform: rotate(90deg) !important;
+  }
+
+  html body.off-switch-method-redesign-page main .om-ukraine h2#om-ukraine-title {
+    font-size: clamp(2.1rem, 9.5vw, 2.65rem) !important;
+    line-height: 1 !important;
+  }
+
+  html body.off-switch-method-redesign-page main .om-ukraine h2 > span {
+    display: inline !important;
+  }
+
+  html body.off-switch-method-redesign-page main .om-hero h1 > span {
+    display: inline !important;
+  }
+
+  html body.off-switch-method-redesign-page main .om-hero h1 > span + span::before {
+    content: " ";
+  }
+}
+
+/* Keep the approved Hero artwork complete: the previous cover crop removed
+   the outer characters and made the live route differ from the final preview. */
+html body.off-switch-method-redesign-page main .om-hero__visual > img {
+  object-fit: contain !important;
+  object-position: center center !important;
+  background: #f1ebe5 !important;
+}
+
+html body.off-switch-method-redesign-page main .om-hero__visual::before,
+html body.off-switch-method-redesign-page main .om-hero__visual::after {
+  display: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body.off-switch-method-redesign-page main .method-product-card {
+    transition: none !important;
+  }
+}
+
+/* Hero: one stable three-line reading on laptop and desktop. */
+body.off-switch-method-redesign-page .om-hero h1 > span {
+  display: block;
+}
+
+body.off-switch-method-redesign-page .om-hero__visual {
+  aspect-ratio: 1.36 / 1 !important;
+}
+
+body.off-switch-method-page.off-switch-method-redesign-page .om-hero__visual .os-character-intro--hero {
+  grid-template-columns: 4fr 13fr 12fr 18fr 15fr 19fr 19fr !important;
+}
+
+/* Information panel: exact Self language — paper, 7px radius, top accent, quiet shadow. */
+body.off-switch-method-redesign-page .om-scope__groups > article {
+  padding: 1.25rem 1.35rem 1.25rem 3.45rem !important;
+  border: 1px solid var(--om4-line) !important;
+  border-top: 4px solid var(--om4-green) !important;
+  border-radius: var(--om4-card-radius) !important;
+  background: var(--om4-paper) !important;
+  box-shadow: var(--om4-card-shadow) !important;
+}
+
+body.off-switch-method-redesign-page .om-scope__groups > article:nth-child(even) {
+  border-top-color: var(--om4-sun) !important;
+  background: color-mix(in srgb, var(--osys-sun-soft, #fff7cf) 38%, var(--om4-paper)) !important;
+}
+
+body.off-switch-method-redesign-page .om-scope__groups > article::before {
+  top: 1.45rem !important;
+}
+
+body.off-switch-method-redesign-page .om-scope__result {
+  margin-top: 1.5rem !important;
+  padding: 1.35rem 1.5rem !important;
+  border: 0 !important;
+  border-left: 4px solid var(--om4-green) !important;
+  border-radius: 0 !important;
+  background: var(--om4-paper) !important;
+  box-shadow: none !important;
+  color: var(--om4-muted) !important;
+}
+
+/* Technique: real hand references are the technical sequence. */
+body.off-switch-method-redesign-page .om-tool__media {
+  max-width: 43rem !important;
+  overflow: visible !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  aspect-ratio: auto !important;
+}
+
+body.off-switch-method-redesign-page .om-technique-photos {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: .75rem !important;
+  width: 100% !important;
+  height: auto !important;
+  background: transparent !important;
+}
+
+body.off-switch-method-redesign-page .om-technique-frame {
+  display: grid !important;
+  grid-template-rows: minmax(0, 1fr) auto !important;
+  overflow: hidden !important;
+  border: 1px solid var(--om4-line) !important;
+  border-radius: 6px !important;
+  background: var(--om4-paper) !important;
+  box-shadow: var(--om4-card-shadow) !important;
+}
+
+body.off-switch-method-redesign-page .om-technique-frame img {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 4 / 3 !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+body.off-switch-method-redesign-page .om-technique-frame p {
+  position: static !important;
+  display: grid !important;
+  grid-template-columns: auto minmax(0, 1fr) !important;
+  gap: .65rem !important;
+  align-items: center !important;
+  margin: 0 !important;
+  padding: .85rem .95rem !important;
+  background: var(--om4-paper) !important;
+  color: var(--om4-ink) !important;
+  font: 700 .78rem/1.35 "Segoe UI", sans-serif !important;
+}
+
+body.off-switch-method-redesign-page .om-technique-frame p b {
+  color: var(--om4-green) !important;
+}
+
+/* Process rail: copied from Self action sequence — no card shells. */
+body.off-switch-method-redesign-page .om-steps--compact {
+  gap: 0 !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--om4-process-line) !important;
+}
+
+body.off-switch-method-redesign-page .om-steps--compact > li {
+  display: grid !important;
+  grid-template-columns: 2.65rem minmax(0, 1fr) !important;
+  gap: 1.1rem !important;
+  padding: 1.15rem 0 !important;
+  border: 0 !important;
+  border-top: 1px solid var(--om4-process-line) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body.off-switch-method-redesign-page .om-steps--compact > li > span {
+  display: grid !important;
+  width: 2.65rem !important;
+  height: 2.65rem !important;
+  margin: 0 !important;
+  place-items: center !important;
+  border: 1px solid color-mix(in srgb, var(--om4-sun) 62%, transparent) !important;
+  border-radius: 50% !important;
+  background: transparent !important;
+  color: #9f3f31 !important;
+}
+
+body.off-switch-method-redesign-page .om-steps--compact strong {
+  font: 400 1.22rem/1.25 Georgia, "Times New Roman", serif !important;
+}
+
+body.off-switch-method-redesign-page .om-steps--compact p {
+  margin-top: .28rem !important;
+  color: var(--om4-muted) !important;
+  font-size: .91rem !important;
+  line-height: 1.45 !important;
+}
+
+body.off-switch-method-redesign-page .om-tool__notes {
+  gap: 1.1rem !important;
+}
+
+body.off-switch-method-redesign-page .om-speed,
+body.off-switch-method-redesign-page .om-tool__privacy {
+  padding: 2rem 1.875rem !important;
+  border: 1px solid var(--om4-line) !important;
+  border-top: 4px solid var(--om4-green) !important;
+  border-radius: var(--om4-card-radius) !important;
+  background: color-mix(in srgb, var(--om4-soft) 65%, var(--om4-paper)) !important;
+  color: var(--om4-ink) !important;
+  box-shadow: var(--om4-soft-shadow) !important;
+}
+
+body.off-switch-method-redesign-page .om-tool__privacy {
+  border-top-color: var(--om4-sun) !important;
+  background: color-mix(in srgb, var(--osys-sun-soft, #fff7cf) 50%, var(--om4-paper)) !important;
+}
+
+body.off-switch-method-redesign-page .om-speed span {
+  color: var(--om4-green) !important;
+  font: 800 .75rem/1.2 "Segoe UI", sans-serif !important;
+  letter-spacing: .06em !important;
+  text-transform: uppercase !important;
+}
+
+body.off-switch-method-redesign-page .om-speed strong,
+body.off-switch-method-redesign-page .om-tool__privacy > strong {
+  display: block !important;
+  margin: .55rem 0 0 !important;
+  color: var(--om4-ink) !important;
+  font: 400 1.85rem/1.15 Georgia, "Times New Roman", serif !important;
+}
+
+body.off-switch-method-redesign-page .om-speed p,
+body.off-switch-method-redesign-page .om-tool__privacy > p,
+body.off-switch-method-redesign-page .om-tool__privacy > span {
+  margin: .75rem 0 0 !important;
+  color: var(--om4-muted) !important;
+  font-size: 1rem !important;
+  line-height: 1.6 !important;
+}
+
+/* Signal process: same open process rail, larger and equal. */
+body.off-switch-method-redesign-page .om-chain > article,
+body.off-switch-method-redesign-page .om-chain > article.om-chain__stop {
+  padding: 1.2rem 1rem !important;
+  border: 0 !important;
+  border-top: 1px solid var(--om4-process-line) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body.off-switch-method-redesign-page .om-chain > article > span {
+  display: grid !important;
+  width: 2.65rem !important;
+  height: 2.65rem !important;
+  place-items: center !important;
+  border: 1px solid color-mix(in srgb, var(--om4-green) 42%, transparent) !important;
+  border-radius: 50% !important;
+  color: var(--om4-green) !important;
+}
+
+body.off-switch-method-redesign-page .om-chain > article > strong {
+  margin-top: .7rem !important;
+  font: 400 1.15rem/1.25 Georgia, "Times New Roman", serif !important;
+}
+
+body.off-switch-method-redesign-page .om-chain > article > p {
+  margin-top: .35rem !important;
+  color: var(--om4-muted) !important;
+  font-size: .9rem !important;
+  line-height: 1.45 !important;
+}
+
+body.off-switch-method-redesign-page .om-interrupt {
+  padding: 0 0 0 1.15rem !important;
+  border-left: 3px solid var(--om4-sun) !important;
+  background: transparent !important;
+}
+
+/* Episode captions: one baseline, no individual cards. */
+body.off-switch-method-redesign-page .om-dog__story {
+  gap: 0 !important;
+  border: 0 !important;
+  border-top: 1px solid var(--om4-process-line) !important;
+  background: transparent !important;
+}
+
+body.off-switch-method-redesign-page .om-dog__story > article,
+body.off-switch-method-redesign-page .om-dog__story > article:nth-child(2),
+body.off-switch-method-redesign-page .om-dog__story > article:last-child {
+  padding: 1.35rem 1.25rem !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body.off-switch-method-redesign-page .om-dog__story span {
+  color: var(--om4-green) !important;
+}
+
+body.off-switch-method-redesign-page .om-dog__story strong {
+  font-size: 1.08rem !important;
+}
+
+body.off-switch-method-redesign-page .om-dog__story p {
+  display: none !important;
+}
+
+/* Diagnostic pair: two Self information variants, no dark competing panel. */
+body.off-switch-method-redesign-page .om-ratio > .om-ratio__broad,
+body.off-switch-method-redesign-page .om-map__note {
+  padding: 2rem 1.875rem !important;
+  border: 1px solid var(--om4-line) !important;
+  border-top: 4px solid var(--om4-sun) !important;
+  border-left-width: 1px !important;
+  border-radius: var(--om4-card-radius) !important;
+  background: color-mix(in srgb, var(--osys-sun-soft, #fff7cf) 48%, var(--om4-paper)) !important;
+  color: var(--om4-ink) !important;
+  box-shadow: 0 16px 34px rgba(138, 111, 23, .08) !important;
+}
+
+body.off-switch-method-redesign-page .om-map__note {
+  border-top-color: var(--om4-green) !important;
+  background: color-mix(in srgb, var(--om4-soft) 65%, var(--om4-paper)) !important;
+  box-shadow: var(--om4-soft-shadow) !important;
+}
+
+body.off-switch-method-redesign-page .om-map__note strong,
+body.off-switch-method-redesign-page .om-map__note span {
+  display: block !important;
+}
+
+body.off-switch-method-redesign-page .om-map__note strong {
+  margin-bottom: .65rem !important;
+  color: var(--om4-green) !important;
+  font: 800 .75rem/1.2 "Segoe UI", sans-serif !important;
+  letter-spacing: .06em !important;
+  text-transform: uppercase !important;
+}
+
+body.off-switch-method-redesign-page .om-map__note span {
+  color: var(--om4-ink) !important;
+  font: 400 1.35rem/1.35 Georgia, "Times New Roman", serif !important;
+}
+
+/* Trigger versus pattern: Self information and accent variants only. */
+body.off-switch-method-redesign-page .om-depth > article,
+body.off-switch-method-redesign-page .om-depth > article:last-child {
+  padding: 2rem 1.875rem !important;
+  border: 1px solid var(--om4-line) !important;
+  border-top: 4px solid var(--om4-sun) !important;
+  border-radius: var(--om4-card-radius) !important;
+  background: color-mix(in srgb, var(--osys-sun-soft, #fff7cf) 48%, var(--om4-paper)) !important;
+  box-shadow: 0 16px 34px rgba(138, 111, 23, .08) !important;
+}
+
+body.off-switch-method-redesign-page .om-depth > article:last-child {
+  border-top-color: var(--om4-green) !important;
+  background: color-mix(in srgb, var(--om4-soft) 65%, var(--om4-paper)) !important;
+  box-shadow: var(--om4-soft-shadow) !important;
+}
+
+body.off-switch-method-redesign-page .om-depth span,
+body.off-switch-method-redesign-page .om-depth > article:last-child span {
+  color: var(--om4-green) !important;
+}
+
+body.off-switch-method-redesign-page .om-depth strong,
+body.off-switch-method-redesign-page .om-depth > article:last-child strong {
+  color: var(--om4-ink) !important;
+  font-size: clamp(1.65rem, 3vw, 2.15rem) !important;
+}
+
+body.off-switch-method-redesign-page .om-depth p,
+body.off-switch-method-redesign-page .om-depth > article:last-child p {
+  color: var(--om4-muted) !important;
+}
+
+/* Manifest rail: typography, not three cards. */
+body.off-switch-method-redesign-page .om-limits__grid {
+  border-top: 1px solid var(--om4-process-line) !important;
+  border-bottom: 1px solid var(--om4-process-line) !important;
+}
+
+body.off-switch-method-redesign-page .om-limits__grid > article {
+  grid-template-columns: 3.2rem minmax(0, 1fr) !important;
+  gap: 1.1rem !important;
+  padding: 1.65rem 1.5rem !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body.off-switch-method-redesign-page .om-limits__grid strong {
+  color: var(--om4-green) !important;
+  font-size: 2.55rem !important;
+}
+
+body.off-switch-method-redesign-page .om-limits__grid h3 {
+  margin: 0 !important;
+  color: var(--om4-ink) !important;
+  font: 400 1.45rem/1.2 Georgia, "Times New Roman", serif !important;
+}
+
+body.off-switch-method-redesign-page .om-limits__grid p {
+  margin: .45rem 0 0 !important;
+  color: var(--om4-muted) !important;
+  font: 400 .96rem/1.55 "Segoe UI", sans-serif !important;
+}
+
+body.off-switch-method-redesign-page .om-limits__note {
+  margin-top: 1.5rem !important;
+  padding: 1.35rem 1.5rem !important;
+  border: 0 !important;
+  border-left: 4px solid var(--om4-green) !important;
+  border-radius: 0 !important;
+  background: var(--om4-paper) !important;
+  box-shadow: none !important;
+}
+
+/* Results reuse the Self proof dashboard: one board, three cells, one accent. */
+body.off-switch-method-redesign-page .om-measure__grid {
+  gap: .75rem !important;
+  padding: 1rem !important;
+  overflow: hidden !important;
+  border: 0 !important;
+  border-radius: 9px !important;
+  background: var(--om4-deep) !important;
+  box-shadow: 0 20px 48px rgba(11, 52, 59, .18) !important;
+}
+
+body.off-switch-method-redesign-page .om-measure__grid > article,
+body.off-switch-method-redesign-page .om-measure__grid > article:nth-child(2),
+body.off-switch-method-redesign-page .om-measure__grid > article:nth-child(3) {
+  padding: 1.4rem 1.55rem !important;
+  border: 0 !important;
+  border-radius: 7px !important;
+  background: rgba(255, 255, 255, .08) !important;
+  box-shadow: none !important;
+}
+
+body.off-switch-method-redesign-page .om-measure__grid > article:nth-child(2) {
+  background: rgba(255, 255, 255, .13) !important;
+}
+
+body.off-switch-method-redesign-page .om-measure__grid > article:nth-child(3) {
+  background: var(--om4-soft) !important;
+}
+
+body.off-switch-method-redesign-page .om-measure__grid strong {
+  font-size: 1.55rem !important;
+}
+
+body.off-switch-method-redesign-page .om-measure__life {
+  padding: 0 0 0 1.15rem !important;
+  border: 0 !important;
+  border-left: 3px solid var(--om4-sun) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Program evidence: the exact dark proof dashboard from Self. */
+body.off-switch-method-redesign-page .om-ukraine__stats {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 0 !important;
+  overflow: hidden !important;
+  border: 0 !important;
+  border-radius: 0 0 9px 9px !important;
+  background: var(--om4-deep) !important;
+  box-shadow: 0 20px 48px rgba(11, 52, 59, .18) !important;
+}
+
+body.off-switch-method-redesign-page .om-ukraine__stats > article,
+body.off-switch-method-redesign-page .om-ukraine__stats > article:first-child {
+  min-height: 0 !important;
+  padding: 1.55rem 1.4rem !important;
+  border: 0 !important;
+  border-right: 1px solid rgba(255, 255, 255, .18) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, .18) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body.off-switch-method-redesign-page .om-ukraine__stats strong,
+body.off-switch-method-redesign-page .om-ukraine__stats > article:first-child strong {
+  color: #fff !important;
+  font-size: clamp(2.2rem, 8vw, 3.3rem) !important;
+}
+
+body.off-switch-method-redesign-page .om-ukraine__stats span,
+body.off-switch-method-redesign-page .om-ukraine__stats > article:first-child span {
+  color: #c6dedf !important;
+  font-size: .88rem !important;
+  line-height: 1.45 !important;
+}
+
+body.off-switch-method-redesign-page .om-ukraine__stats > article:nth-child(n + 3) strong {
+  font-size: clamp(1.8rem, 6vw, 2.45rem) !important;
+}
+
+/* Life cases: same Self case card; scale, not color, carries hierarchy. */
+body.off-switch-method-redesign-page .om-cases__grid > article,
+body.off-switch-method-redesign-page .om-cases__grid > article:first-child,
+body.off-switch-method-redesign-page .om-cases__grid > article:not(:first-child),
+body.off-switch-method-redesign-page .om-cases__grid > article:nth-child(even) {
+  padding: 2rem !important;
+  border: 1px solid var(--om4-line) !important;
+  border-left-width: 1px !important;
+  border-top-width: 1px !important;
+  border-radius: var(--om4-case-radius) !important;
+  background: var(--om4-paper) !important;
+  box-shadow: var(--om4-card-shadow) !important;
+}
+
+body.off-switch-method-redesign-page .om-cases__grid > article:first-child {
+  padding: clamp(2.25rem, 5vw, 3.25rem) !important;
+}
+
+@media (min-width: 768px) {
+  body.off-switch-method-redesign-page .om-technique-photos {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+
+  body.off-switch-method-redesign-page .om-dog__story > article + article {
+    border-left: 1px solid var(--om4-process-line) !important;
+  }
+
+  body.off-switch-method-redesign-page .om-limits__grid > article + article {
+    border-left: 1px solid var(--om4-process-line) !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  body.off-switch-method-redesign-page .om-hero__inner {
+    grid-template-columns: minmax(32rem, .98fr) minmax(0, 1.02fr) !important;
+    gap: 2rem !important;
+  }
+
+  body.off-switch-method-redesign-page .om-hero h1 {
+    max-width: none !important;
+    font-size: clamp(2.7rem, 3.7vw, 3.3rem) !important;
+  }
+
+  body.off-switch-method-redesign-page .om-hero h1 > span {
+    white-space: nowrap;
+  }
+
+  body.off-switch-method-redesign-page .om-scope__groups {
+    grid-template-rows: repeat(4, minmax(0, 1fr)) !important;
+  }
+
+  body.off-switch-method-redesign-page .om-tool > .om-container {
+    grid-template-columns: minmax(0, 1.18fr) minmax(23rem, .82fr) !important;
+  }
+
+  body.off-switch-method-redesign-page .om-chain[data-card-role="sequence"] > article,
+  body.off-switch-method-redesign-page .om-chain[data-card-role="sequence"] > article:nth-of-type(1),
+  body.off-switch-method-redesign-page .om-chain[data-card-role="sequence"] > article:nth-of-type(2),
+  body.off-switch-method-redesign-page .om-chain[data-card-role="sequence"] > article:nth-of-type(3),
+  body.off-switch-method-redesign-page .om-chain[data-card-role="sequence"] > article:nth-of-type(4) {
+    display: block !important;
+    min-height: 11.75rem !important;
+  }
+
+  body.off-switch-method-redesign-page .om-depth > article:last-child::before {
+    color: var(--om4-green) !important;
+  }
+
+  body.off-switch-method-redesign-page .om-limits__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+
+  body.off-switch-method-redesign-page .om-measure__grid > article:nth-child(1) {
+    width: 62% !important;
+  }
+
+  body.off-switch-method-redesign-page .om-measure__grid > article:nth-child(2) {
+    width: 80% !important;
+  }
+
+  body.off-switch-method-redesign-page .om-ukraine__stats {
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1.25fr) minmax(0, .8fr) minmax(0, .7fr) !important;
+  }
+
+  body.off-switch-method-redesign-page .om-ukraine__stats > article,
+  body.off-switch-method-redesign-page .om-ukraine__stats > article:first-child {
+    border-bottom: 0 !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  html body.off-switch-method-redesign-page main .om-mechanism h2 > span {
+    display: block !important;
+    white-space: normal !important;
+  }
+
+  html body.off-switch-method-redesign-page main .om-mechanism > .om-container,
+  html body.off-switch-method-redesign-page main .om-mechanism .om-chain,
+  html body.off-switch-method-redesign-page main .om-mechanism .om-chain[data-card-role="sequence"] > figure.om-mechanism__media {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+
+  html body.off-switch-method-redesign-page main .om-mechanism .om-chain[data-card-role="sequence"] > article,
+  html body.off-switch-method-redesign-page main .om-mechanism .om-chain[data-card-role="sequence"] > article:nth-of-type(1),
+  html body.off-switch-method-redesign-page main .om-mechanism .om-chain[data-card-role="sequence"] > article:nth-of-type(2),
+  html body.off-switch-method-redesign-page main .om-mechanism .om-chain[data-card-role="sequence"] > article:nth-of-type(3),
+  html body.off-switch-method-redesign-page main .om-mechanism .om-chain[data-card-role="sequence"] > article:nth-of-type(4) {
+    display: grid !important;
+    grid-template-columns: 2.65rem minmax(0, 1fr) !important;
+    grid-template-rows: auto auto !important;
+    column-gap: 1rem !important;
+    row-gap: 0 !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    padding: 1.15rem 0 !important;
+    border: 0 !important;
+    border-top: 1px solid var(--om4-process-line) !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  html body.off-switch-method-redesign-page main .om-mechanism .om-chain[data-card-role="sequence"] > article > span {
+    position: static !important;
+    grid-column: 1 !important;
+    grid-row: 1 / span 2 !important;
+    margin: 0 !important;
+  }
+
+  html body.off-switch-method-redesign-page main .om-mechanism .om-chain[data-card-role="sequence"] > article > strong {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+  }
+
+  html body.off-switch-method-redesign-page main .om-mechanism .om-chain[data-card-role="sequence"] > article > p {
+    grid-column: 2 !important;
+    grid-row: 2 !important;
+    margin: .3rem 0 0 !important;
+  }
+}
+
+@media (max-width: 767px) {
+  html body.off-switch-method-redesign-page main section.om-section.om-ukraine h2#om-ukraine-title {
+    font-size: 1.5rem !important;
+    line-height: 1.08 !important;
+  }
+
+  html body.off-switch-method-redesign-page main .om-ukraine h2 > span {
+    display: block !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  body.off-switch-method-redesign-page .om-hero__inner {
+    grid-template-columns: minmax(38rem, .98fr) minmax(0, 1.02fr) !important;
+  }
+}
+
+@media (max-width: 767px) {
+  body.off-switch-method-redesign-page .om-hero h1 {
+    max-width: none !important;
+    font-size: clamp(2.4rem, 10.5vw, 2.75rem) !important;
+  }
+
+  body.off-switch-method-redesign-page .om-tool__notes {
+    grid-template-columns: 1fr !important;
+  }
+
+  body.off-switch-method-redesign-page .om-limits__grid > article {
+    grid-template-columns: 3rem minmax(0, 1fr) !important;
+    padding-inline: 0 !important;
+  }
+
+  body.off-switch-method-redesign-page .om-ukraine__stats > article:nth-child(even) {
+    border-right: 0 !important;
+  }
+}
+
+/* Cascade hardening: retain the Self process language after iteration 3. */
+html body.off-switch-method-redesign-page main .om-tool figure.om-tool__media {
+  align-self: start !important;
+  height: auto !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html body.off-switch-method-redesign-page main .om-tool figure.om-tool__media .om-technique-photos {
+  height: auto !important;
+}
+
+@media (min-width: 1024px) {
+  html body.off-switch-method-redesign-page main .om-mechanism .om-chain[data-card-role="sequence"] > article,
+  html body.off-switch-method-redesign-page main .om-mechanism .om-chain[data-card-role="sequence"] > article:nth-of-type(1),
+  html body.off-switch-method-redesign-page main .om-mechanism .om-chain[data-card-role="sequence"] > article:nth-of-type(2),
+  html body.off-switch-method-redesign-page main .om-mechanism .om-chain[data-card-role="sequence"] > article:nth-of-type(3),
+  html body.off-switch-method-redesign-page main .om-mechanism .om-chain[data-card-role="sequence"] > article:nth-of-type(4) {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-rows: 2.65rem auto 1fr !important;
+    align-content: start !important;
+    gap: 0 !important;
+    min-height: 11.75rem !important;
+    padding: 1.15rem 1rem !important;
+    border: 0 !important;
+    border-top: 1px solid var(--om4-process-line) !important;
+    border-right: 1px solid var(--om4-process-line) !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  html body.off-switch-method-redesign-page main .om-mechanism .om-chain[data-card-role="sequence"] > article:first-of-type {
+    border-left: 1px solid var(--om4-process-line) !important;
+  }
+
+  html body.off-switch-method-redesign-page main .om-mechanism .om-chain[data-card-role="sequence"] > article > span {
+    position: static !important;
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    margin: 0 !important;
+  }
+
+  html body.off-switch-method-redesign-page main .om-mechanism .om-chain[data-card-role="sequence"] > article > strong {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+    min-height: 2.7rem !important;
+    margin: .7rem 0 0 !important;
+    font-size: 1.08rem !important;
+  }
+
+  html body.off-switch-method-redesign-page main .om-mechanism .om-chain[data-card-role="sequence"] > article > p {
+    grid-column: 1 !important;
+    grid-row: 3 !important;
+    margin: .35rem 0 0 !important;
+  }
+}
+
+/* Final cascade hardening for the brief pass above. */
+@media (min-width: 1024px) {
+  html body.off-switch-method-redesign-page main .om-scope__composition {
+    display: grid !important;
+  }
+
+  html body.off-switch-method-redesign-page main .om-scope__left,
+  html body.off-switch-method-redesign-page main .om-scope__groups {
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
+
+  html body.off-switch-method-redesign-page main .om-mechanism__top .om-section-head,
+  html body.off-switch-method-redesign-page main .om-mechanism__top .om-mechanism__media {
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
+
+  html body.off-switch-method-redesign-page main .om-sequence > .om-container {
+    display: block !important;
+  }
+
+  html body.off-switch-method-redesign-page main .om-sequence__layout {
+    width: 100% !important;
+    grid-column: 1 / -1 !important;
+  }
+
+  html body.off-switch-method-redesign-page main .om-ukraine .om-section-head,
+  html body.off-switch-method-redesign-page main .om-ukraine h2#om-ukraine-title {
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  html body.off-switch-method-redesign-page main .om-ukraine h2#om-ukraine-title > span {
+    white-space: nowrap !important;
+  }
+
+  html body.off-switch-method-redesign-page main .om-mechanism__top {
+    grid-template-columns: minmax(28rem, .94fr) minmax(0, 1.06fr) !important;
+  }
+
+  html body.off-switch-method-redesign-page main .om-mechanism h2#om-mechanism-title {
+    width: 100% !important;
+    max-width: none !important;
+    font-size: clamp(2.45rem, 2.9vw, 2.7rem) !important;
+  }
+}
+
+html body.off-switch-method-redesign-page main .om-tool figure.om-tool__scene,
+html body.off-switch-method-redesign-page main .om-tool figure.om-tool__scene > img {
+  min-height: 470px !important;
+}
+
+html body.off-switch-method-redesign-page main .om-mechanism .om-chain[data-card-role="sequence"] > article,
+html body.off-switch-method-redesign-page main .om-mechanism .om-chain[data-card-role="sequence"] > article:nth-of-type(1),
+html body.off-switch-method-redesign-page main .om-mechanism .om-chain[data-card-role="sequence"] > article:nth-of-type(2),
+html body.off-switch-method-redesign-page main .om-mechanism .om-chain[data-card-role="sequence"] > article:nth-of-type(3),
+html body.off-switch-method-redesign-page main .om-mechanism .om-chain[data-card-role="sequence"] > article:nth-of-type(4) {
+  display: block !important;
+  min-height: 0 !important;
+  padding: 1.55rem 1.35rem !important;
+  border: 0 !important;
+  border-radius: var(--om4-self-radius) !important;
+  background: var(--om4-paper) !important;
+  box-shadow: var(--om4-card-shadow) !important;
+}
+
+html body.off-switch-method-redesign-page main .om-mechanism .om-chain[data-card-role="sequence"] > article > span,
+html body.off-switch-method-redesign-page main .om-mechanism .om-chain[data-card-role="sequence"] > article > strong,
+html body.off-switch-method-redesign-page main .om-mechanism .om-chain[data-card-role="sequence"] > article > p {
+  display: block !important;
+  min-height: 0 !important;
+  grid-column: auto !important;
+  grid-row: auto !important;
+}
+
+html body.off-switch-method-redesign-page main .om-mechanism .om-chain[data-card-role="sequence"] > article > span {
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+}
+
+html body.off-switch-method-redesign-page main .om-mechanism .om-chain[data-card-role="sequence"] > article > strong {
+  margin: .65rem 0 0 !important;
+  font-size: 1.25rem !important;
+}
+
+html body.off-switch-method-redesign-page main .om-mechanism .om-chain[data-card-role="sequence"] > article > p {
+  margin: .55rem 0 0 !important;
+  font-size: var(--om4-min-text) !important;
+}
+
+@media (max-width: 767px) {
+  html body.off-switch-method-redesign-page main .om-tool figure.om-tool__scene,
+  html body.off-switch-method-redesign-page main .om-tool figure.om-tool__scene > img {
+    min-height: 0 !important;
+  }
+}
+
+/* Live-route parity with the approved final Hero preview. */
+html body.off-switch-method-redesign-page main .om-hero__visual {
+  align-self: center !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  border-radius: .75rem !important;
+  background: #f1ebe5 !important;
+  aspect-ratio: 1.36 / 1 !important;
+}
+
+html body.off-switch-method-redesign-page main .om-hero__inner {
+  align-items: center !important;
+}
+
+html body.off-switch-method-redesign-page main .om-hero__visual > img {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  object-fit: cover !important;
+  object-position: right center !important;
+  background: #f1ebe5 !important;
+}

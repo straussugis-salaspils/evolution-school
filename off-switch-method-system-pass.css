@@ -1,0 +1,309 @@
+/* Method: local composition restoration. The hero and character labels are intentionally untouched. */
+
+/* Use the real hand references as stable crops in every layout. */
+.off-switch-method-page .om-technique-frame {
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}
+.off-switch-method-page .om-technique-frame:nth-child(1) {
+  background-image: url("visual-package/off-switch-method/selected/web/hand-reference-01.jpg") !important;
+  background-position: 43% center !important;
+}
+.off-switch-method-page .om-technique-frame:nth-child(2) {
+  background-image: url("visual-package/off-switch-method/selected/web/hand-reference-02.jpg") !important;
+  background-position: 50% center !important;
+}
+.off-switch-method-page .om-technique-frame:nth-child(3) {
+  background-image: url("visual-package/off-switch-method/selected/web/hand-reference-03.jpg") !important;
+  background-position: 57% center !important;
+}
+.off-switch-method-page .om-technique-frame img {
+  opacity: 0 !important;
+}
+
+/* Text on pale fields must stay readable. */
+.off-switch-method-page .om-interrupt p,
+.off-switch-method-page .om-chain article p,
+.off-switch-method-page .om-chain__switch em {
+  color: #405f46 !important;
+}
+body.off-switch-method-v3.off-switch-method-page .om-dog .om-dog__story {
+  overflow: visible !important;
+  border: 0 !important;
+  border-left: 2px solid #c7dc94 !important;
+}
+body.off-switch-method-v3.off-switch-method-page .om-dog .om-dog__story article,
+body.off-switch-method-v3.off-switch-method-page .om-dog .om-dog__story article:nth-child(2),
+body.off-switch-method-v3.off-switch-method-page .om-dog .om-dog__story article:last-child {
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body.off-switch-method-v3.off-switch-method-page .om-dog .om-dog__story p,
+body.off-switch-method-v3.off-switch-method-page .om-dog .om-dog__story article:last-child > p {
+  color: #526956 !important;
+}
+
+/* Depth returns to one strong scene, followed by two editorial conclusions. */
+.off-switch-method-page .om-depth__visual {
+  max-width: 1100px;
+  height: clamp(390px, 43vw, 535px);
+  margin: 42px auto 0 !important;
+  overflow: hidden;
+  background: #e5edd8;
+}
+.off-switch-method-page .om-depth__visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 52% center;
+}
+.off-switch-method-page .om-depth {
+  display: grid !important;
+  grid-template-columns: minmax(0, .72fr) minmax(0, 1.28fr);
+  max-width: 1100px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  border-top: 1px solid rgba(53, 86, 46, .24) !important;
+}
+.off-switch-method-page .om-depth::before,
+.off-switch-method-page .om-depth article + article::before {
+  display: none !important;
+}
+.off-switch-method-page .om-depth article,
+.off-switch-method-page .om-depth article + article {
+  min-height: 0 !important;
+  padding: 30px 34px 10px 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.off-switch-method-page .om-depth article + article {
+  padding-left: clamp(28px, 4vw, 58px) !important;
+  border-left: 1px solid rgba(53, 86, 46, .2) !important;
+}
+.off-switch-method-page .om-depth strong {
+  font-size: clamp(27px, 2.7vw, 40px) !important;
+}
+
+/* Remove excess vertical packaging without flattening the page rhythm. */
+.off-switch-method-page :is(.om-tool, .om-mechanism, .om-dog, .om-map, .om-sequence, .om-limits, .om-measure, .om-ukraine, .om-cases) {
+  padding-block: clamp(66px, 7.6vw, 112px) !important;
+}
+.off-switch-method-page .om-formats {
+  padding-block: clamp(70px, 8vw, 118px) !important;
+}
+
+/* The method's semantic apex needs more space than the explanatory sections. */
+.off-switch-method-page .om-limits {
+  padding-block: clamp(96px, 10vw, 150px) !important;
+}
+
+/* Result levels rise from observation to life instead of reading as three cards. */
+.off-switch-method-page .om-measure__grid {
+  border-top: 1px solid rgba(220, 240, 189, .34);
+}
+.off-switch-method-page .om-measure__grid > article,
+.off-switch-method-page .om-measure__grid > article:nth-child(2),
+.off-switch-method-page .om-measure__grid > article:last-child {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+.off-switch-method-page .om-measure__grid > article:nth-child(-n + 2) {
+  min-height: 170px !important;
+  border-top: 0 !important;
+  background: transparent !important;
+}
+.off-switch-method-page .om-measure__grid > article:last-child {
+  min-height: 245px !important;
+  margin-top: 0 !important;
+  border-top: 1px solid rgba(220, 240, 189, .34) !important;
+  background: rgba(231, 245, 181, .14) !important;
+}
+
+/* Three depths of work, not three equal tariffs. */
+.off-switch-method-page .om-format-doors {
+  grid-template-columns: minmax(0, .8fr) minmax(0, 1.08fr) minmax(0, 1.12fr) !important;
+}
+.off-switch-method-page .om-format-door:first-child {
+  background: rgba(255, 253, 248, .74) !important;
+}
+.off-switch-method-page .om-format-door:nth-child(2) {
+  background: rgba(247, 239, 197, .56) !important;
+}
+.off-switch-method-page .om-format-door:last-child {
+  background: rgba(224, 238, 208, .74) !important;
+}
+
+@media (max-width: 700px) {
+  .off-switch-method-page .om-depth__visual {
+    height: auto;
+    margin-top: 30px !important;
+    aspect-ratio: 4 / 3;
+  }
+  .off-switch-method-page .om-depth {
+    grid-template-columns: 1fr;
+  }
+  .off-switch-method-page .om-depth article,
+  .off-switch-method-page .om-depth article + article {
+    padding: 25px 0 !important;
+    border-left: 0 !important;
+    border-bottom: 1px solid rgba(53, 86, 46, .2) !important;
+  }
+  .off-switch-method-page .om-depth article:last-child {
+    border-bottom: 0 !important;
+  }
+  .off-switch-method-page .om-format-doors {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+
+/* Final point pass: close the real desktop gap without changing the hero crop system. */
+@media (min-width: 1280px) {
+  .off-switch-method-page .om-hero__visual {
+    left: 0 !important;
+    right: auto !important;
+    width: calc(100vw - ((100vw - 1200px) / 2)) !important;
+    max-width: none !important;
+  }
+  .off-switch-method-page .om-hero__visual > img {
+    object-position: 58% 50% !important;
+  }
+}
+
+/* The semantic stop: three actions move from interruption to structural change. */
+.off-switch-method-page .om-limits h2 {
+  font-size: clamp(52px, 5.5vw, 76px) !important;
+}
+.off-switch-method-page .om-limits__grid {
+  grid-template-columns: minmax(0, .88fr) minmax(0, .98fr) minmax(0, 1.14fr) !important;
+  column-gap: clamp(22px, 3vw, 46px) !important;
+}
+.off-switch-method-page .om-limits__grid article {
+  padding-block: 30px 40px !important;
+}
+.off-switch-method-page .om-limits__grid article:last-child p {
+  font-size: clamp(31px, 2.7vw, 39px) !important;
+}
+.off-switch-method-page .om-limits__note {
+  max-width: 880px !important;
+  margin-top: clamp(42px, 5vw, 68px) !important;
+}
+
+/* Level 03 is an open life outcome, not a third card. */
+@media (min-width: 701px) {
+  .off-switch-method-page .om-measure__grid > article:nth-child(-n + 2) {
+    min-height: 145px !important;
+    padding-block: 26px !important;
+  }
+  .off-switch-method-page .om-measure__grid > article:last-child {
+    display: grid !important;
+    grid-template-columns: 120px minmax(180px, .55fr) minmax(0, 1.45fr) !important;
+    align-items: center !important;
+    min-height: 280px !important;
+    padding: 44px 36px !important;
+    border-right: 0 !important;
+    border-bottom: 0 !important;
+    border-left: 0 !important;
+    border-top: 2px solid rgba(220, 240, 189, .58) !important;
+    background: transparent !important;
+  }
+  .off-switch-method-page .om-measure__grid > article:last-child :is(.om-measure__number, strong, p) {
+    margin: 0 !important;
+  }
+  .off-switch-method-page .om-measure__grid > article:last-child .om-measure__number {
+    font-size: 64px !important;
+  }
+  .off-switch-method-page .om-measure__grid > article:last-child strong {
+    font-size: 42px !important;
+  }
+}
+.off-switch-method-page .om-measure__life {
+  display: none !important;
+}
+
+/* Scale first, author second, measured change next; minor programme facts recede. */
+.off-switch-method-page .om-ukraine__host {
+  width: clamp(260px, 33vw, 420px) !important;
+}
+.off-switch-method-page .om-ukraine__stats article:first-child strong {
+  font-size: clamp(48px, 4.8vw, 66px) !important;
+}
+.off-switch-method-page .om-ukraine__stats article:nth-child(2),
+.off-switch-method-page .om-ukraine__stats article:nth-child(4) {
+  opacity: .66;
+}
+
+@media (max-width: 700px) {
+  .off-switch-method-page .om-limits h2 {
+    font-size: 43px !important;
+  }
+  .off-switch-method-page .om-limits__grid {
+    grid-template-columns: 1fr !important;
+    column-gap: 0 !important;
+  }
+  .off-switch-method-page .om-limits__grid article:last-child p {
+    font-size: 28px !important;
+  }
+  .off-switch-method-page .om-measure__grid > article:last-child {
+    border-top-width: 2px !important;
+    background: transparent !important;
+  }
+}
+
+/* Final art-direction check: on phones the approved hero scene must remain a real visual centre. */
+@media (max-width: 680px) {
+  body.off-switch-method-page .om-hero,
+  body.off-switch-method-page .om-hero__inner {
+    min-height: 0 !important;
+  }
+
+  body.off-switch-method-page .om-hero {
+    padding: 0 0 46px !important;
+    background: #c9e77d !important;
+  }
+
+  body.off-switch-method-page .om-hero::before {
+    display: none !important;
+  }
+
+  body.off-switch-method-page .om-hero__inner {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-areas: "visual" "copy" !important;
+    gap: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  body.off-switch-method-page .om-hero__visual {
+    position: relative !important;
+    inset: auto !important;
+    grid-area: visual !important;
+    width: 100vw !important;
+    min-height: 300px !important;
+    margin-left: calc(50% - 50vw) !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+
+  body.off-switch-method-page .om-hero__visual > img {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: 58% 48% !important;
+  }
+
+  body.off-switch-method-page .om-hero__visual::after {
+    background: linear-gradient(180deg, rgba(201, 231, 125, 0) 64%, rgba(201, 231, 125, .92) 100%) !important;
+  }
+
+  body.off-switch-method-page .om-hero__copy {
+    grid-area: copy !important;
+    width: 100% !important;
+    max-width: none !important;
+    padding-top: 34px !important;
+  }
+}

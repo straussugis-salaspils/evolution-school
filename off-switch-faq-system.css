@@ -1,0 +1,222 @@
+/* Shared Off-Switch product FAQ. The approved 1:1 FAQ is the visual source. */
+html body.freedom-studio main section.off-switch-faq.off-switch-faq[data-off-switch-faq] {
+  --off-faq-ink: #2f3d29;
+  --off-faq-muted: #5f6c57;
+  --off-faq-accent: #526b41;
+  --off-faq-line: rgba(36, 70, 63, 0.16);
+  --off-faq-surface: rgba(255, 253, 248, 0.82);
+  padding: 64px 0 !important;
+  background-color: #f4efe2 !important;
+  background-image: none !important;
+  color: var(--off-faq-ink) !important;
+}
+
+html body main .off-switch-faq .off-switch-faq__grid {
+  display: grid !important;
+  width: min(calc(100% - 48px), 1220px) !important;
+  margin-inline: auto !important;
+  padding: 0 !important;
+  grid-template-columns: minmax(280px, 0.72fr) minmax(0, 1.28fr) !important;
+  gap: 82px !important;
+  align-items: start !important;
+}
+
+html body main .off-switch-faq .off-switch-faq__intro {
+  position: sticky !important;
+  top: 128px !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html body main .off-switch-faq .off-switch-faq__intro :is(.pp-eyebrow, .gg-eyebrow, .os-eyebrow) {
+  margin: 0 0 14px !important;
+  color: var(--off-faq-accent) !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 800 !important;
+  line-height: 1.35 !important;
+  letter-spacing: 0.02em !important;
+  text-transform: uppercase !important;
+}
+
+html body main .off-switch-faq .off-switch-faq__intro h2 {
+  max-width: 20ch !important;
+  margin: 0 !important;
+  color: var(--off-faq-ink) !important;
+  font-family: Georgia, "Times New Roman", serif !important;
+  font-size: 50px !important;
+  font-weight: 400 !important;
+  line-height: 1.08 !important;
+  letter-spacing: -0.02em !important;
+  text-wrap: balance;
+}
+
+html body main .off-switch-faq .off-switch-faq__intro > p:not(.pp-eyebrow, .gg-eyebrow, .os-eyebrow) {
+  max-width: 34ch;
+  margin: 20px 0 0 !important;
+  color: var(--off-faq-muted) !important;
+  font-size: 16px !important;
+  line-height: 1.56 !important;
+}
+
+html body main .off-switch-faq .off-switch-faq__list {
+  display: grid !important;
+  min-width: 0;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-top: 1px solid rgba(47, 65, 64, 0.2) !important;
+  background: transparent !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 12px !important;
+}
+
+html body main .off-switch-faq .off-switch-faq__list > details {
+  overflow: hidden !important;
+  min-width: 0;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 1px solid var(--off-faq-line) !important;
+  border-radius: 3px !important;
+  background: var(--off-faq-surface) !important;
+  box-shadow: none !important;
+}
+
+html body main .off-switch-faq .off-switch-faq__list summary {
+  position: relative;
+  display: block;
+  min-height: 80px;
+  margin: 0 !important;
+  padding: 18px 56px 18px 20px !important;
+  color: var(--off-faq-ink) !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 17px !important;
+  font-weight: 800 !important;
+  line-height: 1.3 !important;
+  list-style: none;
+  cursor: pointer;
+  transition: color 180ms ease, background-color 180ms ease;
+}
+
+html body main .off-switch-faq .off-switch-faq__list summary::-webkit-details-marker,
+html body main .off-switch-faq .off-switch-faq__list summary::marker {
+  display: none;
+  content: "";
+}
+
+html body main .off-switch-faq .off-switch-faq__list summary::after {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  content: "+";
+  color: var(--off-faq-accent);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1;
+  transform: translateY(-50%);
+}
+
+html body main .off-switch-faq .off-switch-faq__list details[open] summary::after {
+  content: "−";
+}
+
+html body main .off-switch-faq .off-switch-faq__list summary:hover {
+  color: var(--off-faq-accent) !important;
+  background: rgba(255, 255, 255, 0.22) !important;
+}
+
+html body main .off-switch-faq .off-switch-faq__list summary:focus-visible {
+  color: var(--off-faq-accent) !important;
+  outline: 3px solid rgba(82, 107, 65, 0.28) !important;
+  outline-offset: -3px !important;
+}
+
+html body main .off-switch-faq .off-switch-faq__answer {
+  display: grid !important;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 280ms ease, opacity 180ms ease;
+}
+
+html body main .off-switch-faq details[open] > .off-switch-faq__answer {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+html body main .off-switch-faq .off-switch-faq__answer-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+html body main .off-switch-faq .off-switch-faq__answer p {
+  max-width: 760px;
+  margin: 0 !important;
+  padding: 0 20px 20px !important;
+  color: var(--off-faq-muted) !important;
+  font-size: 15px !important;
+  line-height: 1.56 !important;
+}
+
+@media (max-width: 1120px) {
+  html body main .off-switch-faq .off-switch-faq__intro h2 {
+    font-size: 41px !important;
+  }
+}
+
+@media (max-width: 980px) {
+  html body main .off-switch-faq .off-switch-faq__grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 32px !important;
+  }
+
+  html body main .off-switch-faq .off-switch-faq__intro {
+    position: static !important;
+  }
+}
+
+@media (max-width: 760px) {
+  html body main .off-switch-faq {
+    padding: 56px 0 !important;
+  }
+
+  html body main .off-switch-faq .off-switch-faq__grid {
+    width: min(calc(100% - 32px), 680px) !important;
+  }
+
+  html body main .off-switch-faq .off-switch-faq__intro h2 {
+    font-size: 36px !important;
+  }
+}
+
+@media (max-width: 460px) {
+  html body main .off-switch-faq .off-switch-faq__intro h2 {
+    font-size: 31.2px !important;
+  }
+
+  html body main .off-switch-faq .off-switch-faq__list summary {
+    min-height: 72px;
+    padding: 18px 50px 18px 18px !important;
+    font-size: 17px !important;
+  }
+
+  html body main .off-switch-faq .off-switch-faq__list summary::after {
+    right: 18px;
+  }
+
+  html body main .off-switch-faq .off-switch-faq__answer p {
+    padding: 0 18px 20px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body main .off-switch-faq .off-switch-faq__list summary,
+  html body main .off-switch-faq .off-switch-faq__answer {
+    transition: none;
+  }
+}

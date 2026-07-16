@@ -1,0 +1,917 @@
+/* Page-only card architecture for Off-Switch — Method.
+   Loaded after the shared Off-Switch systems so no other page is affected. */
+
+/* Compact category grid */
+body.off-switch-method-v3 .om-scope .om-scope__groups {
+  gap: 14px;
+  border: 0;
+}
+
+body.off-switch-method-v3 .om-scope .om-scope__groups article {
+  min-height: 138px;
+  padding: 22px;
+  border: 1px solid color-mix(in srgb, var(--om-teal) 20%, transparent);
+  border-top: 4px solid var(--om-teal);
+  border-radius: 7px;
+  background: color-mix(in srgb, var(--om-mint-soft) 62%, #ffffff);
+  box-shadow: 0 10px 25px rgba(22, 66, 62, 0.06);
+}
+
+body.off-switch-method-v3 .om-scope .om-scope__groups article:nth-child(2),
+body.off-switch-method-v3 .om-scope .om-scope__groups article:nth-child(4) {
+  border-top-color: var(--om-coral);
+  background: color-mix(in srgb, var(--om-sun-soft) 58%, #ffffff);
+}
+
+body.off-switch-method-v3 .om-scope .om-scope__groups p {
+  margin-top: 15px;
+  font-size: 18px !important;
+}
+
+/* Five technique steps remain one continuous operating sequence. */
+body.off-switch-method-v3 .om-tool .om-steps {
+  border: 0;
+}
+
+body.off-switch-method-v3 .om-tool .om-steps li {
+  position: relative;
+  min-height: 0;
+  grid-template-columns: 58px minmax(0, 1fr);
+  gap: 15px;
+  padding: 16px 0 20px;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+body.off-switch-method-v3 .om-tool .om-steps li:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  top: 50px;
+  bottom: -2px;
+  left: 23px;
+  width: 2px;
+  background: color-mix(in srgb, var(--om-coral) 24%, transparent);
+}
+
+body.off-switch-method-v3 .om-tool .om-steps li > span {
+  position: relative;
+  z-index: 1;
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--om-coral) 35%, transparent);
+  border-radius: 50%;
+  background: var(--om-paper);
+  color: var(--om-coral);
+  font-size: 17px;
+}
+
+body.off-switch-method-v3 .om-tool .om-steps strong {
+  font-size: 17px;
+}
+
+/* Core mechanism: one connected path, with a visible Off-Switch intervention. */
+body.off-switch-method-v3 .om-mechanism .om-chain {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  padding: 28px 0 10px;
+  border: 0;
+  overflow: visible;
+}
+
+body.off-switch-method-v3 .om-mechanism .om-chain::before {
+  content: "";
+  position: absolute;
+  top: 75px;
+  right: 44px;
+  left: 44px;
+  display: block;
+  height: 2px;
+  background: linear-gradient(90deg, var(--om-teal), var(--om-coral));
+  opacity: 0.45;
+}
+
+body.off-switch-method-v3 .om-mechanism .om-chain article {
+  position: relative;
+  z-index: 1;
+  min-height: 328px;
+  padding: 28px 23px 24px;
+  border: 1px solid color-mix(in srgb, var(--om-teal) 20%, transparent);
+  border-top: 5px solid var(--om-teal);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--om-paper) 88%, var(--om-mint-soft));
+  box-shadow: 0 15px 34px rgba(22, 66, 62, 0.08);
+}
+
+body.off-switch-method-v3 .om-mechanism .om-chain article:nth-child(2) {
+  border-top-color: color-mix(in srgb, var(--om-teal) 60%, var(--om-sun));
+  background: color-mix(in srgb, var(--om-mint-soft) 76%, #ffffff);
+}
+
+body.off-switch-method-v3 .om-mechanism .om-chain article:nth-child(3) {
+  border-top-color: var(--om-coral);
+  background: color-mix(in srgb, var(--om-sun-soft) 64%, #ffffff);
+}
+
+body.off-switch-method-v3 .om-mechanism .om-chain article:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  z-index: 4;
+  top: 31px;
+  right: -31px;
+  width: 38px;
+  height: 38px;
+  display: grid !important;
+  place-items: center;
+  border: 2px solid var(--om-paper);
+  border-radius: 50%;
+  background: var(--om-coral);
+  color: #ffffff;
+  font-size: 18px;
+  box-shadow: 0 6px 16px rgba(91, 50, 40, 0.2);
+}
+
+body.off-switch-method-v3 .om-mechanism .om-chain article > span {
+  display: block;
+  color: color-mix(in srgb, var(--om-coral) 76%, var(--om-ink));
+  font-size: 49px;
+  line-height: 0.85;
+}
+
+body.off-switch-method-v3 .om-mechanism .om-chain strong {
+  margin-top: 35px;
+  font-size: 23px;
+}
+
+body.off-switch-method-v3 .om-mechanism .om-chain article.om-chain__stop {
+  transform: translateY(-6px);
+  border-color: color-mix(in srgb, var(--om-teal) 28%, transparent);
+  border-top-color: var(--om-sun);
+  background: linear-gradient(150deg, #deead2, #fff0bd);
+  box-shadow: 0 18px 38px rgba(22, 66, 62, 0.12);
+}
+
+body.off-switch-method-v3 .om-mechanism .om-chain__stop > span {
+  color: color-mix(in srgb, var(--om-coral) 82%, var(--om-ink));
+}
+
+body.off-switch-method-v3 .om-mechanism .om-chain__stop > strong {
+  color: var(--om-ink);
+}
+
+body.off-switch-method-v3 .om-mechanism .om-chain__stop > p {
+  color: var(--om-muted) !important;
+}
+
+body.off-switch-method-v3 .om-mechanism .om-chain__switch {
+  margin-top: 22px;
+  padding: 14px 15px;
+  border-left: 4px solid var(--om-sun);
+  background: #2f5f56;
+  box-shadow: 0 8px 20px rgba(22, 66, 62, 0.14);
+}
+
+body.off-switch-method-v3 .om-mechanism .om-chain__switch b,
+body.off-switch-method-v3 .om-mechanism .om-chain__switch em {
+  display: block;
+  font-style: normal;
+}
+
+body.off-switch-method-v3 .om-mechanism .om-chain__switch b {
+  color: var(--om-sun);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+body.off-switch-method-v3 .om-mechanism .om-chain__switch em {
+  margin-top: 5px;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+body.off-switch-method-v3 .om-mechanism .om-interrupt {
+  margin-top: 24px;
+  border-left: 6px solid var(--om-sun);
+  background: var(--om-deep);
+}
+
+body.off-switch-method-v3 .om-mechanism .om-interrupt > span {
+  color: var(--om-sun);
+}
+
+/* The dog example reads as a three-scene film strip. */
+body.off-switch-method-v3 .om-dog .om-dog__story {
+  gap: 0;
+  overflow: hidden;
+  border: 1px solid var(--om-line);
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 14px 34px rgba(22, 66, 62, 0.08);
+}
+
+body.off-switch-method-v3 .om-dog .om-dog__story article {
+  min-height: 226px;
+  border: 0;
+  border-right: 1px solid var(--om-line);
+  background: #ffffff;
+}
+
+body.off-switch-method-v3 .om-dog .om-dog__story article:nth-child(2) {
+  background: var(--om-mint-soft);
+}
+
+body.off-switch-method-v3 .om-dog .om-dog__story article:last-child {
+  border-right: 0;
+  background: var(--om-deep);
+}
+
+body.off-switch-method-v3 .om-dog .om-dog__story article:last-child > span {
+  color: var(--om-sun);
+}
+
+body.off-switch-method-v3 .om-dog .om-dog__story article:last-child > strong {
+  color: #ffffff;
+}
+
+body.off-switch-method-v3 .om-dog .om-dog__story article:last-child > p {
+  color: #dce9e5 !important;
+}
+
+/* Broad and precise work are equal, contrasting tools — not an 80/20 chart. */
+body.off-switch-method-v3 .om-map .om-ratio {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 14px;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+body.off-switch-method-v3 .om-map .om-ratio > div {
+  min-height: 190px;
+  padding: 29px 26px 25px;
+  border: 1px solid var(--om-line);
+  border-radius: 8px;
+  box-shadow: 0 12px 28px rgba(22, 66, 62, 0.07);
+}
+
+body.off-switch-method-v3 .om-map .om-ratio > div::before {
+  width: 100%;
+}
+
+body.off-switch-method-v3 .om-map .om-ratio__broad {
+  background: var(--om-mint-soft);
+}
+
+body.off-switch-method-v3 .om-map .om-ratio__precise {
+  border-left: 1px solid var(--om-line);
+  background: color-mix(in srgb, var(--om-sun-soft) 66%, #ffffff);
+}
+
+/* Two scales of work: a deliberate contrast, not a joined table. */
+body.off-switch-method-v3 .om-sequence .om-depth {
+  gap: 18px;
+  border: 0;
+}
+
+body.off-switch-method-v3 .om-sequence .om-depth article {
+  min-height: 260px;
+  border: 1px solid var(--om-line);
+  border-top: 6px solid var(--om-teal);
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 14px 34px rgba(22, 66, 62, 0.07);
+}
+
+body.off-switch-method-v3 .om-sequence .om-depth article:last-child {
+  border-top-color: var(--om-coral);
+  background: var(--om-mint-soft);
+}
+
+/* One full-width outcome panel replaces the defensive two-card comparison. */
+body.off-switch-method-v3 .om-limits {
+  background: linear-gradient(180deg, #fbfaf4 0%, #eef4d7 100%);
+}
+
+body.off-switch-method-v3 .om-limits .om-section-head {
+  margin-bottom: 34px;
+}
+
+body.off-switch-method-v3 .om-limits .om-limits__grid {
+  grid-template-columns: 1fr;
+  border: 0;
+}
+
+body.off-switch-method-v3 .om-limits .om-limits__grid article {
+  min-height: 226px;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--om-teal) 24%, transparent);
+  border-top: 7px solid var(--om-teal);
+  border-radius: 8px;
+  background: #fffef9;
+  box-shadow: 0 22px 48px rgba(22, 66, 62, 0.11);
+}
+
+body.off-switch-method-v3 .om-limits .om-limits__grid ul {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
+  margin: 0;
+}
+
+body.off-switch-method-v3 .om-limits .om-limits__grid li {
+  min-height: 109px;
+  display: flex;
+  align-items: center;
+  padding: 25px 28px 25px 68px;
+  color: var(--om-ink);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+body.off-switch-method-v3 .om-limits .om-limits__grid li:nth-child(odd) {
+  border-right: 1px solid color-mix(in srgb, var(--om-teal) 16%, transparent);
+}
+
+body.off-switch-method-v3 .om-limits .om-limits__grid li:nth-child(n + 3) {
+  border-top: 1px solid color-mix(in srgb, var(--om-teal) 16%, transparent);
+}
+
+body.off-switch-method-v3 .om-limits .om-limits__grid li::before {
+  top: 50%;
+  left: 28px;
+  width: 25px;
+  height: 25px;
+  display: grid;
+  place-items: center;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background: var(--om-teal);
+  color: #ffffff;
+  content: "+";
+  font-size: 16px;
+}
+
+/* Measurement checkpoints */
+body.off-switch-method-v3 .om-measure .om-measure__grid {
+  gap: 24px;
+  border: 0;
+}
+
+body.off-switch-method-v3 .om-measure .om-measure__grid > article {
+  min-height: 308px;
+  padding: 38px;
+  border-top: 5px solid color-mix(in srgb, var(--om-sun) 80%, #ffffff);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+body.off-switch-method-v3 .om-measure .om-measure__grid > article:nth-child(2) {
+  background: rgba(255, 255, 255, 0.11);
+}
+
+body.off-switch-method-v3 .om-measure .om-measure__grid > article:nth-child(3) {
+  border-top-color: var(--om-coral);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+body.off-switch-method-v3 .om-measure .om-measure__number {
+  display: block;
+  margin-bottom: 34px;
+  font-size: 39px;
+}
+
+body.off-switch-method-v3 .om-measure .om-measure__grid article > strong {
+  font-size: 24px;
+  line-height: 1.28;
+}
+
+body.off-switch-method-v3 .om-measure .om-measure__grid article > p {
+  margin-top: 18px;
+  font-size: 16px !important;
+  line-height: 1.6 !important;
+}
+
+body.off-switch-method-v3 .om-measure .om-measure__life {
+  margin-top: 30px;
+  padding: 26px 30px;
+  font-size: 18px !important;
+  line-height: 1.55 !important;
+}
+
+/* Evidence context and dossiers */
+body.off-switch-method-v3 .om-ukraine .om-ukraine__context {
+  max-width: 880px;
+  margin: -10px 0 28px;
+  padding-left: 19px;
+  border-left: 4px solid var(--om-coral);
+  color: var(--om-ink) !important;
+  font-size: 16px !important;
+  line-height: 1.5 !important;
+}
+
+body.off-switch-method-v3 .om-ukraine .om-evidence-note--context {
+  margin-bottom: -10px;
+  color: var(--om-ink) !important;
+  font-weight: 700;
+}
+
+body.off-switch-method-v3 .om-cases .om-cases__grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  border: 0;
+}
+
+body.off-switch-method-v3 .om-cases .om-cases__grid article {
+  min-height: 302px;
+  padding: 29px;
+  border: 1px solid color-mix(in srgb, var(--case-accent, var(--om-teal)) 18%, transparent) !important;
+  border-left: 4px solid var(--case-accent, var(--om-teal)) !important;
+  border-radius: 8px;
+  background: #fffef9 !important;
+  box-shadow: 0 8px 20px rgba(22, 66, 62, 0.055) !important;
+}
+
+body.off-switch-method-v3 .om-cases .om-cases__grid article:first-child {
+  grid-column: 1 / -1;
+  min-height: 252px;
+  display: grid;
+  grid-template-columns: minmax(250px, 0.58fr) minmax(0, 1.42fr);
+  grid-template-rows: auto auto 1fr;
+  column-gap: 52px;
+  padding: 40px 44px;
+  border: 1px solid color-mix(in srgb, var(--case-accent, var(--om-teal)) 28%, transparent) !important;
+  border-left: 9px solid var(--case-accent, var(--om-teal)) !important;
+  background: linear-gradient(135deg, #edf4df, #fff8e8) !important;
+  box-shadow: 0 20px 44px rgba(22, 66, 62, 0.11) !important;
+}
+
+body.off-switch-method-v3 .om-cases .om-cases__grid article > span {
+  min-height: 2.8em;
+  display: block;
+  color: var(--om-ink);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 1.35;
+  text-transform: none;
+}
+
+body.off-switch-method-v3 .om-cases .om-cases__grid article > strong {
+  margin-top: 19px;
+}
+
+body.off-switch-method-v3 .om-cases .om-cases__grid article:not(:first-child) > strong {
+  font-size: 41px;
+}
+
+body.off-switch-method-v3 .om-cases .om-cases__grid article:first-child > span {
+  grid-column: 1;
+  grid-row: 1;
+  min-height: 0;
+  font-size: 16px;
+}
+
+body.off-switch-method-v3 .om-cases .om-cases__grid article:first-child > strong {
+  grid-column: 1;
+  grid-row: 2;
+  margin-top: 22px;
+  font-size: 66px;
+}
+
+body.off-switch-method-v3 .om-cases .om-cases__grid article:first-child > small {
+  grid-column: 1;
+  grid-row: 3;
+  font-size: 13px;
+}
+
+body.off-switch-method-v3 .om-cases .om-cases__grid article:first-child > h3 {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: end;
+  margin: 0;
+  min-height: 0;
+  font-size: 31px;
+}
+
+body.off-switch-method-v3 .om-cases .om-cases__grid article:first-child > p {
+  grid-column: 2;
+  grid-row: 2 / 4;
+  margin-top: 15px;
+  font-size: 17px !important;
+  line-height: 1.62 !important;
+}
+
+/* Decision grid and distinct product cards */
+body.off-switch-method-v3 .om-formats .om-format-fit {
+  gap: 16px;
+  border: 0;
+  counter-reset: format-fit;
+}
+
+body.off-switch-method-v3 .om-formats .om-format-fit article {
+  position: relative;
+  min-height: 228px;
+  padding: 55px 24px 24px;
+  border: 1px solid rgba(32, 59, 54, 0.2);
+  border-top: 5px solid var(--om-teal);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.48);
+  counter-increment: format-fit;
+}
+
+body.off-switch-method-v3 .om-formats .om-format-fit article:nth-child(2) {
+  border-top-color: #ad772d;
+  background: rgba(255, 243, 220, 0.66);
+}
+
+body.off-switch-method-v3 .om-formats .om-format-fit article:nth-child(3) {
+  border-top-color: #70536c;
+  background: rgba(243, 234, 241, 0.7);
+}
+
+body.off-switch-method-v3 .om-formats .om-format-fit article::before {
+  content: "0" counter(format-fit);
+  position: absolute;
+  top: 18px;
+  left: 24px;
+  color: var(--om-coral);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 20px;
+}
+
+body.off-switch-method-v3 .om-formats .om-format-fit span {
+  font-size: 19px;
+}
+
+body.off-switch-method-v3 .om-formats .om-formats__grid {
+  gap: 18px;
+  border: 0;
+}
+
+body.off-switch-method-v3 .om-formats .om-formats__grid article {
+  min-height: 388px;
+}
+
+body.off-switch-method-v3 .om-formats .om-formats__featured,
+body.off-switch-method-v3 .om-formats .om-formats__grid article:nth-child(3) {
+  border-color: color-mix(in srgb, #70536c 28%, transparent) !important;
+  border-top: 7px solid #70536c !important;
+  background: linear-gradient(145deg, #e8f0df, #f2e8ef) !important;
+  box-shadow: 0 18px 40px rgba(68, 78, 65, 0.12) !important;
+}
+
+body.off-switch-method-v3 main .om-formats .om-formats__featured h3 {
+  color: var(--om-ink) !important;
+}
+
+body.off-switch-method-v3 .om-formats .om-formats__featured > p:not(.om-formats__eyebrow) {
+  color: var(--om-muted) !important;
+}
+
+body.off-switch-method-v3 .om-formats .om-formats__featured .om-formats__eyebrow {
+  color: #70536c !important;
+}
+
+body.off-switch-method-v3 .om-formats .om-formats__featured .fs-button {
+  border-color: var(--om-deep) !important;
+  background: var(--om-deep) !important;
+  color: #ffffff !important;
+}
+
+body.off-switch-method-v3 .om-formats .om-formats__featured .fs-button:hover {
+  border-color: #35685a !important;
+  background: #35685a !important;
+}
+
+@media (max-width: 1020px) {
+  body.off-switch-method-v3 .om-mechanism .om-chain {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 0 0 0 28px;
+  }
+
+  body.off-switch-method-v3 .om-mechanism .om-chain::before {
+    top: 36px;
+    right: auto;
+    bottom: 36px;
+    left: 48px;
+    width: 2px;
+    height: auto;
+  }
+
+  body.off-switch-method-v3 .om-mechanism .om-chain article {
+    min-height: 0;
+    padding: 26px 26px 26px 92px;
+    border-top-width: 1px;
+    border-left: 5px solid var(--om-teal);
+  }
+
+  body.off-switch-method-v3 .om-mechanism .om-chain article:nth-child(3) {
+    border-left-color: var(--om-coral);
+  }
+
+  body.off-switch-method-v3 .om-mechanism .om-chain article > span {
+    position: absolute;
+    top: 23px;
+    left: 20px;
+    font-size: 38px;
+  }
+
+  body.off-switch-method-v3 .om-mechanism .om-chain strong {
+    margin-top: 0;
+  }
+
+  body.off-switch-method-v3 .om-mechanism .om-chain article:not(:last-child)::after {
+    content: "↓";
+    top: auto;
+    right: auto;
+    bottom: -25px;
+    left: 2px;
+    display: grid !important;
+  }
+
+  body.off-switch-method-v3 .om-mechanism .om-chain article.om-chain__stop {
+    transform: none;
+    border-left-color: var(--om-sun);
+  }
+
+  body.off-switch-method-v3 .om-mechanism .om-chain__switch {
+    max-width: 440px;
+  }
+}
+
+@media (min-width: 681px) and (max-width: 900px) {
+  body.off-switch-method-v3 .om-map .om-ratio {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: none;
+  }
+
+  body.off-switch-method-v3 .om-map .om-ratio__precise {
+    border-top: 1px solid var(--om-line);
+  }
+}
+
+@media (max-width: 900px) {
+  body.off-switch-method-v3 .om-scope .om-scope__groups {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  body.off-switch-method-v3 .om-measure .om-measure__grid > article {
+    min-height: 0;
+  }
+
+  body.off-switch-method-v3 .om-cases .om-cases__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  body.off-switch-method-v3 .om-cases .om-cases__grid article:first-child {
+    grid-column: 1 / -1;
+  }
+
+  body.off-switch-method-v3 .om-cases .om-cases__grid article:last-child {
+    grid-column: 1 / -1;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: minmax(210px, 0.7fr) minmax(0, 1.3fr);
+    grid-template-rows: auto auto 1fr;
+    column-gap: 32px;
+  }
+
+  body.off-switch-method-v3 .om-cases .om-cases__grid article:last-child > span,
+  body.off-switch-method-v3 .om-cases .om-cases__grid article:last-child > strong,
+  body.off-switch-method-v3 .om-cases .om-cases__grid article:last-child > small {
+    grid-column: 1;
+  }
+
+  body.off-switch-method-v3 .om-cases .om-cases__grid article:last-child > h3 {
+    grid-column: 2;
+    grid-row: 1;
+    margin-top: 0;
+  }
+
+  body.off-switch-method-v3 .om-cases .om-cases__grid article:last-child > p {
+    grid-column: 2;
+    grid-row: 2 / 4;
+  }
+}
+
+@media (max-width: 680px) {
+  body.off-switch-method-v3 .om-scope .om-scope__groups {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  body.off-switch-method-v3 .om-scope .om-scope__groups article {
+    min-height: 0;
+    padding: 19px;
+  }
+
+  body.off-switch-method-v3 .om-tool .om-steps li {
+    grid-template-columns: 50px minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  body.off-switch-method-v3 .om-tool .om-steps li > span {
+    width: 42px;
+    height: 42px;
+  }
+
+  body.off-switch-method-v3 .om-tool .om-steps li:not(:last-child)::before {
+    top: 45px;
+    left: 20px;
+  }
+
+  body.off-switch-method-v3 .om-mechanism .om-chain {
+    padding-left: 18px;
+  }
+
+  body.off-switch-method-v3 .om-mechanism .om-chain::before {
+    left: 38px;
+  }
+
+  body.off-switch-method-v3 .om-mechanism .om-chain article {
+    padding: 22px 18px 22px 74px;
+  }
+
+  body.off-switch-method-v3 .om-mechanism .om-chain article > span {
+    top: 21px;
+    left: 16px;
+    font-size: 33px;
+  }
+
+  body.off-switch-method-v3 .om-mechanism .om-chain article:not(:last-child)::after {
+    left: 1px;
+  }
+
+  body.off-switch-method-v3 .om-mechanism .om-interrupt {
+    grid-template-columns: 32px minmax(0, 1fr);
+    padding: 20px;
+  }
+
+  body.off-switch-method-v3 .om-dog .om-dog__story {
+    grid-template-columns: 1fr;
+  }
+
+  body.off-switch-method-v3 .om-dog .om-dog__story article {
+    min-height: 0;
+    padding: 21px;
+    border-right: 0;
+    border-bottom: 1px solid var(--om-line);
+  }
+
+  body.off-switch-method-v3 .om-dog .om-dog__story article:last-child {
+    border-bottom: 0;
+  }
+
+  body.off-switch-method-v3 .om-map .om-ratio {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  body.off-switch-method-v3 .om-map .om-ratio > div {
+    min-height: 0;
+    padding: 25px 22px 22px;
+  }
+
+  body.off-switch-method-v3 .om-sequence .om-depth {
+    grid-template-columns: 1fr;
+  }
+
+  body.off-switch-method-v3 .om-sequence .om-depth article {
+    min-height: 0;
+    padding: 22px;
+  }
+
+  body.off-switch-method-v3 .om-limits .om-limits__grid article {
+    min-height: 0;
+    padding: 0;
+  }
+
+  body.off-switch-method-v3 .om-limits .om-limits__grid ul {
+    grid-template-columns: 1fr;
+  }
+
+  body.off-switch-method-v3 .om-limits .om-limits__grid li {
+    min-height: 0;
+    padding: 22px 20px 22px 58px;
+    font-size: 17px;
+  }
+
+  body.off-switch-method-v3 .om-limits .om-limits__grid li:nth-child(odd) {
+    border-right: 0;
+  }
+
+  body.off-switch-method-v3 .om-limits .om-limits__grid li:nth-child(n + 2) {
+    border-top: 1px solid color-mix(in srgb, var(--om-teal) 16%, transparent);
+  }
+
+  body.off-switch-method-v3 .om-limits .om-limits__grid li::before {
+    left: 20px;
+  }
+
+  body.off-switch-method-v3 .om-measure .om-measure__grid > article {
+    min-height: 0;
+    padding: 27px;
+  }
+
+  body.off-switch-method-v3 .om-measure .om-measure__number {
+    margin-bottom: 22px;
+  }
+
+  body.off-switch-method-v3 .om-ukraine .om-ukraine__context {
+    margin-top: 0;
+    margin-bottom: 22px;
+    font-size: 15px !important;
+  }
+
+  body.off-switch-method-v3 .om-ukraine .om-ukraine__stats {
+    grid-template-columns: 1fr;
+  }
+
+  body.off-switch-method-v3 .om-ukraine .om-ukraine__stats article {
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 96px minmax(0, 1fr);
+    gap: 15px;
+    align-items: center;
+    padding: 17px 19px;
+    border-top: 1px solid var(--om-line);
+    border-left: 0;
+  }
+
+  body.off-switch-method-v3 .om-ukraine .om-ukraine__stats article:first-child {
+    border-top: 0;
+  }
+
+  body.off-switch-method-v3 .om-ukraine .om-ukraine__stats span {
+    margin-top: 0;
+  }
+
+  body.off-switch-method-v3 .om-cases .om-cases__grid article {
+    min-height: 0;
+    padding: 24px;
+  }
+
+  body.off-switch-method-v3 .om-cases .om-cases__grid {
+    grid-template-columns: 1fr;
+  }
+
+  body.off-switch-method-v3 .om-cases .om-cases__grid article:first-child,
+  body.off-switch-method-v3 .om-cases .om-cases__grid article:last-child {
+    grid-column: auto;
+    display: block;
+  }
+
+  body.off-switch-method-v3 .om-cases .om-cases__grid article:first-child {
+    padding: 28px 25px;
+  }
+
+  body.off-switch-method-v3 .om-cases .om-cases__grid article:first-child > strong {
+    font-size: 50px;
+  }
+
+  body.off-switch-method-v3 .om-cases .om-cases__grid article:first-child > h3 {
+    margin-top: 24px;
+    font-size: 26px;
+  }
+
+  body.off-switch-method-v3 .om-cases .om-cases__grid article:first-child > p {
+    margin-top: 10px;
+    font-size: 15px !important;
+    line-height: 1.55 !important;
+  }
+
+  body.off-switch-method-v3 .om-cases .om-cases__grid article > span {
+    min-height: 0;
+  }
+
+  body.off-switch-method-v3 .om-formats .om-format-fit {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  body.off-switch-method-v3 .om-formats .om-format-fit article {
+    min-height: 0;
+    padding: 49px 20px 20px;
+  }
+
+  body.off-switch-method-v3 .om-formats .om-formats__grid article {
+    min-height: 0;
+    padding: 24px;
+  }
+
+  body.off-switch-method-v3 .om-formats .om-formats__grid .fs-button {
+    width: 100%;
+  }
+}

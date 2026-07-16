@@ -1,0 +1,99 @@
+/* Final P0 QA fixes for the Off-Switch Training commercial half. */
+body.off-switch-training-page.off-switch-training-cinematic main > section.training-inside-section {
+  background:
+    radial-gradient(circle at 84% 18%, rgba(183, 118, 93, .22), transparent 34%),
+    linear-gradient(135deg, #071f25 0%, #0c2e35 100%) !important;
+  color: #fff !important;
+}
+
+body.off-switch-training-page.off-switch-training-cinematic.eh-context--freedom.eh-freedom-bg--training main > section.section.training-inside-section {
+  background:
+    radial-gradient(circle at 84% 18%, rgba(183, 118, 93, .22), transparent 34%),
+    linear-gradient(135deg, #071f25 0%, #0c2e35 100%) !important;
+  color: #fff !important;
+}
+
+body.off-switch-training-page.off-switch-training-cinematic .training-inside-section .eyebrow {
+  color: rgba(255, 255, 255, .66) !important;
+}
+
+body.off-switch-training-page.off-switch-training-cinematic .training-inside-content > h2,
+body.off-switch-training-page.off-switch-training-cinematic .training-inside-content > p,
+body.off-switch-training-page.off-switch-training-cinematic .training-stack h3,
+body.off-switch-training-page.off-switch-training-cinematic .training-stack p,
+body.off-switch-training-page.off-switch-training-cinematic .training-included h3,
+body.off-switch-training-page.off-switch-training-cinematic .training-included li {
+  color: #fff !important;
+}
+
+body.off-switch-training-page.off-switch-training-cinematic .training-inside-content > p,
+body.off-switch-training-page.off-switch-training-cinematic .training-stack p {
+  color: rgba(255, 255, 255, .74) !important;
+}
+
+body.off-switch-training-page.off-switch-training-cinematic .training-inside-content > h2 span,
+body.off-switch-training-page.off-switch-training-cinematic .training-stack span {
+  color: #d6a088 !important;
+}
+
+body.off-switch-training-page.off-switch-training-cinematic .training-stack article {
+  background: transparent !important;
+  border-top: 1px solid rgba(255, 255, 255, .18) !important;
+  box-shadow: none !important;
+}
+
+body.off-switch-training-page.off-switch-training-cinematic .training-included {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  align-items: start !important;
+  gap: 0 !important;
+  background: rgba(255, 255, 255, .08) !important;
+  border: 1px solid rgba(255, 255, 255, .22) !important;
+  box-shadow: none !important;
+}
+
+body.off-switch-training-page.off-switch-training-cinematic.eh-context--freedom.eh-freedom-bg--training .training-included {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  align-items: start !important;
+  gap: 0 !important;
+}
+
+body.off-switch-training-page.off-switch-training-cinematic .training-included h3 {
+  max-width: 100% !important;
+  margin: 0 0 22px !important;
+  font-size: clamp(28px, 2.7vw, 40px) !important;
+  line-height: 1.06 !important;
+  letter-spacing: 0 !important;
+}
+
+body.off-switch-training-page.off-switch-training-cinematic .training-included ul {
+  display: grid !important;
+  gap: 12px !important;
+  margin: 0 0 24px !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+
+body.off-switch-training-page.off-switch-training-cinematic .training-included li {
+  position: relative !important;
+  padding-left: 18px !important;
+  font-size: 16px !important;
+  line-height: 1.45 !important;
+}
+
+body.off-switch-training-page.off-switch-training-cinematic .training-included li::before {
+  content: "" !important;
+  position: absolute !important;
+  left: 0 !important;
+  top: .72em !important;
+  width: 6px !important;
+  height: 6px !important;
+  border-radius: 999px !important;
+  background: #d6a088 !important;
+}
+
+body.off-switch-training-page.off-switch-training-cinematic .training-included .button {
+  width: 100% !important;
+  justify-content: center !important;
+}

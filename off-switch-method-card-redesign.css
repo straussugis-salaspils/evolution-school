@@ -1,0 +1,937 @@
+/* Off-Switch Method card pilot, 2026-07-15.
+   Isolated to this route so the experiment can be removed without touching shared styles. */
+
+body.off-switch-method-page {
+  --om-card-ink: #173f31;
+  --om-card-muted: #647067;
+  --om-card-line: rgba(34, 82, 58, .22);
+  --om-card-signal: #75a34a;
+  --om-card-lime: #d8f08a;
+  --om-card-mint: #edf5dd;
+  --om-card-paper: #fffdf5;
+  --om-card-deep: #1f593b;
+  --om-card-shadow: 0 20px 42px -32px rgba(24, 63, 45, .52);
+}
+
+body.off-switch-method-page [data-card-role] {
+  overflow: visible !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body.off-switch-method-page [data-card-role] p {
+  font-size: clamp(15.5px, 1.08vw, 17px);
+  line-height: 1.52;
+}
+
+/* Hero facts are reference points, not three competing cards. */
+body.off-switch-method-page .om-hero__facts {
+  gap: 0 !important;
+  overflow: visible !important;
+  border: 0 !important;
+  border-top: 1px solid rgba(23, 63, 49, .28) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body.off-switch-method-page .om-hero__facts > div {
+  min-height: 0 !important;
+  padding: 20px 24px 4px !important;
+  border: 0 !important;
+  border-right: 1px solid rgba(23, 63, 49, .18) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body.off-switch-method-page .om-hero__facts > div:first-child {
+  padding-left: 0 !important;
+}
+
+body.off-switch-method-page .om-hero__facts > div:last-child {
+  border-right: 0 !important;
+}
+
+/* Signal cells: short observations stay open and subordinate. */
+body.off-switch-method-page [data-card-role="signals"] {
+  gap: clamp(18px, 2vw, 28px) !important;
+}
+
+body.off-switch-method-page [data-card-role="signals"] > article {
+  position: relative;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 24px 16px 20px 32px !important;
+  border: 0 !important;
+  border-top: 1px solid var(--om-card-line) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--om-card-ink) !important;
+}
+
+body.off-switch-method-page [data-card-role="signals"] > article::before {
+  content: "";
+  position: absolute;
+  top: 31px;
+  left: 0;
+  width: 14px;
+  height: 3px;
+  border-radius: 99px;
+  background: var(--om-card-signal);
+}
+
+body.off-switch-method-page [data-card-role="signals"] > article strong,
+body.off-switch-method-page [data-card-role="signals"] > article span {
+  color: var(--om-card-ink) !important;
+}
+
+body.off-switch-method-page .om-scope__groups > article {
+  padding-top: 20px !important;
+  padding-bottom: 24px !important;
+}
+
+body.off-switch-method-page .om-scope__groups > article::before {
+  top: 28px;
+}
+
+/* Technique: one continuous route instead of five boxed instructions. */
+body.off-switch-method-page .om-steps--compact {
+  position: relative;
+  display: grid !important;
+  gap: 0 !important;
+  overflow: visible !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body.off-switch-method-page .om-steps--compact > li {
+  position: relative;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 0 28px 54px !important;
+  border: 0 !important;
+  border-left: 1px solid var(--om-card-line) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body.off-switch-method-page .om-steps--compact > li:last-child {
+  padding-bottom: 0 !important;
+  border-left-color: transparent !important;
+}
+
+body.off-switch-method-page .om-steps--compact > li > span {
+  position: absolute !important;
+  top: -4px !important;
+  left: -18px !important;
+  display: grid !important;
+  width: 36px !important;
+  height: 36px !important;
+  place-items: center;
+  padding: 0 !important;
+  border: 1px solid rgba(31, 89, 59, .24) !important;
+  border-radius: 50% !important;
+  background: var(--om-card-paper) !important;
+  color: var(--om-card-deep) !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  box-shadow: 0 8px 20px -15px rgba(24, 63, 45, .7) !important;
+}
+
+body.off-switch-method-page .om-steps--compact > li strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--om-card-ink) !important;
+  font-size: clamp(17px, 1.25vw, 20px) !important;
+  line-height: 1.25 !important;
+}
+
+/* Reaction mechanism: a common track with one unmistakable intervention point. */
+body.off-switch-method-page .om-chain[data-card-role="sequence"] {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 0 !important;
+  align-items: stretch !important;
+}
+
+body.off-switch-method-page .om-chain > figure {
+  grid-column: 1 / -1 !important;
+  margin: 0 0 34px !important;
+  overflow: hidden !important;
+  border: 1px solid rgba(31, 89, 59, .13) !important;
+  border-radius: 16px !important;
+  box-shadow: var(--om-card-shadow) !important;
+}
+
+body.off-switch-method-page .om-chain > article {
+  position: relative;
+  display: flex !important;
+  flex-direction: column;
+  min-height: 218px !important;
+  margin: 0 !important;
+  padding: 30px 24px 26px !important;
+  border: 0 !important;
+  border-top: 2px solid var(--om-card-line) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--om-card-ink) !important;
+}
+
+body.off-switch-method-page .om-chain > article::before {
+  content: "";
+  position: absolute;
+  top: -7px;
+  left: 24px;
+  width: 12px;
+  height: 12px;
+  border: 3px solid var(--om-card-mint);
+  border-radius: 50%;
+  background: var(--om-card-signal);
+}
+
+body.off-switch-method-page .om-chain > article > span {
+  margin-bottom: 16px !important;
+  color: var(--om-card-muted) !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  letter-spacing: .14em !important;
+}
+
+body.off-switch-method-page .om-chain > article > strong {
+  color: var(--om-card-ink) !important;
+  font-size: clamp(19px, 1.55vw, 24px) !important;
+  line-height: 1.12 !important;
+}
+
+body.off-switch-method-page .om-chain > article.om-chain__stop {
+  z-index: 1;
+  min-height: 238px !important;
+  padding: 32px 28px 28px !important;
+  border-top: 0 !important;
+  border-radius: 16px !important;
+  background: var(--om-card-deep) !important;
+  color: #fff !important;
+  box-shadow: 0 24px 48px -30px rgba(13, 48, 31, .9) !important;
+  transform: translateY(-12px);
+}
+
+body.off-switch-method-page .om-chain > article.om-chain__stop::before {
+  top: 26px;
+  left: auto;
+  right: 26px;
+  border-color: rgba(255, 255, 255, .28);
+  background: var(--om-card-lime);
+}
+
+body.off-switch-method-page .om-chain__stop > span,
+body.off-switch-method-page .om-chain__stop > strong,
+body.off-switch-method-page .om-chain__stop > p {
+  color: #fff !important;
+}
+
+body.off-switch-method-page .om-chain__switch {
+  margin-top: auto !important;
+  padding-top: 18px !important;
+  border-top: 1px solid rgba(255, 255, 255, .22) !important;
+  background: transparent !important;
+}
+
+body.off-switch-method-page .om-chain__switch b {
+  color: var(--om-card-lime) !important;
+}
+
+body.off-switch-method-page .om-chain > article.om-chain__stop > span,
+body.off-switch-method-page .om-chain > article.om-chain__stop > strong,
+body.off-switch-method-page .om-chain > article.om-chain__stop > p,
+body.off-switch-method-page .om-chain > article.om-chain__stop .om-chain__switch,
+body.off-switch-method-page .om-chain > article.om-chain__stop .om-chain__switch em {
+  color: #fff !important;
+}
+
+body.off-switch-method-page .om-chain > article.om-chain__stop .om-chain__switch b {
+  color: var(--om-card-lime) !important;
+}
+
+body.off-switch-method-page .om-chain[data-card-role="sequence"] > article.om-chain__stop > p {
+  color: #fff !important;
+}
+
+/* Example chain: captions are milestones, not three separate cards. */
+body.off-switch-method-page .om-dog__story[data-card-role="sequence"] {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: clamp(18px, 2vw, 26px) !important;
+  margin-top: 26px !important;
+}
+
+body.off-switch-method-page .om-dog__story > article {
+  position: relative;
+  min-height: 0 !important;
+  padding: 28px 8px 8px 34px !important;
+  border: 0 !important;
+  border-top: 1px solid var(--om-card-line) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body.off-switch-method-page .om-dog__story > article::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: 0;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--om-card-signal);
+}
+
+body.off-switch-method-page .om-dog__story > article span {
+  color: var(--om-card-muted) !important;
+  font-size: 12px !important;
+  letter-spacing: .12em !important;
+}
+
+/* Two scales: deliberately asymmetric editorial panels. */
+body.off-switch-method-page [data-card-role="comparison"] {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr) !important;
+  gap: clamp(18px, 2vw, 26px) !important;
+}
+
+body.off-switch-method-page [data-card-role="comparison"] > div,
+body.off-switch-method-page [data-card-role="comparison"] > article {
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: clamp(24px, 2.6vw, 36px) !important;
+  border: 0 !important;
+  border-radius: 16px !important;
+  box-shadow: none !important;
+}
+
+body.off-switch-method-page .om-ratio__broad,
+body.off-switch-method-page .om-depth > article:first-child {
+  border-left: 4px solid var(--om-card-signal) !important;
+  background: rgba(237, 245, 221, .88) !important;
+  color: var(--om-card-ink) !important;
+}
+
+body.off-switch-method-page .om-ratio__precise,
+body.off-switch-method-page .om-depth > article:last-child {
+  background: var(--om-card-deep) !important;
+  color: #fff !important;
+  box-shadow: 0 24px 48px -34px rgba(13, 48, 31, .82) !important;
+}
+
+body.off-switch-method-page .om-ratio__precise span,
+body.off-switch-method-page .om-ratio__precise strong,
+body.off-switch-method-page .om-ratio__precise p,
+body.off-switch-method-page .om-depth > article:last-child span,
+body.off-switch-method-page .om-depth > article:last-child strong,
+body.off-switch-method-page .om-depth > article:last-child p {
+  color: #fff !important;
+}
+
+/* Three levels become a visible depth scale. */
+body.off-switch-method-page .om-measure__grid[data-card-role="levels"] {
+  display: grid !important;
+  grid-template-columns: .9fr 1fr 1.1fr !important;
+  gap: clamp(18px, 2vw, 26px) !important;
+  align-items: end !important;
+}
+
+body.off-switch-method-page .om-measure__grid > article {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 186px !important;
+  padding: 28px !important;
+  border: 1px solid rgba(255, 255, 255, .18) !important;
+  border-radius: 16px !important;
+  background: rgba(255, 255, 255, .07) !important;
+  box-shadow: none !important;
+}
+
+body.off-switch-method-page .om-measure__grid > article:nth-child(2) {
+  min-height: 222px !important;
+  background: rgba(255, 255, 255, .12) !important;
+}
+
+body.off-switch-method-page .om-measure__grid > article:nth-child(3) {
+  min-height: 258px !important;
+  border-color: transparent !important;
+  background: var(--om-card-lime) !important;
+  color: var(--om-card-ink) !important;
+  box-shadow: 0 28px 48px -32px rgba(0, 0, 0, .58) !important;
+}
+
+body.off-switch-method-page .om-measure__grid > article:nth-child(3) strong,
+body.off-switch-method-page .om-measure__grid > article:nth-child(3) p,
+body.off-switch-method-page .om-measure__grid > article:nth-child(3) .om-measure__number {
+  color: var(--om-card-ink) !important;
+}
+
+body.off-switch-method-page .om-measure__grid[data-card-role="levels"] > article:nth-child(1) {
+  border: 1px solid rgba(255, 255, 255, .18) !important;
+  border-radius: 16px !important;
+  background: rgba(255, 255, 255, .07) !important;
+}
+
+body.off-switch-method-page .om-measure__grid[data-card-role="levels"] > article:nth-child(2) {
+  border: 1px solid rgba(255, 255, 255, .18) !important;
+  border-radius: 16px !important;
+  background: rgba(255, 255, 255, .12) !important;
+}
+
+body.off-switch-method-page .om-measure__grid[data-card-role="levels"] > article:nth-child(3) {
+  border: 0 !important;
+  border-radius: 16px !important;
+  background: var(--om-card-lime) !important;
+}
+
+/* Evidence: one anchor fact, then supporting evidence. */
+body.off-switch-method-page .om-ukraine__stats[data-card-role="evidence"] {
+  position: relative !important;
+  inset: auto !important;
+  display: grid !important;
+  grid-template-columns: minmax(260px, 1.45fr) repeat(3, minmax(0, 1fr)) !important;
+  gap: clamp(16px, 1.7vw, 24px) !important;
+  margin: 24px 0 0 !important;
+  padding: 0 !important;
+}
+
+body.off-switch-method-page .om-ukraine__stats > article {
+  min-height: 0 !important;
+  padding: 24px 8px 16px !important;
+  border: 0 !important;
+  border-top: 1px solid var(--om-card-line) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--om-card-ink) !important;
+}
+
+body.off-switch-method-page .om-ukraine__stats > article:first-child {
+  padding: 30px !important;
+  border-top: 0 !important;
+  border-radius: 16px !important;
+  background: var(--om-card-deep) !important;
+  color: #fff !important;
+  box-shadow: var(--om-card-shadow) !important;
+}
+
+body.off-switch-method-page .om-ukraine__stats > article:first-child strong,
+body.off-switch-method-page .om-ukraine__stats > article:first-child span {
+  color: #fff !important;
+}
+
+body.off-switch-method-page .om-ukraine__stats > article:first-child strong {
+  font-size: clamp(48px, 5vw, 76px) !important;
+}
+
+body.off-switch-method-page .om-cases__grid[data-card-role="evidence"] {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr) !important;
+  gap: 18px 24px !important;
+  align-items: stretch !important;
+}
+
+body.off-switch-method-page .om-cases__grid > article {
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 24px 26px !important;
+  border: 1px solid rgba(31, 89, 59, .12) !important;
+  border-radius: 14px !important;
+  background: rgba(255, 255, 255, .78) !important;
+  box-shadow: 0 16px 34px -30px rgba(24, 63, 45, .68) !important;
+}
+
+body.off-switch-method-page .om-cases__grid > article:first-child {
+  grid-row: 1 / span 3 !important;
+  padding: clamp(30px, 3.2vw, 46px) !important;
+  border-left: 5px solid var(--om-card-signal) !important;
+  background: var(--om-card-mint) !important;
+}
+
+body.off-switch-method-page .om-cases__grid > article:first-child strong {
+  font-size: clamp(54px, 6vw, 88px) !important;
+}
+
+body.off-switch-method-page .om-cases__grid > article:not(:first-child) strong {
+  font-size: clamp(30px, 3vw, 46px) !important;
+}
+
+/* True choice cards: spatial, clearly interactive, and separated. */
+body.off-switch-method-page .om-format-doors[data-card-role="choices"] {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: clamp(20px, 2vw, 28px) !important;
+  align-items: stretch !important;
+  margin-top: 34px !important;
+}
+
+body.off-switch-method-page .om-format-door {
+  position: relative;
+  display: flex !important;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 100% !important;
+  padding: 0 26px 28px !important;
+  overflow: hidden !important;
+  border: 1px solid rgba(31, 89, 59, .16) !important;
+  border-top: 4px solid var(--om-card-signal) !important;
+  border-radius: 16px !important;
+  background: var(--om-card-paper) !important;
+  box-shadow: var(--om-card-shadow) !important;
+  color: var(--om-card-ink) !important;
+  text-decoration: none !important;
+  transform: translate(0, 0);
+  transition: transform .24s ease, box-shadow .24s ease, background-color .24s ease, border-color .24s ease !important;
+}
+
+body.off-switch-method-page .om-format-door--group {
+  border-top-color: #8db352 !important;
+}
+
+body.off-switch-method-page .om-format-door--personal {
+  border-top-color: var(--om-card-deep) !important;
+}
+
+body.off-switch-method-page .om-format-door > figure {
+  order: 1;
+  width: auto !important;
+  margin: 0 -26px 24px !important;
+  overflow: hidden !important;
+  aspect-ratio: 16 / 10 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: #e8eddb !important;
+}
+
+body.off-switch-method-page .om-format-door > figure img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  transition: transform .35s ease !important;
+}
+
+body.off-switch-method-page .om-format-door > span {
+  order: 2;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 0 14px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: var(--om-card-muted) !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  letter-spacing: .14em !important;
+}
+
+body.off-switch-method-page .om-format-door > h3 {
+  order: 3;
+  margin: 0 0 12px !important;
+  color: var(--om-card-ink) !important;
+  font-size: clamp(25px, 2.2vw, 34px) !important;
+  line-height: 1.05 !important;
+}
+
+body.off-switch-method-page .om-format-door > p {
+  order: 4;
+  margin: 0 0 22px !important;
+  color: #3f5046 !important;
+  font-size: 16px !important;
+  line-height: 1.5 !important;
+}
+
+body.off-switch-method-page .om-format-door > small {
+  order: 5;
+  margin-top: auto !important;
+  padding-top: 18px !important;
+  border-top: 1px solid var(--om-card-line) !important;
+  color: var(--om-card-muted) !important;
+  font-size: 13px !important;
+  line-height: 1.4 !important;
+}
+
+body.off-switch-method-page .om-format-door:hover,
+body.off-switch-method-page .om-format-door:focus,
+body.off-switch-method-page .om-format-door:focus-visible {
+  z-index: 2;
+  border-color: rgba(31, 89, 59, .3) !important;
+  background: #f4f8df !important;
+  box-shadow: 0 30px 56px -32px rgba(24, 63, 45, .72) !important;
+  transform: translate(6px, -8px) !important;
+}
+
+body.off-switch-method-page .om-format-door:hover > figure img,
+body.off-switch-method-page .om-format-door:focus > figure img,
+body.off-switch-method-page .om-format-door:focus-visible > figure img {
+  transform: scale(1.025);
+}
+
+body.off-switch-method-page .om-format-door:focus-visible {
+  outline: 3px solid rgba(117, 163, 74, .52) !important;
+  outline-offset: 4px !important;
+}
+
+/* Neutralize legacy grid placement so the new compositions use their full width. */
+body.off-switch-method-page .om-steps--compact > li {
+  display: block !important;
+  grid-template-columns: none !important;
+}
+
+body.off-switch-method-page .om-steps--compact > li > div {
+  width: auto !important;
+  grid-column: auto !important;
+}
+
+body.off-switch-method-page .om-chain[data-card-role="sequence"] > figure.om-mechanism__media {
+  grid-column: 1 / -1 !important;
+  grid-row: auto !important;
+  width: 100% !important;
+}
+
+body.off-switch-method-page .om-chain[data-card-role="sequence"] > article {
+  grid-column: auto !important;
+  grid-row: auto !important;
+}
+
+body.off-switch-method-page .om-dog__composition,
+body.off-switch-method-page .om-map__layout {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 28px !important;
+}
+
+body.off-switch-method-page .om-dog__media,
+body.off-switch-method-page .om-dog__story,
+body.off-switch-method-page .om-map__media,
+body.off-switch-method-page .om-map__copy {
+  width: 100% !important;
+  max-width: none !important;
+  grid-column: auto !important;
+  grid-row: auto !important;
+}
+
+body.off-switch-method-page .om-measure__grid > article:nth-child(3) {
+  grid-column: auto !important;
+}
+
+body.off-switch-method-page .om-cases__grid > article:first-child {
+  grid-column: 1 !important;
+  grid-row: 1 / span 3 !important;
+}
+
+body.off-switch-method-page .om-cases__grid > article:not(:first-child) {
+  grid-column: 2 !important;
+}
+
+@media (max-width: 980px) {
+  body.off-switch-method-page .om-chain[data-card-role="sequence"] {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 20px !important;
+  }
+
+  body.off-switch-method-page .om-chain > article {
+    border-left: 2px solid var(--om-card-line) !important;
+    border-top: 0 !important;
+  }
+
+  body.off-switch-method-page .om-chain > article::before {
+    top: 28px;
+    left: -7px;
+  }
+
+  body.off-switch-method-page .om-chain > article.om-chain__stop {
+    transform: none;
+  }
+
+  body.off-switch-method-page .om-ukraine__stats[data-card-role="evidence"] {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  body.off-switch-method-page .om-ukraine__stats > article:first-child {
+    grid-column: 1 / -1 !important;
+  }
+}
+
+@media (max-width: 900px) {
+  body.off-switch-method-page .om-format-fit[data-card-role="signals"],
+  body.off-switch-method-page .om-format-doors[data-card-role="choices"] {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
+@media (max-width: 760px) {
+  body.off-switch-method-page .om-hero__facts {
+    display: grid !important;
+    gap: 0 !important;
+  }
+
+  body.off-switch-method-page .om-hero__facts > div,
+  body.off-switch-method-page .om-hero__facts > div:first-child {
+    padding: 14px 0 !important;
+    border-right: 0 !important;
+    border-bottom: 1px solid rgba(23, 63, 49, .14) !important;
+  }
+
+  body.off-switch-method-page .om-hero__facts > div:last-child {
+    border-bottom: 0 !important;
+  }
+
+  body.off-switch-method-page [data-card-role="signals"],
+  body.off-switch-method-page .om-dog__story[data-card-role="sequence"],
+  body.off-switch-method-page [data-card-role="comparison"],
+  body.off-switch-method-page .om-measure__grid[data-card-role="levels"],
+  body.off-switch-method-page .om-cases__grid[data-card-role="evidence"],
+  body.off-switch-method-page .om-format-doors[data-card-role="choices"] {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  body.off-switch-method-page [data-card-role="signals"] > article {
+    padding: 18px 6px 18px 28px !important;
+  }
+
+  body.off-switch-method-page [data-card-role="signals"] > article::before {
+    top: 25px;
+  }
+
+  body.off-switch-method-page .om-chain[data-card-role="sequence"] {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 0 !important;
+  }
+
+  body.off-switch-method-page .om-chain > figure {
+    margin-bottom: 24px !important;
+  }
+
+  body.off-switch-method-page .om-chain > article,
+  body.off-switch-method-page .om-chain > article.om-chain__stop {
+    min-height: 0 !important;
+    padding: 22px 20px 24px 30px !important;
+    border-left: 2px solid var(--om-card-line) !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    color: var(--om-card-ink) !important;
+    box-shadow: none !important;
+  }
+
+  body.off-switch-method-page .om-chain > article.om-chain__stop {
+    margin: 10px 0 0 !important;
+    padding: 26px !important;
+    border-left: 0 !important;
+    border-radius: 14px !important;
+    background: var(--om-card-deep) !important;
+    color: #fff !important;
+  }
+
+  body.off-switch-method-page .om-chain__stop > span,
+  body.off-switch-method-page .om-chain__stop > strong,
+  body.off-switch-method-page .om-chain__stop > p {
+    color: #fff !important;
+  }
+
+  body.off-switch-method-page .om-dog__story > article {
+    padding: 18px 8px 20px 28px !important;
+    border-top: 0 !important;
+    border-left: 1px solid var(--om-card-line) !important;
+  }
+
+  body.off-switch-method-page .om-dog__story > article::before {
+    top: 24px;
+    left: -5px;
+  }
+
+  body.off-switch-method-page [data-card-role="comparison"] > div,
+  body.off-switch-method-page [data-card-role="comparison"] > article {
+    padding: 24px !important;
+  }
+
+  body.off-switch-method-page .om-measure__grid > article,
+  body.off-switch-method-page .om-measure__grid > article:nth-child(2),
+  body.off-switch-method-page .om-measure__grid > article:nth-child(3) {
+    min-height: 0 !important;
+    padding: 24px !important;
+  }
+
+  body.off-switch-method-page .om-ukraine__stats[data-card-role="evidence"] {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  body.off-switch-method-page .om-ukraine__stats > article:first-child {
+    grid-column: auto !important;
+  }
+
+  body.off-switch-method-page .om-cases__grid > article:first-child {
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
+
+  body.off-switch-method-page .om-cases__grid > article:not(:first-child) {
+    grid-column: auto !important;
+  }
+
+  body.off-switch-method-page .om-format-door {
+    padding: 0 22px 24px !important;
+  }
+
+  body.off-switch-method-page .om-format-door > figure {
+    margin-right: -22px !important;
+    margin-left: -22px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.off-switch-method-page .om-format-door,
+  body.off-switch-method-page .om-format-door > figure img {
+    transition: none !important;
+  }
+
+  body.off-switch-method-page .om-format-door:hover,
+  body.off-switch-method-page .om-format-door:focus,
+  body.off-switch-method-page .om-format-door:focus-visible {
+    transform: none !important;
+  }
+}
+
+/* Final contrast guard against earlier page-specific paragraph rules. */
+body.off-switch-method-page .om-mechanism .om-chain[data-card-role="sequence"] > article.om-chain__stop > p {
+  color: #fff !important;
+}
+
+/* Image composition guard: narrative images support the text instead of becoming full-width screens. */
+@media (min-width: 981px) {
+  body.off-switch-method-page .om-chain[data-card-role="sequence"] {
+    grid-template-columns: minmax(0, 1.16fr) minmax(350px, .84fr) !important;
+    gap: clamp(28px, 4vw, 58px) !important;
+    align-items: stretch !important;
+  }
+
+  body.off-switch-method-page .om-chain[data-card-role="sequence"] > figure.om-mechanism__media {
+    grid-column: 1 !important;
+    grid-row: 1 / span 4 !important;
+    width: 100% !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    aspect-ratio: 4 / 3;
+  }
+
+  body.off-switch-method-page .om-chain[data-card-role="sequence"] > figure.om-mechanism__media img {
+    width: 100%;
+    height: 100%;
+    min-height: 0 !important;
+    object-fit: cover;
+  }
+
+  body.off-switch-method-page .om-chain[data-card-role="sequence"] > article {
+    grid-column: 2 !important;
+    min-height: 0 !important;
+    padding: 18px 0 20px 28px !important;
+    border: 0 !important;
+    border-left: 2px solid var(--om-card-line) !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  body.off-switch-method-page .om-chain[data-card-role="sequence"] > article.om-chain__stop {
+    padding: 24px !important;
+    border-left: 0 !important;
+    border-radius: 14px !important;
+    background: var(--om-card-deep) !important;
+    transform: none !important;
+  }
+
+  body.off-switch-method-page .om-dog__composition {
+    grid-template-columns: minmax(0, 1.18fr) minmax(320px, .82fr) !important;
+    gap: clamp(32px, 5vw, 70px) !important;
+    align-items: center !important;
+  }
+
+  body.off-switch-method-page .om-map__layout {
+    grid-template-columns: minmax(0, 1.08fr) minmax(300px, .72fr) !important;
+    gap: clamp(32px, 5vw, 70px) !important;
+    align-items: center !important;
+  }
+
+  body.off-switch-method-page .om-dog__media,
+  body.off-switch-method-page .om-map__media {
+    width: 100% !important;
+    max-width: 760px !important;
+    margin: 0 !important;
+  }
+
+  body.off-switch-method-page .om-dog__story,
+  body.off-switch-method-page .om-map__copy {
+    width: 100% !important;
+    max-width: 460px !important;
+  }
+
+  body.off-switch-method-page .om-depth__visual {
+    width: min(100%, 880px) !important;
+    height: clamp(320px, 34vw, 450px) !important;
+  }
+}
+
+body.off-switch-method-page .om-ukraine__visual {
+  width: min(100%, 920px) !important;
+}
+
+/* Uģis belongs inside the existing central computer screen, not over the whole scene. */
+body.off-switch-method-page .om-ukraine__host {
+  top: 26.7% !important;
+  left: 50% !important;
+  width: 12.7% !important;
+  min-width: 0 !important;
+  aspect-ratio: 1.2 / 1 !important;
+  margin: 0 !important;
+  transform: translateX(-50%) !important;
+  overflow: hidden !important;
+  border: 0 !important;
+  border-radius: 18% / 20% !important;
+  background: #d6d8d5;
+  box-shadow: none !important;
+}
+
+body.off-switch-method-page .om-ukraine__host img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: 50% 30% !important;
+}
+
+body.off-switch-method-page .om-ukraine__host figcaption {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+@media (max-width: 980px) {
+  body.off-switch-method-page .om-chain[data-card-role="sequence"] > figure.om-mechanism__media {
+    width: min(100%, 720px) !important;
+    margin: 0 auto 28px !important;
+  }
+
+  body.off-switch-method-page .om-dog__media,
+  body.off-switch-method-page .om-map__media,
+  body.off-switch-method-page .om-depth__visual {
+    width: min(100%, 720px) !important;
+    max-width: 720px !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+  }
+}

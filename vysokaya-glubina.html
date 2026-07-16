@@ -1,0 +1,3271 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Высокая Глубина - менторинг по женским архетипам</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="2 месяца менторинга по женским архетипам с поддержкой мужских. Одна ключевая задача, 8 встреч Zoom, телесно-двигательные практики, архетипический тест и сопровождение. 7 октября — 6 декабря 2026.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --porcelain: #f4f6f3;
+      --mineral: #e7ece8;
+      --paper: #fcfbf7;
+      --ink: #111419;
+      --graphite: #252a2e;
+      --muted: #667074;
+      --steel: #486878;
+      --steel-soft: #d8e2e3;
+      --wine: #69212f;
+      --wine-soft: #ead7da;
+      --gold: #b99349;
+      --gold-soft: #ead9aa;
+      --line: rgba(17, 20, 25, 0.12);
+      --white: #fffdf8;
+      --shadow: 0 22px 70px rgba(17, 20, 25, 0.13);
+      --serif: "Cormorant Garamond", Georgia, serif;
+      --sans: "Inter", Arial, sans-serif;
+      --section: 92px;
+      --px: 28px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      min-width: 320px;
+      background: var(--porcelain);
+      color: var(--graphite);
+      font-family: var(--sans);
+      line-height: 1.64;
+      overflow-x: hidden;
+    }
+    body.modal-open { overflow: hidden; }
+    img { display: block; max-width: 100%; }
+    button, a { font: inherit; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3 {
+      color: var(--ink);
+      font-family: var(--serif);
+      font-weight: 600;
+      line-height: 1.04;
+      letter-spacing: 0;
+    }
+    h1 { font-size: clamp(4.2rem, 9vw, 8rem); }
+    .hero h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(3rem, 4.8vw, 4.55rem);
+      font-weight: 700;
+      line-height: 1.07;
+    }
+    h2 { max-width: 860px; font-size: clamp(2.65rem, 4.8vw, 4.65rem); }
+    .section-title--compact {
+      max-width: 680px;
+      font-size: clamp(2.55rem, 4vw, 4.05rem);
+      line-height: 1.06;
+    }
+    .mobile-line { display: none; }
+    h3 { font-size: 1.65rem; }
+    p { color: var(--graphite); }
+    .wrap { width: min(1260px, calc(100% - var(--px) * 2)); margin: 0 auto; }
+    .section { padding: var(--section) 0; position: relative; }
+    .section--mineral { background: var(--mineral); }
+    .section--ink {
+      background:
+        radial-gradient(circle at 20% 0%, rgba(185, 147, 73, 0.18), transparent 34%),
+        linear-gradient(135deg, #111419 0%, #182025 56%, #23131a 100%);
+      color: var(--white);
+    }
+    .section--ink h2,
+    .section--ink h3,
+    .section--ink p { color: var(--white); }
+    .label {
+      display: inline-flex;
+      margin-bottom: 18px;
+      color: var(--gold);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .lead {
+      max-width: 780px;
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: clamp(1.08rem, 2vw, 1.34rem);
+    }
+    .text-wide { max-width: 760px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 14px 24px;
+      border: 1px solid var(--ink);
+      border-radius: 999px;
+      background: var(--ink);
+      color: var(--white);
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 700;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+      white-space: nowrap;
+    }
+    .btn:hover { transform: translateY(-2px); background: var(--wine); border-color: var(--wine); }
+    .btn--outline { background: transparent; color: var(--ink); border-color: rgba(17, 20, 25, 0.32); }
+    .btn--outline:hover { color: var(--white); }
+    .btn--gold { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+    .btn--light { border-color: rgba(255,255,255,0.52); color: var(--white); }
+
+    .nav {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 50;
+      background: rgba(244, 246, 243, 0.88);
+      border-bottom: 1px solid rgba(17, 20, 25, 0.08);
+      backdrop-filter: blur(18px);
+    }
+    .nav-inner {
+      width: min(1260px, calc(100% - var(--px) * 2));
+      min-height: 74px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    .nav-logo {
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: 1.45rem;
+      font-weight: 700;
+    }
+    .nav-links { display: flex; gap: 24px; color: var(--muted); font-size: 14px; }
+    .nav-links a:hover { color: var(--wine); }
+    .nav .btn { min-height: 40px; padding: 10px 18px; font-size: 12px; }
+
+    .hero {
+      padding: 140px 0 88px;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(185, 147, 73, 0.18), transparent 27%),
+        radial-gradient(circle at 82% 18%, rgba(72, 104, 120, 0.18), transparent 30%),
+        linear-gradient(140deg, #f4f6f3 0%, #eef2ee 52%, #e5eceb 100%);
+      overflow: hidden;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(360px, 0.92fr);
+      align-items: center;
+      gap: clamp(38px, 6vw, 84px);
+    }
+    .hero-kicker { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 8px 14px;
+      border: 1px solid rgba(17, 20, 25, 0.14);
+      border-radius: 999px;
+      background: rgba(255, 253, 248, 0.68);
+      color: var(--wine);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .hero-sub {
+      max-width: 820px;
+      margin-top: 24px;
+      color: var(--ink);
+      font-size: clamp(1.28rem, 2vw, 1.76rem);
+      font-weight: 500;
+      line-height: 1.34;
+    }
+    .hero-body {
+      max-width: 760px;
+      margin-top: 22px;
+      color: var(--graphite);
+      font-size: 1.05rem;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+    .hero-note { max-width: 620px; margin-top: 20px; color: var(--muted); font-size: 14px; }
+    .hero-visual {
+      position: relative;
+      padding: 12px;
+      border: 1px solid rgba(17, 20, 25, 0.13);
+      border-radius: 30px;
+      background: rgba(255, 253, 248, 0.78);
+      box-shadow: var(--shadow);
+    }
+    .hero-visual img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border-radius: 22px;
+    }
+    .hero-card {
+      position: absolute;
+      left: 28px;
+      right: 28px;
+      bottom: 28px;
+      padding: 20px;
+      border: 1px solid rgba(185, 147, 73, 0.38);
+      border-radius: 18px;
+      background: rgba(17, 20, 25, 0.78);
+      color: var(--white);
+      backdrop-filter: blur(14px);
+    }
+    .hero-card strong { display: block; color: var(--gold-soft); font-family: var(--serif); font-size: 1.6rem; line-height: 1.05; }
+    .hero-card span { display: block; margin-top: 8px; color: rgba(255,253,248,0.82); font-size: 14px; }
+
+    .grid-2 { display: grid; grid-template-columns: 0.96fr 0.9fr; gap: 58px; align-items: center; }
+    .grid-2--stretch { align-items: stretch; }
+    .grid-2--stretch > * {
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .grid-2--stretch .soft-panel:last-child { flex: 1; }
+    .soft-panel {
+      padding: clamp(24px, 4vw, 42px);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 253, 248, 0.7);
+    }
+    .section--ink .soft-panel {
+      border-color: rgba(255, 253, 248, 0.18);
+      background: rgba(255, 253, 248, 0.08);
+    }
+    .section--ink .soft-panel p { color: rgba(255, 253, 248, 0.78); }
+    .soft-panel p + p { margin-top: 14px; }
+    .quote-line {
+      margin-top: 28px;
+      padding-left: 20px;
+      border-left: 2px solid var(--gold);
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: 1.7rem;
+      line-height: 1.2;
+    }
+    .image-frame {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+    .image-frame img { width: 100%; min-height: 470px; object-fit: cover; }
+    .visual-stack { display: grid; gap: 18px; }
+    .method-visual {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+    .section--ink .method-visual {
+      border-color: rgba(255, 253, 248, 0.16);
+      background: rgba(255, 253, 248, 0.06);
+      box-shadow: 0 28px 70px rgba(0,0,0,0.24);
+    }
+    .method-visual img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+    .method-visual--code img { filter: contrast(1.14) saturate(1.12) brightness(1.02); }
+    .method-visual__caption {
+      padding: 18px 20px 20px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .section--ink .method-visual__caption { color: rgba(255,253,248,0.76); }
+
+    .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 42px; }
+    .cards--four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .card {
+      min-height: 260px;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+    }
+    .card h3 { margin-bottom: 12px; }
+    .card p { color: var(--muted); font-size: 15px; }
+    .card--steel { background: linear-gradient(150deg, #eef4f4 0%, #fbfbf7 100%); }
+    .card--gold { border-color: rgba(185, 147, 73, 0.44); background: linear-gradient(150deg, #fbf5df 0%, #fffdf7 100%); }
+    .card--deep { background: var(--ink); border-color: var(--ink); }
+    .card--deep h3, .card--deep p { color: var(--white); }
+
+    .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 38px; }
+    .stat { padding: 24px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+    .stat strong { display: block; color: var(--wine); font-family: var(--serif); font-size: 3.4rem; line-height: 0.9; }
+    .stat span { display: block; margin-top: 12px; color: var(--muted); font-size: 14px; }
+
+    .archetype-board {
+      margin-top: 44px;
+      display: grid;
+      grid-template-columns: minmax(280px, 0.78fr) minmax(0, 1fr);
+      gap: 34px;
+      align-items: stretch;
+    }
+    .atlas {
+      min-height: 540px;
+      padding: 28px;
+      border: 1px solid rgba(185, 147, 73, 0.42);
+      border-radius: 10px;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(185,147,73,0.24), transparent 28%),
+        radial-gradient(circle at 18% 18%, rgba(105,33,47,0.12), transparent 24%),
+        linear-gradient(145deg, #171b20, #101318);
+      color: var(--white);
+      display: grid;
+      place-items: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .atlas::before,
+    .atlas::after {
+      content: "";
+      position: absolute;
+      width: 76%;
+      aspect-ratio: 1;
+      border: 1px solid rgba(185, 147, 73, 0.32);
+      border-radius: 50%;
+    }
+    .atlas::after { width: 48%; border-color: rgba(255,253,248,0.16); }
+    .atlas-center {
+      position: relative;
+      z-index: 1;
+      width: min(250px, 76%);
+      aspect-ratio: 1;
+      border: 1px solid rgba(185,147,73,0.66);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      background: rgba(17, 20, 25, 0.72);
+    }
+    .atlas-center strong { display: block; color: var(--gold-soft); font-family: var(--serif); font-size: 2rem; line-height: 1.05; }
+    .atlas-center span { display: block; max-width: 170px; margin: 10px auto 0; color: rgba(255,253,248,0.7); font-size: 13px; }
+    .orbit {
+      position: absolute;
+      z-index: 2;
+      width: 74px;
+      height: 74px;
+      border: 1px solid rgba(185,147,73,0.5);
+      border-radius: 50%;
+      background: rgba(255,253,248,0.08);
+      display: grid;
+      place-items: center;
+      color: var(--gold-soft);
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      backdrop-filter: blur(8px);
+    }
+    .o1 { top: 8%; left: 50%; transform: translateX(-50%); }
+    .o2 { top: 20%; right: 15%; }
+    .o3 { top: 50%; right: 7%; transform: translateY(-50%); }
+    .o4 { right: 15%; bottom: 20%; }
+    .o5 { bottom: 8%; left: 50%; transform: translateX(-50%); }
+    .o6 { left: 15%; bottom: 20%; }
+    .o7 { top: 50%; left: 7%; transform: translateY(-50%); }
+    .o8 { top: 20%; left: 15%; }
+    .archetype-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+    .archetype-card {
+      position: relative;
+      padding: 22px;
+      border: 1px solid rgba(17, 20, 25, 0.12);
+      border-radius: 8px;
+      background: var(--paper);
+    }
+    .archetype-symbol {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(185,147,73,0.34);
+      border-radius: 999px;
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: 18px;
+      line-height: 1;
+      background: rgba(255,253,248,0.72);
+    }
+    .archetype-card span { display: inline-flex; margin-bottom: 10px; color: var(--gold); font-size: 12px; font-weight: 700; text-transform: uppercase; }
+    .archetype-card h3 { font-size: 1.42rem; }
+    .archetype-card p { margin-top: 8px; color: var(--muted); font-size: 14px; }
+
+    .route {
+      margin-top: 42px;
+      padding: 32px;
+      border: 1px solid rgba(185, 147, 73, 0.44);
+      border-radius: 10px;
+      background: linear-gradient(145deg, #fffdf8 0%, #eef4f4 100%);
+    }
+    .route-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; margin-top: 22px; }
+    .route-step { padding: 18px; border-left: 2px solid var(--gold); background: rgba(255,253,248,0.72); }
+    .route-step b { display: block; color: var(--ink); font-family: var(--serif); font-size: 1.25rem; line-height: 1.1; }
+    .route-step span { display: block; margin-top: 8px; color: var(--muted); font-size: 13px; }
+
+    .steps { display: grid; gap: 14px; margin-top: 42px; }
+    .step {
+      display: grid;
+      grid-template-columns: 110px minmax(0, 1fr);
+      gap: 22px;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+    }
+    .step::before {
+      content: counter(step-counter, decimal-leading-zero);
+      counter-increment: step-counter;
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: 3rem;
+      line-height: 1;
+    }
+    .steps { counter-reset: step-counter; }
+    .step p { margin-top: 8px; color: var(--muted); }
+
+    .change-grid { display: grid; grid-template-columns: 1fr 0.78fr; gap: 34px; align-items: stretch; margin-top: 42px; }
+    .change-list { display: grid; gap: 12px; }
+    .change-item {
+      padding: 22px 24px;
+      border: 1px solid rgba(17, 20, 25, 0.12);
+      border-radius: 8px;
+      background: var(--paper);
+      color: var(--graphite);
+    }
+    .change-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 520px;
+      border-radius: 10px;
+      background: var(--ink);
+      box-shadow: var(--shadow);
+    }
+    .change-card img { width: 100%; height: 100%; min-height: 520px; object-fit: cover; opacity: 0.88; }
+    .change-caption {
+      position: absolute;
+      left: 22px;
+      right: 22px;
+      bottom: 22px;
+      padding: 20px;
+      border: 1px solid rgba(255,255,255,0.24);
+      border-radius: 8px;
+      background: rgba(17, 20, 25, 0.72);
+      backdrop-filter: blur(12px);
+    }
+    .change-caption p { color: var(--white); font-family: var(--serif); font-size: 1.55rem; line-height: 1.15; }
+
+    .testimonial-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 42px; }
+    .testimonial-grid--cases { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .testimonial {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+    }
+    .video-frame {
+      min-height: 210px;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(185,147,73,0.26), transparent 30%),
+        linear-gradient(135deg, #24152F 0%, #5B2D68 100%);
+      color: var(--white);
+      position: relative;
+    }
+    .play {
+      width: 64px;
+      height: 64px;
+      border: 1px solid rgba(255,253,248,0.54);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(255,253,248,0.08);
+    }
+    .play::before {
+      content: "";
+      margin-left: 4px;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-left: 16px solid var(--gold-soft);
+    }
+    .video-label {
+      position: absolute;
+      left: 16px;
+      bottom: 14px;
+      color: rgba(255,253,248,0.68);
+      font-size: 12px;
+    }
+    .testimonial-body { padding: 24px; }
+    .testimonial-body small { color: var(--gold); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; }
+    .testimonial-body p { margin-top: 12px; color: var(--graphite); font-size: 15px; }
+    .case-card {
+      padding: 28px;
+      border-left: 3px solid var(--gold);
+      background:
+        linear-gradient(145deg, rgba(255,253,248,0.94), rgba(232,235,232,0.58));
+    }
+    .case-card h3 { font-size: 1.9rem; line-height: 1.08; }
+    .case-card p { margin-top: 14px; color: var(--muted); font-size: 15px; }
+    .case-card strong { color: var(--ink); }
+    .case-note {
+      max-width: 760px;
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .fit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 42px; }
+    .fit-card { padding: 34px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+    .fit-card--quiet { background: rgba(255,253,248,0.52); }
+    .fit-card ul { display: grid; gap: 10px; margin-top: 18px; padding-left: 20px; color: var(--muted); }
+
+    .masters { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 18px; margin-top: 42px; align-items: start; }
+    .master {
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+    .master--small { box-shadow: none; }
+    .master img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      object-position: center 35%;
+      filter: saturate(0.92) contrast(0.98) brightness(1.02);
+    }
+    .master:first-child {
+      grid-template-rows: auto 1fr;
+    }
+    .master:first-child img {
+      height: auto;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      object-position: center center;
+      background: var(--paper);
+      padding: 0;
+    }
+    .master:nth-child(2) img { object-position: center 38%; }
+    .master:nth-child(3) img { object-position: center 28%; }
+    .master-body { padding: 26px; display: flex; flex-direction: column; justify-content: flex-start; }
+    .master:first-child .master-body { padding: 32px; }
+    .master-role { margin-bottom: 12px; color: var(--gold); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; }
+    .master p { margin-top: 14px; color: var(--muted); font-size: 15.5px; }
+    .pricing-note {
+      margin-top: 28px;
+      padding: 24px 28px;
+      border-left: 3px solid var(--gold);
+      background: rgba(255,253,248,0.68);
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: 1.65rem;
+      line-height: 1.2;
+    }
+    .pricing { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 36px; align-items: stretch; }
+    .price-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-height: 560px;
+      padding: 30px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+    }
+    .price-card--featured {
+      border: 2px solid var(--gold);
+      background:
+        radial-gradient(circle at 50% 0%, rgba(185,147,73,0.24), transparent 32%),
+        linear-gradient(160deg, #fffdf8 0%, #eef4f4 100%);
+      box-shadow: 0 26px 70px rgba(17, 20, 25, 0.16);
+      transform: translateY(-12px);
+    }
+    .badge {
+      display: inline-flex;
+      width: fit-content;
+      margin-bottom: 18px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--ink);
+      color: var(--gold-soft);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .price-name { color: var(--ink); font-family: var(--serif); font-size: 2rem; line-height: 1; }
+    .price { margin: 14px 0 16px; color: var(--wine); font-family: var(--serif); font-size: 3rem; line-height: 1; }
+    .price small { display: block; margin-top: 8px; color: var(--muted); font-family: var(--sans); font-size: 13px; }
+    .price-card p { color: var(--muted); font-size: 15px; }
+    .price-card ul { display: grid; gap: 10px; margin: 22px 0 28px; padding: 0; list-style: none; }
+    .price-card li { position: relative; padding-left: 24px; color: var(--graphite); font-size: 14px; }
+    .price-card li::before { content: ""; position: absolute; left: 0; top: 10px; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); }
+    .price-card .btn { width: 100%; margin-top: auto; }
+
+    .faq { display: grid; gap: 12px; margin-top: 42px; }
+    details {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      overflow: hidden;
+    }
+    summary {
+      padding: 22px 24px;
+      color: var(--ink);
+      cursor: pointer;
+      font-weight: 700;
+      list-style: none;
+    }
+    summary::-webkit-details-marker { display: none; }
+    details p { padding: 0 24px 22px; color: var(--muted); }
+
+    .final {
+      padding: 96px 0;
+      background:
+        radial-gradient(circle at 78% 10%, rgba(185,147,73,0.26), transparent 30%),
+        radial-gradient(circle at 14% 18%, rgba(255,253,248,0.08), transparent 34%),
+        linear-gradient(135deg, #24152F 0%, #5B2D68 58%, #3A214A 100%);
+      color: var(--white);
+    }
+    .final h2,
+    .final p { color: var(--white); }
+    .final .lead { color: rgba(255,253,248,0.78); }
+    .final-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .footer { padding: 28px 0; background: var(--ink); color: rgba(255,253,248,0.58); font-size: 13px; }
+    .footer p { color: rgba(255,253,248,0.58); }
+    .sticky-bar {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 45;
+      display: none;
+      padding: 12px 18px;
+      background: rgba(244,246,243,0.92);
+      border-top: 1px solid rgba(17,20,25,0.1);
+      backdrop-filter: blur(14px);
+    }
+    .sticky-bar .btn { width: 100%; }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 22px;
+      background: rgba(17, 20, 25, 0.72);
+    }
+    .modal.is-open { display: flex; }
+    .modal-card {
+      position: relative;
+      width: min(560px, 100%);
+      padding: 38px;
+      border-radius: 12px;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+    .modal-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 38px;
+      height: 38px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: transparent;
+      color: var(--ink);
+      cursor: pointer;
+      font-size: 24px;
+    }
+    .modal-card h2 { font-size: 3rem; }
+    .modal-card p { margin-top: 14px; color: var(--muted); }
+    .modal-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+    .modal-note { color: var(--muted); font-size: 13px; }
+
+    @media (max-width: 980px) {
+      :root { --section: 70px; --px: 22px; }
+      .nav-links { display: none; }
+      .hero-grid,
+      .grid-2,
+      .archetype-board,
+      .change-grid,
+      .masters { grid-template-columns: 1fr; }
+      .hero-visual { max-width: 560px; margin: 0 auto; }
+      .cards,
+      .pricing,
+      .stats,
+      .testimonial-grid,
+      .fit-grid { grid-template-columns: 1fr 1fr; }
+      .route-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .price-card--featured { transform: none; }
+    }
+
+    @media (max-width: 680px) {
+      :root { --px: 18px; --section: 58px; }
+      body { padding-bottom: 76px; }
+      body,
+      main,
+      section,
+      .hero {
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: hidden;
+      }
+      .wrap, .nav-inner {
+        width: auto;
+        max-width: none;
+        margin-left: var(--px);
+        margin-right: var(--px);
+        padding-left: 0;
+        padding-right: 0;
+      }
+      .hero-copy,
+      .hero-grid,
+      .grid-2,
+      .archetype-board,
+      .change-grid,
+      .cards,
+      .pricing,
+      .stats,
+      .fit-grid,
+      .masters,
+      .step,
+      .card,
+      .soft-panel,
+      .fit-card,
+      .price-card,
+      .testimonial,
+      .archetype-card,
+      .route,
+      .route-step {
+        min-width: 0;
+      }
+      h1 { font-size: clamp(3.4rem, 18vw, 5rem); }
+      .hero h1 {
+        font-size: clamp(2.2rem, 9.5vw, 2.62rem);
+        overflow-wrap: normal;
+        word-break: normal;
+      }
+      h2 { font-size: clamp(2.3rem, 12vw, 3.25rem); }
+      .section-title--compact {
+        font-size: clamp(1.9rem, 8.6vw, 2.38rem);
+        overflow-wrap: normal;
+        word-break: normal;
+      }
+      .desktop-line { display: none; }
+      .mobile-line { display: inline; }
+      h1, h2, h3, p, .lead, .hero-sub, .hero-body {
+        width: 100%;
+        max-width: 100%;
+        overflow-wrap: anywhere;
+      }
+      .hero-kicker {
+        display: grid;
+        justify-items: start;
+      }
+      .pill {
+        width: fit-content;
+        max-width: 100%;
+        white-space: normal;
+      }
+      .nav-inner { min-height: 64px; }
+      .nav .btn { display: none; }
+      .hero { padding: 90px 0 48px; }
+      .hero-copy {
+        max-width: 315px;
+        padding-right: 0;
+      }
+      .hero-sub { font-size: 1.24rem; line-height: 1.34; }
+      .hero-body { font-size: 0.98rem; line-height: 1.58; }
+      .hero-note { font-size: 13px; }
+      .quote-line { font-size: 1.32rem; line-height: 1.36; overflow-wrap: break-word; }
+      .hero-actions, .final-actions, .modal-actions { flex-direction: column; width: 100%; }
+      .hero-actions .btn, .final-actions .btn, .modal-actions .btn { width: 100%; }
+      .btn { max-width: 100%; white-space: normal; }
+      .hero-visual { padding: 8px; border-radius: 24px; }
+      .hero-visual img {
+        aspect-ratio: 4 / 3;
+        max-height: 300px;
+        border-radius: 18px;
+      }
+      .hero-card {
+        position: static;
+        margin-top: 10px;
+        padding: 16px;
+      }
+      .hero-card strong { font-size: 1.35rem; }
+      .hero-card span { font-size: 13px; }
+      .cards,
+      .pricing,
+      .stats,
+      .fit-grid,
+      .testimonial-grid,
+      .archetype-grid,
+      .route-grid { grid-template-columns: 1fr; }
+      .card,
+      .soft-panel,
+      .fit-card,
+      .price-card,
+      .route { padding: 24px; }
+      .pricing-note {
+        padding: 18px 20px;
+        font-family: var(--sans);
+        font-size: 0.98rem;
+        line-height: 1.55;
+      }
+      .price-card { min-height: auto; }
+      .atlas { min-height: 430px; padding: 18px; }
+      .orbit { width: 54px; height: 54px; font-size: 1rem; }
+      .atlas-center { width: 190px; }
+      .step { grid-template-columns: 1fr; gap: 10px; }
+      .master,
+      .master:first-child { grid-template-columns: 1fr; }
+      .master img,
+      .master:first-child img { height: auto; min-height: 0; max-height: none; aspect-ratio: 1 / 1; }
+      .image-frame img { min-height: 260px; }
+      .change-card, .change-card img { min-height: 360px; }
+      .sticky-bar { display: block; }
+      .modal-card { padding: 28px 22px; }
+    }
+  </style>
+<style id="eh-shared-shell-css">
+
+/* Evolution House shared shell */
+:root {
+  --eh-canvas: #F7F5F1;
+  --eh-surface: #FFFFFF;
+  --eh-ink: #17151B;
+  --eh-ink-soft: #5A5661;
+  --eh-line: #DDD8D0;
+  --eh-brand: #0F625E;
+  --eh-brand-hover: #0A4F4C;
+  --eh-brand-deep: #073E3B;
+  --eh-gold: #B88F49;
+  --eh-brand-soft: #DCEDEA;
+  --eh-brand-wash: #F1F7F5;
+}
+.eh-shell-header,
+.eh-shell-breadcrumb,
+.eh-local-strip {
+  --shell-context-primary: var(--eh-brand);
+  --shell-context-hover: var(--eh-brand-hover);
+  --shell-context-deep: var(--eh-brand-deep);
+  --shell-context-soft: var(--eh-brand-soft);
+  --shell-context-wash: var(--eh-brand-wash);
+}
+.eh-context--archetypes,
+body.eh-context--archetypes .eh-shell-header,
+body.eh-context--archetypes .eh-shell-breadcrumb,
+body.eh-context--archetypes .eh-local-strip {
+  --shell-context-primary: #5B2D68;
+  --shell-context-hover: #4B2459;
+  --shell-context-deep: #24152F;
+  --shell-context-soft: #EFE4F2;
+  --shell-context-wash: #F8F1F8;
+}
+.eh-context--freedom,
+body.eh-context--freedom .eh-shell-header,
+body.eh-context--freedom .eh-shell-breadcrumb,
+body.eh-context--freedom .eh-local-strip {
+  --shell-context-primary: #536A86;
+  --shell-context-hover: #435772;
+  --shell-context-deep: #243247;
+  --shell-context-soft: #C9D3E2;
+  --shell-context-wash: #F3F6FA;
+}
+.eh-context--reiki,
+body.eh-context--reiki .eh-shell-header,
+body.eh-context--reiki .eh-shell-breadcrumb,
+body.eh-context--reiki .eh-local-strip {
+  --shell-context-primary: #7E6A22;
+  --shell-context-hover: #665519;
+  --shell-context-deep: #4C4218;
+  --shell-context-soft: #F1E6B5;
+  --shell-context-wash: #FFF9E8;
+}
+html[data-level] .eh-shell-header,
+html[data-level] .eh-shell-breadcrumb,
+html[data-level] .eh-local-strip,
+body[data-level] .eh-shell-header,
+body[data-level] .eh-shell-breadcrumb,
+body[data-level] .eh-local-strip {
+  --shell-context-primary: #7E6A22;
+  --shell-context-hover: #665519;
+  --shell-context-deep: #4C4218;
+  --shell-context-soft: #F1E6B5;
+  --shell-context-wash: #FFF9E8;
+}
+body.eh-context--archetypes {
+  --arch-ink: #24152F;
+  --arch-deep: #2A1734;
+  --arch-primary: #5B2D68;
+  --arch-violet: #6A4D76;
+  --arch-lilac: #EEE6F3;
+  --arch-lilac-2: #F6F0FA;
+  --arch-porcelain: #FBF8FC;
+  --arch-paper: #FFFDFB;
+  --arch-lightness: #C98D9A;
+  --arch-lightness-soft: #F7E9ED;
+  --arch-strength: #9A7B6B;
+  --arch-strength-soft: #E7DED8;
+  --arch-depth: #5B2D68;
+  --arch-depth-soft: #EEE5F2;
+  --arch-retreat: #7A5C89;
+  --arch-retreat-soft: #F4ECF7;
+  --arch-gold: #B88F49;
+  --arch-gold-soft: rgba(184,143,73,.16);
+  --arch-line: rgba(91,45,104,.18);
+  --primary: #5B2D68;
+  --primary-hover: #4B2459;
+  --deep: #24152F;
+  --soft: #EFE4F2;
+  --wash: #F8F1F8;
+  --accent: #B88F49;
+}
+body.eh-context--freedom {
+  --primary: #536A86;
+  --primary-hover: #435772;
+  --deep: #243247;
+  --soft: #C9D3E2;
+  --wash: #F3F6FA;
+  --accent: #D6A06F;
+}
+body.eh-context--freedom.eh-freedom-bg--map {
+  background:
+    radial-gradient(circle at 92% 8%, rgba(83,106,134,.08), transparent 28%),
+    linear-gradient(180deg, #FFFFFF 0%, #F3F6FA 44%, #F8F4EF 100%) !important;
+}
+body.eh-context--reiki {
+  --primary: #7E6A22;
+  --primary-hover: #665519;
+  --deep: #4C4218;
+  --soft: #F1E6B5;
+  --wash: #FFF9E8;
+  --accent: #D8BF63;
+}
+body.eh-context--reiki.eh-reiki-bg--map {
+  background:
+    radial-gradient(circle at 92% 8%, rgba(216,191,99,.10), transparent 28%),
+    linear-gradient(180deg, #FFFDF4 0%, #FFF9E8 46%, #F1E6B5 100%) !important;
+}
+body[data-level] {
+  --primary: var(--level-primary);
+  --primary-hover: var(--level-primary-hover);
+  --deep: var(--level-deep);
+  --soft: var(--level-soft);
+  --wash: var(--level-wash);
+  --accent: var(--level-accent, #D8BF63);
+}
+html[data-level] body,
+body[data-level] {
+  background:
+    radial-gradient(circle at 92% 8%, color-mix(in srgb, var(--level-accent) 11%, transparent), transparent 28%),
+    linear-gradient(180deg, var(--level-wash) 0%, #FFFFFF 46%, color-mix(in srgb, var(--level-soft) 42%, #FFFFFF) 100%) !important;
+}
+html[data-level] .hero,
+body[data-level] .hero {
+  background:
+    radial-gradient(circle at 82% 16%, rgba(255,255,255,.34), transparent 30%),
+    radial-gradient(circle at 14% 78%, color-mix(in srgb, var(--level-accent) 20%, transparent), transparent 34%),
+    linear-gradient(135deg, var(--level-wash) 0%, var(--level-soft) 52%, var(--level-accent) 100%) !important;
+}
+html[data-level] .hero-visual,
+body[data-level] .hero-visual,
+html[data-level] .hero__visual,
+body[data-level] .hero__visual {
+  box-shadow: 0 28px 76px color-mix(in srgb, var(--level-deep) 13%, transparent) !important;
+}
+html[data-level] .hero-facts,
+body[data-level] .hero-facts,
+html[data-level] .hero-panel,
+body[data-level] .hero-panel,
+html[data-level] .hero-trust,
+body[data-level] .hero-trust {
+  border-color: color-mix(in srgb, var(--level-primary) 20%, rgba(221,216,208,.76)) !important;
+  background: rgba(255,255,255,.72) !important;
+}
+html[data-level] main > section:nth-of-type(even),
+body[data-level] main > section:nth-of-type(even) {
+  background:
+    radial-gradient(circle at 90% 10%, color-mix(in srgb, var(--level-accent) 9%, transparent), transparent 28%),
+    linear-gradient(135deg, #FFFFFF 0%, color-mix(in srgb, var(--level-wash) 72%, #FFFFFF) 100%) !important;
+}
+html[data-level] main > section:nth-of-type(4n),
+body[data-level] main > section:nth-of-type(4n) {
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--level-soft) 38%, #FFFFFF) 0%, #FFFFFF 100%) !important;
+}
+.eh-shell-container {
+  width: min(100% - 48px, 1160px);
+  margin-inline: auto;
+}
+
+.eh-shell-header {
+  position: sticky;
+  top: 0;
+  z-index: 120;
+  border-bottom: 1px solid rgba(221, 216, 208, 0.76);
+  background: rgba(247, 245, 241, 0.94);
+  color: #17151b;
+  font-family: Inter, "Segoe UI", system-ui, sans-serif;
+  backdrop-filter: blur(18px);
+  overflow: visible;
+}
+
+.eh-shell-header__inner {
+  min-height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.eh-shell-brand {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.eh-shell-brand img {
+  width: min(238px, 32vw);
+  max-height: 58px;
+  object-fit: contain;
+  filter: saturate(1.18) contrast(1.34) brightness(.82);
+  opacity: 1;
+}
+
+.eh-shell-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-left: auto;
+  color: #5f625f;
+  font-size: 13px;
+  font-weight: 760;
+  line-height: 1.2;
+}
+
+.eh-shell-nav .nav-item {
+  position: relative;
+  display: flex;
+  min-height: 42px;
+  align-items: center;
+}
+
+.eh-shell-nav a,
+.eh-local-strip a,
+.eh-shell-cta,
+.eh-global-footer a {
+  text-decoration: none;
+}
+
+.eh-shell-nav a {
+  padding: 8px 0;
+  border-bottom: 2px solid transparent;
+  color: inherit;
+}
+
+.eh-shell-nav a:hover,
+.eh-shell-nav a:focus-visible,
+.eh-shell-nav a.is-active,
+.eh-shell-nav a[aria-current="page"] {
+  color: var(--shell-context-deep);
+  border-color: var(--shell-context-primary);
+}
+
+.eh-shell-nav .dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  z-index: 150;
+  width: max-content;
+  min-width: 260px;
+  max-width: min(320px, calc(100vw - 36px));
+  display: grid;
+  gap: 4px;
+  padding: 10px;
+  border: 1px solid rgba(221, 216, 208, 0.86);
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 18px 54px rgba(36, 25, 75, 0.12);
+  opacity: 0;
+  transform: translate(-50%, -4px);
+  pointer-events: none;
+  transition: opacity .08s ease, transform .08s ease;
+}
+
+.eh-shell-nav .dropdown-menu a {
+  --menu-direction-primary: var(--shell-context-primary);
+  --menu-direction-deep: var(--shell-context-deep);
+  --menu-direction-wash: var(--shell-context-wash);
+  position: relative;
+  display: block;
+  padding: 10px 12px 10px 30px;
+  border: 0;
+  border-radius: 8px;
+  color: #17151b;
+  line-height: 1.25;
+  white-space: normal;
+}
+
+.eh-shell-nav .dropdown-menu a[href$="arhetipy.html"] {
+  --menu-direction-primary: #5B2D68;
+  --menu-direction-deep: #24152F;
+  --menu-direction-wash: #F8F1F8;
+}
+
+.eh-shell-nav .dropdown-menu a[href$="vnutrennyaya-svoboda.html"] {
+  --menu-direction-primary: #147C9C;
+  --menu-direction-deep: #103746;
+  --menu-direction-wash: #F1FBFC;
+}
+
+.eh-shell-nav .dropdown-menu a[href$="reiki-napravlenie.html"] {
+  --menu-direction-primary: #7E6A22;
+  --menu-direction-deep: #4C4218;
+  --menu-direction-wash: #FFF9E8;
+}
+
+.eh-shell-nav .dropdown-menu a[href*="urovni-zhizni"] {
+  --menu-direction-primary: #8A3442;
+  --menu-direction-deep: #3B1821;
+  --menu-direction-wash: #FBF4F5;
+}
+
+.eh-shell-nav .dropdown-menu a::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 12px;
+  width: 4px;
+  border-radius: 999px;
+  background: var(--menu-direction-primary);
+  opacity: .62;
+}
+
+.eh-shell-nav .dropdown-menu a:hover,
+.eh-shell-nav .dropdown-menu a:focus-visible,
+.eh-shell-nav .dropdown-menu a.is-active,
+.eh-shell-nav .dropdown-menu a[aria-current="page"] {
+  border: 0;
+  background: color-mix(in srgb, var(--menu-direction-wash) 84%, #FFFFFF);
+  color: var(--menu-direction-deep);
+}
+
+.eh-shell-nav .dropdown-menu a:hover::before,
+.eh-shell-nav .dropdown-menu a:focus-visible::before,
+.eh-shell-nav .dropdown-menu a.is-active::before,
+.eh-shell-nav .dropdown-menu a[aria-current="page"]::before {
+  opacity: 1;
+}
+
+.eh-shell-nav .has-dropdown:hover .dropdown-menu,
+.eh-shell-nav .has-dropdown:focus-within .dropdown-menu,
+.eh-shell-nav .has-dropdown.is-open .dropdown-menu {
+  opacity: 1;
+  transform: translate(-50%, 0);
+  pointer-events: auto;
+}
+
+.eh-shell-cta {
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 15px;
+  border-radius: 999px;
+  background: var(--shell-context-primary);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 820;
+  white-space: nowrap;
+}
+
+.eh-shell-cta:hover,
+.eh-shell-cta:focus-visible {
+  background: var(--shell-context-hover);
+}
+
+.eh-local-strip {
+  display: block !important;
+  position: relative;
+  z-index: 96;
+  border-top: 1px solid rgba(221, 216, 208, 0.68);
+  border-bottom: 1px solid color-mix(in srgb, var(--shell-context-primary) 18%, rgba(221,216,208,.72));
+  background: linear-gradient(90deg, color-mix(in srgb, var(--shell-context-wash) 88%, #fff), rgba(255,255,255,.9));
+}
+
+.eh-local-strip .eh-shell-container {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  box-shadow: inset 4px 0 0 var(--shell-context-primary);
+  padding-left: 12px;
+  color: #5f625f;
+  font-size: 13px;
+  font-weight: 760;
+  white-space: nowrap;
+  scrollbar-width: none;
+}
+
+.eh-local-strip .eh-shell-container::-webkit-scrollbar {
+  display: none;
+}
+
+.eh-local-strip a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 0 10px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.eh-local-strip a:hover,
+.eh-local-strip a:focus-visible {
+  color: var(--shell-context-primary);
+  background: color-mix(in srgb, var(--shell-context-wash) 76%, transparent);
+}
+
+.eh-local-strip a[aria-current="page"] {
+  color: var(--shell-context-deep);
+  font-weight: 860;
+  border-color: color-mix(in srgb, var(--shell-context-primary) 22%, transparent);
+  background: var(--shell-context-wash);
+}
+
+.eh-direction-bridge {
+  border-bottom: 1px solid color-mix(in srgb, var(--shell-context-primary) 28%, #DDD8D0);
+  background:
+    radial-gradient(circle at 84% 18%, color-mix(in srgb, var(--eh-gold) 20%, transparent), transparent 32%),
+    linear-gradient(120deg, var(--shell-context-deep), var(--shell-context-primary));
+  color: #fff;
+  font-family: Inter, "Segoe UI", system-ui, sans-serif;
+}
+
+.eh-direction-bridge__inner {
+  min-height: 74px;
+  display: grid;
+  grid-template-columns: auto auto minmax(0, 1fr);
+  gap: 12px 16px;
+  align-items: center;
+}
+
+.eh-direction-bridge__path {
+  color: #fff;
+  font-size: 13px;
+  font-weight: 860;
+  letter-spacing: .06em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.eh-direction-bridge__current {
+  display: inline-flex;
+  min-height: 30px;
+  align-items: center;
+  padding: 0 11px;
+  border: 1px solid rgba(255,255,255,.24);
+  border-radius: 999px;
+  background: rgba(255,255,255,.11);
+  color: #FFFFFF;
+  font-size: 13px;
+  font-weight: 780;
+  white-space: nowrap;
+}
+
+.eh-direction-bridge p {
+  margin: 0;
+  color: rgba(255,255,255,.78);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.eh-direction-bridge--archetypes {
+  --shell-context-primary: #5B2D68;
+  --shell-context-deep: #24152F;
+}
+
+.eh-direction-bridge--freedom {
+  --shell-context-primary: #536A86;
+  --shell-context-deep: #243247;
+}
+
+.eh-direction-bridge--reiki {
+  --shell-context-primary: #7E6A22;
+  --shell-context-deep: #4C4218;
+}
+
+body.eh-context--archetypes .btn--primary,
+body.eh-context--archetypes .button--primary,
+body.eh-context--archetypes .btn:not(.btn--outline):not(.btn--secondary):not(.btn--ghost),
+body.eh-context--archetypes .pricing-cta {
+  background: #5B2D68 !important;
+  border-color: #5B2D68 !important;
+  color: #fff !important;
+}
+
+body.eh-context--archetypes .btn--primary:hover,
+body.eh-context--archetypes .button--primary:hover,
+body.eh-context--archetypes .btn:not(.btn--outline):not(.btn--secondary):not(.btn--ghost):hover {
+  background: #4B2459 !important;
+  border-color: #4B2459 !important;
+  color: #fff !important;
+}
+
+body.eh-context--archetypes .btn--outline,
+body.eh-context--archetypes .button--secondary,
+body.eh-context--archetypes .text-link {
+  border-color: color-mix(in srgb, #5B2D68 42%, transparent) !important;
+  color: #5B2D68 !important;
+}
+
+body.eh-context--archetypes .hero-eyebrow,
+body.eh-context--archetypes .section-eyebrow,
+body.eh-context--archetypes .eyebrow {
+  color: #5B2D68 !important;
+}
+
+body.eh-context--freedom .button--primary,
+body.eh-context--freedom .btn--primary {
+  background: #536A86 !important;
+  border-color: #536A86 !important;
+  color: #fff !important;
+}
+
+body.eh-context--freedom .button--primary:hover,
+body.eh-context--freedom .btn--primary:hover,
+body.eh-context--freedom .button--primary:focus-visible,
+body.eh-context--freedom .btn--primary:focus-visible {
+  background: #435772 !important;
+  border-color: #435772 !important;
+  color: #fff !important;
+}
+
+body.eh-context--freedom .button--secondary,
+body.eh-context--freedom .btn--outline,
+body.eh-context--freedom .text-link {
+  border-color: color-mix(in srgb, #536A86 42%, transparent) !important;
+  color: #536A86 !important;
+}
+
+body.direction-page--freedom .hero.hero--dark .button--secondary {
+  background: rgba(255,255,255,.82) !important;
+  border-color: rgba(36,50,71,.20) !important;
+  color: #243247 !important;
+}
+
+body.direction-page--freedom .hero.hero--dark .button--secondary:hover,
+body.direction-page--freedom .hero.hero--dark .button--secondary:focus-visible {
+  background: #FFFFFF !important;
+  border-color: rgba(36,50,71,.32) !important;
+  color: #243247 !important;
+}
+
+body.eh-context--freedom .hero .eyebrow,
+body.eh-context--freedom .method-hero .eyebrow {
+  color: #243247 !important;
+}
+
+body.eh-context--reiki .button--primary,
+html[data-level] .button--primary,
+body[data-level] .button--primary,
+body.eh-context--reiki .btn--primary,
+html[data-level] .btn--primary,
+body[data-level] .btn--primary {
+  background: #7E6A22 !important;
+  border-color: #7E6A22 !important;
+  color: #fff !important;
+}
+
+body.eh-context--reiki .button--primary:hover,
+html[data-level] .button--primary:hover,
+body[data-level] .button--primary:hover,
+body.eh-context--reiki .btn--primary:hover,
+html[data-level] .btn--primary:hover,
+body[data-level] .btn--primary:hover,
+body.eh-context--reiki .button--primary:focus-visible,
+html[data-level] .button--primary:focus-visible,
+body[data-level] .button--primary:focus-visible,
+body.eh-context--reiki .btn--primary:focus-visible,
+html[data-level] .btn--primary:focus-visible,
+body[data-level] .btn--primary:focus-visible {
+  background: #665519 !important;
+  border-color: #665519 !important;
+  color: #fff !important;
+}
+
+body.eh-context--reiki .button--secondary,
+html[data-level] .button--secondary,
+body[data-level] .button--secondary,
+body.eh-context--reiki .text-link,
+html[data-level] .text-link,
+body[data-level] .text-link {
+  border-color: color-mix(in srgb, #7E6A22 42%, transparent) !important;
+  color: #7E6A22 !important;
+}
+
+body.eh-context--archetypes .hero--dark .button--primary,
+body.eh-context--freedom .hero--dark .button--primary,
+body.eh-context--reiki .hero--dark .button--primary,
+html[data-level] .hero--dark .button--primary,
+body[data-level] .hero--dark .button--primary {
+  background: #F8F1E5 !important;
+  border-color: #F8F1E5 !important;
+  color: var(--shell-context-deep, #17151B) !important;
+}
+
+body.eh-context--archetypes .hero--dark .button--primary:hover,
+body.eh-context--freedom .hero--dark .button--primary:hover,
+body.eh-context--reiki .hero--dark .button--primary:hover,
+html[data-level] .hero--dark .button--primary:hover,
+body[data-level] .hero--dark .button--primary:hover {
+  background: #FFFFFF !important;
+  border-color: #FFFFFF !important;
+}
+
+body.eh-context--reiki .hero--dark .button--primary,
+html[data-level] .hero--dark .button--primary,
+body[data-level] .hero--dark .button--primary {
+  background: #7E6A22 !important;
+  border-color: #7E6A22 !important;
+  color: #fff !important;
+}
+
+body.eh-context--reiki .hero--dark .button--primary:hover,
+html[data-level] .hero--dark .button--primary:hover,
+body[data-level] .hero--dark .button--primary:hover,
+body.eh-context--reiki .hero--dark .button--primary:focus-visible,
+html[data-level] .hero--dark .button--primary:focus-visible,
+body[data-level] .hero--dark .button--primary:focus-visible {
+  background: #665519 !important;
+  border-color: #665519 !important;
+  color: #fff !important;
+}
+
+body.eh-context--archetypes .hero--dark .button--secondary,
+body.eh-context--freedom .hero--dark .button--secondary,
+body.eh-context--reiki .hero--dark .button--secondary,
+html[data-level] .hero--dark .button--secondary,
+body[data-level] .hero--dark .button--secondary {
+  background: rgba(255,255,255,.08) !important;
+  border-color: rgba(255,255,255,.56) !important;
+  color: #FFFFFF !important;
+}
+
+body.eh-context--reiki .hero--dark .button--secondary,
+html[data-level] .hero--dark .button--secondary,
+body[data-level] .hero--dark .button--secondary {
+  background: rgba(255,255,255,.56) !important;
+  border-color: rgba(126,106,34,.34) !important;
+  color: #4C4218 !important;
+}
+
+body.eh-context--archetypes .roadmap-step__body .button,
+body.eh-context--freedom .roadmap-step__body .button,
+body.eh-context--reiki .roadmap-step__body .button {
+  background: var(--direction-primary) !important;
+  border-color: var(--direction-primary) !important;
+  color: #FFFFFF !important;
+}
+
+body.eh-context--archetypes .roadmap-step__body .button:hover,
+body.eh-context--freedom .roadmap-step__body .button:hover,
+body.eh-context--reiki .roadmap-step__body .button:hover,
+body.eh-context--archetypes .roadmap-step__body .button:focus-visible,
+body.eh-context--freedom .roadmap-step__body .button:focus-visible,
+body.eh-context--reiki .roadmap-step__body .button:focus-visible {
+  background: var(--direction-deep) !important;
+  border-color: var(--direction-deep) !important;
+  color: #FFFFFF !important;
+}
+
+/* Archetype path background logic:
+   method = inner system, lightness = warm body/desire, strength = structure/action,
+   depth = deep personal work, retreats = land/place/integration. */
+body.eh-context--archetypes.eh-archetype-bg--map {
+  background:
+    radial-gradient(circle at 92% 8%, rgba(91,45,104,.08), transparent 28%),
+    linear-gradient(180deg, #FBF8FC 0%, #F2EAF4 46%, #F3E3C4 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--method {
+  background:
+    linear-gradient(180deg, #FAFAFC 0%, #F5F0F8 44%, #ECE3F3 78%, #F7F1DF 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--method .method-hero,
+body.eh-context--archetypes.eh-archetype-bg--method .hero.method-hero {
+  background:
+    radial-gradient(circle at 82% 16%, rgba(184,143,73,.14), transparent 28%),
+    radial-gradient(circle at 12% 26%, rgba(91,45,104,.11), transparent 34%),
+    linear-gradient(135deg, #FAFAFC 0%, #E9E7F0 52%, #CFC9DD 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--method .section:nth-of-type(even) {
+  background:
+    linear-gradient(135deg, #F5F0F8, #ECE3F3) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--method .section:nth-of-type(4n) {
+  background:
+    linear-gradient(135deg, #FFFFFF 0%, #F7F1DF 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--method .method-work__lead,
+body.eh-context--archetypes.eh-archetype-bg--method .method-definition,
+body.eh-context--archetypes.eh-archetype-bg--method .method-authority article,
+body.eh-context--archetypes.eh-archetype-bg--method .text-panel {
+  background: rgba(255,255,255,.86) !important;
+  border-color: rgba(91,45,104,.16) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--method .method-recognition span,
+body.eh-context--archetypes.eh-archetype-bg--method .method-work__steps span,
+body.eh-context--archetypes.eh-archetype-bg--method .method-mechanics span {
+  background: #5B2D68 !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--method .method-system-visual__map::before {
+  border-color: rgba(91,45,104,.24) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--method .method-author-profile {
+  background: linear-gradient(145deg, rgba(255,255,255,.94), rgba(246,240,250,.82)) !important;
+  border-color: rgba(91,45,104,.18) !important;
+  box-shadow: 0 18px 52px rgba(36,21,47,.075) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--method .method-author-profile__facts span {
+  background: rgba(238,230,243,.86) !important;
+  border-color: rgba(91,45,104,.18) !important;
+  color: #24152F !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--method .method-system-visual__map {
+  background: radial-gradient(circle at center, rgba(184,143,73,.18), rgba(255,255,255,.9) 48%, rgba(246,240,250,.86)) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--method .method-system-card--center,
+body.eh-context--archetypes.eh-archetype-bg--method .method-dual-system__center {
+  background:
+    radial-gradient(circle at 82% 12%, rgba(184,143,73,.16), transparent 30%),
+    linear-gradient(135deg, #4A3658, #6A4D76) !important;
+  border-color: rgba(184,143,73,.28) !important;
+  color: #FFFDF8 !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--method .method-system-card--center *,
+body.eh-context--archetypes.eh-archetype-bg--method .method-dual-system__center * {
+  color: #FFFDF8 !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--method .method-entry-map__method {
+  background:
+    radial-gradient(circle at 86% 14%, rgba(184,143,73,.16), transparent 32%),
+    linear-gradient(135deg, #5B2D68, #6A4D76) !important;
+  border-color: rgba(184,143,73,.28) !important;
+  box-shadow: 0 18px 44px rgba(91,45,104,.14) !important;
+}
+
+.ar-zone {
+  position: relative;
+  border-top: 1px solid rgba(91,45,104,.12);
+}
+
+.ar-zone::before {
+  content: none;
+}
+
+.ar-zone--diagnosis {
+  background:
+    radial-gradient(circle at 84% 12%, rgba(91,45,104,.06), transparent 26%),
+    linear-gradient(180deg, #FFFCF8 0%, #F4EEF7 100%) !important;
+}
+
+.ar-zone--principle {
+  background:
+    linear-gradient(180deg, #FFFFFF 0%, #F8EFD9 100%) !important;
+}
+
+.ar-zone--choice {
+  background:
+    radial-gradient(circle at 14% 18%, rgba(184,143,73,.12), transparent 26%),
+    linear-gradient(180deg, #F4EEF7 0%, #E8DFF0 100%) !important;
+}
+
+.ar-zone--practical {
+  background:
+    linear-gradient(180deg, #FFFCF8 0%, #E8DFF0 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .card--warm {
+  background: linear-gradient(135deg, #EEE6F3 0%, #F8F4FA 100%) !important;
+  border-color: rgba(91,45,104,.22) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--lightness {
+  --ivory: #FFFCFB;
+  --cream: #FFF9F7;
+  --cream-deep: #F1D3DB;
+  --sand: #FAEED7;
+  --peach: #C98798;
+  --peach-light: #F5DCE4;
+  --sage: #C98798;
+  --sage-dark: #9F6574;
+  --sage-light: #F8E4EA;
+  --gold: #B88F49;
+  background: linear-gradient(180deg, #FFF9F7 0%, #F8E4EA 52%, #FAEED7 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--lightness .hero {
+  background:
+    radial-gradient(circle at 78% 16%, rgba(201,135,152,.22), transparent 30%),
+    linear-gradient(150deg, #FFFCFB 0%, #F5DCE4 48%, #C98798 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--lightness .section--cream {
+  background: linear-gradient(135deg, #F8E4EA, #FFF9F7) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--lightness .hero-eyebrow,
+body.eh-context--archetypes.eh-archetype-bg--lightness .format-badge--sage,
+body.eh-context--archetypes.eh-archetype-bg--lightness .pricing-list li::before,
+body.eh-context--archetypes.eh-archetype-bg--lightness .bundle-card strong {
+  color: #9F6574 !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--lightness .format-badge--sage,
+body.eh-context--archetypes.eh-archetype-bg--lightness .bundle-card {
+  background: linear-gradient(135deg, #FFF9F7, #F1D3DB) !important;
+  border-color: rgba(201,135,152,.28) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--strength {
+  --bg-main: #FBF7F2;
+  --bg-alt: #E5D8CD;
+  --bg-deep: #24152F;
+  --navy: #5B2D68;
+  --blue-gray: #B89A8B;
+  --marble: #FFFAF4;
+  --accent-gold: #B88F49;
+  background: linear-gradient(180deg, #FFFAF4 0%, #EDE0D4 52%, #F2E4C7 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--strength .hero {
+  background:
+    radial-gradient(circle at 82% 18%, rgba(184,143,73,.16), transparent 30%),
+    linear-gradient(155deg, #FBF7F2 0%, #E5D8CD 52%, #B89A8B 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--strength .section--cream {
+  background:
+    linear-gradient(135deg, #EDE0D4, #FFFAF4) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--strength .ph--hero-space {
+  background:
+    radial-gradient(ellipse 18% 14% at 86% 26%, rgba(184,143,73,.18) 0%, transparent 70%),
+    radial-gradient(ellipse 92% 48% at 50% 0%, rgba(255,255,255,.78) 0%, transparent 54%),
+    linear-gradient(174deg, #FBF7F2 0%, #EDE0D4 30%, #D8C3B5 62%, #B89A8B 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--strength .ph--pain-space {
+  background:
+    radial-gradient(ellipse 58% 40% at 28% 18%, rgba(184,143,73,.16) 0%, transparent 56%),
+    linear-gradient(165deg, #D8C3B5 0%, #B89A8B 48%, #9D8276 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--strength .ph--zeus,
+body.eh-context--archetypes.eh-archetype-bg--strength .ph--hades {
+  background:
+    radial-gradient(ellipse 80% 56% at 50% 4%, rgba(255,255,255,.86) 0%, transparent 56%),
+    radial-gradient(ellipse 46% 40% at 78% 74%, rgba(184,143,73,.18) 0%, transparent 58%),
+    linear-gradient(160deg, #FFFAF4 0%, #EDE0D4 38%, #D8C3B5 70%, #B89A8B 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--strength .distortion-col--creates {
+  background: linear-gradient(155deg, #FFFFFF 0%, #F8F1EA 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--strength .distortion-col--defends {
+  background:
+    radial-gradient(circle at 82% 12%, rgba(184,143,73,.14), transparent 30%),
+    linear-gradient(155deg, #6A4D76 0%, #5B2D68 100%) !important;
+  border-left-color: rgba(91,45,104,.24) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--strength .arch-card--zeus .arch-accent,
+body.eh-context--archetypes.eh-archetype-bg--strength .distortion-col--creates .distortion-title,
+body.eh-context--archetypes.eh-archetype-bg--strength .distortion-col--creates .distortion-list li::before {
+  color: #5B2D68 !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--strength .distortion-grid {
+  border-color: rgba(91,45,104,.18) !important;
+  box-shadow: 0 26px 64px -30px rgba(91,45,104,.20) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--strength .distortion-quote {
+  background:
+    radial-gradient(circle at 18% 12%, rgba(184,143,73,.16), transparent 28%),
+    linear-gradient(155deg, #5B2D68 0%, #6A4D76 100%) !important;
+  box-shadow: 0 26px 60px -30px rgba(91,45,104,.30) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth {
+  --porcelain: #FBF6FA;
+  --mineral: #DED3E8;
+  --paper: #FBF6FA;
+  --ink: #221B28;
+  --graphite: #574263;
+  --steel: #A88BB8;
+  --wine: #684A73;
+  --wine-soft: #DED3E8;
+  --gold: #B99349;
+  background: linear-gradient(180deg, #FBF6FA 0%, #DED3E8 46%, #A88BB8 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .hero {
+  background:
+    radial-gradient(circle at 14% 14%, rgba(185,147,73,.18), transparent 30%),
+    radial-gradient(circle at 86% 12%, rgba(104,74,115,.20), transparent 34%),
+    linear-gradient(135deg, #F6EEF5 0%, #C5B4D2 48%, #684A73 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .hero h1,
+body.eh-context--archetypes.eh-archetype-bg--depth .hero .hero-sub,
+body.eh-context--archetypes.eh-archetype-bg--depth .hero .hero-body,
+body.eh-context--archetypes.eh-archetype-bg--depth .hero .hero-note {
+  color: #221B28 !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .hero .hero-sub {
+  color: #574263 !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .section--mineral {
+  background:
+    linear-gradient(135deg, #DED3E8, #FBF6FA) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .section--ink {
+  background:
+    radial-gradient(circle at 82% 18%, rgba(185,147,73,.16), transparent 30%),
+    linear-gradient(135deg, #574263, #684A73 58%, #A88BB8) !important;
+  color: #FFFDF8 !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .section--ink h2,
+body.eh-context--archetypes.eh-archetype-bg--depth .section--ink h3,
+body.eh-context--archetypes.eh-archetype-bg--depth .section--ink p,
+body.eh-context--archetypes.eh-archetype-bg--depth .section--ink li,
+body.eh-context--archetypes.eh-archetype-bg--depth .section--ink .method-visual__caption {
+  color: #FFFDF8 !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .section--ink .soft-panel,
+body.eh-context--archetypes.eh-archetype-bg--depth .section--ink .method-visual {
+  background: rgba(255,253,248,.10) !important;
+  border-color: rgba(255,253,248,.20) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .hero-card,
+body.eh-context--archetypes.eh-archetype-bg--depth .card--deep,
+body.eh-context--archetypes.eh-archetype-bg--depth .change-card,
+body.eh-context--archetypes.eh-archetype-bg--depth .price-card--featured {
+  background:
+    radial-gradient(circle at 90% 8%, rgba(185,147,73,.16), transparent 30%),
+    linear-gradient(135deg, #574263 0%, #684A73 100%) !important;
+  border-color: rgba(185,147,73,.28) !important;
+  color: #FFFDF8 !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .hero-card *,
+body.eh-context--archetypes.eh-archetype-bg--depth .card--deep *,
+body.eh-context--archetypes.eh-archetype-bg--depth .change-card *,
+body.eh-context--archetypes.eh-archetype-bg--depth .price-card--featured * {
+  color: #FFFDF8 !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .final {
+  background:
+    radial-gradient(circle at 16% 20%, rgba(185,147,73,.16), transparent 30%),
+    linear-gradient(135deg, #574263, #684A73) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .atlas {
+  border-color: rgba(184,143,73,.42) !important;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(184,143,73,.20), transparent 30%),
+    radial-gradient(circle at 18% 18%, rgba(104,74,115,.20), transparent 25%),
+    linear-gradient(145deg, #574263, #684A73 62%, #A88BB8) !important;
+  box-shadow: 0 28px 68px rgba(87,66,99,.20) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .atlas-center {
+  background: rgba(87,66,99,.72) !important;
+  border-color: rgba(184,143,73,.62) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .atlas::before {
+  border-color: rgba(184,143,73,.34) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .atlas::after {
+  border-color: rgba(255,253,248,.22) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .orbit {
+  background: rgba(255,253,248,.12) !important;
+  border-color: rgba(184,143,73,.46) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .change-caption {
+  background: rgba(87,66,99,.84) !important;
+  border-color: rgba(255,253,248,.30) !important;
+  box-shadow: 0 18px 44px rgba(87,66,99,.26) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .hero .btn--outline {
+  background: rgba(255,255,255,.86) !important;
+  border-color: rgba(91,45,104,.28) !important;
+  color: #24152F !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .archetype-card span {
+  color: #24152F !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .case-card p,
+body.eh-context--archetypes.eh-archetype-bg--depth .testimonial p {
+  color: #4F4657 !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .master-role {
+  color: #24152F !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .final .btn--outline,
+body.eh-context--archetypes.eh-archetype-bg--depth .final .btn--light {
+  background: rgba(255,255,255,.88) !important;
+  border-color: rgba(91,45,104,.30) !important;
+  color: #24152F !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats {
+  --bg: #FFF6EA;
+  --bg2: #DDEDE8;
+  --ink: #24152F;
+  --green: #8AAFA6;
+  --gold: #C9A24D;
+  --gold2: #D7B05F;
+  --sand: #F1E2CF;
+  --sea: #DDEDE8;
+  background: linear-gradient(180deg, #FFFAF1 0%, #F1E2CF 44%, #DDEDE8 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .hero {
+  background:
+    radial-gradient(circle at 78% 18%, rgba(201,162,77,.22), transparent 30%),
+    radial-gradient(circle at 18% 80%, rgba(191,220,212,.34), transparent 34%),
+    linear-gradient(145deg, #FFF6EA 0%, #F4D9BD 50%, #BFDCD4 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats section[id="navigator"],
+body.eh-context--archetypes.eh-archetype-bg--retreats section[id="route-map"] {
+  background:
+    linear-gradient(135deg, #DDEDE8, #FFFAF1) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .choice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .choice-card {
+  background: linear-gradient(135deg, rgba(255,255,255,.92), #DDEDE8) !important;
+  border: 1px solid rgba(138,175,166,.24) !important;
+  box-shadow: 0 18px 46px rgba(36,21,47,.08) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .choice-card,
+body.eh-context--archetypes.eh-archetype-bg--retreats .nav-card,
+body.eh-context--archetypes.eh-archetype-bg--retreats .hw-card,
+body.eh-context--archetypes.eh-archetype-bg--retreats .summary-card.card--gold,
+body.eh-context--archetypes.eh-archetype-bg--retreats .card--sand {
+  background: linear-gradient(135deg, #FFFFFF, #F4ECF7) !important;
+  border-color: rgba(91,45,104,.18) !important;
+  color: #24152F !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .choice-card .label,
+body.eh-context--archetypes.eh-archetype-bg--retreats .choice-card h4,
+body.eh-context--archetypes.eh-archetype-bg--retreats .nav-card .label,
+body.eh-context--archetypes.eh-archetype-bg--retreats .nav-card h2,
+body.eh-context--archetypes.eh-archetype-bg--retreats .nav-card .hero-sub,
+body.eh-context--archetypes.eh-archetype-bg--retreats .hw-card h4,
+body.eh-context--archetypes.eh-archetype-bg--retreats .summary-card .s-key,
+body.eh-context--archetypes.eh-archetype-bg--retreats .card--gold .label,
+body.eh-context--archetypes.eh-archetype-bg--retreats .card--sand .label {
+  color: #24152F !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .choice-card p,
+body.eh-context--archetypes.eh-archetype-bg--retreats .nav-card p,
+body.eh-context--archetypes.eh-archetype-bg--retreats .hw-card p,
+body.eh-context--archetypes.eh-archetype-bg--retreats .summary-card p,
+body.eh-context--archetypes.eh-archetype-bg--retreats .card--gold p,
+body.eh-context--archetypes.eh-archetype-bg--retreats .card--sand p {
+  color: #4F4657 !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .hw-central.card--dark {
+  background:
+    radial-gradient(circle at 84% 18%, rgba(184,143,73,.22), transparent 34%),
+    linear-gradient(135deg, #24152F, #5B2D68) !important;
+  border-color: rgba(255,255,255,.22) !important;
+  color: #FFFFFF !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .hw-central.card--dark .label {
+  color: #F3D8A1 !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .hw-central.card--dark h3,
+body.eh-context--archetypes.eh-archetype-bg--retreats .hw-central.card--dark p {
+  color: #FFFFFF !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .choice-card--needs {
+  background: linear-gradient(135deg, #FFFAF1, #F6E7B8) !important;
+  border-color: rgba(201,162,77,.28) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .ar-zone--diagnosis {
+  background:
+    radial-gradient(circle at 84% 12%, rgba(191,220,212,.22), transparent 26%),
+    linear-gradient(180deg, #FFFAF1 0%, #F1E2CF 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .ar-zone--principle {
+  background:
+    linear-gradient(180deg, #FFFFFF 0%, #DDEDE8 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .ar-zone--choice {
+  background:
+    radial-gradient(circle at 14% 18%, rgba(201,162,77,.14), transparent 26%),
+    linear-gradient(180deg, #F1E2CF 0%, #DDEDE8 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .ar-zone--practical {
+  background:
+    linear-gradient(180deg, #FFFAF1 0%, #F6E7B8 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .choice-card,
+body.eh-context--archetypes.eh-archetype-bg--retreats .choice-card--needs,
+body.eh-context--archetypes.eh-archetype-bg--retreats .choice-card--wants,
+body.eh-context--archetypes.eh-archetype-bg--retreats .nav-card,
+body.eh-context--archetypes.eh-archetype-bg--retreats .hw-card,
+body.eh-context--archetypes.eh-archetype-bg--retreats .sync__lost,
+body.eh-context--archetypes.eh-archetype-bg--retreats .sync__found,
+body.eh-context--archetypes.eh-archetype-bg--retreats .break-card,
+body.eh-context--archetypes.eh-archetype-bg--retreats .summary-card.card--gold,
+body.eh-context--archetypes.eh-archetype-bg--retreats .card--gold,
+body.eh-context--archetypes.eh-archetype-bg--retreats .card--sand {
+  background: linear-gradient(135deg, #FFFFFF 0%, #F4ECF7 100%) !important;
+  border-color: rgba(91,45,104,.20) !important;
+  color: #24152F !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .choice-card .label,
+body.eh-context--archetypes.eh-archetype-bg--retreats .choice-card h4,
+body.eh-context--archetypes.eh-archetype-bg--retreats .nav-card .label,
+body.eh-context--archetypes.eh-archetype-bg--retreats .nav-card h2,
+body.eh-context--archetypes.eh-archetype-bg--retreats .nav-card .hero-sub,
+body.eh-context--archetypes.eh-archetype-bg--retreats .hw-card h4,
+body.eh-context--archetypes.eh-archetype-bg--retreats .sync__label,
+body.eh-context--archetypes.eh-archetype-bg--retreats .sync__found h3,
+body.eh-context--archetypes.eh-archetype-bg--retreats .break-card h3,
+body.eh-context--archetypes.eh-archetype-bg--retreats .summary-card .s-key,
+body.eh-context--archetypes.eh-archetype-bg--retreats .summary-card .s-title,
+body.eh-context--archetypes.eh-archetype-bg--retreats .card--gold .label,
+body.eh-context--archetypes.eh-archetype-bg--retreats .card--sand .label {
+  color: #24152F !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .choice-card p,
+body.eh-context--archetypes.eh-archetype-bg--retreats .nav-card p,
+body.eh-context--archetypes.eh-archetype-bg--retreats .hw-card p,
+body.eh-context--archetypes.eh-archetype-bg--retreats .sync__lost p,
+body.eh-context--archetypes.eh-archetype-bg--retreats .sync__found p,
+body.eh-context--archetypes.eh-archetype-bg--retreats .break-card p,
+body.eh-context--archetypes.eh-archetype-bg--retreats .summary-card p,
+body.eh-context--archetypes.eh-archetype-bg--retreats .card--gold p,
+body.eh-context--archetypes.eh-archetype-bg--retreats .card--sand p {
+  color: #4F4657 !important;
+}
+
+body.eh-context--archetypes .method-entry-map__method .eyebrow {
+  color: #FFFFFF !important;
+}
+
+@media (max-width: 768px) {
+  body.eh-context--archetypes.eh-archetype-bg--retreats .choice-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.eh-shell-breadcrumb {
+  border-bottom: 1px solid rgba(221, 216, 208, 0.62);
+  background: rgba(255, 255, 255, 0.58);
+  color: #5f625f;
+  font-family: Inter, "Segoe UI", system-ui, sans-serif;
+}
+
+.eh-shell-breadcrumb .eh-shell-container {
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  font-size: 13px;
+  line-height: 1.25;
+  white-space: nowrap;
+  scrollbar-width: none;
+}
+
+.eh-shell-breadcrumb .eh-shell-container::-webkit-scrollbar {
+  display: none;
+}
+
+.eh-shell-breadcrumb a {
+  color: var(--shell-context-primary);
+  font-weight: 760;
+  text-decoration: none;
+}
+
+.eh-shell-breadcrumb a:hover,
+.eh-shell-breadcrumb a:focus-visible {
+  color: var(--shell-context-deep);
+}
+
+.eh-shell-breadcrumb span:last-child {
+  color: #17151b;
+  font-weight: 760;
+}
+
+.eh-global-footer {
+  padding-block: clamp(32px, 4vw, 48px);
+  border-top: 1px solid #ddd8d0;
+  background: #f7f5f1;
+  color: #5f625f;
+  font-family: Inter, "Segoe UI", system-ui, sans-serif;
+}
+
+.eh-global-footer__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.36fr) repeat(3, minmax(150px, 0.64fr));
+  gap: clamp(22px, 3vw, 34px);
+  align-items: start;
+}
+
+.eh-global-footer__logo {
+  width: min(240px, 64vw);
+  max-height: 72px;
+  object-fit: contain;
+  margin-bottom: 14px;
+  filter: saturate(1.18) contrast(1.34) brightness(.82);
+  opacity: 1;
+}
+
+.eh-global-footer h2 {
+  margin: 0;
+  color: #17151b;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(24px, 3vw, 34px);
+  line-height: 1.08;
+  font-weight: 500;
+}
+
+.eh-global-footer p {
+  margin: 12px 0 0;
+  max-width: 520px;
+  color: #5f625f;
+  font-size: 15px;
+  line-height: 1.58;
+}
+
+.eh-global-footer__context {
+  display: inline-flex;
+  margin-top: 14px;
+  padding: 7px 11px;
+  border: 1px solid color-mix(in srgb, var(--shell-context-primary) 18%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--shell-context-wash) 78%, #fff);
+  color: var(--shell-context-deep);
+  font-size: 13px;
+  font-weight: 780;
+}
+
+.eh-global-footer__nav {
+  display: grid;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.eh-global-footer__nav strong {
+  color: var(--shell-context-deep);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.eh-global-footer a {
+  color: var(--shell-context-primary);
+  font-weight: 720;
+}
+
+.eh-global-footer a:hover,
+.eh-global-footer a:focus-visible {
+  color: var(--shell-context-hover);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.eh-global-footer__bottom {
+  display: grid;
+  gap: 8px;
+  margin-top: 30px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(221, 216, 208, 0.9);
+}
+
+.eh-global-footer__bottom p {
+  margin: 0;
+  max-width: 980px;
+  font-size: 13px;
+  line-height: 1.48;
+}
+
+.eh-global-footer__legal {
+  color: rgba(95, 98, 95, 0.82);
+}
+
+.eh-cross-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+  color: #5f625f;
+  font-size: 13px;
+  font-weight: 760;
+  white-space: nowrap;
+}
+
+.eh-cross-nav a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.eh-cross-nav a:hover,
+.eh-cross-nav a:focus-visible {
+  color: #0f625e;
+}
+
+.site-header__inner--with-cross-nav {
+  flex-wrap: wrap;
+  row-gap: 8px;
+  padding-block: 8px;
+}
+
+.site-header__inner--with-cross-nav .brand {
+  order: 1;
+}
+
+.site-header__inner--with-cross-nav .site-nav {
+  order: 2;
+  flex: 0 0 auto;
+  margin-left: auto;
+}
+
+.site-header__inner--with-cross-nav .site-header__cta {
+  order: 3;
+}
+
+.site-header__inner--with-cross-nav .eh-cross-nav {
+  order: 4;
+  flex: 1 1 100%;
+  margin-left: 0;
+  padding-top: 8px;
+  border-top: 1px solid rgba(221, 216, 208, 0.68);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.site-header__inner--with-cross-nav .eh-cross-nav::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 1120px) {
+  .eh-shell-header__inner {
+    flex-wrap: wrap;
+    padding: 10px 0;
+  }
+
+  .eh-shell-nav,
+  .eh-cross-nav {
+    order: 3;
+    flex: 1 1 100%;
+    justify-content: flex-start;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+  }
+
+  .eh-shell-nav .dropdown-menu {
+    display: none;
+  }
+
+  .eh-shell-nav::-webkit-scrollbar,
+  .eh-cross-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .eh-global-footer__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 680px) {
+  .eh-shell-container {
+    width: calc(100% - 40px);
+  }
+
+  .eh-shell-header__inner {
+    min-height: 62px;
+    gap: 10px;
+  }
+
+  .eh-shell-brand img {
+    width: min(178px, 58vw);
+    max-height: 50px;
+  }
+
+  .eh-shell-cta {
+    min-height: 38px;
+    padding: 0 12px;
+    font-size: 13px;
+  }
+
+  .eh-global-footer {
+    padding-block: 32px;
+  }
+
+  .eh-global-footer__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .eh-direction-bridge__inner {
+    min-height: 0;
+    grid-template-columns: 1fr;
+    padding-block: 16px;
+  }
+
+  .eh-direction-bridge__current {
+    width: fit-content;
+    white-space: normal;
+  }
+}
+
+
+body.eh-standalone-archetype {
+  --eh-standalone-section-y: clamp(40px, 5vw, 64px);
+  --eh-standalone-section-y-compact: clamp(32px, 4vw, 48px);
+  --eh-standalone-section-y-large: clamp(52px, 6vw, 78px);
+  --section: var(--eh-standalone-section-y);
+  --sg: var(--eh-standalone-section-y);
+}
+body.eh-standalone-archetype .section {
+  padding-block: var(--eh-standalone-section-y) !important;
+}
+body.eh-standalone-archetype .final,
+body.eh-standalone-archetype #pricing {
+  padding-block: var(--eh-standalone-section-y-large) !important;
+}
+body.eh-standalone-retreat .ar-zone {
+  padding-block: var(--eh-standalone-section-y) !important;
+}
+
+.archetype-testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 28px;
+}
+.archetype-testimonial-grid--two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.archetype-testimonial-grid figure {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  margin: 0;
+  padding: clamp(20px, 2.4vw, 28px);
+  border: 1px solid color-mix(in srgb, var(--direction-primary, var(--primary, #5B2D68)) 20%, var(--eh-line, rgba(221,216,208,.88)));
+  border-radius: var(--radius-md, 18px);
+  background: rgba(255,255,255,.82);
+  box-shadow: 0 16px 42px rgba(36,21,47,.06);
+}
+.archetype-testimonial-grid .testimonial-signal {
+  margin: 0 0 14px;
+  color: var(--direction-primary, var(--primary, #5B2D68));
+  font-size: 12px;
+  font-weight: 820;
+  letter-spacing: .08em;
+  line-height: 1.32;
+  text-transform: uppercase;
+}
+.archetype-testimonial-grid blockquote {
+  margin: 0;
+  color: var(--ink, #17151B);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(19px, 1.75vw, 25px);
+  line-height: 1.34;
+}
+.archetype-testimonial-grid figcaption {
+  margin-top: auto;
+  padding-top: 18px;
+  color: var(--ink-soft, #5A5661);
+  font-size: 13px;
+  line-height: 1.45;
+}
+.archetype-video-testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 30px;
+}
+.archetype-video-testimonial-card {
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--direction-primary, var(--primary, #5B2D68)) 20%, var(--eh-line, rgba(221,216,208,.88)));
+  border-radius: var(--radius-md, 18px);
+  background: rgba(255,255,255,.86);
+  box-shadow: 0 18px 48px rgba(36,21,47,.08);
+}
+.archetype-video-testimonial-frame {
+  aspect-ratio: 16 / 9;
+  background: #24152F;
+}
+.archetype-video-testimonial-frame iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.archetype-video-testimonial-copy {
+  padding: 18px 20px 20px;
+}
+.archetype-video-testimonial-copy h3 {
+  margin: 0 0 8px;
+  color: var(--ink, #17151B);
+  font-size: 22px;
+  line-height: 1.2;
+}
+.archetype-video-testimonial-copy p {
+  margin: 0;
+  color: var(--ink-soft, #5A5661);
+  font-size: 15px;
+  line-height: 1.55;
+}
+@media (max-width: 920px) {
+  .archetype-testimonial-grid,
+  .archetype-testimonial-grid--two,
+  .archetype-video-testimonial-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  body.eh-standalone-archetype {
+    --eh-standalone-section-y: 40px;
+    --eh-standalone-section-y-compact: 32px;
+    --eh-standalone-section-y-large: 52px;
+  }
+}
+
+.high-depth-video-testimonials {
+  background:
+    radial-gradient(circle at 88% 8%, rgba(91,45,104,.13), transparent 30%),
+    linear-gradient(180deg, #F9F4FA 0%, #fff 78%) !important;
+}
+.high-depth-video-testimonials .wrap {
+  max-width: 1180px;
+}
+.high-depth-video-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 30px;
+}
+.high-depth-video-card {
+  overflow: hidden;
+  border: 1px solid rgba(91,45,104,.16);
+  border-radius: 18px;
+  background: rgba(255,255,255,.92);
+  box-shadow: 0 22px 54px rgba(36,21,47,.12);
+}
+.high-depth-video-frame {
+  aspect-ratio: 16 / 9;
+  background: #24152F;
+}
+.high-depth-video-frame iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.high-depth-video-copy {
+  padding: 18px 18px 20px;
+}
+.high-depth-video-copy h3 {
+  margin: 0 0 8px;
+  color: #24152F;
+  font-size: 22px;
+  line-height: 1.18;
+}
+.high-depth-video-copy p {
+  margin: 0;
+  color: #5E5364;
+  font-size: 15.5px;
+  line-height: 1.55;
+}
+@media (max-width: 980px) {
+  .high-depth-video-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.archetype-testimonial-grid,
+.testimonial-grid--cases {
+  --proof-primary: var(--direction-primary, #5B2D68);
+  --proof-deep: var(--direction-deep, #24152F);
+  --proof-soft: var(--direction-soft, #EFE4F2);
+  --proof-wash: var(--direction-wash, #F9F4FA);
+  --proof-accent: var(--direction-accent, #C79A3B);
+}
+
+.archetype-testimonial-grid figure.proof-card,
+.testimonial.case-card {
+  position: relative !important;
+  overflow: hidden !important;
+  padding: clamp(22px, 2.8vw, 32px) !important;
+  border: 1px solid color-mix(in srgb, var(--proof-primary) 22%, rgba(221,216,208,.88)) !important;
+  border-left: 1px solid color-mix(in srgb, var(--proof-primary) 22%, rgba(221,216,208,.88)) !important;
+  border-radius: 8px !important;
+  background:
+    radial-gradient(circle at 92% 8%, color-mix(in srgb, var(--proof-accent) 16%, transparent), transparent 30%),
+    linear-gradient(180deg, color-mix(in srgb, var(--proof-wash) 58%, #fff 42%), color-mix(in srgb, var(--proof-soft) 26%, #fff 74%)) !important;
+  box-shadow: 0 18px 54px color-mix(in srgb, var(--proof-deep) 8%, transparent) !important;
+}
+
+.archetype-testimonial-grid figure.proof-card::before,
+.testimonial.case-card::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 auto 0 0 !important;
+  width: 5px !important;
+  border-radius: 8px 0 0 8px !important;
+  background: var(--proof-primary) !important;
+}
+
+.archetype-testimonial-grid figure.proof-card::after,
+.testimonial.case-card::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 0 auto 0 !important;
+  height: 3px !important;
+  background: linear-gradient(90deg, var(--proof-primary), color-mix(in srgb, var(--proof-accent) 72%, #fff)) !important;
+}
+
+.archetype-testimonial-grid .testimonial-signal,
+.testimonial.case-card small {
+  display: inline-flex !important;
+  width: fit-content !important;
+  min-height: 28px !important;
+  align-items: center !important;
+  margin: 0 0 14px !important;
+  padding: 0 10px !important;
+  border: 1px solid color-mix(in srgb, var(--proof-primary) 20%, transparent) !important;
+  border-radius: 999px !important;
+  background: color-mix(in srgb, var(--proof-soft) 50%, #fff 50%) !important;
+  color: var(--proof-primary) !important;
+  font-size: 12px !important;
+  line-height: 1 !important;
+  font-weight: 820 !important;
+  letter-spacing: .07em !important;
+  text-transform: uppercase !important;
+}
+
+.archetype-testimonial-grid figure.proof-card blockquote,
+.testimonial.case-card p {
+  position: relative !important;
+  z-index: 1 !important;
+  color: var(--ink, #17151B) !important;
+  font-family: Inter, system-ui, sans-serif !important;
+  font-size: clamp(15.5px, 1.08vw, 17px) !important;
+  line-height: 1.62 !important;
+}
+
+.archetype-testimonial-grid figure.proof-card blockquote {
+  padding-top: 18px !important;
+}
+
+.archetype-testimonial-grid figure.proof-card blockquote::before {
+  content: "“" !important;
+  position: absolute !important;
+  z-index: -1 !important;
+  top: -20px !important;
+  right: 0 !important;
+  color: color-mix(in srgb, var(--proof-primary) 16%, transparent) !important;
+  font-family: Georgia, "Times New Roman", serif !important;
+  font-size: 84px !important;
+  line-height: 1 !important;
+}
+
+.testimonial.case-card h3 {
+  position: relative !important;
+  z-index: 1 !important;
+  color: var(--proof-deep) !important;
+}
+
+.testimonial.case-card h3::after {
+  content: "“" !important;
+  position: absolute !important;
+  z-index: -1 !important;
+  top: -30px !important;
+  right: 0 !important;
+  color: color-mix(in srgb, var(--proof-primary) 14%, transparent) !important;
+  font-family: Georgia, "Times New Roman", serif !important;
+  font-size: 84px !important;
+  line-height: 1 !important;
+}
+
+.archetype-testimonial-grid figure.proof-card figcaption {
+  color: var(--proof-primary) !important;
+  font-weight: 760 !important;
+}
+
+
+</style>
+  <link rel="icon" type="image/png" href="/assets/evolution-house-logo-approved.png">
+</head>
+<body class="eh-context--archetypes eh-standalone-archetype eh-archetype-bg--depth">
+<header class="eh-shell-header eh-context--archetypes">
+    <div class="eh-shell-container eh-shell-header__inner">
+      <a class="eh-shell-brand" href="index.html" aria-label="Evolution House">
+        <img width="736" height="144" src="assets/evolution-house-header-logo-v2.png" alt="Evolution House">
+      </a>
+      <nav class="eh-shell-nav" aria-label="Навигация Evolution House">
+        <a href="index.html">Главная</a>
+        <a href="pervyi-shag.html">С чего начать</a>
+        <div class="nav-item has-dropdown">
+    <a class="dropdown-trigger is-active" href="napravleniya.html" aria-haspopup="true" aria-expanded="false">Направления</a>
+    <div class="dropdown-menu" aria-label="Направления">
+      <a href="arhetipy.html" class="is-active">Путь архетипов</a>
+      <a href="urovni-zhizni/index.html">Пересборка жизни</a>
+      <a href="vnutrennyaya-svoboda.html">Путь свободы от травм</a>
+      <a href="reiki-napravlenie.html">Путь Reiki</a>
+    </div>
+  </div>
+        <a href="o-shkole.html">О школе</a>
+      </nav>
+      <a class="eh-shell-cta" href="otkrytye-programmy.html">Открытые программы</a>
+    </div>
+    <nav class="eh-local-strip" aria-label="Маршрут страницы">
+        <div class="eh-shell-container">
+          <a href="arhetipy.html">Карта пути</a><a href="arhetipy-method.html">Метод</a><a href="lightness/index.html">Вкус лёгкости</a><a href="strength/index.html">Вкус силы</a><a href="mentoring/" aria-current="page">Высокая Глубина</a><a href="retreats/index.html">Острова Везения</a>
+        </div>
+      </nav>
+  </header>
+  <script>
+  (() => {
+    const items = [...document.querySelectorAll('.eh-shell-header .has-dropdown')];
+    const close = (except) => items.forEach((item) => {
+      if (item === except) return;
+      item.classList.remove('is-open');
+      item.querySelector('.dropdown-trigger')?.setAttribute('aria-expanded', 'false');
+    });
+    items.forEach((item) => {
+      const trigger = item.querySelector('.dropdown-trigger');
+      if (!trigger) return;
+      trigger.addEventListener('click', (event) => {
+        if (window.matchMedia('(max-width: 1080px)').matches) return;
+        event.preventDefault();
+        const open = !item.classList.contains('is-open');
+        close(item);
+        item.classList.toggle('is-open', open);
+        trigger.setAttribute('aria-expanded', String(open));
+      });
+    });
+    document.addEventListener('click', (event) => {
+      if (!event.target.closest('.eh-shell-header .has-dropdown')) close();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') close();
+    });
+  })();
+  </script>
+<nav class="eh-shell-breadcrumb" aria-label="Путь страницы">
+    <div class="eh-shell-container">
+      <a href="napravleniya.html">Направления</a>
+      <span>→</span>
+      <a href="arhetipy.html">Путь архетипов</a>
+      <span>→</span>
+      <span>Высокая Глубина</span>
+    </div>
+  </nav>
+<main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <div class="hero-kicker">
+            <span class="pill">7 октября — 6 декабря 2026</span>
+            <span class="pill">8 встреч Zoom</span>
+            <span class="pill">женские архетипы · поддержка мужских</span>
+          </div>
+          <h1>Перестаньте<br>повторять<br>один и тот же<br>сценарий</h1>
+          <p class="hero-sub">2 месяца менторинга по женским архетипам с поддержкой мужских для женщин, у которых важная тема давно не двигается: отношения, деньги, реализация, тело, материнство или внутренний выбор.</p>
+          <p class="hero-body">Вы перестанете объяснять себе поведение тех же мужчин. Начнёте называть свою цену вслух, без вины и без извинений в голосе. Тело снова начнёт хотеть, а не просто терпеть. Решения станут вашими, а не реакцией на чужой сценарий.</p>
+          <p class="hero-body">Мы берём одну задачу или одну внутреннюю планку, находим архетипическую силу, которая её держит, и работаем через тело, движение, танец, поле и сопровождение Мастеров два месяца подряд.</p>
+          <div class="hero-actions">
+            <a class="btn" href="https://smarttraining.getcourse.ru/mentoring" target="_blank" rel="noopener">Подать заявку</a>
+            <a class="btn btn--outline" href="https://smarttraining.getcourse.ru/mentoring" target="_blank" rel="noopener">Обсудить формат</a>
+          </div>
+          <p class="hero-note">Для большинства участниц оптимальный формат — “Глубина”. В нём достаточно личной поддержки, чтобы не просто слушать, а реально двигать свою задачу.</p>
+        </div>
+        <div class="hero-visual">
+          <img src="assets/images/hero-alchemical-atelier.jpg" alt="Женщина в светлой мастерской с дневником как образ глубинного менторинга">
+          <div class="hero-card">
+            <strong>Глубина и высота.</strong>
+            <span>Не только разобраться в теме, а взять тот уровень себя, который уже готов открыться.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="wrap grid-2">
+        <div>
+          <span class="label">Почему сейчас</span>
+          <h2 class="section-title--compact">Если вы всё понимаете,<br>но всё равно<br><span class="desktop-line">возвращаетесь в старое</span><span class="mobile-line">возвращаетесь<br>в старое</span></h2>
+          <p class="lead">Вы можете быть умной, сильной, осознанной женщиной. И всё равно снова выбирать похожих мужчин, занижать свою цену, откладывать проявленность, терять контакт с телом и жить из напряжения, а не из желания.</p>
+          <div class="soft-panel" style="margin-top: 28px;">
+            <p>Проблема часто не в том, что вы мало знаете. Проблема в том, что внутри работает старая система.</p>
+            <p>В “Высокой Глубине” мы работаем не только с мыслью. Мы смотрим, какая архетипическая сила управляет вашим выбором, какая заблокирована, а какая уже готова стать вашей опорой.</p>
+          </div>
+          <p class="quote-line">Результат не в том, что вы “всё поняли”. Результат в том, что задача начинает двигаться, а внутри появляется высота, с которой можно жить иначе.</p>
+        </div>
+        <div class="image-frame">
+          <img src="assets/images/inner-workshop.jpg" alt="Рабочий стол с дневником и тканью как образ внутренней мастерской">
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--mineral">
+      <div class="wrap">
+        <span class="label">Без перегруза</span>
+        <h2>Глубоко, но не тяжело</h2>
+        <p class="lead">Главный инсайт живого менторинга: сильные изменения могут происходить мягко. Не через надрыв, не через “меня разобрало”, не через бесконечные задания и чувство, что вы снова не справляетесь.</p>
+        <div class="cards cards--four">
+          <div class="card card--steel">
+            <h3>Поле держит процесс</h3>
+            <p>Даже сложные темы проходят экологичнее, чем женщины ожидают. Не нужно оставаться один на один с тем, что поднимается.</p>
+          </div>
+          <div class="card">
+            <h3>Не нужно всё успевать идеально</h3>
+            <p>Многие боялись, что придётся много работать. Но оказалось наоборот: менторинг часто даёт больше энергии для реальных решений и действий.</p>
+          </div>
+          <div class="card card--gold">
+            <h3>Жизнь становится частью процесса</h3>
+            <p>Отношения, работа, тело, реакции и разговоры начинают показывать, какой архетип включился и что именно сейчас меняется.</p>
+          </div>
+          <div class="card card--deep">
+            <h3>Можно идти без жёсткой цели</h3>
+            <p>Иногда входом становится не проблема, а желание обнаружить себя, почувствовать свою планку и понять, какой уровень высоты вы готовы взять.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <span class="label">Для кого эта программа</span>
+        <h2>Для женщины, у которой одна тема просит настоящего перехода</h2>
+        <p class="lead">Эта программа для тех, кто устал понимать причину, но снова оказываться в том же месте.</p>
+        <div class="cards">
+          <div class="card card--steel">
+            <h3>Если в отношениях повторяется один сценарий</h3>
+            <p>Мужчины могут быть разными, но ваша роль рядом с ними похожа. Вы хотите не просто понять, почему так происходит, а начать выбирать из другого внутреннего места.</p>
+          </div>
+          <div class="card">
+            <h3>Если деньги и реализация даются через напряжение</h3>
+            <p>Вы умеете работать, создавать, вести, помогать. Но деньги, масштаб, цена или статус всё ещё требуют доказательства, вины или внутренней борьбы.</p>
+          </div>
+          <div class="card card--gold">
+            <h3>Если тело стало фоном или проблемой</h3>
+            <p>Хочется вернуть контакт с телом, желание, чувствительность, сексуальность и ощущение живой женской энергии.</p>
+          </div>
+          <div class="card">
+            <h3>Если тема материнства или ребёнка стала болезненной</h3>
+            <p>Внутри много чувств, страхов, ожиданий и давления. Здесь важно не заставлять себя, а услышать, что на самом деле происходит глубже.</p>
+          </div>
+          <div class="card card--steel">
+            <h3>Если вы стоите на пороге нового этапа</h3>
+            <p>Старая версия жизни уже тесна. Но новый шаг пока не звучит ясно. Не хватает не мотивации, а внутреннего центра.</p>
+          </div>
+          <div class="card card--deep">
+            <h3>Одна ключевая задача</h3>
+            <p>Мы не распыляемся на всю жизнь сразу. Одна задача становится входом в глубину, потому что через неё видна вся архитектура вашей силы.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="archetypes" class="section">
+      <div class="wrap">
+        <span class="label">Главная линия</span>
+        <h2>Почему архетипы</h2>
+        <p class="lead">В центре менторинга — женские архетипы: как женщина чувствует, желает, выбирает, строит отношения, держит тело, деньги, статус и внутреннюю планку. Мужские архетипы появляются как поддержка: мы показываем те силы, которые помогают действовать, защищать границы, оформлять решения и выводить изменения во внешний мир.</p>
+        <div class="archetype-board">
+          <div class="atlas" aria-label="Архетипическая карта женщины">
+            <div class="orbit o1">Аф</div>
+            <div class="orbit o2">Ге</div>
+            <div class="orbit o3">Ат</div>
+            <div class="orbit o4">Де</div>
+            <div class="orbit o5">Гс</div>
+            <div class="orbit o6">Гк</div>
+            <div class="orbit o7">Пе</div>
+            <div class="orbit o8">Ар</div>
+            <div class="atlas-center">
+              <div>
+                <strong>Ваша задача</strong>
+                <span>в центре карты, где сходятся силы, блоки и следующий шаг</span>
+              </div>
+            </div>
+          </div>
+          <div class="archetype-grid">
+            <article class="archetype-card">
+              <i class="archetype-symbol" aria-hidden="true">I</i>
+              <span>цель</span>
+              <h3>Афина</h3>
+              <p>Цель, стратегия, статус и ясное действие.</p>
+            </article>
+            <article class="archetype-card">
+              <i class="archetype-symbol" aria-hidden="true">◐</i>
+              <span>переход</span>
+              <h3>Персефона</h3>
+              <p>Переход, глубина, взросление и тонкое знание.</p>
+            </article>
+            <article class="archetype-card">
+              <i class="archetype-symbol" aria-hidden="true">♡</i>
+              <span>магнетизм</span>
+              <h3>Афродита</h3>
+              <p>Желание, магнетизм, сексуальность и вкус жизни.</p>
+            </article>
+            <article class="archetype-card">
+              <i class="archetype-symbol" aria-hidden="true">♕</i>
+              <span>союз</span>
+              <h3>Гера</h3>
+              <p>Партнёрство, союз и место рядом с мужчиной.</p>
+            </article>
+            <article class="archetype-card">
+              <i class="archetype-symbol" aria-hidden="true">⌑</i>
+              <span>тень</span>
+              <h3>Геката</h3>
+              <p>Страхи, тень, границы, кризисы и честность.</p>
+            </article>
+            <article class="archetype-card">
+              <i class="archetype-symbol" aria-hidden="true">✦</i>
+              <span>взращивание</span>
+              <h3>Деметра</h3>
+              <p>Материнство, плодородие и забота без потери себя.</p>
+            </article>
+            <article class="archetype-card">
+              <i class="archetype-symbol" aria-hidden="true">●</i>
+              <span>центр</span>
+              <h3>Гестия</h3>
+              <p>Внутренний дом, центр, тишина и опора.</p>
+            </article>
+            <article class="archetype-card">
+              <i class="archetype-symbol" aria-hidden="true">↗</i>
+              <span>свобода</span>
+              <h3>Артемида</h3>
+              <p>Свобода, тело, автономия и право идти своим путём.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--mineral">
+      <div class="wrap grid-2 grid-2--stretch">
+        <div>
+          <span class="label">Точный вход</span>
+          <h2>В конце вы узнаете свои сутевые архетипы</h2>
+          <p class="lead">Одна из сильных частей программы — определение ваших сутевых архетипов. Это не красивый типаж, а те глубинные энергии, которые дают вам максимум жизни, силы и естественного движения.</p>
+          <div class="soft-panel" style="margin-top: 28px;">
+            <p>Мы не просто даём тест в начале и просим поверить результату. Сначала вы исследуете себя через практики, тело, движение, поле, обратную связь и реальные реакции жизни. Потом тест и наблюдение помогают уточнить, какие архетипы действительно являются вашими природными.</p>
+            <p>Это становится точкой опоры после программы: как вам реализовываться в деле, строить отношения, проявляться в мире и перестать тратить силы на роли, которые когда-то помогали выжить, но больше не питают.</p>
+            <p>Когда женщина видит свои сутевые архетипы, часто отпадает лишнее. Становится понятнее, почему прежний способ действовать давал опустошение, и на какие энергии можно опираться дальше.</p>
+          </div>
+        </div>
+        <div class="visual-stack">
+          <div class="method-visual method-visual--code">
+            <img src="assets/images/personal-archetype-code.jpg" alt="Архетипическая карта как образ персонального кода архетипа">
+            <p class="method-visual__caption">Персональный код архетипа собирается не только через тест, а через живое исследование: практики, тело, поле, обратную связь и реальные выборы.</p>
+          </div>
+          <div class="soft-panel">
+            <h3>Можно прийти повторно</h3>
+            <p style="margin-top: 14px;">Если вы уже проходили менторинг, курс в записи или знакомы с архетипами, новый поток всё равно может открыть другой слой. Поле, обратная связь и телесное проживание выводят на следующий уровень глубины и высоты.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--ink">
+      <div class="wrap grid-2 grid-2--stretch">
+        <div>
+          <span class="label">Тело и процесс</span>
+          <h2>Тело понимает раньше головы</h2>
+          <p class="lead">В живом менторинге стало видно: даже если участница не успевала сразу смотреть материалы, тело уже проходило процесс.</p>
+          <div class="soft-panel" style="margin-top: 28px;">
+            <p>Архетип включался через реакции, ощущения, события, желания, сопротивления, сны, разговоры и решения.</p>
+            <p>Мы работаем не только через ум, а через тело, движение, танец, танцевально-двигательную терапию, очищение и практики, которые проходят глубоко, но не требуют насилия над собой.</p>
+            <p>А когда женщина позже смотрела материал, она часто говорила: “Я уже это почувствовала. Теперь просто поняла головой”.</p>
+          </div>
+        </div>
+        <div class="visual-stack">
+          <div class="method-visual">
+            <img src="assets/images/body-movement-practice.jpg" alt="Женщина в движении как образ телесно-двигательной практики">
+            <p class="method-visual__caption">Движение, танец и телесная практика помогают проходить слой не через напряжение головы, а через живое знание тела.</p>
+          </div>
+          <div class="soft-panel">
+            <h3>Вам не нужно быть отличницей</h3>
+            <p style="margin-top: 14px;">Не нужно всё контролировать. Не нужно идеально выполнять задания. Процесс работает через тело, поле, встречи, практики и жизнь.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--mineral">
+      <div class="wrap">
+        <span class="label">2 месяца</span>
+        <h2>Что происходит за 2 месяца</h2>
+        <p class="lead">Мы не пытаемся решить всю жизнь сразу. В начале вы выбираете одну ключевую задачу или внутреннюю планку: отношения, деньги, реализация, материнство, тело, статус, внутренний выбор или вопрос “кто я и куда дальше”.</p>
+        <div class="stats">
+          <div class="stat"><strong>8</strong><span>встреч в Zoom</span></div>
+          <div class="stat"><strong>1</strong><span>ключевая задача</span></div>
+          <div class="stat"><strong>2</strong><span>месяца процесса</span></div>
+          <div class="stat"><strong>21</strong><span>день интеграции после глубокой работы</span></div>
+        </div>
+        <div class="route">
+          <h3>Карта глубины</h3>
+          <p class="text-wide">Дальше мы смотрим, какие архетипы уже активны, какие живут в защите, какие заблокированы, а какие могут дать вам силу для следующего шага. Иногда заявленное намерение меняется: внутри открывается главное, не притянутое за уши и не придуманное умом.</p>
+          <div class="route-grid">
+            <div class="route-step"><b>Диагностика</b><span>выбираем одну точную задачу</span></div>
+            <div class="route-step"><b>Карта</b><span>видим ведущие и заблокированные архетипы</span></div>
+            <div class="route-step"><b>Блок</b><span>находим силу, которая держит сценарий</span></div>
+            <div class="route-step"><b>Тело</b><span>работаем через движение, танец и очищение</span></div>
+            <div class="route-step"><b>Высота</b><span>берём новую планку себя</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="process" class="section">
+      <div class="wrap">
+        <span class="label">Как мы идём</span>
+        <h2>Глубокий процесс, который не похож на “работу над собой”</h2>
+        <p class="lead">Вам не нужно выпадать из обычных дней. Именно в жизни становится видно, где старый сценарий включается снова, где тело отвечает иначе и где появляется новый выбор.</p>
+        <div class="steps">
+          <div class="step">
+            <div>
+              <h3>Формулируем задачу или планку</h3>
+              <p>Можно прийти с конкретной темой. Можно прийти с намерением изучить и обнаружить себя. В процессе часто открывается то, что на самом деле важно.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div>
+              <h3>Строим архетипическую карту</h3>
+              <p>Смотрим, какие силы сейчас ведут, какие защищают, какие искажены, а какие давно ждут права голоса.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div>
+              <h3>Работаем через тело и движение</h3>
+              <p>Используем танцевально-двигательную терапию, телесные практики, танец, очищение и обратную связь Мастеров. Не давим и не ломаем.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div>
+              <h3>Интегрируем высоту</h3>
+              <p>Практики, наблюдения и поддержка помогают переводить глубину в решения, разговоры, границы, шаги и новый уровень себя.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--mineral">
+      <div class="wrap">
+        <span class="label">Трансформация</span>
+        <h2>Что может измениться</h2>
+        <p class="lead">У участниц уже проявлялись такие изменения: больше спокойствия и собранности, меньше внутреннего шума, больше устойчивости к переменам, новый контакт с телом и больше энергии на реальные действия. Иногда это ощущается как квантовый скачок: через два месяца женщина обнаруживает себя совершенно другой.</p>
+        <div class="change-grid">
+          <div class="change-list">
+            <div class="change-item">В отношениях появляется больше ясности: где ваша роль в повторяющемся сценарии и где можно выбрать иначе.</div>
+            <div class="change-item">В деньгах появляется больше права занимать своё место без постоянного доказательства.</div>
+            <div class="change-item">В теле открывается другой контакт: больше желания, чувствительности, сексуальности и жизни.</div>
+            <div class="change-item">В реализации становится виднее, где ваш масштаб, а где привычка уменьшать себя под чужие ожидания.</div>
+            <div class="change-item">Тело может начать меняться само: участницы отмечали больше живости, обновления, другой контакт с лицом, движением и ощущением себя.</div>
+            <div class="change-item">Некоторые женщины говорили: “Я стала другой”. Не потому что сломали себя, а потому что вернулись в более точное, взрослое и собранное состояние.</div>
+          </div>
+          <div class="change-card">
+            <img src="assets/images/inner-clarity.jpg" alt="Женщина у зеркала как образ ясного взгляда на себя">
+            <div class="change-caption">
+              <p>Не стать другой ради чужих ожиданий. Вернуться в более точное, взрослое и собранное состояние.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <span class="label">Кейсы</span>
+        <h2>Реальные истории перехода</h2>
+        <p class="lead">Не красивые впечатления, а сдвиги, которые стали видны через архетипы, тело, поле и обратную связь Мастеров.</p>
+        <div class="testimonial-grid testimonial-grid--cases">
+          <article class="testimonial case-card">
+            <small>Отношения</small>
+            <h3>Перестать выбирать холод</h3>
+            <p><strong>С чем пришла:</strong> мужчина рядом, но контакта нет. Много понимания, много боли, снова ощущение, что её не выбирают по-настоящему.</p>
+            <p><strong>Что стало видно:</strong> в сценарии работали не только отношения, а старая внутренняя позиция рядом с мужчиной.</p>
+            <p><strong>Сдвиг:</strong> появилось достоинство, спокойствие и возможность выбирать из другого места, а не ждать тепла там, где его нет.</p>
+          </article>
+          <article class="testimonial case-card">
+            <small>Тело и материнство</small>
+            <h3>Когда тело перестаёт быть проблемой</h3>
+            <p><strong>С чем пришла:</strong> тема ребёнка, тела и ожиданий стала болезненной. Головой всё понятно, но внутри много давления и страха.</p>
+            <p><strong>Что стало видно:</strong> телу нужна была не новая инструкция, а другой уровень контакта, доверия и внутреннего разрешения.</p>
+            <p><strong>Сдвиг:</strong> женщина стала чувствовать тело не как препятствие, а как живого союзника процесса.</p>
+          </article>
+          <article class="testimonial case-card">
+            <small>Замужество</small>
+            <h3>Сильная женщина, которая устала всё держать сама</h3>
+            <p><strong>С чем пришла:</strong> желание семьи и союза есть, но привычная роль: “я сама справлюсь, мне никто не нужен”.</p>
+            <p><strong>Что стало видно:</strong> сила работала как защита. Она помогала выживать, но не давала впустить мужчину ближе.</p>
+            <p><strong>Сдвиг:</strong> появилась мягкость без потери опоры. Не слабость, а новое право быть в союзе.</p>
+          </article>
+          <article class="testimonial case-card">
+            <small>Деньги и реализация</small>
+            <h3>Перестать доказывать через чужую силу</h3>
+            <p><strong>С чем пришла:</strong> много действий, много ума, много напряжения. Клиенты и деньги есть рядом, но движение даётся через выгорание.</p>
+            <p><strong>Что стало видно:</strong> женщина пыталась идти через неприродную для себя энергию, поэтому теряла силы.</p>
+            <p><strong>Сдвиг:</strong> когда проявилась её сутевая энергия, стало яснее, как реализовываться, звать клиентов и занимать своё место без внутренней борьбы.</p>
+          </article>
+        </div>
+        <p class="case-note">Эти истории описывают опыт участниц и не являются обещанием одинакового результата. Они показывают, как может проявляться работа с архетипами, телом, полем и одной ключевой задачей.</p>
+      </div>
+    </section>
+
+    <section class="section section--mineral">
+      <div class="wrap">
+        <span class="label">Честно</span>
+        <h2>Кому не подойдёт</h2>
+        <p class="lead">Если вам нужен готовый ответ за двадцать минут, идите к психологу на разовую консультацию. Это не сюда.</p>
+        <div class="fit-grid">
+          <div class="fit-card">
+            <h3>Это не сюда, если</h3>
+            <ul>
+              <li>вы хотите, чтобы кто-то взял вашу жизнь и решил её вместо вас;</li>
+              <li>вам нужен информационный курс про архетипы для общего развития. Купите книгу, будет дешевле и честнее;</li>
+              <li>вы хотите просто послушать красивые лекции без личного участия;</li>
+              <li>вы не готовы смотреть на повторяющийся сценарий честно.</li>
+            </ul>
+          </div>
+          <div class="fit-card fit-card--quiet">
+            <h3>Это сюда, если</h3>
+            <ul>
+              <li>вы готовы взять одну реальную задачу;</li>
+              <li>вы хотите пройти её глубже, чем обычно;</li>
+              <li>вы понимаете, что здесь решаете вы, а мы держим процесс;</li>
+              <li>вы хотите идти не в одиночку, но и не вместо себя.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <span class="label">Команда процесса</span>
+        <h2>Автор метода и ведущие</h2>
+        <p class="lead">В сильной внутренней работе важны не только практики. Важно, кто держит метод, кто ведёт встречи, как устроена обратная связь и есть ли рядом спокойная структура.</p>
+        <div class="masters">
+          <article class="master">
+            <img src="assets/svetlana-high-depth-author-portrait.jpg" alt="Светлана Страусс">
+            <div class="master-body">
+              <div class="master-role">Автор метода «Персональный код архетипа»</div>
+              <h3>Светлана Страусс</h3>
+              <p>Светлана — автор проекта, автор метода «Персональный код архетипа» и главный держатель поля программы.</p>
+              <p>Она задаёт метод, глубину и смысловой стержень процесса: как читать архетипы, как видеть внутреннюю систему женщины, где она живёт из своей силы, где из защиты, где из чужих ожиданий, а где уже готова перейти на новый уровень.</p>
+              <p>В “Высокой Глубине” Светлана держит главное направление: архетипы, переходы, тело, поле и точку, где женщина приближается к своей сути, а не просто улучшает старую версию себя.</p>
+            </div>
+          </article>
+          <article class="master master--small">
+            <img src="assets/images/tatyana-ivanova-square.jpg" alt="Татьяна Иванова">
+            <div class="master-body">
+              <div class="master-role">Ведущая программы · структура и обратная связь</div>
+              <h3>Татьяна Иванова</h3>
+              <p>Татьяна держит структуру программы и ведёт Zoom-встречи как ведущий Мастер. Её задача — чтобы глубина не расплывалась, а становилась понятным маршрутом: что сейчас происходит, на что смотреть, какой шаг важен дальше.</p>
+              <p>Она даёт точную обратную связь без давления и лишней драматизации. Помогает участницам увидеть, где они уже движутся, где застревают, что нужно изменить в действиях, реакции или внутренней позиции, чтобы процесс дал реальный результат.</p>
+            </div>
+          </article>
+          <article class="master master--small">
+            <img src="assets/images/ludmilla-simman.jpg" alt="Ludmilla Simman">
+            <div class="master-body">
+              <div class="master-role">Ведущая телесного процесса · глубокое обновление</div>
+              <h3>Ludmilla Simman</h3>
+              <p>Ludmilla Simman — Мастер тонкого видения и глубокой работы с телом. Она считывает не только слова участницы, но и то, как тело держит старый сценарий: напряжение, защиту, усталость, закрытость или невозможность принять новое.</p>
+              <p>В программе Ludmilla помогает переводить архетипическую работу из понимания в телесное проживание. Через движение, внимание к телу и точную настройку процесс становится мягче, глубже и ближе к реальным изменениям в состоянии.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="formats" class="section section--mineral">
+      <div class="wrap">
+        <span class="label">Форматы участия</span>
+        <h2>Форматы участия</h2>
+        <p class="lead">Все форматы ведут по одному маршруту. Разница не в количестве встреч. Разница в том, что происходит с вашей задачей, телом, сутевыми архетипами и внутренней планкой к концу программы.</p>
+        <p class="pricing-note">Во всех форматах вы проходите архетипический маршрут и выходите к пониманию своих сутевых архетипов: тех природных сил, на которые можно опираться в реализации, отношениях и дальнейшем движении. “Максимум” показывает самый полный уровень сопровождения. Если он сейчас избыточен, но идти только самостоятельно не хочется, чаще всего точный выбор — “Глубина”.</p>
+        <div class="pricing">
+          <article class="price-card">
+            <div class="price-name">Основа</div>
+            <div class="price">€888 <small>84 т.р.</small></div>
+            <p><strong>Вы поймёте архетипическую природу своей задачи.</strong></p>
+            <p>Для женщины, которая хочет пройти маршрут в поле группы и готова больше опираться на самостоятельное проживание.</p>
+            <ul>
+              <li>8 встреч в Zoom</li>
+              <li>записи встреч</li>
+              <li>практики между встречами</li>
+              <li>определение сутевых архетипов</li>
+              <li>общий чат программы</li>
+            </ul>
+            <a class="btn btn--outline" href="https://smarttraining.getcourse.ru/mentoring" target="_blank" rel="noopener">Пройти в группе</a>
+          </article>
+          <article class="price-card">
+            <div class="price-name">Максимум</div>
+            <div class="price">€5 000 <small>468 т.р.</small></div>
+            <p><strong>Переход произойдёт при минимальном риске застрять на середине пути.</strong></p>
+            <p>Для женщины, которой важно персональное ведение ключевого перехода. Подходит, если задача большая, переход значимый, и вам важно быть в более индивидуальном контакте со Светланой и Мастерами.</p>
+            <ul>
+              <li>личная работа со Светланой</li>
+              <li>отдельный канал сопровождения</li>
+              <li>приоритетная поддержка</li>
+              <li>индивидуальные разборы</li>
+              <li>квантовая Активация входит в формат</li>
+              <li>точное определение сутевых архетипов как опоры после программы</li>
+              <li>один недельный ретрит входит в формат: Пхукет “Линия удачи” 5–12 ноября 2026 или Лангкави “Ядро силы” 15–22 ноября 2026</li>
+            </ul>
+            <a class="btn btn--outline" href="https://smarttraining.getcourse.ru/mentoring" target="_blank" rel="noopener">Обсудить Максимум</a>
+          </article>
+          <article class="price-card price-card--featured">
+            <span class="badge">Рекомендуемый формат</span>
+            <div class="price-name">Глубина</div>
+            <div class="price">€1 555 <small>147 т.р.</small></div>
+            <p><strong>Ваша задача сдвинется с мёртвой точки за два месяца.</strong></p>
+            <p>Для тех, кто пришёл не просто послушать, а сдвинуть важную задачу. Здесь есть маршрут, поле, личное усиление и больше точек контакта, чтобы не потеряться в процессе.</p>
+            <ul>
+              <li>всё из формата “Основа”</li>
+              <li>уточнение сутевых архетипов через поле, практики и тест</li>
+              <li>дополнительный выбор: сопровождение наставника или квантовая Активация в финале</li>
+              <li>если выбираете сопровождение: личная поддержка и разборы в рабочее время</li>
+              <li>более плотное сопровождение задачи</li>
+            </ul>
+            <a class="btn btn--gold" href="https://smarttraining.getcourse.ru/mentoring" target="_blank" rel="noopener">Выбрать Глубину</a>
+          </article>
+        </div>
+      </div>
+    </section>
+<section class="section high-depth-video-testimonials" id="video-otzyvy">
+      <div class="wrap">
+        <span class="label">Видеоотзывы</span>
+        <h2>Живой опыт участниц менторинга</h2>
+        <p class="lead">Три короткие истории о том, как участницы проходили «Высокую Глубину» и что становилось для них заметным в процессе.</p>
+        <div class="high-depth-video-grid">
+          <article class="high-depth-video-card">
+            <div class="high-depth-video-frame">
+              <iframe src="https://player.vimeo.com/video/1206206579?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" title="Видеоотзыв: Наталья" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div class="high-depth-video-copy">
+              <h3>Наталья</h3>
+              <p>Видеоотзыв о личном прохождении менторинга и изменениях, которые стали заметны в жизни.</p>
+            </div>
+          </article><article class="high-depth-video-card">
+            <div class="high-depth-video-frame">
+              <iframe src="https://player.vimeo.com/video/1206201793?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" title="Видеоотзыв: Олеся" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div class="high-depth-video-copy">
+              <h3>Олеся</h3>
+              <p>Видеоотзыв о работе с одной важной темой и поддержке на пути внутренних изменений.</p>
+            </div>
+          </article><article class="high-depth-video-card">
+            <div class="high-depth-video-frame">
+              <iframe src="https://player.vimeo.com/video/1206251666?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" title="Видеоотзыв: Ирена" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div class="high-depth-video-copy">
+              <h3>Ирена</h3>
+              <p>Видеоотзыв о том, как менторинг помогает пройти глубже и не остаться одной в сложной точке.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section id="faq" class="section">
+      <div class="wrap">
+        <span class="label">Вопросы</span>
+        <h2>Вопросы перед заявкой</h2>
+        <div class="faq">
+          <details>
+            <summary>Почему работа идёт через архетипы и тело?</summary>
+            <p>Потому что многие сценарии держатся не только в мыслях. Женщина может всё понимать головой, но тело, реакции, выбор мужчин, деньги и способ проявляться продолжают идти по старой внутренней программе. Архетипы помогают увидеть, какая сила сейчас ведёт, какая заблокирована, а через тело и движение это становится не идеей, а прожитым опытом.</p>
+          </details>
+          <details>
+            <summary>А если я не знаю свою задачу?</summary>
+            <p>Это нормально. На старте мы помогаем сформулировать задачу так, чтобы с ней можно было работать.</p>
+          </details>
+          <details>
+            <summary>А если я не буду всё успевать?</summary>
+            <p>Программа не построена на идеальном выполнении заданий. Важнее честное присутствие, наблюдение и готовность быть в процессе.</p>
+          </details>
+          <details>
+            <summary>Как именно мы будем работать?</summary>
+            <p>Через Zoom-встречи, архетипический тест, обратную связь Мастеров, телесные практики, движение, танец, танцевально-двигательную терапию и наблюдение за тем, как архетипы проявляются в реальной жизни.</p>
+          </details>
+          <details>
+            <summary>Будут ли мужские архетипы?</summary>
+            <p>Да, но не как отдельная равная линия программы. Основной маршрут идёт через женские архетипы, а мужские мы показываем там, где они нужны для действия, границ, решений, реализации и связи с внутренней опорой.</p>
+          </details>
+          <details>
+            <summary>Можно ли прийти повторно или после курса в записи?</summary>
+            <p>Да. Если вы уже проходили менторинг или курс в записи, живое поле, тест, движение и обратная связь могут вывести на следующий уровень. Повторный проход часто открывает слой, до которого раньше было невозможно докопаться.</p>
+          </details>
+          <details>
+            <summary>А если муж или семья не поддерживают?</summary>
+            <p>Вам не нужно никого убеждать. Процесс встроен в жизнь и не требует выпадать из семьи или работы. Часто именно спокойные внутренние изменения начинают менять качество контакта с близкими.</p>
+          </details>
+          <details>
+            <summary>Это будет легко или глубоко?</summary>
+            <p>Это будет глубоко, но процесс не построен на надрыве. В текущем менторинге стало видно, что сильные изменения могут идти мягко, экологично и встроенно в жизнь. Не нужно становиться идеальной ученицей или выпадать из своих дел.</p>
+          </details>
+          <details>
+            <summary>Как понять, какой формат выбрать?</summary>
+            <p>Если вы хотите познакомиться с маршрутом и готовы идти более самостоятельно, подойдёт “Основа”. Если задача важная и вы хотите реального сдвига с поддержкой, чаще всего лучше выбирать “Глубину”. “Максимум” подходит для персонального ведения.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="cta" class="final">
+      <div class="wrap final-content">
+        <span class="label">Вход в программу</span>
+        <h2>Если вы уже знаете, что тема сама не рассосётся</h2>
+        <p class="lead">Можно ещё год понимать, почему всё так. Можно ещё раз попробовать “собраться”, “отпустить”, “просто выбрать себя”. А можно взять одну задачу и пройти её в сопровождении до реального сдвига.</p>
+        <p class="text-wide">“Высокая Глубина” для женщин, которые не хотят больше жить в режиме: “я всё понимаю, но снова оказываюсь там же”.</p>
+        <p class="text-wide">Старт 7 октября. Завершение 6 декабря. 2 месяца. 8 встреч. Одна ключевая задача или внутренняя планка.</p>
+        <p class="text-wide">Места ограничены: формат требует внимания к участницам, а “Максимум” предполагает личную работу со Светланой.</p>
+        <div class="final-actions">
+          <a class="btn btn--gold" href="https://smarttraining.getcourse.ru/mentoring" target="_blank" rel="noopener">Подать заявку</a>
+          <a class="btn btn--outline btn--light" href="https://smarttraining.getcourse.ru/mentoring" target="_blank" rel="noopener">Обсудить формат</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="eh-global-footer" aria-label="Evolution House">
+    <div class="eh-shell-container eh-global-footer__grid">
+      <section class="eh-global-footer__brand">
+        <img width="736" height="144" class="eh-global-footer__logo" src="assets/evolution-house-header-logo-v2.png" alt="Evolution House">
+        <p>Evolution House помогает проходить жизненные переходы: увидеть свою точку, выбрать подходящий путь и идти дальше с практиками, Мастерами и ясной опорой.</p>
+      </section>
+      <nav class="eh-global-footer__nav" aria-label="Начать">
+        <strong>Начать</strong>
+        <a href="index.html">Главная</a>
+        <a href="pervyi-shag.html">С чего начать</a>
+        <a href="otkrytye-programmy.html">Открытые программы</a>
+      </nav>
+      <nav class="eh-global-footer__nav" aria-label="Направления">
+        <strong>Направления</strong>
+        <a href="arhetipy.html">Путь архетипов</a>
+        <a href="urovni-zhizni/index.html">Пересборка жизни</a>
+        <a href="vnutrennyaya-svoboda.html">Путь свободы от травм</a>
+        <a href="reiki-napravlenie.html">Путь Reiki</a>
+      </nav>
+      <nav class="eh-global-footer__nav" aria-label="Школа">
+        <strong>Школа</strong>
+        <a href="o-shkole.html">О школе</a>
+        
+        
+        
+      </nav>
+    </div>
+    <div class="eh-shell-container eh-global-footer__bottom">
+      <p>© 2026 Evolution House, Дом Эволюции</p>
+      <p class="eh-global-footer__legal">Operated by Resulta Consulting FZ-LLC · FDBC0803, Compass Building, Al Shohada Road, AL Hamra Industrial Zone-FZ, Ras Al Khaimah, United Arab Emirates · Tax Reg. No: 105211901100001</p>
+    
+      <p class="eh-global-footer__legal eh-global-footer__privacy"><a href="/privacy-policy/">Политика конфиденциальности</a></p>
+    </div>
+  </footer>
+
+  <div class="sticky-bar">
+    <a class="btn" href="https://smarttraining.getcourse.ru/mentoring" target="_blank" rel="noopener">Подать заявку</a>
+  </div>
+</body>
+</html>
+

@@ -1,0 +1,490 @@
+/* Final composition pass for Method. Hero is intentionally not addressed here. */
+
+/* One centre, four manifestations: image first, a quiet legend second. */
+.off-switch-method-page .om-scope__composition {
+  align-items: stretch;
+}
+.off-switch-method-page .om-scope__media {
+  min-height: 460px;
+  overflow: hidden;
+  background: #edf3e3;
+}
+.off-switch-method-page .om-scope__media img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto !important;
+  object-position: 53% center;
+}
+.off-switch-method-page .om-scope__groups {
+  align-self: center;
+}
+.off-switch-method-page .om-scope__groups article {
+  padding-block: 20px !important;
+}
+.off-switch-method-page .om-scope__groups strong {
+  font-size: 19px !important;
+}
+.off-switch-method-page .om-scope__result {
+  max-width: 980px;
+  margin-top: 42px !important;
+  font-size: 19px !important;
+  line-height: 1.5 !important;
+}
+
+/* The real hand positions become an instruction, not a picture mosaic. */
+.off-switch-method-page .om-tool__layout {
+  grid-template-columns: minmax(0, 1.18fr) minmax(320px, .82fr) !important;
+  gap: clamp(30px, 5vw, 72px) !important;
+  align-items: start;
+}
+.off-switch-method-page .om-tool__media {
+  overflow: visible !important;
+  background: transparent !important;
+}
+.off-switch-method-page .om-technique-photos {
+  gap: 12px !important;
+  padding: 0 !important;
+  background: transparent !important;
+}
+.off-switch-method-page .om-technique-frame {
+  position: relative;
+  min-height: 340px;
+  overflow: hidden;
+  background: #e8f0e6;
+}
+.off-switch-method-page .om-technique-frame img {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  object-fit: cover !important;
+}
+.off-switch-method-page .om-technique-frame:nth-child(1) img { object-position: 43% center; }
+.off-switch-method-page .om-technique-frame:nth-child(2) img { object-position: 50% center; }
+.off-switch-method-page .om-technique-frame:nth-child(3) img { object-position: 57% center; }
+.off-switch-method-page .om-technique-frame p {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: 0;
+  padding: 12px 12px 13px;
+  background: linear-gradient(180deg, transparent, rgba(27, 55, 34, .9) 44%);
+  color: #fffdf8;
+  font: 700 12px/1.35 Arial, sans-serif;
+}
+.off-switch-method-page .om-technique-frame b {
+  display: inline-grid;
+  min-width: 28px;
+  margin-right: 6px;
+  color: #e5f5b8;
+  font-size: 15px;
+}
+.off-switch-method-page .om-tool__copy {
+  padding-top: 2px;
+}
+.off-switch-method-page .om-tool__copy .om-steps {
+  margin: 0 !important;
+  border-top: 1px solid rgba(45, 79, 42, .22);
+}
+.off-switch-method-page .om-tool__copy .om-steps li {
+  min-height: 0 !important;
+  padding: 18px 0 19px !important;
+  border-bottom: 1px solid rgba(45, 79, 42, .18);
+}
+.off-switch-method-page .om-tool__copy .om-steps li > span {
+  color: #6e944f !important;
+  font-size: 13px !important;
+}
+.off-switch-method-page .om-tool__copy .om-steps strong { color: #244a2d !important; }
+.off-switch-method-page .om-tool__notes {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(250px, .7fr);
+  gap: 0 clamp(28px, 5vw, 72px);
+  margin-top: 36px;
+  padding-top: 26px;
+  border-top: 1px solid rgba(45, 79, 42, .2);
+}
+.off-switch-method-page .om-tool__autonomy,
+.off-switch-method-page .om-tool__privacy {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.off-switch-method-page .om-tool__autonomy {
+  align-self: center;
+  color: #244a2d !important;
+  font-size: 19px !important;
+  line-height: 1.5 !important;
+}
+.off-switch-method-page .om-tool__privacy {
+  grid-column: 1 / -1;
+  margin-top: 20px !important;
+  color: #5a715c !important;
+}
+.off-switch-method-page .om-speed {
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 0 0 24px !important;
+  border: 0 !important;
+  border-left: 3px solid #7ca357 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.off-switch-method-page .om-speed div { display: block !important; }
+.off-switch-method-page .om-speed strong { display: block; margin-top: 4px; color: #25492e !important; font-size: 26px !important; }
+.off-switch-method-page .om-speed p { margin: 10px 0 0 !important; }
+
+/* Signal → reaction → choice is a single process, never four buttons. */
+.off-switch-method-page .om-mechanism .om-section-head { max-width: 760px; }
+.off-switch-method-page .om-chain {
+  align-items: stretch;
+}
+.off-switch-method-page .om-chain .om-mechanism__media {
+  min-height: 520px;
+  overflow: hidden;
+}
+.off-switch-method-page .om-chain article {
+  position: relative;
+  padding-block: 22px !important;
+}
+.off-switch-method-page .om-chain article + article::before {
+  position: absolute;
+  top: -1px;
+  left: 20px;
+  width: 1px;
+  height: 17px;
+  content: "";
+  background: #78a154;
+}
+.off-switch-method-page .om-chain .om-chain__stop {
+  color: #244b2d !important;
+}
+.off-switch-method-page .om-chain__switch {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  padding-top: 13px !important;
+  border-top: 1px dashed rgba(45, 79, 42, .28);
+  background: transparent !important;
+}
+.off-switch-method-page .om-chain__switch b { color: #4b7c38 !important; }
+.off-switch-method-page .om-chain__switch em { font-style: normal; }
+.off-switch-method-page .om-interrupt {
+  display: flex !important;
+  max-width: 920px;
+  margin: 34px auto 0 !important;
+  padding: 20px 0 0 !important;
+  gap: 17px;
+  border: 0 !important;
+  border-top: 1px solid rgba(42, 78, 40, .25) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.off-switch-method-page .om-interrupt span { color: #709b50; }
+
+/* The dog story stays attached to the one visual narrative. */
+.off-switch-method-page .om-dog__story article {
+  padding-bottom: 33px !important;
+}
+.off-switch-method-page .om-dog__story article:last-child { padding-bottom: 0 !important; }
+.off-switch-method-page .om-dog__story p { max-width: 430px; }
+
+/* One system first; only then a clear diagnostic conclusion. */
+.off-switch-method-page .om-map__layout {
+  gap: clamp(34px, 6vw, 90px) !important;
+  align-items: center;
+}
+.off-switch-method-page .om-map__media {
+  overflow: hidden;
+  background: #e9f0d9;
+}
+.off-switch-method-page .om-map__media img { min-height: 440px; object-fit: cover; object-position: 50% center; }
+.off-switch-method-page .om-map__copy { max-width: 460px; }
+.off-switch-method-page .om-ratio > div { padding-bottom: 28px !important; }
+.off-switch-method-page .om-ratio > div + div { padding-top: 28px !important; }
+.off-switch-method-page .om-ratio strong { color: #25482d !important; font-size: clamp(28px, 3vw, 40px) !important; line-height: 1.04 !important; }
+.off-switch-method-page .om-map__note {
+  margin: 29px 0 0 !important;
+  padding: 16px 0 0 !important;
+  border: 0 !important;
+  border-top: 1px solid rgba(51, 84, 43, .22) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: #30543a !important;
+  font-size: 17px !important;
+}
+
+/* A layered distinction: trigger at the surface, pattern below it. */
+.off-switch-method-page .om-sequence { padding-block: clamp(72px, 9vw, 132px) !important; }
+.off-switch-method-page .om-depth {
+  max-width: 1020px;
+  margin-top: 50px !important;
+  padding-left: clamp(34px, 8vw, 108px) !important;
+}
+.off-switch-method-page .om-depth::before {
+  position: absolute;
+  top: 12px;
+  bottom: 12px;
+  left: -11px;
+  width: 18px;
+  content: "";
+  border-radius: 99px;
+  background: linear-gradient(#a6ca75 0 35%, #6d984d 35% 100%);
+}
+.off-switch-method-page .om-depth article { padding-bottom: 62px !important; }
+.off-switch-method-page .om-depth article + article {
+  position: relative;
+  padding-top: 43px !important;
+  border-top: 1px solid rgba(53, 86, 46, .22) !important;
+}
+.off-switch-method-page .om-depth article + article::before {
+  position: absolute;
+  top: -10px;
+  left: -53px;
+  width: 18px;
+  height: 18px;
+  content: "";
+  border-radius: 50%;
+  background: #6d984d;
+  box-shadow: 0 0 0 6px #f7f4e9;
+}
+
+/* The answer is the apex: three actions, one shared system. */
+.off-switch-method-page .om-limits { padding-block: clamp(86px, 10vw, 146px) !important; }
+.off-switch-method-page .om-limits .om-section-head { max-width: 760px; }
+.off-switch-method-page .om-limits h2 { font-size: clamp(44px, 5vw, 68px) !important; }
+.off-switch-method-page .om-limits__grid {
+  position: relative;
+  margin-top: 48px !important;
+  padding-top: 2px;
+  border-top: 1px solid rgba(43, 79, 42, .25);
+}
+.off-switch-method-page .om-limits__grid article {
+  min-height: 155px !important;
+  padding: 25px 24px 10px !important;
+  border: 0 !important;
+  border-right: 1px solid rgba(43, 79, 42, .2) !important;
+  background: transparent !important;
+}
+.off-switch-method-page .om-limits__grid article:last-child { border-right: 0 !important; }
+.off-switch-method-page .om-limits__grid strong {
+  display: block;
+  margin-bottom: 22px;
+  color: #6f984d !important;
+  font: 700 14px/1 Arial, sans-serif;
+}
+.off-switch-method-page .om-limits__grid p {
+  max-width: 280px;
+  color: #244b2d !important;
+  font: 700 clamp(21px, 2.1vw, 30px)/1.14 Georgia, "Times New Roman", serif !important;
+}
+.off-switch-method-page .om-limits__note {
+  max-width: 920px;
+  margin: 44px 0 0 auto !important;
+  padding: 0 0 0 25px !important;
+  border: 0 !important;
+  border-left: 3px solid #9dbe6c !important;
+  background: transparent !important;
+  color: #58705a !important;
+  font-size: 18px !important;
+}
+
+/* Outcomes rise toward lived action; level three is visibly the conclusion. */
+.off-switch-method-page .om-measure__grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 0 !important;
+  margin-top: 42px !important;
+}
+.off-switch-method-page .om-measure__grid > article {
+  min-height: 190px !important;
+  padding: 28px !important;
+  border: 1px solid rgba(220, 240, 189, .3) !important;
+  border-right: 0 !important;
+  background: rgba(231, 245, 181, .08) !important;
+}
+.off-switch-method-page .om-measure__grid > article:nth-child(2) { border-right: 1px solid rgba(220, 240, 189, .3) !important; }
+.off-switch-method-page .om-measure__grid > article:last-child {
+  grid-column: 1 / -1;
+  min-height: 230px !important;
+  margin-top: -1px;
+  padding: 37px 36px !important;
+  border-right: 1px solid rgba(220, 240, 189, .3) !important;
+  background: rgba(231, 245, 181, .17) !important;
+}
+.off-switch-method-page .om-measure__grid > article:last-child .om-measure__number { font-size: 54px !important; }
+.off-switch-method-page .om-measure__grid > article:last-child strong { font-size: 34px !important; }
+.off-switch-method-page .om-measure__life {
+  max-width: 830px;
+  margin: 32px 0 0 auto !important;
+  font-size: 18px !important;
+}
+
+/* Evidence is a single scene: scale, presenter, then the measured result. */
+.off-switch-method-page .om-ukraine .om-section-head { max-width: 1120px; }
+.off-switch-method-page .om-ukraine__context { max-width: 750px; }
+.off-switch-method-page .om-ukraine__visual {
+  max-width: 1100px;
+  margin-top: 38px !important;
+  padding: 0 !important;
+  background: transparent !important;
+}
+.off-switch-method-page .om-ukraine__stage { min-height: clamp(390px, 43vw, 570px); }
+.off-switch-method-page .om-ukraine__network::after { background: linear-gradient(90deg, rgba(255, 253, 244, .42), rgba(255, 253, 244, .04) 62%) !important; }
+.off-switch-method-page .om-ukraine__host {
+  width: clamp(260px, 27vw, 350px) !important;
+  border-width: 6px !important;
+  box-shadow: 0 18px 44px rgba(47, 57, 37, .22) !important;
+}
+.off-switch-method-page .om-ukraine__stats {
+  display: grid !important;
+  grid-template-columns: minmax(180px, 1.45fr) repeat(3, minmax(0, 1fr)) !important;
+  margin: -52px 34px 0 !important;
+  padding: 0 !important;
+  background: #fffdf8 !important;
+  box-shadow: 0 14px 30px rgba(59, 66, 29, .13) !important;
+}
+.off-switch-method-page .om-ukraine__stats article {
+  min-height: 108px !important;
+  padding: 19px 20px !important;
+  border-right: 1px solid rgba(49, 83, 45, .18) !important;
+}
+.off-switch-method-page .om-ukraine__stats article:first-child {
+  background: #e6f0bd !important;
+}
+.off-switch-method-page .om-ukraine__stats article:last-child { border-right: 0 !important; }
+.off-switch-method-page .om-ukraine__stats article:first-child strong { font-size: clamp(38px, 4vw, 58px) !important; }
+.off-switch-method-page .om-ukraine__stats strong { color: #315d36 !important; }
+.off-switch-method-page .om-ukraine__stats span { color: #557058 !important; }
+
+/* One primary life change; the rest remain supporting evidence. */
+.off-switch-method-page .om-cases__grid {
+  grid-template-columns: minmax(0, 1.2fr) repeat(3, minmax(0, .8fr)) !important;
+  gap: 0 !important;
+  margin-top: 48px !important;
+  border-top: 1px solid rgba(47, 78, 43, .22);
+  border-bottom: 1px solid rgba(47, 78, 43, .22);
+}
+.off-switch-method-page .om-cases__grid article,
+.off-switch-method-page .om-cases__grid article:nth-child(2n) {
+  min-height: 300px !important;
+  padding: 28px 24px !important;
+  border: 0 !important;
+  border-right: 1px solid rgba(47, 78, 43, .18) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.off-switch-method-page .om-cases__grid article:last-child { border-right: 0 !important; }
+.off-switch-method-page .om-cases__grid article:first-child {
+  padding: 31px 30px !important;
+  background: #edf5d2 !important;
+}
+.off-switch-method-page .om-cases__grid article::after { display: none !important; }
+.off-switch-method-page .om-cases__grid article:first-child strong {
+  display: inline-block;
+  margin-top: 20px;
+  color: #315d36 !important;
+  font-size: clamp(44px, 4.4vw, 70px) !important;
+}
+.off-switch-method-page .om-cases__grid article:not(:first-child) strong {
+  display: block;
+  margin-top: 16px;
+  color: #5f8747 !important;
+  font-size: 27px !important;
+}
+.off-switch-method-page .om-cases__grid h3 { margin-top: 18px !important; color: #294c30 !important; font-size: 20px !important; }
+.off-switch-method-page .om-cases__grid p { color: #617561 !important; }
+
+/* The final choices stay links, but read as three depths rather than prices. */
+.off-switch-method-page .om-format-doors {
+  gap: 0 !important;
+  border-top: 1px solid rgba(47, 80, 44, .22);
+}
+.off-switch-method-page .om-format-door {
+  min-height: 0 !important;
+  border: 0 !important;
+  border-right: 1px solid rgba(47, 80, 44, .2) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+.off-switch-method-page .om-format-door:last-child { border-right: 0 !important; }
+.off-switch-method-page .om-format-door figure { height: 220px !important; }
+.off-switch-method-page .om-format-door > p { min-height: 106px; }
+.off-switch-method-page .om-format-door:hover,
+.off-switch-method-page .om-format-door:focus-visible {
+  transform: none !important;
+  box-shadow: inset 0 -5px 0 #5e9149 !important;
+}
+
+@media (max-width: 900px) {
+  .off-switch-method-page .om-tool__layout,
+  .off-switch-method-page .om-map__layout { grid-template-columns: 1fr !important; }
+  .off-switch-method-page .om-tool__copy { max-width: 760px; }
+  .off-switch-method-page .om-map__copy { max-width: 700px; }
+  .off-switch-method-page .om-cases__grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  .off-switch-method-page .om-cases__grid article:first-child { grid-column: 1 / -1; min-height: 0 !important; }
+  .off-switch-method-page .om-cases__grid article:nth-child(2) { border-right: 1px solid rgba(47, 78, 43, .18) !important; }
+}
+
+@media (max-width: 700px) {
+  .off-switch-method-page .om-scope__media { min-height: 0; }
+  .off-switch-method-page .om-scope__groups article { padding: 17px 0 18px 45px !important; }
+  .off-switch-method-page .om-scope__result { margin-top: 30px !important; padding-left: 20px !important; font-size: 17px !important; }
+
+  .off-switch-method-page .om-tool__layout { gap: 28px !important; }
+  .off-switch-method-page .om-technique-photos { grid-template-columns: 1fr !important; }
+  .off-switch-method-page .om-technique-frame { min-height: 300px; background-size: cover !important; background-repeat: no-repeat !important; }
+  .off-switch-method-page .om-technique-frame:nth-child(1) { background-image: url("visual-package/off-switch-method/selected/web/hand-reference-01.jpg") !important; background-position: 43% center !important; }
+  .off-switch-method-page .om-technique-frame:nth-child(2) { background-image: url("visual-package/off-switch-method/selected/web/hand-reference-02.jpg") !important; background-position: 50% center !important; }
+  .off-switch-method-page .om-technique-frame:nth-child(3) { background-image: url("visual-package/off-switch-method/selected/web/hand-reference-03.jpg") !important; background-position: 57% center !important; }
+  .off-switch-method-page .om-technique-frame img { opacity: 0 !important; }
+  .off-switch-method-page .om-tool__notes { grid-template-columns: 1fr; gap: 24px; }
+  .off-switch-method-page .om-tool__privacy { grid-column: auto; margin-top: 0 !important; }
+  .off-switch-method-page .om-speed { padding-left: 18px !important; }
+
+  .off-switch-method-page .om-chain .om-mechanism__media { min-height: 0; }
+  .off-switch-method-page .om-chain article { padding: 18px 0 20px 49px !important; }
+  .off-switch-method-page .om-chain article + article::before { left: 15px; }
+  .off-switch-method-page .om-interrupt { margin-top: 27px !important; }
+
+  .off-switch-method-page .om-map__media img { min-height: 0; }
+  .off-switch-method-page .om-map__copy { margin-top: 30px; }
+  .off-switch-method-page .om-depth { margin-top: 34px !important; padding-left: 38px !important; }
+  .off-switch-method-page .om-depth::before { left: -10px; }
+  .off-switch-method-page .om-depth article + article::before { left: -48px; }
+
+  .off-switch-method-page .om-limits { padding-block: 72px !important; }
+  .off-switch-method-page .om-limits h2 { font-size: 40px !important; }
+  .off-switch-method-page .om-limits__grid { margin-top: 32px !important; }
+  .off-switch-method-page .om-limits__grid article { min-height: 0 !important; padding: 24px 0 !important; border-right: 0 !important; }
+  .off-switch-method-page .om-limits__grid p { max-width: none; font-size: 25px !important; }
+  .off-switch-method-page .om-limits__note { margin-top: 32px !important; padding-left: 19px !important; font-size: 17px !important; }
+
+  .off-switch-method-page .om-measure__grid { grid-template-columns: 1fr !important; }
+  .off-switch-method-page .om-measure__grid > article,
+  .off-switch-method-page .om-measure__grid > article:nth-child(2),
+  .off-switch-method-page .om-measure__grid > article:last-child { grid-column: auto; min-height: 0 !important; margin: 0; border-right: 1px solid rgba(220, 240, 189, .3) !important; border-bottom: 0 !important; }
+  .off-switch-method-page .om-measure__grid > article:last-child { padding: 30px 25px !important; }
+
+  .off-switch-method-page .om-ukraine__visual { display: flex; flex-direction: column; }
+  .off-switch-method-page .om-ukraine__stats { order: 1; grid-template-columns: repeat(2, minmax(0, 1fr)) !important; margin: 0 0 18px !important; }
+  .off-switch-method-page .om-ukraine__stats article { min-height: 95px !important; border-bottom: 1px solid rgba(49, 83, 45, .18) !important; }
+  .off-switch-method-page .om-ukraine__stats article:first-child { display: flex !important; grid-column: 1 / -1; min-height: 118px !important; flex-direction: column; align-items: flex-start; justify-content: center; }
+  .off-switch-method-page .om-ukraine__stats article:first-child strong { display: block !important; white-space: nowrap; font-size: 48px !important; line-height: .95 !important; }
+  .off-switch-method-page .om-ukraine__stats article:first-child span { position: static !important; display: block !important; margin-top: 8px !important; }
+  .off-switch-method-page .om-ukraine__stats article:nth-child(2n) { border-right: 0 !important; }
+  .off-switch-method-page .om-ukraine__stats article:nth-child(n+3) { border-bottom: 0 !important; }
+  .off-switch-method-page .om-ukraine__stage { order: 2; min-height: 360px; }
+  .off-switch-method-page .om-ukraine__host { width: 205px !important; }
+
+  .off-switch-method-page .om-cases__grid { grid-template-columns: 1fr !important; margin-top: 34px !important; }
+  .off-switch-method-page .om-cases__grid article,
+  .off-switch-method-page .om-cases__grid article:nth-child(2) { min-height: 0 !important; padding: 25px 0 !important; border-right: 0 !important; border-bottom: 1px solid rgba(47, 78, 43, .18) !important; }
+  .off-switch-method-page .om-cases__grid article:first-child { padding: 27px 22px !important; }
+  .off-switch-method-page .om-cases__grid article:last-child { border-bottom: 0 !important; }
+  .off-switch-method-page .om-cases__grid article:not(:first-child) strong { font-size: 30px !important; }
+
+  .off-switch-method-page .om-format-door figure { height: 210px !important; }
+  .off-switch-method-page .om-format-door > p { min-height: 0; }
+}

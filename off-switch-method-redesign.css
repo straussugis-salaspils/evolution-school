@@ -1,0 +1,1367 @@
+/* Off-Switch Method redesign prototype
+   The original route remains untouched. This layer is active only on the prototype body class. */
+
+/* === Primitive tokens === */
+body.off-switch-method-redesign-page {
+  --omr-ink-900: #173b2a;
+  --omr-ink-700: #315640;
+  --omr-ink-500: #5f7664;
+  --omr-green-800: #205e3e;
+  --omr-green-700: #2f754b;
+  --omr-green-500: #6f9850;
+  --omr-lime-300: #dcec9b;
+  --omr-lime-100: #f0f5d4;
+  --omr-mint-100: #e8f1dd;
+  --omr-cream-100: #fbf8e8;
+  --omr-paper: #fffef8;
+  --omr-line: rgba(34, 77, 48, .18);
+  --omr-line-strong: rgba(34, 77, 48, .32);
+  --omr-shadow-1: 0 12px 30px rgba(40, 66, 41, .08);
+  --omr-shadow-2: 0 22px 46px rgba(31, 70, 43, .14);
+  --omr-radius-sm: .65rem;
+  --omr-radius-md: .95rem;
+  --omr-space-1: .5rem;
+  --omr-space-2: 1rem;
+  --omr-space-3: 1.5rem;
+  --omr-space-4: 2rem;
+  --omr-space-5: 3rem;
+  --omr-space-6: 4.5rem;
+
+  /* === Semantic tokens === */
+  --omr-bg: var(--omr-cream-100);
+  --omr-surface: var(--omr-paper);
+  --omr-surface-soft: var(--omr-lime-100);
+  --omr-surface-process: var(--omr-mint-100);
+  --omr-text: var(--omr-ink-900);
+  --omr-text-muted: var(--omr-ink-700);
+  --omr-accent: var(--omr-green-700);
+  --omr-accent-soft: var(--omr-lime-300);
+
+  /* === Component tokens === */
+  --omr-card-bg: var(--omr-surface);
+  --omr-card-border: var(--omr-line);
+  --omr-card-radius: var(--omr-radius-md);
+  --omr-card-shadow: var(--omr-shadow-1);
+  --omr-card-padding: clamp(1.25rem, 2.4vw, 2rem);
+  background: var(--omr-bg);
+  color: var(--omr-text);
+}
+
+body.off-switch-method-redesign-page main {
+  overflow: clip;
+}
+
+body.off-switch-method-redesign-page .om-section > .om-container,
+body.off-switch-method-redesign-page .om-formats > .om-container,
+body.off-switch-method-redesign-page .om-boundary > .om-container {
+  width: min(100% - 2rem, 1180px) !important;
+  max-width: 1180px !important;
+  margin-inline: auto !important;
+  padding-inline: 0 !important;
+}
+
+/* Hero remains the current hero. Only the museum-style labels become stronger. */
+body.off-switch-method-redesign-page .om-hero .os-character-label,
+body.off-switch-method-redesign-page .om-scope .os-character-label {
+  min-width: max-content;
+  padding: .45rem .72rem !important;
+  border: 1px solid rgba(27, 71, 43, .28) !important;
+  border-radius: .45rem !important;
+  background: rgba(255, 254, 248, .96) !important;
+  color: var(--omr-ink-900) !important;
+  font: 800 .78rem/1.1 "Segoe UI", sans-serif !important;
+  letter-spacing: .015em !important;
+  text-shadow: none !important;
+  box-shadow: 0 5px 15px rgba(29, 64, 40, .14) !important;
+  backdrop-filter: blur(5px);
+}
+
+body.off-switch-method-redesign-page .om-hero .os-character-label::before,
+body.off-switch-method-redesign-page .om-scope .os-character-label::before {
+  background: var(--omr-green-700) !important;
+}
+
+/* Shared editorial system below the unchanged green thesis strip. */
+body.off-switch-method-redesign-page .om-section,
+body.off-switch-method-redesign-page .om-formats {
+  padding-block: clamp(4.5rem, 8vw, 7.5rem) !important;
+  color: var(--omr-text);
+}
+
+body.off-switch-method-redesign-page .om-scope,
+body.off-switch-method-redesign-page .om-dog,
+body.off-switch-method-redesign-page .om-sequence,
+body.off-switch-method-redesign-page .om-ukraine {
+  background: var(--omr-cream-100) !important;
+}
+
+body.off-switch-method-redesign-page .om-tool,
+body.off-switch-method-redesign-page .om-limits,
+body.off-switch-method-redesign-page .om-cases {
+  background: var(--omr-paper) !important;
+}
+
+body.off-switch-method-redesign-page .om-mechanism,
+body.off-switch-method-redesign-page .om-formats {
+  background: var(--omr-mint-100) !important;
+}
+
+body.off-switch-method-redesign-page .om-map {
+  background: #f7efc9 !important;
+}
+
+body.off-switch-method-redesign-page .om-section-head {
+  width: 100% !important;
+  max-width: 880px !important;
+  margin: 0 0 clamp(2rem, 4vw, 3.5rem) !important;
+}
+
+body.off-switch-method-redesign-page .om-section-head--split {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 1.5rem !important;
+  max-width: none !important;
+  align-items: end !important;
+}
+
+body.off-switch-method-redesign-page .om-section-head--split > p {
+  max-width: 65ch !important;
+  margin: 0 !important;
+  color: var(--omr-text-muted) !important;
+  font-size: 1rem !important;
+  line-height: 1.65 !important;
+}
+
+body.off-switch-method-redesign-page .om-section-head h2 {
+  max-width: 18ch;
+  margin: .65rem 0 0 !important;
+  color: var(--omr-text) !important;
+  font-family: Georgia, "Times New Roman", serif !important;
+  font-size: clamp(2.25rem, 6.3vw, 4.35rem) !important;
+  font-weight: 400 !important;
+  line-height: 1.02 !important;
+  letter-spacing: -.035em !important;
+}
+
+body.off-switch-method-redesign-page .om-eyebrow {
+  margin: 0 !important;
+  color: var(--omr-accent) !important;
+  font: 800 .75rem/1.25 "Segoe UI", sans-serif !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase !important;
+}
+
+body.off-switch-method-redesign-page .om-section p,
+body.off-switch-method-redesign-page .om-formats p {
+  color: var(--omr-text-muted);
+}
+
+/* Every visual is a complete rectangular scene. */
+body.off-switch-method-redesign-page .om-section .om-media {
+  overflow: hidden !important;
+  border: 1px solid var(--omr-line) !important;
+  border-radius: var(--omr-radius-md) !important;
+  background: #edf1e3 !important;
+  box-shadow: var(--omr-shadow-1) !important;
+}
+
+body.off-switch-method-redesign-page .om-section .om-media > img,
+body.off-switch-method-redesign-page .om-format-door figure img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  transform: none !important;
+}
+
+/* Scope: one complete scene + four clear manifestation cards. */
+body.off-switch-method-redesign-page .om-scope__composition {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 1.5rem !important;
+  align-items: stretch !important;
+}
+
+body.off-switch-method-redesign-page .om-scope__media {
+  min-height: 0 !important;
+  margin: 0 !important;
+  aspect-ratio: 16 / 9 !important;
+}
+
+body.off-switch-method-redesign-page .om-scope__media img {
+  aspect-ratio: auto !important;
+}
+
+body.off-switch-method-redesign-page .om-scope__groups {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: .75rem !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+
+body.off-switch-method-redesign-page .om-scope__groups > article {
+  position: relative !important;
+  min-height: 0 !important;
+  padding: 1.2rem 1.25rem 1.2rem 3rem !important;
+  border: 1px solid var(--omr-card-border) !important;
+  border-radius: var(--omr-radius-sm) !important;
+  background: var(--omr-card-bg) !important;
+  box-shadow: none !important;
+}
+
+body.off-switch-method-redesign-page .om-scope__groups > article::before {
+  content: "" !important;
+  position: absolute !important;
+  top: 1.75rem !important;
+  left: 1.15rem !important;
+  width: 1rem !important;
+  height: 2px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: var(--omr-green-500) !important;
+}
+
+body.off-switch-method-redesign-page .om-scope__groups strong {
+  color: var(--omr-text) !important;
+  font: 800 .78rem/1.2 "Segoe UI", sans-serif !important;
+  letter-spacing: .04em !important;
+  text-transform: uppercase;
+}
+
+body.off-switch-method-redesign-page .om-scope__groups p {
+  margin: .45rem 0 0 !important;
+  font-size: 1rem !important;
+  line-height: 1.55 !important;
+}
+
+body.off-switch-method-redesign-page .om-scope__result {
+  max-width: 78ch !important;
+  margin: clamp(2rem, 4vw, 3.25rem) 0 0 auto !important;
+  padding: 1.5rem 1.65rem !important;
+  border: 0 !important;
+  border-left: 4px solid var(--omr-green-500) !important;
+  border-radius: 0 var(--omr-radius-sm) var(--omr-radius-sm) 0 !important;
+  background: rgba(255, 254, 248, .72) !important;
+  color: var(--omr-text) !important;
+  font-size: 1.05rem !important;
+  line-height: 1.65 !important;
+}
+
+/* Technique: documentary photo sequence and readable step cards. */
+body.off-switch-method-redesign-page .om-tool__layout {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 2rem !important;
+  align-items: start !important;
+}
+
+body.off-switch-method-redesign-page .om-tool__media {
+  min-height: 0 !important;
+  overflow: visible !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  aspect-ratio: auto !important;
+}
+
+body.off-switch-method-redesign-page .om-technique-photos {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: .9rem !important;
+  height: auto !important;
+  padding: 0 !important;
+  background: transparent !important;
+}
+
+body.off-switch-method-redesign-page .om-technique-frame {
+  position: relative !important;
+  display: grid !important;
+  grid-template-rows: minmax(0, 1fr) auto !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  border: 1px solid var(--omr-card-border) !important;
+  border-radius: var(--omr-radius-sm) !important;
+  background: #eef2e5 !important;
+  background-image: none !important;
+  box-shadow: var(--omr-shadow-1) !important;
+  aspect-ratio: auto !important;
+}
+
+body.off-switch-method-redesign-page .om-technique-frame img {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  aspect-ratio: 3 / 2 !important;
+  object-fit: contain !important;
+  object-position: center !important;
+}
+
+body.off-switch-method-redesign-page .om-technique-frame p {
+  position: static !important;
+  display: grid !important;
+  grid-template-columns: auto 1fr;
+  gap: .75rem;
+  align-items: center;
+  margin: 0 !important;
+  padding: 1rem 1.1rem !important;
+  background: var(--omr-paper) !important;
+  color: var(--omr-text) !important;
+  font: 700 .9rem/1.35 "Segoe UI", sans-serif !important;
+}
+
+body.off-switch-method-redesign-page .om-technique-frame p b {
+  color: var(--omr-accent);
+}
+
+body.off-switch-method-redesign-page .om-steps--compact {
+  display: grid !important;
+  gap: .75rem !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+body.off-switch-method-redesign-page .om-steps--compact > li {
+  position: relative !important;
+  display: grid !important;
+  grid-template-columns: 2.25rem minmax(0, 1fr) !important;
+  gap: 1rem !important;
+  min-height: 0 !important;
+  padding: 1.2rem !important;
+  border: 1px solid var(--omr-card-border) !important;
+  border-radius: var(--omr-radius-sm) !important;
+  background: var(--omr-paper) !important;
+  box-shadow: none !important;
+}
+
+body.off-switch-method-redesign-page .om-steps--compact > li > span {
+  display: grid !important;
+  width: 2.25rem !important;
+  height: 2.25rem !important;
+  place-items: center;
+  border-radius: 50% !important;
+  background: var(--omr-lime-300) !important;
+  color: var(--omr-text) !important;
+  font: 800 .76rem/1 "Segoe UI", sans-serif !important;
+}
+
+body.off-switch-method-redesign-page .om-steps--compact strong {
+  color: var(--omr-text) !important;
+  font-size: 1.05rem !important;
+  line-height: 1.3 !important;
+}
+
+body.off-switch-method-redesign-page .om-steps--compact p {
+  margin: .45rem 0 0 !important;
+  font-size: .95rem !important;
+  line-height: 1.55 !important;
+}
+
+body.off-switch-method-redesign-page .om-tool__notes {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 1rem !important;
+  margin-top: 2rem !important;
+}
+
+body.off-switch-method-redesign-page .om-tool__autonomy,
+body.off-switch-method-redesign-page .om-tool__privacy,
+body.off-switch-method-redesign-page .om-speed {
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: var(--omr-card-padding) !important;
+  border: 1px solid var(--omr-card-border) !important;
+  border-radius: var(--omr-radius-sm) !important;
+  background: var(--omr-surface-soft) !important;
+  color: var(--omr-text) !important;
+  box-shadow: none !important;
+  font-size: 1rem !important;
+  line-height: 1.6 !important;
+}
+
+body.off-switch-method-redesign-page .om-speed {
+  background: var(--omr-green-800) !important;
+}
+
+body.off-switch-method-redesign-page .om-speed span,
+body.off-switch-method-redesign-page .om-speed strong,
+body.off-switch-method-redesign-page .om-speed p {
+  color: #fffef7 !important;
+}
+
+body.off-switch-method-redesign-page .om-speed strong {
+  display: block;
+  margin-top: .4rem;
+  font: 400 clamp(1.8rem, 5vw, 2.75rem)/1 Georgia, serif;
+}
+
+/* Mechanism: image and cards form one editorial spread. */
+body.off-switch-method-redesign-page .om-chain {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: .8rem !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+
+body.off-switch-method-redesign-page .om-chain::before,
+body.off-switch-method-redesign-page .om-chain > article::after {
+  display: none !important;
+}
+
+body.off-switch-method-redesign-page .om-mechanism__media {
+  width: 100% !important;
+  min-height: 0 !important;
+  margin: 0 0 1rem !important;
+  aspect-ratio: 16 / 9 !important;
+}
+
+body.off-switch-method-redesign-page .om-mechanism__media > img {
+  min-height: 0 !important;
+}
+
+body.off-switch-method-redesign-page .om-chain > article {
+  position: relative !important;
+  min-height: 0 !important;
+  padding: 1.25rem 1.35rem !important;
+  border: 1px solid var(--omr-card-border) !important;
+  border-radius: var(--omr-radius-sm) !important;
+  background: rgba(255, 254, 248, .88) !important;
+  color: var(--omr-text) !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+body.off-switch-method-redesign-page .om-chain > article::before {
+  display: none !important;
+}
+
+body.off-switch-method-redesign-page .om-chain > article > span {
+  display: block !important;
+  margin: 0 0 .55rem !important;
+  color: var(--omr-green-500) !important;
+  font: 800 .78rem/1 "Segoe UI", sans-serif !important;
+  letter-spacing: .08em !important;
+}
+
+body.off-switch-method-redesign-page .om-chain > article > strong {
+  display: block !important;
+  margin: 0 !important;
+  color: var(--omr-text) !important;
+  font: 400 1.45rem/1.15 Georgia, serif !important;
+}
+
+body.off-switch-method-redesign-page .om-chain > article > p {
+  margin: .55rem 0 0 !important;
+  color: var(--omr-text-muted) !important;
+  font-size: 1rem !important;
+  line-height: 1.55 !important;
+}
+
+body.off-switch-method-redesign-page .om-chain > article.om-chain__stop {
+  border-color: transparent !important;
+  background: var(--omr-green-800) !important;
+  box-shadow: var(--omr-shadow-2) !important;
+}
+
+body.off-switch-method-redesign-page .om-chain > article.om-chain__stop > span,
+body.off-switch-method-redesign-page .om-chain > article.om-chain__stop > strong,
+body.off-switch-method-redesign-page .om-chain > article.om-chain__stop > p,
+body.off-switch-method-redesign-page .om-chain > article.om-chain__stop em {
+  color: #fffef7 !important;
+}
+
+body.off-switch-method-redesign-page .om-chain__switch {
+  display: grid !important;
+  gap: .3rem !important;
+  margin-top: 1rem !important;
+  padding: 1rem 0 0 !important;
+  border: 0 !important;
+  border-top: 1px solid rgba(255, 255, 255, .25) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body.off-switch-method-redesign-page .om-chain__switch b {
+  color: var(--omr-lime-300) !important;
+  font: 800 .76rem/1.2 "Segoe UI", sans-serif !important;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+body.off-switch-method-redesign-page .om-interrupt {
+  display: grid !important;
+  grid-template-columns: auto minmax(0, 1fr) !important;
+  gap: 1rem !important;
+  max-width: none !important;
+  margin: 1.5rem 0 0 !important;
+  padding: 1.35rem 1.5rem !important;
+  border: 1px solid var(--omr-line-strong) !important;
+  border-radius: var(--omr-radius-sm) !important;
+  background: transparent !important;
+  color: var(--omr-text) !important;
+  box-shadow: none !important;
+}
+
+body.off-switch-method-redesign-page .om-interrupt > span {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--omr-green-800);
+  color: white;
+}
+
+body.off-switch-method-redesign-page .om-interrupt p {
+  margin: 0 !important;
+  color: var(--omr-text) !important;
+  font-size: 1rem !important;
+  line-height: 1.6 !important;
+}
+
+/* Story sections: complete image on one side, text cards on the other. */
+body.off-switch-method-redesign-page .om-dog__composition,
+body.off-switch-method-redesign-page .om-map__layout {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 1.5rem !important;
+  align-items: start !important;
+}
+
+body.off-switch-method-redesign-page .om-dog__media,
+body.off-switch-method-redesign-page .om-map__media {
+  width: 100% !important;
+  max-width: none !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  aspect-ratio: 16 / 9 !important;
+}
+
+body.off-switch-method-redesign-page .om-dog__story {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: .8rem !important;
+  width: 100% !important;
+  max-width: none !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+
+body.off-switch-method-redesign-page .om-dog__story > article {
+  position: relative !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 1.25rem 1.25rem 1.25rem 3.5rem !important;
+  border: 1px solid var(--omr-card-border) !important;
+  border-radius: var(--omr-radius-sm) !important;
+  background: var(--omr-paper) !important;
+  box-shadow: none !important;
+}
+
+body.off-switch-method-redesign-page .om-dog__story > article:nth-child(2),
+body.off-switch-method-redesign-page .om-dog__story > article:last-child {
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 1.25rem 1.25rem 1.25rem 3.5rem !important;
+  border: 1px solid var(--omr-card-border) !important;
+  border-radius: var(--omr-radius-sm) !important;
+  background: var(--omr-paper) !important;
+  box-shadow: none !important;
+}
+
+body.off-switch-method-redesign-page .om-dog__story > article::before {
+  content: "" !important;
+  position: absolute !important;
+  top: 1.5rem !important;
+  left: 1.35rem !important;
+  display: block !important;
+  width: .75rem !important;
+  height: .75rem !important;
+  border: 3px solid var(--omr-green-500) !important;
+  border-radius: 50% !important;
+  background: var(--omr-paper) !important;
+}
+
+body.off-switch-method-redesign-page .om-dog__story span {
+  color: var(--omr-green-500) !important;
+  font: 800 .75rem/1 "Segoe UI", sans-serif !important;
+}
+
+body.off-switch-method-redesign-page .om-dog__story strong {
+  display: block !important;
+  margin: .45rem 0 0 !important;
+  color: var(--omr-text) !important;
+  font: 400 1.3rem/1.2 Georgia, serif !important;
+}
+
+body.off-switch-method-redesign-page .om-dog__story p {
+  margin: .5rem 0 0 !important;
+  font-size: .98rem !important;
+  line-height: 1.55 !important;
+}
+
+body.off-switch-method-redesign-page .om-map__copy {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+body.off-switch-method-redesign-page .om-ratio {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: .8rem !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+
+body.off-switch-method-redesign-page .om-ratio > div {
+  min-height: 0 !important;
+  padding: var(--omr-card-padding) !important;
+  border: 1px solid var(--omr-card-border) !important;
+  border-radius: var(--omr-radius-sm) !important;
+  background: var(--omr-paper) !important;
+  box-shadow: none !important;
+}
+
+body.off-switch-method-redesign-page .om-ratio > div:last-child {
+  background: var(--omr-green-800) !important;
+}
+
+body.off-switch-method-redesign-page .om-ratio span {
+  color: var(--omr-green-500) !important;
+  font: 800 .75rem/1.2 "Segoe UI", sans-serif !important;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+body.off-switch-method-redesign-page .om-ratio strong {
+  display: block;
+  margin-top: .65rem;
+  color: var(--omr-text) !important;
+  font: 400 1.6rem/1.15 Georgia, serif !important;
+}
+
+body.off-switch-method-redesign-page .om-ratio p {
+  margin: .75rem 0 0 !important;
+  font-size: 1rem !important;
+  line-height: 1.6 !important;
+}
+
+body.off-switch-method-redesign-page .om-ratio > div:last-child span {
+  color: var(--omr-lime-300) !important;
+}
+
+body.off-switch-method-redesign-page .om-ratio > div:last-child strong,
+body.off-switch-method-redesign-page .om-ratio > div:last-child p {
+  color: #fffef7 !important;
+}
+
+body.off-switch-method-redesign-page .om-map__note {
+  margin: .8rem 0 0 !important;
+  padding: 1.35rem 1.5rem !important;
+  border: 1px solid rgba(43, 75, 41, .2) !important;
+  border-radius: var(--omr-radius-sm) !important;
+  background: rgba(255, 254, 248, .6) !important;
+  color: var(--omr-text) !important;
+  font-size: 1rem !important;
+  line-height: 1.6 !important;
+}
+
+/* Two work scales: heading and image share the screen, conclusions are cards. */
+body.off-switch-method-redesign-page .om-sequence > .om-container {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 1.5rem !important;
+}
+
+body.off-switch-method-redesign-page .om-depth__visual {
+  width: 100% !important;
+  max-width: none !important;
+  height: auto !important;
+  margin: 0 !important;
+  aspect-ratio: 16 / 9 !important;
+}
+
+body.off-switch-method-redesign-page .om-depth {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 1rem !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+
+body.off-switch-method-redesign-page .om-depth::before {
+  display: none !important;
+}
+
+body.off-switch-method-redesign-page .om-depth > article {
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: var(--omr-card-padding) !important;
+  border: 1px solid var(--omr-card-border) !important;
+  border-radius: var(--omr-radius-md) !important;
+  background: var(--omr-paper) !important;
+  box-shadow: var(--omr-shadow-1) !important;
+}
+
+body.off-switch-method-redesign-page .om-depth > article:last-child {
+  background: var(--omr-green-800) !important;
+}
+
+body.off-switch-method-redesign-page .om-depth span {
+  color: var(--omr-green-500) !important;
+  font: 800 .75rem/1.25 "Segoe UI", sans-serif !important;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+body.off-switch-method-redesign-page .om-depth strong {
+  display: block !important;
+  max-width: none !important;
+  margin: .75rem 0 0 !important;
+  color: var(--omr-text) !important;
+  font: 400 clamp(1.6rem, 4vw, 2.5rem)/1.1 Georgia, serif !important;
+}
+
+body.off-switch-method-redesign-page .om-depth p {
+  max-width: 62ch !important;
+  margin: .8rem 0 0 !important;
+  color: var(--omr-text-muted) !important;
+  font-size: 1rem !important;
+  line-height: 1.6 !important;
+}
+
+body.off-switch-method-redesign-page .om-depth > article:last-child span {
+  color: var(--omr-lime-300) !important;
+}
+
+body.off-switch-method-redesign-page .om-depth > article:last-child strong,
+body.off-switch-method-redesign-page .om-depth > article:last-child p {
+  color: #fffef7 !important;
+}
+
+/* What it does: three compact horizontal cards. */
+body.off-switch-method-redesign-page .om-limits__grid {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 1rem !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+
+body.off-switch-method-redesign-page .om-limits__grid > article {
+  display: grid !important;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 1.2rem;
+  align-items: start;
+  min-height: 0 !important;
+  padding: var(--omr-card-padding) !important;
+  border: 1px solid var(--omr-card-border) !important;
+  border-radius: var(--omr-radius-sm) !important;
+  background: var(--omr-paper) !important;
+  box-shadow: var(--omr-shadow-1) !important;
+}
+
+body.off-switch-method-redesign-page .om-limits__grid strong {
+  color: var(--omr-green-500) !important;
+  font: 400 2rem/1 Georgia, serif !important;
+}
+
+body.off-switch-method-redesign-page .om-limits__grid p {
+  margin: 0 !important;
+  color: var(--omr-text) !important;
+  font: 400 1.3rem/1.35 Georgia, serif !important;
+}
+
+body.off-switch-method-redesign-page .om-limits__note {
+  max-width: 78ch !important;
+  margin: 1.5rem 0 0 !important;
+  padding: 1.3rem 1.5rem !important;
+  border: 0 !important;
+  border-left: 4px solid var(--omr-green-500) !important;
+  background: var(--omr-lime-100) !important;
+  color: var(--omr-text) !important;
+  font-size: 1rem !important;
+  line-height: 1.6 !important;
+}
+
+/* Result levels: dark editorial band with clearly separated cards. */
+body.off-switch-method-redesign-page .om-measure {
+  background: var(--omr-green-800) !important;
+}
+
+body.off-switch-method-redesign-page .om-measure h2,
+body.off-switch-method-redesign-page .om-measure .om-eyebrow {
+  color: #fffef7 !important;
+}
+
+body.off-switch-method-redesign-page .om-measure .om-eyebrow {
+  opacity: .78;
+}
+
+body.off-switch-method-redesign-page .om-measure__grid {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 1rem !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+
+body.off-switch-method-redesign-page .om-measure__grid > article,
+body.off-switch-method-redesign-page .om-measure__grid > article:nth-child(2),
+body.off-switch-method-redesign-page .om-measure__grid > article:nth-child(3) {
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: var(--omr-card-padding) !important;
+  border: 1px solid rgba(255, 255, 255, .24) !important;
+  border-radius: var(--omr-radius-md) !important;
+  background: rgba(255, 255, 255, .08) !important;
+  color: #fffef7 !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+body.off-switch-method-redesign-page .om-measure__grid > article:last-child {
+  background: var(--omr-lime-300) !important;
+  color: var(--omr-text) !important;
+}
+
+body.off-switch-method-redesign-page .om-measure__number {
+  color: rgba(255, 255, 255, .68) !important;
+  font: 400 2.4rem/1 Georgia, serif !important;
+}
+
+body.off-switch-method-redesign-page .om-measure__grid > article:last-child .om-measure__number {
+  color: var(--omr-green-700) !important;
+}
+
+body.off-switch-method-redesign-page .om-measure__grid strong {
+  display: block !important;
+  margin-top: 1.5rem !important;
+  color: inherit !important;
+  font: 400 1.8rem/1.1 Georgia, serif !important;
+}
+
+body.off-switch-method-redesign-page .om-measure__grid p {
+  margin: .75rem 0 0 !important;
+  color: inherit !important;
+  font-size: 1rem !important;
+  line-height: 1.6 !important;
+}
+
+body.off-switch-method-redesign-page .om-measure__life {
+  display: block !important;
+  max-width: 78ch !important;
+  margin: 1.5rem 0 0 !important;
+  padding: 1.25rem 1.5rem !important;
+  border: 1px solid rgba(255, 255, 255, .2) !important;
+  border-radius: var(--omr-radius-sm) !important;
+  background: rgba(0, 0, 0, .09) !important;
+  color: #fffef7 !important;
+  font-size: 1rem !important;
+  line-height: 1.65 !important;
+}
+
+/* Programme evidence: complete computer scene, Uģis only inside its screen. */
+body.off-switch-method-redesign-page .om-ukraine__context {
+  max-width: 76ch !important;
+  margin: -1.5rem 0 2rem !important;
+  padding: 1.1rem 1.35rem !important;
+  border-left: 4px solid var(--omr-green-500) !important;
+  color: var(--omr-text) !important;
+  font-size: 1rem !important;
+  line-height: 1.6 !important;
+}
+
+body.off-switch-method-redesign-page .om-ukraine__visual {
+  width: 100% !important;
+  max-width: 960px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body.off-switch-method-redesign-page .om-ukraine__stage {
+  position: relative !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  border-radius: var(--omr-radius-md) !important;
+  aspect-ratio: 16 / 9 !important;
+}
+
+body.off-switch-method-redesign-page .om-ukraine__network {
+  position: absolute !important;
+  inset: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: var(--omr-radius-md) !important;
+}
+
+body.off-switch-method-redesign-page .om-ukraine__network::after {
+  display: none !important;
+}
+
+body.off-switch-method-redesign-page .om-ukraine__network img {
+  object-fit: contain !important;
+}
+
+body.off-switch-method-redesign-page .om-ukraine__host {
+  position: absolute !important;
+  z-index: 2 !important;
+  top: 28.6% !important;
+  left: 50% !important;
+  width: 12.5% !important;
+  min-width: 0 !important;
+  aspect-ratio: 1.2 / 1 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  border: 0 !important;
+  border-radius: 17% / 20% !important;
+  background: #d5d7d3 !important;
+  box-shadow: none !important;
+  transform: translateX(-50%) !important;
+}
+
+body.off-switch-method-redesign-page .om-ukraine__host img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: 50% 28% !important;
+  transform: none !important;
+}
+
+body.off-switch-method-redesign-page .om-ukraine__host figcaption {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+body.off-switch-method-redesign-page .om-ukraine__stats {
+  position: relative !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: .75rem !important;
+  left: auto !important;
+  top: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  margin: 1rem 0 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+@media (max-width: 767px) {
+  body.off-switch-method-redesign-page {
+    overflow-x: clip;
+  }
+
+  body.off-switch-method-redesign-page .om-hero .os-character-label,
+  body.off-switch-method-redesign-page .om-scope .os-character-label {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    padding: .35rem .18rem !important;
+    font-size: .61rem !important;
+    line-height: 1.12 !important;
+    overflow-wrap: anywhere;
+  }
+}
+
+body.off-switch-method-redesign-page .om-ukraine__stats > article,
+body.off-switch-method-redesign-page .om-ukraine__stats > article:first-child {
+  display: grid !important;
+  grid-template-columns: minmax(5.5rem, auto) minmax(0, 1fr) !important;
+  gap: 1rem !important;
+  align-items: center !important;
+  min-height: 0 !important;
+  padding: 1.15rem 1.25rem !important;
+  border: 1px solid var(--omr-card-border) !important;
+  border-radius: var(--omr-radius-sm) !important;
+  background: var(--omr-paper) !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+}
+
+body.off-switch-method-redesign-page .om-ukraine__stats strong,
+body.off-switch-method-redesign-page .om-ukraine__stats > article:first-child strong {
+  display: block !important;
+  color: var(--omr-green-700) !important;
+  font: 400 clamp(1.9rem, 7vw, 3.2rem)/.95 Georgia, serif !important;
+  white-space: nowrap;
+}
+
+body.off-switch-method-redesign-page .om-ukraine__stats span,
+body.off-switch-method-redesign-page .om-ukraine__stats > article:first-child span {
+  position: static !important;
+  margin: 0 !important;
+  color: var(--omr-text-muted) !important;
+  font: 700 .82rem/1.35 "Segoe UI", sans-serif !important;
+}
+
+body.off-switch-method-redesign-page .om-evidence-note {
+  max-width: 82ch !important;
+  margin: 1.25rem auto 0 !important;
+  color: var(--omr-text-muted) !important;
+  font-size: .9rem !important;
+  line-height: 1.6 !important;
+}
+
+/* Cases: one anchor story and three supporting cards. */
+body.off-switch-method-redesign-page .om-cases__grid {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 1rem !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+
+body.off-switch-method-redesign-page .om-cases__grid > article,
+body.off-switch-method-redesign-page .om-cases__grid > article:first-child,
+body.off-switch-method-redesign-page .om-cases__grid > article:not(:first-child) {
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: var(--omr-card-padding) !important;
+  border: 1px solid var(--omr-card-border) !important;
+  border-radius: var(--omr-radius-md) !important;
+  background: var(--omr-paper) !important;
+  box-shadow: var(--omr-shadow-1) !important;
+  grid-column: auto !important;
+  grid-row: auto !important;
+}
+
+body.off-switch-method-redesign-page .om-cases__grid > article:first-child {
+  background: var(--omr-lime-100) !important;
+}
+
+body.off-switch-method-redesign-page .om-cases__grid span {
+  display: block !important;
+  color: var(--omr-green-700) !important;
+  font: 800 .75rem/1.3 "Segoe UI", sans-serif !important;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+body.off-switch-method-redesign-page .om-cases__grid strong {
+  display: inline-block !important;
+  margin-top: 1.25rem !important;
+  color: var(--omr-green-700) !important;
+  font: 400 clamp(2.3rem, 8vw, 4.5rem)/.95 Georgia, serif !important;
+  letter-spacing: -.04em;
+}
+
+body.off-switch-method-redesign-page .om-cases__grid small {
+  margin-left: .5rem;
+  color: var(--omr-text-muted) !important;
+  font: 700 .75rem/1 "Segoe UI", sans-serif !important;
+}
+
+body.off-switch-method-redesign-page .om-cases__grid h3 {
+  margin: 1.25rem 0 0 !important;
+  color: var(--omr-text) !important;
+  font: 400 1.5rem/1.2 Georgia, serif !important;
+}
+
+body.off-switch-method-redesign-page .om-cases__grid p {
+  margin: .7rem 0 0 !important;
+  color: var(--omr-text-muted) !important;
+  font-size: 1rem !important;
+  line-height: 1.6 !important;
+}
+
+/* Format choice: explain first, then three real doors. */
+body.off-switch-method-redesign-page .om-format-fit {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: .8rem !important;
+  margin: 0 0 2rem !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+
+body.off-switch-method-redesign-page .om-format-fit > article {
+  min-height: 0 !important;
+  padding: 1.25rem !important;
+  border: 1px solid var(--omr-card-border) !important;
+  border-radius: var(--omr-radius-sm) !important;
+  background: rgba(255, 254, 248, .72) !important;
+  box-shadow: none !important;
+}
+
+body.off-switch-method-redesign-page .om-format-fit span {
+  color: var(--omr-text) !important;
+  font: 400 1.25rem/1.25 Georgia, serif !important;
+}
+
+body.off-switch-method-redesign-page .om-format-fit p {
+  margin: .6rem 0 0 !important;
+  font-size: .95rem !important;
+  line-height: 1.55 !important;
+}
+
+body.off-switch-method-redesign-page .om-format-doors {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 1rem !important;
+  margin: 0 !important;
+}
+
+body.off-switch-method-redesign-page .om-format-door {
+  position: relative !important;
+  display: flex !important;
+  min-height: 0 !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+  padding: 0 0 1.5rem !important;
+  border: 1px solid var(--omr-card-border) !important;
+  border-radius: var(--omr-radius-md) !important;
+  background: var(--omr-paper) !important;
+  color: var(--omr-text) !important;
+  text-decoration: none !important;
+  box-shadow: var(--omr-shadow-1) !important;
+  transform: none !important;
+  transition: transform 200ms ease-out, box-shadow 200ms ease-out, background-color 150ms ease-in-out !important;
+}
+
+body.off-switch-method-redesign-page .om-format-door figure {
+  height: auto !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  border-bottom: 1px solid var(--omr-card-border);
+  background: #edf1e3;
+  aspect-ratio: 16 / 9 !important;
+}
+
+body.off-switch-method-redesign-page .om-format-door > span {
+  position: static !important;
+  display: grid !important;
+  width: 2.5rem !important;
+  height: 2.5rem !important;
+  margin: -1.25rem 1.5rem 0 !important;
+  place-items: center;
+  border: 4px solid var(--omr-paper) !important;
+  border-radius: 50% !important;
+  background: var(--omr-green-700) !important;
+  color: #fff !important;
+  font: 800 .76rem/1 "Segoe UI", sans-serif !important;
+}
+
+body.off-switch-method-redesign-page .om-format-door > p {
+  min-height: 0 !important;
+  margin: 1.25rem 1.5rem 0 !important;
+  color: var(--omr-text-muted) !important;
+  font-size: 1rem !important;
+  line-height: 1.55 !important;
+}
+
+body.off-switch-method-redesign-page .om-format-door h3 {
+  margin: 1.5rem 1.5rem 0 !important;
+  color: var(--omr-text) !important;
+  font: 400 clamp(1.75rem, 6vw, 2.5rem)/1.05 Georgia, serif !important;
+}
+
+body.off-switch-method-redesign-page .om-format-door small {
+  margin: 1.5rem 1.5rem 0 !important;
+  padding-top: 1rem !important;
+  border-top: 1px solid var(--omr-card-border) !important;
+  color: var(--omr-text-muted) !important;
+  font: 800 .73rem/1.4 "Segoe UI", sans-serif !important;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+body.off-switch-method-redesign-page .om-format-door:hover,
+body.off-switch-method-redesign-page .om-format-door:focus,
+body.off-switch-method-redesign-page .om-format-door:focus-visible {
+  z-index: 2;
+  border-color: var(--omr-line-strong) !important;
+  background: #f8fbe8 !important;
+  box-shadow: var(--omr-shadow-2) !important;
+  transform: translate(6px, -8px) !important;
+}
+
+body.off-switch-method-redesign-page .om-format-door:focus-visible {
+  outline: 3px solid rgba(63, 119, 72, .42) !important;
+  outline-offset: 4px !important;
+}
+
+body.off-switch-method-redesign-page .om-boundary {
+  padding-block: 1rem !important;
+  background: var(--omr-green-800) !important;
+}
+
+body.off-switch-method-redesign-page .om-boundary p {
+  margin: 0 !important;
+  color: #fffef7 !important;
+  font-size: .9rem !important;
+  line-height: 1.55 !important;
+}
+
+/* Tablet enhancement. */
+@media (min-width: 768px) {
+  body.off-switch-method-redesign-page .om-section > .om-container,
+  body.off-switch-method-redesign-page .om-formats > .om-container,
+  body.off-switch-method-redesign-page .om-boundary > .om-container {
+    width: min(100% - 3.5rem, 1180px) !important;
+  }
+
+  body.off-switch-method-redesign-page .om-section-head--split {
+    grid-template-columns: minmax(0, 1.18fr) minmax(18rem, .82fr) !important;
+    gap: 3rem !important;
+  }
+
+  body.off-switch-method-redesign-page .om-technique-photos {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+
+  body.off-switch-method-redesign-page .om-technique-frame img { height: auto !important; }
+
+  body.off-switch-method-redesign-page .om-tool__notes {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  body.off-switch-method-redesign-page .om-tool__privacy {
+    grid-column: 1 / -1;
+  }
+
+  body.off-switch-method-redesign-page .om-limits__grid,
+  body.off-switch-method-redesign-page .om-measure__grid,
+  body.off-switch-method-redesign-page .om-format-fit,
+  body.off-switch-method-redesign-page .om-format-doors {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+
+  body.off-switch-method-redesign-page .om-ukraine__stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  body.off-switch-method-redesign-page .om-cases__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  body.off-switch-method-redesign-page .om-cases__grid > article:first-child {
+    grid-column: 1 / -1 !important;
+  }
+}
+
+/* Desktop composition. */
+@media (min-width: 1024px) {
+  body.off-switch-method-redesign-page .om-scope__composition {
+    grid-template-columns: minmax(0, 1.34fr) minmax(22rem, .66fr) !important;
+    gap: clamp(2.5rem, 5vw, 5rem) !important;
+    align-items: center !important;
+  }
+
+  body.off-switch-method-redesign-page .om-tool__layout {
+    grid-template-columns: minmax(0, 1.12fr) minmax(23rem, .88fr) !important;
+    gap: clamp(2.5rem, 5vw, 5rem) !important;
+  }
+
+  body.off-switch-method-redesign-page .om-technique-frame img { height: auto !important; }
+
+  body.off-switch-method-redesign-page .om-tool__notes {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+
+  body.off-switch-method-redesign-page .om-tool__privacy {
+    grid-column: auto;
+  }
+
+  body.off-switch-method-redesign-page .om-chain {
+    grid-template-columns: minmax(0, 1.18fr) minmax(22rem, .82fr) !important;
+    gap: .8rem clamp(2.5rem, 5vw, 4.5rem) !important;
+    align-items: stretch !important;
+  }
+
+  body.off-switch-method-redesign-page .om-mechanism__media {
+    grid-column: 1 !important;
+    grid-row: 1 / span 4 !important;
+    margin: 0 !important;
+    align-self: start !important;
+    aspect-ratio: 4 / 3 !important;
+  }
+
+  body.off-switch-method-redesign-page .om-chain > article {
+    grid-column: 2 !important;
+  }
+
+  body.off-switch-method-redesign-page .om-dog__composition,
+  body.off-switch-method-redesign-page .om-map__layout {
+    grid-template-columns: minmax(0, 1.24fr) minmax(22rem, .76fr) !important;
+    gap: clamp(2.5rem, 5vw, 5rem) !important;
+    align-items: center !important;
+  }
+
+  body.off-switch-method-redesign-page .om-sequence > .om-container {
+    grid-template-columns: minmax(18rem, .72fr) minmax(0, 1.28fr) !important;
+    gap: clamp(2.5rem, 5vw, 5rem) !important;
+    align-items: center !important;
+  }
+
+  body.off-switch-method-redesign-page .om-sequence .om-section-head {
+    grid-column: 1 !important;
+    margin: 0 !important;
+  }
+
+  body.off-switch-method-redesign-page .om-depth__visual {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+  }
+
+  body.off-switch-method-redesign-page .om-depth {
+    grid-column: 1 / -1 !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    margin-top: 1.25rem !important;
+  }
+
+  body.off-switch-method-redesign-page .om-ukraine__stats {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+
+  body.off-switch-method-redesign-page .om-ukraine__stats > article,
+  body.off-switch-method-redesign-page .om-ukraine__stats > article:first-child {
+    grid-template-columns: minmax(0, 1fr) !important;
+    align-content: start !important;
+    gap: .7rem !important;
+    padding: 1.4rem !important;
+  }
+
+  body.off-switch-method-redesign-page .om-cases__grid {
+    grid-template-columns: minmax(0, 1.15fr) minmax(22rem, .85fr) !important;
+  }
+
+  body.off-switch-method-redesign-page .om-cases__grid > article:first-child {
+    grid-column: 1 !important;
+    grid-row: 1 / span 3 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    padding: clamp(2rem, 4vw, 3.75rem) !important;
+  }
+
+  body.off-switch-method-redesign-page .om-cases__grid > article:not(:first-child) {
+    grid-column: 2 !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.off-switch-method-redesign-page .om-format-door {
+    transition: none !important;
+  }
+
+  body.off-switch-method-redesign-page .om-format-door:hover,
+  body.off-switch-method-redesign-page .om-format-door:focus,
+  body.off-switch-method-redesign-page .om-format-door:focus-visible {
+    transform: none !important;
+  }
+}

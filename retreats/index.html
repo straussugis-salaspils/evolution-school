@@ -1,23 +1,34 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Острова Везения · Линия удачи · Ядро силы</title>
+  <meta name="description" content="Острова Везения · Линия удачи · Ядро силы">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://evolution.yourbalancerestored.com/retreats/">
+  <meta property="og:title" content="Острова Везения · Линия удачи · Ядро силы">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:site_name" content="Evolution House">
+  <meta property="og:image" content="/assets/evolution-house-logo-approved.png">
+  <meta property="og:url" content="https://evolution.yourbalancerestored.com/retreats/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:description" content="Острова Везения · Линия удачи · Ядро силы">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 /* ─── TOKENS ────────────────────────────────────────────── */
 :root {
-  --bg:      #F7F0DF;
-  --bg2:     #FAF4E6;
+  --bg:      #F6F0FA;
+  --bg2:     #FBF8FC;
   --ink:     #102621;
-  --green:   #063F33;
+  --green:   #5B2D68;
   --gold:    #C79A3B;
   --gold2:   #D8B66A;
-  --sand:    #E9D8B8;
-  --sea:     #B9C9BA;
+  --sand:    #E8DDEE;
+  --sea:     #EEE6F3;
 
   --serif: 'Cormorant Garamond', Georgia, serif;
   --sans:  'Inter', system-ui, sans-serif;
@@ -39,7 +50,7 @@
   --rr:    20px;
   --cp:    40px;
   /* Warm sage — for "found" / "needs" states, keeps palette warm */
-  --sage:  #f0f4ea;
+  --sage:  #F0E8F3;
 }
 @media (max-width: 768px) {
   :root { --px: 20px; --sg: 44px; --cp: 24px; }
@@ -49,7 +60,7 @@
   .retreat__list li { font-size: 16px; }
   .whom-list li { font-size: 16px; }
   .nav-results li { font-size: 16px; }
-  .fork p { font-size: 16px; }
+  .choice-card p { font-size: 16px; }
 }
 
 /* ─── RESET ─────────────────────────────────────────────── */
@@ -74,7 +85,7 @@ img { display: block; max-width: 100%; }
 .narrative-frame { max-width: 1080px; margin: 0 auto; padding: 0 var(--px); }
 
 /* ─── TYPE ───────────────────────────────────────────────── */
-h1,h2,h3,h4 { font-family: var(--serif); color: var(--green); font-weight: 600; }
+h1,h2,h3,h4 { font-family: var(--serif); color: var(--green-text, var(--green)); font-weight: 600; }
 h1 { font-size: clamp(56px,7vw,96px); line-height: .92; letter-spacing: -0.03em; }
 h2 { font-size: clamp(36px,4.5vw,56px); line-height: 1.05; }
 h3 { font-size: clamp(24px,2.5vw,32px); line-height: 1.15; }
@@ -92,12 +103,12 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
 .pull {
   font-family: var(--serif);
   font-size: clamp(22px,2.5vw,32px);
-  line-height: 1.25; font-style: italic; color: var(--green);
+  line-height: 1.25; font-style: italic; color: var(--green-text, var(--green));
 }
 .hero-sub {
   font-family: var(--serif);
   font-size: clamp(22px,2.5vw,32px);
-  line-height: 1.2; font-style: italic; font-weight: 400; color: var(--green);
+  line-height: 1.2; font-style: italic; font-weight: 400; color: var(--green-text, var(--green));
 }
 
 /* ─── CARD ───────────────────────────────────────────────── */
@@ -113,7 +124,7 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
 .card--dark h1,.card--dark h2,.card--dark h3,.card--dark h4 { color: var(--bg2); }
 .card--dark p  { color: rgba(250,244,230,.88); }
 .card--sand  { background: var(--sand); }
-.card--warm  { background: #f5ecd4; border: 1.5px solid var(--gold); }
+.card--warm  { background: #EEE6F3; border: 1.5px solid var(--gold); }
 
 /* ─── BUTTON ─────────────────────────────────────────────── */
 .btn {
@@ -131,29 +142,7 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
   box-shadow: none;
 }
 .btn--outline:hover { background: var(--green); color: var(--bg2); }
-
-/* ─── DIVIDER ────────────────────────────────────────────── */
-.divider {
-  display: flex; align-items: center; justify-content: center;
-  gap: 16px; margin: 48px auto; opacity: .75;
-}
-.divider::before,.divider::after {
-  content: ''; display: block; width: 120px; height: 1px; background: var(--gold2);
-}
-.divider i {
-  width: 7px; height: 7px; background: var(--gold);
-  transform: rotate(45deg); flex-shrink: 0;
-}
-
 /* Route connector */
-.rline { width: 1px; height: 40px; background: var(--gold2); margin: 0 auto; opacity: .8; }
-.rdot  {
-  width: 10px; height: 10px; border-radius: 50%;
-  background: var(--green); border: 1.5px solid var(--gold);
-  margin: 0 auto; flex-shrink: 0;
-}
-
-/* ─── PLACEHOLDER ────────────────────────────────────────── */
 .ph {
   background: var(--sand); border: 1px dashed var(--gold2);
   border-radius: var(--rr); display: flex; align-items: center;
@@ -234,14 +223,9 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
 .rtag {
   display: inline-flex; align-items: center; gap: 8px;
   border: 1px solid rgba(199,154,59,.5); border-radius: 999px;
-  padding: 9px 18px; font-size: 13px; font-weight: 600; color: var(--green);
+  padding: 9px 18px; font-size: 13px; font-weight: 600; color: var(--green-text, var(--green));
   background: rgba(199,154,59,.05);
   letter-spacing: .02em;
-}
-.hero__line {
-  height: 1px; background: var(--gold2); opacity: .5;
-  margin-top: 48px; max-width: var(--mw);
-  margin-left: auto; margin-right: auto;
 }
 .route-map-visual {
   max-width: 620px;
@@ -311,7 +295,7 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
 }
 .sync__lost { background: var(--sand); }
 .sync__lost h3 { color: #4a5e55; }
-.sync__found h3 { color: var(--green); }
+.sync__found h3 { color: var(--green-text, var(--green)); }
 .sync__found { border-color: var(--gold); background: var(--sage); }
 .sync__items { list-style: none; margin-top: 16px; }
 .sync__items li {
@@ -409,15 +393,15 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
 /* ════════════════════════════════════════════════════════════
    WHY HARD
 ════════════════════════════════════════════════════════════ */
-.fork__grid {
+.choice-grid {
   display: grid; grid-template-columns: 1fr 1fr;
   gap: 24px; margin-top: 48px;
 }
-.fork--wants { background: var(--sand); border-color: rgba(184,166,106,.4); }
-.fork--wants h4 { color: #4a5e55; }
-.fork--needs  { background: var(--sage); border-color: var(--gold); }
-.fork p { font-size: 17px; margin-bottom: 12px; }
-@media (max-width: 768px) { .fork__grid { grid-template-columns: 1fr; } }
+.choice-card--wants { background: var(--sand); border-color: rgba(184,166,106,.4); }
+.choice-card--wants h4 { color: #4a5e55; }
+.choice-card--needs  { background: var(--sage); border-color: var(--gold); }
+.choice-card p { font-size: 17px; margin-bottom: 12px; }
+@media (max-width: 768px) { .choice-grid { grid-template-columns: 1fr; } }
 
 
 /* ════════════════════════════════════════════════════════════
@@ -578,11 +562,11 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
 .price-row__label { font-size: 16px; }
 .price-row__amt {
   font-family: var(--serif); font-size: 22px;
-  font-weight: 600; color: var(--green); white-space: nowrap;
+  font-weight: 600; color: var(--green-text, var(--green)); white-space: nowrap;
 }
 .price-big {
   font-family: var(--serif); font-size: 48px;
-  font-weight: 600; color: var(--green); line-height: 1;
+  font-weight: 600; color: var(--green-text, var(--green)); line-height: 1;
   margin-bottom: 8px;
 }
 .price-fine { font-size: 13px; color: #7a6e58; margin-top: 24px; }
@@ -615,11 +599,11 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
   max-width: 620px; margin: 40px auto 0;
   text-align: center; padding: 28px 40px;
   border: 1.5px solid var(--gold); border-radius: var(--rr);
-  background: #f5ecd4;
+  background: #EEE6F3;
 }
 .whom-note p {
   font-family: var(--serif); font-size: 20px;
-  font-style: italic; color: var(--green); line-height: 1.5;
+  font-style: italic; color: var(--green-text, var(--green)); line-height: 1.5;
 }
 @media (max-width: 768px) { .whom__grid { grid-template-columns: 1fr; } }
 
@@ -646,7 +630,7 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
 }
 .tl-dot--now { width: 16px; height: 16px; background: var(--gold); border-color: var(--green); }
 .tl-label { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); }
-.tl-title { font-family: var(--serif); font-size: 18px; font-weight: 600; color: var(--green); }
+.tl-title { font-family: var(--serif); font-size: 18px; font-weight: 600; color: var(--green-text, var(--green)); }
 .tl-desc  { font-size: 14px; color: #5a6e68; line-height: 1.5; }
 @media (max-width: 640px) {
   .timeline { flex-direction: column; gap: 0; }
@@ -704,12 +688,27 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
 }
 .hw-central { position: relative; z-index: 1; }
 .hw-grid { position: relative; }
-.hw-grid::before {
-  content: '';
-  position: absolute; top: -24px; left: 50%;
-  transform: translateX(-50%);
-  width: 1px; height: 20px;
-  background: var(--gold2); opacity: .5;
+.hw-orbit-wrap {
+  margin: 56px auto 44px;
+}
+.hw-central {
+  margin: 0 auto;
+  padding: clamp(28px, 4vw, 44px);
+}
+.hw-grid {
+  gap: clamp(18px, 2.4vw, 28px);
+  margin-top: 10px;
+}
+.hw-card {
+  min-height: 150px;
+  background:
+    radial-gradient(circle at 92% 12%, rgba(199,154,59,.10), transparent 32%),
+    #fff;
+}
+.hw-quote {
+  margin-top: 48px;
+  background: #fff;
+  border-color: rgba(199,154,59,.34);
 }
 
 /* ─── MASTERS DOMINANT ─────────────────────────────────────── */
@@ -793,7 +792,7 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
 }
 .site-header__logo {
   font-family: var(--serif); font-size: 20px; font-weight: 600;
-  color: var(--green); white-space: nowrap; letter-spacing: .02em;
+  color: var(--green-text, var(--green)); white-space: nowrap; letter-spacing: .02em;
   display: flex; align-items: center; gap: 8px;
 }
 .site-header__nav {
@@ -802,7 +801,7 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
 }
 .site-header__nav a {
   font-size: 12px; font-weight: 500; letter-spacing: .08em;
-  text-transform: uppercase; color: var(--green); opacity: .6;
+  text-transform: uppercase; color: var(--green-text, var(--green)); opacity: .6;
   transition: opacity .18s;
 }
 .site-header__nav a:hover { opacity: 1; }
@@ -822,7 +821,7 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
   border-radius: 999px; padding: 10px 22px;
   background: rgba(199,154,59,.06); margin-bottom: 36px;
   font-size: 12px; font-weight: 600; letter-spacing: .08em;
-  text-transform: uppercase; color: var(--green);
+  text-transform: uppercase; color: var(--green-text, var(--green));
   box-shadow: 0 2px 12px rgba(199,154,59,.08);
 }
 .hero__routebadge-arrow { color: var(--gold); margin: 0 7px; font-size: 14px; font-weight: 700; }
@@ -865,12 +864,6 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
   content: ''; position: absolute; inset: 0; pointer-events: none;
   background: radial-gradient(ellipse at 50% -10%, rgba(199,154,59,.14) 0%, transparent 55%);
 }
-.nav-card::after {
-  content: ''; position: absolute; top: -1px; left: -1px; right: -1px;
-  height: 3px; border-radius: inherit;
-  background: linear-gradient(90deg, transparent, var(--gold), var(--gold2), var(--gold), transparent);
-  opacity: .6; pointer-events: none;
-}
 .nav-card h2 { margin-bottom: 8px; font-size: clamp(38px,4.5vw,52px); }
 .nav-card .hero-sub { margin-bottom: 40px; display: block; }
 .nav-results { list-style: none; text-align: left; margin-bottom: 44px; max-width: 640px; margin-left: auto; margin-right: auto; }
@@ -889,34 +882,8 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
   padding: 18px 40px; font-size: 18px;
 }
 
-/* ─── DIVIDER — ROUTE LINE ───────────────────────────────── */
-.divider {
-  display: flex; align-items: center; justify-content: center;
-  gap: 0; margin: 22px auto; opacity: .78; max-width: var(--mw);
-  padding: 0 var(--px);
-}
-.divider::before,.divider::after {
-  content: ''; display: block; flex: 1; max-width: 180px;
-  height: 1px; background: var(--gold2);
-}
-.divider i {
-  width: 7px; height: 7px; background: var(--gold);
-  transform: rotate(45deg); flex-shrink: 0; margin: 0 12px;
-}
-/* Fork divider — used at choice points */
-.divider--fork { flex-direction: column; gap: 0; margin: 18px auto; }
-.divider--fork .fork-v { width: 1px; height: 28px; background: var(--gold2); opacity: .7; }
-.divider--fork .fork-row {
-  display: flex; align-items: center; gap: 0;
-  width: 100%; max-width: 240px;
-}
-.divider--fork .fork-row::before, .divider--fork .fork-row::after {
-  content: ''; flex: 1; height: 1px; background: var(--gold2); opacity: .6;
-}
-.divider--fork .fork-diamond {
-  width: 8px; height: 8px; background: var(--gold);
-  transform: rotate(45deg); flex-shrink: 0; margin: 0 10px;
-}
+
+
 
 /* ─── FINAL — MAP BACKGROUND ─────────────────────────────── */
 .final { text-align: center; position: relative; overflow: hidden; }
@@ -939,13 +906,6 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
 .final__sub { font-size: 15px; color: #5a6e68; margin-bottom: 0; position: relative; }
 
 /* ─── ROUTE CONNECTORS — STRONGER ───────────────────────── */
-.rline { width: 1px; height: 48px; background: var(--gold2); margin: 0 auto; opacity: .65; }
-.rdot  {
-  width: 11px; height: 11px; border-radius: 50%;
-  background: var(--green); border: 1.5px solid var(--gold);
-  margin: 0 auto; flex-shrink: 0;
-}
-
 /* ─── PRICING — CARDS OF ENTRY ───────────────────────────── */
 .pricing__grid {
   display: grid; grid-template-columns: repeat(3,1fr);
@@ -958,13 +918,13 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
 .price-card__icon { margin-bottom: 18px; opacity: .85; }
 .price-big {
   font-family: var(--serif); font-size: 42px;
-  font-weight: 600; color: var(--green); line-height: 1;
+  font-weight: 600; color: var(--green-text, var(--green)); line-height: 1;
   margin-bottom: 6px; letter-spacing: -.01em;
 }
 .price-card h3 { font-size: clamp(20px,2vw,24px); margin-bottom: 10px; }
 .price-row__amt {
   font-family: var(--serif); font-size: 24px;
-  font-weight: 600; color: var(--green); white-space: nowrap;
+  font-weight: 600; color: var(--green-text, var(--green)); white-space: nowrap;
 }
 .card--full-path {
   background: linear-gradient(145deg, #f2ead4 0%, #ede3c4 100%);
@@ -983,16 +943,6 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
 }
 
 /* ─── GREEN MID-PAGE ACCENTS ─────────────────────────────── */
-.green-rule {
-  display: block; width: 32px; height: 2px;
-  background: var(--green); border-radius: 2px;
-  margin-bottom: 20px; opacity: .7;
-}
-.divider--green::before, .divider--green::after {
-  background: var(--green); opacity: .35;
-}
-.divider--green i { background: var(--green); }
-
 /* ─── ISLAND DESIRE ──────────────────────────────────────── */
 .island-pair {
   display: grid; grid-template-columns: 1fr 1fr;
@@ -1046,7 +996,7 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
 .hotel-card__photo {
   position: relative;
   aspect-ratio: 4 / 3;
-  background: linear-gradient(135deg, #f5ecd4 0%, #e9d8b8 100%);
+  background: linear-gradient(135deg, #EEE6F3 0%, #DCD0E8 100%);
 }
 .hotel-card__photo img {
   width: 100%; height: 100%;
@@ -1055,7 +1005,7 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
 .hotel-card__body { padding: clamp(24px,3.4vw,36px); }
 .hotel-card__name {
   font-family: var(--serif); font-style: italic; font-weight: 600;
-  color: var(--green); font-size: clamp(19px,2.1vw,22px);
+  color: var(--green-text, var(--green)); font-size: clamp(19px,2.1vw,22px);
   line-height: 1.35; margin-bottom: 14px;
 }
 .hotel-card__body p { font-size: 15px; line-height: 1.62; color: #4f5f59; margin-bottom: 16px; }
@@ -1071,11 +1021,6 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
   justify-content: center; gap: 0;
   margin: 0 auto 36px; max-width: 640px;
 }
-.pricing-route__diamond {
-  width: 7px; height: 7px; background: var(--gold);
-  transform: rotate(45deg); margin: 0 10px; flex-shrink: 0;
-}
-
 /* ─── FINAL CARD ─────────────────────────────────────────── */
 .final-card {
   max-width: 940px; margin: 0 auto;
@@ -1126,13 +1071,8 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
   text-transform: uppercase; color: var(--gold); opacity: .75;
   white-space: nowrap;
 }
-.pricing-route__line {
-  flex: 1; height: 1px; background: var(--gold2); opacity: .45;
-  max-width: 80px;
-}
-
 /* ─── ROUTE MAP ──────────────────────────────────────────── */
-.rm { display: flex; flex-direction: column; align-items: stretch; margin-top: 56px; }
+.rm { display: flex; flex-direction: column; align-items: stretch; gap: clamp(34px, 4.2vw, 56px); margin-top: 56px; }
 .rm-stage {
   display: block; font-size: 11px; font-weight: 600;
   letter-spacing: .09em; text-transform: uppercase;
@@ -1140,7 +1080,7 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
 }
 /* Unified card title */
 .rm-title {
-  font-family: var(--serif); font-weight: 600; color: var(--green);
+  font-family: var(--serif); font-weight: 600; color: var(--green-text, var(--green));
   font-size: clamp(22px,2.5vw,28px); line-height: 1.15; margin: 6px 0 14px;
 }
 .rm-title--light { color: var(--bg2); }
@@ -1152,18 +1092,6 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
 }
 .rm-key--light { color: var(--gold2); }
 /* Level separator: thin gold line + Roman numeral */
-.rm-sep {
-  display: flex; align-items: center;
-  margin: 44px 0 40px;
-}
-.rm-sep::before, .rm-sep::after {
-  content: ''; flex: 1; height: 1px;
-  background: var(--gold2); opacity: .35;
-}
-.rm-sep-mark {
-  padding: 0 20px; font-family: var(--serif);
-  font-size: 14px; color: var(--gold); opacity: .65;
-}
 /* Level 0: soft entry — centered, dashed border */
 .rm-soft {
   border: 1px dashed rgba(216,182,106,.5);
@@ -1173,22 +1101,25 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
 }
 /* Level wrapper: header + pair */
 .rm-level-wrap { display: flex; flex-direction: column; }
-.rm-level-header { text-align: center; margin-bottom: 28px; }
+.rm-level-header { text-align: center; margin-bottom: 36px; }
 .rm-level-title {
-  font-family: var(--serif); font-weight: 600; color: var(--green);
+  font-family: var(--serif); font-weight: 600; color: var(--green-text, var(--green));
   font-size: clamp(20px,2.2vw,26px); line-height: 1.15; margin-top: 6px;
 }
 /* Pair grid */
 .rm-pair {
   display: grid; grid-template-columns: 1fr 1fr;
-  gap: clamp(16px,2.5vw,24px);
+  gap: clamp(18px,2.7vw,30px);
+  align-items: stretch;
 }
 /* Week cards: warm temperature variants, no pink/blue */
 .rm-week-f {
+  display: flex; flex-direction: column; min-height: 100%;
   border: 1px solid var(--gold2); border-radius: var(--rr); padding: var(--cp);
   background: linear-gradient(160deg, #faf5ec 0%, #f5eedd 100%);
 }
 .rm-week-m {
+  display: flex; flex-direction: column; min-height: 100%;
   border: 1px solid rgba(6,63,51,.2); border-radius: var(--rr); padding: var(--cp);
   background: linear-gradient(160deg, #f0ebe2 0%, #e9e3d8 100%);
 }
@@ -1198,6 +1129,7 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
   border: 2px solid var(--gold); border-radius: var(--rr);
   padding: clamp(32px,4vw,52px);
   display: flex; gap: clamp(28px,4vw,56px); align-items: flex-start;
+  margin-top: 8px;
 }
 .rm-mentor-body { flex: 1.4; min-width: 0; }
 .rm-mentor-visual {
@@ -1207,21 +1139,35 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
 }
 /* Island pair */
 .rm-island-sun {
-  background: linear-gradient(145deg, #0a3028 0%, #063F33 100%);
-  border: 1.5px solid var(--gold); border-radius: var(--rr);
+  display: flex; flex-direction: column; min-height: 100%;
+  background: linear-gradient(145deg, #704617 0%, #A7671F 55%, #D2A34D 100%);
+  border: 1.5px solid rgba(246,232,184,.7); border-radius: var(--rr);
   padding: clamp(28px,3.5vw,40px);
+  box-shadow: 0 22px 48px rgba(112,70,23,.18);
 }
 .rm-island-moon {
-  background: linear-gradient(145deg, #f5eedd 0%, #ece3cf 100%);
-  border: 1.5px solid rgba(6,63,51,.22); border-radius: var(--rr);
+  display: flex; flex-direction: column; min-height: 100%;
+  background: linear-gradient(145deg, #f8f3ea 0%, #eadbc5 100%);
+  border: 1.5px solid rgba(91,45,104,.18); border-radius: var(--rr);
   padding: clamp(28px,3.5vw,40px);
+  box-shadow: 0 22px 48px rgba(56,72,92,.10);
 }
-/* VIP: light premium card, green top border, NOT a heavy sales box */
+.rm-island-moon .rm-stage {
+  color: #8a6d2d;
+}
+.rm-island-moon .rm-title {
+  color: #2f4858;
+}
+.rm-island-moon .rm-key {
+  color: #8a6d2d;
+}
+/* Full route: archetype-purple culmination, not another island state */
 .rm-vip {
   border: 2px solid var(--gold);
   border-radius: var(--rr); background: var(--bg2);
   padding: clamp(36px,5vw,56px);
   display: flex; gap: clamp(24px,4vw,48px); align-items: flex-start;
+  margin-top: 8px;
 }
 .rm-vip-body { flex: 1; min-width: 0; }
 .rm-vip-mark { flex-shrink: 0; padding-top: 6px; }
@@ -1233,7 +1179,6 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
   .rm-pair { grid-template-columns: 1fr; }
   .rm-soft { max-width: 100%; text-align: left; }
   .rm-vip { flex-direction: column; }
-  .rm-sep { margin: 32px 0 28px; }
 }
 
 /* ─── FOOTER ─────────────────────────────────────────────── */
@@ -1246,43 +1191,1753 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
 }
 .footer p { font-size: 13px; color: #5a6e68; }
 </style>
-</head>
-<body>
+<style id="eh-shared-shell-css">
 
-<!-- ════════════════════════════════════════════════════════
-     HEADER
-════════════════════════════════════════════════════════ -->
-<header class="site-header">
-  <div class="site-header__inner">
-    <a href="https://evolution.yourbalancerestored.com/" class="site-header__logo">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="opacity:.7;">
-        <circle cx="12" cy="12" r="10" stroke="#063F33" stroke-width="1.2"/>
-        <circle cx="12" cy="12" r="5" stroke="#C79A3B" stroke-width="1"/>
-        <polygon points="12,2 11,11 13,11" fill="#063F33" opacity=".9"/>
-        <polygon points="12,22 11,13 13,13" fill="#C79A3B" opacity=".7"/>
-        <line x1="2" y1="12" x2="9" y2="12" stroke="#D8B66A" stroke-width=".8" opacity=".6"/>
-        <line x1="15" y1="12" x2="22" y2="12" stroke="#D8B66A" stroke-width=".8" opacity=".6"/>
-      </svg>
-      Острова Везения
-    </a>
-    <nav class="site-header__nav">
-      <a href="#route">Маршрут</a>
-      <a href="#islands">Острова</a>
-      <a href="#navigator">Как войти</a>
-      <a href="#route-map">Форматы</a>
-    </nav>
-    <div class="site-header__cta">
-      <a href="https://t.me/evgenia_tatarkina" target="_blank" rel="noopener" class="btn">Обсудить участие →</a>
+/* Evolution House shared shell */
+:root {
+  --eh-canvas: #F7F5F1;
+  --eh-surface: #FFFFFF;
+  --eh-ink: #17151B;
+  --eh-ink-soft: #5A5661;
+  --eh-line: #DDD8D0;
+  --eh-brand: #0F625E;
+  --eh-brand-hover: #0A4F4C;
+  --eh-brand-deep: #073E3B;
+  --eh-gold: #B88F49;
+  --eh-brand-soft: #DCEDEA;
+  --eh-brand-wash: #F1F7F5;
+}
+.eh-shell-header,
+.eh-shell-breadcrumb,
+.eh-local-strip {
+  --shell-context-primary: var(--eh-brand);
+  --shell-context-hover: var(--eh-brand-hover);
+  --shell-context-deep: var(--eh-brand-deep);
+  --shell-context-soft: var(--eh-brand-soft);
+  --shell-context-wash: var(--eh-brand-wash);
+}
+.eh-context--archetypes,
+body.eh-context--archetypes .eh-shell-header,
+body.eh-context--archetypes .eh-shell-breadcrumb,
+body.eh-context--archetypes .eh-local-strip {
+  --shell-context-primary: #5B2D68;
+  --shell-context-hover: #4B2459;
+  --shell-context-deep: #24152F;
+  --shell-context-soft: #EFE4F2;
+  --shell-context-wash: #F8F1F8;
+}
+.eh-context--freedom,
+body.eh-context--freedom .eh-shell-header,
+body.eh-context--freedom .eh-shell-breadcrumb,
+body.eh-context--freedom .eh-local-strip {
+  --shell-context-primary: #536A86;
+  --shell-context-hover: #435772;
+  --shell-context-deep: #243247;
+  --shell-context-soft: #C9D3E2;
+  --shell-context-wash: #F3F6FA;
+}
+.eh-context--reiki,
+body.eh-context--reiki .eh-shell-header,
+body.eh-context--reiki .eh-shell-breadcrumb,
+body.eh-context--reiki .eh-local-strip {
+  --shell-context-primary: #7E6A22;
+  --shell-context-hover: #665519;
+  --shell-context-deep: #4C4218;
+  --shell-context-soft: #F1E6B5;
+  --shell-context-wash: #FFF9E8;
+}
+html[data-level] .eh-shell-header,
+html[data-level] .eh-shell-breadcrumb,
+html[data-level] .eh-local-strip,
+body[data-level] .eh-shell-header,
+body[data-level] .eh-shell-breadcrumb,
+body[data-level] .eh-local-strip {
+  --shell-context-primary: #7E6A22;
+  --shell-context-hover: #665519;
+  --shell-context-deep: #4C4218;
+  --shell-context-soft: #F1E6B5;
+  --shell-context-wash: #FFF9E8;
+}
+body.eh-context--archetypes {
+  --arch-ink: #24152F;
+  --arch-deep: #2A1734;
+  --arch-primary: #5B2D68;
+  --arch-violet: #6A4D76;
+  --arch-lilac: #EEE6F3;
+  --arch-lilac-2: #F6F0FA;
+  --arch-porcelain: #FBF8FC;
+  --arch-paper: #FFFDFB;
+  --arch-lightness: #C98D9A;
+  --arch-lightness-soft: #F7E9ED;
+  --arch-strength: #9A7B6B;
+  --arch-strength-soft: #E7DED8;
+  --arch-depth: #5B2D68;
+  --arch-depth-soft: #EEE5F2;
+  --arch-retreat: #7A5C89;
+  --arch-retreat-soft: #F4ECF7;
+  --arch-gold: #B88F49;
+  --arch-gold-soft: rgba(184,143,73,.16);
+  --arch-line: rgba(91,45,104,.18);
+  --primary: #5B2D68;
+  --primary-hover: #4B2459;
+  --deep: #24152F;
+  --soft: #EFE4F2;
+  --wash: #F8F1F8;
+  --accent: #B88F49;
+}
+body.eh-context--freedom {
+  --primary: #536A86;
+  --primary-hover: #435772;
+  --deep: #243247;
+  --soft: #C9D3E2;
+  --wash: #F3F6FA;
+  --accent: #D6A06F;
+}
+body.eh-context--freedom.eh-freedom-bg--map {
+  background:
+    radial-gradient(circle at 92% 8%, rgba(83,106,134,.08), transparent 28%),
+    linear-gradient(180deg, #FFFFFF 0%, #F3F6FA 44%, #F8F4EF 100%) !important;
+}
+body.eh-context--reiki {
+  --primary: #7E6A22;
+  --primary-hover: #665519;
+  --deep: #4C4218;
+  --soft: #F1E6B5;
+  --wash: #FFF9E8;
+  --accent: #D8BF63;
+}
+body.eh-context--reiki.eh-reiki-bg--map {
+  background:
+    radial-gradient(circle at 92% 8%, rgba(216,191,99,.10), transparent 28%),
+    linear-gradient(180deg, #FFFDF4 0%, #FFF9E8 46%, #F1E6B5 100%) !important;
+}
+body[data-level] {
+  --primary: var(--level-primary);
+  --primary-hover: var(--level-primary-hover);
+  --deep: var(--level-deep);
+  --soft: var(--level-soft);
+  --wash: var(--level-wash);
+  --accent: var(--level-accent, #D8BF63);
+}
+html[data-level] body,
+body[data-level] {
+  background:
+    radial-gradient(circle at 92% 8%, color-mix(in srgb, var(--level-accent) 11%, transparent), transparent 28%),
+    linear-gradient(180deg, var(--level-wash) 0%, #FFFFFF 46%, color-mix(in srgb, var(--level-soft) 42%, #FFFFFF) 100%) !important;
+}
+html[data-level] .hero,
+body[data-level] .hero {
+  background:
+    radial-gradient(circle at 82% 16%, rgba(255,255,255,.34), transparent 30%),
+    radial-gradient(circle at 14% 78%, color-mix(in srgb, var(--level-accent) 20%, transparent), transparent 34%),
+    linear-gradient(135deg, var(--level-wash) 0%, var(--level-soft) 52%, var(--level-accent) 100%) !important;
+}
+html[data-level] .hero-visual,
+body[data-level] .hero-visual,
+html[data-level] .hero__visual,
+body[data-level] .hero__visual {
+  box-shadow: 0 28px 76px color-mix(in srgb, var(--level-deep) 13%, transparent) !important;
+}
+html[data-level] .hero-facts,
+body[data-level] .hero-facts,
+html[data-level] .hero-panel,
+body[data-level] .hero-panel,
+html[data-level] .hero-trust,
+body[data-level] .hero-trust {
+  border-color: color-mix(in srgb, var(--level-primary) 20%, rgba(221,216,208,.76)) !important;
+  background: rgba(255,255,255,.72) !important;
+}
+html[data-level] main > section:nth-of-type(even),
+body[data-level] main > section:nth-of-type(even) {
+  background:
+    radial-gradient(circle at 90% 10%, color-mix(in srgb, var(--level-accent) 9%, transparent), transparent 28%),
+    linear-gradient(135deg, #FFFFFF 0%, color-mix(in srgb, var(--level-wash) 72%, #FFFFFF) 100%) !important;
+}
+html[data-level] main > section:nth-of-type(4n),
+body[data-level] main > section:nth-of-type(4n) {
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--level-soft) 38%, #FFFFFF) 0%, #FFFFFF 100%) !important;
+}
+.eh-shell-container {
+  width: min(100% - 48px, 1160px);
+  margin-inline: auto;
+}
+
+.eh-shell-header {
+  position: sticky;
+  top: 0;
+  z-index: 120;
+  border-bottom: 1px solid rgba(221, 216, 208, 0.76);
+  background: rgba(247, 245, 241, 0.94);
+  color: #17151b;
+  font-family: Inter, "Segoe UI", system-ui, sans-serif;
+  backdrop-filter: blur(18px);
+  overflow: visible;
+}
+
+.eh-shell-header__inner {
+  min-height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.eh-shell-brand {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.eh-shell-brand img {
+  width: min(238px, 32vw);
+  max-height: 58px;
+  object-fit: contain;
+  filter: saturate(1.18) contrast(1.34) brightness(.82);
+  opacity: 1;
+}
+
+.eh-shell-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-left: auto;
+  color: #5f625f;
+  font-size: 13px;
+  font-weight: 760;
+  line-height: 1.2;
+}
+
+.eh-shell-nav .nav-item {
+  position: relative;
+  display: flex;
+  min-height: 42px;
+  align-items: center;
+}
+
+.eh-shell-nav a,
+.eh-local-strip a,
+.eh-shell-cta,
+.eh-global-footer a {
+  text-decoration: none;
+}
+
+.eh-shell-nav a {
+  padding: 8px 0;
+  border-bottom: 2px solid transparent;
+  color: inherit;
+}
+
+.eh-shell-nav a:hover,
+.eh-shell-nav a:focus-visible,
+.eh-shell-nav a.is-active,
+.eh-shell-nav a[aria-current="page"] {
+  color: var(--shell-context-deep);
+  border-color: var(--shell-context-primary);
+}
+
+.eh-shell-nav .dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  z-index: 150;
+  width: max-content;
+  min-width: 260px;
+  max-width: min(320px, calc(100vw - 36px));
+  display: grid;
+  gap: 4px;
+  padding: 10px;
+  border: 1px solid rgba(221, 216, 208, 0.86);
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 18px 54px rgba(36, 25, 75, 0.12);
+  opacity: 0;
+  transform: translate(-50%, -4px);
+  pointer-events: none;
+  transition: opacity .08s ease, transform .08s ease;
+}
+
+.eh-shell-nav .dropdown-menu a {
+  --menu-direction-primary: var(--shell-context-primary);
+  --menu-direction-deep: var(--shell-context-deep);
+  --menu-direction-wash: var(--shell-context-wash);
+  position: relative;
+  display: block;
+  padding: 10px 12px 10px 30px;
+  border: 0;
+  border-radius: 8px;
+  color: #17151b;
+  line-height: 1.25;
+  white-space: normal;
+}
+
+.eh-shell-nav .dropdown-menu a[href$="arhetipy.html"] {
+  --menu-direction-primary: #5B2D68;
+  --menu-direction-deep: #24152F;
+  --menu-direction-wash: #F8F1F8;
+}
+
+.eh-shell-nav .dropdown-menu a[href$="vnutrennyaya-svoboda.html"] {
+  --menu-direction-primary: #147C9C;
+  --menu-direction-deep: #103746;
+  --menu-direction-wash: #F1FBFC;
+}
+
+.eh-shell-nav .dropdown-menu a[href$="reiki-napravlenie.html"] {
+  --menu-direction-primary: #7E6A22;
+  --menu-direction-deep: #4C4218;
+  --menu-direction-wash: #FFF9E8;
+}
+
+.eh-shell-nav .dropdown-menu a[href*="urovni-zhizni"] {
+  --menu-direction-primary: #8A3442;
+  --menu-direction-deep: #3B1821;
+  --menu-direction-wash: #FBF4F5;
+}
+
+.eh-shell-nav .dropdown-menu a::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 12px;
+  width: 4px;
+  border-radius: 999px;
+  background: var(--menu-direction-primary);
+  opacity: .62;
+}
+
+.eh-shell-nav .dropdown-menu a:hover,
+.eh-shell-nav .dropdown-menu a:focus-visible,
+.eh-shell-nav .dropdown-menu a.is-active,
+.eh-shell-nav .dropdown-menu a[aria-current="page"] {
+  border: 0;
+  background: color-mix(in srgb, var(--menu-direction-wash) 84%, #FFFFFF);
+  color: var(--menu-direction-deep);
+}
+
+.eh-shell-nav .dropdown-menu a:hover::before,
+.eh-shell-nav .dropdown-menu a:focus-visible::before,
+.eh-shell-nav .dropdown-menu a.is-active::before,
+.eh-shell-nav .dropdown-menu a[aria-current="page"]::before {
+  opacity: 1;
+}
+
+.eh-shell-nav .has-dropdown:hover .dropdown-menu,
+.eh-shell-nav .has-dropdown:focus-within .dropdown-menu,
+.eh-shell-nav .has-dropdown.is-open .dropdown-menu {
+  opacity: 1;
+  transform: translate(-50%, 0);
+  pointer-events: auto;
+}
+
+.eh-shell-cta {
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 15px;
+  border-radius: 999px;
+  background: var(--shell-context-primary);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 820;
+  white-space: nowrap;
+}
+
+.eh-shell-cta:hover,
+.eh-shell-cta:focus-visible {
+  background: var(--shell-context-hover);
+}
+
+.eh-local-strip {
+  display: block !important;
+  position: relative;
+  z-index: 96;
+  border-top: 1px solid rgba(221, 216, 208, 0.68);
+  border-bottom: 1px solid color-mix(in srgb, var(--shell-context-primary) 18%, rgba(221,216,208,.72));
+  background: linear-gradient(90deg, color-mix(in srgb, var(--shell-context-wash) 88%, #fff), rgba(255,255,255,.9));
+}
+
+.eh-local-strip .eh-shell-container {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  box-shadow: inset 4px 0 0 var(--shell-context-primary);
+  padding-left: 12px;
+  color: #5f625f;
+  font-size: 13px;
+  font-weight: 760;
+  white-space: nowrap;
+  scrollbar-width: none;
+}
+
+.eh-local-strip .eh-shell-container::-webkit-scrollbar {
+  display: none;
+}
+
+.eh-local-strip a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 0 10px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.eh-local-strip a:hover,
+.eh-local-strip a:focus-visible {
+  color: var(--shell-context-primary);
+  background: color-mix(in srgb, var(--shell-context-wash) 76%, transparent);
+}
+
+.eh-local-strip a[aria-current="page"] {
+  color: var(--shell-context-deep);
+  font-weight: 860;
+  border-color: color-mix(in srgb, var(--shell-context-primary) 22%, transparent);
+  background: var(--shell-context-wash);
+}
+
+.eh-direction-bridge {
+  border-bottom: 1px solid color-mix(in srgb, var(--shell-context-primary) 28%, #DDD8D0);
+  background:
+    radial-gradient(circle at 84% 18%, color-mix(in srgb, var(--eh-gold) 20%, transparent), transparent 32%),
+    linear-gradient(120deg, var(--shell-context-deep), var(--shell-context-primary));
+  color: #fff;
+  font-family: Inter, "Segoe UI", system-ui, sans-serif;
+}
+
+.eh-direction-bridge__inner {
+  min-height: 74px;
+  display: grid;
+  grid-template-columns: auto auto minmax(0, 1fr);
+  gap: 12px 16px;
+  align-items: center;
+}
+
+.eh-direction-bridge__path {
+  color: #fff;
+  font-size: 13px;
+  font-weight: 860;
+  letter-spacing: .06em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.eh-direction-bridge__current {
+  display: inline-flex;
+  min-height: 30px;
+  align-items: center;
+  padding: 0 11px;
+  border: 1px solid rgba(255,255,255,.24);
+  border-radius: 999px;
+  background: rgba(255,255,255,.11);
+  color: #FFFFFF;
+  font-size: 13px;
+  font-weight: 780;
+  white-space: nowrap;
+}
+
+.eh-direction-bridge p {
+  margin: 0;
+  color: rgba(255,255,255,.78);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.eh-direction-bridge--archetypes {
+  --shell-context-primary: #5B2D68;
+  --shell-context-deep: #24152F;
+}
+
+.eh-direction-bridge--freedom {
+  --shell-context-primary: #536A86;
+  --shell-context-deep: #243247;
+}
+
+.eh-direction-bridge--reiki {
+  --shell-context-primary: #7E6A22;
+  --shell-context-deep: #4C4218;
+}
+
+body.eh-context--archetypes .btn--primary,
+body.eh-context--archetypes .button--primary,
+body.eh-context--archetypes .btn:not(.btn--outline):not(.btn--secondary):not(.btn--ghost),
+body.eh-context--archetypes .pricing-cta {
+  background: #5B2D68 !important;
+  border-color: #5B2D68 !important;
+  color: #fff !important;
+}
+
+body.eh-context--archetypes .btn--primary:hover,
+body.eh-context--archetypes .button--primary:hover,
+body.eh-context--archetypes .btn:not(.btn--outline):not(.btn--secondary):not(.btn--ghost):hover {
+  background: #4B2459 !important;
+  border-color: #4B2459 !important;
+  color: #fff !important;
+}
+
+body.eh-context--archetypes .btn--outline,
+body.eh-context--archetypes .button--secondary,
+body.eh-context--archetypes .text-link {
+  border-color: color-mix(in srgb, #5B2D68 42%, transparent) !important;
+  color: #5B2D68 !important;
+}
+
+body.eh-context--archetypes .hero-eyebrow,
+body.eh-context--archetypes .section-eyebrow,
+body.eh-context--archetypes .eyebrow {
+  color: #5B2D68 !important;
+}
+
+body.eh-context--freedom .button--primary,
+body.eh-context--freedom .btn--primary {
+  background: #536A86 !important;
+  border-color: #536A86 !important;
+  color: #fff !important;
+}
+
+body.eh-context--freedom .button--primary:hover,
+body.eh-context--freedom .btn--primary:hover,
+body.eh-context--freedom .button--primary:focus-visible,
+body.eh-context--freedom .btn--primary:focus-visible {
+  background: #435772 !important;
+  border-color: #435772 !important;
+  color: #fff !important;
+}
+
+body.eh-context--freedom .button--secondary,
+body.eh-context--freedom .btn--outline,
+body.eh-context--freedom .text-link {
+  border-color: color-mix(in srgb, #536A86 42%, transparent) !important;
+  color: #536A86 !important;
+}
+
+body.direction-page--freedom .hero.hero--dark .button--secondary {
+  background: rgba(255,255,255,.82) !important;
+  border-color: rgba(36,50,71,.20) !important;
+  color: #243247 !important;
+}
+
+body.direction-page--freedom .hero.hero--dark .button--secondary:hover,
+body.direction-page--freedom .hero.hero--dark .button--secondary:focus-visible {
+  background: #FFFFFF !important;
+  border-color: rgba(36,50,71,.32) !important;
+  color: #243247 !important;
+}
+
+body.eh-context--freedom .hero .eyebrow,
+body.eh-context--freedom .method-hero .eyebrow {
+  color: #243247 !important;
+}
+
+body.eh-context--reiki .button--primary,
+html[data-level] .button--primary,
+body[data-level] .button--primary,
+body.eh-context--reiki .btn--primary,
+html[data-level] .btn--primary,
+body[data-level] .btn--primary {
+  background: #7E6A22 !important;
+  border-color: #7E6A22 !important;
+  color: #fff !important;
+}
+
+body.eh-context--reiki .button--primary:hover,
+html[data-level] .button--primary:hover,
+body[data-level] .button--primary:hover,
+body.eh-context--reiki .btn--primary:hover,
+html[data-level] .btn--primary:hover,
+body[data-level] .btn--primary:hover,
+body.eh-context--reiki .button--primary:focus-visible,
+html[data-level] .button--primary:focus-visible,
+body[data-level] .button--primary:focus-visible,
+body.eh-context--reiki .btn--primary:focus-visible,
+html[data-level] .btn--primary:focus-visible,
+body[data-level] .btn--primary:focus-visible {
+  background: #665519 !important;
+  border-color: #665519 !important;
+  color: #fff !important;
+}
+
+body.eh-context--reiki .button--secondary,
+html[data-level] .button--secondary,
+body[data-level] .button--secondary,
+body.eh-context--reiki .text-link,
+html[data-level] .text-link,
+body[data-level] .text-link {
+  border-color: color-mix(in srgb, #7E6A22 42%, transparent) !important;
+  color: #7E6A22 !important;
+}
+
+body.eh-context--archetypes .hero--dark .button--primary,
+body.eh-context--freedom .hero--dark .button--primary,
+body.eh-context--reiki .hero--dark .button--primary,
+html[data-level] .hero--dark .button--primary,
+body[data-level] .hero--dark .button--primary {
+  background: #F8F1E5 !important;
+  border-color: #F8F1E5 !important;
+  color: var(--shell-context-deep, #17151B) !important;
+}
+
+body.eh-context--archetypes .hero--dark .button--primary:hover,
+body.eh-context--freedom .hero--dark .button--primary:hover,
+body.eh-context--reiki .hero--dark .button--primary:hover,
+html[data-level] .hero--dark .button--primary:hover,
+body[data-level] .hero--dark .button--primary:hover {
+  background: #FFFFFF !important;
+  border-color: #FFFFFF !important;
+}
+
+body.eh-context--reiki .hero--dark .button--primary,
+html[data-level] .hero--dark .button--primary,
+body[data-level] .hero--dark .button--primary {
+  background: #7E6A22 !important;
+  border-color: #7E6A22 !important;
+  color: #fff !important;
+}
+
+body.eh-context--reiki .hero--dark .button--primary:hover,
+html[data-level] .hero--dark .button--primary:hover,
+body[data-level] .hero--dark .button--primary:hover,
+body.eh-context--reiki .hero--dark .button--primary:focus-visible,
+html[data-level] .hero--dark .button--primary:focus-visible,
+body[data-level] .hero--dark .button--primary:focus-visible {
+  background: #665519 !important;
+  border-color: #665519 !important;
+  color: #fff !important;
+}
+
+body.eh-context--archetypes .hero--dark .button--secondary,
+body.eh-context--freedom .hero--dark .button--secondary,
+body.eh-context--reiki .hero--dark .button--secondary,
+html[data-level] .hero--dark .button--secondary,
+body[data-level] .hero--dark .button--secondary {
+  background: rgba(255,255,255,.08) !important;
+  border-color: rgba(255,255,255,.56) !important;
+  color: #FFFFFF !important;
+}
+
+body.eh-context--reiki .hero--dark .button--secondary,
+html[data-level] .hero--dark .button--secondary,
+body[data-level] .hero--dark .button--secondary {
+  background: rgba(255,255,255,.56) !important;
+  border-color: rgba(126,106,34,.34) !important;
+  color: #4C4218 !important;
+}
+
+body.eh-context--archetypes .roadmap-step__body .button,
+body.eh-context--freedom .roadmap-step__body .button,
+body.eh-context--reiki .roadmap-step__body .button {
+  background: var(--direction-primary) !important;
+  border-color: var(--direction-primary) !important;
+  color: #FFFFFF !important;
+}
+
+body.eh-context--archetypes .roadmap-step__body .button:hover,
+body.eh-context--freedom .roadmap-step__body .button:hover,
+body.eh-context--reiki .roadmap-step__body .button:hover,
+body.eh-context--archetypes .roadmap-step__body .button:focus-visible,
+body.eh-context--freedom .roadmap-step__body .button:focus-visible,
+body.eh-context--reiki .roadmap-step__body .button:focus-visible {
+  background: var(--direction-deep) !important;
+  border-color: var(--direction-deep) !important;
+  color: #FFFFFF !important;
+}
+
+/* Archetype path background logic:
+   method = inner system, lightness = warm body/desire, strength = structure/action,
+   depth = deep personal work, retreats = land/place/integration. */
+body.eh-context--archetypes.eh-archetype-bg--map {
+  background:
+    radial-gradient(circle at 92% 8%, rgba(91,45,104,.08), transparent 28%),
+    linear-gradient(180deg, #FBF8FC 0%, #F2EAF4 46%, #F3E3C4 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--method {
+  background:
+    linear-gradient(180deg, #FAFAFC 0%, #F5F0F8 44%, #ECE3F3 78%, #F7F1DF 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--method .method-hero,
+body.eh-context--archetypes.eh-archetype-bg--method .hero.method-hero {
+  background:
+    radial-gradient(circle at 82% 16%, rgba(184,143,73,.14), transparent 28%),
+    radial-gradient(circle at 12% 26%, rgba(91,45,104,.11), transparent 34%),
+    linear-gradient(135deg, #FAFAFC 0%, #E9E7F0 52%, #CFC9DD 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--method .section:nth-of-type(even) {
+  background:
+    linear-gradient(135deg, #F5F0F8, #ECE3F3) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--method .section:nth-of-type(4n) {
+  background:
+    linear-gradient(135deg, #FFFFFF 0%, #F7F1DF 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--method .method-work__lead,
+body.eh-context--archetypes.eh-archetype-bg--method .method-definition,
+body.eh-context--archetypes.eh-archetype-bg--method .method-authority article,
+body.eh-context--archetypes.eh-archetype-bg--method .text-panel {
+  background: rgba(255,255,255,.86) !important;
+  border-color: rgba(91,45,104,.16) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--method .method-recognition span,
+body.eh-context--archetypes.eh-archetype-bg--method .method-work__steps span,
+body.eh-context--archetypes.eh-archetype-bg--method .method-mechanics span {
+  background: #5B2D68 !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--method .method-system-visual__map::before {
+  border-color: rgba(91,45,104,.24) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--method .method-author-profile {
+  background: linear-gradient(145deg, rgba(255,255,255,.94), rgba(246,240,250,.82)) !important;
+  border-color: rgba(91,45,104,.18) !important;
+  box-shadow: 0 18px 52px rgba(36,21,47,.075) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--method .method-author-profile__facts span {
+  background: rgba(238,230,243,.86) !important;
+  border-color: rgba(91,45,104,.18) !important;
+  color: #24152F !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--method .method-system-visual__map {
+  background: radial-gradient(circle at center, rgba(184,143,73,.18), rgba(255,255,255,.9) 48%, rgba(246,240,250,.86)) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--method .method-system-card--center,
+body.eh-context--archetypes.eh-archetype-bg--method .method-dual-system__center {
+  background:
+    radial-gradient(circle at 82% 12%, rgba(184,143,73,.16), transparent 30%),
+    linear-gradient(135deg, #4A3658, #6A4D76) !important;
+  border-color: rgba(184,143,73,.28) !important;
+  color: #FFFDF8 !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--method .method-system-card--center *,
+body.eh-context--archetypes.eh-archetype-bg--method .method-dual-system__center * {
+  color: #FFFDF8 !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--method .method-entry-map__method {
+  background:
+    radial-gradient(circle at 86% 14%, rgba(184,143,73,.16), transparent 32%),
+    linear-gradient(135deg, #5B2D68, #6A4D76) !important;
+  border-color: rgba(184,143,73,.28) !important;
+  box-shadow: 0 18px 44px rgba(91,45,104,.14) !important;
+}
+
+.ar-zone {
+  position: relative;
+  border-top: 1px solid rgba(91,45,104,.12);
+}
+
+.ar-zone::before {
+  content: none;
+}
+
+.ar-zone--diagnosis {
+  background:
+    radial-gradient(circle at 84% 12%, rgba(91,45,104,.06), transparent 26%),
+    linear-gradient(180deg, #FFFCF8 0%, #F4EEF7 100%) !important;
+}
+
+.ar-zone--principle {
+  background:
+    linear-gradient(180deg, #FFFFFF 0%, #F8EFD9 100%) !important;
+}
+
+.ar-zone--choice {
+  background:
+    radial-gradient(circle at 14% 18%, rgba(184,143,73,.12), transparent 26%),
+    linear-gradient(180deg, #F4EEF7 0%, #E8DFF0 100%) !important;
+}
+
+.ar-zone--practical {
+  background:
+    linear-gradient(180deg, #FFFCF8 0%, #E8DFF0 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .card--warm {
+  background: linear-gradient(135deg, #EEE6F3 0%, #F8F4FA 100%) !important;
+  border-color: rgba(91,45,104,.22) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--lightness {
+  --ivory: #FFFCFB;
+  --cream: #FFF9F7;
+  --cream-deep: #F1D3DB;
+  --sand: #FAEED7;
+  --peach: #C98798;
+  --peach-light: #F5DCE4;
+  --sage: #C98798;
+  --sage-dark: #9F6574;
+  --sage-light: #F8E4EA;
+  --gold: #B88F49;
+  background: linear-gradient(180deg, #FFF9F7 0%, #F8E4EA 52%, #FAEED7 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--lightness .hero {
+  background:
+    radial-gradient(circle at 78% 16%, rgba(201,135,152,.22), transparent 30%),
+    linear-gradient(150deg, #FFFCFB 0%, #F5DCE4 48%, #C98798 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--lightness .section--cream {
+  background: linear-gradient(135deg, #F8E4EA, #FFF9F7) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--lightness .hero-eyebrow,
+body.eh-context--archetypes.eh-archetype-bg--lightness .format-badge--sage,
+body.eh-context--archetypes.eh-archetype-bg--lightness .pricing-list li::before,
+body.eh-context--archetypes.eh-archetype-bg--lightness .bundle-card strong {
+  color: #9F6574 !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--lightness .format-badge--sage,
+body.eh-context--archetypes.eh-archetype-bg--lightness .bundle-card {
+  background: linear-gradient(135deg, #FFF9F7, #F1D3DB) !important;
+  border-color: rgba(201,135,152,.28) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--strength {
+  --bg-main: #FBF7F2;
+  --bg-alt: #E5D8CD;
+  --bg-deep: #24152F;
+  --navy: #5B2D68;
+  --blue-gray: #B89A8B;
+  --marble: #FFFAF4;
+  --accent-gold: #B88F49;
+  background: linear-gradient(180deg, #FFFAF4 0%, #EDE0D4 52%, #F2E4C7 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--strength .hero {
+  background:
+    radial-gradient(circle at 82% 18%, rgba(184,143,73,.16), transparent 30%),
+    linear-gradient(155deg, #FBF7F2 0%, #E5D8CD 52%, #B89A8B 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--strength .section--cream {
+  background:
+    linear-gradient(135deg, #EDE0D4, #FFFAF4) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--strength .ph--hero-space {
+  background:
+    radial-gradient(ellipse 18% 14% at 86% 26%, rgba(184,143,73,.18) 0%, transparent 70%),
+    radial-gradient(ellipse 92% 48% at 50% 0%, rgba(255,255,255,.78) 0%, transparent 54%),
+    linear-gradient(174deg, #FBF7F2 0%, #EDE0D4 30%, #D8C3B5 62%, #B89A8B 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--strength .ph--pain-space {
+  background:
+    radial-gradient(ellipse 58% 40% at 28% 18%, rgba(184,143,73,.16) 0%, transparent 56%),
+    linear-gradient(165deg, #D8C3B5 0%, #B89A8B 48%, #9D8276 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--strength .ph--zeus,
+body.eh-context--archetypes.eh-archetype-bg--strength .ph--hades {
+  background:
+    radial-gradient(ellipse 80% 56% at 50% 4%, rgba(255,255,255,.86) 0%, transparent 56%),
+    radial-gradient(ellipse 46% 40% at 78% 74%, rgba(184,143,73,.18) 0%, transparent 58%),
+    linear-gradient(160deg, #FFFAF4 0%, #EDE0D4 38%, #D8C3B5 70%, #B89A8B 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--strength .distortion-col--creates {
+  background: linear-gradient(155deg, #FFFFFF 0%, #F8F1EA 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--strength .distortion-col--defends {
+  background:
+    radial-gradient(circle at 82% 12%, rgba(184,143,73,.14), transparent 30%),
+    linear-gradient(155deg, #6A4D76 0%, #5B2D68 100%) !important;
+  border-left-color: rgba(91,45,104,.24) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--strength .arch-card--zeus .arch-accent,
+body.eh-context--archetypes.eh-archetype-bg--strength .distortion-col--creates .distortion-title,
+body.eh-context--archetypes.eh-archetype-bg--strength .distortion-col--creates .distortion-list li::before {
+  color: #5B2D68 !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--strength .distortion-grid {
+  border-color: rgba(91,45,104,.18) !important;
+  box-shadow: 0 26px 64px -30px rgba(91,45,104,.20) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--strength .distortion-quote {
+  background:
+    radial-gradient(circle at 18% 12%, rgba(184,143,73,.16), transparent 28%),
+    linear-gradient(155deg, #5B2D68 0%, #6A4D76 100%) !important;
+  box-shadow: 0 26px 60px -30px rgba(91,45,104,.30) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth {
+  --porcelain: #FBF6FA;
+  --mineral: #DED3E8;
+  --paper: #FBF6FA;
+  --ink: #221B28;
+  --graphite: #574263;
+  --steel: #A88BB8;
+  --wine: #684A73;
+  --wine-soft: #DED3E8;
+  --gold: #B99349;
+  background: linear-gradient(180deg, #FBF6FA 0%, #DED3E8 46%, #A88BB8 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .hero {
+  background:
+    radial-gradient(circle at 14% 14%, rgba(185,147,73,.18), transparent 30%),
+    radial-gradient(circle at 86% 12%, rgba(104,74,115,.20), transparent 34%),
+    linear-gradient(135deg, #F6EEF5 0%, #C5B4D2 48%, #684A73 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .hero h1,
+body.eh-context--archetypes.eh-archetype-bg--depth .hero .hero-sub,
+body.eh-context--archetypes.eh-archetype-bg--depth .hero .hero-body,
+body.eh-context--archetypes.eh-archetype-bg--depth .hero .hero-note {
+  color: #221B28 !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .hero .hero-sub {
+  color: #574263 !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .section--mineral {
+  background:
+    linear-gradient(135deg, #DED3E8, #FBF6FA) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .section--ink {
+  background:
+    radial-gradient(circle at 82% 18%, rgba(185,147,73,.16), transparent 30%),
+    linear-gradient(135deg, #574263, #684A73 58%, #A88BB8) !important;
+  color: #FFFDF8 !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .section--ink h2,
+body.eh-context--archetypes.eh-archetype-bg--depth .section--ink h3,
+body.eh-context--archetypes.eh-archetype-bg--depth .section--ink p,
+body.eh-context--archetypes.eh-archetype-bg--depth .section--ink li,
+body.eh-context--archetypes.eh-archetype-bg--depth .section--ink .method-visual__caption {
+  color: #FFFDF8 !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .section--ink .soft-panel,
+body.eh-context--archetypes.eh-archetype-bg--depth .section--ink .method-visual {
+  background: rgba(255,253,248,.10) !important;
+  border-color: rgba(255,253,248,.20) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .hero-card,
+body.eh-context--archetypes.eh-archetype-bg--depth .card--deep,
+body.eh-context--archetypes.eh-archetype-bg--depth .change-card,
+body.eh-context--archetypes.eh-archetype-bg--depth .price-card--featured {
+  background:
+    radial-gradient(circle at 90% 8%, rgba(185,147,73,.16), transparent 30%),
+    linear-gradient(135deg, #574263 0%, #684A73 100%) !important;
+  border-color: rgba(185,147,73,.28) !important;
+  color: #FFFDF8 !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .hero-card *,
+body.eh-context--archetypes.eh-archetype-bg--depth .card--deep *,
+body.eh-context--archetypes.eh-archetype-bg--depth .change-card *,
+body.eh-context--archetypes.eh-archetype-bg--depth .price-card--featured * {
+  color: #FFFDF8 !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .final {
+  background:
+    radial-gradient(circle at 16% 20%, rgba(185,147,73,.16), transparent 30%),
+    linear-gradient(135deg, #574263, #684A73) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .atlas {
+  border-color: rgba(184,143,73,.42) !important;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(184,143,73,.20), transparent 30%),
+    radial-gradient(circle at 18% 18%, rgba(104,74,115,.20), transparent 25%),
+    linear-gradient(145deg, #574263, #684A73 62%, #A88BB8) !important;
+  box-shadow: 0 28px 68px rgba(87,66,99,.20) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .atlas-center {
+  background: rgba(87,66,99,.72) !important;
+  border-color: rgba(184,143,73,.62) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .atlas::before {
+  border-color: rgba(184,143,73,.34) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .atlas::after {
+  border-color: rgba(255,253,248,.22) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .orbit {
+  background: rgba(255,253,248,.12) !important;
+  border-color: rgba(184,143,73,.46) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .change-caption {
+  background: rgba(87,66,99,.84) !important;
+  border-color: rgba(255,253,248,.30) !important;
+  box-shadow: 0 18px 44px rgba(87,66,99,.26) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .hero .btn--outline {
+  background: rgba(255,255,255,.86) !important;
+  border-color: rgba(91,45,104,.28) !important;
+  color: #24152F !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .archetype-card span {
+  color: #24152F !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .case-card p,
+body.eh-context--archetypes.eh-archetype-bg--depth .testimonial p {
+  color: #4F4657 !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .master-role {
+  color: #24152F !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--depth .final .btn--outline,
+body.eh-context--archetypes.eh-archetype-bg--depth .final .btn--light {
+  background: rgba(255,255,255,.88) !important;
+  border-color: rgba(91,45,104,.30) !important;
+  color: #24152F !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats {
+  --bg: #FFF6EA;
+  --bg2: #DDEDE8;
+  --ink: #24152F;
+  --green: #8AAFA6;
+  --green-text: #315F58;
+  --gold: #C9A24D;
+  --gold2: #D7B05F;
+  --sand: #F1E2CF;
+  --sea: #DDEDE8;
+  background: linear-gradient(180deg, #FFFAF1 0%, #F1E2CF 44%, #DDEDE8 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .hero {
+  background:
+    radial-gradient(circle at 78% 18%, rgba(201,162,77,.22), transparent 30%),
+    radial-gradient(circle at 18% 80%, rgba(191,220,212,.34), transparent 34%),
+    linear-gradient(145deg, #FFF6EA 0%, #F4D9BD 50%, #BFDCD4 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats section[id="navigator"],
+body.eh-context--archetypes.eh-archetype-bg--retreats section[id="route-map"] {
+  background:
+    linear-gradient(135deg, #DDEDE8, #FFFAF1) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .choice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .choice-card {
+  background: linear-gradient(135deg, rgba(255,255,255,.92), #DDEDE8) !important;
+  border: 1px solid rgba(138,175,166,.24) !important;
+  box-shadow: 0 18px 46px rgba(36,21,47,.08) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .choice-card,
+body.eh-context--archetypes.eh-archetype-bg--retreats .nav-card,
+body.eh-context--archetypes.eh-archetype-bg--retreats .hw-card,
+body.eh-context--archetypes.eh-archetype-bg--retreats .summary-card.card--gold,
+body.eh-context--archetypes.eh-archetype-bg--retreats .card--sand {
+  background: linear-gradient(135deg, #FFFFFF, #F4ECF7) !important;
+  border-color: rgba(91,45,104,.18) !important;
+  color: #24152F !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .choice-card .label,
+body.eh-context--archetypes.eh-archetype-bg--retreats .choice-card h4,
+body.eh-context--archetypes.eh-archetype-bg--retreats .nav-card .label,
+body.eh-context--archetypes.eh-archetype-bg--retreats .nav-card h2,
+body.eh-context--archetypes.eh-archetype-bg--retreats .nav-card .hero-sub,
+body.eh-context--archetypes.eh-archetype-bg--retreats .hw-card h4,
+body.eh-context--archetypes.eh-archetype-bg--retreats .summary-card .s-key,
+body.eh-context--archetypes.eh-archetype-bg--retreats .card--gold .label,
+body.eh-context--archetypes.eh-archetype-bg--retreats .card--sand .label {
+  color: #24152F !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .choice-card p,
+body.eh-context--archetypes.eh-archetype-bg--retreats .nav-card p,
+body.eh-context--archetypes.eh-archetype-bg--retreats .hw-card p,
+body.eh-context--archetypes.eh-archetype-bg--retreats .summary-card p,
+body.eh-context--archetypes.eh-archetype-bg--retreats .card--gold p,
+body.eh-context--archetypes.eh-archetype-bg--retreats .card--sand p {
+  color: #4F4657 !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .hw-central.card--dark {
+  background:
+    radial-gradient(circle at 84% 18%, rgba(184,143,73,.22), transparent 34%),
+    linear-gradient(135deg, #24152F, #5B2D68) !important;
+  border-color: rgba(255,255,255,.22) !important;
+  color: #FFFFFF !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .hw-central.card--dark .label {
+  color: #F3D8A1 !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .hw-central.card--dark h3,
+body.eh-context--archetypes.eh-archetype-bg--retreats .hw-central.card--dark p {
+  color: #FFFFFF !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .choice-card--needs {
+  background: linear-gradient(135deg, #FFFAF1, #F6E7B8) !important;
+  border-color: rgba(201,162,77,.28) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .ar-zone--diagnosis {
+  background:
+    radial-gradient(circle at 84% 12%, rgba(191,220,212,.22), transparent 26%),
+    linear-gradient(180deg, #FFFAF1 0%, #F1E2CF 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .ar-zone--principle {
+  background:
+    linear-gradient(180deg, #FFFFFF 0%, #DDEDE8 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .ar-zone--choice {
+  background:
+    radial-gradient(circle at 14% 18%, rgba(201,162,77,.14), transparent 26%),
+    linear-gradient(180deg, #F1E2CF 0%, #DDEDE8 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .ar-zone--practical {
+  background:
+    linear-gradient(180deg, #FFFAF1 0%, #F6E7B8 100%) !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .choice-card,
+body.eh-context--archetypes.eh-archetype-bg--retreats .choice-card--needs,
+body.eh-context--archetypes.eh-archetype-bg--retreats .choice-card--wants,
+body.eh-context--archetypes.eh-archetype-bg--retreats .nav-card,
+body.eh-context--archetypes.eh-archetype-bg--retreats .hw-card,
+body.eh-context--archetypes.eh-archetype-bg--retreats .sync__lost,
+body.eh-context--archetypes.eh-archetype-bg--retreats .sync__found,
+body.eh-context--archetypes.eh-archetype-bg--retreats .break-card,
+body.eh-context--archetypes.eh-archetype-bg--retreats .summary-card.card--gold,
+body.eh-context--archetypes.eh-archetype-bg--retreats .card--gold,
+body.eh-context--archetypes.eh-archetype-bg--retreats .card--sand {
+  background: linear-gradient(135deg, #FFFFFF 0%, #F4ECF7 100%) !important;
+  border-color: rgba(91,45,104,.20) !important;
+  color: #24152F !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .choice-card .label,
+body.eh-context--archetypes.eh-archetype-bg--retreats .choice-card h4,
+body.eh-context--archetypes.eh-archetype-bg--retreats .nav-card .label,
+body.eh-context--archetypes.eh-archetype-bg--retreats .nav-card h2,
+body.eh-context--archetypes.eh-archetype-bg--retreats .nav-card .hero-sub,
+body.eh-context--archetypes.eh-archetype-bg--retreats .hw-card h4,
+body.eh-context--archetypes.eh-archetype-bg--retreats .sync__label,
+body.eh-context--archetypes.eh-archetype-bg--retreats .sync__found h3,
+body.eh-context--archetypes.eh-archetype-bg--retreats .break-card h3,
+body.eh-context--archetypes.eh-archetype-bg--retreats .summary-card .s-key,
+body.eh-context--archetypes.eh-archetype-bg--retreats .summary-card .s-title,
+body.eh-context--archetypes.eh-archetype-bg--retreats .card--gold .label,
+body.eh-context--archetypes.eh-archetype-bg--retreats .card--sand .label {
+  color: #24152F !important;
+}
+
+body.eh-context--archetypes.eh-archetype-bg--retreats .choice-card p,
+body.eh-context--archetypes.eh-archetype-bg--retreats .nav-card p,
+body.eh-context--archetypes.eh-archetype-bg--retreats .hw-card p,
+body.eh-context--archetypes.eh-archetype-bg--retreats .sync__lost p,
+body.eh-context--archetypes.eh-archetype-bg--retreats .sync__found p,
+body.eh-context--archetypes.eh-archetype-bg--retreats .break-card p,
+body.eh-context--archetypes.eh-archetype-bg--retreats .summary-card p,
+body.eh-context--archetypes.eh-archetype-bg--retreats .card--gold p,
+body.eh-context--archetypes.eh-archetype-bg--retreats .card--sand p {
+  color: #4F4657 !important;
+}
+
+body.eh-context--archetypes .method-entry-map__method .eyebrow {
+  color: #FFFFFF !important;
+}
+
+@media (max-width: 768px) {
+  body.eh-context--archetypes.eh-archetype-bg--retreats .choice-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.eh-shell-breadcrumb {
+  border-bottom: 1px solid rgba(221, 216, 208, 0.62);
+  background: rgba(255, 255, 255, 0.58);
+  color: #5f625f;
+  font-family: Inter, "Segoe UI", system-ui, sans-serif;
+}
+
+.eh-shell-breadcrumb .eh-shell-container {
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  font-size: 13px;
+  line-height: 1.25;
+  white-space: nowrap;
+  scrollbar-width: none;
+}
+
+.eh-shell-breadcrumb .eh-shell-container::-webkit-scrollbar {
+  display: none;
+}
+
+.eh-shell-breadcrumb a {
+  color: var(--shell-context-primary);
+  font-weight: 760;
+  text-decoration: none;
+}
+
+.eh-shell-breadcrumb a:hover,
+.eh-shell-breadcrumb a:focus-visible {
+  color: var(--shell-context-deep);
+}
+
+.eh-shell-breadcrumb span:last-child {
+  color: #17151b;
+  font-weight: 760;
+}
+
+.eh-global-footer {
+  padding-block: clamp(32px, 4vw, 48px);
+  border-top: 1px solid #ddd8d0;
+  background: #f7f5f1;
+  color: #5f625f;
+  font-family: Inter, "Segoe UI", system-ui, sans-serif;
+}
+
+.eh-global-footer__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.36fr) repeat(3, minmax(150px, 0.64fr));
+  gap: clamp(22px, 3vw, 34px);
+  align-items: start;
+}
+
+.eh-global-footer__logo {
+  width: min(240px, 64vw);
+  max-height: 72px;
+  object-fit: contain;
+  margin-bottom: 14px;
+  filter: saturate(1.18) contrast(1.34) brightness(.82);
+  opacity: 1;
+}
+
+.eh-global-footer h2 {
+  margin: 0;
+  color: #17151b;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(24px, 3vw, 34px);
+  line-height: 1.08;
+  font-weight: 500;
+}
+
+.eh-global-footer p {
+  margin: 12px 0 0;
+  max-width: 520px;
+  color: #5f625f;
+  font-size: 15px;
+  line-height: 1.58;
+}
+
+.eh-global-footer__context {
+  display: inline-flex;
+  margin-top: 14px;
+  padding: 7px 11px;
+  border: 1px solid color-mix(in srgb, var(--shell-context-primary) 18%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--shell-context-wash) 78%, #fff);
+  color: var(--shell-context-deep);
+  font-size: 13px;
+  font-weight: 780;
+}
+
+.eh-global-footer__nav {
+  display: grid;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.eh-global-footer__nav strong {
+  color: var(--shell-context-deep);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.eh-global-footer a {
+  color: var(--shell-context-primary);
+  font-weight: 720;
+}
+
+.eh-global-footer a:hover,
+.eh-global-footer a:focus-visible {
+  color: var(--shell-context-hover);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.eh-global-footer__bottom {
+  display: grid;
+  gap: 8px;
+  margin-top: 30px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(221, 216, 208, 0.9);
+}
+
+.eh-global-footer__bottom p {
+  margin: 0;
+  max-width: 980px;
+  font-size: 13px;
+  line-height: 1.48;
+}
+
+.eh-global-footer__legal {
+  color: rgba(95, 98, 95, 0.82);
+}
+
+.eh-cross-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+  color: #5f625f;
+  font-size: 13px;
+  font-weight: 760;
+  white-space: nowrap;
+}
+
+.eh-cross-nav a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.eh-cross-nav a:hover,
+.eh-cross-nav a:focus-visible {
+  color: #0f625e;
+}
+
+.site-header__inner--with-cross-nav {
+  flex-wrap: wrap;
+  row-gap: 8px;
+  padding-block: 8px;
+}
+
+.site-header__inner--with-cross-nav .brand {
+  order: 1;
+}
+
+.site-header__inner--with-cross-nav .site-nav {
+  order: 2;
+  flex: 0 0 auto;
+  margin-left: auto;
+}
+
+.site-header__inner--with-cross-nav .site-header__cta {
+  order: 3;
+}
+
+.site-header__inner--with-cross-nav .eh-cross-nav {
+  order: 4;
+  flex: 1 1 100%;
+  margin-left: 0;
+  padding-top: 8px;
+  border-top: 1px solid rgba(221, 216, 208, 0.68);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.site-header__inner--with-cross-nav .eh-cross-nav::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 1120px) {
+  .eh-shell-header__inner {
+    flex-wrap: wrap;
+    padding: 10px 0;
+  }
+
+  .eh-shell-nav,
+  .eh-cross-nav {
+    order: 3;
+    flex: 1 1 100%;
+    justify-content: flex-start;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+  }
+
+  .eh-shell-nav .dropdown-menu {
+    display: none;
+  }
+
+  .eh-shell-nav::-webkit-scrollbar,
+  .eh-cross-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .eh-global-footer__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 680px) {
+  .eh-shell-container {
+    width: calc(100% - 40px);
+  }
+
+  .eh-shell-header__inner {
+    min-height: 62px;
+    gap: 10px;
+  }
+
+  .eh-shell-brand img {
+    width: min(178px, 58vw);
+    max-height: 50px;
+  }
+
+  .eh-shell-cta {
+    min-height: 38px;
+    padding: 0 12px;
+    font-size: 13px;
+  }
+
+  .eh-global-footer {
+    padding-block: 32px;
+  }
+
+  .eh-global-footer__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .eh-direction-bridge__inner {
+    min-height: 0;
+    grid-template-columns: 1fr;
+    padding-block: 16px;
+  }
+
+  .eh-direction-bridge__current {
+    width: fit-content;
+    white-space: normal;
+  }
+}
+
+
+body.eh-standalone-archetype {
+  --eh-standalone-section-y: clamp(40px, 5vw, 64px);
+  --eh-standalone-section-y-compact: clamp(32px, 4vw, 48px);
+  --eh-standalone-section-y-large: clamp(52px, 6vw, 78px);
+  --section: var(--eh-standalone-section-y);
+  --sg: var(--eh-standalone-section-y);
+}
+body.eh-standalone-archetype .section {
+  padding-block: var(--eh-standalone-section-y) !important;
+}
+body.eh-standalone-archetype .final,
+body.eh-standalone-archetype #pricing {
+  padding-block: var(--eh-standalone-section-y-large) !important;
+}
+body.eh-standalone-retreat .ar-zone {
+  padding-block: var(--eh-standalone-section-y) !important;
+}
+
+.archetype-testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 28px;
+}
+.archetype-testimonial-grid--two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.archetype-testimonial-grid figure {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  margin: 0;
+  padding: clamp(20px, 2.4vw, 28px);
+  border: 1px solid color-mix(in srgb, var(--direction-primary, var(--primary, #5B2D68)) 20%, var(--eh-line, rgba(221,216,208,.88)));
+  border-radius: var(--radius-md, 18px);
+  background: rgba(255,255,255,.82);
+  box-shadow: 0 16px 42px rgba(36,21,47,.06);
+}
+.archetype-testimonial-grid .testimonial-signal {
+  margin: 0 0 14px;
+  color: var(--direction-primary, var(--primary, #5B2D68));
+  font-size: 12px;
+  font-weight: 820;
+  letter-spacing: .08em;
+  line-height: 1.32;
+  text-transform: uppercase;
+}
+.archetype-testimonial-grid blockquote {
+  margin: 0;
+  color: var(--ink, #17151B);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(19px, 1.75vw, 25px);
+  line-height: 1.34;
+}
+.archetype-testimonial-grid figcaption {
+  margin-top: auto;
+  padding-top: 18px;
+  color: var(--ink-soft, #5A5661);
+  font-size: 13px;
+  line-height: 1.45;
+}
+.archetype-video-testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 30px;
+}
+.archetype-video-testimonial-card {
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--direction-primary, var(--primary, #5B2D68)) 20%, var(--eh-line, rgba(221,216,208,.88)));
+  border-radius: var(--radius-md, 18px);
+  background: rgba(255,255,255,.86);
+  box-shadow: 0 18px 48px rgba(36,21,47,.08);
+}
+.archetype-video-testimonial-frame {
+  aspect-ratio: 16 / 9;
+  background: #24152F;
+}
+.archetype-video-testimonial-frame iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.archetype-video-testimonial-copy {
+  padding: 18px 20px 20px;
+}
+.archetype-video-testimonial-copy h3 {
+  margin: 0 0 8px;
+  color: var(--ink, #17151B);
+  font-size: 22px;
+  line-height: 1.2;
+}
+.archetype-video-testimonial-copy p {
+  margin: 0;
+  color: var(--ink-soft, #5A5661);
+  font-size: 15px;
+  line-height: 1.55;
+}
+@media (max-width: 920px) {
+  .archetype-testimonial-grid,
+  .archetype-testimonial-grid--two,
+  .archetype-video-testimonial-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  body.eh-standalone-archetype {
+    --eh-standalone-section-y: 40px;
+    --eh-standalone-section-y-compact: 32px;
+    --eh-standalone-section-y-large: 52px;
+  }
+}
+
+.archetype-written-testimonials,
+.archetype-testimonial-grid {
+  --proof-primary: var(--direction-primary, var(--green, #5B2D68));
+  --proof-deep: var(--direction-deep, #24152F);
+  --proof-soft: var(--direction-soft, var(--sand, #EFE4F2));
+  --proof-wash: var(--direction-wash, var(--bg2, #FBF8FC));
+  --proof-accent: var(--direction-accent, var(--gold, #C79A3B));
+}
+
+.archetype-testimonial-grid figure.proof-card {
+  position: relative !important;
+  overflow: hidden !important;
+  padding: clamp(22px, 2.8vw, 32px) !important;
+  border: 1px solid color-mix(in srgb, var(--proof-primary) 22%, rgba(221,216,208,.88)) !important;
+  border-radius: 8px !important;
+  background:
+    radial-gradient(circle at 92% 8%, color-mix(in srgb, var(--proof-accent) 16%, transparent), transparent 30%),
+    linear-gradient(180deg, color-mix(in srgb, var(--proof-wash) 58%, #fff 42%), color-mix(in srgb, var(--proof-soft) 26%, #fff 74%)) !important;
+  box-shadow: 0 18px 54px color-mix(in srgb, var(--proof-deep) 8%, transparent) !important;
+}
+
+.archetype-testimonial-grid figure.proof-card::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 auto 0 0 !important;
+  width: 5px !important;
+  border-radius: 8px 0 0 8px !important;
+  background: var(--proof-primary) !important;
+}
+
+.archetype-testimonial-grid figure.proof-card::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 0 auto 0 !important;
+  height: 3px !important;
+  background: linear-gradient(90deg, var(--proof-primary), color-mix(in srgb, var(--proof-accent) 72%, #fff)) !important;
+}
+
+.archetype-testimonial-grid .testimonial-signal {
+  display: inline-flex !important;
+  width: fit-content !important;
+  min-height: 28px !important;
+  align-items: center !important;
+  padding: 0 10px !important;
+  border: 1px solid color-mix(in srgb, var(--proof-primary) 20%, transparent) !important;
+  border-radius: 999px !important;
+  background: color-mix(in srgb, var(--proof-soft) 50%, #fff 50%) !important;
+  color: var(--green-text, var(--proof-primary)) !important;
+}
+
+.archetype-testimonial-grid figure.proof-card blockquote {
+  position: relative !important;
+  z-index: 1 !important;
+  padding-top: 18px !important;
+  font-family: Inter, system-ui, sans-serif !important;
+  font-size: clamp(16.5px, 1.25vw, 18.5px) !important;
+  line-height: 1.62 !important;
+}
+
+.archetype-testimonial-grid figure.proof-card blockquote::before {
+  content: "“" !important;
+  position: absolute !important;
+  z-index: -1 !important;
+  top: -20px !important;
+  right: 0 !important;
+  color: color-mix(in srgb, var(--proof-primary) 16%, transparent) !important;
+  font-family: Georgia, "Times New Roman", serif !important;
+  font-size: 84px !important;
+  line-height: 1 !important;
+}
+
+.archetype-testimonial-grid figure.proof-card figcaption {
+  color: var(--green-text, var(--proof-primary)) !important;
+  font-weight: 760 !important;
+}
+
+
+body > .eh-shell-header + .nav {
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  z-index: 20 !important;
+}
+body > .eh-shell-header + .nav,
+body > nav.nav,
+body > .nav#nav,
+body > .nav {
+  display: none !important;
+}
+body.eh-standalone-retreat {
+  padding-top: 0 !important;
+}
+</style>
+  <link rel="icon" type="image/png" href="/assets/evolution-house-logo-approved.png">
+</head>
+<body class="eh-context--archetypes eh-standalone-archetype eh-archetype-bg--retreats eh-standalone-retreat">
+<header class="eh-shell-header eh-context--archetypes">
+    <div class="eh-shell-container eh-shell-header__inner">
+      <a class="eh-shell-brand" href="../index.html" aria-label="Evolution House">
+        <img width="736" height="144" src="../assets/evolution-house-header-logo-v2.png" alt="Evolution House">
+      </a>
+      <nav class="eh-shell-nav" aria-label="Навигация Evolution House">
+        <a href="../index.html">Главная</a>
+        <a href="../pervyi-shag.html">С чего начать</a>
+        <div class="nav-item has-dropdown">
+    <a class="dropdown-trigger is-active" href="../napravleniya.html" aria-haspopup="true" aria-expanded="false">Направления</a>
+    <div class="dropdown-menu" aria-label="Направления">
+      <a href="../arhetipy.html" class="is-active">Путь архетипов</a>
+      <a href="../urovni-zhizni/index.html">Пересборка жизни</a>
+      <a href="../vnutrennyaya-svoboda.html">Путь свободы от травм</a>
+      <a href="../reiki-napravlenie.html">Путь Reiki</a>
     </div>
   </div>
-</header>
+        <a href="../o-shkole.html">О школе</a>
+      </nav>
+      <a class="eh-shell-cta" href="../otkrytye-programmy.html">Открытые программы</a>
+    </div>
+    <nav class="eh-local-strip" aria-label="Маршрут страницы">
+        <div class="eh-shell-container">
+          <a href="../arhetipy.html">Карта пути</a><a href="../arhetipy-method.html">Метод</a><a href="../lightness/index.html">Вкус лёгкости</a><a href="../strength/index.html">Вкус силы</a><a href="../mentoring/">Высокая Глубина</a><a href="../retreats/index.html" aria-current="page">Острова Везения</a>
+        </div>
+      </nav>
+  </header>
+  <script>
+  (() => {
+    const items = [...document.querySelectorAll('.eh-shell-header .has-dropdown')];
+    const close = (except) => items.forEach((item) => {
+      if (item === except) return;
+      item.classList.remove('is-open');
+      item.querySelector('.dropdown-trigger')?.setAttribute('aria-expanded', 'false');
+    });
+    items.forEach((item) => {
+      const trigger = item.querySelector('.dropdown-trigger');
+      if (!trigger) return;
+      trigger.addEventListener('click', (event) => {
+        if (window.matchMedia('(max-width: 1080px)').matches) return;
+        event.preventDefault();
+        const open = !item.classList.contains('is-open');
+        close(item);
+        item.classList.toggle('is-open', open);
+        trigger.setAttribute('aria-expanded', String(open));
+      });
+    });
+    document.addEventListener('click', (event) => {
+      if (!event.target.closest('.eh-shell-header .has-dropdown')) close();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') close();
+    });
+  })();
+  </script>
+<nav class="eh-shell-breadcrumb" aria-label="Путь страницы">
+    <div class="eh-shell-container">
+      <a href="../napravleniya.html">Направления</a>
+      <span>→</span>
+      <a href="../arhetipy.html">Путь архетипов</a>
+      <span>→</span>
+      <span>Острова Везения</span>
+    </div>
+  </nav>
+<main id="top">
 
 <!-- ════════════════════════════════════════════════════════
      HERO
 ════════════════════════════════════════════════════════ -->
 <section class="hero">
-  <!-- HERO TEST VERSION 2026-05-27 -->
-  <div class="hero-inner">
+<div class="hero-inner">
     <div class="hero-copy">
 
       <div class="hero__eyebrow">
@@ -1334,13 +2989,11 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
     </div>
 
   </div>
-  <div class="hero__line"></div>
 </section>
-
 <!-- ════════════════════════════════════════════════════════
      PAIN
 ════════════════════════════════════════════════════════ -->
-<section style="padding: var(--sg) 0;">
+<section class="ar-zone ar-zone--diagnosis" style="padding: var(--sg) 0;">
   <div class="narrative-frame">
     <div class="pain" style="max-width:740px;">
       <span class="label" style="display:block;margin-bottom:20px;">Вы сейчас в этой точке?</span>
@@ -1364,12 +3017,11 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
 <!-- ════════════════════════════════════════════════════════
      NOT BROKEN
 ════════════════════════════════════════════════════════ -->
-<section style="padding: calc(var(--sg) * 0.75) 0;">
+<section class="ar-zone ar-zone--diagnosis" style="padding: calc(var(--sg) * 0.75) 0;">
   <div class="narrative-frame">
     <div style="max-width:740px;">
       <span class="label" style="display:block;margin-bottom:20px;">Важное</span>
-      <span class="green-rule" style="margin:0 0 20px;"></span>
-      <h2 style="margin-bottom:32px;">Вы не сломаны.<br>Возможно, вы просто не на своей линии.</h2>
+<h2 style="margin-bottom:32px;">Вы не сломаны.<br>Возможно, вы просто не на своей линии.</h2>
       <p>Проблема не в недостатке сил или желания и не в том, что вы «недостаточно делали». Возможно, вы вкладывали энергию, искали ответы, пробовали разные пути — но что-то всё равно не становилось по-настоящему вашим.</p>
       <p style="margin-top:16px;">У каждого есть своя линия: направление, в котором мир начинает работать вместе с вами, а не против. Когда вы на ней, движение превращается в попадание. Когда вы с неё сходите, даже правильные шаги могут возвращать вас не туда.</p>
       <p style="margin-top:16px;">Это не диагноз и не навсегда — это конкретное место, в которое можно вернуться.</p>
@@ -1380,7 +3032,7 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
 <!-- ════════════════════════════════════════════════════════
      SYNC
 ════════════════════════════════════════════════════════ -->
-<section id="route" style="padding: var(--sg) 0;">
+<section class="ar-zone ar-zone--principle" id="route" style="padding: var(--sg) 0;">
   <div class="narrative-frame">
     <div style="max-width:740px;">
       <span class="label">Когда внутреннее и внешнее перестают спорить</span>
@@ -1416,13 +3068,10 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
     </div>
   </div>
 </section>
-
-<div class="divider wrap"><i></i></div>
-
 <!-- ════════════════════════════════════════════════════════
      TWO BREAKS
 ════════════════════════════════════════════════════════ -->
-<section style="padding: var(--sg) 0;">
+<section class="ar-zone ar-zone--principle" style="padding: var(--sg) 0;">
   <div class="narrative-frame">
     <div style="max-width:740px;">
       <span class="label">Два места, где путь перестаёт быть лёгким</span>
@@ -1436,7 +3085,7 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
         <svg width="40" height="40" viewBox="0 0 40 40" fill="none" style="margin-bottom:20px;">
           <circle cx="20" cy="20" r="18" stroke="#C79A3B" stroke-width="1" opacity=".5"/>
           <circle cx="20" cy="20" r="3" stroke="#C79A3B" stroke-width="1.2"/>
-          <polygon points="20,2 18,18 22,18" fill="#063F33" opacity=".85"/>
+          <polygon points="20,2 18,18 22,18" fill="#5B2D68" opacity=".85"/>
           <polygon points="20,38 18,22 22,22" fill="#C79A3B" opacity=".7"/>
           <line x1="2" y1="20" x2="17" y2="20" stroke="#D8B66A" stroke-width=".75" opacity=".5"/>
           <line x1="23" y1="20" x2="38" y2="20" stroke="#D8B66A" stroke-width=".75" opacity=".5"/>
@@ -1452,7 +3101,7 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
           <circle cx="20" cy="20" r="18" stroke="#D8B66A" stroke-width="1" opacity=".5"/>
           <circle cx="20" cy="20" r="10" stroke="#C79A3B" stroke-width="1"/>
           <circle cx="20" cy="20" r="4" fill="#C79A3B" opacity=".6"/>
-          <circle cx="20" cy="20" r="1.5" fill="#063F33"/>
+          <circle cx="20" cy="20" r="1.5" fill="#5B2D68"/>
         </svg>
         <span class="label">Второе место</span>
         <h3>Ядро не собрано</h3>
@@ -1462,17 +3111,10 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
     </div>
   </div>
 </section>
-
-<div class="divider--fork wrap">
-  <div class="fork-v"></div>
-  <div class="fork-row"><div class="fork-diamond"></div></div>
-  <div class="fork-v"></div>
-</div>
-
 <!-- ════════════════════════════════════════════════════════
      RETREAT 1 — ЛИНИЯ УДАЧИ
 ════════════════════════════════════════════════════════ -->
-<section style="padding: var(--sg) 0;">
+<section class="ar-zone ar-zone--choice" style="padding: var(--sg) 0;">
   <div class="sec">
     <div class="retreat__card retreat__card--phuket">
       <div class="retreat__content">
@@ -1502,29 +3144,21 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
         <div class="retreat__why">
           <div class="retreat__why-title">Почему Пхукет</div>
           <p>Пхукет здесь работает как живое поле направления: выводит наружу, в видимость и контакт, в решения — туда, где дорога перестаёт быть красивой идеей и становится следующим реальным шагом.</p>
-          <p style="margin-top:12px;font-weight:600;color:var(--green);">Больше выездов и движения, чем внутренней статики.</p>
+          <p style="margin-top:12px;font-weight:600;color:var(--green-text, var(--green));">Больше выездов и движения, чем внутренней статики.</p>
           <p style="margin-top:12px;">Архетипическая работа, тело и голос соединяются здесь с дорогами, водой и внешним пространством острова — чтобы внутренний сдвиг перешёл в действие и следующий шаг.</p>
         </div>
         <p class="retreat__pull italic serif">«Линия удачи: тот момент, когда вы перестаёте объяснять, почему не сейчас.»</p>
       </div>
       <div class="retreat__visual">
-        <!-- VISUAL SLOT 1: Пхукет — line-art: Андаманское море, Старый город, закат, золотой коридор -->
-      <img src="phuket_liniya_udachi_portrait.png" alt="Пхукет — карта маршрута: Андаманское море, Старый город, Храм, Линия удачи">
+<img src="phuket_liniya_udachi_portrait.png" alt="Пхукет — карта маршрута: Андаманское море, Старый город, Храм, Линия удачи">
       </div>
     </div>
   </div>
 </section>
-
-<div class="divider--fork wrap">
-  <div class="fork-v"></div>
-  <div class="fork-row"><div class="fork-diamond"></div></div>
-  <div class="fork-v"></div>
-</div>
-
 <!-- ════════════════════════════════════════════════════════
      RETREAT 2 — ЯДРО СИЛЫ
 ════════════════════════════════════════════════════════ -->
-<section style="padding: var(--sg) 0;">
+<section class="ar-zone ar-zone--choice" style="padding: var(--sg) 0;">
   <div class="sec">
     <div class="retreat__card retreat__card--light">
       <div class="retreat__content">
@@ -1547,30 +3181,25 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
         <div class="retreat__why">
           <div class="retreat__why-title">Почему Лангкави</div>
           <p>Лангкави здесь работает как поле возвращения: не толкает наружу, собирает внутрь. В этой тишине приходит не новая сила, а та, что всегда была внутри.</p>
-          <p style="margin-top:12px;font-weight:600;color:var(--green);">Почти без выездов — больше тишины, воды и работы на месте.</p>
+          <p style="margin-top:12px;font-weight:600;color:var(--green-text, var(--green));">Почти без выездов — больше тишины, воды и работы на месте.</p>
           <p style="margin-top:12px;">Через архетипическую и телесную работу внутренние части перестают спорить между собой и собираются вокруг своего центра.</p>
         </div>
         <p class="retreat__pull italic serif">«Ядро силы: место внутри, которое уже есть. Оно просто разбросано. Мы его собираем.»</p>
       </div>
       <div class="retreat__visual">
-        <!-- VISUAL SLOT 2: Лангкави — line-art: джунгли, Sky Bridge, вода, тишина, скалы -->
-      <img src="langkawi_yadro_sily_portrait.png" alt="Лангкави — карта маршрута: джунгли, Sky Bridge, вода, древние скалы, Ядро силы">
+<img src="langkawi_yadro_sily_portrait.png" alt="Лангкави — карта маршрута: джунгли, Sky Bridge, вода, древние скалы, Ядро силы">
       </div>
     </div>
   </div>
 </section>
-
-<div class="divider divider--green wrap"><i></i></div>
-
 <!-- ════════════════════════════════════════════════════════
      ISLAND DESIRE — ПРОСТРАНСТВО ОСТРОВОВ
 ════════════════════════════════════════════════════════ -->
-<section id="islands" style="padding: var(--sg) 0;">
+<section class="ar-zone ar-zone--choice" id="islands" style="padding: var(--sg) 0;">
   <div class="sec">
     <div class="wrapt" style="padding:0;text-align:center;margin-bottom:0;">
       <span class="label" style="text-align:center;display:block;">Пространство островов</span>
-      <span class="green-rule" style="margin:0 auto 20px;"></span>
-      <h2>Два острова, два состояния — один маршрут к себе.</h2>
+<h2>Два острова, два состояния — один маршрут к себе.</h2>
       <p style="max-width:640px;margin:16px auto 0;">Пхукет открывает движение наружу: свет, масштаб, новые встречи, ощущение дороги и следующего шага. Это пространство помогает увидеть свою Линию Удачи, выйти из внутреннего тупика и снова почувствовать, куда вас несёт жизнь.</p>
       <p style="max-width:640px;margin:12px auto 0;">Лангкави собирает внутрь: вода, тишина, скалы, древние маршруты и ощущение глубокой опоры. Это пространство помогает вернуться к Ядру Силы, услышать себя без шума и собрать то, что давно было внутри, но ещё не стало устойчивой опорой.</p>
       <p style="max-width:640px;margin:12px auto 0;">Острова здесь становятся частью процесса: один помогает увидеть направление, второй помогает собрать состояние, из которого его можно выдержать.</p>
@@ -1584,8 +3213,8 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
       </div>
     </div>
 
-    <div style="max-width:600px;margin:60px auto 60px;text-align:center;padding:32px 40px;border:1.5px solid var(--gold);border-radius:var(--rr);background:#f5ecd4;">
-      <p style="font-family:var(--serif);font-style:italic;color:var(--green);font-size:20px;line-height:1.5;margin-bottom:16px;">Этот путь начинается не с оплаты в один клик, а с короткого разговора.</p>
+    <div style="max-width:600px;margin:60px auto 60px;text-align:center;padding:32px 40px;border:1.5px solid var(--gold);border-radius:var(--rr);background:#EEE6F3;">
+      <p style="font-family:var(--serif);font-style:italic;color:var(--green-text, var(--green));font-size:20px;line-height:1.5;margin-bottom:16px;">Этот путь начинается не с оплаты в один клик, а с короткого разговора.</p>
       <p style="font-size:16px;color:#5a6e68;line-height:1.6;margin-bottom:24px;">Мы помогаем понять, какой маршрут сейчас точнее: Лангкави, Пхукет или оба острова. По вопросам участия — напишите Евгении Татаркиной в Telegram.</p>
       <a href="https://t.me/evgenia_tatarkina" target="_blank" rel="noopener" class="btn">Написать Евгении в Telegram →</a>
     </div>
@@ -1606,8 +3235,8 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
           <path d="M12 70 L26 54 L40 70" stroke="#C79A3B" stroke-width="1.2" fill="none" stroke-linejoin="round"/>
           <rect x="18" y="70" width="16" height="14" stroke="#C79A3B" stroke-width="1"/>
           <rect x="23" y="76" width="6" height="8" stroke="#C79A3B" stroke-width="0.8"/>
-          <path d="M0 88 Q14 83 28 88 Q42 93 56 88 Q70 83 84 88 Q98 93 110 88" stroke="#B9C9BA" stroke-width="0.9" fill="none"/>
-          <path d="M0 98 Q14 93 28 98 Q42 103 56 98 Q70 93 84 98 Q98 103 110 98" stroke="#B9C9BA" stroke-width="0.7" fill="none"/>
+          <path d="M0 88 Q14 83 28 88 Q42 93 56 88 Q70 83 84 88 Q98 93 110 88" stroke="#EEE6F3" stroke-width="0.9" fill="none"/>
+          <path d="M0 98 Q14 93 28 98 Q42 103 56 98 Q70 93 84 98 Q98 103 110 98" stroke="#EEE6F3" stroke-width="0.7" fill="none"/>
         </svg>
         <div style="flex:1;">
           <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
@@ -1637,11 +3266,11 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
         <!-- corner decoration -->
         <svg class="island-card__corner" width="110" height="110" viewBox="0 0 110 110" fill="none">
           <path d="M94 8C82 11 76 20 76 28C76 37 82 45 94 45C88 43 83 37 83 28C83 19 88 13 94 8Z" stroke="#C79A3B" stroke-width="1.2"/>
-          <path d="M0 76 L14 52 L28 64 L42 44 L56 58 L68 48 L80 60 L92 50 L110 64 L110 84 L0 84Z" stroke="#063F33" stroke-width="1" fill="none"/>
+          <path d="M0 76 L14 52 L28 64 L42 44 L56 58 L68 48 L80 60 L92 50 L110 64 L110 84 L0 84Z" stroke="#5B2D68" stroke-width="1" fill="none"/>
           <path d="M18 80 Q44 68 70 80" stroke="#C79A3B" stroke-width="1.2" fill="none"/>
           <line x1="18" y1="80" x2="18" y2="90" stroke="#C79A3B" stroke-width="0.9"/>
           <line x1="70" y1="80" x2="70" y2="90" stroke="#C79A3B" stroke-width="0.9"/>
-          <path d="M0 98 Q28 93 55 98 Q82 103 110 98" stroke="#B9C9BA" stroke-width="0.8" fill="none"/>
+          <path d="M0 98 Q28 93 55 98 Q82 103 110 98" stroke="#EEE6F3" stroke-width="0.8" fill="none"/>
         </svg>
         <div style="flex:1;">
           <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
@@ -1667,12 +3296,11 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
 <!-- ════════════════════════════════════════════════════════
      HOTEL BASE — ГДЕ БУДЕТ БАЗА РЕТРИТА
 ════════════════════════════════════════════════════════ -->
-<section style="padding: calc(var(--sg) * 1.6) 0 var(--sg);">
+<section class="ar-zone ar-zone--practical" style="padding: calc(var(--sg) * 1.6) 0 var(--sg);">
   <div class="sec">
     <div class="wrapt" style="padding:0;text-align:center;margin-bottom:0;">
       <span class="label" style="text-align:center;display:block;">Базовые точки маршрута</span>
-      <span class="green-rule" style="margin:0 auto 20px;"></span>
-      <h2>Где будет база ретрита</h2>
+<h2>Где будет база ретрита</h2>
       <p style="max-width:680px;margin:16px auto 0;">Мы выбираем не просто отель, а пространство, которое поддерживает состояние каждого острова.</p>
       <p style="max-width:680px;margin:12px auto 0;">Базовый отель — это точка, вокруг которой собирается ретрит: встречи, часть практик, общий ритм и ощущение маршрута.</p>
       <p style="max-width:680px;margin:12px auto 0;">При этом участникам не обязательно жить именно в основном отеле. Вокруг каждого выбранного отеля есть более бюджетные варианты размещения в пешей доступности. Можно жить рядом и приходить на ретритные встречи без сложной логистики.</p>
@@ -1718,7 +3346,7 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
 <!-- ════════════════════════════════════════════════════════
      WHY HARD
 ════════════════════════════════════════════════════════ -->
-<section style="padding: var(--sg) 0;">
+<section class="ar-zone ar-zone--practical" style="padding: var(--sg) 0;">
   <div class="narrative-frame">
     <div style="max-width:740px;">
       <span class="label">Точка выбора</span>
@@ -1727,14 +3355,14 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
     </div>
   </div>
   <div class="sec" style="padding-top:0;">
-    <div class="fork__grid" style="margin-top:48px;">
-      <div class="card fork fork--wants">
+    <div class="choice-grid" style="margin-top:48px;">
+      <div class="card choice-card choice-card--wants">
         <span class="label" style="color:#8a7e60;">Хочется</span>
         <h4>Глубина и расслабление<br>или масштаб</h4>
         <p style="margin-top:12px;">Иногда хочется глубины и расслабления, а нужна линия. Потому что без собранного ядра «расслабиться» означает снова распасться. Отдых без основы — это не отдых.</p>
         <p>Иногда хочется масштаба, а нужно ядро. Потому что без него можно выйти в масштаб и потерять себя там.</p>
       </div>
-      <div class="card fork fork--needs">
+      <div class="card choice-card choice-card--needs">
         <span class="label">Нужно точно</span>
         <h4>Попасть в своё направление</h4>
         <p style="margin-top:12px;">Самый сильный тормоз: выбрать то, что не трогает настоящее место. Сделать что-то и снова вернуться на то же место.</p>
@@ -1743,20 +3371,16 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
     </div>
   </div>
 </section>
-
-<div class="divider wrap"><i></i></div>
-
 <!-- ════════════════════════════════════════════════════════
      SOFT ENTRY
 ════════════════════════════════════════════════════════ -->
-<section style="padding: calc(var(--sg) * 0.75) 0;">
+<section class="ar-zone ar-zone--practical" style="padding: calc(var(--sg) * 0.75) 0;">
   <div class="sec">
     <div class="soft-entry-grid" style="display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:center;">
       <!-- Text -->
       <div>
         <span class="label" style="margin-bottom:20px;">Вход</span>
-        <span class="green-rule"></span>
-        <h2>Можно войти мягко</h2>
+<h2>Можно войти мягко</h2>
         <div style="margin-top:24px;">
           <p>Не обязательно приезжать за большой проработкой. Можно приехать за выдохом, за морем, за тишиной, за ощущением, что внутри снова появляется место для себя.</p>
           <p style="margin-top:16px;">Именно для этого нужна сессия-навигатор. Не чтобы заранее поставить вам диагноз, а чтобы понять, зачем вы едете именно сейчас. Что для вас важнее: прикоснуться к полю, восстановиться, увидеть направление, войти глубже или сделать настоящий внутренний скачок.</p>
@@ -1775,20 +3399,17 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
     </div>
   </div>
 </section>
-
-<div class="divider wrap"><i></i></div>
-
 <!-- ════════════════════════════════════════════════════════
      NAVIGATOR
 ════════════════════════════════════════════════════════ -->
-<section id="navigator" style="padding: var(--sg) var(--px);">
+<section class="ar-zone ar-zone--practical" id="navigator" style="padding: var(--sg) var(--px);">
   <div class="nav-card">
     <!-- compass -->
     <svg width="72" height="72" viewBox="0 0 80 80" fill="none" style="margin:0 auto 32px;opacity:.9;">
       <circle cx="40" cy="40" r="36" stroke="#C79A3B" stroke-width="1" opacity=".5"/>
       <circle cx="40" cy="40" r="26" stroke="#D8B66A" stroke-width=".5" opacity=".4"/>
       <circle cx="40" cy="40" r="4" stroke="#C79A3B" stroke-width="1.2"/>
-      <polygon points="40,4 37,38 43,38" fill="#063F33" opacity=".85"/>
+      <polygon points="40,4 37,38 43,38" fill="#5B2D68" opacity=".85"/>
       <polygon points="40,76 37,42 43,42" fill="#C79A3B" opacity=".65"/>
       <line x1="4" y1="40" x2="36" y2="40" stroke="#D8B66A" stroke-width=".75" opacity=".5"/>
       <line x1="44" y1="40" x2="76" y2="40" stroke="#D8B66A" stroke-width=".75" opacity=".5"/>
@@ -1819,13 +3440,10 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
     <p class="tiny" style="margin-top:16px;">Это первый шаг. Всё остальное после него.</p>
   </div>
 </section>
-
-<div class="divider wrap"><i></i></div>
-
 <!-- ════════════════════════════════════════════════════════
      HOW WORKS
 ════════════════════════════════════════════════════════ -->
-<section style="padding: var(--sg) 0;">
+<section class="ar-zone ar-zone--practical" style="padding: var(--sg) 0;">
   <div class="narrative-frame">
     <div style="max-width:740px;">
       <span class="label">Формат</span>
@@ -1839,13 +3457,10 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
     </div>
   </div>
 </section>
-
-<div class="divider wrap"><i></i></div>
-
 <!-- ════════════════════════════════════════════════════════
      MASTERS
 ════════════════════════════════════════════════════════ -->
-<section id="masters" style="padding: var(--sg) 0;">
+<section class="ar-zone ar-zone--practical" id="masters" style="padding: var(--sg) 0;">
   <div class="narrative-frame">
     <div style="max-width:740px;">
       <span class="label">Кто держит поле</span>
@@ -1862,10 +3477,9 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
         <!-- photo column -->
         <div style="position:relative;z-index:1;">
           <div style="border:1px solid rgba(199,154,59,.45);padding:9px;border-radius:21px;background:rgba(250,244,230,.45);display:block;position:relative;">
-            <!-- VISUAL SLOT 3: Светлана — портрет 4:5, тёплый editorial, естественный свет -->
-            <img
+<img
               src="svetlana_master_portrait_4x5_warm_editorial.jpg"
-              alt="Светлана Страус — главный мастер, центр поля ретрита"
+              alt="Светлана Страусс — главный Мастер, центр поля ретрита"
               class="master-photo"
               style="border-radius:14px;"
             >
@@ -1885,8 +3499,8 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
         </div>
         <!-- content column -->
         <div style="position:relative;z-index:1;">
-          <div class="master-role" style="font-size:11px;letter-spacing:.12em;">Главный мастер · Центр поля ретрита</div>
-          <h3 style="margin-bottom:16px;font-size:clamp(22px,3vw,30px);">Светлана Страус</h3>
+          <div class="master-role" style="font-size:11px;letter-spacing:.12em;">Главный Мастер · Центр поля ретрита</div>
+          <h3 style="margin-bottom:16px;font-size:clamp(22px,3vw,30px);">Светлана Страусс</h3>
           <p style="font-size:16px;margin-bottom:12px;">Она работает не через давление ради результата и не через мягкость ради комфорта. Её сила в точности. В поле, где каждый встречает своё, и трансформация происходит не потому что так надо, а потому что иначе уже не получается.</p>
           <p style="font-size:16px;margin-bottom:12px;">Рядом со Светланой человек начинает видеть то, что раньше обходил стороной: где потерял свою линию, где отдал свою силу, где продолжает жить из привычки, хотя внутри уже давно знает, что его зовёт в другое.</p>
           <p style="font-size:16px;margin-bottom:12px;">«Линия удачи» и «Ядро силы» — не просто красивые названия, а две темы, которые Светлана прошла и воплотила сама.</p>
@@ -1899,10 +3513,9 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
         <!-- photo column -->
         <div>
           <div style="border:1px solid rgba(199,154,59,.45);padding:9px;border-radius:21px;background:rgba(250,244,230,.45);display:block;">
-            <!-- VISUAL SLOT 4: Угис — портрет 4:5, тёплый editorial, присутствие и структура -->
-            <img
+<img
               src="ugis_master_portrait_4x5_warm_editorial.webp"
-              alt="Угис Страус — второй мастер, структура перехода"
+              alt="Угис Страусс — второй Мастер, структура перехода"
               class="master-photo"
               style="border:none;border-radius:14px;"
             >
@@ -1917,9 +3530,9 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
               <circle cx="16" cy="3" r="2.5" stroke="#C79A3B" stroke-width="1.2"/>
               <path d="M4 16 Q7 12 10 8 Q13 5 16 3" stroke="#C79A3B" stroke-width="1" fill="none" opacity=".6" stroke-dasharray="2 2"/>
             </svg>
-            Второй мастер · Структура перехода
+            Второй Мастер · Структура перехода
           </div>
-          <h3 style="margin-bottom:16px;">Угис Страус</h3>
+          <h3 style="margin-bottom:16px;">Угис Страусс</h3>
           <p style="font-size:16px;margin-bottom:10px;">Если Светлана создаёт поле, в котором трансформация открывается, то Угис помогает ей обрести форму.</p>
           <p style="font-size:16px;margin-bottom:10px;">До входа в глубокий процесс он помогает увидеть препятствия: внутреннюю путаницу, сопротивление, неясность выбора, страх решения.</p>
           <p style="font-size:16px;margin-bottom:10px;">После того как новая сила поднимается, Угис помогает не дать ей разлететься, собрать открывшееся в конкретную линию: последовательность шагов, новую структуру, новое видение своего следующего уровня.</p>
@@ -1930,26 +3543,88 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
     </div>
   </div>
 </section>
-
-<div class="divider wrap"><i></i></div>
-
+<!-- ════════════════════════════════════════════════════════
+     ENTRY POINT
+════════════════════════════════════════════════════════ -->
+<section class="ar-zone ar-zone--practical" style="padding: calc(var(--sg) * 0.7) 0;">
+  <div class="narrative-frame">
+    <div style="max-width:740px;">
+      <span class="label">Маршрут входа</span>
+      <h2>Не все начинают с острова</h2>
+      <p style="margin-top:16px;">Острова Везения — не единственная точка входа, а кульминация маршрута.</p>
+      <p style="margin-top:14px;">Кто-то сначала мягко знакомится с полем школы через короткую неделю. Кому-то перед ретритом нужна более глубокая подготовка в менторинге. А кто-то уже чувствует ясное «да» и может обсуждать остров сразу.</p>
+      <p style="margin-top:14px;">Поэтому ниже — не каталог программ, а карта входа: от первого касания до полного маршрута через оба острова.</p>
+      <p style="margin-top:24px;font-family:var(--serif);font-style:italic;color:var(--green-text, var(--green));font-size:clamp(17px,1.7vw,20px);line-height:1.5;">Чтобы не выбирать вслепую, первый шаг один: сессия-навигатор.</p>
+      <p style="margin-top:10px;">На ней становится ясно, какой вход сейчас точнее: Вкус лёгкости, Вкус силы, менторинг, Пхукет, Лангкави или полный путь.</p>
+      <div style="margin-top:32px;"><a href="https://t.me/evgenia_tatarkina" target="_blank" rel="noopener" class="btn">Выбрать свой маршрут →</a></div>
+    </div>
+  </div>
+</section>
 <!-- ════════════════════════════════════════════════════════
      ROUTE MAP
 ════════════════════════════════════════════════════════ -->
-<section id="route-map" style="padding: var(--sg) 0;">
+<section class="ar-zone ar-zone--practical" id="route-map" style="padding: var(--sg) 0;">
   <div class="narrative-frame">
     <div style="max-width:700px;">
       <span class="label">Маршрут</span>
       <h2>Маршрут может быть разной глубины</h2>
-      <p style="margin-top:20px;font-family:var(--serif);font-size:clamp(18px,2vw,22px);line-height:1.5;font-style:italic;color:var(--green);">Можно прийти сразу на остров. Можно сначала пройти подготовку. Можно выбрать полный путь.</p>
-      <p style="margin-top:16px;color:#5a6e68;">Эта карта помогает увидеть глубину маршрута и выбрать вход без лишней суеты. Точный формат определяется на сессии-навигаторе.</p>
+      <p style="margin-top:20px;font-family:var(--serif);font-size:clamp(18px,2vw,22px);line-height:1.5;font-style:italic;color:var(--green-text, var(--green));">Вы можете войти мягко. Можете пройти один этап. Можете выбрать ретрит. Можете пройти полный путь.</p>
+      <p style="margin-top:16px;color:#5a6e68;">Это не каталог услуг. Это карта возможного входа: от первого касания до полного сопровождения. Глубина определяется на сессии-навигаторе.</p>
     </div>
   </div>
 
   <div class="sec" style="padding-top:0;">
     <div class="rm">
 
-      <!-- ── Уровень 2: Менторинг ────────────────────────── -->
+      <!-- ── Уровень I: Вкус лёгкости и Вкус силы ─────── -->
+      <div class="rm-level-wrap">
+        <div class="rm-level-header">
+          <span class="rm-stage">мягкий вход</span>
+          <div class="rm-level-title">Вкус лёгкости и Вкус силы</div>
+          <p style="margin-top:10px;font-size:15px;color:#6a6256;line-height:1.65;max-width:560px;margin-left:auto;margin-right:auto;">Короткие недели, через которые можно почувствовать поле школы до большого маршрута.</p>
+        </div>
+        <div class="rm-pair">
+          <!-- Вкус лёгкости -->
+          <div class="rm-week-f">
+            <div style="margin-bottom:14px;">
+              <svg width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                <circle cx="16" cy="16" r="6" stroke="#C79A3B" stroke-width="1.2"/>
+                <line x1="16" y1="2"   x2="16" y2="7"   stroke="#C79A3B" stroke-width="1.2" stroke-linecap="round"/>
+                <line x1="16" y1="25"  x2="16" y2="30"  stroke="#C79A3B" stroke-width="1.2" stroke-linecap="round"/>
+                <line x1="2"  y1="16"  x2="7"  y2="16"  stroke="#C79A3B" stroke-width="1.2" stroke-linecap="round"/>
+                <line x1="25" y1="16"  x2="30" y2="16"  stroke="#C79A3B" stroke-width="1.2" stroke-linecap="round"/>
+                <line x1="4.7"  y1="4.7"  x2="8.2"  y2="8.2"  stroke="#C79A3B" stroke-width="1" stroke-linecap="round"/>
+                <line x1="27.3" y1="4.7"  x2="23.8" y2="8.2"  stroke="#C79A3B" stroke-width="1" stroke-linecap="round"/>
+                <line x1="4.7"  y1="27.3" x2="8.2"  y2="23.8" stroke="#C79A3B" stroke-width="1" stroke-linecap="round"/>
+                <line x1="27.3" y1="27.3" x2="23.8" y2="23.8" stroke="#C79A3B" stroke-width="1" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <span class="rm-stage">Афродита · Персефона</span>
+            <p style="font-size:13px;color:var(--gold);font-weight:600;letter-spacing:.03em;margin:6px 0 10px;">10–16 сентября 2026</p>
+            <div class="rm-title">Вкус лёгкости</div>
+            <em class="rm-key">7 дней женской лёгкости, вкуса и живого проявления.</em>
+            <p style="font-size:15px;line-height:1.65;">Мягкий вход в поле школы через желание, тело, красоту, отношения, игру и внутреннее «хочу».</p>
+            <p style="margin-top:10px;font-size:15px;line-height:1.65;">Эта неделя помогает почувствовать, где жизнь стала слишком тяжёлой, правильной или сдержанной, и вернуть первый вкус лёгкости.</p>
+            <a href="../lightness/index.html" class="btn btn--outline" style="margin-top:18px;font-size:14px;padding:10px 22px;display:inline-block;">Перейти к «Вкусу лёгкости»</a>
+          </div>
+          <!-- Вкус силы -->
+          <div class="rm-week-m">
+            <div style="margin-bottom:14px;">
+              <svg width="20" height="24" viewBox="0 0 28 34" fill="none" aria-hidden="true">
+                <path d="M18 4C10 6 5 12 5 18C5 26 10 30 18 30C13 28 10 23 10 18C10 13 13 7 18 4Z" stroke="#C79A3B" stroke-width="1.4" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <span class="rm-stage">Зевс · Гадес</span>
+            <p style="font-size:13px;color:var(--gold);font-weight:600;letter-spacing:.03em;margin:6px 0 10px;">24–30 сентября 2026</p>
+            <div class="rm-title">Вкус силы</div>
+            <em class="rm-key">7 дней мужской силы, внутреннего царства и способности создавать.</em>
+            <p style="font-size:15px;line-height:1.65;">Мягкий вход в поле школы через опору, масштаб, деньги, глубину, решения и способность создавать свою жизнь.</p>
+            <p style="margin-top:10px;font-size:15px;line-height:1.65;">Эта неделя помогает почувствовать, откуда человек действует: из суеты и доказывания или из настоящего внутреннего центра.</p>
+            <a href="../strength/index.html" class="btn btn--outline" style="margin-top:18px;font-size:14px;padding:10px 22px;display:inline-block;">Перейти к «Вкусу силы»</a>
+          </div>
+        </div>
+      </div>
+<!-- ── Уровень 2: Менторинг ────────────────────────── -->
       <div class="rm-mentor">
         <div class="rm-mentor-body">
           <span class="rm-stage">глубокая подготовка · 2 месяца</span>
@@ -1961,7 +3636,7 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
           <p style="margin-top:14px;line-height:1.7;">В центре работы — одна ключевая задача: отношения, деньги, реализация, внутренний выбор или то, что давно стоит на месте.</p>
           <p style="margin-top:14px;line-height:1.7;">Этот этап помогает убрать лишние сценарии, собрать внутреннюю опору и подойти к островному переходу не на эмоции, а из более зрелого состояния.</p>
           <p style="margin-top:14px;font-size:15px;color:#6a5e48;font-style:italic;line-height:1.6;">Формат: 8 встреч в Zoom, практики между встречами, наблюдение за собой и поддержка в процессе.</p>
-          <a href="https://t.me/evgenia_tatarkina" target="_blank" rel="noopener" class="btn btn--outline" style="margin-top:18px;font-size:14px;padding:10px 22px;display:inline-block;">Обсудить участие</a>
+          <a href="https://evolution.yourbalancerestored.com/mentoring/" class="btn btn--outline" style="margin-top:18px;font-size:14px;padding:10px 22px;display:inline-block;">Перейти к менторингу</a>
         </div>
         <div class="rm-mentor-visual">
           <svg width="96" height="96" viewBox="0 0 96 96" fill="none" aria-hidden="true">
@@ -1977,37 +3652,7 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
           <p style="font-size:11px;color:var(--gold);letter-spacing:.08em;text-transform:uppercase;margin-top:14px;text-align:center;line-height:1.5;opacity:.7;">Центр<br>поля</p>
         </div>
       </div>
-
-      <!-- Separator II -->
-      <div class="rm-sep"><span class="rm-sep-mark">II</span></div>
-
-      <!-- ── Мягкий вход: недели ────────────────────────── -->
-      <div class="rm-level-wrap">
-        <div class="rm-level-header">
-          <span class="rm-stage">если нужен мягкий вход</span>
-          <div class="rm-level-title">Вкус лёгкости и Вкус силы</div>
-          <p style="margin-top:10px;font-size:15px;color:#6a6256;line-height:1.65;max-width:720px;margin-left:auto;margin-right:auto;">Иногда перед ретритом достаточно короткого 7-дневного касания, чтобы почувствовать поле школы и понять, готовы ли вы идти глубже.</p>
-        </div>
-        <div class="rm-pair">
-          <div class="rm-week-f">
-            <span class="rm-stage">Афродита · Персефона</span>
-            <div class="rm-title">Вкус лёгкости</div>
-            <em class="rm-key">Женские архетипы через тело, желание, красоту, отношения и живое «я хочу».</em>
-          </div>
-          <div class="rm-week-m">
-            <span class="rm-stage">Зевс · Гадес</span>
-            <div class="rm-title">Вкус силы</div>
-            <em class="rm-key">Мужские архетипы через опору, масштаб, деньги, решения и внутренний центр.</em>
-          </div>
-        </div>
-        <p style="margin:22px auto 0;font-size:15px;color:#6a6256;line-height:1.65;max-width:720px;text-align:center;">Эти недели не заменяют ретрит. Они дают первое касание с методом и помогают выбрать точный вход в большой маршрут.</p>
-        <div style="margin-top:22px;text-align:center;"><a href="https://t.me/evgenia_tatarkina" target="_blank" rel="noopener" class="btn btn--outline" style="font-size:14px;padding:10px 22px;display:inline-block;">Обсудить, с чего начать</a></div>
-      </div>
-
-      <!-- Separator III -->
-      <div class="rm-sep"><span class="rm-sep-mark">III</span></div>
-
-      <!-- ── Уровень III: Пхукет и Лангкави ───────────── -->
+<!-- ── Уровень III: Пхукет и Лангкави ───────────── -->
       <div class="rm-level-wrap">
         <div class="rm-level-header">
           <span class="rm-stage">островной переход</span>
@@ -2049,18 +3694,14 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
           </div>
         </div>
       </div>
-
-      <!-- Separator IV -->
-      <div class="rm-sep"><span class="rm-sep-mark">IV</span></div>
-
-      <!-- ── Уровень 4: Полный путь ───────────────────────── -->
+<!-- ── Уровень 4: Полный путь ───────────────────────── -->
       <div class="rm-vip">
         <div class="rm-vip-mark">
           <svg width="36" height="36" viewBox="0 0 32 32" fill="none" aria-hidden="true">
             <circle cx="16" cy="16" r="13" stroke="#C79A3B" stroke-width="1"/>
             <circle cx="16" cy="16" r="8"  stroke="#D8B66A" stroke-width=".7"/>
             <circle cx="16" cy="16" r="3"  stroke="#C79A3B" stroke-width="1"/>
-            <polygon points="16,3 14.5,14.5 17.5,14.5" fill="#063F33" opacity=".85"/>
+            <polygon points="16,3 14.5,14.5 17.5,14.5" fill="#F6E8B8" opacity=".85"/>
             <polygon points="16,29 14.5,17.5 17.5,17.5" fill="#C79A3B" opacity=".7"/>
             <line x1="3"  y1="16" x2="13" y2="16" stroke="#D8B66A" stroke-width=".7" opacity=".6"/>
             <line x1="19" y1="16" x2="29" y2="16" stroke="#D8B66A" stroke-width=".7" opacity=".6"/>
@@ -2080,13 +3721,10 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
     <p class="tiny" style="margin-top:32px;text-align:center;color:#8a7a55;">Перелёт, проживание, питание и трансферы оплачиваются отдельно.</p>
   </div>
 </section>
-
-<div class="divider wrap"><i></i></div>
-
 <!-- ════════════════════════════════════════════════════════
      FOR WHOM
 ════════════════════════════════════════════════════════ -->
-<section style="padding: var(--sg) 0;">
+<section class="ar-zone ar-zone--practical" style="padding: var(--sg) 0;">
   <div class="narrative-frame">
     <div style="max-width:740px;">
       <span class="label">Отбор</span>
@@ -2144,20 +3782,17 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
     </div>
   </div>
 </section>
-
-<div class="divider wrap"><i></i></div>
-
 <!-- ════════════════════════════════════════════════════════
      WHY NOW
 ════════════════════════════════════════════════════════ -->
-<section style="padding: var(--sg) 0;">
+<section class="ar-zone ar-zone--practical" style="padding: var(--sg) 0;">
   <div class="sec">
     <div class="wrapt" style="padding:0;text-align:center;">
       <span class="label" style="text-align:center;display:block;">Время</span>
       <h2>Маршрут начинается с решения</h2>
       <p style="max-width:600px;margin:20px auto 0;">Пхукет — 5–12 ноября. Лангкави — 15–22 ноября. Маршрут начинается раньше: с заявки и сессии-навигатора.</p>
       <p style="max-width:600px;margin:12px auto 0;">Сначала мы вместе смотрим, какой вход сейчас ваш: подготовка, один из островов или полный путь. Если нужно, вы проходите систему подготовки к ретриту, чтобы решение стало не эмоциональным порывом, а внутренне принятым шагом.</p>
-      <p style="max-width:600px;margin:12px auto 0;">В июле–августе можно войти через «Вкус лёгкости» или «Вкус силы». В сентябре начинается менторинг «Высокая глубина». Дальше маршрут ведёт к одному из островов или к полному пути через оба состояния.</p>
+      <p style="max-width:600px;margin:12px auto 0;">В сентябре можно войти через «Вкус лёгкости» или «Вкус силы». В октябре начинается менторинг «Высокая глубина». Дальше маршрут ведёт к одному из островов или к полному пути через оба состояния.</p>
     </div>
     <div class="wrap">
       <div class="timeline">
@@ -2169,15 +3804,15 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
         </div>
         <div class="tl-item">
           <div class="tl-dot"></div>
-          <div class="tl-label">Июль–август</div>
+          <div class="tl-label">Сентябрь</div>
           <div class="tl-title">Дегустация</div>
           <div class="tl-desc">«Вкус лёгкости» или «Вкус силы»</div>
         </div>
         <div class="tl-item">
           <div class="tl-dot"></div>
-          <div class="tl-label">Сентябрь</div>
+          <div class="tl-label">Октябрь–декабрь</div>
           <div class="tl-title">Менторинг</div>
-          <div class="tl-desc">«Высокая глубина» — 8 недель архетипической работы</div>
+          <div class="tl-desc">«Высокая глубина» — 7 октября — 6 декабря</div>
         </div>
         <div class="tl-item">
           <div class="tl-dot"></div>
@@ -2195,13 +3830,64 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
     </div>
   </div>
 </section>
-
-<div class="divider wrap"><i></i></div>
-
 <!-- ════════════════════════════════════════════════════════
      FINAL CTA
 ════════════════════════════════════════════════════════ -->
-<section style="padding: var(--sg) 0;">
+<section class="ar-zone ar-zone--practical archetype-written-testimonials" style="padding: var(--sg) 0;">
+        <div class="sec">
+          <div class="fade">
+            <span class="label">Письменные отзывы</span>
+            <h2>Что люди замечали в глубоких телесно-архетипических практиках</h2>
+            <p class="lead">Это не обещание одинакового результата. Это живые фрагменты о том, как тело, ясность, энергия и границы начинают собираться в процессе.</p>
+          </div>
+          <div class="archetype-testimonial-grid">
+    <figure class="proof-card proof-card--text">
+      <p class="testimonial-signal">Сдвиг за несколько дней</p>
+      <blockquote>В результате этих нескольких дней у тела расслабились зажимы. Когда я пришла, была просто на дне морально и физически. Появились уверенность, ясность, радость и больше энергии.</blockquote>
+      <figcaption>участница телесно-архетипической практики</figcaption>
+    </figure>
+    <figure class="proof-card proof-card--text">
+      <p class="testimonial-signal">Целостность</p>
+      <blockquote>Моя душа искала покой и встретилась с реальным телом. Я стала целостной, здоровой и осознанной в прекрасной команде проводников.</blockquote>
+      <figcaption>участница</figcaption>
+    </figure>
+    <figure class="proof-card proof-card--text">
+      <p class="testimonial-signal">Границы</p>
+      <blockquote>Возвращая чувствительность тела, я стала лучше ощущать границы: телесные и эфирные. И обозначать их.</blockquote>
+      <figcaption>участница</figcaption>
+    </figure>
+  </div>
+        </div>
+      </section>
+      <section class="ar-zone ar-zone--practical archetype-video-testimonials" style="padding: var(--sg) 0;">
+        <div class="sec">
+          <div class="fade">
+            <span class="label">Видеоотзывы</span>
+            <h2>Живой опыт участниц ретрита в Италии</h2>
+            <p class="lead">Эти видео записаны после живого ретрита в Италии. Они помогают почувствовать, как выглядит работа через место, тело, группу, практику и внутренний переход.</p>
+          </div>
+          <div class="archetype-video-testimonial-grid">
+            <article class="archetype-video-testimonial-card">
+              <div class="archetype-video-testimonial-frame">
+                <iframe src="https://player.vimeo.com/video/282465049?title=0&amp;byline=0&amp;portrait=0&amp;badge=0" title="Опыт участницы ретрита в Италии" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              </div>
+              <div class="archetype-video-testimonial-copy">
+                <h3>Опыт участницы ретрита в Италии</h3>
+                <p>Видеоотзыв участницы живого ретрита в Италии: опыт группы, пространства, практик и внутреннего перехода.</p>
+              </div>
+            </article><article class="archetype-video-testimonial-card">
+              <div class="archetype-video-testimonial-frame">
+                <iframe src="https://player.vimeo.com/video/287460790?title=0&amp;byline=0&amp;portrait=0&amp;badge=0" title="Опыт участницы ретрита в Италии" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              </div>
+              <div class="archetype-video-testimonial-copy">
+                <h3>Опыт участницы ретрита в Италии</h3>
+                <p>Видеоотзыв о проживании ретрита в Италии и о том, как живой формат помогает пройти глубже.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+<section class="ar-zone ar-zone--practical" style="padding: var(--sg) 0;">
   <div class="wrap final">
     <div class="final-card">
       <!-- Corner compass rose (decorative) -->
@@ -2211,7 +3897,7 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
         <circle cx="70" cy="70" r="34"  stroke="#C79A3B" stroke-width=".5"/>
         <circle cx="70" cy="70" r="18"  stroke="#C79A3B" stroke-width=".4"/>
         <circle cx="70" cy="70" r="7"   stroke="#C79A3B" stroke-width="1.3"/>
-        <polygon points="70,6  66,63 74,63" fill="#063F33"/>
+        <polygon points="70,6  66,63 74,63" fill="#5B2D68"/>
         <polygon points="70,134 66,77 74,77" fill="#C79A3B"/>
         <line x1="6"   y1="70" x2="63"  y2="70" stroke="#D8B66A" stroke-width=".8"/>
         <line x1="77"  y1="70" x2="134" y2="70" stroke="#D8B66A" stroke-width=".8"/>
@@ -2264,14 +3950,42 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════════════════
-     FOOTER
-════════════════════════════════════════════════════════ -->
-<footer class="footer">
-  <p style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--green);">Острова Везения</p>
-  <p>Школа Светланы Страус · Ноябрь 2026</p>
-  <p>Участие по заявке</p>
-</footer>
+</main>
+<footer class="eh-global-footer" aria-label="Evolution House">
+    <div class="eh-shell-container eh-global-footer__grid">
+      <section class="eh-global-footer__brand">
+        <img width="736" height="144" class="eh-global-footer__logo" src="../assets/evolution-house-header-logo-v2.png" alt="Evolution House">
+        <p>Evolution House помогает проходить жизненные переходы: увидеть свою точку, выбрать подходящий путь и идти дальше с практиками, Мастерами и ясной опорой.</p>
+      </section>
+      <nav class="eh-global-footer__nav" aria-label="Начать">
+        <strong>Начать</strong>
+        <a href="../index.html">Главная</a>
+        <a href="../pervyi-shag.html">С чего начать</a>
+        <a href="../otkrytye-programmy.html">Открытые программы</a>
+      </nav>
+      <nav class="eh-global-footer__nav" aria-label="Направления">
+        <strong>Направления</strong>
+        <a href="../arhetipy.html">Путь архетипов</a>
+        <a href="../urovni-zhizni/index.html">Пересборка жизни</a>
+        <a href="../vnutrennyaya-svoboda.html">Путь свободы от травм</a>
+        <a href="../reiki-napravlenie.html">Путь Reiki</a>
+      </nav>
+      <nav class="eh-global-footer__nav" aria-label="Школа">
+        <strong>Школа</strong>
+        <a href="../o-shkole.html">О школе</a>
+        
+        
+        
+      </nav>
+    </div>
+    <div class="eh-shell-container eh-global-footer__bottom">
+      <p>© 2026 Evolution House, Дом Эволюции</p>
+      <p class="eh-global-footer__legal">Operated by Resulta Consulting FZ-LLC · FDBC0803, Compass Building, Al Shohada Road, AL Hamra Industrial Zone-FZ, Ras Al Khaimah, United Arab Emirates · Tax Reg. No: 105211901100001</p>
+    
+      <p class="eh-global-footer__legal eh-global-footer__privacy"><a href="/privacy-policy/">Политика конфиденциальности</a></p>
+    </div>
+  </footer>
 
 </body>
 </html>
+

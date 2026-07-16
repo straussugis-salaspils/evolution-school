@@ -1,0 +1,146 @@
+/* First screen of Method follows the visual grammar of Training and the group route. */
+body.off-switch-method-page .om-hero {
+  position: relative !important;
+  box-sizing: border-box !important;
+  min-height: 690px !important;
+  overflow: hidden;
+  padding: 0 !important;
+  background: #b5dc67 !important;
+}
+
+body.off-switch-method-page .om-hero::before {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  content: "";
+  background: linear-gradient(90deg, #b6dd69 0%, rgba(185, 222, 113, .96) 38%, rgba(214, 232, 161, .72) 54%, rgba(232, 240, 209, .08) 76%);
+  pointer-events: none;
+}
+
+body.off-switch-method-page .om-hero__inner {
+  position: relative !important;
+  z-index: 2 !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  min-height: 690px !important;
+  align-items: center !important;
+  padding: 70px 0 !important;
+}
+
+body.off-switch-method-page .om-hero__copy {
+  position: relative !important;
+  z-index: 3 !important;
+  width: min(48%, 570px) !important;
+  max-width: 570px !important;
+  padding: 0 !important;
+}
+
+body.off-switch-method-page .om-hero__visual {
+  position: absolute !important;
+  z-index: 0 !important;
+  inset: 0 !important;
+  display: block !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  overflow: visible !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body.off-switch-method-page .om-hero__visual > img {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  object-fit: cover !important;
+  object-position: 58% center !important;
+}
+
+body.off-switch-method-page .om-hero__visual::after {
+  position: absolute !important;
+  z-index: 1 !important;
+  inset: 0 !important;
+  display: block !important;
+  content: "" !important;
+  background: linear-gradient(90deg, rgba(182, 221, 105, .98) 0%, rgba(191, 225, 124, .82) 33%, rgba(214, 232, 161, .36) 51%, transparent 72%) !important;
+  pointer-events: none !important;
+}
+body.off-switch-method-page .om-character-callouts--hero { z-index: 2 !important; }
+body.off-switch-method-page .om-character-callout--anxiety,
+body.off-switch-method-page .om-character-callout--fear { display: none !important; }
+
+body.off-switch-method-page .om-hero .om-eyebrow {
+  display: block !important;
+  margin: 0 0 15px !important;
+  color: #436a36 !important;
+}
+
+body.off-switch-method-page .om-hero h1 {
+  max-width: 11ch !important;
+  color: #1f3c24 !important;
+  font-size: clamp(52px, 5vw, 72px) !important;
+  line-height: .98 !important;
+}
+
+body.off-switch-method-page .om-hero__lead {
+  max-width: 530px !important;
+  margin-top: 24px !important;
+  color: #24472b !important;
+  font-size: 20px !important;
+  line-height: 1.47 !important;
+}
+
+body.off-switch-method-page .om-hero__method { display: none !important; }
+
+body.off-switch-method-page .om-hero__facts {
+  max-width: 510px;
+  margin: 26px 0 0 !important;
+  border-top: 1px solid rgba(41, 78, 43, .26);
+  border-bottom: 1px solid rgba(41, 78, 43, .26);
+}
+
+body.off-switch-method-page .om-hero__facts div {
+  min-height: 76px !important;
+  padding: 12px 14px !important;
+}
+
+body.off-switch-method-page .om-hero__facts div:first-child { padding-left: 0 !important; }
+body.off-switch-method-page .om-hero__facts strong { color: #214227 !important; }
+body.off-switch-method-page .om-hero__facts span { color: #385b3c !important; }
+
+@media (max-width: 900px) {
+  body.off-switch-method-page .om-hero,
+  body.off-switch-method-page .om-hero__inner { min-height: 720px !important; }
+  body.off-switch-method-page .om-hero__copy { width: min(56%, 540px) !important; }
+  body.off-switch-method-page .om-hero__visual > img { object-position: 62% center !important; }
+}
+
+@media (max-width: 680px) {
+  body.off-switch-method-page .om-hero {
+    min-height: 790px !important;
+    background: #c1e276 !important;
+  }
+  body.off-switch-method-page .om-hero::before {
+    background: linear-gradient(180deg, rgba(195, 226, 118, .99) 0%, rgba(205, 231, 138, .96) 54%, rgba(221, 237, 177, .56) 74%, rgba(235, 242, 215, .06) 100%);
+  }
+  body.off-switch-method-page .om-hero__visual::after {
+    background: linear-gradient(180deg, rgba(195, 226, 118, .99) 0%, rgba(205, 231, 138, .97) 62%, rgba(221, 237, 177, .76) 79%, rgba(235, 242, 215, .08) 100%) !important;
+  }
+  body.off-switch-method-page .om-hero__inner {
+    min-height: 790px !important;
+    align-items: flex-start !important;
+    padding: 46px 0 0 !important;
+  }
+  body.off-switch-method-page .om-hero__copy { width: 100% !important; max-width: none !important; }
+  body.off-switch-method-page .om-hero h1 { font-size: 42px !important; }
+  body.off-switch-method-page .om-hero__lead { max-width: 100% !important; margin-top: 18px !important; font-size: 18px !important; }
+  body.off-switch-method-page .om-hero__visual > img { object-position: 60% center !important; }
+  body.off-switch-method-page .om-character-callouts--hero { display: none !important; }
+  body.off-switch-method-page .om-hero__facts { max-width: none; margin-top: 20px !important; }
+  body.off-switch-method-page .om-hero__facts div { min-height: 66px !important; padding: 10px 8px !important; }
+  body.off-switch-method-page .om-hero__facts div:first-child { padding-left: 0 !important; }
+  body.off-switch-method-page .om-hero__facts strong { font-size: 16px !important; }
+  body.off-switch-method-page .om-hero__facts span { font-size: 11px !important; }
+}

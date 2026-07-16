@@ -1,0 +1,93 @@
+/* Shared Off-Switch vertical rhythm.
+   Values are taken from the live Reiki I page: compact 56, regular 64,
+   large 72, eyebrow-to-heading 14 and heading-to-content 22–36. */
+
+body.off-switch-method-v3 main,
+body.off-switch-self-v3 main,
+body.freedom-studio--group main,
+body.freedom-studio--personal main {
+  --off-switch-section-compact: 56px;
+  --off-switch-section-regular: 64px;
+  --off-switch-section-large: 72px;
+  --off-switch-eyebrow-title: 14px;
+  --off-switch-heading-content: clamp(22px, 3vw, 36px);
+  --off-switch-text-media: clamp(22px, 3vw, 36px);
+}
+
+body.off-switch-method-v3 main .om-section,
+body.off-switch-method-v3 main .om-formats,
+body.off-switch-self-v3 main .os-section,
+body.freedom-studio--group main .gg-section:not(.gg-offer):not(.gg-final),
+body.freedom-studio--personal main .pp-section:not(.pp-offer):not(.pp-final) {
+  padding-block: var(--off-switch-section-regular) !important;
+}
+
+body.off-switch-method-v3 main .om-eyebrow + h2,
+body.off-switch-self-v3 main .os-eyebrow + h2,
+body.freedom-studio--group main .gg-eyebrow + h2,
+body.freedom-studio--personal main .pp-eyebrow + h2 {
+  margin-top: var(--off-switch-eyebrow-title) !important;
+}
+
+html body.off-switch-method-v3 main .om-eyebrow,
+html body.off-switch-self-v3 main .os-eyebrow,
+html body.freedom-studio--group main .gg-eyebrow,
+html body.freedom-studio--personal main .pp-eyebrow {
+  margin-bottom: 0 !important;
+}
+
+html body.off-switch-method-v3 main .om-eyebrow + h2,
+html body.off-switch-self-v3 main .os-eyebrow + h2,
+html body.freedom-studio--group main .gg-eyebrow + h2,
+html body.freedom-studio--personal main .pp-eyebrow + h2 {
+  margin-top: var(--off-switch-eyebrow-title) !important;
+}
+
+body.off-switch-method-v3 main .om-section-head,
+body.off-switch-self-v3 main .os-section-head,
+body.freedom-studio--group main .gg-section-head,
+body.freedom-studio--personal main .pp-section-head {
+  margin-bottom: var(--off-switch-heading-content) !important;
+}
+
+html body.off-switch-method-v3 main .om-section-head,
+html body.off-switch-self-v3 main .os-section-head,
+html body.off-switch-self-v3 main .os-problems__head,
+html body.freedom-studio--group main .gg-section-head,
+html body.freedom-studio--personal main .pp-section-head {
+  margin-bottom: var(--off-switch-heading-content) !important;
+}
+
+html body.freedom-studio--personal main .pp-section-head.pp-section-head--split,
+html body.freedom-studio--personal main .pp-section-head.pp-section-head--narrow {
+  margin-bottom: var(--off-switch-heading-content) !important;
+}
+
+html body.off-switch-method-v3 main .om-section-head > div,
+html body.off-switch-self-v3 main .os-section-head > div,
+html body.off-switch-self-v3 main .os-problems__head,
+html body.freedom-studio--group main .gg-section-head > div,
+html body.freedom-studio--personal main .pp-section-head > div {
+  row-gap: 0 !important;
+  gap: 0 !important;
+}
+
+body.off-switch-method-v3 main .om-section-head > :first-child,
+body.off-switch-self-v3 main .os-section-head > :first-child,
+body.freedom-studio--group main .gg-section-head > :first-child,
+body.freedom-studio--personal main .pp-section-head > :first-child {
+  margin-top: 0 !important;
+}
+
+@media (max-width: 760px) {
+  body.off-switch-method-v3 main,
+  body.off-switch-self-v3 main,
+  body.freedom-studio--group main,
+  body.freedom-studio--personal main {
+    --off-switch-section-compact: 48px;
+    --off-switch-section-regular: 56px;
+    --off-switch-section-large: 64px;
+    --off-switch-heading-content: 28px;
+    --off-switch-text-media: 28px;
+  }
+}

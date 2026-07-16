@@ -1,0 +1,40 @@
+body.off-switch-personal-page.off-switch-personal-cinematic .personal-format-table article[aria-current="true"] {
+  background: var(--ofs-deep) !important;
+  border-color: rgba(13, 127, 154, .5) !important;
+  color: #fff !important;
+}
+
+body.off-switch-personal-page.off-switch-personal-cinematic .personal-format-table article[aria-current="true"] strong,
+body.off-switch-personal-page.off-switch-personal-cinematic .personal-format-table article[aria-current="true"] span {
+  color: #fff !important;
+}
+
+@media (max-width: 760px) {
+  body.off-switch-personal-page.off-switch-personal-cinematic .personal-hero__grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+    align-items: start !important;
+  }
+
+  body.off-switch-personal-page.off-switch-personal-cinematic .personal-hero__copy,
+  body.off-switch-personal-page.off-switch-personal-cinematic .personal-hero h1,
+  body.off-switch-personal-page.off-switch-personal-cinematic .personal-lead,
+  body.off-switch-personal-page.off-switch-personal-cinematic .personal-hero__terms,
+  body.off-switch-personal-page.off-switch-personal-cinematic .personal-hero__price-note,
+  body.off-switch-personal-page.off-switch-personal-cinematic .personal-cta-note {
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+  }
+
+  body.off-switch-personal-page.off-switch-personal-cinematic .personal-hero h1 {
+    font-size: clamp(32px, 8.8vw, 40px) !important;
+    line-height: 1.06 !important;
+  }
+
+  body.off-switch-personal-page.off-switch-personal-cinematic .personal-cta-row,
+  body.off-switch-personal-page.off-switch-personal-cinematic .personal-cta-row .personal-button {
+    width: 100% !important;
+  }
+}

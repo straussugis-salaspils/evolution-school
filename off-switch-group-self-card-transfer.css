@@ -1,0 +1,357 @@
+/*
+ * Reversible card-only pass for Off-Switch in a group.
+ * The page copy, section order, images and non-card composition are untouched.
+ * Rollback: remove this stylesheet link from off-switch-group.html.
+ */
+
+/* 01. Problem cards: the same visual grammar as "Где можно применять Off-Switch". */
+body.off-switch-group-v3 .gg-problem-grid {
+  counter-reset: group-problem;
+  gap: 14px !important;
+}
+
+body.off-switch-group-v3 .gg-problem-grid article,
+body.off-switch-group-v3 .gg-problem-grid article:nth-child(n) {
+  --problem-accent: #4f7835;
+  counter-increment: group-problem;
+  position: relative;
+  overflow: hidden;
+  min-height: 368px !important;
+  padding: 78px 22px 25px !important;
+  border: 0 !important;
+  border-left: 6px solid var(--problem-accent) !important;
+  border-radius: 3px !important;
+  background: linear-gradient(145deg, color-mix(in srgb, var(--problem-accent) 13%, #fff), #fff 58%) !important;
+  box-shadow: 0 15px 36px rgba(38, 73, 43, 0.08) !important;
+}
+
+body.off-switch-group-v3 .gg-problem-grid article:nth-child(2) { --problem-accent: #71913e; }
+body.off-switch-group-v3 .gg-problem-grid article:nth-child(3) { --problem-accent: #93a945; }
+body.off-switch-group-v3 .gg-problem-grid article:nth-child(4) { --problem-accent: #b6b94c; }
+
+body.off-switch-group-v3 .gg-problem-grid article::before {
+  content: "0" counter(group-problem) !important;
+  position: absolute !important;
+  top: 16px !important;
+  left: 18px !important;
+  display: block !important;
+  width: auto !important;
+  height: auto !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: color-mix(in srgb, var(--problem-accent) 34%, transparent) !important;
+  font-family: Georgia, "Times New Roman", serif !important;
+  font-size: 58px !important;
+  font-weight: 400 !important;
+  line-height: 0.9 !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+body.off-switch-group-v3 .gg-problem-grid article::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 20px !important;
+  left: auto !important;
+  right: 18px !important;
+  display: block !important;
+  width: 8px !important;
+  height: 46px !important;
+  background: repeating-linear-gradient(180deg, var(--problem-accent) 0 2px, transparent 2px 7px) !important;
+  opacity: 0.5 !important;
+}
+
+body.off-switch-group-v3 .gg-problem-grid h3 {
+  min-height: 3.5em !important;
+  margin: 0 !important;
+  font-size: 23px !important;
+  line-height: 1.2 !important;
+}
+
+body.off-switch-group-v3 .gg-problem-grid ul {
+  margin: 17px 0 0 !important;
+  padding: 0 !important;
+}
+
+body.off-switch-group-v3 .gg-problem-grid li {
+  position: relative;
+  padding: 10px 0 10px 17px !important;
+  border-top: 1px solid color-mix(in srgb, var(--problem-accent) 36%, transparent) !important;
+  font-size: 14px !important;
+  line-height: 1.45 !important;
+}
+
+body.off-switch-group-v3 .gg-problem-grid li::before {
+  top: 17px !important;
+  left: 1px !important;
+  width: 6px !important;
+  height: 6px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: var(--problem-accent) !important;
+}
+
+/* 02. A vertical sequence: the same rhythm as "Как снизить реакцию шаг за шагом". */
+body.off-switch-group-v3 .gg-depth-steps {
+  counter-reset: group-depth;
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+
+body.off-switch-group-v3 .gg-depth-steps::before {
+  display: none !important;
+}
+
+body.off-switch-group-v3 .gg-depth-steps article,
+body.off-switch-group-v3 .gg-depth-steps article:nth-child(n) {
+  counter-increment: group-depth;
+  display: grid !important;
+  grid-template-columns: 52px minmax(0, 1fr) !important;
+  grid-template-rows: auto auto auto !important;
+  gap: 3px 18px !important;
+  min-height: 0 !important;
+  padding: 20px 0 !important;
+  border: 0 !important;
+  border-top: 1px solid rgba(31, 79, 54, 0.22) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body.off-switch-group-v3 .gg-depth-steps article:last-child {
+  border-bottom: 1px solid rgba(31, 79, 54, 0.22) !important;
+}
+
+body.off-switch-group-v3 .gg-depth-steps article::before {
+  content: "0" counter(group-depth) !important;
+  position: static !important;
+  grid-column: 1 !important;
+  grid-row: 1 / span 3 !important;
+  display: grid !important;
+  width: 42px !important;
+  height: 42px !important;
+  place-items: center !important;
+  margin: 0 !important;
+  border: 1px solid rgba(91, 132, 60, 0.38) !important;
+  border-radius: 50% !important;
+  background: rgba(255, 253, 248, 0.7) !important;
+  color: #4f7835 !important;
+  font-size: 13px !important;
+  font-weight: 800 !important;
+  line-height: 1 !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+body.off-switch-group-v3 .gg-depth-steps span,
+body.off-switch-group-v3 .gg-depth-steps h3,
+body.off-switch-group-v3 .gg-depth-steps p {
+  grid-column: 2 !important;
+}
+
+body.off-switch-group-v3 .gg-depth-steps span {
+  margin: 0 !important;
+  color: #4f7835 !important;
+  font-size: 11px !important;
+  line-height: 1.2 !important;
+}
+
+body.off-switch-group-v3 .gg-depth-steps h3 {
+  margin: 0 !important;
+  font-size: 22px !important;
+  line-height: 1.2 !important;
+}
+
+body.off-switch-group-v3 .gg-depth-steps p {
+  margin: 3px 0 0 !important;
+  font-size: 15px !important;
+  line-height: 1.48 !important;
+}
+
+/* 03. Route stages: the same folded chapter cards as the four self-study modules. */
+body.off-switch-group-v3 .gg-map .gg-route-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 24px 18px !important;
+  border: 0 !important;
+}
+
+body.off-switch-group-v3 .gg-map .gg-route-grid article,
+body.off-switch-group-v3 .gg-map .gg-route-grid article:nth-child(n) {
+  --module-accent: #4f7835;
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+  min-height: 270px !important;
+  padding: 31px 30px 29px 35px !important;
+  border: 0 !important;
+  border-left: 8px solid var(--module-accent) !important;
+  border-radius: 3px !important;
+  background: #fbfaf5 !important;
+  box-shadow: 0 17px 42px rgba(38, 73, 43, 0.1) !important;
+}
+
+body.off-switch-group-v3 .gg-map .gg-route-grid article:nth-child(2) { --module-accent: #71913e; }
+body.off-switch-group-v3 .gg-map .gg-route-grid article:nth-child(3) { --module-accent: #93a945; }
+body.off-switch-group-v3 .gg-map .gg-route-grid article:nth-child(4) { --module-accent: #b6b94c; }
+
+body.off-switch-group-v3 .gg-map .gg-route-grid article::before {
+  display: none !important;
+}
+
+body.off-switch-group-v3 .gg-map .gg-route-grid article::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  right: 0 !important;
+  display: block !important;
+  width: 42px !important;
+  height: 42px !important;
+  background: linear-gradient(225deg, #f4f3d2 0 49%, color-mix(in srgb, var(--module-accent) 16%, #fff) 50%) !important;
+}
+
+body.off-switch-group-v3 .gg-map .gg-route-grid span {
+  align-self: flex-start !important;
+  margin: 0 0 19px !important;
+  padding: 7px 10px !important;
+  border: 0 !important;
+  background: color-mix(in srgb, var(--module-accent) 12%, #fff) !important;
+  color: var(--module-accent) !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
+}
+
+body.off-switch-group-v3 .gg-map .gg-route-grid h3,
+body.off-switch-group-v3 .gg-map .gg-route-grid article:nth-child(n) h3 {
+  min-height: 2.25em !important;
+  margin: 0 !important;
+  color: #173f37 !important;
+  font-size: 28px !important;
+  line-height: 1.12 !important;
+}
+
+body.off-switch-group-v3 .gg-map .gg-route-grid p,
+body.off-switch-group-v3 .gg-map .gg-route-grid article:nth-child(n) p {
+  margin: 18px 0 0 !important;
+  color: #536b60 !important;
+  font-size: 15px !important;
+  line-height: 1.55 !important;
+}
+
+/* 04. The meeting-to-meeting cycle: the same result strip as "Что меняется после практики". */
+body.off-switch-group-v3 .gg-meeting-flow {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 0 !important;
+  overflow: hidden !important;
+  border: 0 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.24) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.24) !important;
+  border-radius: 0 !important;
+  background: #3f7f39 !important;
+}
+
+body.off-switch-group-v3 .gg-meeting-flow article,
+body.off-switch-group-v3 .gg-meeting-flow article:nth-child(n) {
+  position: relative !important;
+  min-height: 198px !important;
+  padding: 26px 24px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body.off-switch-group-v3 .gg-meeting-flow article + article {
+  border-left: 1px solid rgba(255, 255, 255, 0.24) !important;
+}
+
+body.off-switch-group-v3 .gg-meeting-flow article::before,
+body.off-switch-group-v3 .gg-meeting-flow article::after {
+  display: none !important;
+}
+
+body.off-switch-group-v3 .gg-meeting-flow span {
+  display: block !important;
+  margin: 0 0 13px !important;
+  color: #dceba7 !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
+}
+
+body.off-switch-group-v3 .gg-meeting-flow h3 {
+  margin: 0 !important;
+  color: #fff !important;
+  font-size: 25px !important;
+  font-weight: 400 !important;
+  line-height: 1.18 !important;
+}
+
+body.off-switch-group-v3 .gg-meeting-flow article p {
+  display: block !important;
+  margin: 10px 0 0 !important;
+  color: rgba(255, 255, 255, 0.78) !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+}
+
+@media (max-width: 980px) {
+  body.off-switch-group-v3 .gg-problem-grid,
+  body.off-switch-group-v3 .gg-map .gg-route-grid,
+  body.off-switch-group-v3 .gg-meeting-flow {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  body.off-switch-group-v3 .gg-meeting-flow article:nth-child(3) {
+    border-left: 0 !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.24) !important;
+  }
+
+  body.off-switch-group-v3 .gg-meeting-flow article:nth-child(4) {
+    border-top: 1px solid rgba(255, 255, 255, 0.24) !important;
+  }
+}
+
+@media (max-width: 680px) {
+  body.off-switch-group-v3 .gg-problem-grid,
+  body.off-switch-group-v3 .gg-map .gg-route-grid,
+  body.off-switch-group-v3 .gg-meeting-flow {
+    grid-template-columns: 1fr !important;
+  }
+
+  body.off-switch-group-v3 .gg-problem-grid article,
+  body.off-switch-group-v3 .gg-problem-grid article:nth-child(n) {
+    min-height: 0 !important;
+  }
+
+  body.off-switch-group-v3 .gg-problem-grid h3,
+  body.off-switch-group-v3 .gg-map .gg-route-grid h3,
+  body.off-switch-group-v3 .gg-map .gg-route-grid article:nth-child(n) h3 {
+    min-height: 0 !important;
+  }
+
+  body.off-switch-group-v3 .gg-map .gg-route-grid article,
+  body.off-switch-group-v3 .gg-map .gg-route-grid article:nth-child(n) {
+    min-height: 0 !important;
+    padding: 29px 24px 27px 28px !important;
+  }
+
+  body.off-switch-group-v3 .gg-meeting-flow article,
+  body.off-switch-group-v3 .gg-meeting-flow article:nth-child(n) {
+    min-height: 0 !important;
+  }
+
+  body.off-switch-group-v3 .gg-meeting-flow article + article,
+  body.off-switch-group-v3 .gg-meeting-flow article:nth-child(3),
+  body.off-switch-group-v3 .gg-meeting-flow article:nth-child(4) {
+    border-left: 0 !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.24) !important;
+  }
+}

@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# Internal QA and asset-work directories must not be indexed.
+Disallow: /_qa/
+Disallow: /tests/
+Disallow: /visual-package/
+Disallow: /.codex-checkpoints/
+
+# Superseded static variants and redirect aliases.
+Disallow: /off-switch-1-1.pre-v5.html
+Disallow: /off-switch-method-2.html
+Disallow: /off-switch-method-base.html
+Disallow: /off-switch-method-redesign.html
+Disallow: /individualnyj-retrit.html
+Disallow: /individualnyj-retrit/
+Disallow: /urovni-zhizni/individualnyj-retrit.html
+
+Sitemap: https://evolution.yourbalancerestored.com/sitemap.xml

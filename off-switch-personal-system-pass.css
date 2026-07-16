@@ -1,0 +1,89 @@
+/* 1:1: local composition pass. The individual route, imagery and labels stay unchanged. */
+
+/* Keep the next strategic decision visually central without turning it into another card. */
+body.off-switch-personal-v3 .pp-decision-statement {
+  padding-left: 20px !important;
+  border-left: 3px solid #78a95d !important;
+}
+body.off-switch-personal-v3 .pp-decision-statement p {
+  font-size: clamp(23px, 2.1vw, 29px) !important;
+}
+
+/* The driving case is proof in life, so its diagnosis gets editorial weight. */
+body.off-switch-personal-v3 .pp-case__insight {
+  padding-left: 25px !important;
+  border-left: 3px solid #78a95d !important;
+  font-size: clamp(24px, 2.15vw, 31px) !important;
+  line-height: 1.28 !important;
+}
+
+/* Preserve the price as the climax and remove excess packaging around its facts. */
+body.off-switch-personal-v3 .pp-offer__price > strong {
+  font-size: clamp(72px, 7vw, 88px) !important;
+  line-height: .92 !important;
+}
+body.off-switch-personal-v3 .pp-offer-details {
+  margin-top: 52px !important;
+}
+
+/* Six decisions are grouped into three readable movements of one personal route. */
+body.off-switch-personal-v3 .pp-personal__sequence > li {
+  grid-template-columns: 1fr !important;
+  gap: 12px !important;
+}
+body.off-switch-personal-v3 .pp-personal__sequence > li > span {
+  width: auto !important;
+  min-width: 58px;
+  height: auto !important;
+  padding: 7px 9px !important;
+  border: 1px solid rgba(20, 72, 63, .28) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: #16483f !important;
+  font-size: 12px !important;
+  line-height: 1 !important;
+  align-self: start !important;
+}
+
+/* Ugis's role is the editorial conclusion, not a competing dark card. */
+body.off-switch-personal-v3 .pp-author-role {
+  padding: 30px 0 !important;
+  border: 0 !important;
+  border-top: 2px solid rgba(20, 72, 63, .42) !important;
+  border-bottom: 1px solid rgba(20, 72, 63, .22) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: #173f37 !important;
+}
+body.off-switch-personal-v3 .pp-author-role :is(.pp-eyebrow, h3, p) {
+  color: #173f37 !important;
+}
+body.off-switch-personal-v3 .pp-author-role p:last-child {
+  color: #36584f !important;
+}
+
+/* A 15–20% tighter rhythm; the offer remains deliberately more spacious. */
+body.off-switch-personal-v3 .pp-section {
+  padding-block: clamp(66px, 7.4vw, 108px) !important;
+}
+body.off-switch-personal-v3 .pp-personal {
+  padding-block: clamp(76px, 7.8vw, 98px) !important;
+}
+body.off-switch-personal-v3 .pp-offer {
+  padding-top: clamp(82px, 8.5vw, 112px) !important;
+  padding-bottom: clamp(78px, 8vw, 104px) !important;
+}
+
+@media (max-width: 680px) {
+  body.off-switch-personal-v3 .pp-decision-statement {
+    padding-left: 16px !important;
+  }
+  body.off-switch-personal-v3 .pp-case__insight {
+    padding-left: 18px !important;
+    font-size: 22px !important;
+  }
+  body.off-switch-personal-v3 .pp-offer-details {
+    margin-top: 36px !important;
+  }
+}

@@ -1,0 +1,1405 @@
+/* Approved color progression for the five Life Reassembly pages. */
+
+body.life-levels-page {
+  --life-paper: #fffdf8;
+  --life-paper-strong: #fff;
+  --life-warm: #f2e5db;
+  --life-wash: var(--life-page-wash);
+  --life-wash-strong: var(--life-page-wash-strong);
+  --life-deep: var(--life-page-deep);
+  --life-wine: var(--life-page-primary);
+  --life-wine-dark: var(--life-page-deep);
+  --life-ink: var(--life-page-deep);
+  --life-muted: color-mix(in srgb, var(--life-page-deep) 70%, transparent);
+  --life-button: #71283a;
+  --life-button-hover: #531a2a;
+  --life-button-on-dark: #fff8ee;
+  --life-button-ink: #35141c;
+  --life-gold: #b98535;
+  --life-line: color-mix(in srgb, var(--life-page-primary) 18%, transparent);
+  --life-line-strong: color-mix(in srgb, var(--life-page-primary) 30%, transparent);
+  --life-shadow: 0 18px 46px color-mix(in srgb, var(--life-page-deep) 8%, transparent);
+  --life-shadow-strong: 0 28px 72px color-mix(in srgb, var(--life-page-deep) 15%, transparent);
+  --direction-primary: var(--life-page-primary);
+  --direction-primary-hover: var(--life-page-deep);
+  --direction-deep: var(--life-page-deep);
+  --direction-soft: var(--life-page-wash-strong);
+  --direction-wash: var(--life-page-wash);
+  --direction-accent: var(--life-gold);
+  --primary: var(--life-page-primary);
+  --primary-hover: var(--life-page-deep);
+  --deep: var(--life-page-deep);
+  --soft: var(--life-page-wash-strong);
+  --wash: var(--life-page-wash);
+  --accent: var(--life-gold);
+  --shell-context-primary: var(--life-button);
+  --shell-context-hover: var(--life-button-hover);
+  --shell-context-deep: var(--life-button-ink);
+  --shell-context-soft: #efdce1;
+  --shell-context-wash: #fbf3f5;
+  background: var(--life-paper);
+}
+
+body.levels-map-page {
+  --life-page-primary: #b25b4b;
+  --life-page-deep: #6a302a;
+  --life-page-edge: #d4866b;
+  --life-page-wash: #f7e5de;
+  --life-page-wash-strong: #ebc3b5;
+  --life-paper: #fffdf9;
+  --life-warm: #f1e8e0;
+  --life-gold: #c98068;
+  --life-button: var(--life-page-primary);
+  --life-button-hover: var(--life-page-deep);
+  --life-button-ink: var(--life-page-deep);
+}
+
+body.levels-method-page {
+  --life-page-primary: #8c4733;
+  --life-page-deep: #4b261e;
+  --life-page-edge: #b86b4a;
+  --life-page-wash: #f2e2d4;
+  --life-page-wash-strong: #dfc1a9;
+  --life-paper: #fcfaf5;
+  --life-warm: #e8ded2;
+  --life-gold: #b97455;
+  --life-button: var(--life-page-primary);
+  --life-button-hover: var(--life-page-deep);
+  --life-button-ink: var(--life-page-deep);
+  --method-ink: #30201c;
+  --method-deep: var(--life-page-deep);
+  --method-plum: #6f3b2d;
+  --method-wine: var(--life-page-primary);
+  --method-clay: var(--life-page-edge);
+  --method-gold: var(--life-gold);
+  --method-paper: var(--life-paper);
+  --method-cream: #f8efe9;
+  --method-soft: var(--life-page-wash);
+  --method-line: var(--life-line);
+  --method-line-strong: var(--life-line-strong);
+}
+
+body.quantum-page {
+  --life-page-primary: #92293a;
+  --life-page-deep: #4a111e;
+  --life-page-edge: #c2575d;
+  --life-page-wash: #f3dde1;
+  --life-page-wash-strong: #deb6bc;
+  --life-paper: #fff9fa;
+  --life-warm: #ece2e4;
+  --life-gold: #c45c63;
+  --life-button: var(--life-page-primary);
+  --life-button-hover: var(--life-page-deep);
+  --life-button-ink: var(--life-page-deep);
+  --quantum-box-border: var(--life-line);
+  --quantum-key-border: color-mix(in srgb, var(--life-page-primary) 26%, transparent);
+  --quantum-proof-border: var(--life-line);
+  --quantum-accent-line: linear-gradient(90deg, var(--life-page-primary), color-mix(in srgb, var(--life-gold) 72%, #fff));
+}
+
+body.levels-retreat-page {
+  --life-page-primary: #72464a;
+  --life-page-deep: #3a2527;
+  --life-page-edge: #a66e69;
+  --life-page-wash: #eadfdb;
+  --life-page-wash-strong: #d1bbb5;
+  --life-paper: #fcfaf7;
+  --life-warm: #e5deda;
+  --life-gold: #aa756b;
+  --life-button: var(--life-page-primary);
+  --life-button-hover: var(--life-page-deep);
+  --life-button-ink: var(--life-page-deep);
+  --retreat-deep: var(--life-page-deep);
+  --retreat-wine: var(--life-page-primary);
+  --retreat-clay: var(--life-page-edge);
+  --retreat-paper: var(--life-paper);
+  --retreat-soft: var(--life-page-wash);
+  --retreat-wash: #f5efec;
+  --retreat-line: var(--life-line);
+  --retreat-line-strong: var(--life-line-strong);
+  --retreat-shadow-soft: var(--life-shadow);
+  --retreat-shadow-strong: var(--life-shadow-strong);
+}
+
+body.levels-personal-route-page {
+  --life-page-primary: #4a1820;
+  --life-page-deep: #21090e;
+  --life-page-edge: #742d31;
+  --life-page-wash: #ded1ce;
+  --life-page-wash-strong: #bfa9a5;
+  --life-paper: #f9f7f4;
+  --life-warm: #d8d2cd;
+  --life-gold: #97604f;
+  --life-button: var(--life-page-primary);
+  --life-button-hover: var(--life-page-deep);
+  --life-button-ink: var(--life-page-deep);
+  --route-deep: var(--life-page-deep);
+  --route-wine: var(--life-page-primary);
+  --route-gold: var(--life-gold);
+  --route-paper: var(--life-paper);
+  --route-cream: #f1ece8;
+  --route-wash: var(--life-page-wash);
+  --route-line: var(--life-line);
+  --route-line-strong: var(--life-line-strong);
+  --route-card-border: var(--life-line);
+  --route-card-shadow: var(--life-shadow);
+}
+
+/* Carry each page's own palette into the shared shell and shared trust modules. */
+body.life-levels-page.eh-context--levels .eh-shell-header,
+body.life-levels-page.eh-context--levels .eh-shell-breadcrumb,
+body.life-levels-page.eh-context--levels .eh-local-strip {
+  --shell-context-primary: var(--life-page-primary) !important;
+  --shell-context-hover: var(--life-page-deep) !important;
+  --shell-context-deep: var(--life-page-deep) !important;
+  --shell-context-soft: var(--life-page-wash-strong) !important;
+  --shell-context-wash: var(--life-page-wash) !important;
+}
+
+body.life-levels-page.levels-retreat-page .retreat-fact-strip-section,
+body.life-levels-page.levels-personal-route-page .personal-route-fact-strip-section {
+  --fact-primary: var(--life-page-primary) !important;
+  --fact-accent: var(--life-gold) !important;
+  --fact-deep: var(--life-page-deep) !important;
+  --fact-wash: var(--life-paper) !important;
+  --fact-soft: var(--life-warm) !important;
+}
+
+body.life-levels-page .life-levels-faq-section {
+  --life-faq-primary: var(--life-page-primary) !important;
+  --life-faq-accent: var(--life-gold) !important;
+  --life-faq-deep: var(--life-page-deep) !important;
+  --life-faq-wash: var(--life-page-wash) !important;
+  --life-faq-cream: var(--life-paper) !important;
+  --life-faq-line: var(--life-line) !important;
+}
+
+/* Unique Life Reassembly spectrum: coral, rust, ruby, rosewood and oxblood. */
+body.levels-map-page main > .levels-hero {
+  background:
+    radial-gradient(circle at 78% 16%, color-mix(in srgb, var(--life-page-edge) 28%, transparent), transparent 34%),
+    linear-gradient(140deg, var(--life-page-deep) 0%, var(--life-page-primary) 60%, var(--life-page-edge) 100%) !important;
+}
+
+body.levels-method-page main > .method-hero {
+  background:
+    radial-gradient(circle at 82% 14%, color-mix(in srgb, var(--life-page-edge) 24%, transparent), transparent 34%),
+    linear-gradient(150deg, var(--life-page-deep) 0%, var(--life-page-primary) 62%, var(--life-page-edge) 100%) !important;
+}
+
+body.quantum-page main > .quantum-hero {
+  background:
+    radial-gradient(circle at 80% 16%, color-mix(in srgb, var(--life-page-edge) 24%, transparent), transparent 34%),
+    linear-gradient(135deg, var(--life-page-deep) 0%, var(--life-page-primary) 58%, var(--life-page-edge) 100%) !important;
+}
+
+body.levels-retreat-page main > .retreat-hero {
+  background:
+    radial-gradient(circle at 82% 14%, color-mix(in srgb, var(--life-page-edge) 20%, transparent), transparent 34%),
+    linear-gradient(160deg, var(--life-page-deep) 0%, var(--life-page-primary) 62%, var(--life-page-edge) 100%) !important;
+}
+
+body.levels-personal-route-page main > .route-hero {
+  background:
+    radial-gradient(circle at 82% 14%, color-mix(in srgb, var(--life-page-edge) 18%, transparent), transparent 34%),
+    linear-gradient(145deg, var(--life-page-deep) 0%, var(--life-page-primary) 62%, var(--life-page-edge) 100%) !important;
+}
+
+body.life-levels-page main > .hero,
+body.life-levels-page main > .hero h1,
+body.life-levels-page main > .hero h2,
+body.life-levels-page main > .hero h3 {
+  color: #fff8ee !important;
+}
+
+body.life-levels-page main > .hero .eyebrow,
+body.life-levels-page main > .hero .lead,
+body.life-levels-page main > .hero p {
+  color: rgba(255, 248, 238, .82) !important;
+}
+
+/* One button system, following Reiki and Archetypes: solid on light, inverted on dark. */
+body.life-levels-page main .button--primary {
+  min-height: 56px !important;
+  padding: 14px 24px !important;
+  border: 1px solid var(--life-button) !important;
+  border-radius: 8px !important;
+  background: var(--life-button) !important;
+  color: #fffaf4 !important;
+  box-shadow: none !important;
+}
+
+body.life-levels-page main .button--primary:hover,
+body.life-levels-page main .button--primary:focus-visible {
+  border-color: var(--life-button-hover) !important;
+  background: var(--life-button-hover) !important;
+  color: #fffaf4 !important;
+}
+
+body.life-levels-page main > .hero .button--primary,
+body.life-levels-page main > .levels-section--deep .button--primary,
+body.life-levels-page main > .levels-section--final .button--primary,
+body.life-levels-page main > .method-section--deep .button--primary,
+body.life-levels-page main > .route-section--deep .button--primary {
+  border-color: var(--life-button-on-dark) !important;
+  background: var(--life-button-on-dark) !important;
+  color: var(--life-button-ink) !important;
+}
+
+body.life-levels-page main > .hero .button--primary:hover,
+body.life-levels-page main > .hero .button--primary:focus-visible,
+body.life-levels-page main > .levels-section--deep .button--primary:hover,
+body.life-levels-page main > .levels-section--final .button--primary:hover,
+body.life-levels-page main > .method-section--deep .button--primary:hover,
+body.life-levels-page main > .route-section--deep .button--primary:hover {
+  border-color: #fff !important;
+  background: #fff !important;
+  color: var(--life-button-ink) !important;
+}
+
+/* Explicit section boundaries; backgrounds are assigned by semantic section class below. */
+body.life-levels-page main > section:not(.hero) {
+  border-top: 1px solid var(--life-line) !important;
+}
+
+/* Map. */
+body.levels-map-page main > #put {
+  background: var(--life-paper) !important;
+}
+
+body.levels-map-page main > .levels-section--wash {
+  background: linear-gradient(135deg, var(--life-page-wash), var(--life-paper)) !important;
+}
+
+/* Method. */
+body.levels-method-page main > .method-transition-section,
+body.levels-method-page main > .method-spheres-section {
+  background: var(--life-page-wash) !important;
+}
+
+body.levels-method-page main > .method-why-section,
+body.levels-method-page main > .method-principles-section,
+body.levels-method-page main > .method-integration-section,
+body.levels-method-page main > .method-faq-section,
+body.levels-method-page main > .method-formats-section {
+  background: var(--life-paper) !important;
+}
+
+body.levels-method-page main > .method-levels-section {
+  background: linear-gradient(135deg, var(--life-page-wash-strong), var(--life-page-wash)) !important;
+}
+
+body.levels-method-page main > .method-diagnostic-section,
+body.levels-method-page main > .method-author-section {
+  background: var(--life-warm) !important;
+}
+
+body.levels-method-page main > .method-awareness-section {
+  background: linear-gradient(145deg, var(--life-page-deep), var(--life-page-primary)) !important;
+}
+
+/* Quantum Activation. */
+body.life-levels-page.quantum-page main > section.quantum-section--time,
+body.life-levels-page.quantum-page main > section.quantum-relocation,
+body.life-levels-page.quantum-page main > section.quantum-buy-section,
+body.life-levels-page.quantum-page main > section.quantum-section--tasks,
+body.life-levels-page.quantum-page main > section.quantum-author-shell {
+  background: var(--life-paper) !important;
+}
+
+body.life-levels-page.quantum-page main > section.quantum-section--audience,
+body.life-levels-page.quantum-page main > section.quantum-single-section,
+body.life-levels-page.quantum-page main > section.quantum-faq-section {
+  background: var(--life-page-wash) !important;
+}
+
+body.life-levels-page.quantum-page main > section.quantum-section--definition,
+body.life-levels-page.quantum-page main > section.quantum-pattern-section,
+body.life-levels-page.quantum-page main > section.quantum-section--mechanics,
+body.life-levels-page.quantum-page main > section.quantum-written-section {
+  background: var(--life-warm) !important;
+}
+
+body.life-levels-page.quantum-page main > section.quantum-section--results,
+body.life-levels-page.quantum-page main > section.quantum-proof-section {
+  background: linear-gradient(135deg, var(--life-page-wash-strong), var(--life-page-wash)) !important;
+}
+
+body.quantum-page main > #format,
+body.quantum-page main > .levels-section--final {
+  background: linear-gradient(145deg, var(--life-page-deep), var(--life-page-primary)) !important;
+}
+
+body.quantum-page .quantum-format-flow article,
+body.quantum-page .levels-signal-card,
+body.quantum-page .quantum-relocation-card {
+  border-color: var(--life-line) !important;
+}
+
+/* Individual Retreat. */
+body.life-levels-page.levels-retreat-page.retreat-page.retreat-final-polish-page main > .retreat-recognition,
+body.life-levels-page.levels-retreat-page.retreat-page.retreat-final-polish-page main > .retreat-offline-section,
+body.life-levels-page.levels-retreat-page.retreat-page.retreat-final-polish-page main > .retreat-change-section,
+body.life-levels-page.levels-retreat-page.retreat-page.retreat-final-polish-page main > .retreat-method-section,
+body.life-levels-page.levels-retreat-page.retreat-page.retreat-final-polish-page main > .retreat-faq-section {
+  background: var(--life-paper) !important;
+}
+
+body.life-levels-page.levels-retreat-page.retreat-page.retreat-final-polish-page main > .retreat-transitions,
+body.life-levels-page.levels-retreat-page.retreat-page.retreat-final-polish-page main > .retreat-boundaries-section {
+  background: var(--life-page-wash) !important;
+}
+
+body.life-levels-page.levels-retreat-page.retreat-page.retreat-final-polish-page main > .retreat-presence-section,
+body.life-levels-page.levels-retreat-page.retreat-page.retreat-final-polish-page main > .retreat-trust-unified-section,
+body.life-levels-page.levels-retreat-page.retreat-page.retreat-final-polish-page main > .retreat-meeting-section {
+  background: var(--life-warm) !important;
+}
+
+body.life-levels-page.levels-retreat-page.retreat-page.retreat-final-polish-page main > .retreat-process-section {
+  background: linear-gradient(135deg, var(--life-page-wash-strong), var(--life-page-wash)) !important;
+}
+
+body.life-levels-page.levels-retreat-page.retreat-page.retreat-final-polish-page main > .retreat-final-section {
+  background: linear-gradient(145deg, var(--life-page-deep), var(--life-page-primary)) !important;
+}
+
+body.life-levels-page.levels-retreat-page.retreat-page.retreat-final-polish-page .retreat-fact-strip-section {
+  border-top: 1px solid var(--life-line) !important;
+  border-bottom: 1px solid var(--life-line) !important;
+  background: var(--life-paper) !important;
+}
+
+/* Personal Route. */
+body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page main.personal-route-storyboard > .route-definition-section,
+body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page main.personal-route-storyboard > .route-requests-section,
+body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page main.personal-route-storyboard > .route-included-section,
+body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page main.personal-route-storyboard > .route-foundations-section,
+body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page main.personal-route-storyboard > .route-about-section,
+body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page main.personal-route-storyboard > .route-faq-section {
+  background: var(--life-paper) !important;
+}
+
+body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page main.personal-route-storyboard > .route-audience-section,
+body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page main.personal-route-storyboard > .route-method-section {
+  background: var(--life-page-wash) !important;
+}
+
+body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page main.personal-route-storyboard > .route-work-section,
+body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page main.personal-route-storyboard > .route-change-section,
+body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page main.personal-route-storyboard > .route-testimonials-section,
+body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page main.personal-route-storyboard > .route-navigator-section {
+  background: var(--life-warm) !important;
+}
+
+body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page main.personal-route-storyboard > .route-process-section {
+  background: linear-gradient(135deg, var(--life-page-wash-strong), var(--life-page-wash)) !important;
+}
+
+body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page main.personal-route-storyboard > .route-pricing-section,
+body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page main.personal-route-storyboard > .route-boundaries-section,
+body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page main.personal-route-storyboard > .route-final-section {
+  background: linear-gradient(145deg, var(--life-page-deep), var(--life-page-primary)) !important;
+}
+
+/* Keep deep sections readable even where older page rules used dark text. */
+body.life-levels-page main > .levels-section--deep,
+body.life-levels-page main > .levels-section--final,
+body.life-levels-page main > .method-section--deep,
+body.life-levels-page main > .route-section--deep,
+body.life-levels-page main > .life-product-final-section {
+  color: #fff8ee !important;
+}
+
+body.life-levels-page main > .levels-section--deep :is(h2, h3, h4, p, li, dt, dd, strong, span, .eyebrow),
+body.life-levels-page main > .levels-section--final :is(h2, h3, h4, p, li, dt, dd, strong, span, .eyebrow),
+body.life-levels-page main > .method-section--deep :is(h2, h3, h4, p, li, dt, dd, strong, span, .eyebrow),
+body.life-levels-page main > .route-section--deep :is(h2, h3, h4, p, li, dt, dd, strong, span, .eyebrow),
+body.life-levels-page main > .life-product-final-section :is(h2, h3, h4, p, li, dt, dd, strong, span, .eyebrow) {
+  color: inherit !important;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  body.life-levels-page main .button--primary {
+    transition: background-color .18s ease, border-color .18s ease, color .18s ease, transform .18s ease;
+  }
+
+  body.life-levels-page main .button--primary:hover {
+    transform: translateY(-2px);
+  }
+}
+
+/* Post-palette readability audit. */
+body.life-levels-page.levels-map-page .direction-summary .clickable-card > span:first-child {
+  color: var(--life-page-deep) !important;
+}
+
+body.life-levels-page.levels-method-page .method-awareness-section .method-formula article > span,
+body.life-levels-page.levels-method-page .method-awareness-section .method-formula article > strong {
+  color: #fff8ee !important;
+}
+
+body.life-levels-page.levels-method-page .method-muted-note {
+  color: var(--life-page-deep) !important;
+}
+
+body.life-levels-page.quantum-page .quantum-section--audience .levels-info-card {
+  border-color: var(--life-line-strong) !important;
+  background: var(--life-paper) !important;
+  box-shadow: var(--life-shadow) !important;
+}
+
+body.life-levels-page.quantum-page .quantum-section--audience .levels-info-card h3,
+body.life-levels-page.quantum-page .quantum-section--audience .levels-info-card p,
+body.life-levels-page.quantum-page .quantum-single-section .quantum-format-head h3 > span {
+  color: var(--life-page-deep) !important;
+}
+
+body.life-levels-page.levels-retreat-page.retreat-page.retreat-final-polish-page .retreat-presence-section .eyebrow,
+body.life-levels-page.levels-retreat-page.retreat-page.retreat-final-polish-page .retreat-presence-section h2,
+body.life-levels-page.levels-retreat-page.retreat-page.retreat-final-polish-page .retreat-presence-section h3,
+body.life-levels-page.levels-retreat-page.retreat-page.retreat-final-polish-page .retreat-presence-section p {
+  color: var(--life-page-deep) !important;
+}
+
+body.life-levels-page.levels-retreat-page.retreat-page.retreat-final-polish-page .retreat-presence-cards article {
+  border-color: var(--life-line-strong) !important;
+  background: color-mix(in srgb, var(--life-paper) 90%, transparent) !important;
+  box-shadow: var(--life-shadow) !important;
+}
+
+body.life-levels-page.levels-retreat-page.retreat-page.retreat-final-polish-page .retreat-presence-cards article::before {
+  border-color: var(--life-page-primary) !important;
+  color: #fff8ee !important;
+  background: var(--life-page-primary) !important;
+}
+
+body.life-levels-page.levels-retreat-page.retreat-page.retreat-final-polish-page .retreat-disclaimer {
+  color: var(--life-page-deep) !important;
+}
+
+body.life-levels-page.levels-retreat-page.retreat-page.retreat-final-polish-page .retreat-process-steps > article > span {
+  color: var(--life-page-deep) !important;
+}
+
+/* Card language: a quieter lift and independent cards where the content is a choice. */
+body.life-levels-page.levels-map-page main .roadmap-step,
+body.life-levels-page.levels-method-page main .method-product-card,
+body.life-levels-page.levels-personal-route-page main .route-card,
+body.life-levels-page main .levels-info-card {
+  border-radius: var(--life-radius) !important;
+}
+
+body.life-levels-page.levels-map-page.direction-page .roadmap-step__body {
+  display: grid !important;
+  min-height: 448px !important;
+  grid-template-rows: 1fr auto !important;
+}
+
+body.life-levels-page.levels-map-page.direction-page .roadmap-step__content,
+body.life-levels-page.levels-map-page.direction-page .roadmap--has-eyebrows .roadmap-step__content,
+body.life-levels-page.levels-map-page.direction-page .roadmap:not(.roadmap--has-eyebrows) .roadmap-step__content {
+  display: grid !important;
+  grid-template-rows: 28px 84px 168px minmax(116px, auto) !important;
+  row-gap: 10px !important;
+}
+
+body.life-levels-page.levels-map-page.direction-page .roadmap-step__content > :is(.eyebrow, h3, p),
+body.life-levels-page.levels-map-page.direction-page .roadmap-step__transition {
+  margin: 0 !important;
+}
+
+body.life-levels-page.levels-map-page.direction-page .roadmap-step__footer {
+  min-height: 48px !important;
+  margin-top: 0 !important;
+  padding-top: 18px !important;
+}
+
+body.life-levels-page.levels-map-page.direction-page .direction-summary > .clickable-card {
+  display: grid !important;
+  grid-template-rows: 34px 96px minmax(118px, 1fr) 32px !important;
+  align-content: start !important;
+}
+
+body.life-levels-page.levels-map-page.direction-page .direction-summary > .clickable-card > :is(span, h3, p) {
+  margin-top: 0 !important;
+}
+
+body.life-levels-page.levels-map-page.direction-page .direction-summary > .clickable-card > span:first-child {
+  justify-self: start !important;
+  margin-bottom: 0 !important;
+}
+
+body.life-levels-page.levels-map-page.direction-page .direction-summary > .clickable-card > .text-link {
+  align-self: end !important;
+  justify-self: start !important;
+  margin: 0 !important;
+}
+
+@media (max-width: 980px) {
+  body.life-levels-page.levels-map-page.direction-page .roadmap-step__body,
+  body.life-levels-page.levels-map-page.direction-page .roadmap-step__content,
+  body.life-levels-page.levels-map-page.direction-page .roadmap--has-eyebrows .roadmap-step__content,
+  body.life-levels-page.levels-map-page.direction-page .direction-summary > .clickable-card {
+    min-height: 0 !important;
+    grid-template-rows: none !important;
+  }
+
+  body.life-levels-page.levels-map-page.direction-page .direction-summary > .clickable-card {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  body.life-levels-page.levels-map-page.direction-page .direction-summary > .clickable-card > .text-link {
+    margin-top: 16px !important;
+  }
+}
+
+/* Personal route: compact definition, readable requests and four clear duration paths. */
+body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page .route-definition-title {
+  display: grid !important;
+  align-content: start !important;
+  gap: 0 !important;
+}
+
+body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page .route-definition-title .route-definition-lead {
+  max-width: 24ch !important;
+  margin: clamp(16px, 2vw, 24px) 0 0 !important;
+}
+
+body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page .route-definition-copy {
+  display: grid !important;
+  align-content: center !important;
+  gap: 16px !important;
+}
+
+body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page .route-definition-copy .route-definition-duration {
+  margin: 0 !important;
+  color: var(--life-page-primary) !important;
+  font-family: Georgia, "Times New Roman", serif !important;
+  font-size: clamp(34px, 3.4vw, 48px) !important;
+  line-height: 1 !important;
+}
+
+body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page .route-definition-copy .route-definition-duration + p {
+  margin-top: 0 !important;
+}
+
+body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page .route-quote-card p {
+  font-size: clamp(22px, 1.7vw, 29px) !important;
+  line-height: 1.2 !important;
+}
+
+body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page .route-pricing-section .route-section-head h2 > span {
+  display: block !important;
+}
+
+body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page .route-pricing-section .route-pricing-grid,
+body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page main.personal-route-storyboard .route-pricing-grid--four {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+}
+
+body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page .route-pricing-section .route-price-card {
+  min-height: 286px !important;
+}
+
+@media (max-width: 1180px) {
+  body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page .route-pricing-section .route-pricing-grid,
+  body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page main.personal-route-storyboard .route-pricing-grid--four {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 820px) {
+  body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page .route-pricing-section .route-section-head h2 > span {
+    display: inline !important;
+  }
+
+  body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page .route-pricing-section .route-section-head h2 > span + span::before {
+    content: " " !important;
+  }
+
+  body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page .route-pricing-section .route-pricing-grid,
+  body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page main.personal-route-storyboard .route-pricing-grid--four {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
+/* Jurmala is the visual field itself; the former pill row is no longer needed. */
+body.life-levels-page.levels-retreat-page.retreat-page.retreat-final-polish-page .retreat-trust-card--jurmala {
+  min-height: 520px !important;
+  align-content: end !important;
+  padding: clamp(30px, 3.6vw, 48px) !important;
+  border-color: rgba(255, 248, 238, .24) !important;
+  background:
+    linear-gradient(180deg, rgba(26, 17, 20, .06) 18%, rgba(39, 14, 23, .78) 100%),
+    url("individualnyj-retrit/retreat-visuals/00-hero-private-retreat-session.png") 68% center / cover no-repeat !important;
+  box-shadow: 0 24px 64px rgba(45, 18, 25, .14) !important;
+}
+
+body.life-levels-page.levels-retreat-page.retreat-page.retreat-final-polish-page .retreat-trust-card--jurmala > h3,
+body.life-levels-page.levels-retreat-page.retreat-page.retreat-final-polish-page .retreat-trust-card--jurmala .retreat-trust-copy p {
+  color: #fffaf4 !important;
+  text-shadow: 0 2px 18px rgba(24, 11, 15, .34) !important;
+}
+
+body.life-levels-page.levels-retreat-page.retreat-page.retreat-final-polish-page .retreat-trust-card--jurmala .retreat-trust-copy {
+  max-width: 38ch !important;
+}
+
+body.life-levels-page.levels-retreat-page.retreat-page.retreat-final-polish-page .retreat-trust-card--jurmala .retreat-trust-badges {
+  display: none !important;
+}
+
+body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page .route-quantum-task-grid,
+body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page .route-quantum-board,
+body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page .route-format-flow {
+  gap: clamp(12px, 1.4vw, 18px) !important;
+  overflow: visible !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page .route-quantum-task-grid > .route-card,
+body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page .route-quantum-board > .route-card,
+body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page .route-format-flow > .route-card {
+  border: 1px solid var(--life-line-strong) !important;
+  border-radius: var(--life-radius) !important;
+  box-shadow: var(--life-shadow) !important;
+}
+
+body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page .route-pricing-section .route-price-card h3,
+body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page .route-boundaries-section .route-card h3 {
+  color: var(--life-page-deep) !important;
+}
+
+body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page .route-pricing-section .route-price-card p,
+body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page .route-boundaries-section .route-card p {
+  color: color-mix(in srgb, var(--life-page-deep) 74%, transparent) !important;
+}
+
+body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page .route-pricing-section .route-price-card > span {
+  color: var(--life-page-primary) !important;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  body.life-levels-page.levels-map-page .levels-hero-link:hover,
+  body.life-levels-page.levels-map-page .levels-hero-link:focus-visible,
+  body.life-levels-page.levels-map-page .roadmap-step:hover,
+  body.life-levels-page.levels-map-page .roadmap-step:focus-visible,
+  body.life-levels-page.levels-method-page .method-product-card:hover,
+  body.life-levels-page.levels-method-page .method-product-card:focus-visible {
+    transform: translate(6px, -8px) !important;
+    border-color: var(--life-line-strong) !important;
+    box-shadow: inset 4px 0 0 var(--life-page-primary), inset 0 4px 0 var(--life-gold), 0 24px 58px color-mix(in srgb, var(--life-page-deep) 18%, transparent) !important;
+  }
+}
+
+/* Personal route Navigator: keep the retreat composition despite the shared cascade. */
+body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page .route-navigator-panel {
+  grid-template-columns: minmax(0, 1.14fr) minmax(330px, .86fr) !important;
+  gap: clamp(26px, 3.2vw, 48px) !important;
+  padding: clamp(28px, 3.6vw, 52px) !important;
+  border-color: color-mix(in srgb, var(--life-page-primary) 26%, transparent) !important;
+  background: linear-gradient(145deg, var(--life-paper) 0%, var(--life-page-wash) 100%) !important;
+}
+
+body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page .route-navigator-copy > h2 {
+  max-width: 13ch !important;
+  margin: 0 !important;
+  font-size: clamp(42px, 4vw, 52px) !important;
+  color: var(--life-page-deep) !important;
+}
+
+body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page .route-navigator-entry {
+  grid-template-columns: minmax(190px, .7fr) minmax(0, 1.3fr) !important;
+  min-height: 0 !important;
+  border-color: color-mix(in srgb, var(--life-page-primary) 24%, transparent) !important;
+  background: color-mix(in srgb, var(--life-paper) 88%, transparent) !important;
+}
+
+body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page .route-navigator-entry__content {
+  display: grid !important;
+  min-width: 0 !important;
+  align-content: start !important;
+  justify-content: stretch !important;
+  gap: 0 !important;
+  padding: clamp(22px, 2.6vw, 34px) !important;
+}
+
+body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page .route-navigator-price {
+  grid-template-columns: minmax(132px, auto) minmax(150px, 1fr) !important;
+  border-color: color-mix(in srgb, var(--life-page-primary) 28%, transparent) !important;
+  background: var(--life-paper) !important;
+}
+
+body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page .route-navigator-price strong {
+  min-width: 132px !important;
+  color: #fff8ee !important;
+  background: var(--life-page-primary) !important;
+  font-size: clamp(34px, 3vw, 46px) !important;
+}
+
+body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page .route-navigator-price span {
+  min-width: 0 !important;
+  padding: 12px 14px !important;
+  color: color-mix(in srgb, var(--life-page-deep) 78%, transparent) !important;
+  font-size: 11px !important;
+  letter-spacing: .035em !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+}
+
+body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page .route-navigator-results {
+  border-color: color-mix(in srgb, var(--life-page-primary) 22%, transparent) !important;
+  background: color-mix(in srgb, var(--life-paper) 84%, transparent) !important;
+}
+
+@media (max-width: 1060px) {
+  body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page .route-navigator-panel {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page .route-navigator-results,
+  body.life-levels-page.levels-retreat-page.retreat-page.retreat-final-polish-page .retreat-navigator-results {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    height: auto !important;
+  }
+
+  body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page .route-navigator-results article,
+  body.life-levels-page.levels-retreat-page.retreat-page.retreat-final-polish-page .retreat-navigator-results article {
+    flex: none !important;
+    align-content: start !important;
+  }
+
+  body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page .route-navigator-value,
+  body.life-levels-page.levels-retreat-page.retreat-page.retreat-final-polish-page .retreat-navigator-value {
+    order: 5 !important;
+    margin-top: 12px !important;
+  }
+}
+
+@media (max-width: 820px) {
+  body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page .route-navigator-price {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
+@media (max-width: 720px) {
+  body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page .route-navigator-panel {
+    gap: 26px !important;
+    padding: 22px !important;
+  }
+
+  body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page .route-navigator-entry {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page .route-navigator-entry__visual {
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 220px !important;
+    aspect-ratio: 16 / 9 !important;
+  }
+}
+
+/* Final section rhythm corrections: keep duration cards aligned and adjacent method bands distinct. */
+body.life-levels-page.levels-method-page main > .method-diagnostic-section {
+  background: linear-gradient(145deg, #f7e9df 0%, #fffaf4 100%) !important;
+  border-top: 1px solid rgba(110, 47, 57, .12) !important;
+}
+
+body.life-levels-page.levels-method-page main > .method-author-section {
+  background: linear-gradient(145deg, #dfc9c3 0%, #eaded7 100%) !important;
+  border-top: 2px solid rgba(110, 47, 57, .2) !important;
+}
+
+@media (min-width: 821px) {
+  body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page .route-pricing-section .route-price-card {
+    grid-template-rows: 38px minmax(112px, auto) 1fr !important;
+  }
+
+  body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page .route-pricing-section .route-price-card > span {
+    width: 100% !important;
+    margin-inline: auto !important;
+    justify-self: stretch !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  body.life-levels-page.levels-personal-route-page.personal-route-final-polish-page .route-pricing-section .route-price-card h3 {
+    align-self: start !important;
+  }
+}
+
+/* Quantum definition: full 3:2 mechanism image with three equal supporting cards. */
+body.life-levels-page.quantum-page.quantum-polished-page main .quantum-section--definition .quantum-definition-copy {
+  display: grid !important;
+  grid-template-columns: minmax(320px, .75fr) minmax(0, 1.25fr) !important;
+  grid-template-areas: "heading scene" "text text" !important;
+  column-gap: clamp(28px, 4vw, 54px) !important;
+  row-gap: clamp(28px, 3vw, 40px) !important;
+  padding: clamp(30px, 4vw, 52px) !important;
+}
+
+body.life-levels-page.quantum-page.quantum-polished-page main .quantum-section--definition .quantum-definition-heading {
+  grid-area: heading !important;
+  align-self: center !important;
+  margin: 0 !important;
+}
+
+body.life-levels-page.quantum-page.quantum-polished-page main .quantum-section--definition .quantum-definition-body {
+  display: contents !important;
+}
+
+body.life-levels-page.quantum-page.quantum-polished-page main .quantum-section--definition .quantum-definition-text {
+  grid-area: text !important;
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: clamp(14px, 1.6vw, 20px) !important;
+  align-items: stretch !important;
+}
+
+body.life-levels-page.quantum-page.quantum-polished-page main .quantum-section--definition .quantum-definition-points {
+  display: contents !important;
+}
+
+body.life-levels-page.quantum-page.quantum-polished-page main .quantum-section--definition .quantum-definition-points article,
+body.life-levels-page.quantum-page.quantum-polished-page main .quantum-section--definition .quantum-definition-signal {
+  min-height: 100% !important;
+  margin: 0 !important;
+}
+
+body.life-levels-page.quantum-page.quantum-polished-page main .quantum-section--definition .quantum-scene--definition {
+  grid-area: scene !important;
+  align-self: center !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  aspect-ratio: 3 / 2 !important;
+  margin: 0 !important;
+}
+
+body.life-levels-page.quantum-page.quantum-polished-page main .quantum-section--definition .quantum-scene--definition img {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 3 / 2 !important;
+  object-fit: contain !important;
+}
+
+@media (max-width: 980px) {
+  body.life-levels-page.quantum-page.quantum-polished-page main .quantum-section--definition .quantum-definition-copy {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-areas: "heading" "scene" "text" !important;
+  }
+
+  body.life-levels-page.quantum-page.quantum-polished-page main .quantum-section--definition .quantum-definition-text {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
+/* Page-local accents: shared components inherit the current Life Reassembly tone. */
+body.life-levels-page main > section:not(.hero):not(.levels-section--deep):not(.levels-section--final):not(.method-section--deep):not(.route-section--deep):not(.life-product-final-section) .eyebrow {
+  color: var(--life-page-deep) !important;
+}
+
+body.life-levels-page.levels-method-page main .method-card > span,
+body.life-levels-page.quantum-page main .levels-info-card > span,
+body.life-levels-page.quantum-page main .quantum-format-flow article > span,
+body.life-levels-page.levels-retreat-page main .retreat-definition-cards article > span,
+body.life-levels-page.levels-personal-route-page main .route-card > span {
+  border-color: color-mix(in srgb, var(--life-page-primary) 24%, transparent) !important;
+  color: var(--life-page-deep) !important;
+  background: color-mix(in srgb, var(--life-page-primary) 8%, var(--life-paper)) !important;
+}
+
+body.life-levels-page .life-navigator-panel {
+  border-color: var(--life-line-strong) !important;
+  background: linear-gradient(145deg, var(--life-paper), var(--life-page-wash)) !important;
+}
+
+body.life-levels-page .life-navigator-copy > .eyebrow,
+body.life-levels-page .life-navigator-results > .eyebrow {
+  color: var(--life-page-primary) !important;
+}
+
+body.life-levels-page .life-navigator-copy > h2,
+body.life-levels-page .life-navigator-results h3,
+body.life-levels-page .life-navigator-entry__content p:last-child,
+body.life-levels-page .life-navigator-value {
+  color: var(--life-page-deep) !important;
+}
+
+body.life-levels-page .life-navigator-entry,
+body.life-levels-page .life-navigator-results,
+body.life-levels-page .life-navigator-price {
+  border-color: var(--life-line-strong) !important;
+  background: color-mix(in srgb, var(--life-paper) 88%, transparent) !important;
+}
+
+body.life-levels-page .life-navigator-price strong {
+  background: var(--life-page-primary) !important;
+  color: #fffaf4 !important;
+}
+
+body.life-levels-page .life-navigator-price span,
+body.life-levels-page .life-navigator-entry__content p,
+body.life-levels-page .life-navigator-results p:not(.eyebrow):not(.life-navigator-value) {
+  color: color-mix(in srgb, var(--life-page-deep) 74%, transparent) !important;
+}
+
+body.life-levels-page .life-navigator-results article {
+  border-color: var(--life-line) !important;
+}
+
+body.life-levels-page .life-navigator-results article > span {
+  border-color: color-mix(in srgb, var(--life-page-primary) 30%, transparent) !important;
+  color: var(--life-page-primary) !important;
+  background: var(--life-paper) !important;
+}
+
+body.life-levels-page .life-navigator-value strong {
+  color: var(--life-page-primary) !important;
+}
+
+body.life-levels-page .life-product-final-layout {
+  border-color: color-mix(in srgb, #fffaf4 20%, transparent) !important;
+  background: linear-gradient(145deg, var(--life-page-deep), var(--life-page-primary)) !important;
+}
+
+body.life-levels-page main .eyebrow {
+  color: var(--life-page-deep) !important;
+}
+
+body.life-levels-page main > .hero .eyebrow,
+body.life-levels-page main > .levels-section--deep .eyebrow,
+body.life-levels-page main > .levels-section--final .eyebrow,
+body.life-levels-page main > .method-section--deep .eyebrow,
+body.life-levels-page main > .route-section--deep .eyebrow,
+body.life-levels-page main > .life-product-final-section .eyebrow {
+  color: rgba(255, 248, 238, .82) !important;
+}
+
+/* Individual retreat: one full-width process composition without a stretched empty panel. */
+body.life-levels-page.levels-retreat-page.retreat-page.retreat-final-polish-page .retreat-process-editorial {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: clamp(30px, 4vw, 52px) !important;
+  align-items: start !important;
+}
+
+body.life-levels-page.levels-retreat-page.retreat-page.retreat-final-polish-page .retreat-process-copy {
+  width: 100% !important;
+  max-width: 920px !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body.life-levels-page.levels-retreat-page.retreat-page.retreat-final-polish-page .retreat-process-copy h2 {
+  max-width: 18ch !important;
+  color: var(--life-page-deep) !important;
+}
+
+body.life-levels-page.levels-retreat-page.retreat-page.retreat-final-polish-page .retreat-process-copy .lead {
+  max-width: 46ch !important;
+  margin-top: 18px !important;
+  color: color-mix(in srgb, var(--life-page-deep) 78%, transparent) !important;
+}
+
+body.life-levels-page.levels-retreat-page.retreat-page.retreat-final-polish-page .retreat-process-steps {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: clamp(14px, 1.6vw, 22px) !important;
+  align-items: stretch !important;
+}
+
+body.life-levels-page.levels-retreat-page.retreat-page.retreat-final-polish-page .retreat-process-steps > article {
+  grid-template-columns: 42px minmax(0, 1fr) !important;
+  min-height: 100% !important;
+  padding: clamp(24px, 2.35vw, 34px) !important;
+  border: 1px solid var(--retreat-q-card-border) !important;
+  background: var(--retreat-q-card-bg) !important;
+  box-shadow: inset 0 3px 0 var(--life-page-primary), var(--retreat-q-card-shadow) !important;
+}
+
+body.life-levels-page.levels-retreat-page.retreat-page.retreat-final-polish-page .retreat-process-steps > article + article {
+  border-top: 1px solid var(--retreat-q-card-border) !important;
+}
+
+body.life-levels-page.levels-retreat-page.retreat-page.retreat-final-polish-page .retreat-process-steps h3 {
+  max-width: none !important;
+  color: var(--life-page-deep) !important;
+}
+
+body.life-levels-page.levels-retreat-page.retreat-page.retreat-final-polish-page .retreat-process-steps p {
+  color: color-mix(in srgb, var(--life-page-deep) 70%, transparent) !important;
+}
+
+/* Personal route: participant voices follow the author block and precede the method. */
+body.life-levels-page.levels-personal-route-page .route-testimonials-head {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.15fr) minmax(300px, .7fr) !important;
+  gap: 14px clamp(28px, 5vw, 72px) !important;
+  align-items: end !important;
+  margin-bottom: clamp(30px, 4vw, 50px) !important;
+}
+
+body.life-levels-page.levels-personal-route-page .route-testimonials-head .eyebrow {
+  grid-column: 1 / -1 !important;
+  margin: 0 !important;
+}
+
+body.life-levels-page.levels-personal-route-page .route-testimonials-head h2 {
+  max-width: 17ch !important;
+  margin: 0 !important;
+  color: var(--life-page-deep) !important;
+}
+
+body.life-levels-page.levels-personal-route-page .route-testimonials-head > p:last-child {
+  max-width: 38ch !important;
+  margin: 0 0 .35em !important;
+  color: color-mix(in srgb, var(--life-page-deep) 72%, transparent) !important;
+  font-size: clamp(17px, 1.2vw, 19px) !important;
+  line-height: 1.55 !important;
+}
+
+body.life-levels-page.levels-personal-route-page .route-testimonials-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: clamp(14px, 1.7vw, 24px) !important;
+}
+
+body.life-levels-page.levels-personal-route-page .route-video-review {
+  min-width: 0 !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  border: 1px solid var(--life-line-strong) !important;
+  border-radius: 8px !important;
+  background: var(--life-paper) !important;
+  box-shadow: inset 0 3px 0 var(--life-page-primary), var(--life-shadow) !important;
+}
+
+body.life-levels-page.levels-personal-route-page .route-video-review__media {
+  width: 100% !important;
+  aspect-ratio: 16 / 9 !important;
+  overflow: hidden !important;
+  background: var(--life-page-deep) !important;
+}
+
+body.life-levels-page.levels-personal-route-page .route-video-review__media iframe {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  border: 0 !important;
+}
+
+body.life-levels-page.levels-personal-route-page .route-video-review__caption {
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+  padding: 18px 20px 20px !important;
+}
+
+body.life-levels-page.levels-personal-route-page .route-video-review__caption span {
+  display: inline-grid !important;
+  width: 32px !important;
+  height: 32px !important;
+  flex: 0 0 32px !important;
+  place-items: center !important;
+  border: 1px solid var(--life-line-strong) !important;
+  border-radius: 50% !important;
+  color: var(--life-page-primary) !important;
+  background: var(--life-page-wash) !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+}
+
+body.life-levels-page.levels-personal-route-page .route-video-review__caption h3 {
+  margin: 0 !important;
+  color: var(--life-page-deep) !important;
+  font-size: clamp(22px, 1.65vw, 27px) !important;
+}
+
+@media (max-width: 900px) {
+  body.life-levels-page.levels-retreat-page.retreat-page.retreat-final-polish-page .retreat-process-steps,
+  body.life-levels-page.levels-personal-route-page .route-testimonials-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  body.life-levels-page.levels-retreat-page.retreat-page.retreat-final-polish-page .retreat-process-steps > article {
+    min-height: 0 !important;
+  }
+
+  body.life-levels-page.levels-personal-route-page .route-testimonials-head {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  body.life-levels-page.levels-personal-route-page .route-testimonials-head .eyebrow {
+    grid-column: auto !important;
+  }
+}
+
+@media (max-width: 560px) {
+  body.life-levels-page.levels-retreat-page.retreat-page.retreat-final-polish-page .retreat-process-steps > article {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  body.life-levels-page.levels-personal-route-page .route-video-review__caption {
+    padding: 16px 18px 18px !important;
+  }
+}
+
+/* Method: preserve the complete transition scene and let the two states read as one band. */
+body.life-levels-page.levels-method-page.method-rebuild-page main .method-awareness-section .method-split {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.02fr) minmax(360px, .98fr) !important;
+  grid-template-areas:
+    "visual eyebrow"
+    "visual title"
+    "visual intro"
+    "visual spacer"
+    "formula formula"
+    "outro outro" !important;
+  grid-template-rows: min-content min-content min-content minmax(0, 1fr) auto auto !important;
+  gap: 16px clamp(32px, 4vw, 58px) !important;
+  align-items: start !important;
+}
+
+body.life-levels-page.levels-method-page.method-rebuild-page main .method-awareness-section .method-section-head {
+  display: contents !important;
+}
+
+body.life-levels-page.levels-method-page.method-rebuild-page main .method-awareness-section .method-visual--awareness {
+  grid-area: visual !important;
+  align-self: start !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  aspect-ratio: 1535 / 1024 !important;
+  overflow: hidden !important;
+}
+
+body.life-levels-page.levels-method-page.method-rebuild-page main .method-awareness-section .method-visual--awareness img {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 1535 / 1024 !important;
+  object-fit: contain !important;
+}
+
+body.life-levels-page.levels-method-page.method-rebuild-page main .method-awareness-section .eyebrow {
+  grid-area: eyebrow !important;
+}
+
+body.life-levels-page.levels-method-page.method-rebuild-page main .method-awareness-section h2 {
+  grid-area: title !important;
+}
+
+body.life-levels-page.levels-method-page.method-rebuild-page main .method-awareness-section .method-awareness-intro {
+  grid-area: intro !important;
+  max-width: 38ch !important;
+}
+
+body.life-levels-page.levels-method-page.method-rebuild-page main .method-awareness-section .method-formula {
+  grid-area: formula !important;
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 0 !important;
+  margin: clamp(22px, 3vw, 36px) 0 0 !important;
+  overflow: visible !important;
+  border: 1px solid rgba(255, 248, 240, .26) !important;
+  border-width: 1px 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+}
+
+body.life-levels-page.levels-method-page.method-rebuild-page main .method-awareness-section .method-formula article {
+  min-height: 0 !important;
+  padding: clamp(24px, 3vw, 38px) clamp(24px, 3.2vw, 44px) !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body.life-levels-page.levels-method-page.method-rebuild-page main .method-awareness-section .method-formula article + article {
+  border-left: 1px solid rgba(255, 248, 240, .26) !important;
+}
+
+body.life-levels-page.levels-method-page.method-rebuild-page main .method-awareness-section .method-formula strong {
+  font-size: clamp(22px, 2vw, 30px) !important;
+  line-height: 1.2 !important;
+  box-shadow: none !important;
+}
+
+body.life-levels-page.levels-method-page.method-rebuild-page main .method-awareness-section .method-awareness-outro {
+  grid-area: outro !important;
+  max-width: 66ch !important;
+  margin: 4px 0 0 !important;
+}
+
+body.life-levels-page.levels-method-page.method-rebuild-page main .method-author-facts {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: clamp(12px, 1.5vw, 20px) !important;
+}
+
+body.life-levels-page.levels-method-page.method-rebuild-page main .method-author-layout {
+  grid-template-columns: minmax(0, 1.08fr) minmax(360px, .92fr) !important;
+}
+
+body.life-levels-page.levels-method-page.method-rebuild-page main .method-author-photo {
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  aspect-ratio: 3 / 2 !important;
+}
+
+body.life-levels-page.levels-method-page.method-rebuild-page main .method-author-photo img {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 3 / 2 !important;
+  object-fit: contain !important;
+}
+
+body.life-levels-page.levels-method-page.method-rebuild-page main .method-author-facts > .method-card {
+  min-height: 228px !important;
+  padding: clamp(22px, 2.2vw, 30px) !important;
+}
+
+body.life-levels-page.levels-method-page main > .method-testimonials-section {
+  background: var(--life-page-wash) !important;
+}
+
+body.life-levels-page.levels-method-page main > .method-faq-section {
+  background: var(--life-warm) !important;
+}
+
+body.life-levels-page.levels-method-page .method-testimonials-head {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.15fr) minmax(300px, .7fr) !important;
+  gap: 14px clamp(28px, 5vw, 72px) !important;
+  align-items: end !important;
+  margin-bottom: clamp(30px, 4vw, 50px) !important;
+}
+
+body.life-levels-page.levels-method-page .method-testimonials-head .eyebrow {
+  grid-column: 1 / -1 !important;
+  margin: 0 !important;
+}
+
+body.life-levels-page.levels-method-page .method-testimonials-head h2 {
+  max-width: 17ch !important;
+  margin: 0 !important;
+  color: var(--life-page-deep) !important;
+}
+
+body.life-levels-page.levels-method-page .method-testimonials-head > p:last-child {
+  max-width: 38ch !important;
+  margin: 0 0 .35em !important;
+  color: color-mix(in srgb, var(--life-page-deep) 72%, transparent) !important;
+  font-size: clamp(17px, 1.2vw, 19px) !important;
+  line-height: 1.55 !important;
+}
+
+body.life-levels-page.levels-method-page .method-testimonials-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: clamp(14px, 1.7vw, 24px) !important;
+}
+
+body.life-levels-page.levels-method-page .method-video-review {
+  min-width: 0 !important;
+  overflow: hidden !important;
+  border: 1px solid var(--life-line-strong) !important;
+  border-radius: 8px !important;
+  background: var(--life-paper) !important;
+  box-shadow: inset 0 3px 0 var(--life-page-primary), var(--life-shadow) !important;
+}
+
+body.life-levels-page.levels-method-page .method-video-review__media {
+  width: 100% !important;
+  aspect-ratio: 16 / 9 !important;
+  overflow: hidden !important;
+  background: var(--life-page-deep) !important;
+}
+
+body.life-levels-page.levels-method-page .method-video-review__media iframe {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  border: 0 !important;
+}
+
+body.life-levels-page.levels-method-page .method-video-review__caption {
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+  padding: 18px 20px 20px !important;
+}
+
+body.life-levels-page.levels-method-page .method-video-review__caption span {
+  display: inline-grid !important;
+  width: 32px !important;
+  height: 32px !important;
+  flex: 0 0 32px !important;
+  place-items: center !important;
+  border: 1px solid var(--life-line-strong) !important;
+  border-radius: 50% !important;
+  color: var(--life-page-primary) !important;
+  background: var(--life-page-wash) !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+}
+
+body.life-levels-page.levels-method-page .method-video-review__caption h3 {
+  margin: 0 !important;
+  color: var(--life-page-deep) !important;
+  font-size: clamp(22px, 1.65vw, 27px) !important;
+}
+
+@media (max-width: 980px) {
+  body.life-levels-page.levels-method-page.method-rebuild-page main .method-awareness-section .method-split {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-areas: "eyebrow" "title" "intro" "visual" "formula" "outro" !important;
+    grid-template-rows: none !important;
+  }
+
+  body.life-levels-page.levels-method-page.method-rebuild-page main .method-author-facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  body.life-levels-page.levels-method-page.method-rebuild-page main .method-author-layout {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  body.life-levels-page.levels-method-page .method-testimonials-head,
+  body.life-levels-page.levels-method-page .method-testimonials-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  body.life-levels-page.levels-method-page .method-testimonials-head .eyebrow {
+    grid-column: auto !important;
+  }
+}
+
+@media (max-width: 720px) {
+  body.life-levels-page.levels-method-page.method-rebuild-page main .method-awareness-section .method-formula,
+  body.life-levels-page.levels-method-page.method-rebuild-page main .method-author-facts {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  body.life-levels-page.levels-method-page.method-rebuild-page main .method-awareness-section .method-formula article + article {
+    border-top: 1px solid rgba(255, 248, 240, .26) !important;
+    border-left: 0 !important;
+  }
+}

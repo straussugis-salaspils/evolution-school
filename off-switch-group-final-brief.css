@@ -1,0 +1,434 @@
+/* Final brief pass for /off-switch-group only.
+   It reuses the established self-study card language and the group palette. */
+
+/* Crop the approved hero scene from the empty left side and bring the cast closer to the copy. */
+@media (min-width: 1200px) and (max-width: 1699px) {
+  body.off-switch-group-v3 .gg-hero__picture img {
+    width: calc(100% + 200px) !important;
+    max-width: none !important;
+    transform: translateX(-200px) !important;
+  }
+
+  body.off-switch-group-v3 .gg-emotion-callouts--hero {
+    right: auto !important;
+    left: -200px !important;
+    width: calc(100% + 200px) !important;
+  }
+}
+
+@media (min-width: 681px) and (max-width: 1199px) {
+  body.off-switch-group-v3 .gg-hero__picture img {
+    width: calc(100% + 128px) !important;
+    max-width: none !important;
+    transform: translateX(-128px) !important;
+  }
+
+  body.off-switch-group-v3 .gg-emotion-callouts--hero {
+    right: auto !important;
+    left: -128px !important;
+    width: calc(100% + 128px) !important;
+  }
+}
+
+/* The linked-episode illustration remains one coherent scene with a clear caption. */
+body.off-switch-group-v3 .gg-depth__media {
+  display: grid !important;
+  grid-template-rows: auto auto !important;
+  align-self: start !important;
+  overflow: hidden !important;
+}
+
+body.off-switch-group-v3 .gg-depth__media img {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 1619 / 972 !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+/* Two independent before/after cards, using the same paper, radius and shadow as the self page. */
+body.off-switch-group-v3 .gg-auto-flow--states {
+  gap: 16px !important;
+  overflow: visible !important;
+}
+
+body.off-switch-group-v3 .gg-auto-flow--states article,
+body.off-switch-group-v3 .gg-auto-flow--states article:nth-child(n) {
+  min-height: 226px !important;
+  padding: 31px 30px !important;
+  border-radius: 6px !important;
+  box-shadow: 0 16px 38px rgba(38, 73, 43, 0.1) !important;
+}
+
+body.off-switch-group-v3 .gg-auto-flow--states article:first-child {
+  border: 1px solid rgba(31, 79, 54, 0.16) !important;
+}
+
+body.off-switch-group-v3 .gg-auto-flow--states article + article {
+  border: 0 !important;
+}
+
+/* Four route chapters form a spacious 2x2 path instead of a narrow table row. */
+body.off-switch-group-v3 .gg-map .gg-route-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  grid-auto-rows: 1fr !important;
+  gap: 24px 20px !important;
+}
+
+body.off-switch-group-v3 .gg-map .gg-route-grid article,
+body.off-switch-group-v3 .gg-map .gg-route-grid article:nth-child(n) {
+  min-height: 258px !important;
+  padding: 32px 30px 30px 34px !important;
+}
+
+/* Keep the meeting image readable and balanced with the practice card. */
+body.off-switch-group-v3 .gg-practice-cycle .gg-week__split {
+  gap: 36px !important;
+}
+
+body.off-switch-group-v3 .gg-practice-cycle .gg-week__media,
+body.off-switch-group-v3 .gg-practice-cycle .gg-week__media img {
+  min-height: 448px !important;
+}
+
+body.off-switch-group-v3 .gg-practice-cycle .gg-week__media img {
+  object-position: center center !important;
+}
+
+/* The three value points become independent cards inside the offer block. */
+body.off-switch-group-v3 .gg-offer__facts {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 18px !important;
+  padding-top: 10px !important;
+  border: 0 !important;
+}
+
+body.off-switch-group-v3 .gg-offer__facts > div,
+body.off-switch-group-v3 .gg-offer__facts > div:nth-child(n) {
+  min-height: 174px !important;
+  padding: 27px 25px 25px 28px !important;
+  border: 1px solid rgba(31, 79, 54, 0.13) !important;
+  border-left: 6px solid var(--offer-accent, #5f8b43) !important;
+  border-radius: 6px !important;
+  background: #fbfaf5 !important;
+  box-shadow: 0 14px 32px rgba(38, 73, 43, 0.1) !important;
+}
+
+body.off-switch-group-v3 .gg-offer__facts > div:nth-child(2) {
+  --offer-accent: #7f9b43;
+}
+
+body.off-switch-group-v3 .gg-offer__facts > div:nth-child(3) {
+  --offer-accent: #a3ad49;
+}
+
+body.off-switch-group-v3 .gg-offer__facts dt {
+  color: #173f37 !important;
+  font-family: Georgia, "Times New Roman", serif !important;
+  font-size: 23px !important;
+  font-weight: 400 !important;
+  line-height: 1.18 !important;
+}
+
+body.off-switch-group-v3 .gg-offer__facts dd {
+  margin-top: 12px !important;
+  color: #536b60 !important;
+  font-size: 16px !important;
+  line-height: 1.52 !important;
+}
+
+/* The case result regains the page's green accent; the scale remains clearly secondary. */
+body.off-switch-group-v3 .gg-proof .gg-case-line .gg-case-score {
+  gap: 8px !important;
+}
+
+body.off-switch-group-v3 .gg-proof .gg-case-line .gg-case-score strong {
+  color: #3f7f39 !important;
+  font-size: 74px !important;
+  line-height: 0.94 !important;
+}
+
+body.off-switch-group-v3 .gg-proof .gg-case-line .gg-case-score span {
+  color: #5f786b !important;
+  font-size: 21px !important;
+  line-height: 1.2 !important;
+}
+
+body.off-switch-group-v3 .gg-proof .gg-case-line > span {
+  color: #5f8b43 !important;
+}
+
+body.off-switch-group-v3 .gg-proof .gg-case-line > p {
+  color: #375435 !important;
+}
+
+/* Participation is a separate neutral zone and starts on the same top line as suitability. */
+body.off-switch-group-v3 .gg-conversion__band {
+  align-items: start !important;
+  gap: 44px !important;
+}
+
+body.off-switch-group-v3 .gg-conversion__fit,
+body.off-switch-group-v3 .gg-conversion__logistics {
+  margin-top: 0 !important;
+}
+
+body.off-switch-group-v3 .gg-conversion__logistics {
+  padding: 32px 30px 30px !important;
+  border: 1px solid rgba(31, 79, 54, 0.13) !important;
+  border-radius: 6px !important;
+  background: #fbfaf5 !important;
+  box-shadow: 0 16px 38px rgba(38, 73, 43, 0.09) !important;
+}
+
+body.off-switch-group-v3 .gg-conversion__fit > h3,
+body.off-switch-group-v3 .gg-conversion__logistics > h3 {
+  margin-top: 0 !important;
+}
+
+/* The meeting-to-meeting rhythm is four independent process cards, not a decorated timeline. */
+body.off-switch-group-v3 .gg-practice-cycle .gg-meeting-flow {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  grid-auto-rows: 1fr !important;
+  gap: 18px !important;
+}
+
+body.off-switch-group-v3 .gg-practice-cycle .gg-meeting-flow::before {
+  display: none !important;
+}
+
+body.off-switch-group-v3 .gg-practice-cycle .gg-meeting-flow article,
+body.off-switch-group-v3 .gg-practice-cycle .gg-meeting-flow article:nth-child(n) {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  min-height: 236px !important;
+  padding: 29px 27px 27px !important;
+  border: 1px solid rgba(31, 79, 54, 0.15) !important;
+  border-top: 6px solid var(--cycle-accent, #4f7835) !important;
+  border-radius: 6px !important;
+  background: #fbfaf5 !important;
+  box-shadow: 0 14px 32px rgba(38, 73, 43, 0.09) !important;
+  text-align: left !important;
+}
+
+body.off-switch-group-v3 .gg-practice-cycle .gg-meeting-flow article:nth-child(2) {
+  --cycle-accent: #668b3d;
+}
+
+body.off-switch-group-v3 .gg-practice-cycle .gg-meeting-flow article:nth-child(3) {
+  --cycle-accent: #7f9b43;
+}
+
+body.off-switch-group-v3 .gg-practice-cycle .gg-meeting-flow article:nth-child(4) {
+  --cycle-accent: #9caf48;
+}
+
+body.off-switch-group-v3 .gg-practice-cycle .gg-meeting-flow article::before,
+body.off-switch-group-v3 .gg-practice-cycle .gg-meeting-flow article::after {
+  display: none !important;
+}
+
+body.off-switch-group-v3 .gg-practice-cycle .gg-meeting-flow article > span {
+  position: static !important;
+  margin: 0 0 21px !important;
+  color: var(--cycle-accent, #4f7835) !important;
+  font-size: 15px !important;
+  line-height: 1 !important;
+}
+
+body.off-switch-group-v3 .gg-practice-cycle .gg-meeting-flow article h3 {
+  margin: 0 !important;
+  text-align: left !important;
+}
+
+body.off-switch-group-v3 .gg-practice-cycle .gg-meeting-flow article p {
+  margin-top: 13px !important;
+  text-align: left !important;
+}
+
+/* Preserve the complete approved rectangular scene instead of cropping it to the text card. */
+body.off-switch-group-v3 .gg-practice-cycle .gg-week__split {
+  align-items: start !important;
+}
+
+body.off-switch-group-v3 .gg-practice-cycle .gg-week__media,
+body.off-switch-group-v3 .gg-practice-cycle .gg-week__media img {
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  aspect-ratio: 1672 / 941 !important;
+}
+
+body.off-switch-group-v3 .gg-practice-cycle .gg-week__media {
+  overflow: hidden !important;
+}
+
+body.off-switch-group-v3 .gg-practice-cycle .gg-week__media img {
+  display: block !important;
+  object-fit: contain !important;
+  object-position: center !important;
+}
+
+/* Keep the guide block compact and in the same restrained card geometry as the self page. */
+body.off-switch-group-v3 .gg-author__grid {
+  grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr) !important;
+  gap: 56px !important;
+}
+
+body.off-switch-group-v3 .gg-author__zoom {
+  overflow: hidden !important;
+  border: 1px solid rgba(31, 79, 54, 0.15) !important;
+  background: #fbfaf5 !important;
+}
+
+/* No main explanatory copy is smaller than the established self-study body size. */
+body.off-switch-group-v3 .gg-technique-plain p,
+body.off-switch-group-v3 .gg-week-grid li p,
+body.off-switch-group-v3 .gg-video-proof .gg-video-card > p,
+body.off-switch-group-v3 .gg-proof-numbers span {
+  font-size: 16px !important;
+  line-height: 1.5 !important;
+}
+
+@media (max-width: 1100px) {
+  body.off-switch-group-v3 .gg-practice-cycle .gg-week__media,
+  body.off-switch-group-v3 .gg-practice-cycle .gg-week__media img {
+    min-height: 0 !important;
+  }
+
+  body.off-switch-group-v3 .gg-offer__facts {
+    grid-template-columns: 1fr !important;
+  }
+
+  body.off-switch-group-v3 .gg-offer__facts > div,
+  body.off-switch-group-v3 .gg-offer__facts > div:nth-child(n) {
+    min-height: 0 !important;
+  }
+
+  body.off-switch-group-v3 .gg-practice-cycle .gg-meeting-flow {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  body.off-switch-group-v3 .gg-author__grid {
+    grid-template-columns: 1fr !important;
+    gap: 34px !important;
+  }
+}
+
+@media (max-width: 680px) {
+  body.off-switch-group-v3 .gg-depth__media img {
+    aspect-ratio: auto !important;
+  }
+
+  body.off-switch-group-v3 .gg-auto-flow--states article,
+  body.off-switch-group-v3 .gg-auto-flow--states article:nth-child(n) {
+    min-height: 0 !important;
+    padding: 27px 24px !important;
+  }
+
+  body.off-switch-group-v3 .gg-map .gg-route-grid {
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+  }
+
+  body.off-switch-group-v3 .gg-practice-cycle .gg-meeting-flow {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+    padding-left: 0 !important;
+  }
+
+  body.off-switch-group-v3 .gg-practice-cycle .gg-meeting-flow article,
+  body.off-switch-group-v3 .gg-practice-cycle .gg-meeting-flow article:nth-child(n) {
+    min-height: 0 !important;
+    padding: 25px 23px !important;
+    border-bottom: 1px solid rgba(31, 79, 54, 0.15) !important;
+  }
+
+  body.off-switch-group-v3 .gg-map .gg-route-grid article,
+  body.off-switch-group-v3 .gg-map .gg-route-grid article:nth-child(n) {
+    min-height: 0 !important;
+    padding: 29px 24px 27px 28px !important;
+  }
+
+  body.off-switch-group-v3 .gg-offer__facts > div,
+  body.off-switch-group-v3 .gg-offer__facts > div:nth-child(n),
+  body.off-switch-group-v3 .gg-conversion__logistics {
+    padding: 24px 22px !important;
+  }
+
+  body.off-switch-group-v3 .gg-proof .gg-case-line .gg-case-score strong {
+    font-size: 56px !important;
+  }
+
+  body.off-switch-group-v3 .gg-proof .gg-case-line .gg-case-score span {
+    font-size: 19px !important;
+  }
+}
+
+/* 2026-07-16: three requested final corrections only. */
+
+/* The before/after states are an equal pair of self-study-style white cards. */
+body.off-switch-group-v3 .gg-auto-flow--states {
+  grid-template-rows: repeat(2, minmax(0, 1fr)) !important;
+}
+
+body.off-switch-group-v3 .gg-auto-flow--states article,
+body.off-switch-group-v3 .gg-auto-flow--states article:nth-child(n) {
+  align-self: stretch !important;
+  justify-content: flex-start !important;
+  min-height: 0 !important;
+  padding: 31px 30px !important;
+  border: 1px solid rgba(31, 79, 54, 0.16) !important;
+  border-radius: 6px !important;
+  background: #ffffff !important;
+  box-shadow: 0 16px 38px rgba(38, 73, 43, 0.1) !important;
+}
+
+body.off-switch-group-v3 .gg-auto-flow--states article span,
+body.off-switch-group-v3 .gg-auto-flow--states article:nth-child(n) span {
+  color: #5f8b43 !important;
+}
+
+body.off-switch-group-v3 .gg-auto-flow--states article h3,
+body.off-switch-group-v3 .gg-auto-flow--states article:nth-child(n) h3 {
+  color: #101712 !important;
+}
+
+body.off-switch-group-v3 .gg-auto-flow--states article p,
+body.off-switch-group-v3 .gg-auto-flow--states article:nth-child(n) p {
+  color: #26332d !important;
+}
+
+/* Only the primary 79 to 4 result card becomes the dark-green visual center. */
+body.off-switch-group-v3 .gg-proof .gg-case-line {
+  background: #173f37 !important;
+  color: #ffffff !important;
+}
+
+body.off-switch-group-v3 .gg-proof .gg-case-line > span,
+body.off-switch-group-v3 .gg-proof .gg-case-line .gg-case-score strong,
+body.off-switch-group-v3 .gg-proof .gg-case-line > p {
+  color: #ffffff !important;
+}
+
+body.off-switch-group-v3 .gg-proof .gg-case-line .gg-case-score span {
+  color: rgba(255, 255, 255, 0.78) !important;
+}
+
+body.off-switch-group-v3 .gg-proof .gg-proof-numbers strong {
+  color: #101712 !important;
+}
+
+body.off-switch-group-v3 .gg-proof .gg-proof-numbers span {
+  color: #26332d !important;
+}
+
+@media (max-width: 680px) {
+  body.off-switch-group-v3 .gg-auto-flow--states article,
+  body.off-switch-group-v3 .gg-auto-flow--states article:nth-child(n) {
+    padding: 27px 24px !important;
+  }
+}

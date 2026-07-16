@@ -1,0 +1,508 @@
+/* Off-Switch Method: locked card taxonomy.
+   This layer changes visual types only. Existing widths, heights, grids,
+   columns, gaps, positions, and container sizes stay in their current rules. */
+
+/* Type 1 — information cards. The visual is copied from the existing
+   technique notes; internal typography and spacing remain section-owned. */
+html body.off-switch-method-page main :is(
+  .om-concepts > article,
+  .om-tool__notes > article,
+  .om-dog__story > article,
+  .om-ratio > div,
+  .om-depth > article
+) {
+  border: 1px solid rgba(21, 59, 66, .16) !important;
+  border-radius: 3px !important;
+  background: var(--om-card-mint) !important;
+  color: #173f31 !important;
+  box-shadow: 0 18px 46px rgba(60, 88, 38, .09) !important;
+}
+
+html body.off-switch-method-page main :is(
+  .om-concepts > article,
+  .om-tool__notes > article,
+  .om-dog__story > article,
+  .om-ratio > div,
+  .om-depth > article
+) > :is(strong, h3) {
+  color: #173f31 !important;
+}
+
+html body.off-switch-method-page main :is(
+  .om-concepts > article,
+  .om-tool__notes > article,
+  .om-dog__story > article,
+  .om-ratio > div,
+  .om-depth > article
+) > p {
+  color: #52665a !important;
+}
+
+/* Type 2 — process cards. The existing four-pixel accent is drawn inside
+   compact cards so their approved external height does not change. */
+html body.off-switch-method-page main :is(
+  .om-scope__groups > article,
+  .om-chain[data-card-role="sequence"] > article,
+  .om-measure__grid > article
+) {
+  border: 1px solid rgba(21, 59, 66, .16) !important;
+  border-radius: 6px !important;
+  background: linear-gradient(160deg, rgba(47, 120, 130, .08) 0, #fff 42%) !important;
+  color: #173f31 !important;
+  box-shadow: inset 0 3px 0 #2f7882, 0 14px 34px rgba(21, 59, 66, .07) !important;
+}
+
+html body.off-switch-method-page main .om-measure__grid > article:nth-child(3) {
+  border-color: rgba(216, 240, 138, .7) !important;
+  background: #d8f08a !important;
+}
+
+html body.off-switch-method-page main :is(
+  .om-scope__groups > article,
+  .om-chain[data-card-role="sequence"] > article,
+  .om-limits__grid > article,
+  .om-measure__grid > article
+) > :is(span, .om-measure__number) {
+  color: #2f7882 !important;
+}
+
+html body.off-switch-method-page main :is(
+  .om-scope__groups > article,
+  .om-chain[data-card-role="sequence"] > article,
+  .om-limits__grid > article,
+  .om-measure__grid > article
+) > strong {
+  color: #173f31 !important;
+}
+
+html body.off-switch-method-page main :is(
+  .om-scope__groups > article,
+  .om-chain[data-card-role="sequence"] > article,
+  .om-limits__grid > article,
+  .om-measure__grid > article
+) > p {
+  color: #52665a !important;
+}
+
+/* Match the compact mechanism cards without touching their padding or rows. */
+html body.off-switch-method-page main .om-section.om-mechanism .om-chain[data-card-role="sequence"] > article,
+html body.off-switch-method-page main .om-section.om-mechanism .om-chain[data-card-role="sequence"] > article:nth-of-type(1),
+html body.off-switch-method-page main .om-section.om-mechanism .om-chain[data-card-role="sequence"] > article:nth-of-type(2),
+html body.off-switch-method-page main .om-section.om-mechanism .om-chain[data-card-role="sequence"] > article:nth-of-type(3),
+html body.off-switch-method-page main .om-section.om-mechanism .om-chain[data-card-role="sequence"] > article:nth-of-type(4),
+html body.off-switch-method-page main .om-section.om-mechanism .om-chain[data-card-role="sequence"] > article.om-chain__stop {
+  border: 1px solid rgba(21, 59, 66, .16) !important;
+  border-radius: 6px !important;
+  background: linear-gradient(160deg, rgba(47, 120, 130, .08) 0, #fff 42%) !important;
+  color: #173f31 !important;
+  box-shadow: inset 0 3px 0 #2f7882, 0 14px 34px rgba(21, 59, 66, .07) !important;
+}
+
+/* The three established Off-Switch outcome cards already define Type 2.
+   They remain unchanged and serve as the source component for this migration. */
+
+html body.off-switch-method-page main .om-section.om-measure .om-measure__grid[data-card-role="levels"] > article,
+html body.off-switch-method-page main .om-section.om-measure .om-measure__grid[data-card-role="levels"] > article:nth-child(2),
+html body.off-switch-method-page main .om-section.om-measure .om-measure__grid[data-card-role="levels"] > article:nth-child(3) {
+  border: 1px solid rgba(21, 59, 66, .16) !important;
+  border-radius: 6px !important;
+  background: linear-gradient(160deg, rgba(47, 120, 130, .08) 0, #fff 42%) !important;
+  color: #173f31 !important;
+  box-shadow: inset 0 3px 0 #2f7882, 0 14px 34px rgba(21, 59, 66, .07) !important;
+}
+
+html body.off-switch-method-page main .om-section.om-measure .om-measure__grid[data-card-role="levels"] > article:nth-child(3) {
+  border-color: rgba(216, 240, 138, .7) !important;
+  background: #d8f08a !important;
+}
+
+/* Type 3 — accent conclusions. Uses the existing dark Off-Switch color and
+   the existing accent-card padding; no new color, radius, or shadow is added. */
+html body.off-switch-method-page main :is(
+  .om-scope__result,
+  .om-interrupt,
+  .om-map__note
+) {
+  padding: 24px 28px !important;
+  border: 1px solid var(--om-deep) !important;
+  border-radius: 6px !important;
+  background: var(--om-deep) !important;
+  color: #fff !important;
+  box-shadow: 0 18px 46px rgba(60, 88, 38, .09) !important;
+}
+
+html body.off-switch-method-page main :is(
+  .om-scope__result,
+  .om-interrupt,
+  .om-map__note
+) :is(p, strong, span),
+html body.off-switch-method-page main :is(
+  .om-scope__result,
+  .om-map__note
+) {
+  color: #fff !important;
+}
+
+html body.off-switch-method-page main .om-section.om-mechanism .om-interrupt.om-interrupt {
+  border: 1px solid var(--om-deep) !important;
+  border-radius: 6px !important;
+  background: var(--om-deep) !important;
+  color: #fff !important;
+  box-shadow: 0 18px 46px rgba(60, 88, 38, .09) !important;
+}
+
+html body.off-switch-method-page main .om-section.om-mechanism .om-interrupt.om-interrupt > p {
+  color: #fff !important;
+}
+
+/* Type 4 format cards already use the copied Levels Method component.
+   Type 5 proof cards and the 7 000+ statistics are also already approved.
+   Per the brief, correct card types are not modified by this layer. */
+
+/* Final unification pass. This layer deliberately touches only card shells
+   and their internal rhythm: existing grids, dimensions and placement stay put. */
+
+/* Type 1 — information. Every explanatory card owns a visible pale surface,
+   a quiet border and the same eyebrow → title → text rhythm. */
+html body.off-switch-method-page main :is(
+  .om-concepts > article,
+  .om-tool__notes > article,
+  .om-dog__story > article,
+  .om-ratio > div,
+  .om-depth > article
+) {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  border: 1px solid rgba(21, 59, 66, .16) !important;
+  border-radius: 6px !important;
+  background: var(--om-card-mint) !important;
+  box-shadow: 0 14px 34px rgba(21, 59, 66, .07) !important;
+}
+
+html body.off-switch-method-page main :is(
+  .om-concepts > article,
+  .om-tool__notes > article,
+  .om-dog__story > article,
+  .om-ratio > div,
+  .om-depth > article
+) > :is(strong, h3) {
+  display: block !important;
+  margin: 0 0 8px !important;
+  color: #173f31 !important;
+}
+
+html body.off-switch-method-page main :is(
+  .om-concepts > article,
+  .om-tool__notes > article,
+  .om-dog__story > article,
+  .om-ratio > div,
+  .om-depth > article
+) > p {
+  margin: 0 !important;
+  color: #52665a !important;
+  font-weight: 400 !important;
+}
+
+html body.off-switch-method-page main .om-concepts > article {
+  padding: 22px !important;
+}
+
+html body.off-switch-method-page main .om-concepts > article > span,
+html body.off-switch-method-page main .om-dog__story > article > span {
+  position: static !important;
+  display: block !important;
+  margin: 0 0 12px !important;
+  color: #2f7882 !important;
+}
+
+html body.off-switch-method-page main .om-tool__notes > article {
+  padding: 22px !important;
+}
+
+/* Type 2 — numbered process. The cards stay independent objects rather than
+   reading as a table or a timeline drawn outside their borders. */
+html body.off-switch-method-page main :is(
+  .om-chain[data-card-role="sequence"] > article,
+  .om-limits__grid > article,
+  .om-measure__grid > article
+) {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+  border: 1px solid rgba(21, 59, 66, .16) !important;
+  border-radius: 6px !important;
+  background: linear-gradient(160deg, rgba(47, 120, 130, .08) 0, #fffef8 42%) !important;
+  box-shadow: inset 0 3px 0 #2f7882, 0 14px 34px rgba(21, 59, 66, .07) !important;
+  color: #173f31 !important;
+}
+
+html body.off-switch-method-page main :is(
+  .om-chain[data-card-role="sequence"] > article,
+  .om-limits__grid > article,
+  .om-measure__grid > article
+) > :is(span, .om-measure__number) {
+  position: static !important;
+  display: block !important;
+  margin: 0 0 16px !important;
+  color: #2f7882 !important;
+}
+
+html body.off-switch-method-page main :is(
+  .om-chain[data-card-role="sequence"] > article,
+  .om-limits__grid > article,
+  .om-measure__grid > article
+) > strong {
+  display: block !important;
+  margin: 0 !important;
+  color: #173f31 !important;
+}
+
+html body.off-switch-method-page main :is(
+  .om-chain[data-card-role="sequence"] > article,
+  .om-limits__grid > article,
+  .om-measure__grid > article
+) > p {
+  margin: 10px 0 0 !important;
+  color: #52665a !important;
+  font-weight: 400 !important;
+}
+
+html body.off-switch-method-page main .om-limits__grid > article {
+  padding: 24px !important;
+}
+
+/* The three result cards keep the approved lime variation, but share exact
+   internal baselines with the first two cards. */
+html body.off-switch-method-page main .om-measure__grid > article,
+html body.off-switch-method-page main .om-measure__grid > article:nth-child(2),
+html body.off-switch-method-page main .om-measure__grid > article:nth-child(3) {
+  box-sizing: border-box !important;
+  height: 100% !important;
+  padding: 26px 28px !important;
+}
+
+html body.off-switch-method-page main .om-measure__grid > article > strong {
+  min-height: 1.2em;
+}
+
+html body.off-switch-method-page main .om-measure__grid > article:nth-child(3) {
+  border-color: rgba(216, 240, 138, .7) !important;
+  background: #d8f08a !important;
+}
+
+html body.off-switch-method-page main .om-measure__grid > article:nth-child(3) > :is(span, .om-measure__number) {
+  color: #4c7438 !important;
+}
+
+/* Type 4 — statistics. The hierarchy is identical in every tile; only the
+   7 000+ anchor uses the existing green accent. */
+html body.off-switch-method-page main .om-ukraine__stats > article,
+html body.off-switch-method-page main .om-ukraine__stats > article:first-child,
+html body.off-switch-method-page main .om-ukraine__stats > article:nth-child(n) {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+  border: 1px solid rgba(21, 59, 66, .16) !important;
+  border-radius: 6px !important;
+  background: #fffef8 !important;
+  box-shadow: 0 14px 34px rgba(21, 59, 66, .07) !important;
+  color: #173f31 !important;
+}
+
+html body.off-switch-method-page main .om-ukraine__stats > article > strong {
+  display: block !important;
+  margin: 0 0 12px !important;
+  color: #173f31 !important;
+}
+
+html body.off-switch-method-page main .om-ukraine__stats > article > span {
+  display: block !important;
+  color: #52665a !important;
+  opacity: 1 !important;
+}
+
+html body.off-switch-method-page main .om-ukraine__stats > article:first-child {
+  background: #d8f08a !important;
+}
+
+/* Restore the approved central-screen crop: the photo covers the complete
+   screen aperture, while the existing stage position and dimensions stay put. */
+html body.off-switch-method-page main .om-ukraine .om-ukraine__host {
+  background: transparent !important;
+}
+
+html body.off-switch-method-page main .om-ukraine .om-ukraine__host > img {
+  inset: -1px !important;
+  width: calc(100% + 2px) !important;
+  height: calc(100% + 2px) !important;
+  max-width: none !important;
+  object-fit: cover !important;
+  object-position: 50% 24% !important;
+}
+
+html body.off-switch-method-page main .om-ukraine .om-ukraine__stats > article > strong,
+html body.off-switch-method-page main .om-ukraine .om-ukraine__stats > article:nth-child(n) > strong {
+  color: #173f31 !important;
+  opacity: 1 !important;
+}
+
+html body.off-switch-method-page main .om-ukraine .om-ukraine__stats > article > span,
+html body.off-switch-method-page main .om-ukraine .om-ukraine__stats > article:nth-child(n) > span {
+  color: #52665a !important;
+  opacity: 1 !important;
+}
+
+/* Literal adapter for the established «Один метод — разные глубины работы»
+   component on «Пересборка жизни / Метод». Only card data differs here. */
+html body.off-switch-method-page main .om-formats .method-product-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: clamp(16px, 2vw, 26px) !important;
+  margin-top: clamp(28px, 3.4vw, 46px) !important;
+}
+
+html body.off-switch-method-page main .om-formats .method-product-card {
+  --method-card-accent: color-mix(in srgb, #c19453 72%, #8a3442);
+  position: relative !important;
+  display: grid !important;
+  min-width: 0 !important;
+  gap: 14px !important;
+  align-content: start !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  border: 1px solid rgba(138, 52, 66, .16) !important;
+  border-top: 0 !important;
+  border-radius: 8px !important;
+  background: rgba(255, 255, 255, .9) !important;
+  box-shadow: 0 22px 64px rgba(53, 19, 29, .08) !important;
+  color: #28171a !important;
+  text-decoration: none !important;
+  transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease, background .18s ease !important;
+}
+
+html body.off-switch-method-page main .om-formats .method-product-card > figure {
+  width: 100% !important;
+  aspect-ratio: 16 / 10 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  background: #f5eadf !important;
+}
+
+html body.off-switch-method-page main .om-formats .method-product-card > figure img {
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  transform: none !important;
+}
+
+html body.off-switch-method-page main .om-formats .method-product-card:nth-child(1) > figure img { object-position: 72% center !important; }
+html body.off-switch-method-page main .om-formats .method-product-card:nth-child(2) > figure img { object-position: 74% center !important; }
+html body.off-switch-method-page main .om-formats .method-product-card:nth-child(3) > figure img { object-position: 73% center !important; }
+
+html body.off-switch-method-page main .om-formats .method-product-card > span,
+html body.off-switch-method-page main .om-formats .method-product-card > h3,
+html body.off-switch-method-page main .om-formats .method-product-card > p,
+html body.off-switch-method-page main .om-formats .method-product-card > dl {
+  margin-inline: clamp(20px, 2.2vw, 30px) !important;
+}
+
+html body.off-switch-method-page main .om-formats .method-product-card > span {
+  display: block !important;
+  margin-top: clamp(18px, 2vw, 26px) !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: color-mix(in srgb, #8a3442 82%, #35131d) !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  letter-spacing: .08em !important;
+  line-height: normal !important;
+}
+
+html body.off-switch-method-page main .om-formats .method-product-card > h3 {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  color: #35131d !important;
+  font-size: clamp(21px, 1.65vw, 28px) !important;
+  line-height: 1.08 !important;
+}
+
+html body.off-switch-method-page main .om-formats .method-product-card > p {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  color: #28171a !important;
+  font-size: clamp(15px, 1.1vw, 18px) !important;
+  line-height: 1.52 !important;
+}
+
+html body.off-switch-method-page main .om-formats .method-product-card > dl {
+  display: grid !important;
+  gap: 10px !important;
+  margin-top: 12px !important;
+  margin-bottom: clamp(22px, 2.4vw, 32px) !important;
+}
+
+html body.off-switch-method-page main .om-formats .method-product-card > dl > div {
+  display: grid !important;
+  gap: 3px !important;
+  padding-top: 10px !important;
+  border-top: 1px solid rgba(138, 52, 66, .12) !important;
+}
+
+html body.off-switch-method-page main .om-formats .method-product-card dt {
+  color: rgba(138, 52, 66, .78) !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase !important;
+}
+
+html body.off-switch-method-page main .om-formats .method-product-card dd {
+  margin: 0 !important;
+  color: rgba(40, 23, 26, .78) !important;
+  font-size: clamp(15px, 1.1vw, 18px) !important;
+  line-height: normal !important;
+}
+
+html body.off-switch-method-page main .om-formats .method-product-card::before {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 4px;
+  pointer-events: none;
+  opacity: 0;
+  background: var(--method-card-accent);
+  transform: scaleY(.18);
+  transform-origin: top center;
+  transition: transform .22s ease, opacity .18s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  html body.off-switch-method-page main .om-formats .method-product-card:hover,
+  html body.off-switch-method-page main .om-formats .method-product-card:focus-visible {
+    transform: translate3d(6px, -8px, 0) !important;
+    border-color: color-mix(in srgb, var(--method-card-accent) 46%, rgba(138, 52, 66, .16)) !important;
+    background: #fffdf9 !important;
+    box-shadow: inset 4px 0 0 var(--method-card-accent), 0 30px 78px rgba(53, 19, 29, .18) !important;
+  }
+
+  html body.off-switch-method-page main .om-formats .method-product-card:hover::before,
+  html body.off-switch-method-page main .om-formats .method-product-card:focus-visible::before {
+    opacity: .98;
+    transform: scaleY(1);
+  }
+}
+
+@media (max-width: 980px) {
+  html body.off-switch-method-page main .om-formats .method-product-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
