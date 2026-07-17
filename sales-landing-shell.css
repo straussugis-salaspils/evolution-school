@@ -135,68 +135,45 @@
 }
 
 /* Цвет карточки повторяет основную палитру соответствующего лендинга. */
-.eh-sales-index__card--lightness {
-  --sales-card-bg: #f3dde4;
-  --sales-card-line: #c98d9a;
-  --sales-card-action: #9f6574;
-  --sales-card-copy-bg: #fff8fa;
-  --sales-card-copy-line: #c98d9a;
-  --sales-card-copy-ink: #754451;
-}
-
-.eh-sales-index__card--strength {
-  --sales-card-bg: #eaf0f5;
-  --sales-card-line: #6e638c;
-  --sales-card-action: #5b2d68;
-  --sales-card-copy-bg: #f7f4fa;
-  --sales-card-copy-line: #8b82a3;
-  --sales-card-copy-ink: #49365e;
-}
-
-.eh-sales-index__card--depth {
-  --sales-card-bg: #ead7da;
-  --sales-card-line: #9c5662;
-  --sales-card-action: #69212f;
-  --sales-card-copy-bg: #fff8f8;
-  --sales-card-copy-line: #b77a83;
-  --sales-card-copy-ink: #642d37;
-}
-
+/* Four direction palettes, copied from the direction cards on the homepage. */
+.eh-sales-index__card--lightness,
+.eh-sales-index__card--strength,
+.eh-sales-index__card--depth,
 .eh-sales-index__card--retreats {
-  --sales-card-bg: #eee6f3;
-  --sales-card-line: #8c6b9a;
-  --sales-card-action: #5b2d68;
-  --sales-card-copy-bg: #fbf7fd;
-  --sales-card-copy-line: #aa91b4;
-  --sales-card-copy-ink: #51325d;
+  --sales-card-bg: #EFE4F2;
+  --sales-card-line: #5B2D68;
+  --sales-card-action: #5B2D68;
+  --sales-card-copy-bg: #F8F1F8;
+  --sales-card-copy-line: #B88F49;
+  --sales-card-copy-ink: #24152F;
 }
 
-.eh-sales-index__card--quantum,
-.eh-sales-index__card--reiki-one {
-  --sales-card-bg: #dcedea;
-  --sales-card-line: #76a79d;
-  --sales-card-action: #0f625e;
-  --sales-card-copy-bg: #f4fbf9;
-  --sales-card-copy-line: #92bbb2;
-  --sales-card-copy-ink: #164e4c;
+.eh-sales-index__card--quantum {
+  --sales-card-bg: #F0DDE1;
+  --sales-card-line: #8A3442;
+  --sales-card-action: #8A3442;
+  --sales-card-copy-bg: #FBF4F5;
+  --sales-card-copy-line: #C07A59;
+  --sales-card-copy-ink: #3B1821;
 }
 
 .eh-sales-index__card--off-switch {
-  --sales-card-bg: #e6f3f5;
-  --sales-card-line: #6aa9b9;
-  --sales-card-action: #0d7f9a;
-  --sales-card-copy-bg: #f5fcfd;
-  --sales-card-copy-line: #8bbcc8;
-  --sales-card-copy-ink: #0c5b70;
+  --sales-card-bg: #BEEAF2;
+  --sales-card-line: #147C9C;
+  --sales-card-action: #147C9C;
+  --sales-card-copy-bg: #F1FBFC;
+  --sales-card-copy-line: #E67E5F;
+  --sales-card-copy-ink: #103746;
 }
 
+.eh-sales-index__card--reiki-one,
 .eh-sales-index__card--reiki-two {
-  --sales-card-bg: #f2e7d3;
-  --sales-card-line: #c49c5b;
-  --sales-card-action: #89621f;
-  --sales-card-copy-bg: #fffaf0;
-  --sales-card-copy-line: #d2b77e;
-  --sales-card-copy-ink: #694d1b;
+  --sales-card-bg: #F1E6B5;
+  --sales-card-line: #7E6A22;
+  --sales-card-action: #7E6A22;
+  --sales-card-copy-bg: #FFF9E8;
+  --sales-card-copy-line: #D8BF63;
+  --sales-card-copy-ink: #4C4218;
 }
 
 .eh-sales-index__image {
