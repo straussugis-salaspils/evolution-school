@@ -124,9 +124,11 @@
   --sales-card-copy-line: #9db7a3;
   --sales-card-copy-ink: #245839;
   display: grid;
+  box-sizing: border-box;
   grid-template-columns: 7.25rem minmax(0, 1fr);
   gap: 1rem;
   align-items: stretch;
+  height: 12.75rem;
   padding: .75rem;
   border: 1px solid var(--sales-card-line);
   border-radius: .75rem;
@@ -179,7 +181,7 @@
 .eh-sales-index__image {
   width: 100%;
   height: 100%;
-  min-height: 8.25rem;
+  min-height: 0;
   border-radius: .45rem;
   object-fit: cover;
 }
@@ -187,7 +189,7 @@
 .eh-sales-index__content {
   display: grid;
   align-content: center;
-  gap: .7rem;
+  gap: .5rem;
   min-width: 0;
 }
 
@@ -251,12 +253,20 @@
 }
 
 @media (min-width: 720px) {
-  .eh-sales-index__card { grid-template-columns: 11rem minmax(0, 1fr); gap: 1.25rem; }
-  .eh-sales-index__image { min-height: 9.5rem; }
+  .eh-sales-index__card {
+    grid-template-columns: 11rem minmax(0, 1fr);
+    gap: 1.25rem;
+    height: 11.125rem;
+  }
+  .eh-sales-index__image { min-height: 0; }
 }
 
 @media (max-width: 420px) {
   .eh-sales-index__card { grid-template-columns: 5.5rem minmax(0, 1fr); gap: .75rem; padding: .6rem; }
-  .eh-sales-index__image { min-height: 7.25rem; }
-  .eh-sales-index__actions { display: grid; grid-template-columns: 1fr; }
+  .eh-sales-index__image { min-height: 0; }
+  .eh-sales-index__content { gap: .5rem; }
+  .eh-sales-index__content h2 { font-size: 1.125rem; }
+  .eh-sales-index__actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .375rem; }
+  .eh-sales-index__open,
+  .eh-sales-index__copy { padding: .25rem .35rem; font-size: .75rem; line-height: 1.1; }
 }
