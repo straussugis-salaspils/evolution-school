@@ -9,10 +9,10 @@ window.EVOLUTION_START_NAVIGATOR = {
       imageAlt: 'Практика Рейки для восстановления сил и внутренней опоры',
     },
     offswitch: {
-      title: 'Off-Switch Training в записи',
+      title: 'Тренинг Off-Switch в записи',
       text: 'Практический формат для одной повторяющейся реакции: тревоги, контроля, стопа, избегания или старого сценария.',
       href: 'off-switch-samostoyatelno.html',
-      cta: 'Посмотреть Off-Switch Training',
+      cta: 'Посмотреть тренинг',
       image: 'assets/off-switch-training-pocket-practice.jpg',
       imageAlt: 'Практика возвращения выбора в момент автоматической реакции',
     },

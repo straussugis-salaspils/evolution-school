@@ -2505,3 +2505,28 @@ body.off-switch-personal-v3 .pp-hero h1 + .pp-hero__lead {
     font-size: 34px !important;
   }
 }
+
+/* Direction map: the Russian explanation is part of the existing card title,
+   so the cards keep their established height and rhythm. */
+body.direction-page--freedom .roadmap--has-eyebrows .roadmap-step__title-with-method {
+  min-height: 84px !important;
+}
+
+body.direction-page--freedom .roadmap--has-eyebrows .roadmap-step__title-main,
+body.direction-page--freedom .roadmap--has-eyebrows .roadmap-step__method {
+  display: block;
+}
+
+body.direction-page--freedom .roadmap--has-eyebrows .roadmap-step__title-main {
+  font-size: clamp(21px, 1.6vw, 23px);
+  line-height: 1.1;
+}
+
+body.direction-page--freedom .roadmap--has-eyebrows .roadmap-step__method {
+  margin-top: 0;
+  color: color-mix(in srgb, var(--ink) 72%, var(--door-accent));
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.28;
+}

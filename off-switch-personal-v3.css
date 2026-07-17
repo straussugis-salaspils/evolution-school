@@ -98,6 +98,32 @@ body.off-switch-personal-v3 {
   color: #eadfe8 !important;
 }
 
+.pp-eyebrow > span:first-child,
+.pp-product-subtitle,
+.pp-product-detail {
+  display: block;
+}
+
+.pp-product-subtitle,
+.pp-product-detail {
+  margin-top: 4px;
+  color: color-mix(in srgb, var(--pp-jade-deep) 78%, var(--pp-ink)) !important;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.3;
+  text-transform: none;
+}
+
+.pp-product-detail {
+  font-weight: 500;
+}
+
+.pp-hero .pp-product-subtitle,
+.pp-hero .pp-product-detail {
+  color: rgba(234, 223, 232, .82) !important;
+}
+
 .pp-section-head {
   max-width: 850px;
   margin-bottom: 32px;

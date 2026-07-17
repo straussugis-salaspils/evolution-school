@@ -15,5 +15,14 @@ Disallow: /off-switch-method-redesign.html
 Disallow: /individualnyj-retrit.html
 Disallow: /individualnyj-retrit/
 Disallow: /urovni-zhizni/individualnyj-retrit.html
+Disallow: /604918-vkus-legkosti/
+Disallow: /759214-vkus-sily/
+Disallow: /836472-vysokaya-glubina/
+Disallow: /472861-ostrova-vezeniya/
+Disallow: /915804-kvantovaya-aktivaciya/
+Disallow: /684291-off-switch-training/
+Disallow: /568241-reiki-1/
+Disallow: /731956-reiki-2/
+Disallow: /18-18-18/
 
 Sitemap: https://evolution.yourbalancerestored.com/sitemap.xml

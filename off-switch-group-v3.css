@@ -94,6 +94,21 @@ body.off-switch-group-v3 {
   color: #cce4dc !important;
 }
 
+.gg-eyebrow > span:first-child,
+.gg-product-subtitle {
+  display: block;
+}
+
+.gg-product-subtitle {
+  margin-top: 4px;
+  color: color-mix(in srgb, var(--gg-sage-deep) 78%, var(--gg-ink)) !important;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.3;
+  text-transform: none;
+}
+
 .gg-section-head {
   max-width: 810px;
   margin-bottom: 36px;

@@ -1,0 +1,214 @@
+:root {
+  --sales-shell-ink: #173632;
+  --sales-shell-paper: #fbfaf6;
+  --sales-shell-line: rgba(23, 54, 50, .16);
+}
+
+.eh-sales-landing-header {
+  position: relative;
+  z-index: 20;
+  border-bottom: 1px solid var(--sales-shell-line);
+  background: rgba(255, 255, 255, .96);
+}
+
+.eh-sales-landing-header__inner,
+.eh-sales-landing-footer__inner {
+  width: min(100% - 2rem, 1180px);
+  margin: 0 auto;
+}
+
+.eh-sales-landing-header__inner {
+  display: flex;
+  align-items: center;
+  min-height: 4.5rem;
+}
+
+.eh-sales-landing-header img {
+  display: block;
+  width: min(12.5rem, 55vw);
+  height: auto;
+}
+
+.eh-sales-landing .eh-landing-static-link {
+  pointer-events: none !important;
+  cursor: default !important;
+}
+
+.eh-sales-landing-footer {
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--sales-shell-line);
+  background: var(--sales-shell-paper);
+  color: #59635f;
+  font-family: Inter, "Segoe UI", system-ui, sans-serif;
+}
+
+.eh-sales-landing-footer__inner {
+  display: grid;
+  gap: .35rem;
+}
+
+.eh-sales-landing-footer p {
+  margin: 0;
+  font-size: .75rem;
+  line-height: 1.45;
+}
+
+.eh-sales-landing-footer a {
+  color: var(--sales-shell-ink);
+  font-weight: 700;
+  text-underline-offset: .2em;
+}
+
+/* Internal employee index */
+.eh-sales-index {
+  min-height: 100vh;
+  margin: 0;
+  background: #f5f4ef;
+  color: var(--sales-shell-ink);
+  font-family: Inter, "Segoe UI", system-ui, sans-serif;
+}
+
+.eh-sales-index__header {
+  border-bottom: 1px solid var(--sales-shell-line);
+  background: #fff;
+}
+
+.eh-sales-index__header-inner,
+.eh-sales-index__main {
+  width: min(100% - 2rem, 1050px);
+  margin: 0 auto;
+}
+
+.eh-sales-index__header-inner {
+  display: flex;
+  align-items: center;
+  min-height: 4.75rem;
+}
+
+.eh-sales-index__logo {
+  width: min(12.5rem, 55vw);
+  height: auto;
+}
+
+.eh-sales-index__main {
+  padding: clamp(2rem, 5vw, 4.5rem) 0;
+}
+
+.eh-sales-index h1 {
+  max-width: 18ch;
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.25rem, 5vw, 4.25rem);
+  font-weight: 400;
+  line-height: 1.02;
+}
+
+.eh-sales-index__lead {
+  max-width: 62ch;
+  margin: 1rem 0 2rem;
+  color: #56615c;
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.eh-sales-index__list {
+  display: grid;
+  gap: 1rem;
+}
+
+.eh-sales-index__card {
+  display: grid;
+  grid-template-columns: 7.25rem minmax(0, 1fr);
+  gap: 1rem;
+  align-items: stretch;
+  padding: .75rem;
+  border: 1px solid var(--sales-shell-line);
+  border-radius: .75rem;
+  background: #fff;
+  box-shadow: 0 .6rem 1.8rem rgba(23, 54, 50, .05);
+}
+
+.eh-sales-index__image {
+  width: 100%;
+  height: 100%;
+  min-height: 8.25rem;
+  border-radius: .45rem;
+  object-fit: cover;
+}
+
+.eh-sales-index__content {
+  display: grid;
+  align-content: center;
+  gap: .7rem;
+  min-width: 0;
+}
+
+.eh-sales-index__content h2 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.35rem, 2.4vw, 1.8rem);
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.eh-sales-index__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .65rem;
+}
+
+.eh-sales-index__open,
+.eh-sales-index__copy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0 1rem;
+  border: 1px solid transparent;
+  border-radius: .45rem;
+  font: inherit;
+  font-size: .875rem;
+  font-weight: 800;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.eh-sales-index__open {
+  background: #357c4e;
+  color: #fff;
+}
+
+.eh-sales-index__copy {
+  border-color: #9db7a3;
+  background: #f5fbf2;
+  color: #245839;
+}
+
+.eh-sales-index__url {
+  overflow-wrap: anywhere;
+  color: #496057;
+  font-size: .8rem;
+  line-height: 1.4;
+}
+
+.eh-sales-index__url a {
+  color: inherit;
+}
+
+.eh-sales-index__copy-status {
+  min-height: 1.2em;
+  color: #245839;
+  font-size: .8rem;
+  font-weight: 700;
+}
+
+@media (min-width: 720px) {
+  .eh-sales-index__card { grid-template-columns: 11rem minmax(0, 1fr); gap: 1.25rem; }
+  .eh-sales-index__image { min-height: 9.5rem; }
+}
+
+@media (max-width: 420px) {
+  .eh-sales-index__card { grid-template-columns: 5.5rem minmax(0, 1fr); gap: .75rem; padding: .6rem; }
+  .eh-sales-index__image { min-height: 7.25rem; }
+  .eh-sales-index__actions { display: grid; grid-template-columns: 1fr; }
+}
