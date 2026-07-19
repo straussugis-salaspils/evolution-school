@@ -638,6 +638,38 @@ p  { font-size: clamp(17px,1.5vw,18px); line-height: 1.65; }
 .final p   { margin-bottom: 16px; }
 .final .btn { margin: 32px 0; display: inline-block; }
 .final__sub { font-size: 15px; color: #5a6e68; margin-bottom: 0; }
+
+/* ─── PAST RETREAT MOMENTS ───────────────────────────────── */
+.retreat-memories__intro {
+  max-width: 44rem;
+  margin: 0 auto 2rem;
+  text-align: center;
+}
+.retreat-memories__intro .label { display: block; margin-bottom: .75rem; }
+.retreat-memories__intro h2 { max-width: 38rem; margin: 0 auto; }
+.retreat-memories__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+  max-width: 68rem;
+  margin: 0 auto;
+}
+.retreat-memories__video {
+  overflow: hidden;
+  border: 1px solid rgba(6, 63, 51, .18);
+  border-radius: var(--rr);
+  background: var(--green);
+  box-shadow: 0 .75rem 1.5rem rgba(6, 63, 51, .10);
+}
+.retreat-memories__video iframe {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+}
+@media (min-width: 768px) {
+  .retreat-memories__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
+}
 .summary-card {
   max-width: 560px; margin: 44px auto 0;
   text-align: left; position: relative; z-index: 1;
@@ -3840,6 +3872,22 @@ body.eh-standalone-retreat {
                 <p>Видеоотзыв о проживании ретрита в Италии и о том, как живой формат помогает пройти глубже.</p>
               </div>
             </article>
+          </div>
+        </div>
+      </section>
+      <section class="ar-zone ar-zone--practical retreat-memories" aria-labelledby="retreat-memories-title" style="padding: var(--sg) 0;">
+        <div class="sec">
+          <div class="retreat-memories__intro">
+            <span class="label">Прошлые программы</span>
+            <h2 id="retreat-memories-title">Несколько эмоций<br>из наших прошлых ретритов</h2>
+          </div>
+          <div class="retreat-memories__grid">
+            <div class="retreat-memories__video">
+              <iframe src="https://player.vimeo.com/video/368966837?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;dnt=1" title="Эмоции участников прошлого ретрита — первый фрагмент" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div class="retreat-memories__video">
+              <iframe src="https://player.vimeo.com/video/368970813?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;dnt=1" title="Эмоции участников прошлого ретрита — второй фрагмент" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
           </div>
         </div>
       </section>
