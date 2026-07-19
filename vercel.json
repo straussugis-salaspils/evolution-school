@@ -1,5 +1,18 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "npm run build",
+  "outputDirectory": ".",
   "redirects": [
+    {
+      "source": "/individualnyj-retrit.html",
+      "destination": "/urovni-zhizni/individualnyj-retrit/",
+      "permanent": true
+    },
+    {
+      "source": "/urovni-zhizni/individualnyj-retrit.html",
+      "destination": "/urovni-zhizni/individualnyj-retrit/",
+      "permanent": true
+    },
     {
       "source": "/vysokaya-glubina.html",
       "destination": "/mentoring/",
