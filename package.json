@@ -1,0 +1,20 @@
+{
+  "name": "evolution-house-static-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "analytics:config": "node scripts/write-analytics-config.mjs",
+    "analytics:write": "node scripts/inject-analytics.mjs",
+    "analytics:audit": "node scripts/analytics-audit.mjs",
+    "analytics:smoke": "node scripts/analytics-smoke.mjs",
+    "analytics:production-smoke": "node scripts/production-analytics-smoke.mjs",
+    "lint": "node scripts/js-syntax-check.mjs",
+    "typecheck": "node scripts/typecheck.mjs",
+    "build": "node scripts/write-analytics-config.mjs && node scripts/seo-audit.mjs && node scripts/analytics-audit.mjs",
+    "test": "node scripts/seo-audit.mjs && node scripts/analytics-audit.mjs",
+    "seo:audit": "node scripts/seo-audit.mjs",
+    "seo:write": "node scripts/seo-audit.mjs --write",
+    "seo:smoke": "node scripts/mobile-smoke.mjs",
+    "seo:production-smoke": "node scripts/production-smoke.mjs"
+  }
+}
