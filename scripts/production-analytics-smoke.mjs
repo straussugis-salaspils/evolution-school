@@ -40,11 +40,18 @@ try {
   const value = async (expression) => (await send("Runtime.evaluate", { expression, returnByValue: true })).result.value;
   await Promise.all([send("Page.enable"), send("Runtime.enable"), send("Network.enable")]);
   let failures = 0;
+  let skipped = 0;
   for (const route of ROUTES) {
     urls.length = 0;
     await send("Network.clearBrowserCache");
     await send("Page.navigate", { url: `${BASE_URL}${route}` });
     await wait(850);
+    const protectedPreview = await value("document.title === 'Login – Vercel'");
+    if (protectedPreview && new URL(BASE_URL).hostname.endsWith(".vercel.app")) {
+      skipped += 1;
+      console.log(`SKIP ${route}: Vercel deployment protection requires an authenticated browser session.`);
+      continue;
+    }
     const banner = await value("Boolean(document.querySelector('.eh-consent:not([hidden])'))");
     const settings = await value("Boolean(document.querySelector('.eh-cookie-settings'))");
     const gtm = urls.filter((url) => /googletagmanager\.com|google-analytics\.com/i.test(url));
@@ -53,7 +60,7 @@ try {
     failures += ok ? 0 : 1;
     console.log(`${ok ? "PASS" : "FAIL"} ${route}: banner=${banner}, settings=${settings}, google-before-consent=${gtm.length}, overflow=${overflow}`);
   }
-  console.log(`Production analytics smoke: ${ROUTES.length} routes, ${failures} failure(s).`);
+  console.log(`Production analytics smoke: ${ROUTES.length} routes, ${failures} failure(s), ${skipped} protected-preview skip(s).`);
   process.exitCode = failures ? 1 : 0;
 } finally {
   try { socket?.close(); } catch { /* no-op */ }
