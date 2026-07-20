@@ -1,7 +1,7 @@
 (() => {
   "use strict";
 
-  const GTM_ID = "GTM-WNV2B49K";
+  const GA4_ID = "G-RSEE3PKS5V";
   const CONSENT_KEY = "eh_consent_v2";
   const CONSENT_COOKIE = "eh_consent_v2";
   const FIRST_TOUCH_KEY = "eh_first_touch_v1";
@@ -58,26 +58,12 @@
     const result = value.replace(/[\u0000-\u001f\u007f]/g, " ").replace(/\s+/g, " ").trim().slice(0, 100);
     return PII.test(result) ? "" : result;
   };
-  const dataLayer = window.dataLayer = window.dataLayer || [];
-  const consentListeners = [];
   const consentPayload = (analytics) => ({
     analytics_storage: analytics ? "granted" : "denied",
     ad_storage: "denied",
     ad_user_data: "denied",
     ad_personalization: "denied",
   });
-  // The GTM consent template registers here through callInWindow(). It is deliberately
-  // independent from gtag commands, so GTM's Consent Initialization phase controls order.
-  window.ehAddConsentListener = (listener) => {
-    if (typeof listener !== "function") return false;
-    consentListeners.push(listener);
-    return true;
-  };
-  const notifyConsentListeners = (analytics) => {
-    const state = consentPayload(analytics);
-    consentListeners.forEach((listener) => { try { listener(state); } catch { /* A third-party callback must not break the banner. */ } });
-  };
-
   const firstTouch = () => {
     const query = new URLSearchParams(location.search);
     let referrer = null;
@@ -94,29 +80,51 @@
   const getFirstTouch = () => { try { return JSON.parse(storage.get(FIRST_TOUCH_KEY) || "") || pendingFirstTouch; } catch { return pendingFirstTouch; } };
   const persistFirstTouch = () => { if (allowed() && !storage.get(FIRST_TOUCH_KEY)) storage.set(FIRST_TOUCH_KEY, JSON.stringify(pendingFirstTouch)); };
 
-  let gtmLoaded = false;
-  const loadGtm = () => {
-    if (gtmLoaded || !allowed()) return false;
-    gtmLoaded = true;
-    dataLayer.push({ "gtm.start": Date.now(), event: "gtm.js" });
+  let ga4Loaded = false;
+  const gtag = (...args) => { window.dataLayer.push(args); };
+  const consentDefault = () => gtag("consent", "default", consentPayload(false));
+  const consentUpdate = (analytics) => gtag("consent", "update", consentPayload(analytics));
+  const loadGoogleTag = () => {
+    if (ga4Loaded || !allowed()) return false;
+    ga4Loaded = true;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = gtag;
+    // Keep this sequence together: Consent Mode defaults, the visitor's update,
+    // and only then the Google tag and its single GA4 configuration command.
+    consentDefault();
+    consentUpdate(true);
     const script = document.createElement("script");
     script.async = true;
-    script.src = `https://www.googletagmanager.com/gtm.js?id=${encodeURIComponent(GTM_ID)}`;
-    script.dataset.ehGtm = "true";
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(GA4_ID)}`;
+    script.dataset.ehGa4 = "true";
     document.head.append(script);
+    gtag("js", new Date());
+    gtag("config", GA4_ID, { send_page_view: true });
     return true;
+  };
+  const clearAnalyticsCookies = () => {
+    try {
+      document.cookie.split(";").map((entry) => entry.trim().split("=")[0]).filter((name) => /^_ga(?:_|$)|^_gid$/i.test(name)).forEach((name) => {
+        document.cookie = `${name}=; Path=/; Max-Age=0; SameSite=Lax`;
+      });
+    } catch { /* Cookie storage may be disabled. */ }
   };
   const setConsent = (choice) => {
     const analytics = choice === "analytics_granted";
     const savedChoice = analytics ? "analytics_granted" : "essential_only";
-    const wasLoaded = gtmLoaded;
+    const wasLoaded = ga4Loaded;
     storage.set(CONSENT_KEY, savedChoice);
     cookie.set(CONSENT_COOKIE, savedChoice);
-    if (analytics) { persistFirstTouch(); loadGtm(); }
-    if (wasLoaded) notifyConsentListeners(analytics);
+    if (analytics) { persistFirstTouch(); loadGoogleTag(); }
+    if (!analytics && wasLoaded) {
+      consentUpdate(false);
+      clearAnalyticsCookies();
+      // Basic Consent Mode removes the loaded Google script on the next page load.
+      window.setTimeout(() => location.reload(), 0);
+    }
     document.dispatchEvent(new CustomEvent("eh:consent-change", { detail: { analytics } }));
   };
-  if (allowed()) { persistFirstTouch(); loadGtm(); }
+  if (allowed()) { persistFirstTouch(); loadGoogleTag(); }
 
   const sanitize = (eventName, values = {}) => {
     const result = {};
@@ -129,7 +137,8 @@
   };
   const track = (eventName, values) => {
     if (!allowed() || !EVENTS.has(eventName)) return false;
-    dataLayer.push({ event: eventName, ...sanitize(eventName, values) });
+    if (!ga4Loaded || typeof window.gtag !== "function") return false;
+    window.gtag("event", eventName, sanitize(eventName, values));
     return true;
   };
   const text = (node) => clean(node?.getAttribute("aria-label") || node?.textContent || "");
@@ -183,7 +192,7 @@
     settings.addEventListener("click", () => show(true));
     if (!consent()) show(false);
   };
-  window.ehAnalytics = Object.freeze({ track, setConsent, getConsent: consent, getFirstTouch, loadGtm, gtmId: GTM_ID, consentPayload });
+  window.ehAnalytics = Object.freeze({ track, setConsent, getConsent: consent, getFirstTouch, loadGoogleTag, ga4Id: GA4_ID, consentPayload });
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", renderBanner, { once: true });
   else renderBanner();
 })();

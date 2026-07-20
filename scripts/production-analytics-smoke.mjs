@@ -7,6 +7,7 @@ const BASE_URL = process.env.ANALYTICS_PRODUCTION_BASE_URL || "https://evolution
 const CHROME = process.env.CHROME_PATH || "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe";
 const PORT = 9344;
 const ROUTES = ["/", "/pervyi-shag.html", "/684291-off-switch-training/"];
+const GA4_ID = "G-RSEE3PKS5V";
 if (!fs.existsSync(CHROME)) throw new Error(`Chrome not found: ${CHROME}`);
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const profile = fs.mkdtempSync(path.join(os.tmpdir(), "evolution-house-production-analytics-"));
@@ -39,6 +40,11 @@ try {
   const send = (method, params = {}) => new Promise((resolve, reject) => { id += 1; pending.set(id, { resolve, reject }); socket.send(JSON.stringify({ id, method, params })); });
   const value = async (expression) => (await send("Runtime.evaluate", { expression, returnByValue: true })).result.value;
   await Promise.all([send("Page.enable"), send("Runtime.enable"), send("Network.enable")]);
+  const checks = [];
+  const check = (name, pass) => checks.push({ name, pass: Boolean(pass) });
+  const gaScript = "document.querySelectorAll('script[data-eh-ga4]').length";
+  const gaCookies = "!/(?:^|;\\s*)_(?:ga|gid)(?:_|=)/i.test(document.cookie)";
+  const google = () => urls.filter((url) => /googletagmanager\.com|google-analytics\.com/i.test(url));
   let failures = 0;
   let skipped = 0;
   for (const route of ROUTES) {
@@ -54,14 +60,38 @@ try {
     }
     const banner = await value("Boolean(document.querySelector('.eh-consent:not([hidden])'))");
     const settings = await value("Boolean(document.querySelector('.eh-cookie-settings'))");
-    const gtm = urls.filter((url) => /googletagmanager\.com|google-analytics\.com/i.test(url));
     const overflow = await value("document.documentElement.scrollWidth > innerWidth + 2");
-    const ok = banner && settings && gtm.length === 0 && !overflow;
+    const tagAbsent = await value(`${gaScript} === 0 && typeof window.gtag === 'undefined' && typeof window.dataLayer === 'undefined'`);
+    const noCookies = await value(gaCookies);
+    const ok = banner && settings && google().length === 0 && tagAbsent && noCookies && !overflow;
     failures += ok ? 0 : 1;
-    console.log(`${ok ? "PASS" : "FAIL"} ${route}: banner=${banner}, settings=${settings}, google-before-consent=${gtm.length}, overflow=${overflow}`);
+    console.log(`${ok ? "PASS" : "FAIL"} ${route}: banner=${banner}, settings=${settings}, google-before-consent=${google().length}, tag-absent=${tagAbsent}, ga-cookie-absent=${noCookies}, overflow=${overflow}`);
   }
-  console.log(`Production analytics smoke: ${ROUTES.length} routes, ${failures} failure(s), ${skipped} protected-preview skip(s).`);
-  process.exitCode = failures ? 1 : 0;
+  if (skipped === 0) {
+    urls.length = 0;
+    await send("Page.navigate", { url: `${BASE_URL}/?analytics_production_smoke=1` });
+    await wait(850);
+    check("production banner is visible before consent", await value("Boolean(document.querySelector('.eh-consent:not([hidden])'))"));
+    await value("document.querySelector('[data-eh-consent=\"analytics_granted\"]')?.click()");
+    await wait(550);
+    check("production loads one direct GA4 tag after consent", await value(`${gaScript} === 1 && document.querySelector('script[data-eh-ga4]')?.src.includes('${GA4_ID}')`));
+    check("production queues default Consent Mode v2 before the grant", await value("window.dataLayer?.[0]?.[0] === 'consent' && window.dataLayer?.[0]?.[1] === 'default' && Object.values(window.dataLayer?.[0]?.[2] || {}).length === 4 && Object.values(window.dataLayer?.[0]?.[2] || {}).every((state) => state === 'denied') && window.dataLayer?.[1]?.[0] === 'consent' && window.dataLayer?.[1]?.[1] === 'update' && window.dataLayer?.[1]?.[2]?.analytics_storage === 'granted' && ['ad_storage','ad_user_data','ad_personalization'].every((key) => window.dataLayer?.[1]?.[2]?.[key] === 'denied')"));
+    check("production queues one GA4 config/page_view", await value(`window.dataLayer.filter((item) => item?.[0] === 'config' && item?.[1] === '${GA4_ID}').length === 1`));
+    await value("window.ehAnalytics.track('program_cta_click', { program_name: 'production_smoke', cta_label: 'analytics_check', cta_location: 'automated', page_path: location.pathname })");
+    check("production dispatches one consented custom event", await value("window.dataLayer.filter((item) => item?.[0] === 'event' && item?.[1] === 'program_cta_click').length === 1"));
+    const revoke = await value("(() => { window.ehAnalytics.setConsent('essential_only'); return window.dataLayer?.filter((item) => item?.[0] === 'consent' && item?.[1] === 'update').at(-1)?.[2]; })()");
+    check("production revocation denies all Consent Mode v2 states", Object.values(revoke || {}).length === 4 && Object.values(revoke || {}).every((state) => state === "denied"));
+    await wait(900);
+    urls.length = 0;
+    await send("Page.navigate", { url: `${BASE_URL}/?analytics_production_smoke=revoked` });
+    await wait(850);
+    check("production keeps GA4 absent after revocation", await value(`${gaScript} === 0 && typeof window.gtag === 'undefined' && typeof window.dataLayer === 'undefined' && ${gaCookies}`));
+    check("production sends no Google request after revocation", google().length === 0);
+  }
+  for (const item of checks) console.log(`${item.pass ? "PASS" : "FAIL"} ${item.name}`);
+  const checkFailures = checks.filter((item) => !item.pass).length;
+  console.log(`Production analytics smoke: ${ROUTES.length} fresh routes, ${failures + checkFailures} failure(s), ${skipped} protected-preview skip(s).`);
+  process.exitCode = failures || checkFailures ? 1 : 0;
 } finally {
   try { socket?.close(); } catch { /* no-op */ }
   chrome.kill();
