@@ -100,6 +100,9 @@ if (startNavigator && window.EVOLUTION_START_NAVIGATOR) {
   const diagnosticHeading = startNavigator.querySelector('[data-start-diagnostic-heading]');
   const state = {};
   let currentView = 'territory';
+  let navigatorAnalyticsStarted = false;
+  let navigatorAnalyticsCompleted = false;
+  const trackNavigator = (eventName, params) => window.ehAnalytics?.track(eventName, params);
 
   const html = (value) => String(value ?? '').replace(/[&<>"']/g, (char) => ({
     '&': '&amp;',
@@ -461,6 +464,14 @@ if (startNavigator && window.EVOLUTION_START_NAVIGATOR) {
     resultPanel.hidden = false;
     document.body.classList.add('is-showing-navigator-result');
     currentView = 'result';
+    if (!navigatorAnalyticsCompleted) {
+      navigatorAnalyticsCompleted = true;
+      trackNavigator('navigator_complete', {
+        navigator_type: 'start_navigator',
+        result_type: outcome.navigatorPrimary ? 'navigator' : outcome.primary,
+        entry_page: window.location.pathname || '/',
+      });
+    }
     scrollTo(resultPanel);
     focusHeading(resultPanel);
   };
@@ -472,6 +483,14 @@ if (startNavigator && window.EVOLUTION_START_NAVIGATOR) {
 
   const chooseTerritory = (territoryId, options = {}) => {
     if (!territories[territoryId]) return;
+    if (!navigatorAnalyticsStarted) {
+      navigatorAnalyticsStarted = true;
+      trackNavigator('navigator_start', {
+        entry_page: window.location.pathname || '/',
+        navigator_type: 'start_navigator',
+        traffic_source: window.ehAnalytics?.getFirstTouch?.().source || 'direct',
+      });
+    }
     state.territory = territoryId;
     delete state.condition;
     delete state.diagnostic;
@@ -484,6 +503,8 @@ if (startNavigator && window.EVOLUTION_START_NAVIGATOR) {
 
   const resetNavigator = () => {
     Object.keys(state).forEach((key) => { delete state[key]; });
+    navigatorAnalyticsStarted = false;
+    navigatorAnalyticsCompleted = false;
     startNavigator.querySelectorAll('[role="radio"][aria-checked]').forEach((button) => button.setAttribute('aria-checked', 'false'));
     showStep('territory', { focus: false });
     startNavigator.querySelector('[data-start-territory]')?.focus();

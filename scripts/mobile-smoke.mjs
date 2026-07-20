@@ -8,9 +8,12 @@ const CHROME = process.env.CHROME_PATH || "C:\\Program Files\\Google\\Chrome\\Ap
 const PORT = Number(process.env.CHROME_DEBUG_PORT || 9337);
 const ROUTES = [
   "/",
+  "/pervyi-shag.html",
   "/napravleniya.html",
+  "/otkrytye-programmy.html",
   "/off-switch-method.html",
   "/reiki/",
+  "/684291-off-switch-training/",
   "/urovni-zhizni/",
 ];
 const VIEWPORTS = [
@@ -107,7 +110,7 @@ try {
           innerWidth: window.innerWidth,
           scrollWidth: Math.max(document.documentElement.scrollWidth, document.body?.scrollWidth || 0),
           h1: document.querySelectorAll('h1').length,
-          brokenImages: [...document.images].filter((img) => img.complete && img.naturalWidth === 0).map((img) => img.currentSrc || img.src),
+          brokenImages: [...document.images].filter((img) => img.complete && img.naturalWidth === 0 && (img.currentSrc || img.getAttribute('src') || img.getAttribute('srcset'))).map((img) => img.currentSrc || img.src),
           runtimeErrors: globalThis.__ehSmokeErrors || [],
           metrics: globalThis.__ehSmokeMetrics || { lcp: 0, cls: 0 },
           overflowingInteractive: [...document.querySelectorAll('a,button,input,select,textarea')].filter((node) => {
@@ -142,7 +145,7 @@ try {
     if (!result.title) problems.push("missing title");
     if (result.h1 !== 1) problems.push(`H1=${result.h1}`);
     if (result.scrollWidth > result.innerWidth + 2) problems.push(`horizontal overflow ${result.scrollWidth}px > ${result.innerWidth}px`);
-    if (result.brokenImages.length) problems.push(`${result.brokenImages.length} broken image(s)`);
+    if (result.brokenImages.length) problems.push(`${result.brokenImages.length} broken image(s): ${result.brokenImages.join(", ")}`);
     if (result.runtimeErrors.length) problems.push(`${result.runtimeErrors.length} runtime error(s)`);
     if (result.overflowingInteractive.length) problems.push(`${result.overflowingInteractive.length} overflowing interactive element(s): ${JSON.stringify(result.overflowingInteractive)}`);
     if (problems.length) failures += 1;
