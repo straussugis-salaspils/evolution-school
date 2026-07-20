@@ -23,8 +23,7 @@
         "type": "googtag",
         "parameter": [{"type": "TEMPLATE", "key": "tagId", "value": "G-RSEE3PKS5V"}],
         "firingTriggerId": ["2147479553"],
-        "tagFiringOption": "ONCE_PER_EVENT",
-        "consentSettings": {"consentStatus": "NEEDED", "consentType": {"type": "LIST", "list": [{"type": "TEMPLATE", "value": "analytics_storage"}]}}
+        "tagFiringOption": "ONCE_PER_LOAD"
       },
       {
         "accountId": "0",
@@ -38,8 +37,7 @@
           {"type": "BOOLEAN", "key": "sendEcommerceData", "value": "false"}
         ],
         "firingTriggerId": ["1"],
-        "tagFiringOption": "ONCE_PER_EVENT",
-        "consentSettings": {"consentStatus": "NEEDED", "consentType": {"type": "LIST", "list": [{"type": "TEMPLATE", "value": "analytics_storage"}]}}
+        "tagFiringOption": "ONCE_PER_EVENT"
       }
     ],
     "trigger": [

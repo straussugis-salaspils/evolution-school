@@ -63,6 +63,7 @@ try {
   const check = (name, value) => { checks.push({ name, value: Boolean(value) }); };
   const googleBeforeConsent = () => requests.filter((url) => /googletagmanager\.com|google-analytics\.com/i.test(url));
   check("cookie banner is visible before a choice", await evaluate("Boolean(document.querySelector('.eh-consent:not([hidden])'))"));
+  check("GTM is absent before a choice", await evaluate("!document.querySelector('script[data-eh-gtm]')"));
   check("no Google analytics request before consent", googleBeforeConsent().length === 0);
   check("UTM is not persisted before consent", await evaluate("!localStorage.getItem('eh_first_touch_v1')"));
   check("cookie controls are touch-sized", await evaluate("[...document.querySelectorAll('.eh-consent__button')].every((node) => node.getBoundingClientRect().height >= 44)"));
@@ -70,20 +71,38 @@ try {
   await evaluate("document.querySelector('[data-eh-consent=\"essential_only\"]').click()")
   await wait(100);
   check("essential-only choice persists", await evaluate("localStorage.getItem('eh_consent_v2') === 'essential_only'"));
+  check("essential-only choice is mirrored in the consent cookie", await evaluate("document.cookie.includes('eh_consent_v2=essential_only')"));
   check("reject keeps Google requests blocked", googleBeforeConsent().length === 0);
+  check("reject keeps GTM absent", await evaluate("!document.querySelector('script[data-eh-gtm]')"));
+  await send("Page.navigate", { url: `${BASE_URL}/?utm_source=smoke&utm_medium=automated&utm_campaign=analytics&after=essential-only` });
+  await wait(300);
+  check("GTM remains absent after an essential-only refresh", await evaluate("!document.querySelector('script[data-eh-gtm]')"));
+  check("essential-only refresh creates no Google requests", googleBeforeConsent().length === 0);
   await evaluate("document.querySelector('.eh-cookie-settings').click()")
   check("footer settings reopens banner", await evaluate("Boolean(document.querySelector('.eh-consent:not([hidden])'))"));
   await evaluate("document.querySelector('[data-eh-consent=\"analytics_granted\"]').click()")
   await wait(250);
   check("analytics choice persists", await evaluate("localStorage.getItem('eh_consent_v2') === 'analytics_granted'"));
+  check("analytics choice is mirrored in the consent cookie", await evaluate("document.cookie.includes('eh_consent_v2=analytics_granted')"));
   check("exactly one GTM script is appended after consent", await evaluate("document.querySelectorAll('script[data-eh-gtm]').length === 1"));
   check("UTM persists after consent", await evaluate("JSON.parse(localStorage.getItem('eh_first_touch_v1')).source === 'smoke'"));
   await evaluate("window.ehAnalytics.track('telegram_click', { link_label: 'hello@example.com', page_path: '/' })");
   check("PII-like event value is removed", await evaluate("!window.dataLayer.filter((item) => item?.event === 'telegram_click').at(-1)?.link_label"));
   await evaluate("window.ehAnalytics.track('telegram_click', { link_label: '@username', page_path: '/' })");
   check("Telegram username is removed from event value", await evaluate("!window.dataLayer.filter((item) => item?.event === 'telegram_click').at(-1)?.link_label"));
+  await evaluate("window.__ehConsentStates = []; window.ehAddConsentListener((state) => window.__ehConsentStates.push(state)); window.ehAnalytics.setConsent('essential_only')");
+  await wait(100);
+  check("revoke updates all four Consent Mode v2 states to denied", await evaluate("window.__ehConsentStates.length === 1 && Object.values(window.__ehConsentStates[0]).every((value) => value === 'denied')"));
+  check("revoke blocks subsequent analytics events", await evaluate("window.ehAnalytics.track('program_cta_click', { cta_label: 'test' }) === false"));
+  const googleBeforeRevokeRefresh = googleBeforeConsent().length;
+  await send("Page.navigate", { url: `${BASE_URL}/?after=revoke` });
+  await wait(300);
+  check("GTM remains absent after revocation and refresh", await evaluate("!document.querySelector('script[data-eh-gtm]')"));
+  check("revoke refresh creates no new Google requests", googleBeforeConsent().length === googleBeforeRevokeRefresh);
   check("mobile page has no horizontal overflow", await evaluate("document.documentElement.scrollWidth <= innerWidth + 2"));
 
+  await evaluate("window.ehAnalytics.setConsent('analytics_granted')");
+  await wait(150);
   await send("Page.navigate", { url: `${BASE_URL}/pervyi-shag.html` });
   await wait(400);
   const buttons = await evaluate("({ territory: document.querySelector('[data-start-territory]')?.outerHTML || '' })");

@@ -1,37 +1,63 @@
-# GTM и GA4: Evolution House
+# GTM and GA4: Evolution House
 
-Сайт использует Basic Consent Mode. До выбора пользователя GTM и GA4 не загружаются; при согласии разрешается только `analytics_storage`. Рекламные параметры остаются `denied`.
+## Architecture
 
-## Код сайта
+The site uses **Basic Consent Mode**. Before a visitor chooses analytics, GTM and GA4 are not loaded at all. Choosing “Only necessary” keeps them blocked, including after refresh. Choosing “Allow analytics” loads GTM once.
 
-- GTM container: `GTM-WNV2B49K`.
-- GA4 Measurement ID: `G-RSEE3PKS5V` — используется только внутри GTM, не подключается напрямую на сайт.
-- Общий `analytics.js` создаёт `window.dataLayer`, хранит согласие и блокирует отправку событий без согласия.
-- Стандартный GTM `noscript` iframe намеренно не установлен: при Basic Consent Mode он обошёл бы запрет на загрузку Google до выбора.
+The consent state is deliberately configured **inside GTM**, rather than with page-level `gtag('consent', ...)` calls:
 
-## GTM container
+- default: `analytics_storage`, `ad_storage`, `ad_user_data`, and `ad_personalization` are all `denied`;
+- saved analytics permission: only `analytics_storage` is updated to `granted`;
+- the three advertising consent types remain `denied`.
 
-`gtm/evolution-house-container.json` — JSON-шаблон для импорта в web-container. GTM при импорте назначает свои числовые account/container IDs; после импорта обязательно проверить результат в Preview до Publish.
+This preserves Basic Consent Mode while giving Tag Assistant a real Consent Mode v2 state.
 
-В контейнере должны остаться только:
+## Repository files
 
-1. Google tag `G-RSEE3PKS5V`, trigger All Pages, Additional Consent = `analytics_storage`.
-2. Один GA4 Event tag для девяти событий, trigger `Evolution House — permitted custom events`, Additional Consent = `analytics_storage`.
+- `analytics.js` — banner, Basic Mode GTM loading gate, first-party preference cookie `eh_consent_v2`, and the update callback bridge. It does **not** issue `gtag('consent')` commands.
+- `gtm/evolution-house-container.json` — Google tag `G-RSEE3PKS5V` and allowed GA4 custom-event tag. Neither tag has Additional Consent Checks.
+- `gtm/evolution-house-consent-mode-v2.tpl` — importable GTM custom tag template. It uses the supported `setDefaultConsentState` and `updateConsentState` APIs.
 
-Не создавать ручной второй `page_view`, не подключать `gtag.js` напрямую и не включать Google Ads/Signals без отдельного согласия.
+The normal GTM `noscript` iframe is intentionally absent: in Basic Mode it would bypass the on-page loading gate.
 
-## Реальные события
+## Replace the unpublished GTM workspace
 
-- `telegram_click`, `program_cta_click`, `payment_click`, `outbound_click` — делегированный клик после согласия.
-- `navigator_start`, `navigator_complete` — Навигатор «С чего начать».
-- `generate_lead` — только через подтверждённый callback `eh:lead-success`; открытие формы не считается заявкой.
+Do this in the **existing GTM container `GTM-WNV2B49K` only**. Do not publish while preview testing.
 
-`test_start` и `test_complete` подготовлены как hooks для будущих тестов. `purchase` не отправляется.
+1. In GTM, open **Admin → Import Container** and import `gtm/evolution-house-container.json` into a **new workspace**. Choose **Merge**. This replaces the two earlier GA4 tag definitions without their obsolete “Require additional consent” setting.
+2. Open **Templates → Tag Templates → New → Import**, select `gtm/evolution-house-consent-mode-v2.tpl`, and save it as **Evolution House — Consent Mode v2**. Confirm its only requested permissions:
+   - write consent for `analytics_storage`, `ad_storage`, `ad_user_data`, `ad_personalization`;
+   - read cookie `eh_consent_v2`;
+   - execute global callback `ehAddConsentListener`.
+3. Create one new tag from that template, name it **Evolution House — Consent Mode v2**, and attach the built-in trigger **Consent Initialization — All Pages**. Do not use All Pages for this tag.
+4. Open the Google tag and the GA4 custom-events tag. In **Consent Settings**, set **Additional Consent Checks** to **Not set / No additional consent required**. Google Analytics tags perform their own consent checks.
+5. Confirm Google tag settings: `G-RSEE3PKS5V`, trigger **All Pages**, one automatic `page_view`. Do not create a second page-view tag and do not add direct `gtag.js`.
 
-## Проверка в GTM
+## Required Preview acceptance test
 
-1. GTM → Admin → Import Container → выбрать `gtm/evolution-house-container.json`, New workspace, Merge.
-2. Preview на `https://evolution.yourbalancerestored.com/`: до выбора cookies нет GTM/GA4; после «Разрешить аналитику» GTM появляется один раз.
-3. Проверить ровно один `page_view`, один клик Telegram и один CTA; затем Publish.
+Use GTM Preview/Tag Assistant against the analytics branch preview or a locally reachable build:
 
-Текст cookie banner и политика cookies требуют юридического утверждения владельцем.
+1. **Fresh visitor:** clear `eh_consent_v2` cookie and local storage. There must be no `gtm.js`, no GA4 request, and no Google request.
+2. **Only necessary:** click it and refresh. GTM/GA4 remain absent and no Google request is made.
+3. **Allow analytics:** Tag Assistant → Consent first shows all four keys as `denied`, then shows `analytics_storage: granted`; `ad_storage`, `ad_user_data`, and `ad_personalization` remain `denied`. The Google tag fires once and one `page_view` is sent.
+4. **Revoke:** open cookie settings, choose Only necessary, then refresh. No new GA4 event is sent; GTM/GA4 are absent after refresh.
+
+Do not publish the GTM workspace or deploy the branch until all four pass.
+
+## Events
+
+Allowed events: `generate_lead`, `navigator_start`, `navigator_complete`, `test_start`, `test_complete`, `telegram_click`, `program_cta_click`, `payment_click`, and `outbound_click`.
+
+`generate_lead` fires only after `eh:lead-success`. No purchase event is sent. Event values are allowlisted and values resembling email addresses, phones, or Telegram usernames are stripped before they enter `dataLayer`.
+
+## Local checks
+
+```powershell
+npm run lint
+npm run typecheck
+npm run build
+npm run analytics:smoke
+npm run seo:smoke
+```
+
+The automated smoke test validates the Basic Mode gate, saved reject state, one GTM script after acceptance, consent-update callback behavior on revocation, PII stripping, navigation events, and mobile overflow. GTM Preview remains the final check for the container-side consent ordering.

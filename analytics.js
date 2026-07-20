@@ -3,6 +3,7 @@
 
   const GTM_ID = "GTM-WNV2B49K";
   const CONSENT_KEY = "eh_consent_v2";
+  const CONSENT_COOKIE = "eh_consent_v2";
   const FIRST_TOUCH_KEY = "eh_first_touch_v1";
   const EVENTS = new Set([
     "generate_lead", "navigator_start", "navigator_complete", "test_start", "test_complete",
@@ -31,8 +32,26 @@
     get: (key) => { try { return localStorage.getItem(key); } catch { return null; } },
     set: (key, value) => { try { localStorage.setItem(key, value); } catch { /* Storage may be disabled. */ } },
   };
+  const cookie = {
+    get: (key) => {
+      try {
+        return document.cookie.split(";").map((entry) => entry.trim()).find((entry) => entry.startsWith(`${encodeURIComponent(key)}=`))?.split("=").slice(1).join("=") || null;
+      } catch { return null; }
+    },
+    set: (key, value) => {
+      try {
+        const secure = location.protocol === "https:" ? "; Secure" : "";
+        document.cookie = `${encodeURIComponent(key)}=${encodeURIComponent(value)}; Path=/; Max-Age=31536000; SameSite=Lax${secure}`;
+      } catch { /* Cookies may be unavailable. */ }
+    },
+  };
   const pagePath = () => location.pathname || "/";
-  const consent = () => storage.get(CONSENT_KEY);
+  const normaliseConsent = (value) => value === "analytics_granted" || value === "essential_only" ? value : null;
+  const consent = () => {
+    const saved = normaliseConsent(storage.get(CONSENT_KEY)) || normaliseConsent(cookie.get(CONSENT_COOKIE));
+    if (saved && storage.get(CONSENT_KEY) !== saved) storage.set(CONSENT_KEY, saved);
+    return saved;
+  };
   const allowed = () => consent() === "analytics_granted";
   const clean = (value) => {
     if (typeof value !== "string") return "";
@@ -40,19 +59,24 @@
     return PII.test(result) ? "" : result;
   };
   const dataLayer = window.dataLayer = window.dataLayer || [];
-  const gtag = (...args) => dataLayer.push(args);
-  window.gtag = window.gtag || gtag;
-  const denied = () => gtag("consent", "default", {
-    analytics_storage: "denied", ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied",
-    functionality_storage: "granted", security_storage: "granted", wait_for_update: 500,
-  });
-  const update = (analytics) => gtag("consent", "update", {
+  const consentListeners = [];
+  const consentPayload = (analytics) => ({
     analytics_storage: analytics ? "granted" : "denied",
-    ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied",
+    ad_storage: "denied",
+    ad_user_data: "denied",
+    ad_personalization: "denied",
   });
-
-  denied();
-  gtag("set", "ads_data_redaction", true);
+  // The GTM consent template registers here through callInWindow(). It is deliberately
+  // independent from gtag commands, so GTM's Consent Initialization phase controls order.
+  window.ehAddConsentListener = (listener) => {
+    if (typeof listener !== "function") return false;
+    consentListeners.push(listener);
+    return true;
+  };
+  const notifyConsentListeners = (analytics) => {
+    const state = consentPayload(analytics);
+    consentListeners.forEach((listener) => { try { listener(state); } catch { /* A third-party callback must not break the banner. */ } });
+  };
 
   const firstTouch = () => {
     const query = new URLSearchParams(location.search);
@@ -84,12 +108,15 @@
   };
   const setConsent = (choice) => {
     const analytics = choice === "analytics_granted";
-    storage.set(CONSENT_KEY, analytics ? "analytics_granted" : "essential_only");
-    update(analytics);
+    const savedChoice = analytics ? "analytics_granted" : "essential_only";
+    const wasLoaded = gtmLoaded;
+    storage.set(CONSENT_KEY, savedChoice);
+    cookie.set(CONSENT_COOKIE, savedChoice);
     if (analytics) { persistFirstTouch(); loadGtm(); }
+    if (wasLoaded) notifyConsentListeners(analytics);
     document.dispatchEvent(new CustomEvent("eh:consent-change", { detail: { analytics } }));
   };
-  if (allowed()) { update(true); persistFirstTouch(); loadGtm(); }
+  if (allowed()) { persistFirstTouch(); loadGtm(); }
 
   const sanitize = (eventName, values = {}) => {
     const result = {};
@@ -156,7 +183,7 @@
     settings.addEventListener("click", () => show(true));
     if (!consent()) show(false);
   };
-  window.ehAnalytics = Object.freeze({ track, setConsent, getConsent: consent, getFirstTouch, loadGtm, gtmId: GTM_ID });
+  window.ehAnalytics = Object.freeze({ track, setConsent, getConsent: consent, getFirstTouch, loadGtm, gtmId: GTM_ID, consentPayload });
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", renderBanner, { once: true });
   else renderBanner();
 })();
