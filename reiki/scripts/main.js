@@ -1,5 +1,8 @@
 (function () {
   const config = window.siteConfig || {};
+  const liveVideoEndpoint = ['localhost', '127.0.0.1'].includes(window.location.hostname)
+    ? 'https://evolution.yourbalancerestored.com/api/reiki-1-lyudmila-video'
+    : '/api/reiki-1-lyudmila-video';
   const devMessage = document.querySelector("[data-dev-message]");
   let toastTimer = null;
 
@@ -99,7 +102,7 @@
     const playButton = frame.querySelector(".video-play");
 
     async function resolveVideoSource() {
-      const refreshEndpoint = frame.dataset.videoRefreshEndpoint;
+      const refreshEndpoint = frame.dataset.videoRefreshEndpoint ? liveVideoEndpoint : '';
       if (!refreshEndpoint) return frame.dataset.videoSrc;
 
       const result = await fetch(refreshEndpoint, { cache: "no-store" });

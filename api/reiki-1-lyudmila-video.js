@@ -6,6 +6,7 @@ function decodeHtml(value) {
 }
 
 export default async function handler(request, response) {
+  response.setHeader("Access-Control-Allow-Origin", "*");
   if (request.method !== "GET") {
     response.setHeader("Allow", "GET");
     response.status(405).json({ error: "Method not allowed" });
