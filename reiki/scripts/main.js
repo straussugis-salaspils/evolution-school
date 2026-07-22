@@ -98,20 +98,43 @@
   document.querySelectorAll("[data-video-src]").forEach((frame) => {
     const playButton = frame.querySelector(".video-play");
 
-    function loadVideo() {
-      if (frame.classList.contains("is-loaded")) return;
-      const iframe = document.createElement("iframe");
-      iframe.src = frame.dataset.videoSrc;
-      iframe.title = frame.dataset.videoTitle || "Видео";
-      iframe.loading = "lazy";
-      iframe.allow = "autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share";
-      iframe.allowFullscreen = true;
-      frame.appendChild(iframe);
-      frame.classList.add("is-loaded");
-      frame.querySelectorAll("button, a").forEach((control) => {
-        control.setAttribute("tabindex", "-1");
-        control.setAttribute("aria-hidden", "true");
-      });
+    async function resolveVideoSource() {
+      const refreshEndpoint = frame.dataset.videoRefreshEndpoint;
+      if (!refreshEndpoint) return frame.dataset.videoSrc;
+
+      const result = await fetch(refreshEndpoint, { cache: "no-store" });
+      if (!result.ok) throw new Error("Unable to refresh the video player");
+      const payload = await result.json();
+      if (typeof payload.iframeSrc !== "string" || !payload.iframeSrc.startsWith("https://")) {
+        throw new Error("The refreshed player link is invalid");
+      }
+      return payload.iframeSrc;
+    }
+
+    async function loadVideo() {
+      if (frame.classList.contains("is-loaded") || frame.classList.contains("is-loading")) return;
+      frame.classList.add("is-loading");
+      if (playButton) playButton.disabled = true;
+
+      try {
+        const iframe = document.createElement("iframe");
+        iframe.src = await resolveVideoSource();
+        iframe.title = frame.dataset.videoTitle || "Видео";
+        iframe.loading = "lazy";
+        iframe.allow = "autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share";
+        iframe.allowFullscreen = true;
+        frame.appendChild(iframe);
+        frame.classList.add("is-loaded");
+        frame.querySelectorAll("button, a").forEach((control) => {
+          control.setAttribute("tabindex", "-1");
+          control.setAttribute("aria-hidden", "true");
+        });
+      } catch (error) {
+        console.warn("Video player could not be loaded", error);
+        if (playButton) playButton.disabled = false;
+      } finally {
+        frame.classList.remove("is-loading");
+      }
     }
 
     if (playButton) {
