@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Пилоты внутренних визуалов — Пересборка жизни</title>
+</head>
+<body>
+  <main class="gallery">
+    <header>
+      <h1>Пять разных способов увидеть переход</h1>
+      <p>Локальная проверочная доска. Это не пять вариантов одного компонента: каждый визуал объясняет собственный механизм статьи.</p>
+    </header>
+
+    <figure class="visual" id="visual-01">
+      <figcaption class="visual__head">
+        <div>
+          <span class="visual__number">Статья 01 · фильтр желания</span>
+          <h2>Один сигнал не решает за вас</h2>
+        </div>
+        <p>Три наблюдения накладываются друг на друга. Ясность появляется не от одного правильного ответа, а от того, что стоит проверить в реальности.</p>
+      </figcaption>
+      <div class="visual__stage">
+        <div class="lenses">
+          <div class="lens lens--approval"><div><strong>Чьё одобрение важно?</strong><span>Внешний взгляд — данные, но не приговор.</span></div></div>
+          <div class="lens lens--quiet"><div><strong>Что важно без аудитории?</strong><span>Собственное желание может быть тихим.</span></div></div>
+          <div class="lens lens--body"><div><strong>Что замечает тело?</strong><span>Ещё одно наблюдение, не готовый ответ.</span></div></div>
+          <div class="lenses__collector" aria-hidden="true">Три независимых наблюдения</div>
+          <div class="lenses__centre">Гипотеза, которую стоит проверить небольшим действием</div>
+        </div>
+      </div>
+      <ol class="sr-only">
+        <li>Проверьте, чьё одобрение подтверждает выбор.</li>
+        <li>Заметьте, что остаётся важным без внешней оценки.</li>
+        <li>Учитывайте реакцию тела только как дополнительное наблюдение.</li>
+        <li>Проверьте выбор ограниченным действием в реальности.</li>
+      </ol>
+    </figure>
+
+    <figure class="visual" id="visual-04">
+      <figcaption class="visual__head">
+        <div>
+          <span class="visual__number">Статья 04 · разрез фундамента</span>
+          <h2>Сначала жизнь, которая работает завтра</h2>
+        </div>
+        <p>Новый этап не ставится на пустое место. Вначале собирается временное основание, которое освобождает внимание для следующего решения.</p>
+      </figcaption>
+      <div class="visual__stage">
+        <div class="foundation">
+          <div class="foundation__new"><strong>Один элемент нового этапа</strong><span>Небольшой по объёму, настоящий по последствиям</span></div>
+          <div class="foundation__day"><strong>Ближайший нормальный день</strong><span>Не конечная цель, а временно работающая конструкция</span></div>
+          <div class="foundation__base">
+            <span>Жильё</span><span>Еда</span><span>Здоровье</span><span>Зависимые люди</span><span>Документы</span><span>Доход</span>
+          </div>
+          <div class="foundation__ground" aria-hidden="true"></div>
+        </div>
+      </div>
+    </figure>
+
+    <figure class="visual" id="visual-07">
+      <figcaption class="visual__head">
+        <div>
+          <span class="visual__number">Статья 07 · безопасная маршрутизация</span>
+          <h2>Это наблюдения, а не домашний диагноз</h2>
+        </div>
+        <p>Схема не различает депрессию и жизненный переход. Она показывает, какие факты стоит собрать и почему профессиональная оценка может быть первым безопасным шагом.</p>
+      </figcaption>
+      <div class="visual__stage">
+        <div class="safety-route">
+          <div class="safety-route__crisis"><strong>Есть непосредственная угроза безопасности?</strong><span>Обратитесь за экстренной или кризисной помощью сейчас</span></div>
+          <div class="safety-route__observations" aria-label="Наблюдения о состоянии">
+            <div><strong>Длительность</strong><span>Когда состояние изменилось и как оно развивается.</span></div>
+            <div><strong>Охват сфер</strong><span>Одна область жизни или почти всё, что раньше было важно.</span></div>
+            <div><strong>Обычная жизнь</strong><span>Сон, еда, гигиена, работа, контакты и концентрация.</span></div>
+            <div><strong>Физические факторы</strong><span>Болезнь, лекарства, вещества и другие изменения.</span></div>
+          </div>
+          <div class="safety-route__arrow" aria-hidden="true">→</div>
+          <div class="safety-route__destinations">
+            <div class="safety-route__choice">Выбрать следующий безопасный шаг</div>
+            <div class="safety-route__medical"><strong>Профессиональная оценка</strong><span>Не откладывать, если состояние ухудшается или заметно мешает обычной жизни. Лекарства самостоятельно не отменять.</span></div>
+            <div class="safety-route__parallel"><strong>Только параллельно, если безопасность сохранена</strong><span>Можно наблюдать жизненный переход. Это не заменяет медицинскую или психологическую помощь.</span></div>
+          </div>
+          <p class="safety-route__note">Две недели — ориентир из клинических описаний, а не обязательный срок ожидания.</p>
+        </div>
+      </div>
+    </figure>
+
+    <figure class="visual" id="visual-10">
+      <figcaption class="visual__head">
+        <div>
+          <span class="visual__number">Статья 10 · изменение режима роли</span>
+          <h2>Родительство остаётся. Ежедневное управление меняется</h2>
+        </div>
+        <p>Три линии расходятся по-разному: часть задач завершается, связь продолжается, а время и решения возвращаются человеку.</p>
+      </figcaption>
+      <div class="visual__stage">
+        <div class="role-flow">
+          <div class="ribbon ribbon--ends">
+            <div class="ribbon__label">Ежедневное управление</div><div class="ribbon__path"></div><div class="ribbon__outcome">Больше не автоматическая задача родителя</div>
+          </div>
+          <div class="ribbon ribbon--stays">
+            <div class="ribbon__label">Связь и договорённая помощь</div><div class="ribbon__path"></div><div class="ribbon__outcome">Остаются частью отношений в удобном обеим сторонам формате</div>
+          </div>
+          <div class="ribbon ribbon--returns">
+            <div class="ribbon__label">Время и решения</div><div class="ribbon__path"></div><div class="ribbon__outcome">Возвращаются вам как реальный ресурс — без обязательной новой миссии</div>
+          </div>
+        </div>
+      </div>
+    </figure>
+
+    <figure class="visual" id="visual-12">
+      <figcaption class="visual__head">
+        <div>
+          <span class="visual__number">Статья 12 · рабочая цепь</span>
+          <h2>Понимание становится изменением только через действие</h2>
+        </div>
+        <p>Если цепь остановилась, вопрос не «что со мной не так», а в каком звене факты отличаются от плана.</p>
+      </figcaption>
+      <div class="visual__stage">
+        <div class="action-circuit">
+          <div class="circuit-step"><span class="circuit-break">Место разрыва: нечёткий момент</span><div class="circuit-node"><strong>Сигнал</strong><span>Конкретное событие, после которого начинается действие</span></div></div>
+          <div class="circuit-step"><span class="circuit-break">Место разрыва: слишком большой шаг</span><div class="circuit-node"><strong>Минимальное действие</strong><span>То, что можно закончить за один контакт с задачей</span></div></div>
+          <div class="circuit-step"><span class="circuit-break">Внешний результат зависит не только от вас</span><div class="circuit-node"><strong>Видимый след</strong><span>Письмо отправлено, разговор состоялся, заявка подана</span></div></div>
+          <div class="circuit-step"><span class="circuit-break">Место разрыва: повтор не назначен</span><div class="circuit-node"><strong>Повтор</strong><span>Следующая проверка появляется до закрытия первой</span></div></div>
+          <div class="action-circuit__return">Пропуск не обнуляет путь: вернитесь к одному звену и проверьте факты ещё раз</div>
+        </div>
+      </div>
+    </figure>
+
+    <figure class="visual" id="visual-02">
+      <figcaption class="visual__head">
+        <div>
+          <span class="visual__number">Статья 02 · топография тупика</span>
+          <h2>Тупик становится картой, когда неизвестность превращается в вопрос</h2>
+        </div>
+        <p>Потерянная опора, доступная опора и неизвестное — разные части ситуации. Следующий шаг не обязан решать всё, но должен создать новую информацию.</p>
+      </figcaption>
+      <div class="visual__stage">
+        <div class="topography">
+          <div class="topography__zone topography__zone--lost"><strong>Перестало работать</strong><span>Прежняя опора больше не выполняет свою функцию.</span></div>
+          <div class="topography__unknown">Пока неизвестно</div>
+          <div class="topography__route" aria-hidden="true"></div>
+          <div class="topography__question"><strong>Один точный вопрос</strong><span>Ответ на него действительно изменит картину.</span></div>
+          <div class="topography__zone topography__zone--support"><strong>Доступная опора</strong><span>То, что уже можно использовать без обещания справиться в одиночку.</span></div>
+        </div>
+      </div>
+    </figure>
+
+    <figure class="visual" id="visual-03">
+      <figcaption class="visual__head">
+        <div>
+          <span class="visual__number">Статья 03 · каркас решения</span>
+          <h2>Критерии не выбирают за вас. Они удерживают вес решения</h2>
+        </div>
+        <p>Два варианта проходят через ваши условия, а не через универсальный рейтинг. Часть неопределённости честно остаётся.</p>
+      </figcaption>
+      <div class="visual__stage">
+        <div class="decision-frame">
+          <div class="decision-frame__option">Вариант А</div>
+          <div class="decision-frame__guides">
+            <div class="decision-guide"><strong>Безопасность</strong><span>Есть ли риск, который сначала должен оценить специалист?</span></div>
+            <div class="decision-guide"><strong>Ценности</strong><span>Что поддерживается в жизни, кроме внешнего одобрения?</span></div>
+            <div class="decision-guide"><strong>Ресурсы</strong><span>Хватит ли времени, денег, сил, навыков и поддержки для первого этапа?</span></div>
+            <div class="decision-guide"><strong>Последствия</strong><span>Что можно изменить позже, а что трудно вернуть?</span></div>
+          </div>
+          <div class="decision-frame__option">Вариант Б</div>
+          <div class="decision-frame__uncertainty">Критерии уменьшают хаос аргументов, но не обещают убрать всю неопределённость.</div>
+        </div>
+      </div>
+    </figure>
+
+    <figure class="visual" id="visual-05">
+      <figcaption class="visual__head">
+        <div>
+          <span class="visual__number">Статья 05 · две траектории помощи</span>
+          <h2>Помощь сохраняет двух взрослых. Спасательство присваивает чужую часть</h2>
+        </div>
+        <p>Граница не наказывает человека. Она делает видимыми просьбу, объём, предел и возвращение ответственности владельцу.</p>
+      </figcaption>
+      <div class="visual__stage">
+        <div class="help-paths">
+          <div class="help-path help-path--agreed">
+            <div class="help-path__title">Согласованная помощь</div>
+            <div class="help-path__point">Есть просьба или ясное согласие</div>
+            <div class="help-path__point">Оговорены объём, срок и предел</div>
+            <div class="help-path__point">Свою часть можно обсудить заново</div>
+            <div class="help-path__point">Ответственность остаётся у её владельца</div>
+          </div>
+          <div class="help-path help-path--rescue">
+            <div class="help-path__title">Спасательство</div>
+            <div class="help-path__point">Потребность угадывается без просьбы</div>
+            <div class="help-path__point">Чужая часть присваивается себе</div>
+            <div class="help-path__point">Появляется перегрузка</div>
+            <div class="help-path__point">Раздражение обнаруживается слишком поздно</div>
+          </div>
+        </div>
+      </div>
+    </figure>
+
+    <figure class="visual" id="visual-06">
+      <figcaption class="visual__head">
+        <div>
+          <span class="visual__number">Статья 06 · перенос опыта</span>
+          <h2>Роль может закончиться. Подтверждённая способность остаётся</h2>
+        </div>
+        <p>Новая идентичность не начинается с нуля: сначала из прежней роли извлекается то, что человек действительно умеет, затем это проверяется в других контекстах.</p>
+      </figcaption>
+      <div class="visual__stage">
+        <div class="transfer-map">
+          <div class="transfer-map__role"><h3>Завершившаяся роль</h3><p>Форма участия больше не работает или выполнила свою функцию.</p></div>
+          <div class="transfer-map__pairs">
+            <span class="transfer-map__group-label">Что осталось</span>
+            <span class="transfer-map__group-label">Где это может работать дальше</span>
+            <div class="transfer-map__pair">
+              <div class="transfer-map__ability">Видеть общую картину</div>
+              <div class="transfer-map__context">Небольшая команда вместо большой системы</div>
+            </div>
+            <div class="transfer-map__pair">
+              <div class="transfer-map__ability">Объяснять сложное</div>
+              <div class="transfer-map__context">Наставничество внутри знакомой отрасли</div>
+            </div>
+            <div class="transfer-map__pair">
+              <div class="transfer-map__ability">Собирать людей вокруг решения</div>
+              <div class="transfer-map__context">Один авторский или общественный проект</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </figure>
+
+    <figure class="visual" id="visual-08">
+      <figcaption class="visual__head">
+        <div>
+          <span class="visual__number">Статья 08 · мост проверки</span>
+          <h2>Перемена не требует прыжка, если между старым и новым есть конструкция</h2>
+        </div>
+        <p>Старая опора сохраняется на время проверки. Ограниченный опыт создаёт факты, по которым выбирается следующий шаг.</p>
+      </figcaption>
+      <div class="visual__stage">
+        <div class="change-bridge">
+          <div class="change-bridge__pier">Сохранённая опора</div>
+          <div class="change-bridge__span">Сбор фактов</div>
+          <div class="change-bridge__span">Ограниченная проба</div>
+          <div class="change-bridge__span">Срок и критерий</div>
+          <div class="change-bridge__span">Поддержка</div>
+          <div class="change-bridge__pier">Следующее решение</div>
+          <div class="change-bridge__return">Точка возврата известна заранее</div>
+        </div>
+      </div>
+    </figure>
+
+    <figure class="visual" id="visual-09">
+      <figcaption class="visual__head">
+        <div>
+          <span class="visual__number">Статья 09 · обычная неделя</span>
+          <h2>Новая жизнь после развода собирается не из символов, а из недели</h2>
+        </div>
+        <p>Продолжающиеся обязательства, бытовая стабилизация и один собственный выбор переплетаются в обычном вторнике, а не заменяют друг друга.</p>
+      </figcaption>
+      <div class="visual__stage">
+        <div class="week-weave">
+          <div></div><div class="week-weave__day">Пн</div><div class="week-weave__day">Вт</div><div class="week-weave__day">Ср</div><div class="week-weave__day">Чт</div><div class="week-weave__day">Пт</div><div class="week-weave__day">Сб</div><div class="week-weave__day">Вс</div>
+          <div class="week-weave__label">Продолжается</div><div class="week-weave__cell week-weave__row--continues"></div><div class="week-weave__cell week-weave__row--continues"></div><div class="week-weave__cell week-weave__row--continues"></div><div class="week-weave__cell week-weave__row--continues"></div><div class="week-weave__cell week-weave__row--continues"></div><div class="week-weave__cell week-weave__row--continues"></div><div class="week-weave__cell week-weave__row--continues"></div>
+          <div class="week-weave__label">Быт работает</div><div class="week-weave__cell week-weave__row--stability"></div><div class="week-weave__cell week-weave__row--stability"></div><div class="week-weave__cell week-weave__row--stability"></div><div class="week-weave__cell week-weave__row--stability"></div><div class="week-weave__cell week-weave__row--stability"></div><div class="week-weave__cell week-weave__row--stability"></div><div class="week-weave__cell week-weave__row--stability"></div>
+          <div class="week-weave__label">Решаю я</div><div class="week-weave__cell"></div><div class="week-weave__cell"></div><div class="week-weave__cell week-weave__row--mine week-weave__cell--chosen"></div><div class="week-weave__cell"></div><div class="week-weave__cell"></div><div class="week-weave__cell"></div><div class="week-weave__cell"></div>
+          <div class="week-weave__note">Один элемент недели принадлежит новой жизни — без требования немедленно стать другим человеком.</div>
+        </div>
+      </div>
+    </figure>
+
+    <figure class="visual" id="visual-11">
+      <figcaption class="visual__head">
+        <div>
+          <span class="visual__number">Статья 11 · досье завершения</span>
+          <h2>Цель закончилась. Весь пройденный путь не исчез</h2>
+        </div>
+        <p>Один объект удерживает четыре слоя завершения: фактический результат, уплаченную цену, оставшийся капитал и функцию, которую больше не нужно доказывать.</p>
+      </figcaption>
+      <div class="visual__stage">
+        <div class="completion-file">
+          <div class="completion-file__folder">
+            <span class="completion-file__tab">Досье завершённой цели</span>
+            <div class="completion-file__layer"><strong>Результат</strong><span>Что теперь существует и какой рубеж действительно пройден.</span></div>
+            <div class="completion-file__layer"><strong>Цена</strong><span>Чего потребовал путь и что вы не обязаны платить снова.</span></div>
+            <div class="completion-file__layer"><strong>Капитал</strong><span>Навыки, люди, система, репутация и право выбирать остаются.</span></div>
+            <div class="completion-file__layer"><strong>Завершённая функция</strong><span>То, что больше не нужно повторять или кому-то доказывать.</span></div>
+          </div>
+        </div>
+      </div>
+    </figure>
+  </main>
+</body>
+</html>

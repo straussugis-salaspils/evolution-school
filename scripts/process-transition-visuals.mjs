@@ -20,15 +20,43 @@ function sourceFile(publicPath) {
   return path.join(siteRoot, publicPath.replace(/^\//, ""));
 }
 
+function clamp(value, minimum, maximum) {
+  return Math.min(Math.max(value, minimum), maximum);
+}
+
+function focalCrop(width, height, ratio, focal) {
+  const targetRatio = ratio[0] / ratio[1];
+  const sourceRatio = width / height;
+  const cropWidth =
+    sourceRatio > targetRatio ? Math.round(height * targetRatio) : width;
+  const cropHeight =
+    sourceRatio > targetRatio ? height : Math.round(width / targetRatio);
+  const left = Math.round(
+    clamp(width * focal.x - cropWidth / 2, 0, width - cropWidth),
+  );
+  const top = Math.round(
+    clamp(height * focal.y - cropHeight / 2, 0, height - cropHeight),
+  );
+  return { left, top, width: cropWidth, height: cropHeight };
+}
+
 async function renderVariant(visual, variant, width, outputDir) {
   const height = Math.round((width * variant.ratio[1]) / variant.ratio[0]);
-  const base = sharp(sourceFile(visual.source))
-    .rotate()
-    .resize(width, height, {
-      fit: "cover",
-      position: "centre",
-      withoutEnlargement: false,
-    });
+  const input = sharp(sourceFile(visual.source)).rotate();
+  const metadata = await input.metadata();
+  if (!metadata.width || !metadata.height) {
+    throw new Error(`Cannot read image dimensions: ${visual.source}`);
+  }
+  const crop = focalCrop(
+    metadata.width,
+    metadata.height,
+    variant.ratio,
+    visual.focal || { x: 0.5, y: 0.5 },
+  );
+  const base = input.extract(crop).resize(width, height, {
+    fit: "fill",
+    withoutEnlargement: false,
+  });
 
   await base
     .clone()

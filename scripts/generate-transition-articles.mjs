@@ -337,6 +337,41 @@ function renderResponsiveImage(article, variant, options = {}) {
           </picture>`;
 }
 
+function localFile(publicPath) {
+  return path.join(siteRoot, publicPath.replace(/^\//, ""));
+}
+
+function renderTransitionInsert(insert) {
+  const sourcePath = localFile(insert.source);
+  if (!fs.existsSync(sourcePath)) {
+    throw new Error(`Missing transition insert source: ${sourcePath}`);
+  }
+  const source = fs.readFileSync(sourcePath, "utf8");
+  const escapedId = insert.id.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const match = source.match(
+    new RegExp(
+      `<figure class="visual" id="visual-${escapedId}">([\\s\\S]*?)<\\/figure>`,
+    ),
+  );
+  if (!match) {
+    throw new Error(`Missing transition insert visual-${insert.id}.`);
+  }
+  const stage = match[1]
+    .replace(
+      /^\s*<figcaption class="visual__head">[\s\S]*?<\/figcaption>\s*/,
+      "",
+    )
+    .trim();
+  const captionId = `transition-insert-caption-${insert.id}`;
+  return `<figure class="transition-article-insert transition-article-insert--${escapeHtml(insert.type)}" data-transition-insert="${escapeHtml(insert.id)}" data-provenance="${escapeHtml(insert.provenance)}" aria-labelledby="${captionId}">
+            ${stage}
+            <figcaption class="transition-article-insert__caption" id="${captionId}">
+              <strong>${escapeHtml(insert.caption)}</strong>
+              <span>${escapeHtml(insert.description)}</span>
+            </figcaption>
+          </figure>`;
+}
+
 function renderFaq(section) {
   const items = extractFaq(section);
   if (items.length < 2) return null;
@@ -464,6 +499,7 @@ function renderArticle(article, articles, shell) {
         `<li><a href="#section-${index + 1}">${escapeHtml(section.title)}</a></li>`,
     )
     .join("");
+  const insertedVisuals = new Set();
   const sections = article.sections
     .map((section, index) => {
       const faq = renderFaq(section);
@@ -476,9 +512,17 @@ function renderArticle(article, articles, shell) {
         index === article.ctaIndex
           ? '<p class="article-next-step__eyebrow">Следующий шаг в пересборке жизни</p>'
           : "";
+      const inserts = article.visual.inserts
+        .filter((insert) => insert.afterTitle === section.title)
+        .map((insert) => {
+          insertedVisuals.add(insert.id);
+          return renderTransitionInsert(insert);
+        })
+        .join("\n          ");
       const markup = `<section id="section-${index + 1}"${classes.length ? ` class="${classes.join(" ")}"` : ""}>
           ${eyebrow}
           <h2>${parseInline(section.title)}</h2>
+          ${inserts}
           ${faq || renderBlocks(section.lines)}
         </section>`;
       return index === article.ctaIndex && article.number !== 7
@@ -486,6 +530,13 @@ function renderArticle(article, articles, shell) {
         : markup;
     })
     .join("\n\n        ");
+  if (insertedVisuals.size !== article.visual.inserts.length) {
+    const missing = article.visual.inserts
+      .filter((insert) => !insertedVisuals.has(insert.id))
+      .map((insert) => `${insert.id} after "${insert.afterTitle}"`)
+      .join(", ");
+    throw new Error(`Transition article ${article.number} is missing inserts: ${missing}`);
+  }
   const relatedAtEnd =
     article.number === 7 || article.ctaIndex < 0 ? related : "";
   return `<!doctype html>
@@ -515,6 +566,7 @@ function renderArticle(article, articles, shell) {
   <link rel="icon" type="image/png" href="/assets/evolution-house-logo-approved.png">
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="/article-library.css?v=20260724-transitions-1">
+  <link rel="stylesheet" href="/assets/transition-articles/inserts/transition-inserts.css?v=20260725-1">
   <link rel="stylesheet" href="/cookie-consent.css">
   <script src="/analytics.js" defer></script>
   <script type="application/ld+json">
