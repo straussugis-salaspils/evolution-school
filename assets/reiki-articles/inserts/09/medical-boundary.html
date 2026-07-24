@@ -1,0 +1,266 @@
+<figure class="reiki-boundary-b" aria-labelledby="reiki-boundary-b-title" aria-describedby="reiki-boundary-b-desc">
+  <style>
+    .reiki-boundary-b {
+      --ink: #292319;
+      --muted: #627176;
+      --medical: #315f5b;
+      --medical-dark: #214650;
+      --reiki: #b78a3e;
+      --reiki-soft: #f5ecda;
+      --alert: #9a5f48;
+      --paper: #f8f7f1;
+      box-sizing: border-box;
+      container-name: reiki-boundary-b;
+      container-type: inline-size;
+      width: min(100%, 980px);
+      margin: 2.5rem auto;
+      padding: clamp(1.4rem, 5vw, 3.8rem);
+      color: var(--ink);
+      background:
+        linear-gradient(180deg, rgba(53, 98, 112, .05), transparent 42%),
+        var(--paper);
+      border-radius: .65rem 2.6rem .65rem 2.6rem;
+      font-family:var(--viz-font-display, Georgia, "Times New Roman", serif);
+    }
+
+    .reiki-boundary-b *,
+    .reiki-boundary-b *::before,
+    .reiki-boundary-b *::after {
+      box-sizing: border-box;
+    }
+
+    .reiki-boundary-b__head {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      align-items: end;
+    }
+
+    .reiki-boundary-b__eyebrow {
+      margin: 0 0 .65rem;
+      color: var(--medical);
+      font-family:var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .reiki-boundary-b h3 {
+      min-width: 0;
+      margin: 0;
+      font-size: clamp(2rem, 6cqi, 4rem);
+      font-weight: 400;
+      line-height: 1;
+      text-wrap: balance;
+    }
+
+    .reiki-boundary-b__head > p {
+      margin: 0 !important;
+      color: var(--muted);
+      font-family:var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .reiki-boundary-b__map {
+      position: relative;
+      margin-top: clamp(2.2rem, 6vw, 4.5rem);
+      padding-bottom: 1rem;
+      font-family:var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+    }
+
+    .reiki-boundary-b__medical-track {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: .7rem;
+      align-items: center;
+      min-height: 9rem;
+      padding: clamp(1.35rem, 4vw, 2.4rem);
+      color: #fff;
+      background: linear-gradient(110deg, var(--medical-dark), var(--medical));
+      border-radius: .5rem 2.2rem 2.2rem .5rem;
+    }
+
+    .reiki-boundary-b__medical-track::after {
+      content: "";
+      position: absolute;
+      right: -1rem;
+      top: calc(50% - .6rem);
+      width: 0;
+      height: 0;
+      border-top: .6rem solid transparent;
+      border-bottom: .6rem solid transparent;
+      border-left: 1rem solid var(--medical);
+    }
+
+    .reiki-boundary-b__medical-track b {
+      font-family:var(--viz-font-display, Georgia, "Times New Roman", serif);
+      font-size: clamp(1.45rem, 3vw, 2.2rem);
+      font-weight: 400;
+      line-height: 1.1;
+    }
+
+    .reiki-boundary-b__medical-track p {
+      min-width: 0;
+      margin: 0 !important;
+      color: #fff !important;
+      line-height: 1.55;
+      overflow-wrap: break-word;
+    }
+
+    .reiki-boundary-b__branch {
+      position: relative;
+      width: min(78%, 34rem);
+      margin: 0 0 0 auto;
+      padding: 2.5rem 1.2rem 1.3rem;
+      border-bottom: 4px solid var(--reiki);
+      color: var(--ink);
+      background: linear-gradient(180deg, var(--reiki-soft), rgba(245, 236, 218, .28));
+    }
+
+    .reiki-boundary-b__branch::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 14%;
+      width: 2px;
+      height: 1.7rem;
+      background: var(--reiki);
+    }
+
+    .reiki-boundary-b__branch span {
+      display: block;
+      margin-bottom: .45rem;
+      color: var(--reiki);
+      font-size: .73rem;
+      font-weight: 700;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+    }
+
+    .reiki-boundary-b__branch strong {
+      display: block;
+      font-family:var(--viz-font-display, Georgia, "Times New Roman", serif);
+      font-size: clamp(1.2rem, 3.4cqi, 1.75rem);
+      font-weight: 400;
+      line-height: 1.25;
+      overflow-wrap: break-word;
+      hyphens: auto;
+    }
+
+    .reiki-boundary-b__branch p {
+      margin: .55rem 0 0;
+      color: var(--muted);
+      font-size: .9rem;
+      line-height: 1.5;
+    }
+
+    .reiki-boundary-b__not {
+      display: flex;
+      gap: .8rem 1.2rem;
+      align-items: baseline;
+      margin: clamp(1.8rem, 5vw, 3rem) 0 0;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(35, 51, 56, .2);
+      font-family:var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+    }
+
+    .reiki-boundary-b__not b {
+      flex: 0 0 auto;
+      color: var(--alert);
+      font-size: .76rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .reiki-boundary-b__not p {
+      margin: 0;
+      color: var(--ink);
+      line-height: 1.55;
+    }
+
+    .reiki-boundary-b__alert {
+      margin: 1.35rem 0 0;
+      padding-left: 1.1rem;
+      border-left: 5px solid var(--alert);
+      color: var(--muted);
+      font-family:var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+      font-size: .92rem;
+      line-height: 1.55;
+    }
+
+    .reiki-boundary-b__alert strong {
+      color: var(--alert);
+    }
+
+    @container reiki-boundary-b (min-width: 821px) {
+      .reiki-boundary-b__head {
+        grid-template-columns: minmax(0, 1fr) minmax(15rem, .65fr);
+        gap: clamp(1.4rem, 5cqi, 4rem);
+      }
+
+      .reiki-boundary-b__medical-track {
+        grid-template-columns: minmax(8rem, .7fr) minmax(0, 2fr);
+        gap: clamp(1rem, 4cqi, 3rem);
+      }
+
+      .reiki-boundary-b__branch {
+        width: min(72%, 39rem);
+        margin-right: 6%;
+      }
+    }
+
+    @media (max-width: 820px) {
+      .reiki-boundary-b {
+        padding: 1.35rem 1.1rem 1.7rem;
+        border-radius: .55rem 1.7rem .55rem 1.7rem;
+      }
+
+      .reiki-boundary-b__not {
+        display: block;
+      }
+
+      .reiki-boundary-b__not p {
+        margin-top: .4rem;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .reiki-boundary-b__branch {
+        width: 82%;
+      }
+    }
+  </style>
+
+  <figcaption class="reiki-boundary-b__head">
+    <div>
+      <p class="reiki-boundary-b__eyebrow">Комплементарно — значит дополнительно</p>
+      <h3 id="reiki-boundary-b-title">У помощи есть основной маршрут и дополнительная ветвь</h3>
+    </div>
+    <p id="reiki-boundary-b-desc">
+      Визуальная иерархия здесь намеренно неравная: медицинская помощь остаётся основной.
+    </p>
+  </figcaption>
+
+  <div class="reiki-boundary-b__map" role="group" aria-label="Иерархия медицинской помощи и дополнительной практики">
+    <section class="reiki-boundary-b__medical-track" aria-label="Основной маршрут медицинской помощи">
+      <b>Медицинская помощь</b>
+      <p>Диагностика, лечение и изменения назначений — зона ответственности профильного специалиста.</p>
+    </section>
+
+    <aside class="reiki-boundary-b__branch" aria-label="Дополнительная ветвь Рейки">
+      <span>Дополнительная ветвь</span>
+      <strong>Рейки может быть рядом — добровольно и с согласия</strong>
+      <p>Практика не ставит диагноз, не определяет дозировку и не решает, можно ли отменить препарат.</p>
+    </aside>
+  </div>
+
+  <div class="reiki-boundary-b__not">
+    <b>Не вместо</b>
+    <p>Отказ от диагностики, лекарств, операции, психотерапии или другой необходимой помощи — уже не дополнительный подход.</p>
+  </div>
+
+  <p class="reiki-boundary-b__alert"><strong>При резком ухудшении или остром состоянии</strong> нужна срочная медицинская оценка; при тревожной психологической реакции — соответствующая психологическая или психиатрическая помощь.</p>
+</figure>

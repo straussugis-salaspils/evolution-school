@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Пилот 13A — карта маршрутов после Рейки II</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #fffdf8;
+      --ink: #292319;
+      --muted: #6d6559;
+      --gold: #b78a3e;
+      --gold-deep: #76551f;
+      --teal: #315f5b;
+      --clay: #9a5f48;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      background: var(--paper);
+      color: var(--ink);
+      font-family:var(--viz-font-display, Georgia, "Times New Roman", serif);
+    }
+
+    main {
+      width: min(1080px, calc(100% - 24px));
+      margin: 0 auto;
+      padding: clamp(24px, 5vw, 64px) 0;
+    }
+
+    .route-map {
+      margin: 0;
+    }
+
+    .intro {
+      max-width: 830px;
+      margin: 0 auto clamp(22px, 4vw, 40px);
+      text-align: center;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--gold-deep);
+      font-family:var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(30px, 4.8vw, 58px);
+      font-weight: 500;
+      line-height: 1;
+      text-wrap: balance;
+    }
+
+    .lead {
+      max-width: 720px;
+      margin: 16px auto 0;
+      color: var(--muted);
+      font-family:var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+      font-size: clamp(15px, 1.8vw, 19px);
+      line-height: 1.55;
+    }
+
+    .map-stage {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(118, 85, 31, .22);
+      border-radius: clamp(24px, 4vw, 42px);
+      background: #f8f0dc;
+      box-shadow: 0 24px 70px rgba(72, 52, 20, .1);
+    }
+
+    .mobile-route-key {
+      display: none;
+    }
+
+    svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .map-label {
+      fill: var(--ink);
+      font-family:var(--viz-font-display, Georgia, "Times New Roman", serif);
+      font-size: 31px;
+      font-weight: 700;
+    }
+
+    .map-copy {
+      fill: var(--muted);
+      font-family:var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+      font-size: 19px;
+    }
+
+    .map-kicker {
+      fill: var(--gold-deep);
+      font-family:var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 1.8px;
+    }
+
+    .trail {
+      fill: none;
+      stroke: #fffdf8;
+      stroke-linecap: round;
+      stroke-width: 21;
+    }
+
+    .trail-line {
+      fill: none;
+      stroke: var(--gold-deep);
+      stroke-dasharray: 3 16;
+      stroke-linecap: round;
+      stroke-width: 5;
+    }
+
+    .route-one .trail-line { stroke: var(--teal); }
+    .route-two .trail-line { stroke: var(--gold-deep); }
+    .route-three .trail-line { stroke: var(--clay); }
+
+    figcaption {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      max-width: 900px;
+      margin: 22px auto 0;
+      color: var(--gold-deep);
+      font-family:var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+      font-size: clamp(15px, 1.8vw, 18px);
+      line-height: 1.5;
+    }
+
+    .caption-mark {
+      flex: 0 0 auto;
+      width: 34px;
+      height: 34px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      line-height: 32px;
+      text-align: center;
+    }
+
+    @media (max-width: 620px) {
+      main { width: min(100% - 16px, 520px); }
+      .intro { padding: 0 10px; }
+      .map-stage { border-radius: 24px; }
+      .mobile-route-key {
+        display: grid;
+        gap: 10px;
+        margin: 0 0 16px;
+      }
+      .mobile-route-key section {
+        padding: 15px 17px;
+        border-left: 5px solid var(--teal);
+        border-radius: 0 14px 14px 0;
+        background: #eef3eb;
+      }
+      .mobile-route-key section:nth-child(2) {
+        border-color: var(--gold);
+        background: #f8f0dc;
+      }
+      .mobile-route-key section:nth-child(3) {
+        border-color: var(--clay);
+        background: #f6e9e3;
+      }
+      .mobile-route-key span {
+        display: block;
+        color: var(--gold-deep);
+        font-family:var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+      }
+      .mobile-route-key strong {
+        display: block;
+        margin-top: 3px;
+        font-size: 21px;
+        font-weight: 500;
+        line-height: 1.08;
+      }
+      .mobile-route-key small {
+        display: block;
+        margin-top: 4px;
+        color: var(--muted);
+        font-family:var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+        font-size: 14px;
+        line-height: 1.4;
+      }
+      .destination-label,
+      .map-origin-label,
+      .map-waypoint-label {
+        display: none;
+      }
+      figcaption { padding: 0 8px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <figure class="route-map" role="group" aria-labelledby="map-title" aria-describedby="map-caption">
+      <header class="intro">
+        <p class="eyebrow">После Рейки II</p>
+        <h1 id="map-title">Три тропы из одной точки</h1>
+        <p class="lead">Это не лестница и не гонка за следующей ступенью. Можно углублять нынешнюю практику, идти в личное мастерство или со временем готовиться к передаче метода другим.</p>
+      </header>
+
+      <div class="mobile-route-key" aria-label="Три возможных маршрута после Рейки II">
+        <section>
+          <span>Маршрут 01</span>
+          <strong>Углублять Рейки II</strong>
+          <small>Остаться в практике и сделать её устойчивее.</small>
+        </section>
+        <section>
+          <span>Маршрут 02</span>
+          <strong>«Мастер жизни»</strong>
+          <small>Личное мастерство без обязанности преподавать.</small>
+        </section>
+        <section>
+          <span>Маршрут 03</span>
+          <strong>Передавать метод другим</strong>
+          <small>Сначала «Мастер жизни», затем «Мастер-Учитель».</small>
+        </section>
+      </div>
+
+      <div class="map-stage">
+        <svg viewBox="0 0 900 980" role="img" aria-labelledby="svg-title svg-desc">
+          <title id="svg-title">Карта трёх маршрутов после Рейки II</title>
+          <desc id="svg-desc">От общей исходной точки одна тропа ведёт к углублению Рейки II, вторая — к программе Мастер жизни, а третья проходит через Мастер жизни и продолжается к подготовке Мастер-Учителя.</desc>
+
+          <defs>
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#f9f0d8"/>
+              <stop offset="1" stop-color="#eef2e7"/>
+            </linearGradient>
+            <linearGradient id="hillLeft" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#dce8df"/>
+              <stop offset="1" stop-color="#b9d0c5"/>
+            </linearGradient>
+            <linearGradient id="hillCenter" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#eeddb5"/>
+              <stop offset="1" stop-color="#d6bb80"/>
+            </linearGradient>
+            <linearGradient id="hillRight" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#ead5c9"/>
+              <stop offset="1" stop-color="#cfaa98"/>
+            </linearGradient>
+            <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#503c1c" flood-opacity=".13"/>
+            </filter>
+          </defs>
+
+          <rect width="900" height="980" fill="url(#sky)"/>
+          <circle cx="744" cy="126" r="57" fill="#f4d590" opacity=".74"/>
+          <path d="M0 314 C130 237 244 261 354 327 C461 225 583 210 691 287 C762 243 830 248 900 284 L900 565 L0 565 Z" fill="#e8dfc8" opacity=".62"/>
+          <path d="M0 420 C127 317 269 345 365 434 C464 321 612 313 719 409 C782 367 841 372 900 413 L900 640 L0 640 Z" fill="#dfd2b3" opacity=".58"/>
+
+          <!-- Three different destination landscapes -->
+          <path d="M0 535 C75 453 180 440 290 510 C318 560 297 624 247 664 C165 713 69 694 0 642 Z" fill="url(#hillLeft)"/>
+          <path d="M244 505 C327 387 458 358 572 450 C626 507 618 592 557 649 C463 715 326 678 265 608 Z" fill="url(#hillCenter)"/>
+          <path d="M555 498 C650 387 794 399 900 470 L900 684 C805 724 660 700 594 623 C557 586 549 538 555 498 Z" fill="url(#hillRight)"/>
+
+          <!-- Left space: quiet water and trees -->
+          <ellipse cx="135" cy="570" rx="86" ry="38" fill="#8fbab5" opacity=".72"/>
+          <ellipse cx="135" cy="566" rx="58" ry="21" fill="#dceee7" opacity=".8"/>
+          <g fill="#315f5b">
+            <path d="M62 555 l24-62 24 62z"/><rect x="83" y="548" width="6" height="31"/>
+            <path d="M222 545 l22-58 22 58z"/><rect x="241" y="540" width="6" height="31"/>
+          </g>
+
+          <!-- Centre space: sheltered practice garden -->
+          <circle cx="443" cy="514" r="91" fill="#f7eed7" opacity=".64"/>
+          <circle cx="443" cy="514" r="60" fill="none" stroke="#b78a3e" stroke-width="3"/>
+          <circle cx="443" cy="514" r="12" fill="#b78a3e"/>
+          <path d="M390 468 Q443 418 496 468" fill="none" stroke="#76551f" stroke-width="8" stroke-linecap="round"/>
+
+          <!-- Right space: teaching circle and beacon -->
+          <circle cx="742" cy="543" r="77" fill="#f7ebe4" opacity=".8"/>
+          <g fill="#9a5f48">
+            <circle cx="742" cy="502" r="12"/>
+            <circle cx="696" cy="542" r="11"/>
+            <circle cx="788" cy="542" r="11"/>
+            <circle cx="716" cy="592" r="11"/>
+            <circle cx="768" cy="592" r="11"/>
+          </g>
+          <path d="M742 455 v-72" stroke="#76551f" stroke-width="8" stroke-linecap="round"/>
+          <path d="M742 383 l45 22 -45 22z" fill="#f4d590"/>
+
+          <!-- Route 1 -->
+          <g class="route-one">
+            <path class="trail" d="M450 884 C346 833 274 779 224 706 C191 658 160 630 132 606"/>
+            <path class="trail-line" d="M450 884 C346 833 274 779 224 706 C191 658 160 630 132 606"/>
+          </g>
+
+          <!-- Shared centre trail -->
+          <g class="route-two">
+            <path class="trail" d="M450 884 C454 803 449 730 444 650 C440 600 442 566 443 536"/>
+            <path class="trail-line" d="M450 884 C454 803 449 730 444 650 C440 600 442 566 443 536"/>
+          </g>
+
+          <!-- Teaching route continues only after Master Life -->
+          <g class="route-three">
+            <path class="trail" d="M443 536 C505 563 552 612 602 647 C655 683 710 646 735 612"/>
+            <path class="trail-line" d="M443 536 C505 563 552 612 602 647 C655 683 710 646 735 612"/>
+          </g>
+
+          <!-- Origin -->
+          <circle cx="450" cy="884" r="42" fill="#fffdf8" stroke="#76551f" stroke-width="4" filter="url(#softShadow)"/>
+          <circle cx="450" cy="884" r="12" fill="#b78a3e"/>
+          <text x="450" y="946" text-anchor="middle" class="map-kicker map-origin-label">ТЕКУЩАЯ ТОЧКА · РЕЙКИ II</text>
+
+          <!-- Destination labels -->
+          <g class="destination-label">
+            <text x="42" y="116" class="map-kicker">МАРШРУТ 01</text>
+            <text x="42" y="154" class="map-label">Углублять Рейки II</text>
+            <text x="42" y="184" class="map-copy">Остаться в практике и сделать её устойчивее</text>
+          </g>
+
+          <g class="destination-label">
+            <text x="303" y="252" class="map-kicker">МАРШРУТ 02</text>
+            <text x="303" y="290" class="map-label">«Мастер жизни»</text>
+            <text x="303" y="320" class="map-copy">Личное мастерство без обязанности преподавать</text>
+          </g>
+
+          <g class="destination-label">
+            <text x="560" y="116" class="map-kicker">МАРШРУТ 03</text>
+            <text x="560" y="154" class="map-label">Передавать метод</text>
+            <text x="560" y="190" class="map-label">другим</text>
+            <text x="560" y="222" class="map-copy">Сначала «Мастер жизни»,</text>
+            <text x="560" y="247" class="map-copy">затем «Мастер-Учитель»</text>
+          </g>
+
+          <!-- Explicit waypoint for route 3 -->
+          <circle cx="443" cy="536" r="24" fill="#fffdf8" stroke="#9a5f48" stroke-width="4"/>
+          <path d="M435 536 l7 7 13-15" fill="none" stroke="#9a5f48" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"/>
+          <g class="map-waypoint-label">
+            <text x="443" y="590" text-anchor="middle" class="map-kicker" fill="#9a5f48">«МАСТЕР ЖИЗНИ»</text>
+            <text x="443" y="613" text-anchor="middle" class="map-kicker" fill="#9a5f48">ОБЩАЯ ТОЧКА МАРШРУТОВ 02 И 03</text>
+          </g>
+        </svg>
+      </div>
+
+      <figcaption id="map-caption">
+        <span class="caption-mark" aria-hidden="true">↗</span>
+        <span><strong>Все три выбора допустимы.</strong> Маршрут к преподаванию длиннее не потому, что он «лучше», а потому, что перед подготовкой Мастера-Учителя сначала проходит личный этап «Мастер жизни».</span>
+      </figcaption>
+    </figure>
+  </main>
+</body>
+</html>

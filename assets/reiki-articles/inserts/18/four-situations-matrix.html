@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Пилот 18A — матрица решения о переинициации</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #fffdf8;
+      --cream: #f8f0dc;
+      --ink: #292319;
+      --muted: #6d6559;
+      --gold: #b78a3e;
+      --gold-deep: #76551f;
+      --teal: #315f5b;
+      --clay: #9a5f48;
+      --line: rgba(118, 85, 31, .25);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      background: var(--paper);
+      color: var(--ink);
+      font-family:var(--viz-font-display, Georgia, "Times New Roman", serif);
+    }
+
+    main {
+      width: min(1160px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: clamp(28px, 6vw, 72px) 0;
+    }
+
+    .decision-matrix {
+      margin: 0;
+      overflow: hidden;
+      container-type: inline-size;
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      background: var(--paper);
+      box-shadow: 0 22px 60px rgba(72, 52, 20, .08);
+    }
+
+    .heading {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(260px, .9fr);
+      gap: 28px;
+      align-items: center;
+      padding: clamp(26px, 4vw, 42px);
+      background:
+        radial-gradient(circle at 88% 15%, rgba(183, 138, 62, .12), transparent 30%),
+        #fcf7eb;
+      color: var(--ink);
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--gold-deep);
+      opacity: 1;
+      font-family:var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    .decision-matrix .heading h1 {
+      margin: 0;
+      color: var(--ink) !important;
+      font-size: clamp(30px, 5.2cqw, 44px);
+      font-weight: 500;
+      line-height: 1.04;
+      text-wrap: balance;
+    }
+
+    .heading p:last-child {
+      margin: 0;
+      color: var(--muted) !important;
+      font-family:var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+      font-size: clamp(15px, 1.8vw, 18px);
+      line-height: 1.55;
+    }
+
+    .matrix-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 16px clamp(22px, 4vw, 44px);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      color: var(--gold-deep);
+      font-family:var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .matrix-label span:last-child {
+      color: var(--muted);
+      font-weight: 600;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+
+    .matrix {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .situation {
+      position: relative;
+      min-height: 245px;
+      padding: clamp(24px, 3.6vw, 36px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .situation:nth-child(odd) { border-right: 1px solid var(--line); }
+    .situation:nth-child(3),
+    .situation:nth-child(4) { border-bottom: 0; }
+
+    .situation:nth-child(1) { background: #fffdf8; }
+    .situation:nth-child(2) { background: #f8f0dc; }
+    .situation:nth-child(3) { background: #f4f7f4; }
+    .situation:nth-child(4) { background: #f8f0ec; }
+
+    .index {
+      display: grid;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      margin-bottom: 24px;
+      border: 1px solid currentColor;
+      border-radius: 50%;
+      color: var(--gold-deep);
+      font-family:var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .situation h2 {
+      max-width: 430px;
+      margin: 0;
+      color: var(--ink) !important;
+      font-size: clamp(23px, 3.6cqw, 30px);
+      font-weight: 500;
+      line-height: 1.08;
+      text-wrap: balance;
+    }
+
+    .situation p {
+      max-width: 470px;
+      margin: 14px 0 0;
+      color: var(--muted) !important;
+      font-family:var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+      font-size: 16px;
+      line-height: 1.55;
+    }
+
+    .answer {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 24px;
+      color: var(--teal);
+      font-family:var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .answer::before {
+      width: 22px;
+      height: 2px;
+      background: currentColor;
+      content: "";
+    }
+
+    .school-note {
+      display: block;
+      margin-top: 12px;
+      color: var(--clay);
+      font-family:var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    figcaption {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 18px;
+      align-items: center;
+      padding: 24px clamp(22px, 4vw, 44px);
+      border-top: 1px solid var(--line);
+      background: var(--teal);
+      color: white;
+      font-family:var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+      font-size: clamp(15px, 1.8vw, 18px);
+      line-height: 1.5;
+    }
+
+    .not-equal {
+      display: grid;
+      width: 44px;
+      height: 44px;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, .55);
+      border-radius: 50%;
+      font-size: 22px;
+    }
+
+    @container (max-width: 760px) {
+      .decision-matrix { border-radius: 24px; }
+
+      .heading {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        padding: 26px 20px;
+      }
+
+      .decision-matrix .heading h1 {
+        font-size: clamp(29px, 7cqw, 36px);
+      }
+
+      .matrix-label {
+        padding: 14px 20px;
+      }
+    }
+
+    @container (max-width: 520px) {
+      .matrix-label {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+      .matrix { grid-template-columns: 1fr; }
+
+      .situation {
+        min-height: 0;
+        padding: 21px 20px 23px;
+        border-right: 0 !important;
+        border-bottom: 1px solid var(--line) !important;
+      }
+
+      .situation:last-child { border-bottom: 0 !important; }
+      .index {
+        width: 38px;
+        height: 38px;
+        margin-bottom: 12px;
+      }
+      .situation h2 {
+        font-size: clamp(21px, 6.4cqw, 25px);
+        line-height: 1.08;
+      }
+      .situation p {
+        margin-top: 10px;
+        font-size: 15px;
+        line-height: 1.48;
+      }
+      .answer {
+        margin-top: 16px;
+        font-size: 14px;
+      }
+      .school-note {
+        margin-top: 9px;
+        font-size: 13px;
+      }
+      figcaption { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <figure class="decision-matrix" role="group" aria-labelledby="matrix-title" aria-describedby="matrix-caption">
+      <div class="heading">
+        <div>
+          <p class="eyebrow">Матрица решения</p>
+          <h1 id="matrix-title">Сначала — ваша задача. Потом — процедура.</h1>
+        </div>
+        <p>Слово «переинициация» часто звучит как готовый ответ. Но четыре похожих запроса требуют четырёх разных проверок.</p>
+      </div>
+
+      <div class="matrix-label">
+        <span>Что вы хотите восстановить или продолжить?</span>
+        <span>В каждой ситуации — свой следующий шаг</span>
+      </div>
+
+      <div class="matrix">
+        <section class="situation" aria-labelledby="situation-one">
+          <span class="index">01</span>
+          <h2 id="situation-one">Вернуться к личной практике</h2>
+          <p>Иногда достаточно снова начать практиковать и задать своему Мастеру вопросы, которые появились после паузы.</p>
+          <span class="answer">Практика и поддержка</span>
+        </section>
+
+        <section class="situation" aria-labelledby="situation-two">
+          <span class="index">02</span>
+          <h2 id="situation-two">Восстановить забытый материал</h2>
+          <p>Здесь нужны материалы, объяснения и повторение практики. Сама переинициация не возвращает содержание обучения в память.</p>
+          <span class="answer">Материалы и разбор</span>
+        </section>
+
+        <section class="situation" aria-labelledby="situation-three">
+          <span class="index">03</span>
+          <h2 id="situation-three">Подготовиться к следующей ступени</h2>
+          <p>Готовность оценивается отдельно: по опыту практики, пониманию метода и требованиям выбранной школы.</p>
+          <span class="answer">Отдельная оценка готовности</span>
+        </section>
+
+        <section class="situation" aria-labelledby="situation-four">
+          <span class="index">04</span>
+          <h2 id="situation-four">Перейти в другую школу или линию</h2>
+          <p>Сначала обсуждают документы, пройденную программу и правила новой школы. Переинициация может быть частью входа, если этого требует школа.</p>
+          <span class="answer">Разговор и правила входа</span>
+          <small class="school-note">В Evolution House при переходе из другой линии переинициация обычно требуется. Возможное исключение — я лично знаю прежнего Учителя, доверяю ему и линии передачи.</small>
+        </section>
+      </div>
+
+      <figcaption id="matrix-caption">
+        <span class="not-equal" aria-hidden="true">≠</span>
+        <span><strong>Переинициация — не автоматический финал каждого маршрута.</strong> Сначала стоит точно назвать ситуацию, а затем выбрать действие, которое действительно её решает.</span>
+      </figcaption>
+    </figure>
+  </main>
+</body>
+</html>

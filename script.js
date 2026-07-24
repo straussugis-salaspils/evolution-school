@@ -33,7 +33,10 @@ document.addEventListener('keydown', (event) => {
 });
 
 const activeLocalLink = document.querySelector('.eh-local-strip a[aria-current="page"]');
-if (activeLocalLink) {
+const keepReikiPathStartVisible =
+  activeLocalLink?.classList.contains('eh-local-strip__articles') &&
+  document.body.classList.contains('eh-context--reiki');
+if (activeLocalLink && !keepReikiPathStartVisible) {
   requestAnimationFrame(() => {
     activeLocalLink.scrollIntoView({ block: 'nearest', inline: 'center' });
   });

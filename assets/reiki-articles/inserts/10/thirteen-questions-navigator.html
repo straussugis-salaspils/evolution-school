@@ -1,0 +1,210 @@
+<figure class="reiki-questions-nav" aria-labelledby="reiki-questions-nav-title" aria-describedby="reiki-questions-nav-desc">
+  <style>
+    .reiki-questions-nav {
+      --ink: #292319;
+      --muted: #6d6559;
+      --green: #315f5b;
+      --green-soft: #e8efe5;
+      --gold: #b78a3e;
+      --paper: #fbf8ef;
+      box-sizing: border-box;
+      container-name: reiki-questions-nav;
+      container-type: inline-size;
+      width: min(100%, 980px);
+      margin: 2.5rem auto;
+      padding: clamp(1.35rem, 6cqi, 3.4rem);
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 35%, rgba(170, 123, 56, .12), transparent 17rem),
+        var(--paper);
+      border-radius: 2rem .55rem 2rem .55rem;
+      font-family: var(--viz-font-display, Georgia, "Times New Roman", serif);
+    }
+
+    .reiki-questions-nav *,
+    .reiki-questions-nav *::before,
+    .reiki-questions-nav *::after {
+      box-sizing: border-box;
+    }
+
+    .reiki-questions-nav__eyebrow {
+      margin: 0 0 .65rem !important;
+      color: var(--gold) !important;
+      font-family: var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+      font-size: .76rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .reiki-questions-nav .reiki-questions-nav__title {
+      max-width: 18ch;
+      margin: 0 !important;
+      color: var(--ink) !important;
+      font-size: clamp(2rem, 5.6cqi, 3.5rem);
+      font-weight: 400;
+      line-height: 1;
+      text-wrap: balance;
+    }
+
+    .reiki-questions-nav__intro {
+      max-width: 48rem;
+      margin: 1rem 0 0 !important;
+      color: var(--muted) !important;
+      font-family: var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+      font-size: 1rem;
+      line-height: 1.58;
+    }
+
+    .reiki-questions-nav__body {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      align-items: center;
+      margin-top: clamp(2rem, 6cqi, 3.8rem);
+      font-family: var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+    }
+
+    .reiki-questions-nav__hub {
+      display: grid;
+      width: 9.2rem;
+      height: 9.2rem;
+      place-items: center;
+      margin: 0 auto;
+      color: #fff;
+      background: var(--green);
+      border: .7rem solid var(--green-soft);
+      border-radius: 50%;
+      text-align: center;
+    }
+
+    .reiki-questions-nav__hub strong {
+      display: block;
+      font-family: var(--viz-font-display, Georgia, "Times New Roman", serif);
+      font-size: 3.5rem;
+      font-weight: 400;
+      line-height: .82;
+    }
+
+    .reiki-questions-nav__hub span {
+      display: block;
+      margin-top: .35rem;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .reiki-questions-nav__routes {
+      position: relative;
+      display: grid;
+      gap: 0;
+      margin: 0 !important;
+      padding: 0 !important;
+      list-style: none !important;
+    }
+
+    .reiki-questions-nav__routes::before {
+      content: "";
+      position: absolute;
+      top: 1.4rem;
+      bottom: 1.4rem;
+      left: .32rem;
+      width: 1px;
+      background: rgba(61, 106, 88, .3);
+    }
+
+    .reiki-questions-nav__route {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(7.8rem, .75fr) minmax(0, 1.35fr);
+      gap: 1rem;
+      margin: 0 !important;
+      padding: .8rem 0 .8rem 1.5rem !important;
+      border-top: 1px solid rgba(37, 55, 47, .14);
+      color: var(--ink) !important;
+    }
+
+    .reiki-questions-nav__route:first-child {
+      border-top: 0;
+    }
+
+    .reiki-questions-nav__route::before {
+      content: "";
+      position: absolute;
+      top: 1.35rem;
+      left: 0;
+      width: .65rem;
+      height: .65rem;
+      background: var(--paper);
+      border: 2px solid var(--green);
+      border-radius: 50%;
+    }
+
+    .reiki-questions-nav__route strong {
+      color: var(--ink);
+      font-family: var(--viz-font-display, Georgia, "Times New Roman", serif);
+      font-size: 1.15rem;
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    .reiki-questions-nav__route span {
+      color: var(--muted);
+      font-size: .86rem;
+      line-height: 1.48;
+    }
+
+    .reiki-questions-nav__footer {
+      max-width: 46rem;
+      margin: clamp(1.7rem, 4cqi, 2.8rem) 0 0 auto !important;
+      padding-top: .9rem;
+      border-top: 2px solid var(--gold);
+      color: var(--ink) !important;
+      font-family: var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+      font-size: 1rem;
+      line-height: 1.52;
+    }
+
+    @container reiki-questions-nav (min-width: 650px) {
+      .reiki-questions-nav__body {
+        grid-template-columns: 11rem minmax(0, 1fr);
+        gap: clamp(1.6rem, 5cqi, 3.5rem);
+      }
+
+      .reiki-questions-nav__hub {
+        width: 10.4rem;
+        height: 10.4rem;
+      }
+    }
+
+    @container reiki-questions-nav (max-width: 470px) {
+      .reiki-questions-nav__route {
+        grid-template-columns: 1fr;
+        gap: .25rem;
+      }
+    }
+  </style>
+
+  <figcaption>
+    <p class="reiki-questions-nav__eyebrow">Перед обучением</p>
+    <h3 class="reiki-questions-nav__title" id="reiki-questions-nav-title">Тринадцать вопросов собираются в пять тем</h3>
+    <p class="reiki-questions-nav__intro" id="reiki-questions-nav-desc">Не нужно искать секретный правильный ответ. Нужно понять, что именно вы покупаете и подходит ли вам этот формат.</p>
+  </figcaption>
+
+  <div class="reiki-questions-nav__body">
+    <div class="reiki-questions-nav__hub" aria-hidden="true">
+      <div><strong>13</strong><span>вопросов</span></div>
+    </div>
+
+    <ol class="reiki-questions-nav__routes" aria-label="Пять категорий вопросов перед обучением Рейки">
+      <li class="reiki-questions-nav__route"><strong>Программа</strong><span>Что входит, сколько длится, что проходит в эфире и записи, где будет практика и обратная связь.</span></li>
+      <li class="reiki-questions-nav__route"><strong>Линия и квалификация</strong><span>Кто обучает и проводит инициацию, в какой традиции работает и у кого учился.</span></li>
+      <li class="reiki-questions-nav__route"><strong>Поддержка</strong><span>Какие материалы останутся, кому задавать вопросы и как долго действует сопровождение.</span></li>
+      <li class="reiki-questions-nav__route"><strong>Согласие и свобода выбора</strong><span>Что школа не обещает и обязательно ли переходить на следующую ступень.</span></li>
+      <li class="reiki-questions-nav__route"><strong>Полная стоимость</strong><span>Вся сумма обучения и возможные дополнительные платежи.</span></li>
+    </ol>
+  </div>
+
+  <p class="reiki-questions-nav__footer">Хороший разговор оставляет больше ясности — не больше стыда за вопросы.</p>
+</figure>

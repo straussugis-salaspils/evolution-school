@@ -14,6 +14,15 @@
     "seo:audit": "node scripts/seo-audit.mjs",
     "seo:write": "node scripts/seo-audit.mjs --write",
     "seo:smoke": "node scripts/mobile-smoke.mjs",
-    "seo:production-smoke": "node scripts/production-smoke.mjs"
+    "seo:production-smoke": "node scripts/production-smoke.mjs",
+    "reiki:seo-audit": "node scripts/reiki-seo-audit.mjs",
+    "reiki:visual-audit": "node scripts/reiki-visual-audit.mjs",
+    "reiki:visual-responsive": "node scripts/verify-reiki-visual-pages.mjs",
+    "reiki:design-normalize": "node scripts/normalize-reiki-insert-design.mjs",
+    "reiki:inserts:prepare": "node scripts/prepare-reiki-internal-inserts.mjs",
+    "reiki:inserts:refresh": "npm run reiki:inserts:prepare && npm run reiki:design-normalize && node scripts/generate-reiki-articles.mjs",
+    "reiki:inserts:generate": "npm run reiki:design-normalize && node scripts/generate-reiki-articles.mjs",
+    "reiki:inserts:verify": "node scripts/verify-reiki-internal-visual-production.mjs",
+    "reiki:check": "npm run reiki:seo-audit && npm run reiki:visual-audit && npm run reiki:inserts:verify"
   }
 }

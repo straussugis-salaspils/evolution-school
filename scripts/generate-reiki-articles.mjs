@@ -1,5 +1,9 @@
 import fs from "node:fs";
 import path from "node:path";
+import {
+  getReikiInsertCount,
+  getReikiVisual,
+} from "./reiki-visual-config.mjs";
 
 const siteRoot = path.resolve(import.meta.dirname, "..");
 const sourceRoot =
@@ -41,33 +45,188 @@ const sources = [
   "article-18-reiki-reinitiation-draft.md",
 ];
 
-const visuals = [
-  ["/reiki/assets/reiki-hands-heart.jpg", 1122, 1402],
-  ["/reiki/assets/reiki-hands-initiation.jpg", 1536, 1024],
-  ["/reiki/assets/reiki-first-weeks-practice.jpg", 1586, 992],
-  ["/reiki/assets/reiki-hands-21-days.jpg", 1536, 1024],
-  ["/reiki/assets/reiki-2-hero-direction-v2.jpg", 1122, 1402],
-  ["/reiki/assets/reiki-hands-online-learning.jpg", 1536, 1024],
-  ["/reiki/assets/reiki-1-everyday-kitchen-pause-v2.jpg", 1536, 1024],
-  ["/reiki/assets/reiki-hands-palms.jpg", 1536, 1024],
-  ["/reiki/assets/reiki-method-simple-practice.png", 1448, 1086],
-  ["/reiki/assets/svetlana-current.jpg", 814, 1280],
-  ["/reiki/assets/reiki-first-weeks-practice.jpg", 1586, 992],
-  ["/reiki/assets/master-teacher-transmission-hands.webp", 1536, 1024],
-  ["/reiki/assets/master-life-final-path-compressed.jpg", 1535, 1024],
-  ["/reiki/assets/master-life-system-map-v2.jpg", 1536, 1024],
-  ["/reiki/assets/master-life-entry-conversation-v2.jpg", 1536, 1024],
-  ["/reiki/assets/master-life-final-threshold-v2.jpg", 1536, 1024],
-  ["/reiki/assets/master-life-master-axis-practice-v2.jpg", 1536, 1024],
-  ["/reiki/assets/reiki-hands-initiation.jpg", 1536, 1024],
-];
-
 function escapeHtml(value) {
   return String(value)
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;");
+}
+
+function renderResponsiveImage(article, variant, options = {}) {
+  const isHero = variant === "hero";
+  const widths = isHero ? [480, 768, 1200, 1600] : [480, 800, 1200];
+  const dimensions = isHero
+    ? { width: 1200, height: 900 }
+    : { width: 800, height: 500 };
+  const srcset = widths
+    .map((width) => `${article.visual.basePath}/${variant}-${width}.webp ${width}w`)
+    .join(", ");
+  const sizes = isHero
+    ? "(max-width: 900px) calc(100vw - 40px), 42vw"
+    : "(max-width: 720px) calc(100vw - 40px), 31vw";
+  const attributes = [
+    `src="${article.visual.basePath}/${variant}-${dimensions.width}.jpg"`,
+    `alt="${escapeHtml(article.visual.alt)}"`,
+    `width="${dimensions.width}"`,
+    `height="${dimensions.height}"`,
+    `sizes="${sizes}"`,
+    'decoding="async"',
+  ];
+  if (options.lazy) attributes.push('loading="lazy"');
+  if (options.priority) attributes.push('fetchpriority="high"');
+
+  return `<picture class="article-responsive-image article-responsive-image--${variant}">
+            <source type="image/webp" srcset="${srcset}" sizes="${sizes}">
+            <img ${attributes.join(" ")}>
+          </picture>`;
+}
+
+function localFile(publicPath) {
+  return path.join(siteRoot, publicPath.replace(/^\//, ""));
+}
+
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function namespaceInsertIds(markup, css, insertId) {
+  const prefix = `reiki-${insertId.replace(/[^a-z0-9_-]+/gi, "-")}`;
+  const ids = [
+    ...new Set(
+      [...markup.matchAll(/\bid="([^"]+)"/gi)].map((match) => match[1]),
+    ),
+  ];
+  const idMap = new Map(ids.map((id) => [id, `${prefix}--${id}`]));
+
+  const namespacedMarkup = markup
+    .replace(/\bid="([^"]+)"/gi, (match, id) =>
+      idMap.has(id) ? `id="${idMap.get(id)}"` : match,
+    )
+    .replace(
+      /\b(aria-labelledby|aria-describedby)="([^"]+)"/gi,
+      (match, attribute, value) =>
+        `${attribute}="${value
+          .split(/\s+/)
+          .map((id) => idMap.get(id) || id)
+          .join(" ")}"`,
+    )
+    .replace(/\b(href|xlink:href)="#([^"]+)"/gi, (match, attribute, id) =>
+      idMap.has(id) ? `${attribute}="#${idMap.get(id)}"` : match,
+    )
+    .replace(/url\(#([^)]+)\)/gi, (match, id) =>
+      idMap.has(id) ? `url(#${idMap.get(id)})` : match,
+    );
+
+  let namespacedCss = css;
+  for (const [id, namespacedId] of idMap) {
+    namespacedCss = namespacedCss.replace(
+      new RegExp(`#${escapeRegExp(id)}\\b`, "g"),
+      `#${namespacedId}`,
+    );
+  }
+
+  return { markup: namespacedMarkup, css: namespacedCss };
+}
+
+function extractScopedInsertDocument(source, sourcePath, insertId) {
+  const figureSource = source.match(/<figure\b[\s\S]*?<\/figure>/i)?.[0];
+  if (!figureSource) {
+    throw new Error(`Reiki insert must contain one figure: ${sourcePath}`);
+  }
+  const figureCount = (source.match(/<figure\b/gi) || []).length;
+  if (figureCount !== 1) {
+    throw new Error(
+      `Reiki insert must contain exactly one figure: ${sourcePath}`,
+    );
+  }
+  const figure = figureSource
+    .replace(/<(\/?)section\b/gi, "<$1div")
+    .replace(
+      /<h1\b/gi,
+      '<h3 data-insert-heading="primary"',
+    )
+    .replace(/<\/h1>/gi, "</h3>")
+    .replace(
+      /<h2\b/gi,
+      '<h3 data-insert-heading="secondary"',
+    )
+    .replace(/<\/h2>/gi, "</h3>");
+  const rawCss = [...source.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style>/gi)]
+    .map((match) => match[1].trim())
+    .filter(Boolean)
+    .join("\n\n")
+    .replaceAll(":root", ":scope")
+    .replace(
+      /\bh1(?=\s*(?:[,{>+~.:#\[]|$))/g,
+      '[data-insert-heading="primary"]',
+    )
+    .replace(
+      /\bh2(?=\s*(?:[,{>+~.:#\[]|$))/g,
+      '[data-insert-heading="secondary"]',
+    )
+    .replace(
+      /\bsection(?=\s*(?:[,{>+~.:#\[]|$))/g,
+      "div",
+    );
+  const { markup: namespacedFigure, css } = namespaceInsertIds(
+    figure,
+    rawCss,
+    insertId,
+  );
+  const cssInsertId = insertId.replaceAll("\\", "\\\\").replaceAll('"', '\\"');
+  const scopeSelector = `[data-reiki-insert="${cssInsertId}"]`;
+  const scopedStyle = css
+    ? `<style>@scope (${scopeSelector}) {\n${css}\n}</style>`
+    : "";
+  return `${scopedStyle}\n${namespacedFigure}`;
+}
+
+function renderInsert(insert) {
+  const family = insert.family;
+  const tone = insert.tone;
+  if (!family || !tone) {
+    throw new Error(`Missing visual family or tone for Reiki insert ${insert.id}.`);
+  }
+  const systemClasses = [
+    `article-visual-insert--${escapeHtml(insert.type)}`,
+    `article-visual-insert--family-${escapeHtml(family)}`,
+    `article-visual-insert--tone-${escapeHtml(tone)}`,
+  ].join(" ");
+
+  if (insert.source) {
+    const sourcePath = localFile(insert.source);
+    if (!fs.existsSync(sourcePath)) {
+      throw new Error(`Missing Reiki insert source: ${sourcePath}`);
+    }
+    const source = fs.readFileSync(sourcePath, "utf8").trim();
+    if (/<script\b|https?:\/\/|<link\b/i.test(source)) {
+      throw new Error(`Reiki insert must be self-contained: ${sourcePath}`);
+    }
+    const fragment = extractScopedInsertDocument(
+      source,
+      sourcePath,
+      insert.id,
+    );
+    return `<div class="article-visual-insert ${systemClasses}" data-visual-family="${escapeHtml(family)}" data-visual-tone="${escapeHtml(tone)}" data-reiki-insert="${escapeHtml(insert.id)}" data-provenance="${escapeHtml(insert.provenance)}">
+            ${fragment}
+          </div>`;
+  }
+
+  if (insert.type !== "editorial" || !insert.assetBase) {
+    throw new Error(`Unsupported Reiki insert configuration: ${insert.id}`);
+  }
+  const descriptionId = `${insert.id}-description`;
+  return `<figure class="article-insert article-insert--editorial article-visual-insert ${systemClasses}" data-visual-family="${escapeHtml(family)}" data-visual-tone="${escapeHtml(tone)}" data-reiki-insert="${escapeHtml(insert.id)}" data-provenance="${escapeHtml(insert.provenance)}" role="group" aria-describedby="${descriptionId}">
+            <picture class="article-insert__picture">
+              <source type="image/webp" srcset="${insert.assetBase}-480.webp 480w, ${insert.assetBase}-768.webp 768w, ${insert.assetBase}-1200.webp 1200w" sizes="(max-width: 820px) calc(100vw - 40px), 760px">
+              <img src="${insert.assetBase}-768.jpg" srcset="${insert.assetBase}-480.jpg 480w, ${insert.assetBase}-768.jpg 768w, ${insert.assetBase}-1200.jpg 1200w" sizes="(max-width: 820px) calc(100vw - 40px), 760px" alt="${escapeHtml(insert.alt)}" width="1200" height="675" loading="lazy" decoding="async">
+            </picture>
+            <figcaption>
+              <strong>${escapeHtml(insert.caption)}</strong>
+              <span id="${descriptionId}">${escapeHtml(insert.description)}</span>
+            </figcaption>
+          </figure>`;
 }
 
 function cleanCell(value) {
@@ -325,9 +484,29 @@ function commonShell() {
     "index.html",
   );
   const sample = fs.readFileSync(samplePath, "utf8");
-  const header = sample.match(/<header class="eh-shell-header[\s\S]*?<\/header>/)?.[0];
+  const sourceHeader = sample.match(
+    /<header class="eh-shell-header[\s\S]*?<\/header>/,
+  )?.[0];
   const footer = sample.match(/<footer class="eh-global-footer"[\s\S]*?<\/footer>\s*<script src="\/script\.js"><\/script>/)?.[0];
-  if (!header || !footer) throw new Error("Could not extract shared article shell.");
+  if (!sourceHeader || !footer) {
+    throw new Error("Could not extract shared article shell.");
+  }
+  const reikiLocalStrip = `<nav class="eh-local-strip" aria-label="Навигация по Пути Рейки">
+      <div class="eh-shell-container">
+        <a href="/reiki-napravlenie.html">Карта пути</a>
+        <a href="/reiki/method.html">Метод Рейки</a>
+        <a href="/reiki/">Рейки I</a>
+        <a href="/reiki/reiki-2.html">Рейки II</a>
+        <a href="/reiki/master-life.html">Мастер жизни</a>
+        <a href="/reiki/master-teacher.html">Мастер-Учитель Рейки</a>
+        <a href="/reiki/multidimensional-master.html">Многомерный Мастер</a>
+        <a class="eh-local-strip__articles" href="/biblioteka/reiki/" aria-current="page">Статьи про Рейки</a>
+      </div>
+    </nav>`;
+  const header = sourceHeader.replace(
+    /<nav class="eh-local-strip"[\s\S]*?<\/nav>/,
+    reikiLocalStrip,
+  );
   return { header, footer };
 }
 
@@ -375,7 +554,11 @@ function renderFaq(section) {
 
 function renderArticle(article, allArticles, relatedMap, shell) {
   const canonical = `${baseUrl}${article.route}`;
-  const imageUrl = `${baseUrl}${article.image}`;
+  const imageUrl = `${baseUrl}${article.visual.basePath}/og-1200.jpg`;
+  const articleHeader = shell.header.replace(
+    'class="eh-local-strip__articles" href="/biblioteka/reiki/" aria-current="page"',
+    'class="eh-local-strip__articles" href="/biblioteka/reiki/" aria-current="location"',
+  );
   const faq = article.sections.flatMap(extractFaq);
   const schema = {
     "@context": "https://schema.org",
@@ -453,6 +636,7 @@ function renderArticle(article, allArticles, relatedMap, shell) {
     )
     .join("\n          ");
   const related = renderRelated(article, allArticles, relatedMap);
+  const insertedVisuals = new Set();
   const sections = article.sections
     .map((section, index) => {
       const faqMarkup = renderFaq(section);
@@ -463,16 +647,36 @@ function renderArticle(article, allArticles, relatedMap, shell) {
         index === article.ctaIndex
           ? '<p class="article-next-step__eyebrow">&#1057;&#1083;&#1077;&#1076;&#1091;&#1102;&#1097;&#1080;&#1081; &#1096;&#1072;&#1075; &#1074; &#1055;&#1091;&#1090;&#1080; &#1056;&#1077;&#1081;&#1082;&#1080;</p>'
           : "";
+      const inserts = article.visual.inserts
+        .filter(
+          (insert) =>
+            !insertedVisuals.has(insert.id) &&
+            section.title.includes(insert.afterTitle),
+        )
+        .map((insert) => {
+          insertedVisuals.add(insert.id);
+          return renderInsert(insert);
+        })
+        .join("\n          ");
       const sectionMarkup = `<section id="section-${index + 1}"${classes.length ? ` class="${classes.join(" ")}"` : ""}>
           ${eyebrow}
           <h2>${parseInline(section.title)}</h2>
           ${faqMarkup || renderBlocks(section.lines)}
+          ${inserts}
         </section>`;
       return index === article.ctaIndex && related
         ? `${sectionMarkup}\n\n        ${related}`
         : sectionMarkup;
     })
     .join("\n\n        ");
+  if (insertedVisuals.size !== article.visual.inserts.length) {
+    const missing = article.visual.inserts
+      .filter((insert) => !insertedVisuals.has(insert.id))
+      .map((insert) => `${insert.id} after "${insert.afterTitle}"`);
+    throw new Error(
+      `Could not place ${missing.length} insert(s) for article ${article.number}: ${missing.join(", ")}.`,
+    );
+  }
 
   const publishedLabel =
     article.publishedDate === "2026-07-23" ? "23.07.2026" : "24.07.2026";
@@ -492,7 +696,9 @@ function renderArticle(article, allArticles, relatedMap, shell) {
   <meta property="og:locale" content="ru_RU">
   <meta property="og:site_name" content="Evolution House">
   <meta property="og:image" content="${imageUrl}">
-  <meta property="og:image:alt" content="${escapeHtml(article.h1)}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="${escapeHtml(article.visual.ogAlt)}">
   <meta property="og:url" content="${canonical}">
   <meta property="article:published_time" content="${article.publishedDate}">
   <meta property="article:modified_time" content="${modifiedDate}">
@@ -501,7 +707,7 @@ function renderArticle(article, allArticles, relatedMap, shell) {
   <link rel="canonical" href="${canonical}">
   <link rel="icon" type="image/png" href="/assets/evolution-house-logo-approved.png">
   <link rel="stylesheet" href="/styles.css">
-  <link rel="stylesheet" href="/article-library.css?v=20260724-1">
+  <link rel="stylesheet" href="/article-library.css?v=20260724-2">
   <link rel="stylesheet" href="/cookie-consent.css">
   <script src="/analytics.js" defer></script>
   <script type="application/ld+json">
@@ -509,7 +715,7 @@ ${JSON.stringify(schema, null, 2)}
   </script>
 </head>
 <body class="article-page eh-context--reiki">
-  ${shell.header}
+  ${articleHeader}
 
   <main>
     <nav class="library-breadcrumb" aria-label="&#1055;&#1091;&#1090;&#1100; &#1089;&#1090;&#1088;&#1072;&#1085;&#1080;&#1094;&#1099;">
@@ -536,7 +742,7 @@ ${JSON.stringify(schema, null, 2)}
           </div>
         </div>
         <figure class="article-hero__visual">
-          <img src="${article.image}" alt="${escapeHtml(article.h1)}" width="${article.imageWidth}" height="${article.imageHeight}">
+          ${renderResponsiveImage(article, "hero", { priority: true })}
         </figure>
       </div>
     </header>
@@ -574,7 +780,7 @@ ${JSON.stringify(schema, null, 2)}
 
 function renderFeaturedCard(article) {
   return `<a class="article-card clickable-card" href="${article.route}">
-            <img src="${article.image}" alt="${escapeHtml(article.h1)}" width="${article.imageWidth}" height="${article.imageHeight}">
+            ${renderResponsiveImage(article, "card", { lazy: true })}
             <div class="article-card__copy">
               <span class="article-card__meta">&#1057;&#1090;&#1072;&#1090;&#1100;&#1103; ${String(article.number).padStart(2, "0")} &#183; ${article.minutes} &#1084;&#1080;&#1085;&#1091;&#1090;</span>
               <h2>${escapeHtml(article.h1)}</h2>
@@ -599,22 +805,43 @@ function renderHub(allArticles, shell) {
   const canonical = `${baseUrl}/biblioteka/reiki/`;
   const schema = {
     "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    name: "\u0421\u0442\u0430\u0442\u044c\u0438 \u043e \u0420\u0435\u0439\u043a\u0438",
-    url: canonical,
-    isPartOf: {
-      "@type": "WebSite",
-      name: "Evolution House",
-      url: `${baseUrl}/`,
-    },
-    mainEntity: {
-      "@type": "ItemList",
-      itemListElement: allArticles.map((article) => ({
-        "@type": "ListItem",
-        position: article.number,
-        url: `${baseUrl}${article.route}`,
-      })),
-    },
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        name: "\u0421\u0442\u0430\u0442\u044c\u0438 \u043e \u0420\u0435\u0439\u043a\u0438",
+        url: canonical,
+        isPartOf: {
+          "@type": "WebSite",
+          name: "Evolution House",
+          url: `${baseUrl}/`,
+        },
+        mainEntity: {
+          "@type": "ItemList",
+          itemListElement: allArticles.map((article) => ({
+            "@type": "ListItem",
+            position: article.number,
+            url: `${baseUrl}${article.route}`,
+          })),
+        },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "\u0411\u0438\u0431\u043b\u0438\u043e\u0442\u0435\u043a\u0430",
+            item: `${baseUrl}/biblioteka.html`,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "\u0421\u0442\u0430\u0442\u044c\u0438 \u043e \u0420\u0435\u0439\u043a\u0438",
+            item: canonical,
+          },
+        ],
+      },
+    ],
   };
   return `<!doctype html>
 <html lang="ru">
@@ -629,13 +856,16 @@ function renderHub(allArticles, shell) {
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ru_RU">
   <meta property="og:site_name" content="Evolution House">
-  <meta property="og:image" content="${baseUrl}/assets/reiki-method-simple-practice.png">
+  <meta property="og:image" content="${baseUrl}/assets/reiki-articles/01/og-1200.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Статьи Evolution House о практике и обучении Рейки">
   <meta property="og:url" content="${canonical}">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="${canonical}">
   <link rel="icon" type="image/png" href="/assets/evolution-house-logo-approved.png">
   <link rel="stylesheet" href="/styles.css">
-  <link rel="stylesheet" href="/article-library.css?v=20260724-1">
+  <link rel="stylesheet" href="/article-library.css?v=20260724-2">
   <link rel="stylesheet" href="/cookie-consent.css">
   <script src="/analytics.js" defer></script>
   <script type="application/ld+json">
@@ -720,7 +950,17 @@ ${JSON.stringify(schema, null, 2)}
 `;
 }
 
+function cleanGeneratedHtml(html) {
+  return html.replace(/[ \t]+$/gm, "");
+}
+
 function main() {
+  const insertCount = getReikiInsertCount();
+  if (insertCount < 18) {
+    throw new Error(
+      `Every Reiki article needs at least one insert; found ${insertCount}.`,
+    );
+  }
   const metadataMarkdown = fs.readFileSync(metadataPath, "utf8");
   const { metadata, links } = parseMetadata(metadataMarkdown);
   const shell = commonShell();
@@ -730,13 +970,11 @@ function main() {
     if (!fs.existsSync(sourcePath)) {
       throw new Error(`Missing approved draft: ${sourcePath}`);
     }
-    const [image, imageWidth, imageHeight] = visuals[index];
+    const visual = getReikiVisual(item.number);
     return parseDraft(fs.readFileSync(sourcePath, "utf8"), {
       ...item,
       source,
-      image,
-      imageWidth,
-      imageHeight,
+      visual,
       publishedDate: index < 3 ? "2026-07-23" : "2026-07-24",
     });
   });
@@ -746,17 +984,19 @@ function main() {
     fs.mkdirSync(outputDirectory, { recursive: true });
     fs.writeFileSync(
       path.join(outputDirectory, "index.html"),
-      renderArticle(article, articles, links, shell),
+      cleanGeneratedHtml(renderArticle(article, articles, links, shell)),
       "utf8",
     );
   }
 
   fs.writeFileSync(
     path.join(siteRoot, "biblioteka", "reiki", "index.html"),
-    renderHub(articles, shell),
+    cleanGeneratedHtml(renderHub(articles, shell)),
     "utf8",
   );
-  console.log(`Generated ${articles.length} Reiki articles and the Reiki hub.`);
+  console.log(
+    `Generated ${articles.length} Reiki articles, ${insertCount} internal visuals and the Reiki hub.`,
+  );
 }
 
 main();

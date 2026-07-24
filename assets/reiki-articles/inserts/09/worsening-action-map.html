@@ -1,0 +1,252 @@
+<figure class="reiki-worsening-map" aria-labelledby="reiki-worsening-map-title" aria-describedby="reiki-worsening-map-desc">
+  <style>
+    .reiki-worsening-map {
+      --ink: #292319;
+      --muted: #6d6559;
+      --line: #b7c6c2;
+      --medical: #315f5b;
+      --urgent: #9a5f48;
+      --practice: #b78a3e;
+      --paper: #faf8f1;
+      box-sizing: border-box;
+      container-name: reiki-worsening-map;
+      container-type: inline-size;
+      width: min(100%, 980px);
+      margin: 2.5rem auto;
+      padding: clamp(1.35rem, 6cqi, 3.25rem);
+      color: var(--ink);
+      background:
+        linear-gradient(90deg, rgba(169, 76, 63, .07), transparent 18rem),
+        var(--paper);
+      border: 1px solid rgba(32, 52, 58, .13);
+      border-radius: .6rem 2.2rem .6rem 2.2rem;
+      font-family: var(--viz-font-display, Georgia, "Times New Roman", serif);
+    }
+
+    .reiki-worsening-map *,
+    .reiki-worsening-map *::before,
+    .reiki-worsening-map *::after {
+      box-sizing: border-box;
+    }
+
+    .reiki-worsening-map__eyebrow {
+      margin: 0 0 .65rem !important;
+      color: var(--urgent) !important;
+      font-family: var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+      font-size: .76rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .reiki-worsening-map .reiki-worsening-map__title {
+      max-width: 17ch;
+      margin: 0 !important;
+      color: var(--ink) !important;
+      font-size: clamp(2rem, 5.8cqi, 3.6rem);
+      font-weight: 400;
+      line-height: 1;
+      text-wrap: balance;
+    }
+
+    .reiki-worsening-map__intro {
+      max-width: 47rem;
+      margin: 1rem 0 0 !important;
+      color: var(--muted) !important;
+      font-family: var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+      font-size: 1rem;
+      line-height: 1.58;
+    }
+
+    .reiki-worsening-map__steps {
+      position: relative;
+      display: grid !important;
+      grid-template-columns: 1fr;
+      gap: 0;
+      margin: clamp(2rem, 6cqi, 3.8rem) 0 0 !important;
+      padding: 0 !important;
+      list-style: none !important;
+      counter-reset: worsening-step;
+      font-family: var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+    }
+
+    .reiki-worsening-map__steps::before {
+      content: "";
+      position: absolute;
+      top: 1.1rem;
+      bottom: 1.1rem;
+      left: 1.05rem;
+      width: 2px;
+      background: linear-gradient(var(--urgent), var(--medical) 60%, var(--practice));
+    }
+
+    .reiki-worsening-map__step {
+      position: relative;
+      min-width: 0;
+      margin: 0 !important;
+      padding: 0 0 1.8rem 3.4rem !important;
+      color: var(--ink) !important;
+      counter-increment: worsening-step;
+    }
+
+    .reiki-worsening-map__step::before {
+      content: counter(worsening-step, decimal-leading-zero);
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: grid;
+      width: 2.2rem;
+      height: 2.2rem;
+      place-items: center;
+      color: #fff;
+      background: var(--medical);
+      border: 4px solid var(--paper);
+      border-radius: 50%;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      z-index: 1;
+    }
+
+    .reiki-worsening-map__step:first-child::before {
+      background: var(--urgent);
+    }
+
+    .reiki-worsening-map__step:last-child::before {
+      background: var(--practice);
+    }
+
+    .reiki-worsening-map__step h4 {
+      margin: 0 !important;
+      color: var(--ink) !important;
+      font-family: var(--viz-font-display, Georgia, "Times New Roman", serif);
+      font-size: clamp(1.25rem, 3.4cqi, 1.8rem);
+      font-weight: 400;
+      line-height: 1.18;
+    }
+
+    .reiki-worsening-map__step > p {
+      margin: .45rem 0 0 !important;
+      color: var(--muted) !important;
+      font-size: .93rem;
+      line-height: 1.52;
+    }
+
+    .reiki-worsening-map__help {
+      display: grid;
+      gap: .5rem;
+      margin-top: .8rem;
+      padding: .8rem 0 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .reiki-worsening-map__help p {
+      display: grid;
+      grid-template-columns: 6.6rem 1fr;
+      gap: .7rem;
+      margin: 0 !important;
+      color: var(--muted) !important;
+      font-size: .82rem;
+      line-height: 1.45;
+    }
+
+    .reiki-worsening-map__help strong {
+      color: var(--medical);
+      font-size: .72rem;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+
+    .reiki-worsening-map__help p:first-child strong {
+      color: var(--urgent);
+    }
+
+    .reiki-worsening-map__boundary {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: .85rem;
+      align-items: start;
+      margin: .3rem 0 0 !important;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(169, 76, 63, .3);
+      color: var(--ink) !important;
+      font-family: var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+      font-size: .92rem;
+      line-height: 1.52;
+    }
+
+    .reiki-worsening-map__boundary::before {
+      content: "!";
+      display: grid;
+      width: 1.9rem;
+      height: 1.9rem;
+      place-items: center;
+      color: #fff;
+      background: var(--urgent);
+      border-radius: 50%;
+      font-weight: 700;
+    }
+
+    @container reiki-worsening-map (min-width: 640px) {
+      .reiki-worsening-map__steps {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: clamp(.8rem, 2.6cqi, 1.5rem);
+      }
+
+      .reiki-worsening-map__steps::before {
+        top: 1.05rem;
+        right: 1.05rem;
+        bottom: auto;
+        left: 1.05rem;
+        width: auto;
+        height: 2px;
+        background: linear-gradient(90deg, var(--urgent), var(--medical) 60%, var(--practice));
+      }
+
+      .reiki-worsening-map__step {
+        padding: 3.25rem 0 0 !important;
+      }
+
+      .reiki-worsening-map__step::before {
+        top: 0;
+        left: 0;
+      }
+
+      .reiki-worsening-map__help p {
+        grid-template-columns: 1fr;
+        gap: .15rem;
+      }
+    }
+  </style>
+
+  <figcaption>
+    <p class="reiki-worsening-map__eyebrow">Если стало хуже</p>
+    <h3 class="reiki-worsening-map__title" id="reiki-worsening-map-title">Сначала действие. Объяснение может подождать</h3>
+    <p class="reiki-worsening-map__intro" id="reiki-worsening-map-desc">Не нужно сначала искать энергетическую причину. Нужно посмотреть на состояние в действительности и выбрать правильный адрес помощи.</p>
+  </figcaption>
+
+  <ol class="reiki-worsening-map__steps" aria-label="Последовательность действий при ухудшении">
+    <li class="reiki-worsening-map__step">
+      <h4>Остановиться</h4>
+      <p>Прекратить сеанс или самостоятельную практику.</p>
+    </li>
+    <li class="reiki-worsening-map__step">
+      <h4>Оценить состояние</h4>
+      <p>Отделить дискомфорт от нового симптома, резкого ухудшения или острого состояния.</p>
+    </li>
+    <li class="reiki-worsening-map__step">
+      <h4>Обратиться за профильной помощью</h4>
+      <div class="reiki-worsening-map__help">
+        <p><strong>Острое состояние</strong><span>Срочная медицинская оценка или экстренная помощь.</span></p>
+        <p><strong>Новый симптом</strong><span>Профильный медицинский специалист.</span></p>
+        <p><strong>Тревожная реакция</strong><span>Психологическая или психиатрическая помощь.</span></p>
+      </div>
+    </li>
+    <li class="reiki-worsening-map__step">
+      <h4>Сообщить о практике</h4>
+      <p>Мастеру можно рассказать, что произошло, и задать вопрос о формате. Симптом — не его диагноз.</p>
+    </li>
+  </ol>
+
+  <p class="reiki-worsening-map__boundary">Рейки не заменяет медицинскую, психологическую, психиатрическую или экстренную помощь.</p>
+</figure>

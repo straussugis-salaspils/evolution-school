@@ -4,9 +4,18 @@ import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const skip = new Set([".git", "node_modules", "visual-package", "artifacts", "docs", "gtm"]);
+const sourceOnlyDirectories = new Set([
+  path.join("assets", "reiki-articles", "inserts"),
+]);
 const walk = (dir) => fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
   if (entry.isDirectory() && skip.has(entry.name)) return [];
   const absolute = path.join(dir, entry.name);
+  if (
+    entry.isDirectory() &&
+    sourceOnlyDirectories.has(path.relative(root, absolute))
+  ) {
+    return [];
+  }
   return entry.isDirectory() ? walk(absolute) : [absolute];
 });
 const htmlFiles = walk(root).filter((file) => file.endsWith(".html"));

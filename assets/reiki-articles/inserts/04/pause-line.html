@@ -1,0 +1,196 @@
+<figure class="reiki-21-line-a" aria-labelledby="reiki-21-line-a-title" aria-describedby="reiki-21-line-a-desc">
+  <style>
+    .reiki-21-line-a {
+      --ink: #292319;
+      --muted: #63736d;
+      --sage: #67887b;
+      --sage-soft: #dce8df;
+      --paper: #f5f1e7;
+      --sun: #d49b45;
+      box-sizing: border-box;
+      width: min(100%, 980px);
+      margin: 2.5rem auto;
+      padding: clamp(1.5rem, 5vw, 3.75rem);
+      overflow: hidden;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 7% 12%, rgba(212, 155, 69, .12), transparent 24rem),
+        var(--paper);
+      border-radius: 2rem 2rem .75rem 2rem;
+      font-family:var(--viz-font-display, Georgia, "Times New Roman", serif);
+    }
+
+    .reiki-21-line-a *,
+    .reiki-21-line-a *::before,
+    .reiki-21-line-a *::after {
+      box-sizing: border-box;
+    }
+
+    .reiki-21-line-a__eyebrow {
+      margin: 0 0 .7rem;
+      color: var(--sage);
+      font-family:var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .reiki-21-line-a h3 {
+      max-width: 15ch;
+      margin: 0;
+      font-size: clamp(2rem, 5vw, 4.2rem);
+      font-weight: 400;
+      line-height: .98;
+      text-wrap: balance;
+    }
+
+    .reiki-21-line-a__intro {
+      max-width: 50rem;
+      margin: 1.1rem 0 0;
+      color: var(--muted);
+      font-family:var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+      font-size: clamp(1rem, 2vw, 1.18rem);
+      line-height: 1.55;
+    }
+
+    .reiki-21-line-a__route {
+      position: relative;
+      margin: clamp(2rem, 5vw, 4rem) 0 1rem;
+    }
+
+    .reiki-21-line-a__route svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      overflow: visible;
+    }
+
+    .reiki-21-line-a__legend {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr .85fr;
+      gap: clamp(.8rem, 3vw, 2rem);
+      margin: -.3rem 0 0;
+      font-family:var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+    }
+
+    .reiki-21-line-a__legend p {
+      margin: 0;
+      padding-top: .85rem;
+      border-top: 1px solid rgba(36, 53, 47, .18);
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.45;
+    }
+
+    .reiki-21-line-a__legend strong {
+      display: block;
+      margin-bottom: .25rem;
+      color: var(--ink);
+      font-size: 1rem;
+    }
+
+    .reiki-21-line-a__statement {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1rem;
+      align-items: start;
+      max-width: 46rem;
+      margin: clamp(2rem, 5vw, 3.5rem) 0 0 auto;
+      font-family:var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+    }
+
+    .reiki-21-line-a__statement::before {
+      content: "↳";
+      color: var(--sun);
+      font:700 1.8rem/1 var(--viz-font-display, Georgia, "Times New Roman", serif);
+    }
+
+    .reiki-21-line-a__statement p {
+      margin: 0;
+      font-size: clamp(1.18rem, 2.5vw, 1.55rem);
+      line-height: 1.35;
+    }
+
+    .reiki-21-line-a__statement small {
+      display: block;
+      margin-top: .55rem;
+      color: var(--muted);
+      font-size: .9rem;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 620px) {
+      .reiki-21-line-a {
+        padding: 1.4rem 1.15rem 1.7rem;
+        border-radius: 1.4rem 1.4rem .55rem 1.4rem;
+      }
+
+      .reiki-21-line-a__route {
+        margin-top: 1.8rem;
+      }
+
+      .reiki-21-line-a__legend {
+        grid-template-columns: 1fr;
+        gap: .65rem;
+        margin-top: .65rem;
+      }
+
+      .reiki-21-line-a__statement {
+        margin-top: 1.8rem;
+      }
+    }
+  </style>
+
+  <figcaption>
+    <p class="reiki-21-line-a__eyebrow">Первые 21 день</p>
+    <h3 id="reiki-21-line-a-title">Практика продолжается, даже если день выпал</h3>
+    <p class="reiki-21-line-a__intro" id="reiki-21-line-a-desc">
+      Это рекомендованный период знакомства с инструментом. Одна пауза не отменяет уже пройденный путь.
+    </p>
+  </figcaption>
+
+  <div class="reiki-21-line-a__route">
+    <svg viewBox="0 0 920 235" role="img" aria-labelledby="reiki-21-line-a-svg-title reiki-21-line-a-svg-desc">
+      <title id="reiki-21-line-a-svg-title">Непрерывная линия двадцати одного дня с одной паузой</title>
+      <desc id="reiki-21-line-a-svg-desc">Линия начинается с первого дня, временно прерывается после десятого и продолжается до двадцать первого дня без возврата к началу.</desc>
+      <path d="M36 154 C128 65 220 86 304 137 S445 202 520 125 S688 58 884 112"
+            fill="none" stroke="#67887b" stroke-width="8" stroke-linecap="round"/>
+      <path d="M400 183 C432 202 464 196 493 170"
+            fill="none" stroke="#f5f1e7" stroke-width="16" stroke-linecap="round"/>
+      <path d="M400 183 C432 202 464 196 493 170"
+            fill="none" stroke="#d49b45" stroke-width="3" stroke-linecap="round" stroke-dasharray="7 10"/>
+      <g fill="#f5f1e7" stroke="#67887b" stroke-width="4">
+        <circle cx="36" cy="154" r="9"/>
+        <circle cx="118" cy="91" r="6"/>
+        <circle cx="205" cy="87" r="6"/>
+        <circle cx="304" cy="137" r="7"/>
+        <circle cx="388" cy="177" r="7"/>
+        <circle cx="507" cy="140" r="7"/>
+        <circle cx="624" cy="67" r="6"/>
+        <circle cx="746" cy="71" r="6"/>
+        <circle cx="884" cy="112" r="10"/>
+      </g>
+      <circle cx="447" cy="192" r="13" fill="#f5f1e7" stroke="#d49b45" stroke-width="4"/>
+      <path d="M447 184 v16" stroke="#d49b45" stroke-width="3" stroke-linecap="round"/>
+      <path d="M447 207 v24" stroke="#d49b45" stroke-width="2"/>
+      <path d="M36 171 v42 M884 129 v84" stroke="#292319" stroke-width="2" opacity=".32"/>
+      <text x="36" y="229" fill="#292319" font-family="Segoe UI, system-ui, sans-serif" font-size="18">день 1</text>
+      <text x="447" y="229" fill="#8a642c" font-family="Segoe UI, system-ui, sans-serif" font-size="18" text-anchor="middle">пауза</text>
+      <text x="884" y="229" fill="#292319" font-family="Segoe UI, system-ui, sans-serif" font-size="18" text-anchor="end">день 21</text>
+    </svg>
+  </div>
+
+  <div class="reiki-21-line-a__legend" aria-label="Как читать линию практики">
+    <p><strong>Начать</strong>Знакомиться с практикой в реальных, не идеальных днях.</p>
+    <p><strong>Вернуться после паузы</strong>Не объявлять весь период неудачным и не ждать понедельника.</p>
+    <p><strong>Продолжить</strong>Собрать в сумме 21 день и затем выбрать более свободный ритм.</p>
+  </div>
+
+  <div class="reiki-21-line-a__statement">
+    <p>
+      Один пропуск не превращает предыдущую практику в ноль.
+      <small>На следующий день можно просто вернуться к практике — с того места, где вы остановились.</small>
+    </p>
+  </div>
+</figure>

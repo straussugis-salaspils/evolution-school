@@ -12736,6 +12736,10 @@ body[data-level] main > section:nth-of-type(4n) {
   background: var(--shell-context-wash);
 }
 
+.eh-local-strip a.eh-local-strip__articles {
+  margin-inline-start: auto;
+}
+
 .eh-direction-bridge {
   border-bottom: 1px solid color-mix(in srgb, var(--shell-context-primary) 28%, #DDD8D0);
   background:

@@ -1,0 +1,97 @@
+{
+  "generatedAt": "2026-07-24T17:52:40.053Z",
+  "selectedPilotSet": [
+    "01A",
+    "04A",
+    "09B",
+    "13A",
+    "14B",
+    "18A"
+  ],
+  "selectedAdditionalPilot": "13B",
+  "expectedInsertCount": 26,
+  "expectedArticleCount": 18,
+  "editorial": {
+    "source": "artifacts/reiki-internal-visual-pilots/01/variant-a.png",
+    "sourceWidth": 1672,
+    "sourceHeight": 941,
+    "sourceSha256": "61e2e69a29673fc3454888d0e83a6404168bdb2429c5d000f289f96c3f430ecc",
+    "outputs": [
+      {
+        "file": "assets/reiki-articles/inserts/01/editorial-480.webp",
+        "width": 480,
+        "height": 270,
+        "bytes": 33890,
+        "quality": 82,
+        "sha256": "76b4a5ea2aab288e2788bcb4946fae707e61daf23b8ade229e52e928e7a1b729"
+      },
+      {
+        "file": "assets/reiki-articles/inserts/01/editorial-480.jpg",
+        "width": 480,
+        "height": 270,
+        "bytes": 31397,
+        "quality": 84,
+        "sha256": "1db82d4fd71db6b85fd8c3d331ef3095bbe0d186ca9541b50da6ab913e41b4ed"
+      },
+      {
+        "file": "assets/reiki-articles/inserts/01/editorial-768.webp",
+        "width": 768,
+        "height": 432,
+        "bytes": 83118,
+        "quality": 82,
+        "sha256": "c4cea6f3e180289fc1aeff82381e4fdcde20fb561da0f065f14ea1cd9caef02f"
+      },
+      {
+        "file": "assets/reiki-articles/inserts/01/editorial-768.jpg",
+        "width": 768,
+        "height": 432,
+        "bytes": 76070,
+        "quality": 84,
+        "sha256": "1efd24ccb73c254255cdda1e600be7c2cb0377ec4b03436365a4208e51ccf7cf"
+      },
+      {
+        "file": "assets/reiki-articles/inserts/01/editorial-1200.webp",
+        "width": 1200,
+        "height": 675,
+        "bytes": 158684,
+        "quality": 78,
+        "sha256": "956d565569a7498ea0d28637bb5900e5d903ea38f5d6f5c7e7cd978e62323729"
+      },
+      {
+        "file": "assets/reiki-articles/inserts/01/editorial-1200.jpg",
+        "width": 1200,
+        "height": 675,
+        "bytes": 179599,
+        "quality": 84,
+        "sha256": "2306ee03acd1de3dba9177dce0967eafd17b1c6409019d196bb9c57404d66763"
+      }
+    ]
+  },
+  "fragments": [
+    "02/initiation-sequence.html",
+    "03/skill-vs-promises.html",
+    "04/pause-line.html",
+    "05/reiki-i-vs-ii.html",
+    "06/information-vs-transmission.html",
+    "07/everyday-practice.html",
+    "08/sensation-spectrum.html",
+    "09/medical-boundary.html",
+    "09/worsening-action-map.html",
+    "10/red-flags-poster.html",
+    "10/thirteen-questions-navigator.html",
+    "11/seven-traps-map.html",
+    "12/master-responsibility-timeline.html",
+    "12/professional-boundaries-map.html",
+    "13/decision-compass.html",
+    "13/three-routes.html",
+    "14/evolution-house-route.html",
+    "14/third-degree-models.html",
+    "15/learning-history-collage.html",
+    "15/possible-decisions.html",
+    "16/pause-is-part-of-route.html",
+    "16/readiness-constellation.html",
+    "17/master-vs-teacher.html",
+    "18/four-situations-matrix.html",
+    "18/red-flags-poster.html"
+  ]
+}
