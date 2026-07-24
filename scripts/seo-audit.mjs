@@ -6,10 +6,19 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const BASE_URL = "https://evolution.yourbalancerestored.com";
 const WRITE = process.argv.includes("--write");
 const SKIP_DIRS = new Set([".git", "node_modules", "artifacts", "visual-package", "docs"]);
+const SOURCE_ONLY_DIRS = new Set([
+  path.join("assets", "reiki-articles", "inserts"),
+]);
 
 const walk = (dir) => fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
   if (entry.isDirectory() && SKIP_DIRS.has(entry.name)) return [];
   const absolute = path.join(dir, entry.name);
+  if (
+    entry.isDirectory() &&
+    SOURCE_ONLY_DIRS.has(path.relative(ROOT, absolute))
+  ) {
+    return [];
+  }
   return entry.isDirectory() ? walk(absolute) : [absolute];
 });
 

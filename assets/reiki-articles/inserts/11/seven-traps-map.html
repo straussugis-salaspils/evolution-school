@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Семь ловушек начинающего в Рейки</title>
+  <style>
+    :root {
+      --paper: #fffdf8;
+      --cream: #f8f0dc;
+      --ink: #292319;
+      --muted: #6d6559;
+      --gold: #b78a3e;
+      --deep: #76551f;
+      --teal: #315f5b;
+      --clay: #9a5f48;
+    }
+
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--paper); }
+
+    .return-map {
+      width: 100%;
+      margin: 0;
+      overflow: hidden;
+      border: 1px solid rgba(118, 85, 31, .22);
+      border-radius: 30px;
+      background:
+        linear-gradient(90deg, transparent 49.9%, rgba(183, 138, 62, .08) 50%, transparent 50.1%),
+        linear-gradient(150deg, var(--paper), var(--cream));
+      color: var(--ink);
+      font-family: var(--viz-font-display, Georgia, "Times New Roman", serif);
+    }
+
+    .return-map__intro {
+      padding: clamp(24px, 5vw, 46px);
+      border-bottom: 1px solid rgba(118, 85, 31, .18);
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--deep);
+      font:800 12px/1.2 var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 680px;
+      margin: 0;
+      font-size: clamp(30px, 5vw, 48px);
+      font-weight: 500;
+      line-height: 1.02;
+      text-wrap: balance;
+    }
+
+    .lead {
+      max-width: 670px;
+      margin: 13px 0 0;
+      color: var(--muted);
+      font:16px/1.55 var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+    }
+
+    .detour-board {
+      position: relative;
+      padding: clamp(26px, 5vw, 48px);
+    }
+
+    .practice-line {
+      position: absolute;
+      top: 76px;
+      right: clamp(30px, 6vw, 62px);
+      left: clamp(30px, 6vw, 62px);
+      height: 5px;
+      border-radius: 999px;
+      background: var(--teal);
+    }
+
+    .practice-line::after {
+      position: absolute;
+      top: 50%;
+      right: -2px;
+      width: 13px;
+      height: 13px;
+      border-top: 4px solid var(--teal);
+      border-right: 4px solid var(--teal);
+      transform: translateY(-50%) rotate(45deg);
+      content: "";
+    }
+
+    .detours {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .detour {
+      min-width: 0;
+      text-align: center;
+    }
+
+    .detour__loop {
+      display: block;
+      width: 44px;
+      height: 44px;
+      margin: 0 auto 17px;
+      border: 3px solid var(--gold);
+      border-bottom-color: transparent;
+      border-radius: 50%;
+      transform: rotate(-25deg);
+    }
+
+    .detour:nth-child(2n) .detour__loop {
+      border-color: var(--clay);
+      border-bottom-color: transparent;
+      transform: rotate(25deg);
+    }
+
+    .detour strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.18;
+      hyphens: auto;
+      overflow-wrap: break-word;
+    }
+
+    .return-action {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 18px;
+      align-items: center;
+      max-width: 720px;
+      margin: 38px auto 0;
+      padding: 22px 24px;
+      border-radius: 18px;
+      background: var(--teal);
+      color: var(--paper);
+    }
+
+    .return-action__mark {
+      display: grid;
+      width: 48px;
+      height: 48px;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, .5);
+      border-radius: 50%;
+      font-size: 26px;
+    }
+
+    .return-action strong {
+      display: block;
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 1.08;
+    }
+
+    .return-action span {
+      display: block;
+      margin-top: 5px;
+      color: #dce9e4;
+      font:14px/1.5 var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+    }
+
+    figcaption {
+      padding: 20px clamp(24px, 5vw, 46px) 25px;
+      border-top: 1px solid rgba(118, 85, 31, .18);
+      color: var(--deep);
+      font:15px/1.5 var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+    }
+
+    @media (max-width: 760px) {
+      .return-map { border-radius: 24px; }
+      .detour-board { padding: 26px 22px 30px; }
+      .practice-line {
+        top: 36px;
+        right: auto;
+        bottom: 151px;
+        left: 42px;
+        width: 5px;
+        height: auto;
+      }
+      .practice-line::after {
+        top: auto;
+        right: auto;
+        bottom: -2px;
+        left: 50%;
+        transform: translateX(-50%) rotate(135deg);
+      }
+      .detours { grid-template-columns: 1fr; gap: 0; }
+      .detour {
+        position: relative;
+        min-height: 59px;
+        padding: 6px 0 12px 70px;
+        text-align: left;
+      }
+      .detour__loop {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 42px;
+        height: 42px;
+        margin: 0;
+        background: var(--cream);
+      }
+      .detour strong { max-width: 250px; font-size: 18px; }
+      .return-action { margin-top: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <figure class="return-map" role="group" aria-labelledby="return-map-title" aria-describedby="return-map-caption">
+    <header class="return-map__intro">
+      <p class="eyebrow">Карта возвращения к практике</p>
+      <h1 id="return-map-title">Семь петель могут увести в сторону. Выход у них один.</h1>
+      <p class="lead">Это не семь новых уроков. Это короткие признаки того, что простая изученная практика снова оказалась за кадром.</p>
+    </header>
+
+    <div class="detour-board">
+      <div class="practice-line" aria-hidden="true"></div>
+      <ol class="detours">
+        <li class="detour"><span class="detour__loop" aria-hidden="true"></span><strong>Ждать ярких ощущений</strong></li>
+        <li class="detour"><span class="detour__loop" aria-hidden="true"></span><strong>Искать идеальные условия</strong></li>
+        <li class="detour"><span class="detour__loop" aria-hidden="true"></span><strong>Собирать новую систему</strong></li>
+        <li class="detour"><span class="detour__loop" aria-hidden="true"></span><strong>Вспоминать только в кризис</strong></li>
+        <li class="detour"><span class="detour__loop" aria-hidden="true"></span><strong>Считать пропуск провалом</strong></li>
+        <li class="detour"><span class="detour__loop" aria-hidden="true"></span><strong>Объяснять ухудшение «очищением»</strong></li>
+        <li class="detour"><span class="detour__loop" aria-hidden="true"></span><strong>Спешить на следующую ступень</strong></li>
+      </ol>
+
+      <div class="return-action">
+        <span class="return-action__mark" aria-hidden="true">↩</span>
+        <div>
+          <strong>Вернуться к одному реальному сеансу</strong>
+          <span>Открыть материалы своей школы, выбрать знакомый формат и записать один вопрос Мастеру, если он остался.</span>
+        </div>
+      </div>
+    </div>
+
+    <figcaption id="return-map-caption"><strong>Не нужно исправлять все семь пунктов.</strong> Достаточно одного реального возвращения к изученной практике.</figcaption>
+  </figure>
+</body>
+</html>

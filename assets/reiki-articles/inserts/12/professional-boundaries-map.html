@@ -1,0 +1,226 @@
+<figure class="reiki-boundaries-map" aria-labelledby="reiki-boundaries-map-title" aria-describedby="reiki-boundaries-map-desc">
+  <style>
+    .reiki-boundaries-map {
+      --ink: #1f3537;
+      --muted: #617174;
+      --master: #365f57;
+      --medical: #356a77;
+      --psych: #8a673d;
+      --urgent: #9a5f48;
+      --paper: #f8f7f1;
+      box-sizing: border-box;
+      container-name: reiki-boundaries-map;
+      container-type: inline-size;
+      width: min(100%, 980px);
+      margin: 2.5rem auto;
+      padding: clamp(1.35rem, 6cqi, 3.5rem);
+      color: var(--ink);
+      background:
+        linear-gradient(135deg, rgba(53, 95, 87, .08), transparent 48%),
+        var(--paper);
+      border-radius: .55rem 2.4rem .55rem 2.4rem;
+      font-family: var(--viz-font-display, Georgia, "Times New Roman", serif);
+    }
+
+    .reiki-boundaries-map *,
+    .reiki-boundaries-map *::before,
+    .reiki-boundaries-map *::after {
+      box-sizing: border-box;
+    }
+
+    .reiki-boundaries-map__eyebrow {
+      margin: 0 0 .65rem !important;
+      color: var(--master) !important;
+      font-family: var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+      font-size: .76rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .reiki-boundaries-map .reiki-boundaries-map__title {
+      max-width: 17ch;
+      margin: 0 !important;
+      color: var(--ink) !important;
+      font-size: clamp(2rem, 5.8cqi, 3.6rem);
+      font-weight: 400;
+      line-height: 1;
+      text-wrap: balance;
+    }
+
+    .reiki-boundaries-map__intro {
+      max-width: 47rem;
+      margin: 1rem 0 0 !important;
+      color: var(--muted) !important;
+      font-family: var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+      font-size: 1rem;
+      line-height: 1.58;
+    }
+
+    .reiki-boundaries-map__field {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      align-items: center;
+      margin-top: clamp(2rem, 6cqi, 3.8rem);
+      font-family: var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+    }
+
+    .reiki-boundaries-map .reiki-boundaries-map__core {
+      position: relative;
+      min-width: 0;
+      margin: 0 !important;
+      padding: clamp(1.4rem, 5cqi, 2.7rem) !important;
+      overflow: visible !important;
+      color: #fff;
+      background: var(--master);
+      border-radius: 3rem 50% 1.2rem 3rem;
+    }
+
+    .reiki-boundaries-map__core::after {
+      content: "";
+      position: absolute;
+      right: 12%;
+      bottom: -1.25rem;
+      width: 2px;
+      height: 1.25rem;
+      background: var(--master);
+    }
+
+    .reiki-boundaries-map__core span {
+      display: block;
+      margin-bottom: .7rem;
+      color: rgba(255, 255, 255, .74);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+    }
+
+    .reiki-boundaries-map__core h4 {
+      margin: 0 !important;
+      color: #fff !important;
+      font-family: var(--viz-font-display, Georgia, "Times New Roman", serif);
+      font-size: clamp(1.55rem, 4cqi, 2.35rem);
+      font-weight: 400;
+      line-height: 1.08;
+    }
+
+    .reiki-boundaries-map__core p {
+      margin: .8rem 0 0 !important;
+      color: #fff !important;
+      font-size: .9rem;
+      line-height: 1.5;
+    }
+
+    .reiki-boundaries-map__routes {
+      display: grid;
+      gap: .7rem;
+      margin: 0 !important;
+      padding: 0 !important;
+      list-style: none !important;
+    }
+
+    .reiki-boundaries-map__route {
+      position: relative;
+      display: grid !important;
+      grid-template-columns: minmax(10.6rem, .75fr) minmax(0, 1.25fr);
+      gap: .8rem;
+      margin: 0 !important;
+      padding: .85rem 0 .85rem 1.1rem !important;
+      border-left: 4px solid var(--medical);
+      color: var(--ink) !important;
+      background: linear-gradient(90deg, rgba(53, 106, 119, .09), transparent);
+    }
+
+    .reiki-boundaries-map__route:nth-child(2) {
+      margin-left: 6% !important;
+      border-left-color: var(--psych);
+      background: linear-gradient(90deg, rgba(138, 103, 61, .1), transparent);
+    }
+
+    .reiki-boundaries-map__route:nth-child(3) {
+      margin-left: 12% !important;
+      border-left-color: var(--urgent);
+      background: linear-gradient(90deg, rgba(166, 73, 63, .1), transparent);
+    }
+
+    .reiki-boundaries-map__route strong {
+      min-width: 0;
+      color: var(--ink);
+      font-family: var(--viz-font-display, Georgia, "Times New Roman", serif);
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.2;
+      overflow-wrap: break-word;
+      hyphens: none;
+    }
+
+    .reiki-boundaries-map__route span {
+      min-width: 0;
+      color: var(--muted);
+      font-size: .84rem;
+      line-height: 1.45;
+      overflow-wrap: break-word;
+    }
+
+    .reiki-boundaries-map__route:nth-child(3) strong {
+      color: var(--urgent);
+    }
+
+    .reiki-boundaries-map__footer {
+      max-width: 44rem;
+      margin: clamp(1.7rem, 4cqi, 2.8rem) 0 0 auto !important;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(31, 53, 55, .22);
+      color: var(--ink) !important;
+      font-family: var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+      font-size: 1rem;
+      line-height: 1.52;
+    }
+
+    @container reiki-boundaries-map (min-width: 650px) {
+      .reiki-boundaries-map__field {
+        grid-template-columns: minmax(14rem, .9fr) minmax(0, 1.35fr);
+        gap: clamp(1.5rem, 5cqi, 3.2rem);
+      }
+
+      .reiki-boundaries-map__core::after {
+        right: -1.5rem;
+        bottom: auto;
+        top: 50%;
+        width: 1.5rem;
+        height: 2px;
+      }
+    }
+
+    @container reiki-boundaries-map (max-width: 470px) {
+      .reiki-boundaries-map__route {
+        grid-template-columns: 1fr;
+        gap: .25rem;
+      }
+    }
+  </style>
+
+  <figcaption>
+    <p class="reiki-boundaries-map__eyebrow">Это не ко мне</p>
+    <h3 class="reiki-boundaries-map__title" id="reiki-boundaries-map-title">Граница роли — это правильный адрес для вопроса</h3>
+    <p class="reiki-boundaries-map__intro" id="reiki-boundaries-map-desc">Мастер-Учитель отвечает за формат практики и переданные инструкции. Другие вопросы не становятся его компетенцией только потому, что ученик их задал.</p>
+  </figcaption>
+
+  <div class="reiki-boundaries-map__field">
+    <section class="reiki-boundaries-map__core" aria-label="Собственная компетенция Мастера Рейки">
+      <span>Собственная компетенция</span>
+      <h4>Практика Рейки</h4>
+      <p>Формат практики, полученные инструкции, демонстрация, исправление ошибки и обратная связь.</p>
+    </section>
+
+    <ul class="reiki-boundaries-map__routes" aria-label="Куда направлять вопросы за пределами компетенции Мастера">
+      <li class="reiki-boundaries-map__route"><strong>Врач</strong><span>Боль, диагноз, лекарства, новый симптом или ухудшение состояния.</span></li>
+      <li class="reiki-boundaries-map__route"><strong>Психологическая или психиатрическая помощь</strong><span>Острая тревога, кризис или состояние, требующее профильной оценки.</span></li>
+      <li class="reiki-boundaries-map__route"><strong>Экстренная помощь</strong><span>Острое состояние, резкое ухудшение, нарушение дыхания, потеря сознания или непосредственная опасность.</span></li>
+    </ul>
+  </div>
+
+  <p class="reiki-boundaries-map__footer">Ответственность Мастера — назвать границу своей роли и не задерживать человека на неправильном маршруте.</p>
+</figure>

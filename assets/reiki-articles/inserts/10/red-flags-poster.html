@@ -1,0 +1,155 @@
+<figure class="reiki-red-flags" aria-labelledby="reiki-red-flags-title" aria-describedby="reiki-red-flags-desc">
+  <style>
+    .reiki-red-flags {
+      --cream: #fff8e9;
+      --cream-muted: #e5d7c0;
+      --red: #7a302b;
+      --red-dark: #4d2422;
+      --signal: #e0a15a;
+      box-sizing: border-box;
+      container-name: reiki-red-flags;
+      container-type: inline-size;
+      width: min(100%, 980px);
+      margin: 2.5rem auto;
+      padding: clamp(1.4rem, 6cqi, 3.6rem);
+      overflow: hidden;
+      color: var(--cream);
+      background:
+        linear-gradient(145deg, rgba(224, 161, 90, .12), transparent 45%),
+        var(--red-dark);
+      border-radius: .4rem .4rem 2.5rem .4rem;
+      font-family: var(--viz-font-display, Georgia, "Times New Roman", serif);
+    }
+
+    .reiki-red-flags *,
+    .reiki-red-flags *::before,
+    .reiki-red-flags *::after {
+      box-sizing: border-box;
+    }
+
+    .reiki-red-flags__eyebrow {
+      margin: 0 0 .65rem !important;
+      color: var(--signal) !important;
+      font-family: var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+      font-size: .76rem;
+      font-weight: 700;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    .reiki-red-flags .reiki-red-flags__title {
+      max-width: 16ch;
+      margin: 0 !important;
+      color: var(--cream) !important;
+      font-size: clamp(2rem, 6.2cqi, 3.8rem);
+      font-weight: 400;
+      line-height: .98;
+      text-wrap: balance;
+    }
+
+    .reiki-red-flags__intro {
+      max-width: 43rem;
+      margin: 1rem 0 0 !important;
+      color: var(--cream-muted) !important;
+      font-family: var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+      font-size: 1rem;
+      line-height: 1.55;
+    }
+
+    .reiki-red-flags .reiki-red-flags__quote {
+      position: relative;
+      max-width: 38rem;
+      margin: clamp(2rem, 5cqi, 3.4rem) 0 clamp(1.6rem, 4cqi, 2.7rem) auto !important;
+      padding: 1.2rem 1.2rem 1.2rem clamp(1.3rem, 4cqi, 2.6rem) !important;
+      border-left: 5px solid var(--signal);
+      color: #292319 !important;
+      background: #fff0d1 !important;
+      font-size: clamp(1.45rem, 4cqi, 2.2rem);
+      line-height: 1.18;
+    }
+
+    .reiki-red-flags__quote::before {
+      content: "«";
+      position: absolute;
+      top: -.9rem;
+      left: .25rem;
+      color: var(--signal);
+      font-size: 4.5rem;
+      line-height: 1;
+      opacity: .35;
+    }
+
+    .reiki-red-flags__signals {
+      display: grid !important;
+      grid-template-columns: 1fr;
+      gap: 0;
+      margin: 0 !important;
+      padding: 0 !important;
+      border-top: 1px solid rgba(255, 248, 233, .28);
+      list-style: none !important;
+      font-family: var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+    }
+
+    .reiki-red-flags__signals li {
+      display: grid;
+      grid-template-columns: 1.3rem 1fr;
+      gap: .65rem;
+      margin: 0 !important;
+      padding: .85rem 0 !important;
+      border-bottom: 1px solid rgba(255, 248, 233, .18);
+      color: var(--cream) !important;
+      font-size: .9rem;
+      line-height: 1.48;
+    }
+
+    .reiki-red-flags__signals li::before {
+      content: "×";
+      color: var(--signal);
+      font-family: var(--viz-font-display, Georgia, "Times New Roman", serif);
+      font-size: 1.4rem;
+      line-height: .8;
+    }
+
+    .reiki-red-flags__footer {
+      margin: clamp(1.6rem, 4cqi, 2.6rem) 0 0 !important;
+      color: var(--cream-muted) !important;
+      font-family: var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+      font-size: .92rem;
+      line-height: 1.5;
+    }
+
+    .reiki-red-flags__footer strong {
+      color: var(--signal);
+    }
+
+    @container reiki-red-flags (min-width: 620px) {
+      .reiki-red-flags__signals {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: clamp(1.4rem, 4cqi, 2.8rem);
+      }
+    }
+  </style>
+
+  <figcaption>
+    <p class="reiki-red-flags__eyebrow">Редакционный плакат</p>
+    <h3 class="reiki-red-flags__title" id="reiki-red-flags-title">Красный флаг не обязан выглядеть страшно</h3>
+    <p class="reiki-red-flags__intro" id="reiki-red-flags-desc">Опасным бывает не только обещание. Важно, как Мастер отвечает на вопросы, относится к согласию и оставляет ли человеку право выбирать.</p>
+  </figcaption>
+
+  <blockquote class="reiki-red-flags__quote">Я просто лучше знаю, что вам сейчас нужно.</blockquote>
+
+  <ul class="reiki-red-flags__signals" aria-label="Красные флаги при выборе Мастера Рейки">
+    <li>Гарантирует исцеление или одинаковый результат.</li>
+    <li>Предлагает отказаться от врача, лекарства или психотерапии.</li>
+    <li>Ставит диагноз по энергии.</li>
+    <li>Не разрешает задавать вопросы до оплаты.</li>
+    <li>Требует решить немедленно.</li>
+    <li>Скрывает программу или дополнительные платежи.</li>
+    <li>Прикасается без согласия или не принимает слово «стоп».</li>
+    <li>Пугает потерей защиты или силы.</li>
+    <li>Делает каждую следующую ступень обязательной.</li>
+    <li>Обещает профессиональные права, которых обучение не даёт.</li>
+  </ul>
+
+  <p class="reiki-red-flags__footer"><strong>Достаточная причина остановиться:</strong> после разговора стало не яснее, а страшнее отказаться или задать ещё один вопрос.</p>
+</figure>

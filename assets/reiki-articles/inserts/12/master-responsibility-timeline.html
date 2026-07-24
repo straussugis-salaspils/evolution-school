@@ -1,0 +1,245 @@
+<figure class="reiki-master-timeline" aria-labelledby="reiki-master-timeline-title" aria-describedby="reiki-master-timeline-desc">
+  <style>
+    .reiki-master-timeline {
+      --ink: #203930;
+      --muted: #6d6559;
+      --green: #315f5b;
+      --green-light: #dfe9e0;
+      --gold: #b78a3e;
+      --paper: #fbf8ef;
+      box-sizing: border-box;
+      container-name: reiki-master-timeline;
+      container-type: inline-size;
+      width: min(100%, 980px);
+      margin: 2.5rem auto;
+      padding: clamp(1.35rem, 6cqi, 3.5rem);
+      color: var(--ink);
+      background: var(--paper);
+      border: 1px solid rgba(32, 57, 48, .12);
+      border-radius: 2.2rem .55rem .55rem .55rem;
+      font-family: var(--viz-font-display, Georgia, "Times New Roman", serif);
+    }
+
+    .reiki-master-timeline *,
+    .reiki-master-timeline *::before,
+    .reiki-master-timeline *::after {
+      box-sizing: border-box;
+    }
+
+    .reiki-master-timeline__eyebrow {
+      margin: 0 0 .65rem !important;
+      color: var(--gold) !important;
+      font-family: var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+      font-size: .76rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .reiki-master-timeline .reiki-master-timeline__title {
+      max-width: 17ch;
+      margin: 0 !important;
+      color: var(--ink) !important;
+      font-size: clamp(2rem, 5.8cqi, 3.6rem);
+      font-weight: 400;
+      line-height: 1;
+      text-wrap: balance;
+    }
+
+    .reiki-master-timeline__intro {
+      max-width: 45rem;
+      margin: 1rem 0 0 !important;
+      color: var(--muted) !important;
+      font-family: var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+      font-size: 1rem;
+      line-height: 1.58;
+    }
+
+    .reiki-master-timeline__axis {
+      position: relative;
+      display: grid !important;
+      grid-template-columns: 1fr;
+      gap: 0;
+      margin: clamp(2rem, 6cqi, 3.8rem) 0 0 !important;
+      padding: 0 !important;
+      list-style: none !important;
+      counter-reset: master-time;
+      font-family: var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+    }
+
+    .reiki-master-timeline__axis::before {
+      content: "";
+      position: absolute;
+      top: 1rem;
+      bottom: 1rem;
+      left: .72rem;
+      width: 3px;
+      background: linear-gradient(var(--gold), var(--green), var(--green-light));
+      border-radius: 2px;
+    }
+
+    .reiki-master-timeline__moment {
+      position: relative;
+      min-width: 0;
+      margin: 0 !important;
+      padding: 0 0 2rem 3rem !important;
+      color: var(--ink) !important;
+      counter-increment: master-time;
+    }
+
+    .reiki-master-timeline__moment::before {
+      content: counter(master-time);
+      position: absolute;
+      top: .1rem;
+      left: 0;
+      display: grid;
+      width: 1.55rem;
+      height: 1.55rem;
+      place-items: center;
+      color: #fff;
+      background: var(--green);
+      border: 4px solid var(--paper);
+      border-radius: 50%;
+      font-size: .65rem;
+      font-weight: 700;
+      z-index: 1;
+    }
+
+    .reiki-master-timeline__moment:first-child::before {
+      background: var(--gold);
+    }
+
+    .reiki-master-timeline__moment h4 {
+      margin: 0 !important;
+      color: var(--ink) !important;
+      font-family: var(--viz-font-display, Georgia, "Times New Roman", serif);
+      font-size: clamp(1.35rem, 3.6cqi, 2rem);
+      font-weight: 400;
+      line-height: 1.15;
+    }
+
+    .reiki-master-timeline__moment > p {
+      margin: .45rem 0 0 !important;
+      color: var(--muted) !important;
+      font-size: .9rem;
+      line-height: 1.5;
+    }
+
+    .reiki-master-timeline__moment ul {
+      display: grid !important;
+      gap: .3rem;
+      margin: .8rem 0 0 !important;
+      padding: .75rem 0 0 !important;
+      border-top: 1px solid rgba(32, 57, 48, .16);
+      list-style: none !important;
+    }
+
+    .reiki-master-timeline__moment li {
+      margin: 0 !important;
+      padding: 0 !important;
+      color: var(--ink) !important;
+      font-size: .83rem;
+      line-height: 1.43;
+    }
+
+    .reiki-master-timeline__moment li::before {
+      content: "— ";
+      color: var(--gold);
+    }
+
+    .reiki-master-timeline__result {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: .9rem;
+      align-items: center;
+      margin: .2rem 0 0 auto;
+      max-width: 39rem;
+      padding-top: 1rem;
+      border-top: 2px solid var(--green);
+      color: var(--ink);
+      font-family: var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+      font-size: 1rem;
+      line-height: 1.52;
+    }
+
+    .reiki-master-timeline__result span:first-child {
+      color: var(--green);
+      font-family: var(--viz-font-display, Georgia, "Times New Roman", serif);
+      font-size: 2rem;
+    }
+
+    .reiki-master-timeline__result span:last-child {
+      color: var(--ink);
+      font-family: var(--viz-font-display, Georgia, "Times New Roman", serif);
+      font-size: clamp(1.15rem, 3.5cqi, 1.55rem);
+      line-height: 1.3;
+    }
+
+    @container reiki-master-timeline (min-width: 640px) {
+      .reiki-master-timeline__axis {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: clamp(1.2rem, 4cqi, 2.7rem);
+      }
+
+      .reiki-master-timeline__axis::before {
+        top: .72rem;
+        right: 0;
+        bottom: auto;
+        left: 0;
+        width: auto;
+        height: 3px;
+        background: linear-gradient(90deg, var(--gold), var(--green), var(--green-light));
+      }
+
+      .reiki-master-timeline__moment {
+        padding: 3rem 0 0 !important;
+      }
+
+      .reiki-master-timeline__moment::before {
+        top: 0;
+        left: 0;
+      }
+    }
+  </style>
+
+  <figcaption>
+    <p class="reiki-master-timeline__eyebrow">Ответственность во времени</p>
+    <h3 class="reiki-master-timeline__title" id="reiki-master-timeline-title">Роль Мастера меняется по ходу обучения</h3>
+    <p class="reiki-master-timeline__intro" id="reiki-master-timeline-desc">До, во время и после обучения ответственность выглядит по-разному, но в каждой точке сохраняются ясность и уважение к границам человека.</p>
+  </figcaption>
+
+  <ol class="reiki-master-timeline__axis" aria-label="Три этапа ответственности Мастера-Учителя">
+    <li class="reiki-master-timeline__moment">
+      <h4>До обучения</h4>
+      <p>Дать человеку достаточно информации, чтобы он мог решить без давления.</p>
+      <ul>
+        <li>кто обучает и что входит;</li>
+        <li>как проходит встреча;</li>
+        <li>что останется после;</li>
+        <li>где граница компетенции.</li>
+      </ul>
+    </li>
+    <li class="reiki-master-timeline__moment">
+      <h4>Во время</h4>
+      <p>Держать структуру, понятно объяснять и уважать право человека остановиться.</p>
+      <ul>
+        <li>понятные инструкции;</li>
+        <li>инициация в рамках линии;</li>
+        <li>никакого стыда и сравнения;</li>
+        <li>согласие остаётся действующим.</li>
+      </ul>
+    </li>
+    <li class="reiki-master-timeline__moment">
+      <h4>После</h4>
+      <p>Отвечать на вопросы о практике и помогать ученику становиться самостоятельнее.</p>
+      <ul>
+        <li>обратная связь по инструкциям;</li>
+        <li>помощь увидеть ошибку;</li>
+        <li>не контролировать каждый шаг;</li>
+        <li>поддержка постепенно нужна реже.</li>
+      </ul>
+    </li>
+  </ol>
+
+  <div class="reiki-master-timeline__result"><span aria-hidden="true">→</span><span>Хорошая поддержка не делает Мастера необходимым навсегда.</span></div>
+</figure>
