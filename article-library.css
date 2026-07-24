@@ -235,6 +235,25 @@ body.article-page {
   box-shadow: 0 25px 55px rgba(63, 45, 17, 0.13);
 }
 
+.library-topic-card--transitions {
+  --interactive-card-accent: #b86b4a;
+  --interactive-card-bg-hover: #f7e7dc;
+  --interactive-card-border: rgba(140, 71, 51, 0.46);
+  --interactive-card-shadow: 0 25px 55px rgba(75, 38, 30, 0.14);
+}
+
+.library-topic-card--transitions .library-topic-card__eyebrow,
+.library-topic-card--transitions .library-topic-card__link {
+  color: #8c4733;
+}
+
+.library-topic-card--transitions:hover,
+.library-topic-card--transitions:focus-visible {
+  border-color: rgba(140, 71, 51, 0.4);
+  background-color: #f7e7dc !important;
+  box-shadow: 0 25px 55px rgba(75, 38, 30, 0.14);
+}
+
 .library-topic-card__copy {
   display: flex;
   flex-direction: column;
@@ -1691,5 +1710,123 @@ body.eh-context--reiki .reiki-path-bridge .button--secondary {
   .reiki-reading-card,
   .article-related__card {
     transition: none;
+  }
+}
+
+/* Пересборка жизни: article layer inherits the approved Method colour system. */
+body.article-page--transitions,
+body.library-page--transitions {
+  --library-gold: #b86b4a;
+  --library-gold-deep: #8c4733;
+  --library-gold-soft: #dfc1a9;
+  --library-cream: #f2e2d4;
+  --library-paper: #fcfaf5;
+  --library-ink: #2f201b;
+  --library-muted: #6d554c;
+  --library-line: rgba(140, 71, 51, 0.22);
+  --library-shadow: 0 20px 55px rgba(75, 38, 30, 0.1);
+}
+
+body.article-page--transitions .article-hero {
+  background:
+    radial-gradient(circle at 82% 18%, rgba(223, 193, 169, 0.58), transparent 27rem),
+    linear-gradient(102deg, #fcfaf5 0%, #f7ede4 54%, #f2e2d4 100%);
+}
+
+body.library-page--transitions .article-list-hero {
+  background:
+    radial-gradient(circle at 86% 20%, rgba(223, 193, 169, 0.64), transparent 25rem),
+    linear-gradient(110deg, #fcfaf5 0%, #f7ede4 68%, #dfc1a9 100%);
+}
+
+body.article-page--transitions .article-hero__visual::before {
+  border-color: rgba(140, 71, 51, 0.45);
+}
+
+body.article-page--transitions .article-toc,
+body.article-page--transitions .article-body .article-intro {
+  background: rgba(252, 250, 245, 0.9);
+}
+
+body.article-page--transitions .article-card,
+body.library-page--transitions .article-card,
+body.article-page--transitions .article-compact-card,
+body.library-page--transitions .article-compact-card,
+body.article-page--transitions .article-related__card {
+  --interactive-card-accent: #b86b4a;
+  --interactive-card-bg-hover: #f7e7dc;
+  --interactive-card-border: rgba(140, 71, 51, 0.46);
+  --interactive-card-shadow: 0 22px 48px rgba(75, 38, 30, 0.14);
+}
+
+body.library-page--transitions .article-card:hover,
+body.library-page--transitions .article-card:focus-visible,
+body.library-page--transitions .article-compact-card:hover,
+body.library-page--transitions .article-compact-card:focus-visible,
+body.article-page--transitions .article-related__card:hover,
+body.article-page--transitions .article-related__card:focus-visible {
+  border-color: rgba(140, 71, 51, 0.4);
+  background-color: #f7e7dc !important;
+  box-shadow: 0 22px 48px rgba(75, 38, 30, 0.14);
+}
+
+body.article-page--transitions .article-next-step,
+body.library-page--transitions .transition-path-bridge {
+  background: #4b261e;
+  color: #fcfaf5;
+}
+
+body.article-page--transitions .article-next-step__eyebrow,
+body.library-page--transitions .transition-path-bridge .reiki-path-bridge__eyebrow {
+  color: #e6b99d !important;
+}
+
+body.article-page--transitions .article-next-step h2,
+body.library-page--transitions .transition-path-bridge h2 {
+  color: #fcfaf5;
+}
+
+body.article-page--transitions .article-next-step h2::before {
+  background: #b86b4a;
+}
+
+body.article-page--transitions .article-next-step p,
+body.library-page--transitions .transition-path-bridge p:not(.reiki-path-bridge__eyebrow) {
+  color: #f3dfd4 !important;
+}
+
+body.library-page--transitions .transition-path-bridge .button--primary {
+  border-color: #b86b4a !important;
+  background: #b86b4a !important;
+  color: #fff !important;
+}
+
+body.library-page--transitions .transition-path-bridge .button--secondary {
+  border: 1px solid rgba(255, 255, 255, 0.52) !important;
+  background: transparent !important;
+  color: #fff !important;
+}
+
+body.article-page--transitions .article-related__intro {
+  max-width: 66ch;
+  margin: 0.7rem 0 0;
+  color: var(--library-muted);
+  line-height: 1.6;
+}
+
+body.article-page--transitions .article-boundary {
+  border-color: rgba(140, 71, 51, 0.24);
+  background: #fcfaf5;
+}
+
+@media (max-width: 720px) {
+  body.article-page--transitions .article-hero--long-title h1 {
+    font-size: clamp(1.5rem, 6.3vw, 1.72rem);
+    line-height: 1.06;
+  }
+
+  body.library-page--transitions .article-list-hero h1 {
+    font-size: clamp(2.15rem, 10vw, 3rem);
+    line-height: 1;
   }
 }
