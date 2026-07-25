@@ -19,8 +19,9 @@ const walk = (dir) => fs.readdirSync(dir, { withFileTypes: true }).flatMap((entr
   return entry.isDirectory() ? walk(absolute) : [absolute];
 });
 const includes = '  <link rel="stylesheet" href="/cookie-consent.css">\n  <script src="/analytics.js" defer></script>';
+const isVerificationFile = (file) => /^yandex_[a-f0-9]+\.html$/i.test(path.basename(file));
 let changed = 0;
-for (const file of walk(root).filter((file) => file.endsWith(".html"))) {
+for (const file of walk(root).filter((file) => file.endsWith(".html") && !isVerificationFile(file))) {
   const source = fs.readFileSync(file, "utf8");
   if (source.includes("/analytics.js")) continue;
   if (!/<\/head>/i.test(source)) throw new Error(`Missing </head>: ${path.relative(root, file)}`);
