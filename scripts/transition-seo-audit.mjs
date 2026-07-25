@@ -53,7 +53,7 @@ for (const route of [hub, ...routes]) {
   if (html.includes("/biblioteka/perehody/boyus-peremen/")) {
     failures.push(`${route}: forbidden route boyus-peremen is present`);
   }
-  if (!html.includes("Статьи о пересборке жизни и переходах")) {
+  if (!html.includes("Статьи о пересборке жизни")) {
     failures.push(`${route}: transition navigation is missing`);
   }
   if (!html.includes('type="application/ld+json"')) {

@@ -302,7 +302,7 @@ function commonShell() {
         <a href="/urovni-zhizni/kvantovaya-aktivaciya/">Квантовая активация</a>
         <a href="/urovni-zhizni/individualnyj-retrit/">Индивидуальный ретрит</a>
         <a href="/urovni-zhizni/personalnyj-marshrut/">Маршрут 6–9 месяцев</a>
-        <a class="eh-local-strip__articles" href="${hubRoute}" aria-current="page">Статьи о пересборке жизни и переходах</a>
+        <a class="eh-local-strip__articles" href="${hubRoute}" aria-current="page">Статьи о пересборке жизни</a>
       </div>
     </nav>`;
   const header = sourceHeader
@@ -363,7 +363,7 @@ function renderTransitionInsert(insert) {
     )
     .trim();
   const captionId = `transition-insert-caption-${insert.id}`;
-  return `<figure class="transition-article-insert transition-article-insert--${escapeHtml(insert.type)}" data-transition-insert="${escapeHtml(insert.id)}" data-provenance="${escapeHtml(insert.provenance)}" aria-labelledby="${captionId}">
+  return `<figure class="article-insert article-insert--editorial article-visual-insert article-visual-insert--family-map article-visual-insert--tone-default transition-article-insert transition-article-insert--${escapeHtml(insert.type)}" data-visual-family="map" data-visual-tone="default" data-transition-insert="${escapeHtml(insert.id)}" data-provenance="${escapeHtml(insert.provenance)}" aria-labelledby="${captionId}">
             ${stage}
             <figcaption class="transition-article-insert__caption" id="${captionId}">
               <strong>${escapeHtml(insert.caption)}</strong>
@@ -705,11 +705,23 @@ function renderHub(articles, shell) {
     <section class="library-section library-section--paper">
       <div class="eh-shell-container">
         <div class="library-section__head">
-          <h2>Сначала — вопрос, который сейчас не отпускает</h2>
-          <p>Каждая статья разбирает одну ситуацию и ведёт к следующему проверяемому шагу. Можно начать с любого материала.</p>
+          <h2>С чего начать</h2>
+          <p>Три материала для первого знакомства: увидеть свою точку, разобраться с тупиком и отделить решение от требования немедленной гарантии.</p>
         </div>
         <div class="article-card-grid">${articles.slice(0, 3).map(renderFeaturedCard).join("\n")}</div>
+      </div>
+    </section>
+    <section class="library-section library-section--sage">
+      <div class="eh-shell-container">
+        <div class="library-section__head">
+          <h2>Другие вопросы о переходах</h2>
+          <p>Можно начать с любой ситуации, которая сейчас ближе: новый этап, чужой сценарий, развод, завершённая цель или перемены, на которые трудно решиться.</p>
+        </div>
         <div class="article-compact-grid">${articles.slice(3).map(renderCompactCard).join("\n")}</div>
+      </div>
+    </section>
+    <section class="library-section library-section--paper">
+      <div class="eh-shell-container">
         <aside class="reiki-path-bridge transition-path-bridge">
           <div>
             <p class="reiki-path-bridge__eyebrow">Когда ответов уже достаточно</p>
