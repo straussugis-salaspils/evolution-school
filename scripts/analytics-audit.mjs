@@ -18,7 +18,10 @@ const walk = (dir) => fs.readdirSync(dir, { withFileTypes: true }).flatMap((entr
   }
   return entry.isDirectory() ? walk(absolute) : [absolute];
 });
-const htmlFiles = walk(root).filter((file) => file.endsWith(".html"));
+const htmlFiles = walk(root).filter((file) => (
+  file.endsWith(".html") &&
+  !/^yandex_[a-f0-9]+\.html$/i.test(path.basename(file))
+));
 const analytics = fs.readFileSync(path.join(root, "analytics.js"), "utf8");
 const errors = [];
 

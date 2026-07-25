@@ -22,7 +22,10 @@ const walk = (dir) => fs.readdirSync(dir, { withFileTypes: true }).flatMap((entr
   return entry.isDirectory() ? walk(absolute) : [absolute];
 });
 
-const htmlFiles = walk(ROOT).filter((file) => file.toLowerCase().endsWith(".html"));
+const htmlFiles = walk(ROOT).filter((file) => (
+  file.toLowerCase().endsWith(".html") &&
+  !/^yandex_[a-f0-9]+\.html$/i.test(path.basename(file))
+));
 const relative = (file) => path.relative(ROOT, file).replaceAll("\\", "/");
 const routeForFile = (file) => {
   const rel = relative(file);
