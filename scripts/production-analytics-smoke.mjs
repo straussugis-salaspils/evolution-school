@@ -93,7 +93,15 @@ try {
     urls.length = 0;
     await send("Page.navigate", { url: `${BASE_URL}/?analytics_production_smoke=revoked` });
     await wait(850);
-    check("production keeps analytics tags absent after revocation", await value(`${gaScript} === 0 && ${metrikaScript} === 0 && typeof window.gtag === 'undefined' && typeof window.dataLayer === 'undefined' && typeof window.ym === 'undefined' && ${gaCookies} && ${metrikaCookies}`));
+    check("production keeps analytics tags and globals absent after revocation", await value(`${gaScript} === 0 && ${metrikaScript} === 0 && typeof window.gtag === 'undefined' && typeof window.dataLayer === 'undefined' && typeof window.ym === 'undefined'`));
+    check("production clears GA cookies after revocation", await value(gaCookies));
+    const remainingMetrikaCookies = await value("document.cookie.split(';').map((entry) => entry.trim().split('=')[0]).filter((name) => /^(?:_ym_|_yasc$|yuid$|ymex$)/i.test(name))");
+    check("production clears Yandex Metrika cookies after revocation", remainingMetrikaCookies.length === 0);
+    if (remainingMetrikaCookies.length) {
+      const { cookies } = await send("Network.getAllCookies");
+      const details = cookies.filter((item) => remainingMetrikaCookies.includes(item.name)).map((item) => `${item.name}@${item.domain}${item.path}`);
+      console.error(`Remaining Yandex Metrika cookies: ${details.join(", ")}`);
+    }
     check("production sends no Google request after revocation", google().length === 0);
     check("production sends no Yandex request after revocation", yandex().length === 0);
   }

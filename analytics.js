@@ -132,10 +132,16 @@
   };
   const clearAnalyticsCookies = () => {
     try {
+      const domainAttributes = [""];
+      if (location.hostname === "yourbalancerestored.com" || location.hostname.endsWith(".yourbalancerestored.com")) {
+        domainAttributes.push(`; Domain=.${location.hostname}`, "; Domain=.yourbalancerestored.com");
+      }
       document.cookie.split(";").map((entry) => entry.trim().split("=")[0]).filter((name) => (
         /^_ga(?:_|$)|^_gid$|^_ym_|^_yasc$|^yuid$|^ymex$/i.test(name)
       )).forEach((name) => {
-        document.cookie = `${name}=; Path=/; Max-Age=0; SameSite=Lax`;
+        for (const domain of domainAttributes) {
+          document.cookie = `${name}=; Path=/; Max-Age=0; SameSite=Lax${domain}`;
+        }
       });
     } catch { /* Cookie storage may be disabled. */ }
   };
