@@ -398,9 +398,12 @@ body.article-page {
 
 .article-hero__visual::before {
   position: absolute;
-  inset: -0.8rem 0.8rem 0.8rem -0.8rem;
+  z-index: 2;
+  inset: 0;
+  box-sizing: border-box;
   border: 1px solid rgba(183, 138, 62, 0.45);
   content: "";
+  pointer-events: none;
 }
 
 .article-hero__visual img {
