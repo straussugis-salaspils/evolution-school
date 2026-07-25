@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-24T12:02:36.544Z",
+  "generatedAt": "2026-07-25T17:53:08.535Z",
   "selectionFile": "artifacts/reiki-visual-production/selection.json",
   "articles": [
     {
@@ -1445,15 +1445,146 @@
     },
     {
       "number": 12,
-      "selectedSource": "artifacts/reiki-visual-production/candidates/07-12/12/candidate-a.png",
+      "selectedSource": "docs/seo/reiki/visuals/article-12-help-without-exhaustion-source.png",
+      "selectionReason": "????? ??????? ????? ?????????? ??????????? ? ???????????? ????????? ??? ????????????? ???????? ??? ????????????? ?????.",
+      "promptFile": "docs/seo/reiki/visuals/article-12-image-provenance.md",
+      "sourceWidth": 1448,
+      "sourceHeight": 1086,
+      "sourceSha256": "6ff74cf40a22cb54275bc049ec9049f98dc6bada906cc13ff9062eaa343aa339",
+      "outputs": [
+        {
+          "file": "assets/reiki-articles/12/hero-480.webp",
+          "width": 480,
+          "height": 360,
+          "bytes": 17482,
+          "quality": 78,
+          "sha256": "39019bfed656088a7b1c4d9d4d5858299d4096276b574df015a1ab21b84ec9ac"
+        },
+        {
+          "file": "assets/reiki-articles/12/hero-480.jpg",
+          "width": 480,
+          "height": 360,
+          "bytes": 24274,
+          "quality": 82,
+          "sha256": "4a9f3d17ce44c4a4fc53d8ff927b463682dce8fa52fffd29b74cc47a4bafcddd"
+        },
+        {
+          "file": "assets/reiki-articles/12/hero-768.webp",
+          "width": 768,
+          "height": 576,
+          "bytes": 31700,
+          "quality": 78,
+          "sha256": "489e59162d50eb6de22af243a931db86253bec65a491579a618da7dbfe676bb1"
+        },
+        {
+          "file": "assets/reiki-articles/12/hero-768.jpg",
+          "width": 768,
+          "height": 576,
+          "bytes": 48513,
+          "quality": 82,
+          "sha256": "629d1c9e505af64810481e101bcc74f75cd22b0774a9552acca64efa2038d02c"
+        },
+        {
+          "file": "assets/reiki-articles/12/hero-1200.webp",
+          "width": 1200,
+          "height": 900,
+          "bytes": 55244,
+          "quality": 78,
+          "sha256": "30bf0fddca99e4f3ca99b41d6016b34e3fd4c9cb5a30d15ebd06e3346ba8793e"
+        },
+        {
+          "file": "assets/reiki-articles/12/hero-1200.jpg",
+          "width": 1200,
+          "height": 900,
+          "bytes": 94328,
+          "quality": 82,
+          "sha256": "5faeb9613622a746a71507bf4ddc49c2a842176282298ea9b331975dd28fe224"
+        },
+        {
+          "file": "assets/reiki-articles/12/hero-1600.webp",
+          "width": 1600,
+          "height": 1200,
+          "bytes": 77012,
+          "quality": 78,
+          "sha256": "b6a973658466ebe61b07139c2324fd2f2522a89ecbb0e8366a8e93cafe81ca93"
+        },
+        {
+          "file": "assets/reiki-articles/12/hero-1600.jpg",
+          "width": 1600,
+          "height": 1200,
+          "bytes": 141103,
+          "quality": 82,
+          "sha256": "55eb01a5eb83711b0901bc06eab4634cf4dbc521403d125b3e12e9f3ab1d1d9e"
+        },
+        {
+          "file": "assets/reiki-articles/12/card-480.webp",
+          "width": 480,
+          "height": 300,
+          "bytes": 14422,
+          "quality": 78,
+          "sha256": "1f51682fdcefea2559b538f621e35b0a4ba9108acbd13aedcef4cbe73579dc8f"
+        },
+        {
+          "file": "assets/reiki-articles/12/card-480.jpg",
+          "width": 480,
+          "height": 300,
+          "bytes": 20326,
+          "quality": 82,
+          "sha256": "8fa0bfbba69009b9f4340a94cced51b89aa33d0c545a92ae16ab15a1ae8fb04b"
+        },
+        {
+          "file": "assets/reiki-articles/12/card-800.webp",
+          "width": 800,
+          "height": 500,
+          "bytes": 27982,
+          "quality": 78,
+          "sha256": "54f6b70301e5c75f64d7e424db25fc2cc727e14d8079071939df98ac50990137"
+        },
+        {
+          "file": "assets/reiki-articles/12/card-800.jpg",
+          "width": 800,
+          "height": 500,
+          "bytes": 43301,
+          "quality": 82,
+          "sha256": "783ab1a66e5749a6e2606bd563ae54c6aac47428bbb8528dc6268649a9dd7b5b"
+        },
+        {
+          "file": "assets/reiki-articles/12/card-1200.webp",
+          "width": 1200,
+          "height": 750,
+          "bytes": 47426,
+          "quality": 78,
+          "sha256": "49e439d3dfb9acb59e26ffa46646e927e3fea67fb4780a42c6c5746bd6d05151"
+        },
+        {
+          "file": "assets/reiki-articles/12/card-1200.jpg",
+          "width": 1200,
+          "height": 750,
+          "bytes": 79007,
+          "quality": 82,
+          "sha256": "9bf0cfafb60746cc719a4e8789f970cdb83c15b040382cc39bd38f55c400f2cd"
+        },
+        {
+          "file": "assets/reiki-articles/12/og-1200.jpg",
+          "width": 1200,
+          "height": 630,
+          "bytes": 60513,
+          "quality": 82,
+          "sha256": "50ccb0717aa48c4a5a044673d03a9ebf48c4cd0b4a3e17467407228bdb4e14b7"
+        }
+      ]
+    },
+    {
+      "number": 13,
+      "selectedSource": "artifacts/reiki-visual-production/candidates/07-12/13/candidate-a.png",
       "selectionReason": "Мастер-Учитель слушает вопрос участницы небольшой онлайн-группы; функция обучения видна без ритуальной постановки.",
-      "promptFile": "artifacts/reiki-visual-production/candidates/07-12/12/provenance.md",
+      "promptFile": "artifacts/reiki-visual-production/candidates/07-12/13/provenance.md",
       "sourceWidth": 1673,
       "sourceHeight": 940,
       "sourceSha256": "6c6b479b251b0ded6ad638844a2ae368a7c9733c497a553411d3b52520439910",
       "outputs": [
         {
-          "file": "assets/reiki-articles/12/hero-480.webp",
+          "file": "assets/reiki-articles/13/hero-480.webp",
           "width": 480,
           "height": 360,
           "bytes": 23086,
@@ -1461,7 +1592,7 @@
           "sha256": "4533064ee591a1e11f9bd09edc8b6e063b2c65df7dace5da93d12574c5f8a2f3"
         },
         {
-          "file": "assets/reiki-articles/12/hero-480.jpg",
+          "file": "assets/reiki-articles/13/hero-480.jpg",
           "width": 480,
           "height": 360,
           "bytes": 29778,
@@ -1469,7 +1600,7 @@
           "sha256": "ae580391ef02116eaaf83f710bcbc74fffde834b5d1cb0b8894a5f14f405bb85"
         },
         {
-          "file": "assets/reiki-articles/12/hero-768.webp",
+          "file": "assets/reiki-articles/13/hero-768.webp",
           "width": 768,
           "height": 576,
           "bytes": 42288,
@@ -1477,7 +1608,7 @@
           "sha256": "2578dd89500654c19650664d1c421aa5a6cd60d2f601f86205da959781eb434c"
         },
         {
-          "file": "assets/reiki-articles/12/hero-768.jpg",
+          "file": "assets/reiki-articles/13/hero-768.jpg",
           "width": 768,
           "height": 576,
           "bytes": 60537,
@@ -1485,7 +1616,7 @@
           "sha256": "c2b4ee3b6dfef114a2410f7010680d7cf55d36e88e98d6162e726f4b41daeb74"
         },
         {
-          "file": "assets/reiki-articles/12/hero-1200.webp",
+          "file": "assets/reiki-articles/13/hero-1200.webp",
           "width": 1200,
           "height": 900,
           "bytes": 75376,
@@ -1493,7 +1624,7 @@
           "sha256": "88c3e71298bf8a08a24b25ee68d5304904fc14a34abdf3bb926acdd424d7514f"
         },
         {
-          "file": "assets/reiki-articles/12/hero-1200.jpg",
+          "file": "assets/reiki-articles/13/hero-1200.jpg",
           "width": 1200,
           "height": 900,
           "bytes": 119216,
@@ -1501,7 +1632,7 @@
           "sha256": "f0562c63c7b28eefd27aa6f1bf2690900e663074622e233df0ecbf937af0d3bc"
         },
         {
-          "file": "assets/reiki-articles/12/hero-1600.webp",
+          "file": "assets/reiki-articles/13/hero-1600.webp",
           "width": 1600,
           "height": 1200,
           "bytes": 98294,
@@ -1509,7 +1640,7 @@
           "sha256": "c4b037bf1c3b4f237cc7f7da419f082e79d56bb3faa793a4413569a8c6f1c1bd"
         },
         {
-          "file": "assets/reiki-articles/12/hero-1600.jpg",
+          "file": "assets/reiki-articles/13/hero-1600.jpg",
           "width": 1600,
           "height": 1200,
           "bytes": 175224,
@@ -1517,7 +1648,7 @@
           "sha256": "f7203f4f117148eacd12cce798d99bab03c7d057fd4f80bf3ee4b5f021e3863d"
         },
         {
-          "file": "assets/reiki-articles/12/card-480.webp",
+          "file": "assets/reiki-articles/13/card-480.webp",
           "width": 480,
           "height": 300,
           "bytes": 20250,
@@ -1525,7 +1656,7 @@
           "sha256": "b0fbc14a15961bde993a837ee8b700dd0835a0f73308c33c36cb020408e18e4f"
         },
         {
-          "file": "assets/reiki-articles/12/card-480.jpg",
+          "file": "assets/reiki-articles/13/card-480.jpg",
           "width": 480,
           "height": 300,
           "bytes": 25791,
@@ -1533,7 +1664,7 @@
           "sha256": "4f12f9ef735de74a90b125484061eb8a9ff14617f4b083199a004b875b5055f8"
         },
         {
-          "file": "assets/reiki-articles/12/card-800.webp",
+          "file": "assets/reiki-articles/13/card-800.webp",
           "width": 800,
           "height": 500,
           "bytes": 39320,
@@ -1541,7 +1672,7 @@
           "sha256": "a04bbebd55a932fe83315608c89bfc1130cb483a13fae804a6b33a46fd6332d1"
         },
         {
-          "file": "assets/reiki-articles/12/card-800.jpg",
+          "file": "assets/reiki-articles/13/card-800.jpg",
           "width": 800,
           "height": 500,
           "bytes": 55928,
@@ -1549,7 +1680,7 @@
           "sha256": "bb8e9d61695e065b3adbcb0cd39dc5488b270745b097018ed362f1ef174e7058"
         },
         {
-          "file": "assets/reiki-articles/12/card-1200.webp",
+          "file": "assets/reiki-articles/13/card-1200.webp",
           "width": 1200,
           "height": 750,
           "bytes": 67514,
@@ -1557,7 +1688,7 @@
           "sha256": "b79f9f2e64d7ca0c4a77f74c801c48d0d14bab2e695817ebd34b9f4ddb4dbf2b"
         },
         {
-          "file": "assets/reiki-articles/12/card-1200.jpg",
+          "file": "assets/reiki-articles/13/card-1200.jpg",
           "width": 1200,
           "height": 750,
           "bytes": 102629,
@@ -1565,7 +1696,7 @@
           "sha256": "179d70a889972bb36dfc8309576d6101af1ec7bc8acafbbe99cdcb4417272f9f"
         },
         {
-          "file": "assets/reiki-articles/12/og-1200.jpg",
+          "file": "assets/reiki-articles/13/og-1200.jpg",
           "width": 1200,
           "height": 630,
           "bytes": 91353,
@@ -1575,16 +1706,16 @@
       ]
     },
     {
-      "number": 13,
-      "selectedSource": "artifacts/reiki-visual-production/candidates/13-18/13/candidate-a.png",
+      "number": 14,
+      "selectedSource": "artifacts/reiki-visual-production/candidates/13-18/14/candidate-a.png",
       "selectionReason": "Несколько равноправных материалов на столе показывают, что после второй ступени существует выбор дальнейшего маршрута.",
-      "promptFile": "artifacts/reiki-visual-production/candidates/13-18/13/provenance.md",
+      "promptFile": "artifacts/reiki-visual-production/candidates/13-18/14/provenance.md",
       "sourceWidth": 1536,
       "sourceHeight": 1024,
       "sourceSha256": "6ee2c84a3f0d6d14a8b0fca105b1c761706faeda62fa8b76eea224100e2b1d33",
       "outputs": [
         {
-          "file": "assets/reiki-articles/13/hero-480.webp",
+          "file": "assets/reiki-articles/14/hero-480.webp",
           "width": 480,
           "height": 360,
           "bytes": 21898,
@@ -1592,7 +1723,7 @@
           "sha256": "c79567529bf289a340cfc251562a1c2953c6ce0f69255f4cbaf91e8041122e17"
         },
         {
-          "file": "assets/reiki-articles/13/hero-480.jpg",
+          "file": "assets/reiki-articles/14/hero-480.jpg",
           "width": 480,
           "height": 360,
           "bytes": 29360,
@@ -1600,7 +1731,7 @@
           "sha256": "e37e4ae81818eef9c5d78c1e1f0aba9d6610412b434bc68f2709d49ff45c5649"
         },
         {
-          "file": "assets/reiki-articles/13/hero-768.webp",
+          "file": "assets/reiki-articles/14/hero-768.webp",
           "width": 768,
           "height": 576,
           "bytes": 41520,
@@ -1608,7 +1739,7 @@
           "sha256": "a04146abd94f577c4f251c6917cb682ea2b2ba634b56154f88903b58db4143f5"
         },
         {
-          "file": "assets/reiki-articles/13/hero-768.jpg",
+          "file": "assets/reiki-articles/14/hero-768.jpg",
           "width": 768,
           "height": 576,
           "bytes": 59346,
@@ -1616,7 +1747,7 @@
           "sha256": "521e32bcaa722bfb55b49952ecb6db649ebfa359b439759836a101dba77c9de9"
         },
         {
-          "file": "assets/reiki-articles/13/hero-1200.webp",
+          "file": "assets/reiki-articles/14/hero-1200.webp",
           "width": 1200,
           "height": 900,
           "bytes": 75640,
@@ -1624,7 +1755,7 @@
           "sha256": "2b2187bb8b3cdfc208913541a0e0545ae0e48694a3104803972cd36ea78eb8cc"
         },
         {
-          "file": "assets/reiki-articles/13/hero-1200.jpg",
+          "file": "assets/reiki-articles/14/hero-1200.jpg",
           "width": 1200,
           "height": 900,
           "bytes": 117560,
@@ -1632,7 +1763,7 @@
           "sha256": "ca48cbc41d64eb4dfb93d020831bba65a099d9f22090ce230b0f98778d0cb372"
         },
         {
-          "file": "assets/reiki-articles/13/hero-1600.webp",
+          "file": "assets/reiki-articles/14/hero-1600.webp",
           "width": 1600,
           "height": 1200,
           "bytes": 102972,
@@ -1640,7 +1771,7 @@
           "sha256": "349802c0b707fe9da2c9a92b24df95f19eb6de5d971937e586a57a2a19d113ca"
         },
         {
-          "file": "assets/reiki-articles/13/hero-1600.jpg",
+          "file": "assets/reiki-articles/14/hero-1600.jpg",
           "width": 1600,
           "height": 1200,
           "bytes": 176849,
@@ -1648,7 +1779,7 @@
           "sha256": "4066d4fb5dc17938a521f5f3cdc0b88ae5b8bb89f2d80e457a97ce6c34e1f918"
         },
         {
-          "file": "assets/reiki-articles/13/card-480.webp",
+          "file": "assets/reiki-articles/14/card-480.webp",
           "width": 480,
           "height": 300,
           "bytes": 19820,
@@ -1656,7 +1787,7 @@
           "sha256": "3c30222d13a9308f8e79e0948d8a63c8abe0236690f70666b9cb4c5053281e4f"
         },
         {
-          "file": "assets/reiki-articles/13/card-480.jpg",
+          "file": "assets/reiki-articles/14/card-480.jpg",
           "width": 480,
           "height": 300,
           "bytes": 26167,
@@ -1664,7 +1795,7 @@
           "sha256": "072befa541b3433e99f3173f55c88270a3000e133b8d558188abb65c2e0b3c9a"
         },
         {
-          "file": "assets/reiki-articles/13/card-800.webp",
+          "file": "assets/reiki-articles/14/card-800.webp",
           "width": 800,
           "height": 500,
           "bytes": 39002,
@@ -1672,7 +1803,7 @@
           "sha256": "2a1e7b936d8e692a2eab74edf807e4015302ee5ad7b79d18649b247c8cddf204"
         },
         {
-          "file": "assets/reiki-articles/13/card-800.jpg",
+          "file": "assets/reiki-articles/14/card-800.jpg",
           "width": 800,
           "height": 500,
           "bytes": 56149,
@@ -1680,7 +1811,7 @@
           "sha256": "bf9bae90f9c56a3ab5d6f351482f53b7b62f39cc7ff2ddd488634fc0f5ddc0b5"
         },
         {
-          "file": "assets/reiki-articles/13/card-1200.webp",
+          "file": "assets/reiki-articles/14/card-1200.webp",
           "width": 1200,
           "height": 750,
           "bytes": 67942,
@@ -1688,7 +1819,7 @@
           "sha256": "f36d6f7740c4f5911cc8713645f98444b984344c520bf2af98b754f8d0bdabeb"
         },
         {
-          "file": "assets/reiki-articles/13/card-1200.jpg",
+          "file": "assets/reiki-articles/14/card-1200.jpg",
           "width": 1200,
           "height": 750,
           "bytes": 104125,
@@ -1696,7 +1827,7 @@
           "sha256": "bd4aa155a3b4233af7a9f77bcf89469873163621e42cb92c25e0f80f2143b349"
         },
         {
-          "file": "assets/reiki-articles/13/og-1200.jpg",
+          "file": "assets/reiki-articles/14/og-1200.jpg",
           "width": 1200,
           "height": 630,
           "bytes": 92644,
@@ -1706,16 +1837,16 @@
       ]
     },
     {
-      "number": 14,
-      "selectedSource": "artifacts/reiki-visual-production/candidates/13-18/14/candidate-a.png",
+      "number": 15,
+      "selectedSource": "artifacts/reiki-visual-production/candidates/13-18/15/candidate-a.png",
       "selectionReason": "Три различающиеся программы мастерской ступени сравниваются спокойно и без иерархии.",
-      "promptFile": "artifacts/reiki-visual-production/candidates/13-18/14/provenance.md",
+      "promptFile": "artifacts/reiki-visual-production/candidates/13-18/15/provenance.md",
       "sourceWidth": 1536,
       "sourceHeight": 1024,
       "sourceSha256": "e7e4e6ce5f512d041e94a6674d791f09c624b3a43bc90abfe395d7afa4b05714",
       "outputs": [
         {
-          "file": "assets/reiki-articles/14/hero-480.webp",
+          "file": "assets/reiki-articles/15/hero-480.webp",
           "width": 480,
           "height": 360,
           "bytes": 21526,
@@ -1723,7 +1854,7 @@
           "sha256": "3bb9dda6fc192d8f67b0e13f07347f55a0a8e6a20e555a0d1012c7a096026085"
         },
         {
-          "file": "assets/reiki-articles/14/hero-480.jpg",
+          "file": "assets/reiki-articles/15/hero-480.jpg",
           "width": 480,
           "height": 360,
           "bytes": 28954,
@@ -1731,7 +1862,7 @@
           "sha256": "5835f1183151f9e12799f74df8102599d7318cf95eb6d1b542c882e2f53fa992"
         },
         {
-          "file": "assets/reiki-articles/14/hero-768.webp",
+          "file": "assets/reiki-articles/15/hero-768.webp",
           "width": 768,
           "height": 576,
           "bytes": 43228,
@@ -1739,7 +1870,7 @@
           "sha256": "51738233f6454a6bd823ae4dd8768e2651575ea8cf1fa6ea8ab39cc4b9ed8427"
         },
         {
-          "file": "assets/reiki-articles/14/hero-768.jpg",
+          "file": "assets/reiki-articles/15/hero-768.jpg",
           "width": 768,
           "height": 576,
           "bytes": 60225,
@@ -1747,7 +1878,7 @@
           "sha256": "2cac44b8af98011781dbe2a4940f6350116c844d9cbb230266d16b5ae59588f4"
         },
         {
-          "file": "assets/reiki-articles/14/hero-1200.webp",
+          "file": "assets/reiki-articles/15/hero-1200.webp",
           "width": 1200,
           "height": 900,
           "bytes": 82272,
@@ -1755,7 +1886,7 @@
           "sha256": "852d1550b4e90a65a90e7e62649d23e540c2189641c191322c39c16390357a1f"
         },
         {
-          "file": "assets/reiki-articles/14/hero-1200.jpg",
+          "file": "assets/reiki-articles/15/hero-1200.jpg",
           "width": 1200,
           "height": 900,
           "bytes": 122769,
@@ -1763,7 +1894,7 @@
           "sha256": "64c9d1c90b30c4e2d7035c85a3304f9b084b8881b37004cc5ef836201b416a05"
         },
         {
-          "file": "assets/reiki-articles/14/hero-1600.webp",
+          "file": "assets/reiki-articles/15/hero-1600.webp",
           "width": 1600,
           "height": 1200,
           "bytes": 112422,
@@ -1771,7 +1902,7 @@
           "sha256": "38b0cf2d79099cbcb40ffd04b81e2e371b67d60390f4c5e25ba87bb429137623"
         },
         {
-          "file": "assets/reiki-articles/14/hero-1600.jpg",
+          "file": "assets/reiki-articles/15/hero-1600.jpg",
           "width": 1600,
           "height": 1200,
           "bytes": 186285,
@@ -1779,7 +1910,7 @@
           "sha256": "f52b8070510d7c4e774a90f56874fbda094ea4e2ad6768aaa91fbfeba75aa944"
         },
         {
-          "file": "assets/reiki-articles/14/card-480.webp",
+          "file": "assets/reiki-articles/15/card-480.webp",
           "width": 480,
           "height": 300,
           "bytes": 19964,
@@ -1787,7 +1918,7 @@
           "sha256": "1c23068641061f343b208459f8900b675a15d55119c34fc06d6f71125e5b767f"
         },
         {
-          "file": "assets/reiki-articles/14/card-480.jpg",
+          "file": "assets/reiki-articles/15/card-480.jpg",
           "width": 480,
           "height": 300,
           "bytes": 26437,
@@ -1795,7 +1926,7 @@
           "sha256": "d4db9439690bf582e84f2d8d4440352c17a948f34bac2af7f7a4d694bcd248ee"
         },
         {
-          "file": "assets/reiki-articles/14/card-800.webp",
+          "file": "assets/reiki-articles/15/card-800.webp",
           "width": 800,
           "height": 500,
           "bytes": 42218,
@@ -1803,7 +1934,7 @@
           "sha256": "8b3c8867e27c4900c21bfed39f5868c14f4bb0ae3baefbd0c9d7164a06dbb083"
         },
         {
-          "file": "assets/reiki-articles/14/card-800.jpg",
+          "file": "assets/reiki-articles/15/card-800.jpg",
           "width": 800,
           "height": 500,
           "bytes": 57862,
@@ -1811,7 +1942,7 @@
           "sha256": "a225d3f76832842dfd626e45131ea79961501079d7297e0ce13ad9aca7a7fce0"
         },
         {
-          "file": "assets/reiki-articles/14/card-1200.webp",
+          "file": "assets/reiki-articles/15/card-1200.webp",
           "width": 1200,
           "height": 750,
           "bytes": 75632,
@@ -1819,7 +1950,7 @@
           "sha256": "94d79fdaf4a62e19820c4dd298784890f8585e8ec4eb7d374e52fa536804aeb6"
         },
         {
-          "file": "assets/reiki-articles/14/card-1200.jpg",
+          "file": "assets/reiki-articles/15/card-1200.jpg",
           "width": 1200,
           "height": 750,
           "bytes": 110464,
@@ -1827,7 +1958,7 @@
           "sha256": "f4d2fbe567fc2e7d7571188a68188a3867bf67dceb68074d33ca4eaae2084c9c"
         },
         {
-          "file": "assets/reiki-articles/14/og-1200.jpg",
+          "file": "assets/reiki-articles/15/og-1200.jpg",
           "width": 1200,
           "height": 630,
           "bytes": 94230,
@@ -1837,16 +1968,16 @@
       ]
     },
     {
-      "number": 15,
-      "selectedSource": "artifacts/reiki-visual-production/candidates/13-18/15/candidate-b.png",
+      "number": 16,
+      "selectedSource": "artifacts/reiki-visual-production/candidates/13-18/16/candidate-b.png",
       "selectionReason": "Равноправная беседа с новым Мастером и сохранённые материалы прежней школы передают продолжение, а не обнуление опыта.",
-      "promptFile": "artifacts/reiki-visual-production/candidates/13-18/15/provenance.md",
+      "promptFile": "artifacts/reiki-visual-production/candidates/13-18/16/provenance.md",
       "sourceWidth": 1536,
       "sourceHeight": 1024,
       "sourceSha256": "4f29b22e207340663aaee8c22636ebcc6bbdd2514fd716e3a80de69a283fbb1c",
       "outputs": [
         {
-          "file": "assets/reiki-articles/15/hero-480.webp",
+          "file": "assets/reiki-articles/16/hero-480.webp",
           "width": 480,
           "height": 360,
           "bytes": 20836,
@@ -1854,7 +1985,7 @@
           "sha256": "9fd0f136485141d02aca73b69cea445573dc15a03617b3526d050426b0d0ccff"
         },
         {
-          "file": "assets/reiki-articles/15/hero-480.jpg",
+          "file": "assets/reiki-articles/16/hero-480.jpg",
           "width": 480,
           "height": 360,
           "bytes": 27433,
@@ -1862,7 +1993,7 @@
           "sha256": "2834fb9f76fef6ae7b7f180e0851051476708b81889c142fb493e829c7eeb0df"
         },
         {
-          "file": "assets/reiki-articles/15/hero-768.webp",
+          "file": "assets/reiki-articles/16/hero-768.webp",
           "width": 768,
           "height": 576,
           "bytes": 41830,
@@ -1870,7 +2001,7 @@
           "sha256": "6639f9345319e157a83e9412aba0a99ee1c87c0460eb3bd0639259c70f342790"
         },
         {
-          "file": "assets/reiki-articles/15/hero-768.jpg",
+          "file": "assets/reiki-articles/16/hero-768.jpg",
           "width": 768,
           "height": 576,
           "bytes": 57637,
@@ -1878,7 +2009,7 @@
           "sha256": "cf31b4e610921dfcaec1db188f916631ac60e1522aea7cee9c8812b55d0137f3"
         },
         {
-          "file": "assets/reiki-articles/15/hero-1200.webp",
+          "file": "assets/reiki-articles/16/hero-1200.webp",
           "width": 1200,
           "height": 900,
           "bytes": 82152,
@@ -1886,7 +2017,7 @@
           "sha256": "6e792c492cd6f3aa01f30b29b6257e53414c11cd10ebd9ad264c4341756499a8"
         },
         {
-          "file": "assets/reiki-articles/15/hero-1200.jpg",
+          "file": "assets/reiki-articles/16/hero-1200.jpg",
           "width": 1200,
           "height": 900,
           "bytes": 121156,
@@ -1894,7 +2025,7 @@
           "sha256": "9e39ea8b3ccf74ae2b4c125d05187c2f781880fda8e542bad39801a1c0c7f892"
         },
         {
-          "file": "assets/reiki-articles/15/hero-1600.webp",
+          "file": "assets/reiki-articles/16/hero-1600.webp",
           "width": 1600,
           "height": 1200,
           "bytes": 114290,
@@ -1902,7 +2033,7 @@
           "sha256": "c69960eee05d5224e0caed037c76ceb8f23858b871f0b013b5e72ed8152bc0fa"
         },
         {
-          "file": "assets/reiki-articles/15/hero-1600.jpg",
+          "file": "assets/reiki-articles/16/hero-1600.jpg",
           "width": 1600,
           "height": 1200,
           "bytes": 186655,
@@ -1910,7 +2041,7 @@
           "sha256": "02d78635405944cf45b755a3573739ac6fddb9725dfb0eb351a7ad82ec618a1b"
         },
         {
-          "file": "assets/reiki-articles/15/card-480.webp",
+          "file": "assets/reiki-articles/16/card-480.webp",
           "width": 480,
           "height": 300,
           "bytes": 18872,
@@ -1918,7 +2049,7 @@
           "sha256": "0cd1082401e52f53b0626b0fdf2f1587489aaee24bde293285f3627747f2cf0f"
         },
         {
-          "file": "assets/reiki-articles/15/card-480.jpg",
+          "file": "assets/reiki-articles/16/card-480.jpg",
           "width": 480,
           "height": 300,
           "bytes": 24231,
@@ -1926,7 +2057,7 @@
           "sha256": "336cebff5c1d939b6a9dc6011e6b56e5dd4849337db9a43ab96f1b1485f20abc"
         },
         {
-          "file": "assets/reiki-articles/15/card-800.webp",
+          "file": "assets/reiki-articles/16/card-800.webp",
           "width": 800,
           "height": 500,
           "bytes": 39616,
@@ -1934,7 +2065,7 @@
           "sha256": "1fed6e07a04f63316b99d852baef0fa3840b854ff0fc3ddbfc8ae07da1afc43d"
         },
         {
-          "file": "assets/reiki-articles/15/card-800.jpg",
+          "file": "assets/reiki-articles/16/card-800.jpg",
           "width": 800,
           "height": 500,
           "bytes": 53883,
@@ -1942,7 +2073,7 @@
           "sha256": "d0f1f9732dbb720900c11861de1ff9649c8526c4af7d629333b115a931b6a15d"
         },
         {
-          "file": "assets/reiki-articles/15/card-1200.webp",
+          "file": "assets/reiki-articles/16/card-1200.webp",
           "width": 1200,
           "height": 750,
           "bytes": 75130,
@@ -1950,7 +2081,7 @@
           "sha256": "1698dcba81d940547da139b649a5805b602a344042c2d1b81e93c8c4b6c40e61"
         },
         {
-          "file": "assets/reiki-articles/15/card-1200.jpg",
+          "file": "assets/reiki-articles/16/card-1200.jpg",
           "width": 1200,
           "height": 750,
           "bytes": 105690,
@@ -1958,7 +2089,7 @@
           "sha256": "c85f488ed3179d9f59d87f22db710cbcf5f05e658f9af36d5f32e7b1a1218dab"
         },
         {
-          "file": "assets/reiki-articles/15/og-1200.jpg",
+          "file": "assets/reiki-articles/16/og-1200.jpg",
           "width": 1200,
           "height": 630,
           "bytes": 90652,
@@ -1968,16 +2099,16 @@
       ]
     },
     {
-      "number": 16,
-      "selectedSource": "artifacts/reiki-visual-production/candidates/13-18/16/candidate-a.png",
+      "number": 17,
+      "selectedSource": "artifacts/reiki-visual-production/candidates/13-18/17/candidate-a.png",
       "selectionReason": "Готовность обсуждается через реальный опыт практики и вопросы, а не через внешний знак посвящённости.",
-      "promptFile": "artifacts/reiki-visual-production/candidates/13-18/16/provenance.md",
+      "promptFile": "artifacts/reiki-visual-production/candidates/13-18/17/provenance.md",
       "sourceWidth": 1536,
       "sourceHeight": 1024,
       "sourceSha256": "b5fa607c0f11c76df07a94d9b9dc381306fe25e1188b9822151625a01691ae37",
       "outputs": [
         {
-          "file": "assets/reiki-articles/16/hero-480.webp",
+          "file": "assets/reiki-articles/17/hero-480.webp",
           "width": 480,
           "height": 360,
           "bytes": 20312,
@@ -1985,7 +2116,7 @@
           "sha256": "f590510f46e5c276b6d352d2db0af26b175e9d0c02c5a9f71f0dd3bee8f96019"
         },
         {
-          "file": "assets/reiki-articles/16/hero-480.jpg",
+          "file": "assets/reiki-articles/17/hero-480.jpg",
           "width": 480,
           "height": 360,
           "bytes": 26091,
@@ -1993,7 +2124,7 @@
           "sha256": "12740272022c6a2f9a82ca0540025d7bc4d84171ff2f8782d707562325858e90"
         },
         {
-          "file": "assets/reiki-articles/16/hero-768.webp",
+          "file": "assets/reiki-articles/17/hero-768.webp",
           "width": 768,
           "height": 576,
           "bytes": 41700,
@@ -2001,7 +2132,7 @@
           "sha256": "1e05e88742b8a47620ab6b3721c2aa4dcb660105673f6784ff762c9831f711bd"
         },
         {
-          "file": "assets/reiki-articles/16/hero-768.jpg",
+          "file": "assets/reiki-articles/17/hero-768.jpg",
           "width": 768,
           "height": 576,
           "bytes": 55726,
@@ -2009,7 +2140,7 @@
           "sha256": "0d357c433c8dfdcc3a33c6d6230aa5c179295fe7e61d468f36c5a4d2f07e447a"
         },
         {
-          "file": "assets/reiki-articles/16/hero-1200.webp",
+          "file": "assets/reiki-articles/17/hero-1200.webp",
           "width": 1200,
           "height": 900,
           "bytes": 82782,
@@ -2017,7 +2148,7 @@
           "sha256": "10c32c3ad3606df98989e1419f053cf95d4519769658acd99991aed870edf0a8"
         },
         {
-          "file": "assets/reiki-articles/16/hero-1200.jpg",
+          "file": "assets/reiki-articles/17/hero-1200.jpg",
           "width": 1200,
           "height": 900,
           "bytes": 117645,
@@ -2025,7 +2156,7 @@
           "sha256": "916dacbd690bd7c5357a52635a32f746a725d3e7b270b02e676617d81ba165c2"
         },
         {
-          "file": "assets/reiki-articles/16/hero-1600.webp",
+          "file": "assets/reiki-articles/17/hero-1600.webp",
           "width": 1600,
           "height": 1200,
           "bytes": 112672,
@@ -2033,7 +2164,7 @@
           "sha256": "10b03cbcd635b809a00bea16f22e49b9b737dc49855fa715a7e1344a7343e139"
         },
         {
-          "file": "assets/reiki-articles/16/hero-1600.jpg",
+          "file": "assets/reiki-articles/17/hero-1600.jpg",
           "width": 1600,
           "height": 1200,
           "bytes": 180642,
@@ -2041,7 +2172,7 @@
           "sha256": "335acc5103a36f4c40d670580c84267331c0537fca80582b0568a2b460e878ed"
         },
         {
-          "file": "assets/reiki-articles/16/card-480.webp",
+          "file": "assets/reiki-articles/17/card-480.webp",
           "width": 480,
           "height": 300,
           "bytes": 18948,
@@ -2049,7 +2180,7 @@
           "sha256": "6ef57ddff0ff0ae5dccaa63bbe13f285edf033705a849ed60349453c6af7bab7"
         },
         {
-          "file": "assets/reiki-articles/16/card-480.jpg",
+          "file": "assets/reiki-articles/17/card-480.jpg",
           "width": 480,
           "height": 300,
           "bytes": 23786,
@@ -2057,7 +2188,7 @@
           "sha256": "0ffd31b86565910b1306aa23c86411ae623608102bcfca937dfe7d32a95028d7"
         },
         {
-          "file": "assets/reiki-articles/16/card-800.webp",
+          "file": "assets/reiki-articles/17/card-800.webp",
           "width": 800,
           "height": 500,
           "bytes": 40692,
@@ -2065,7 +2196,7 @@
           "sha256": "526daef9efb7c85b717ea0697e2caaa27b514229083d7c7d609c93b29babf642"
         },
         {
-          "file": "assets/reiki-articles/16/card-800.jpg",
+          "file": "assets/reiki-articles/17/card-800.jpg",
           "width": 800,
           "height": 500,
           "bytes": 53566,
@@ -2073,7 +2204,7 @@
           "sha256": "bf81eb8405abe9d25de81b278ca4d3974626b1716db355369dfea24666f59c79"
         },
         {
-          "file": "assets/reiki-articles/16/card-1200.webp",
+          "file": "assets/reiki-articles/17/card-1200.webp",
           "width": 1200,
           "height": 750,
           "bytes": 75444,
@@ -2081,7 +2212,7 @@
           "sha256": "0efdf3f04dc3d9ffe3e9222f6bee1e2e6254327e8e6fb203feab4cfb230b9027"
         },
         {
-          "file": "assets/reiki-articles/16/card-1200.jpg",
+          "file": "assets/reiki-articles/17/card-1200.jpg",
           "width": 1200,
           "height": 750,
           "bytes": 105150,
@@ -2089,7 +2220,7 @@
           "sha256": "2dda5b9ab393629c7baa8367ac7620b9d6298e76b2bead904da387d47ce3b2f6"
         },
         {
-          "file": "assets/reiki-articles/16/og-1200.jpg",
+          "file": "assets/reiki-articles/17/og-1200.jpg",
           "width": 1200,
           "height": 630,
           "bytes": 91864,
@@ -2099,16 +2230,16 @@
       ]
     },
     {
-      "number": 17,
-      "selectedSource": "artifacts/reiki-visual-production/candidates/13-18/17/candidate-a.png",
+      "number": 18,
+      "selectedSource": "artifacts/reiki-visual-production/candidates/13-18/18/candidate-a.png",
       "selectionReason": "Личное мастерство встроено в обычную жизнь человека и не обещает обязательного преподавания группе.",
-      "promptFile": "artifacts/reiki-visual-production/candidates/13-18/17/provenance.md",
+      "promptFile": "artifacts/reiki-visual-production/candidates/13-18/18/provenance.md",
       "sourceWidth": 1536,
       "sourceHeight": 1024,
       "sourceSha256": "a7b7eff433cc03dfcc57690f7706931e052c9b5f39449ba2f1453b4cb1650294",
       "outputs": [
         {
-          "file": "assets/reiki-articles/17/hero-480.webp",
+          "file": "assets/reiki-articles/18/hero-480.webp",
           "width": 480,
           "height": 360,
           "bytes": 17470,
@@ -2116,7 +2247,7 @@
           "sha256": "31bc2e69b594ab38e1dc59e42e5452e2258685fcebde9db7ce06ab08fc941426"
         },
         {
-          "file": "assets/reiki-articles/17/hero-480.jpg",
+          "file": "assets/reiki-articles/18/hero-480.jpg",
           "width": 480,
           "height": 360,
           "bytes": 25240,
@@ -2124,7 +2255,7 @@
           "sha256": "1ecf329ff0abb1270fd3c5a7e4d33df4044510ada14c489119e4cc160950b838"
         },
         {
-          "file": "assets/reiki-articles/17/hero-768.webp",
+          "file": "assets/reiki-articles/18/hero-768.webp",
           "width": 768,
           "height": 576,
           "bytes": 29758,
@@ -2132,7 +2263,7 @@
           "sha256": "c1dfd989cd1ff9440ddf1eb77fc10922cf8c084ab8f76998ab8491a7ed81c20d"
         },
         {
-          "file": "assets/reiki-articles/17/hero-768.jpg",
+          "file": "assets/reiki-articles/18/hero-768.jpg",
           "width": 768,
           "height": 576,
           "bytes": 48827,
@@ -2140,7 +2271,7 @@
           "sha256": "2a1ca650c5902e29a21976280d768bf52405cd939882403abef76da43a13cc92"
         },
         {
-          "file": "assets/reiki-articles/17/hero-1200.webp",
+          "file": "assets/reiki-articles/18/hero-1200.webp",
           "width": 1200,
           "height": 900,
           "bytes": 51552,
@@ -2148,7 +2279,7 @@
           "sha256": "a7c16bfa97a8a62d1774e845caf660e6a50e8f4c90d9c3cc304f39a4babb2322"
         },
         {
-          "file": "assets/reiki-articles/17/hero-1200.jpg",
+          "file": "assets/reiki-articles/18/hero-1200.jpg",
           "width": 1200,
           "height": 900,
           "bytes": 93297,
@@ -2156,7 +2287,7 @@
           "sha256": "c95b231e7242d5fbe9522ef416263bc3e16f410a0f20befd7758ff9b1ef4d195"
         },
         {
-          "file": "assets/reiki-articles/17/hero-1600.webp",
+          "file": "assets/reiki-articles/18/hero-1600.webp",
           "width": 1600,
           "height": 1200,
           "bytes": 68406,
@@ -2164,7 +2295,7 @@
           "sha256": "ad7823b35444d75c35a62bacd7beee592d20d6face0c6d1eb8b7ce1485d3c31c"
         },
         {
-          "file": "assets/reiki-articles/17/hero-1600.jpg",
+          "file": "assets/reiki-articles/18/hero-1600.jpg",
           "width": 1600,
           "height": 1200,
           "bytes": 138416,
@@ -2172,7 +2303,7 @@
           "sha256": "c8ee7eacd2aca9c564b6fdf8ab0fb86f621f449987ee135f47fa320b367413e5"
         },
         {
-          "file": "assets/reiki-articles/17/card-480.webp",
+          "file": "assets/reiki-articles/18/card-480.webp",
           "width": 480,
           "height": 300,
           "bytes": 15982,
@@ -2180,7 +2311,7 @@
           "sha256": "650946c33090c9f72207eb6295057fd3b14086b88ab74dcb01ac8363302b1d72"
         },
         {
-          "file": "assets/reiki-articles/17/card-480.jpg",
+          "file": "assets/reiki-articles/18/card-480.jpg",
           "width": 480,
           "height": 300,
           "bytes": 22807,
@@ -2188,7 +2319,7 @@
           "sha256": "d403af33d2090bfc5dd5fbe7760ba602217a21b83b4ecd0882fad69687108a27"
         },
         {
-          "file": "assets/reiki-articles/17/card-800.webp",
+          "file": "assets/reiki-articles/18/card-800.webp",
           "width": 800,
           "height": 500,
           "bytes": 29046,
@@ -2196,7 +2327,7 @@
           "sha256": "baf4e5b382d5ebb44a076a1e7541ef1af3ba16ca5f784b3a984bb98e238ab8ee"
         },
         {
-          "file": "assets/reiki-articles/17/card-800.jpg",
+          "file": "assets/reiki-articles/18/card-800.jpg",
           "width": 800,
           "height": 500,
           "bytes": 46917,
@@ -2204,7 +2335,7 @@
           "sha256": "d12a82f04e6e0e057781f94e2f7fdbd8033189588a24b494f8a816d232997ea3"
         },
         {
-          "file": "assets/reiki-articles/17/card-1200.webp",
+          "file": "assets/reiki-articles/18/card-1200.webp",
           "width": 1200,
           "height": 750,
           "bytes": 47176,
@@ -2212,7 +2343,7 @@
           "sha256": "62fe0547225a117c36b8ad35e950e1b2610711809c3ee8895d4819494c97e5a0"
         },
         {
-          "file": "assets/reiki-articles/17/card-1200.jpg",
+          "file": "assets/reiki-articles/18/card-1200.jpg",
           "width": 1200,
           "height": 750,
           "bytes": 83151,
@@ -2220,7 +2351,7 @@
           "sha256": "4bbdbbfb08f02f5c2aa42f1c004b4727350dbe2b7502d615cd5c5549f7fe1f98"
         },
         {
-          "file": "assets/reiki-articles/17/og-1200.jpg",
+          "file": "assets/reiki-articles/18/og-1200.jpg",
           "width": 1200,
           "height": 630,
           "bytes": 72107,
@@ -2230,16 +2361,16 @@
       ]
     },
     {
-      "number": 18,
-      "selectedSource": "artifacts/reiki-visual-production/candidates/13-18/18/candidate-b.png",
+      "number": 19,
+      "selectedSource": "artifacts/reiki-visual-production/candidates/13-18/19/candidate-b.png",
       "selectionReason": "Старые материалы и разговор с новым Мастером показывают разбор конкретной ситуации, а не вымышленную документальную церемонию.",
-      "promptFile": "artifacts/reiki-visual-production/candidates/13-18/18/provenance.md",
+      "promptFile": "artifacts/reiki-visual-production/candidates/13-18/19/provenance.md",
       "sourceWidth": 1536,
       "sourceHeight": 1024,
       "sourceSha256": "63c4a1286f477243d882d41d07763e90609899c7bc03f92937cd143cb73e8941",
       "outputs": [
         {
-          "file": "assets/reiki-articles/18/hero-480.webp",
+          "file": "assets/reiki-articles/19/hero-480.webp",
           "width": 480,
           "height": 360,
           "bytes": 25626,
@@ -2247,7 +2378,7 @@
           "sha256": "d30d54c378c0b40e0981b0ee0677d5b02217ca21fa698b4070687fd30296e6c1"
         },
         {
-          "file": "assets/reiki-articles/18/hero-480.jpg",
+          "file": "assets/reiki-articles/19/hero-480.jpg",
           "width": 480,
           "height": 360,
           "bytes": 31401,
@@ -2255,7 +2386,7 @@
           "sha256": "56f1d5b2fb75a4cb78452fa6d264e09d43c812a45ef268dd7b7ad22d0eec1389"
         },
         {
-          "file": "assets/reiki-articles/18/hero-768.webp",
+          "file": "assets/reiki-articles/19/hero-768.webp",
           "width": 768,
           "height": 576,
           "bytes": 50848,
@@ -2263,7 +2394,7 @@
           "sha256": "304fea58f5cfb86d184e5003bf08014a3cbf28302cc96e70d5650752429a28ef"
         },
         {
-          "file": "assets/reiki-articles/18/hero-768.jpg",
+          "file": "assets/reiki-articles/19/hero-768.jpg",
           "width": 768,
           "height": 576,
           "bytes": 67002,
@@ -2271,7 +2402,7 @@
           "sha256": "b36f1a6dd1808e72a55fb7c008031766670687326138fdd03ef2bc0b52c871c5"
         },
         {
-          "file": "assets/reiki-articles/18/hero-1200.webp",
+          "file": "assets/reiki-articles/19/hero-1200.webp",
           "width": 1200,
           "height": 900,
           "bytes": 96826,
@@ -2279,7 +2410,7 @@
           "sha256": "736f62f9700efb2180df2b638f537852fb9d79a85b2111a228bc49d83472aa86"
         },
         {
-          "file": "assets/reiki-articles/18/hero-1200.jpg",
+          "file": "assets/reiki-articles/19/hero-1200.jpg",
           "width": 1200,
           "height": 900,
           "bytes": 140143,
@@ -2287,7 +2418,7 @@
           "sha256": "a0df8011385abab9ffe6806ff04c2b77a090c964124492c003c7262511f70ffc"
         },
         {
-          "file": "assets/reiki-articles/18/hero-1600.webp",
+          "file": "assets/reiki-articles/19/hero-1600.webp",
           "width": 1600,
           "height": 1200,
           "bytes": 133250,
@@ -2295,7 +2426,7 @@
           "sha256": "f9d52443eb8204cdd5ae701a0ee85e80d2cbe28d75155b96e2c3a02882873a91"
         },
         {
-          "file": "assets/reiki-articles/18/hero-1600.jpg",
+          "file": "assets/reiki-articles/19/hero-1600.jpg",
           "width": 1600,
           "height": 1200,
           "bytes": 212948,
@@ -2303,7 +2434,7 @@
           "sha256": "527b67a21cbd2c16d736341f76f802fb3b99e21e88031def1f21fe185b678ed4"
         },
         {
-          "file": "assets/reiki-articles/18/card-480.webp",
+          "file": "assets/reiki-articles/19/card-480.webp",
           "width": 480,
           "height": 300,
           "bytes": 22968,
@@ -2311,7 +2442,7 @@
           "sha256": "38f5092287452f258310dfeba3853f2ba4285aca28a8425e1a1cd6048acf0a5a"
         },
         {
-          "file": "assets/reiki-articles/18/card-480.jpg",
+          "file": "assets/reiki-articles/19/card-480.jpg",
           "width": 480,
           "height": 300,
           "bytes": 28205,
@@ -2319,7 +2450,7 @@
           "sha256": "5158b3aa81fab74a359763eebb12162a9ab55f91afeebf4ba00651dbfe4001d6"
         },
         {
-          "file": "assets/reiki-articles/18/card-800.webp",
+          "file": "assets/reiki-articles/19/card-800.webp",
           "width": 800,
           "height": 500,
           "bytes": 48346,
@@ -2327,7 +2458,7 @@
           "sha256": "47e6c9188afe1d75d0330b0dfa27ae13b1a512123153c6b86c9bc0d1f37f3782"
         },
         {
-          "file": "assets/reiki-articles/18/card-800.jpg",
+          "file": "assets/reiki-articles/19/card-800.jpg",
           "width": 800,
           "height": 500,
           "bytes": 63039,
@@ -2335,7 +2466,7 @@
           "sha256": "fd1dce90998ba958c961b327fd0997b7eb1cfc525e6975c5057b8edccec804a6"
         },
         {
-          "file": "assets/reiki-articles/18/card-1200.webp",
+          "file": "assets/reiki-articles/19/card-1200.webp",
           "width": 1200,
           "height": 750,
           "bytes": 87018,
@@ -2343,7 +2474,7 @@
           "sha256": "28ebf909e895bfa207499d8b8972e9cd9da9eff88d569c3727d291635279ce58"
         },
         {
-          "file": "assets/reiki-articles/18/card-1200.jpg",
+          "file": "assets/reiki-articles/19/card-1200.jpg",
           "width": 1200,
           "height": 750,
           "bytes": 122247,
@@ -2351,7 +2482,7 @@
           "sha256": "b49a3f3711253c8e207e4ae5df026abc5e38f9cc4a82c8c40c7936d1698273b0"
         },
         {
-          "file": "assets/reiki-articles/18/og-1200.jpg",
+          "file": "assets/reiki-articles/19/og-1200.jpg",
           "width": 1200,
           "height": 630,
           "bytes": 102161,

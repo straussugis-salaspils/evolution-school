@@ -4,7 +4,7 @@ import path from "node:path";
 const root = path.resolve(import.meta.dirname, "..");
 const sourceRoot =
   process.env.REIKI_SEO_SOURCE ||
-  "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO\\docs\\seo\\reiki";
+  path.join(root, "docs", "seo", "reiki");
 const metadataPath = path.join(
   sourceRoot,
   "research",
@@ -24,13 +24,14 @@ const sources = [
   "article-09-reiki-safety-draft-v2.md",
   "article-10-choose-reiki-master-draft-v2.md",
   "article-11-beginner-mistakes-draft.md",
-  "article-12-master-teacher-responsibility-draft-v2.md",
-  "article-13-after-reiki-ii-draft-v3.md",
-  "article-14-reiki-third-degree-differences-draft.md",
-  "article-15-change-reiki-master-school-draft.md",
-  "article-16-ready-for-reiki-master-level-draft.md",
-  "article-17-reiki-master-for-self-draft.md",
-  "article-18-reiki-reinitiation-draft.md",
+  "article-12-help-others-without-exhaustion.md",
+  "article-13-master-teacher-responsibility-draft-v2.md",
+  "article-14-after-reiki-ii-draft-v3.md",
+  "article-15-reiki-third-degree-differences-draft.md",
+  "article-16-change-reiki-master-school-draft.md",
+  "article-17-ready-for-reiki-master-level-draft.md",
+  "article-18-reiki-master-for-self-draft.md",
+  "article-19-reiki-reinitiation-draft.md",
 ];
 
 const errors = [];
@@ -122,7 +123,7 @@ function extractAttribute(html, pattern, label) {
 
 const metadata = fs.readFileSync(metadataPath, "utf8");
 const { articles, related } = parseMap(metadata);
-if (articles.length !== 18) fail(`Metadata contains ${articles.length}, not 18 articles.`);
+if (articles.length !== 19) fail(`Metadata contains ${articles.length}, not 19 articles.`);
 
 const htmlByNumber = new Map();
 const routeToNumber = new Map(articles.map((article) => [article.route, article.number]));
@@ -240,9 +241,9 @@ for (const article of articles) {
     fail(`Hub: missing link to article ${article.number}.`);
   }
 }
-if (!hub.includes("<strong>18</strong>")) fail("Hub: article count is not 18.");
-if (fs.existsSync(path.join(root, "biblioteka", "reiki", "article-19"))) {
-  fail("Article 19 exists but must not be created.");
+if (!hub.includes("<strong>19</strong>")) fail("Hub: article count is not 19.");
+if (fs.existsSync(path.join(root, "biblioteka", "reiki", "article-20"))) {
+  fail("Unexpected numeric placeholder article 20 exists.");
 }
 
 const article09 = fs.readFileSync(
@@ -262,11 +263,23 @@ for (const forbidden of ["возврат оплаты", "правила возв
   if (article10.includes(forbidden)) fail(`Article 10: forbidden publication term found (${forbidden}).`);
 }
 
-const article18 = normalize(
-  fs.readFileSync(path.join(root, articles[17].route.replace(/^\//, ""), "index.html"), "utf8"),
+const article12 = normalize(
+  fs.readFileSync(path.join(root, articles[11].route.replace(/^\//, ""), "index.html"), "utf8"),
+).toLowerCase();
+for (const required of [
+  "помощь должна начинаться с запроса",
+  "согласие на сеанс не означает автоматического согласия",
+  "местную профильную или кризисную службу",
+  "проходить рейки не обязательно",
+]) {
+  if (!article12.includes(required)) fail(`Article 12: required boundary missing (${required}).`);
+}
+
+const article19 = normalize(
+  fs.readFileSync(path.join(root, articles[18].route.replace(/^\//, ""), "index.html"), "utf8"),
 ).toLowerCase();
 for (const forbidden of ["скидк", "формат оплаты", "стоимость переинициации", "цена переинициации"]) {
-  if (article18.includes(forbidden)) fail(`Article 18: forbidden commercial detail found (${forbidden}).`);
+  if (article19.includes(forbidden)) fail(`Article 19: forbidden commercial detail found (${forbidden}).`);
 }
 
 notes.push(

@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Четыре вопроса перед словом «да»</title>
+  <style>
+    :root {
+      --paper: #fffdf8;
+      --cream: #f8f0dc;
+      --ink: #292319;
+      --muted: #6d6559;
+      --gold: #b78a3e;
+      --deep: #76551f;
+      --teal: #315f5b;
+      --clay: #9a5f48;
+    }
+
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--paper); }
+
+    .boundary-check {
+      width: 100%;
+      margin: 0;
+      overflow: hidden;
+      border: 1px solid rgba(118, 85, 31, .22);
+      border-radius: 30px;
+      background:
+        radial-gradient(circle at 92% 8%, rgba(183, 138, 62, .16), transparent 28%),
+        linear-gradient(145deg, var(--paper), var(--cream));
+      color: var(--ink);
+      font-family: var(--viz-font-display, Georgia, "Times New Roman", serif);
+    }
+
+    .boundary-check__intro {
+      max-width: 770px;
+      padding: clamp(26px, 5vw, 48px);
+    }
+
+    .eyebrow {
+      margin: 0 0 9px;
+      color: var(--deep);
+      font: 800 12px/1.2 var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(31px, 5vw, 50px);
+      font-weight: 500;
+      line-height: 1.02;
+      text-wrap: balance;
+    }
+
+    .lead {
+      max-width: 670px;
+      margin: 14px 0 0;
+      color: var(--muted);
+      font: 16px/1.55 var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+    }
+
+    .questions {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin: 0;
+      padding: 0 clamp(24px, 5vw, 48px) clamp(28px, 5vw, 48px);
+      list-style: none;
+    }
+
+    .question {
+      position: relative;
+      min-height: 190px;
+      padding: 26px 24px 24px 76px;
+      border: 1px solid rgba(118, 85, 31, .18);
+      border-radius: 22px;
+      background: rgba(255, 253, 248, .88);
+    }
+
+    .question:nth-child(2),
+    .question:nth-child(3) {
+      background: rgba(238, 243, 235, .88);
+    }
+
+    .question__number {
+      position: absolute;
+      top: 24px;
+      left: 24px;
+      display: grid;
+      width: 36px;
+      height: 36px;
+      place-items: center;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      color: var(--deep);
+      font: 800 12px/1 var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+    }
+
+    .question strong {
+      display: block;
+      font-size: clamp(21px, 2.6vw, 28px);
+      font-weight: 500;
+      line-height: 1.08;
+    }
+
+    .question p {
+      margin: 10px 0 0;
+      color: var(--muted);
+      font: 15px/1.52 var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+    }
+
+    .agreement {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 18px;
+      align-items: center;
+      padding: 24px clamp(24px, 5vw, 48px);
+      background: var(--teal);
+      color: var(--paper);
+    }
+
+    .agreement__mark {
+      display: grid;
+      width: 48px;
+      height: 48px;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, .48);
+      border-radius: 50%;
+      font-size: 23px;
+    }
+
+    .agreement strong {
+      display: block;
+      font-size: clamp(20px, 2.5vw, 27px);
+      font-weight: 500;
+      line-height: 1.12;
+    }
+
+    .agreement span {
+      display: block;
+      margin-top: 5px;
+      color: #dce9e4;
+      font: 14px/1.5 var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+    }
+
+    figcaption {
+      padding: 19px clamp(24px, 5vw, 48px) 23px;
+      color: var(--deep);
+      font: 15px/1.5 var(--viz-font-body, "Segoe UI", system-ui, sans-serif);
+    }
+
+    @media (max-width: 700px) {
+      .boundary-check { border-radius: 24px; }
+      .questions { grid-template-columns: 1fr; }
+      .question { min-height: 0; }
+    }
+
+    @media (max-width: 430px) {
+      .boundary-check__intro { padding: 25px 22px; }
+      .questions { padding: 0 18px 24px; }
+      .question { padding: 70px 20px 22px; }
+      .question__number { left: 20px; }
+      .agreement { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <figure class="boundary-check" role="group" aria-labelledby="boundary-title" aria-describedby="boundary-caption">
+    <header class="boundary-check__intro">
+      <p class="eyebrow">Перед словом «да»</p>
+      <h1 id="boundary-title">Четыре вопроса, которые возвращают границы</h1>
+      <p class="lead">Пауза перед согласием не делает помощь менее тёплой. Она помогает понять, о чём вы договорились и что останется в ответственности другого человека.</p>
+    </header>
+
+    <ol class="questions">
+      <li class="question">
+        <span class="question__number">01</span>
+        <strong>О чём меня просят?</strong>
+        <p>Назовите конкретное действие, время и предел помощи.</p>
+      </li>
+      <li class="question">
+        <span class="question__number">02</span>
+        <strong>Есть ли у меня силы?</strong>
+        <p>Учтите сон, работу, деньги, семью и собственное состояние.</p>
+      </li>
+      <li class="question">
+        <span class="question__number">03</span>
+        <strong>Я умею это делать?</strong>
+        <p>Близость не заменяет профессиональную компетенцию.</p>
+      </li>
+      <li class="question">
+        <span class="question__number">04</span>
+        <strong>Что сделает сам человек?</strong>
+        <p>После поддержки у него должен остаться собственный следующий шаг.</p>
+      </li>
+    </ol>
+
+    <div class="agreement">
+      <span class="agreement__mark" aria-hidden="true">✓</span>
+      <div>
+        <strong>Спросить → договориться → помочь в пределах → остановиться</strong>
+        <span>Если ситуация выходит за ваши силы или роль, следующий шаг — не спасать сильнее, а расширить круг поддержки.</span>
+      </div>
+    </div>
+
+    <figcaption id="boundary-caption"><strong>Граница — это не молчаливое ожидание.</strong> Она становится реальной, когда её можно спокойно назвать.</figcaption>
+  </figure>
+</body>
+</html>

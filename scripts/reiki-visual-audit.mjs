@@ -61,8 +61,8 @@ if (!fs.existsSync(manifestPath)) {
   fail("Missing assets/reiki-articles/manifest.json.");
 } else {
   const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
-  if (manifest.articles?.length !== 18) {
-    fail(`Expected 18 manifest entries, found ${manifest.articles?.length || 0}.`);
+  if (manifest.articles?.length !== 19) {
+    fail(`Expected 19 manifest entries, found ${manifest.articles?.length || 0}.`);
   }
   for (const article of manifest.articles || []) {
     const existing = sourceHashes.get(article.sourceSha256);
@@ -106,8 +106,8 @@ const articleFiles = fs
   .map((entry) => path.join(articleRoot, entry.name, "index.html"))
   .filter((filePath) => fs.existsSync(filePath));
 
-if (articleFiles.length !== 18) {
-  fail(`Expected 18 Reiki article HTML files, found ${articleFiles.length}.`);
+if (articleFiles.length !== 19) {
+  fail(`Expected 19 Reiki article HTML files, found ${articleFiles.length}.`);
 }
 
 let insertCount = 0;
@@ -256,5 +256,5 @@ if (errors.length) {
 }
 
 console.log(
-  `Reiki visual audit passed: 18 unique Hero selections, ${configuredInsertCount} configured internal inserts and all responsive assets are within budget.`,
+  `Reiki visual audit passed: 19 unique Hero selections, ${configuredInsertCount} configured internal inserts and all responsive assets are within budget.`,
 );
