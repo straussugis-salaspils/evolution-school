@@ -86,7 +86,7 @@ function publicPath(filePath) {
 }
 
 function findCandidate(number, letter) {
-  const roots = ["01-06", "07-12", "13-18"];
+  const roots = ["01-06", "07-12", "13-19"];
   for (const group of roots) {
     const directory = path.join(
       reviewRoot,
@@ -126,7 +126,7 @@ function renderStoryboard() {
     })
     .join("\n");
   return htmlPage(
-    "Storyboard 18 статей о Рейки",
+    "Storyboard 19 статей о Рейки",
     "Два визуальных кандидата для каждой темы. Серия должна читаться как Рейки в обычной жизни — без эзотерического театра и повторяющихся wellness-сцен.",
     `<div class="grid">${cards}</div>`,
   );

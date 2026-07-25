@@ -1,27 +1,28 @@
-# Pilot 14 — notes
+# Pilot 13 — notes
 
 ## Variant A
 
-- Grammar: three assembly models on one workbench.
-- Best insertion: immediately after the text explains that “third degree” is not a universal standard.
-- Strength: makes the order and the rights gained in each model explicit.
-- Mobile: every assembly unfolds vertically; arrows keep the sequence readable.
+- Grammar: illustrated landscape map with three different destination spaces.
+- Best insertion: after the article introduces the three possible directions.
+- Strength: the calm water, practice garden and teaching circle feel like different kinds of future rather than three product cards.
+- The teaching trail visibly shares the “Master Life” waypoint and only then continues to “Master-Teacher”.
+- Mobile: the portrait SVG keeps the origin, three landscapes and the shared waypoint in one readable map.
 
 ## Variant B
 
-- Grammar: one comparison field with islands, a merged chamber and layered bands.
-- Best insertion: before the article moves from terminology to questions for a school.
-- Strength: visually demonstrates that the same label can contain different scope without presenting one model as superior.
-- Embedded 760 px container: a container-specific type scale and narrower label rail preserve every complete phrase without clipping.
-- Mobile: the separated model becomes vertical, the merged model becomes one continuous stack, and the layers retain increasing width.
+- Grammar: compass with three equal sectors and labels outside the circle.
+- Best insertion: near “Как устроен путь дальше”.
+- Strength: makes equality explicit without points, ranks, steps or an automatic recommendation.
+- The teaching sector contains a two-part sequence: personal mastery first, teacher preparation second.
+- Mobile: the whole compass scales as one illustration; external labels remain part of the same visual field.
 
-## Editorial safeguards
+## Content safeguards
 
-- The visual does not claim that one construction is deeper or better.
-- “Right to teach/initiate” is shown as programme content, not as a universal legal or spiritual rule.
-- The number of stages is deliberately separated from programme depth.
-- Text follows the approved article distinction: separate master/teacher training, combined third degree, or a master path split into parts.
+- The teacher route does not lead directly from Reiki II: it explicitly passes through “Мастер жизни”.
+- “Мастер жизни” is shown as a valid personal route without a teaching obligation.
+- Staying on Reiki II is presented as a complete choice, not a failure to progress.
+- No scientific or medical mechanism is implied.
 
 ## Recommendation
 
-Variant A is clearer for fast comprehension and precise editorial control. Variant B is more distinctive and works when the page needs an explanatory pause rather than another sequence diagram.
+Use **Variant A** when the article needs a literal story of movement through a landscape. Use **Variant B** when the emphasis is self-orientation and three legitimate choices without a hierarchy.

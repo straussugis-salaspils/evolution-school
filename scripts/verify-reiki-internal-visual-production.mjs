@@ -38,6 +38,7 @@ const routes = [
   "opasno-li-reiki",
   "kak-vybrat-mastera-reiki",
   "oshibki-nachinayuschih-reiki",
+  "kak-pomogat-drugim-i-ne-istoshchatsya",
   "master-uchitel-reiki",
   "chto-posle-reiki-2",
   "tretya-stupen-reiki",
@@ -259,6 +260,11 @@ try {
           });
           if (viewport === "desktop-1440") {
             const config = visual.inserts.find((insert) => insert.id === id);
+            if (!config) {
+              throw new Error(
+                `Unexpected insert "${id}" on article ${number} (${route}).`,
+              );
+            }
             contactItems.push({
               number,
               id,

@@ -4,7 +4,7 @@ import path from "node:path";
 const root = path.resolve(import.meta.dirname, "..");
 const collectionRoot = path.join(root, "biblioteka", "reiki");
 const hubPath = path.join(collectionRoot, "index.html");
-const expectedArticleCount = 18;
+const expectedArticleCount = 19;
 const baseUrl = "https://evolution.yourbalancerestored.com";
 const issues = [];
 
