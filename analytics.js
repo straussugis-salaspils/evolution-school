@@ -2,6 +2,7 @@
   "use strict";
 
   const GA4_ID = "G-RSEE3PKS5V";
+  const METRIKA_ID = 111024711;
   const CONSENT_KEY = "eh_consent_v2";
   const CONSENT_COOKIE = "eh_consent_v2";
   const FIRST_TOUCH_KEY = "eh_first_touch_v1";
@@ -81,6 +82,7 @@
   const persistFirstTouch = () => { if (allowed() && !storage.get(FIRST_TOUCH_KEY)) storage.set(FIRST_TOUCH_KEY, JSON.stringify(pendingFirstTouch)); };
 
   let ga4Loaded = false;
+  let metrikaLoaded = false;
   const gtag = (...args) => { window.dataLayer.push(args); };
   const consentDefault = () => gtag("consent", "default", consentPayload(false));
   const consentUpdate = (analytics) => gtag("consent", "update", consentPayload(analytics));
@@ -102,9 +104,37 @@
     gtag("config", GA4_ID, { send_page_view: true });
     return true;
   };
+  const loadYandexMetrika = () => {
+    if (metrikaLoaded || !allowed()) return false;
+    metrikaLoaded = true;
+    window.ym = window.ym || function (...args) {
+      (window.ym.a = window.ym.a || []).push(args);
+    };
+    window.ym.l = Date.now();
+    const script = document.createElement("script");
+    script.async = true;
+    script.src = "https://mc.yandex.ru/metrika/tag.js";
+    script.dataset.ehMetrika = "true";
+    document.head.append(script);
+    window.ym(METRIKA_ID, "init", {
+      clickmap: false,
+      trackLinks: false,
+      accurateTrackBounce: false,
+      webvisor: false,
+    });
+    return true;
+  };
+  const loadAnalytics = () => {
+    if (!allowed()) return false;
+    const googleLoaded = loadGoogleTag();
+    const yandexLoaded = loadYandexMetrika();
+    return googleLoaded || yandexLoaded;
+  };
   const clearAnalyticsCookies = () => {
     try {
-      document.cookie.split(";").map((entry) => entry.trim().split("=")[0]).filter((name) => /^_ga(?:_|$)|^_gid$/i.test(name)).forEach((name) => {
+      document.cookie.split(";").map((entry) => entry.trim().split("=")[0]).filter((name) => (
+        /^_ga(?:_|$)|^_gid$|^_ym_|^_yasc$|^yuid$|^ymex$/i.test(name)
+      )).forEach((name) => {
         document.cookie = `${name}=; Path=/; Max-Age=0; SameSite=Lax`;
       });
     } catch { /* Cookie storage may be disabled. */ }
@@ -112,19 +142,19 @@
   const setConsent = (choice) => {
     const analytics = choice === "analytics_granted";
     const savedChoice = analytics ? "analytics_granted" : "essential_only";
-    const wasLoaded = ga4Loaded;
+    const wasLoaded = ga4Loaded || metrikaLoaded;
     storage.set(CONSENT_KEY, savedChoice);
     cookie.set(CONSENT_COOKIE, savedChoice);
-    if (analytics) { persistFirstTouch(); loadGoogleTag(); }
+    if (analytics) { persistFirstTouch(); loadAnalytics(); }
     if (!analytics && wasLoaded) {
-      consentUpdate(false);
+      if (ga4Loaded) consentUpdate(false);
       clearAnalyticsCookies();
-      // Basic Consent Mode removes the loaded Google script on the next page load.
+      // Basic consent removes the loaded analytics scripts on the next page load.
       window.setTimeout(() => location.reload(), 0);
     }
     document.dispatchEvent(new CustomEvent("eh:consent-change", { detail: { analytics } }));
   };
-  if (allowed()) { persistFirstTouch(); loadGoogleTag(); }
+  if (allowed()) { persistFirstTouch(); loadAnalytics(); }
 
   const sanitize = (eventName, values = {}) => {
     const result = {};
@@ -137,9 +167,17 @@
   };
   const track = (eventName, values) => {
     if (!allowed() || !EVENTS.has(eventName)) return false;
-    if (!ga4Loaded || typeof window.gtag !== "function") return false;
-    window.gtag("event", eventName, sanitize(eventName, values));
-    return true;
+    const parameters = sanitize(eventName, values);
+    let sent = false;
+    if (ga4Loaded && typeof window.gtag === "function") {
+      window.gtag("event", eventName, parameters);
+      sent = true;
+    }
+    if (metrikaLoaded && typeof window.ym === "function") {
+      window.ym(METRIKA_ID, "reachGoal", eventName, parameters);
+      sent = true;
+    }
+    return sent;
   };
   const text = (node) => clean(node?.getAttribute("aria-label") || node?.textContent || "");
   const urlFor = (node) => { try { return new URL(node.getAttribute("href"), location.href); } catch { return null; } };
@@ -192,7 +230,17 @@
     settings.addEventListener("click", () => show(true));
     if (!consent()) show(false);
   };
-  window.ehAnalytics = Object.freeze({ track, setConsent, getConsent: consent, getFirstTouch, loadGoogleTag, ga4Id: GA4_ID, consentPayload });
+  window.ehAnalytics = Object.freeze({
+    track,
+    setConsent,
+    getConsent: consent,
+    getFirstTouch,
+    loadGoogleTag,
+    loadYandexMetrika,
+    ga4Id: GA4_ID,
+    metrikaId: METRIKA_ID,
+    consentPayload,
+  });
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", renderBanner, { once: true });
   else renderBanner();
 })();

@@ -32,7 +32,7 @@ for (const file of htmlFiles) {
   const scripts = (html.match(/\/analytics\.js/g) || []).length;
   if (styles !== 1 || scripts !== 1) errors.push(`${relative}: analytics includes ${styles}/${scripts}, expected 1/1`);
   if (/GTM-WNV2B49K|\/gtm\.js\?|<noscript[^>]*>[^<]*<iframe/i.test(html)) errors.push(`${relative}: GTM code must not be present`);
-  if (/google-analytics\.com|connect\.facebook\.net|\bfbq\s*\(|\bttq\./i.test(html)) errors.push(`${relative}: direct third-party analytics or pixel code is not allowed`);
+  if (/google-analytics\.com|mc\.yandex\.ru|connect\.facebook\.net|\bym\s*\(|\bfbq\s*\(|\bttq\./i.test(html)) errors.push(`${relative}: direct third-party analytics or pixel code is not allowed`);
 }
 
 for (const eventName of ["generate_lead", "navigator_start", "navigator_complete", "test_start", "test_complete", "telegram_click", "program_cta_click", "payment_click", "outbound_click"]) {
@@ -40,22 +40,31 @@ for (const eventName of ["generate_lead", "navigator_start", "navigator_complete
 }
 for (const fragment of [
   'const GA4_ID = "G-RSEE3PKS5V"',
+  "const METRIKA_ID = 111024711",
   'https://www.googletagmanager.com/gtag/js?id=',
+  "https://mc.yandex.ru/metrika/tag.js",
   'script.dataset.ehGa4 = "true"',
+  'script.dataset.ehMetrika = "true"',
   'consentDefault();',
   'consentUpdate(true);',
   'gtag("config", GA4_ID, { send_page_view: true })',
+  'window.ym(METRIKA_ID, "init"',
+  'window.ym(METRIKA_ID, "reachGoal", eventName, parameters)',
+  "clickmap: false",
+  "trackLinks: false",
+  "webvisor: false",
   'consentUpdate(false);',
   'clearAnalyticsCookies();',
-  'if (!ga4Loaded || typeof window.gtag !== "function") return false',
+  "const yandexLoaded = loadYandexMetrika();",
 ]) {
-  if (!analytics.includes(fragment)) errors.push(`analytics.js: missing direct-GA4 requirement: ${fragment}`);
+  if (!analytics.includes(fragment)) errors.push(`analytics.js: missing analytics-layer requirement: ${fragment}`);
 }
 for (const key of ["analytics_storage", "ad_storage", "ad_user_data", "ad_personalization"]) {
   if (!analytics.includes(`${key}: analytics ? "granted" : "denied"`) && key === "analytics_storage") errors.push("analytics.js: analytics_storage consent state is missing");
   if (key !== "analytics_storage" && !analytics.includes(`${key}: "denied"`)) errors.push(`analytics.js: ${key} must remain denied`);
 }
 if (/GTM-WNV2B49K|loadGtm|ehAddConsentListener|data-eh-gtm|\/gtm\.js\?/i.test(analytics)) errors.push("analytics.js: GTM runtime code must not be present");
+if (/clickmap:\s*true|webvisor:\s*true|\becommerce\s*:/i.test(analytics)) errors.push("analytics.js: disallowed Yandex Metrika feature is enabled");
 if (!analytics.includes("const PII")) errors.push("analytics.js: PII guard is missing");
 
 console.log(`Analytics audit: ${htmlFiles.length} HTML files, ${errors.length} error(s).`);
