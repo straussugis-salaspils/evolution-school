@@ -496,7 +496,7 @@ function articleHtml(article) {
   <link rel="canonical" href="${canonical}">
   <link rel="icon" type="image/png" href="/assets/evolution-house-logo-approved.png">
   <link rel="stylesheet" href="/styles.css">
-  <link rel="stylesheet" href="/article-library.css?v=20260727-archetypes-articles">
+  <link rel="stylesheet" href="/article-library.css?v=20260727-archetypes-menu">
   <link rel="stylesheet" href="/cookie-consent.css">
   <script src="/analytics.js" defer></script>
   <script type="application/ld+json">${JSON.stringify(schemaFor(article, draft), null, 2)}</script>
@@ -542,7 +542,7 @@ function articleHtml(article) {
     </div>
   </main>
   ${shellParts.footer}
-  <script src="/archetype-route.js" defer></script>
+  <script src="/archetype-route.js?v=20260727-archetypes-menu" defer></script>
   <script src="/script.js"></script>
 </body>
 </html>`,
