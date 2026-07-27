@@ -487,7 +487,10 @@ function commonShell() {
   const sample = fs.readFileSync(samplePath, "utf8");
   const sourceHeader = sample.match(
     /<header class="eh-shell-header[\s\S]*?<\/header>/,
-  )?.[0];
+  )?.[0]?.replace(
+    /<nav class="library-breadcrumb library-breadcrumb--header"[\s\S]*?<\/nav>/,
+    "",
+  );
   const footer = sample.match(/<footer class="eh-global-footer"[\s\S]*?<\/footer>\s*<script src="\/script\.js"><\/script>/)?.[0];
   if (!sourceHeader || !footer) {
     throw new Error("Could not extract shared article shell.");
@@ -556,10 +559,20 @@ function renderFaq(section) {
 function renderArticle(article, allArticles, relatedMap, shell) {
   const canonical = `${baseUrl}${article.route}`;
   const imageUrl = `${baseUrl}${article.visual.basePath}/og-1200.jpg`;
+  const articleBreadcrumb = `<nav class="library-breadcrumb library-breadcrumb--header" aria-label="&#1055;&#1091;&#1090;&#1100; &#1089;&#1090;&#1088;&#1072;&#1085;&#1080;&#1094;&#1099;">
+      <div class="eh-shell-container">
+        <a href="/biblioteka.html">&#1041;&#1080;&#1073;&#1083;&#1080;&#1086;&#1090;&#1077;&#1082;&#1072;</a>
+        <span>&#8594;</span>
+        <a href="/biblioteka/reiki/">&#1042;&#1089;&#1077; &#1089;&#1090;&#1072;&#1090;&#1100;&#1080; &#1086; &#1056;&#1077;&#1081;&#1082;&#1080;</a>
+        <span>&#8594;</span>
+        <span>${escapeHtml(article.h1)}</span>
+      </div>
+    </nav>`;
   const articleHeader = shell.header.replace(
     'class="eh-local-strip__articles" href="/biblioteka/reiki/" aria-current="page"',
     'class="eh-local-strip__articles" href="/biblioteka/reiki/" aria-current="location"',
-  );
+  ).replace("</header>", `${articleBreadcrumb}
+  </header>`);
   const faq = article.sections.flatMap(extractFaq);
   const schema = {
     "@context": "https://schema.org",
@@ -711,7 +724,7 @@ function renderArticle(article, allArticles, relatedMap, shell) {
   <link rel="canonical" href="${canonical}">
   <link rel="icon" type="image/png" href="/assets/evolution-house-logo-approved.png">
   <link rel="stylesheet" href="/styles.css">
-  <link rel="stylesheet" href="/article-library.css?v=20260724-2">
+  <link rel="stylesheet" href="/article-library.css?v=20260727-reading-nav-2">
   <link rel="stylesheet" href="/cookie-consent.css">
   <script src="/analytics.js" defer></script>
   <script type="application/ld+json">
@@ -722,16 +735,6 @@ ${JSON.stringify(schema, null, 2)}
   ${articleHeader}
 
   <main>
-    <nav class="library-breadcrumb" aria-label="&#1055;&#1091;&#1090;&#1100; &#1089;&#1090;&#1088;&#1072;&#1085;&#1080;&#1094;&#1099;">
-      <div class="eh-shell-container">
-        <a href="/biblioteka.html">&#1041;&#1080;&#1073;&#1083;&#1080;&#1086;&#1090;&#1077;&#1082;&#1072;</a>
-        <span>&#8594;</span>
-        <a href="/biblioteka/reiki/">&#1042;&#1089;&#1077; &#1089;&#1090;&#1072;&#1090;&#1100;&#1080; &#1086; &#1056;&#1077;&#1081;&#1082;&#1080;</a>
-        <span>&#8594;</span>
-        <span>${escapeHtml(article.h1)}</span>
-      </div>
-    </nav>
-
     <header class="article-hero">
       <div class="eh-shell-container article-hero__grid">
         <div>
@@ -777,6 +780,7 @@ ${JSON.stringify(schema, null, 2)}
   </main>
 
   ${shell.footer}
+  <script src="/archetype-route.js?v=20260727-reading-nav-1" defer></script>
 </body>
 </html>
 `;

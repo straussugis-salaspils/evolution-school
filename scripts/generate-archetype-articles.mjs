@@ -290,12 +290,23 @@ function characterPicture(slug) {
   </figure>`;
 }
 
+function insertScenePicture(insert) {
+  return `<figure class="archetype-insert__scene">
+    <picture>
+      <source type="image/webp" srcset="${insert.sceneAsset}/hero-480.webp 480w, ${insert.sceneAsset}/hero-768.webp 768w, ${insert.sceneAsset}/hero-1200.webp 1200w" sizes="(max-width: 620px) calc(100vw - 3rem), 420px">
+      <img src="${insert.sceneAsset}/hero-1200.jpg" alt="${escapeHtml(insert.sceneAlt)}" width="1200" height="900" loading="lazy" decoding="async">
+    </picture>
+  </figure>`;
+}
+
 function renderArchetypeInsert(article) {
   const insert = archetypeArticleInserts[article.route_id];
   if (!insert) return "";
   const routeClass = `archetype-insert--route-${article.route_id.toLowerCase()}`;
   const layoutClass = insert.layout ? ` archetype-insert--layout-${insert.layout}` : "";
-  const characters = insert.characters.map(characterPicture).join("");
+  const characters = insert.sceneAsset
+    ? insertScenePicture(insert)
+    : insert.characters.map(characterPicture).join("");
   const characterNames = insert.characters
     .map((slug) => archetypeCharacters[slug].name)
     .join(" · ");
@@ -308,9 +319,9 @@ function renderArchetypeInsert(article) {
     )
     .join("");
   return `<figure class="archetype-insert archetype-insert--${insert.type} ${routeClass}${layoutClass}" aria-labelledby="archetype-insert-${article.route_id}">
-    <div class="archetype-insert__portrait${insert.characters.length > 1 ? " archetype-insert__portrait--multi" : ""}" aria-label="Архетипические образы">
+    <div class="archetype-insert__portrait${insert.characters.length > 1 ? " archetype-insert__portrait--multi" : ""}${insert.sceneAsset ? " archetype-insert__portrait--scene" : ""}" aria-label="Архетипические образы">
       ${characters}
-      ${insert.characters.length > 1 ? `<p class="archetype-insert__character-legend">${escapeHtml(characterNames)}</p>` : ""}
+      ${insert.characters.length > 1 && !insert.sceneAsset ? `<p class="archetype-insert__character-legend">${escapeHtml(characterNames)}</p>` : ""}
     </div>
     <div class="archetype-insert__explanation">
       <p class="archetype-insert__eyebrow">${escapeHtml(insert.eyebrow)}</p>
@@ -341,6 +352,10 @@ function shell() {
   );
   let header = source.slice(source.indexOf("<header"), source.indexOf("</header>") + 9);
   let footer = source.slice(source.indexOf("<footer"), source.indexOf("<script src=\"/script.js\""));
+  header = header.replace(
+    /<nav class="library-breadcrumb library-breadcrumb--header"[\s\S]*?<\/nav>/,
+    "",
+  );
   const localStrip = `<nav class="eh-local-strip" aria-label="Навигация по Пути архетипов">
       <div class="eh-shell-container">
         <a href="/arhetipy.html">Карта пути</a>
@@ -481,8 +496,11 @@ function articleHtml(article) {
       'class="eh-local-strip__articles" href="/arhetipy/"',
       'class="eh-local-strip__articles" href="/arhetipy/" aria-current="location"',
     );
-  const localStrip = themedHeader.match(/<nav class="eh-local-strip"[\s\S]*?<\/nav>/)?.[0] ?? "";
-  const header = themedHeader.replace(/<nav class="eh-local-strip"[\s\S]*?<\/nav>/, "");
+  const header = themedHeader.replace(
+    "</header>",
+    `${articleBreadcrumb}
+  </header>`,
+  );
   const introHtml = renderBlocks(draft.intro);
   const articleBodyClass = introHtml
     ? "article-body"
@@ -526,22 +544,20 @@ function articleHtml(article) {
   <link rel="canonical" href="${canonical}">
   <link rel="icon" type="image/png" href="/assets/evolution-house-logo-approved.png">
   <link rel="stylesheet" href="/styles.css">
-  <link rel="stylesheet" href="/article-library.css?v=20260727-archetypes-visual-audit">
-  <link rel="stylesheet" href="/assets/archetype-articles/inserts/archetype-inserts.css?v=20260727-visual-audit">
+  <link rel="stylesheet" href="/article-library.css?v=20260727-reading-nav-2">
+  <link rel="stylesheet" href="/assets/archetype-articles/inserts/archetype-inserts.css?v=20260727-visual-fix-2">
   <link rel="stylesheet" href="/cookie-consent.css">
   <script src="/analytics.js" defer></script>
   <script type="application/ld+json">${JSON.stringify(schemaFor(article, draft), null, 2)}</script>
 </head>
 <body class="article-page article-page--archetypes eh-context--archetypes">
   ${header}
-  ${localStrip}
-  ${articleBreadcrumb}
   <main>
     <header class="article-hero">
       <div class="eh-shell-container article-hero__grid">
         <div>
           <a class="article-back-link" href="/arhetipy/">← Все статьи об архетипах</a>
-          <p class="article-kicker">Библиотека · Путь архетипов</p>
+          <p class="article-kicker">Статья ${String(hubNumber.get(article.route_id)).padStart(2, "0")} · Путь архетипов</p>
           <h1>${escapeHtml(draft.h1)}</h1>
           <p class="article-hero__lead">${escapeHtml(article.meta_description)}</p>
           <div class="article-meta">
@@ -727,7 +743,7 @@ function hubHtml() {
   <link rel="canonical" href="${baseUrl}/arhetipy/">
   <link rel="icon" type="image/png" href="/assets/evolution-house-logo-approved.png">
   <link rel="stylesheet" href="/styles.css">
-  <link rel="stylesheet" href="/article-library.css?v=20260727-archetypes-purple">
+  <link rel="stylesheet" href="/article-library.css?v=20260727-reading-nav-1">
   <link rel="stylesheet" href="/cookie-consent.css">
   <script src="/analytics.js" defer></script>
   <script type="application/ld+json">${JSON.stringify(collectionSchema(), null, 2)}</script>
@@ -755,25 +771,10 @@ function hubHtml() {
       </div>
     </section>
     ${sections}
-    <section class="library-section library-section--formats">
-      <div class="eh-shell-container">
-        <div class="library-section__head"><div><p class="library-kicker">Форматы пути</p><h2>От чтения — к практике</h2></div><p>Статьи помогают разобраться. Формат выбирается отдельно — по теме, готовности и нужной глубине сопровождения.</p></div>
-        <div class="archetype-format-grid">
-          ${formats
-            .map(
-              (item) => `<a class="archetype-format-card clickable-card" href="${item.href}">
-                <img src="${item.image}" alt="" width="1200" height="750" loading="lazy">
-                <div><span>${item.eyebrow}</span><h3>${item.title}</h3><p>${item.description}</p><em>Посмотреть формат →</em></div>
-              </a>`,
-            )
-            .join("")}
-        </div>
-      </div>
-    </section>
     <section class="archetype-path-bridge">
       <div class="eh-shell-container archetype-path-bridge__grid">
-        <div><p class="library-kicker">Продолжить путь</p><h2>От статьи — к карте направления</h2><p>Карта пути показывает действующие форматы работы с архетипами и помогает выбрать подходящую глубину знакомства с методом.</p></div>
-        <div class="archetype-path-bridge__actions"><a class="button button--primary" href="/arhetipy.html">Открыть карту пути</a><a class="button button--secondary" href="/arhetipy-method.html">Как устроен метод</a></div>
+        <div><p class="library-kicker">Продолжить путь</p><h2>Продолжить путь в архетипах</h2><p>Карта направления помогает увидеть всю систему архетипов и выбрать, с какой темой знакомиться дальше.</p></div>
+        <div class="archetype-path-bridge__actions"><a class="button button--primary" href="/arhetipy.html">Открыть карту архетипов</a><a class="button button--secondary" href="/arhetipy-method.html">Понять метод</a></div>
       </div>
     </section>
   </main>
@@ -806,7 +807,7 @@ function womenHubHtml() {
   <link rel="canonical" href="${baseUrl}/zhenskie-arhetipy/">
   <link rel="icon" type="image/png" href="/assets/evolution-house-logo-approved.png">
   <link rel="stylesheet" href="/styles.css">
-  <link rel="stylesheet" href="/article-library.css?v=20260727-archetypes-purple">
+  <link rel="stylesheet" href="/article-library.css?v=20260727-reading-nav-1">
   <link rel="stylesheet" href="/cookie-consent.css">
   <script src="/analytics.js" defer></script>
 </head>
