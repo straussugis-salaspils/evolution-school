@@ -1875,6 +1875,57 @@ body.article-page--archetypes .article-toc a:focus-visible {
   }
 }
 
+body.article-page--archetypes .library-breadcrumb--header {
+  background: rgba(255, 250, 242, 0.97);
+  box-shadow: 0 8px 22px rgba(53, 19, 29, 0.07);
+}
+
+body.article-page--archetypes .article-toc {
+  top: 10.5rem;
+  max-height: calc(100vh - 12rem);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(138, 52, 66, 0.34) transparent;
+}
+
+body.article-page--archetypes .article-body--without-intro > section:first-child {
+  margin-top: 0;
+}
+
+body.article-page--archetypes .article-toc strong {
+  color: var(--library-ink);
+}
+
+body.article-page--archetypes .article-author {
+  grid-template-columns: 176px minmax(0, 1fr);
+  gap: 2rem;
+}
+
+body.article-page--archetypes .article-author__portrait {
+  width: 176px;
+  height: 176px;
+  overflow: hidden;
+  border-radius: 50%;
+  background: #ead8c3;
+}
+
+body.article-page--archetypes .article-author__portrait img {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  object-fit: cover;
+  object-position: 50% 22%;
+  transform: scale(1.55);
+  transform-origin: 50% 34%;
+}
+
+@media (min-width: 981px) and (max-width: 1120px) {
+  body.article-page--archetypes .article-toc {
+    top: 15.75rem;
+    max-height: calc(100vh - 17rem);
+  }
+}
+
 body.eh-context--archetypes .eh-local-strip {
   background: #5b2d68;
   border-color: rgba(255, 252, 255, 0.16);
@@ -1917,6 +1968,48 @@ body.eh-context--archetypes .eh-local-strip a[aria-current] {
 }
 
 @media (max-width: 720px) {
+  body.article-page--archetypes .library-breadcrumb--header .eh-shell-container {
+    width: calc(100% - 40px);
+    min-width: 0;
+  }
+
+  body.article-page--archetypes
+    .library-breadcrumb--header
+    .eh-shell-container
+    > * {
+    flex: 0 0 auto;
+  }
+
+  body.article-page--archetypes
+    .library-breadcrumb--header
+    .eh-shell-container
+    > span:last-child {
+    min-width: 0;
+    flex: 1 1 auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+@media (max-width: 980px) {
+  body.article-page--archetypes .article-toc {
+    position: static;
+    max-height: none;
+    overflow: visible;
+  }
+}
+
+@media (max-width: 720px) {
+  body.article-page--archetypes .article-author {
+    grid-template-columns: 112px minmax(0, 1fr);
+    gap: 1rem;
+  }
+
+  body.article-page--archetypes .article-author__portrait {
+    width: 112px;
+    height: 112px;
+  }
+
   body.article-page--archetypes .library-breadcrumb--header .eh-shell-container {
     width: calc(100% - 40px);
     min-width: 0;

@@ -471,7 +471,7 @@ function articleHtml(article) {
   const articleBreadcrumb = `<nav class="library-breadcrumb library-breadcrumb--header" aria-label="Путь страницы">
       <div class="eh-shell-container">
         <a href="/biblioteka.html">Библиотека</a><span>→</span>
-        <a href="/arhetipy/">Архетипы</a><span>→</span>
+        <a href="/arhetipy/#stati">Архетипы</a><span>→</span>
         <span>${escapeHtml(draft.h1)}</span>
       </div>
     </nav>`;
@@ -526,7 +526,7 @@ function articleHtml(article) {
   <link rel="canonical" href="${canonical}">
   <link rel="icon" type="image/png" href="/assets/evolution-house-logo-approved.png">
   <link rel="stylesheet" href="/styles.css">
-  <link rel="stylesheet" href="/article-library.css?v=20260727-archetypes-purple">
+  <link rel="stylesheet" href="/article-library.css?v=20260727-archetypes-visual-audit">
   <link rel="stylesheet" href="/assets/archetype-articles/inserts/archetype-inserts.css?v=20260727-visual-audit">
   <link rel="stylesheet" href="/cookie-consent.css">
   <script src="/analytics.js" defer></script>
@@ -563,7 +563,9 @@ function articleHtml(article) {
         ${body}
         ${relatedArticles(article)}
         <aside class="article-author" aria-label="Об авторе">
-          <img src="/assets/svetlana-archetype-yellow.jpg" alt="${author}" width="1200" height="1600" loading="lazy">
+          <div class="article-author__portrait">
+            <img src="/assets/svetlana-archetype-yellow.jpg" alt="${author}" width="1200" height="1600" loading="lazy">
+          </div>
           <div>
             <p class="article-author__label">Автор статьи</p>
             <h2>${author}</h2>
@@ -575,7 +577,7 @@ function articleHtml(article) {
     </div>
   </main>
   ${shellParts.footer}
-  <script src="/archetype-route.js?v=20260727-archetypes-purple" defer></script>
+  <script src="/archetype-route.js?v=20260727-archetypes-visual-audit" defer></script>
   <script src="/script.js"></script>
 </body>
 </html>`,
