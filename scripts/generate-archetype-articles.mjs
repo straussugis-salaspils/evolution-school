@@ -41,6 +41,33 @@ const visualAlt = {
   L16: "Женщина добавляет вкус и живой выбор в точную стратегию",
 };
 
+const hubTeasers = {
+  S05: "Понятная карта архетипов: как узнавать повторяющиеся способы действовать, выбирать и строить отношения с жизнью.",
+  S06: "Один архетип может быть точной опорой или создавать перегрузку. Разбираем, как заметить переход между этими состояниями.",
+  L01: "От жизни, собранной из обязательств, — к первому живому желанию, которое можно проверить конкретным действием.",
+  R01: "Персефона помогает услышать желание, повзрослеть в выборе и превратить внутреннее «хочу» в собственный шаг.",
+  R02: "Афродита возвращает чувствительность к красоте, телу и удовольствию — и помогает снова почувствовать вкус своей жизни.",
+  R03: "Артемида соединяет направление, границы и действие: как двигаться к цели, сохраняя контакт с собой и другими.",
+  R04: "Афина видит структуру и собирает стратегию. Материал о ясных решениях, последовательности и живом выборе внутри плана.",
+  R05: "Гера раскрывает зрелый союз: общие решения, договорённости, верность своему выбору и равное место двух людей.",
+  R06: "Гестия создаёт внутренний центр — тихое пространство, из которого легче слышать себя и возвращаться к главному.",
+  R07: "Деметра показывает заботу, которая питает самостоятельность: поддержать, передать опору и сохранить место для собственной жизни.",
+  R08: "Геката помогает завершать, различать развилки и придавать замыслу форму, когда прежний путь уже закончился.",
+  L03: "Когда вся система держится на вас: как увидеть реальный объём нагрузки и передать другому человеку целую зону ответственности.",
+  L05: "От привычки заслуживать одобрение — к собственному выбору, спокойному несогласию и праву занимать своё место.",
+  L04: "Почему напряжение остаётся даже в тишине и как вернуть телу ощущение завершённости, опоры и безопасной паузы.",
+  L06: "Как вернуть себе голос, желания и личное пространство в отношениях, сохраняя близость и уважение к партнёру.",
+  L07: "Практика спокойного отказа: взять паузу, обозначить границу и ответить ясно, сохраняя контакт с человеком.",
+  L08: "Как снова включить собственные желания в расписание жизни и перейти от инерции к заботе из наполненности.",
+  L09: "Помощь, которая оставляет человеку его силу: определить объём участия, разделить ответственность и сохранить свой ресурс.",
+  L10: "Сильная позиция опирается на ясную зону ответственности. Разбираем, где заканчивается руководство и начинается давление.",
+  L12: "Передать задачу целиком, принять помощь и перестать всё переделывать самой: практическая карта ответственности и доверия.",
+  L13: "Цель достигнута, а впереди тишина. Как завершить прежний маршрут и заметить, из чего начинает собираться следующий этап.",
+  L15: "Желание становится движением, когда появляется ясный первый шаг. Разбираем путь от внутреннего импульса к действию.",
+  L16: "Когда система работает идеально, но жизнь потеряла вкус: как вернуть в стратегию любопытство, удовольствие и личный выбор.",
+  S04: "Восемь мужских архетипов как восемь функций действия, силы, порядка, глубины, творчества и контакта с жизнью.",
+};
+
 const groups = [
   {
     id: "start",
@@ -51,22 +78,51 @@ const groups = [
   {
     id: "women",
     title: "Восемь женских архетипов",
-    description: "Не восемь типов женщин, а восемь функций и способов действовать.",
+    description: "Восемь функций, которые помогают желать, выбирать, действовать, заботиться, строить союз и сохранять внутренний центр.",
     ids: ["R01", "R02", "R03", "R04", "R05", "R06", "R07", "R08"],
   },
   {
     id: "themes",
     title: "Жизненные темы",
-    description: "Материалы для конкретной ситуации — без попытки угадать свой код по одной проблеме.",
+    description: "Практические материалы о желаниях, границах, отношениях, нагрузке, выборе и следующем этапе жизни.",
     ids: ["L01", "L03", "L05", "L04", "L06", "L07", "L08", "L09", "L10", "L12", "L13", "L15", "L16"],
   },
   {
     id: "men",
     title: "Мужская система",
-    description: "Отдельная карта мужских архетипов без смешения двух систем.",
+    description: "Карта восьми функций, связанных с действием, силой, порядком, глубиной, творчеством и масштабом.",
     ids: ["S04"],
   },
 ];
+
+const hubOrder = [
+  "S05",
+  "S06",
+  "L01",
+  "R01",
+  "R02",
+  "R03",
+  "R04",
+  "R05",
+  "R06",
+  "R07",
+  "R08",
+  "L03",
+  "L05",
+  "L04",
+  "L06",
+  "L07",
+  "L08",
+  "L09",
+  "L10",
+  "L12",
+  "L13",
+  "L15",
+  "L16",
+  "S04",
+];
+const hubNumber = new Map(hubOrder.map((routeId, index) => [routeId, index + 1]));
+const featuredRouteIds = new Set(hubOrder.slice(0, 3));
 
 function escapeHtml(value) {
   return String(value)
@@ -275,7 +331,7 @@ function responsivePicture(article, variant = "hero") {
   const id = article.route_id.toLowerCase();
   const base = `/assets/archetype-articles/${id}`;
   if (variant === "card") {
-    return `<picture>
+    return `<picture class="article-responsive-image article-responsive-image--card">
       <source type="image/webp" srcset="${base}/card-480.webp 480w, ${base}/card-800.webp 800w, ${base}/card-1200.webp 1200w" sizes="(max-width: 720px) calc(100vw - 40px), 360px">
       <img src="${base}/card-800.jpg" alt="${escapeHtml(visualAlt[article.route_id])}" width="800" height="500" loading="lazy" decoding="async">
     </picture>`;
@@ -491,8 +547,41 @@ function card(article, featured = false) {
     <div class="article-list-card__body">
       <span class="article-list-card__eyebrow">Материал · ${article.route_id}</span>
       <h3>${escapeHtml(draft.h1)}</h3>
-      <p>${escapeHtml(article.meta_description)}</p>
+      <p>${escapeHtml(hubTeasers[article.route_id] || article.meta_description)}</p>
       <span class="article-list-card__link">Читать →</span>
+    </div>
+  </a>`;
+}
+
+function readingMinutes(article) {
+  const draft = parseDraft(article);
+  const sourceWords = stripHtml(draft.source).split(/\s+/).filter(Boolean).length;
+  return Math.max(4, Math.round(sourceWords / 180));
+}
+
+function hubFeaturedCard(article) {
+  const draft = parseDraft(article);
+  const number = String(hubNumber.get(article.route_id)).padStart(2, "0");
+  return `<a class="article-card clickable-card" href="${article.canonical}">
+    ${responsivePicture(article, "card")}
+    <div class="article-card__copy">
+      <span class="article-card__meta">Статья ${number} · ${readingMinutes(article)} минут</span>
+      <h2>${escapeHtml(draft.h1)}</h2>
+      <p>${escapeHtml(hubTeasers[article.route_id])}</p>
+      <span class="article-card__link">Читать статью →</span>
+    </div>
+  </a>`;
+}
+
+function hubCompactCard(article) {
+  const draft = parseDraft(article);
+  const number = String(hubNumber.get(article.route_id)).padStart(2, "0");
+  return `<a class="article-compact-card clickable-card" href="${article.canonical}">
+    <span class="article-compact-card__number">${number}</span>
+    <div>
+      <h3>${escapeHtml(draft.h1)}</h3>
+      <p>${escapeHtml(hubTeasers[article.route_id])}</p>
+      <span>Читать →</span>
     </div>
   </a>`;
 }
@@ -521,20 +610,25 @@ function hubHtml() {
     'class="eh-local-strip__articles" href="/arhetipy/#stati"',
     'class="eh-local-strip__articles" href="/arhetipy/#stati" aria-current="page"',
   );
-  const featured = ["S05", "S06", "L01"].map((id) => card(byId.get(id), true)).join("");
+  const featured = hubOrder
+    .slice(0, 3)
+    .map((id) => hubFeaturedCard(byId.get(id)))
+    .join("");
   const sections = groups
     .filter((group) => group.id !== "start")
-    .map(
-      (group) => `<section id="${group.id}" class="library-section library-section--paper">
+    .map((group, index) => {
+      const ids = group.ids.filter((id) => !featuredRouteIds.has(id));
+      const tone = index % 2 === 0 ? "library-section--sage" : "library-section--paper";
+      return `<section id="${group.id}" class="library-section ${tone}">
         <div class="eh-shell-container">
           <div class="library-section__head">
             <div><p class="library-kicker">Путь архетипов</p><h2>${group.title}</h2></div>
             <p>${group.description}</p>
           </div>
-          <div class="article-list-grid">${group.ids.map((id) => card(byId.get(id))).join("")}</div>
+          <div class="article-compact-grid">${ids.map((id) => hubCompactCard(byId.get(id))).join("")}</div>
         </div>
-      </section>`,
-    )
+      </section>`;
+    })
     .join("");
   const formats = [
     {
@@ -579,7 +673,7 @@ function hubHtml() {
   <meta name="description" content="Статьи Светланы Страусс об архетипах, жизненных темах, ресурсе и тени. Карта женской и мужской системы и вход в расчёт кода.">
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="Статьи об архетипах | Evolution House">
-  <meta property="og:description" content="Архетипы без ярлыков: функции, жизненные темы и карта следующего шага.">
+  <meta property="og:description" content="Архетипы как карта жизненных функций, текущих тем и следующего шага.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ru_RU">
   <meta property="og:site_name" content="Evolution House">
@@ -605,15 +699,15 @@ function hubHtml() {
         <div>
           <p class="library-kicker">Библиотека · Путь архетипов</p>
           <h1>Статьи об архетипах</h1>
-          <p>Не набор красивых типов, а понятный язык для жизненных функций: желания, выбора, границ, заботы, действия и внутреннего центра.</p>
+          <p>Понятный язык жизненных функций: желания, выбора, границ, заботы, действия и внутреннего центра.</p>
         </div>
         <p class="article-list-hero__count"><strong>${articles.length}</strong> материала</p>
       </div>
     </section>
-    <section class="library-section library-section--featured">
+    <section class="library-section library-section--paper">
       <div class="eh-shell-container">
         <div class="library-section__head"><div><p class="library-kicker">Начать здесь</p><h2>Сначала — общая карта</h2></div><p>Три входа: понять термин, различить ресурс и тень, увидеть тему «хочу» и «надо».</p></div>
-        <div class="article-list-grid article-list-grid--featured">${featured}</div>
+        <div class="article-card-grid">${featured}</div>
       </div>
     </section>
     ${sections}
@@ -654,7 +748,7 @@ function womenHubHtml() {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Женские архетипы: 8 функций и их значение | Evolution House</title>
-  <meta name="description" content="Персефона, Афродита, Артемида, Афина, Гера, Гестия, Деметра и Геката: восемь функций женской архетипической системы без ярлыков и типирования.">
+  <meta name="description" content="Персефона, Афродита, Артемида, Афина, Гера, Гестия, Деметра и Геката: восемь функций женской архетипической системы, их ресурсы и жизненные проявления.">
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="Женские архетипы | Evolution House">
   <meta property="og:description" content="Восемь функций женской архетипической системы — ресурс, перегрузка и жизненное проявление.">
@@ -676,9 +770,9 @@ function womenHubHtml() {
   ${shellParts.header}
   <main>
     <nav class="library-breadcrumb" aria-label="Путь страницы"><div class="eh-shell-container"><a href="/arhetipy/">Архетипы</a><span>→</span><span>Женские архетипы</span></div></nav>
-    <section class="article-list-hero"><div class="eh-shell-container article-list-hero__grid"><div><p class="library-kicker">Карта системы</p><h1>Восемь женских архетипов</h1><p>Это не восемь типов женщин. Это восемь функций, которые по-разному проявляются в ресурсе и перегрузке.</p></div><p class="article-list-hero__count"><strong>8</strong> функций</p></div></section>
+    <section class="article-list-hero"><div class="eh-shell-container article-list-hero__grid"><div><p class="library-kicker">Карта системы</p><h1>Восемь женских архетипов</h1><p>Восемь функций, которые по-разному проявляются в ресурсе, выборе, отношениях и повседневных действиях.</p></div><p class="article-list-hero__count"><strong>8</strong> функций</p></div></section>
     <section class="library-section library-section--paper"><div class="eh-shell-container"><div class="article-list-grid">${women.map((item) => card(item)).join("")}</div></div></section>
-    <section class="archetype-path-bridge"><div class="eh-shell-container archetype-path-bridge__grid"><div><p class="library-kicker">Важно</p><h2>Описание не определяет ваш код</h2><p>Сутевой код в системе Evolution House рассчитывается по точным данным рождения и содержит три упорядоченные позиции.</p></div><div class="archetype-path-bridge__actions"><a class="button button--primary" href="/test-arhetipov/">Рассчитать код</a><a class="button button--secondary" href="/arhetipy/chto-eto/">Как устроен расчёт</a></div></div></section>
+    <section class="archetype-path-bridge"><div class="eh-shell-container archetype-path-bridge__grid"><div><p class="library-kicker">Важно</p><h2>Код определяется расчётом</h2><p>Сутевой код в системе Evolution House рассчитывается по точным данным рождения и содержит три упорядоченные позиции.</p></div><div class="archetype-path-bridge__actions"><a class="button button--primary" href="/test-arhetipov/">Рассчитать код</a><a class="button button--secondary" href="/arhetipy/chto-eto/">Как устроен расчёт</a></div></div></section>
   </main>
   ${shellParts.footer}<script src="/script.js"></script>
 </body>

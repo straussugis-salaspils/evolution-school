@@ -1812,6 +1812,38 @@ body.eh-context--archetypes .eh-local-strip a[aria-current] {
   color: #fffaf2;
 }
 
+body.library-page--archetypes .library-section--paper {
+  background: #fffaf2;
+}
+
+body.library-page--archetypes .library-section--sage {
+  background: #f5e6df;
+}
+
+body.library-page--archetypes .article-card,
+body.library-page--archetypes .article-compact-card {
+  --interactive-card-accent: #b86b55;
+  --interactive-card-bg-hover: #f9e9e2;
+  --interactive-card-border: rgba(138, 52, 66, 0.46);
+  --interactive-card-shadow: 0 22px 48px rgba(53, 19, 29, 0.13);
+  border-color: rgba(74, 24, 38, 0.2);
+  background: #fffdf8;
+}
+
+body.library-page--archetypes .article-card:hover,
+body.library-page--archetypes .article-card:focus-visible,
+body.library-page--archetypes .article-compact-card:hover,
+body.library-page--archetypes .article-compact-card:focus-visible {
+  border-color: rgba(138, 52, 66, 0.48);
+  background-color: #f9e9e2 !important;
+  box-shadow: 0 22px 48px rgba(53, 19, 29, 0.13);
+}
+
+body.library-page--archetypes .article-card h2,
+body.library-page--archetypes .article-compact-card h3 {
+  color: #35131d;
+}
+
 .article-list-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
