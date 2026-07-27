@@ -274,30 +274,12 @@ function parseDraft(article) {
   return { h1, intro, sections, source };
 }
 
-function renderRouteChooser(routeId) {
-  return `<section class="archetype-route-card" data-archetype-route data-route-id="${routeId}">
-    <p class="archetype-route-card__eyebrow">Следующий шаг</p>
-    <h2>Выберите маршрут по тому, что уже известно</h2>
-    <p>Одна жизненная тема не определяет ваш код и не назначает программу.</p>
-    <div class="archetype-route-card__choices" aria-label="Что уже известно">
-      <button type="button" data-route-choice="test" aria-pressed="false">Код не рассчитан, точное время знаю</button>
-      <button type="button" data-route-choice="reading" aria-pressed="false">Код уже есть или время неизвестно</button>
-    </div>
-    <div class="archetype-route-card__result" data-route-result hidden>
-      <a class="button button--primary" data-route-link href="/arhetipy/#temy">Выбрать материал по теме</a>
-      <p data-route-note></p>
-    </div>
-    <noscript><p><a href="/arhetipy/#temy">Выбрать материал по своей теме</a></p></noscript>
-  </section>`;
-}
-
-function renderSection(section, index, routeId) {
+function renderSection(section, index) {
   const marker = section.lines.findIndex((line) => line.includes("ROUTE_CTA"));
   const lines = marker >= 0 ? section.lines.filter((_, lineIndex) => lineIndex !== marker) : section.lines;
   return `<section id="section-${index + 1}">
     <h2>${parseInline(section.title)}</h2>
     ${renderBlocks(lines)}
-    ${marker >= 0 ? renderRouteChooser(routeId) : ""}
   </section>`;
 }
 
@@ -310,20 +292,16 @@ function shell() {
   let footer = source.slice(source.indexOf("<footer"), source.indexOf("<script src=\"/script.js\""));
   const localStrip = `<nav class="eh-local-strip" aria-label="Навигация по Пути архетипов">
       <div class="eh-shell-container">
-        <a href="/arhetipy/">Карта пути</a>
+        <a href="/arhetipy.html">Карта пути</a>
         <a href="/arhetipy-method.html">Метод архетипов</a>
         <a href="/lightness/">Вкус лёгкости</a>
         <a href="/strength/">Вкус силы</a>
         <a href="/mentoring/">Высокая Глубина</a>
         <a href="/retreats/">Ретриты</a>
-        <a href="/test-arhetipov/">Рассчитать код</a>
-        <a class="eh-local-strip__articles" href="/arhetipy/#stati">Статьи об архетипах</a>
+        <a class="eh-local-strip__articles" href="/arhetipy/">Статьи об архетипах</a>
       </div>
     </nav>`;
-  header = header
-    .replace(/<nav class="eh-local-strip"[\s\S]*?<\/nav>/, localStrip)
-    .replaceAll("/arhetipy.html", "/arhetipy/");
-  footer = footer.replaceAll("/arhetipy.html", "/arhetipy/");
+  header = header.replace(/<nav class="eh-local-strip"[\s\S]*?<\/nav>/, localStrip);
   return { header, footer };
 }
 
@@ -358,7 +336,7 @@ function relatedArticles(article) {
         <p class="article-related__eyebrow">Продолжить разбираться</p>
         <h2 id="related-${article.route_id}">Связанные материалы</h2>
       </div>
-      <a href="/arhetipy/#stati">Все статьи об архетипах →</a>
+      <a href="/arhetipy/">Все статьи об архетипах →</a>
     </div>
     <div class="article-related__grid">
       ${unique
@@ -442,15 +420,15 @@ function articleHtml(article) {
   const articleBreadcrumb = `<nav class="library-breadcrumb library-breadcrumb--header" aria-label="Путь страницы">
       <div class="eh-shell-container">
         <a href="/biblioteka.html">Библиотека</a><span>→</span>
-        <a href="/arhetipy/#stati">Архетипы</a><span>→</span>
+        <a href="/arhetipy/">Архетипы</a><span>→</span>
         <span>${escapeHtml(draft.h1)}</span>
       </div>
     </nav>`;
   const header = shellParts.header
     .replaceAll("eh-context--reiki", "eh-context--archetypes")
     .replace(
-      'class="eh-local-strip__articles" href="/arhetipy/#stati"',
-      'class="eh-local-strip__articles" href="/arhetipy/#stati" aria-current="location"',
+      'class="eh-local-strip__articles" href="/arhetipy/"',
+      'class="eh-local-strip__articles" href="/arhetipy/" aria-current="location"',
     )
     .replace("</header>", `${articleBreadcrumb}\n  </header>`);
   const introHtml = renderBlocks(draft.intro);
@@ -464,7 +442,7 @@ function articleHtml(article) {
     )
     .join("");
   const body = draft.sections
-    .map((section, index) => renderSection(section, index, article.route_id))
+    .map((section, index) => renderSection(section, index))
     .join("");
   const outputPath = path.join(root, article.canonical.replace(/^\/|\/$/g, ""), "index.html");
 
@@ -496,7 +474,7 @@ function articleHtml(article) {
   <link rel="canonical" href="${canonical}">
   <link rel="icon" type="image/png" href="/assets/evolution-house-logo-approved.png">
   <link rel="stylesheet" href="/styles.css">
-  <link rel="stylesheet" href="/article-library.css?v=20260727-archetypes-menu">
+  <link rel="stylesheet" href="/article-library.css?v=20260727-archetypes-purple">
   <link rel="stylesheet" href="/cookie-consent.css">
   <script src="/analytics.js" defer></script>
   <script type="application/ld+json">${JSON.stringify(schemaFor(article, draft), null, 2)}</script>
@@ -507,7 +485,7 @@ function articleHtml(article) {
     <header class="article-hero">
       <div class="eh-shell-container article-hero__grid">
         <div>
-          <a class="article-back-link" href="/arhetipy/#stati">← Все статьи об архетипах</a>
+          <a class="article-back-link" href="/arhetipy/">← Все статьи об архетипах</a>
           <p class="article-kicker">Библиотека · Путь архетипов</p>
           <h1>${escapeHtml(draft.h1)}</h1>
           <p class="article-hero__lead">${escapeHtml(article.meta_description)}</p>
@@ -542,7 +520,7 @@ function articleHtml(article) {
     </div>
   </main>
   ${shellParts.footer}
-  <script src="/archetype-route.js?v=20260727-archetypes-menu" defer></script>
+  <script src="/archetype-route.js?v=20260727-archetypes-purple" defer></script>
   <script src="/script.js"></script>
 </body>
 </html>`,
@@ -616,8 +594,8 @@ function collectionSchema() {
 function hubHtml() {
   const shellParts = shell();
   const header = shellParts.header.replace(
-    'class="eh-local-strip__articles" href="/arhetipy/#stati"',
-    'class="eh-local-strip__articles" href="/arhetipy/#stati" aria-current="page"',
+    'class="eh-local-strip__articles" href="/arhetipy/"',
+    'class="eh-local-strip__articles" href="/arhetipy/" aria-current="page"',
   );
   const featured = hubOrder
     .slice(0, 3)
@@ -692,7 +670,7 @@ function hubHtml() {
   <link rel="canonical" href="${baseUrl}/arhetipy/">
   <link rel="icon" type="image/png" href="/assets/evolution-house-logo-approved.png">
   <link rel="stylesheet" href="/styles.css">
-  <link rel="stylesheet" href="/article-library.css?v=20260727-archetypes">
+  <link rel="stylesheet" href="/article-library.css?v=20260727-archetypes-purple">
   <link rel="stylesheet" href="/cookie-consent.css">
   <script src="/analytics.js" defer></script>
   <script type="application/ld+json">${JSON.stringify(collectionSchema(), null, 2)}</script>
@@ -737,8 +715,8 @@ function hubHtml() {
     </section>
     <section class="archetype-path-bridge">
       <div class="eh-shell-container archetype-path-bridge__grid">
-        <div><p class="library-kicker">Продолжить путь</p><h2>От статьи — к своей карте</h2><p>Если точное время рождения известно, можно рассчитать три позиции кода. Если нет — идти от жизненной темы без вымышленной точности.</p></div>
-        <div class="archetype-path-bridge__actions"><a class="button button--primary" href="/test-arhetipov/">Рассчитать код</a><a class="button button--secondary" href="/arhetipy-method.html">Как устроен метод</a></div>
+        <div><p class="library-kicker">Продолжить путь</p><h2>От статьи — к карте направления</h2><p>Карта пути показывает действующие форматы работы с архетипами и помогает выбрать подходящую глубину знакомства с методом.</p></div>
+        <div class="archetype-path-bridge__actions"><a class="button button--primary" href="/arhetipy.html">Открыть карту пути</a><a class="button button--secondary" href="/arhetipy-method.html">Как устроен метод</a></div>
       </div>
     </section>
   </main>
@@ -771,7 +749,7 @@ function womenHubHtml() {
   <link rel="canonical" href="${baseUrl}/zhenskie-arhetipy/">
   <link rel="icon" type="image/png" href="/assets/evolution-house-logo-approved.png">
   <link rel="stylesheet" href="/styles.css">
-  <link rel="stylesheet" href="/article-library.css?v=20260727-archetypes">
+  <link rel="stylesheet" href="/article-library.css?v=20260727-archetypes-purple">
   <link rel="stylesheet" href="/cookie-consent.css">
   <script src="/analytics.js" defer></script>
 </head>
@@ -781,44 +759,7 @@ function womenHubHtml() {
     <nav class="library-breadcrumb" aria-label="Путь страницы"><div class="eh-shell-container"><a href="/arhetipy/">Архетипы</a><span>→</span><span>Женские архетипы</span></div></nav>
     <section class="article-list-hero"><div class="eh-shell-container article-list-hero__grid"><div><p class="library-kicker">Карта системы</p><h1>Восемь женских архетипов</h1><p>Восемь функций, которые по-разному проявляются в ресурсе, выборе, отношениях и повседневных действиях.</p></div><p class="article-list-hero__count"><strong>8</strong> функций</p></div></section>
     <section class="library-section library-section--paper"><div class="eh-shell-container"><div class="article-list-grid">${women.map((item) => card(item)).join("")}</div></div></section>
-    <section class="archetype-path-bridge"><div class="eh-shell-container archetype-path-bridge__grid"><div><p class="library-kicker">Важно</p><h2>Код определяется расчётом</h2><p>Сутевой код в системе Evolution House рассчитывается по точным данным рождения и содержит три упорядоченные позиции.</p></div><div class="archetype-path-bridge__actions"><a class="button button--primary" href="/test-arhetipov/">Рассчитать код</a><a class="button button--secondary" href="/arhetipy/chto-eto/">Как устроен расчёт</a></div></div></section>
-  </main>
-  ${shellParts.footer}<script src="/script.js"></script>
-</body>
-</html>`;
-}
-
-function testEntryHtml() {
-  const shellParts = shell();
-  return `<!doctype html>
-<html lang="ru">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Рассчитать код архетипов | Evolution House</title>
-  <meta name="description" content="Расчёт трёх сутевых архетипов по имени, точной дате, времени и месту рождения в авторской системе Светланы Страусс.">
-  <meta name="robots" content="index, follow">
-  <meta property="og:title" content="Рассчитать код архетипов | Evolution House">
-  <meta property="og:description" content="Три упорядоченные позиции архетипического кода по точным данным рождения.">
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="ru_RU">
-  <meta property="og:site_name" content="Evolution House">
-  <meta property="og:image" content="${baseUrl}/assets/archetype-articles/s05/og-1200.jpg">
-  <meta property="og:url" content="${baseUrl}/test-arhetipov/">
-  <meta name="robots" content="index, follow">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="canonical" href="${baseUrl}/test-arhetipov/">
-  <link rel="icon" type="image/png" href="/assets/evolution-house-logo-approved.png">
-  <link rel="stylesheet" href="/styles.css">
-  <link rel="stylesheet" href="/article-library.css?v=20260727-archetypes">
-  <link rel="stylesheet" href="/cookie-consent.css">
-  <script src="/analytics.js" defer></script>
-</head>
-<body class="library-page library-page--archetypes eh-context--archetypes">
-  ${shellParts.header}
-  <main>
-    <section class="archetype-test-hero"><div class="eh-shell-container"><p class="library-kicker">Авторский расчёт Evolution House</p><h1>Рассчитать код архетипов</h1><p>Для расчёта нужны имя, точные дата, местное время и место рождения, а также выбор женской или мужской системы.</p><div class="archetype-test-notice"><strong>Если точное время неизвестно</strong><p>Не подставляйте приблизительный час. Лучше выберите материал по текущей теме — без ложной точности.</p><a href="/arhetipy/#temy">Перейти к темам →</a></div></div></section>
-    <section class="archetype-test-frame"><div class="eh-shell-container"><iframe src="https://archetype-code.vercel.app" title="Расчёт кода архетипов Evolution House" loading="eager" referrerpolicy="strict-origin-when-cross-origin" allow="clipboard-write" height="940"></iframe><p class="archetype-test-frame__fallback">Если форма не открылась, <a href="https://archetype-code.vercel.app" target="_blank" rel="noopener">откройте расчёт в новой вкладке</a>.</p></div></section>
+    <section class="archetype-path-bridge"><div class="eh-shell-container archetype-path-bridge__grid"><div><p class="library-kicker">Продолжить путь</p><h2>От архетипов — к действующим форматам</h2><p>Карта направления помогает увидеть весь путь: от знакомства с методом до практики, сопровождения и живых форматов.</p></div><div class="archetype-path-bridge__actions"><a class="button button--primary" href="/arhetipy.html">Открыть карту пути</a><a class="button button--secondary" href="/arhetipy-method.html">Как устроен метод</a></div></div></section>
   </main>
   ${shellParts.footer}<script src="/script.js"></script>
 </body>
@@ -834,7 +775,4 @@ fs.mkdirSync(path.join(root, "arhetipy"), { recursive: true });
 fs.writeFileSync(path.join(root, "arhetipy", "index.html"), hubHtml(), "utf8");
 fs.mkdirSync(path.join(root, "zhenskie-arhetipy"), { recursive: true });
 fs.writeFileSync(path.join(root, "zhenskie-arhetipy", "index.html"), womenHubHtml(), "utf8");
-fs.mkdirSync(path.join(root, "test-arhetipov"), { recursive: true });
-fs.writeFileSync(path.join(root, "test-arhetipov", "index.html"), testEntryHtml(), "utf8");
-
-console.log(`Generated ${articles.length} archetype articles and 3 system pages.`);
+console.log(`Generated ${articles.length} archetype articles and 2 system pages.`);

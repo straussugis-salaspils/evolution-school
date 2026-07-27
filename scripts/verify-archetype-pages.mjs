@@ -26,9 +26,9 @@ const manifest = JSON.parse(
 const articleRoutes = manifest.assets
   .filter((item) => item.index_state === "index")
   .map((item) => item.canonical);
-const routes = ["/arhetipy/", "/zhenskie-arhetipy/", "/test-arhetipov/", ...articleRoutes];
+const routes = ["/arhetipy.html", "/arhetipy/", "/zhenskie-arhetipy/", ...articleRoutes];
 const viewports = [1440, 1280, 768, 430, 390, 360];
-const screenshotRoutes = new Set(["/arhetipy/", "/arhetipy/chto-eto/", "/zhizn/cherez-nado/"]);
+const screenshotRoutes = new Set(["/arhetipy.html", "/arhetipy/", "/arhetipy/chto-eto/", "/zhizn/cherez-nado/"]);
 const artifactRoot = path.join(root, "artifacts", "archetype-articles");
 fs.mkdirSync(artifactRoot, { recursive: true });
 
@@ -48,9 +48,7 @@ for (const width of viewports) {
       waitUntil: "domcontentloaded",
       timeout: 30_000,
     });
-    if (route !== "/test-arhetipov/") {
-      await page.waitForLoadState("networkidle", { timeout: 8_000 }).catch(() => {});
-    }
+    await page.waitForLoadState("networkidle", { timeout: 8_000 }).catch(() => {});
     const state = await page.evaluate(() => ({
       overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth + 1,
       brokenImages: [...document.images]
@@ -64,15 +62,15 @@ for (const width of viewports) {
       breadcrumbInHeader: Boolean(
         document.querySelector(".eh-shell-header .library-breadcrumb--header"),
       ),
-      currentLocalLinkVisible: (() => {
+      mapLocalLinkVisible: (() => {
         const strip = document.querySelector(".eh-local-strip .eh-shell-container");
-        const current = strip?.querySelector("[aria-current]");
-        if (!strip || !current) return false;
+        const mapLink = strip?.querySelector('a[href="/arhetipy.html"]');
+        if (!strip || !mapLink) return false;
         const stripRect = strip.getBoundingClientRect();
-        const currentRect = current.getBoundingClientRect();
+        const mapRect = mapLink.getBoundingClientRect();
         return (
-          currentRect.left >= stripRect.left - 1 &&
-          currentRect.right <= stripRect.right + 1
+          mapRect.left >= stripRect.left - 1 &&
+          mapRect.right <= stripRect.right + 1
         );
       })(),
     }));
@@ -108,7 +106,7 @@ for (const width of viewports) {
         (state.sectionCount !== state.tocItemCount ||
           state.emptyIntroCount !== 0 ||
           !state.breadcrumbInHeader ||
-          !state.currentLocalLinkVisible)) ||
+           !state.mapLocalLinkVisible)) ||
       (stickyState &&
         (Math.abs(stickyState.headerTop ?? 999) > 1 ||
           !stickyState.breadcrumbWithinHeader)) ||

@@ -32,7 +32,7 @@ if ($files.Count -eq 0) {
 }
 
 $routePatterns = [ordered]@{
-    test       = "/test-arhetipov/"
+    map        = "/arhetipy.html"
     mentoring  = "/mentoring/"
     lightness  = "/lightness/"
     strength   = "/strength/"

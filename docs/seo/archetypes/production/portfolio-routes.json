@@ -10,7 +10,7 @@
   },
   "evidence_ledger": "portfolio-evidence.json",
   "product_destinations": {
-    "test": "/test-arhetipov/",
+    "map": "/arhetipy.html",
     "two_week": "/lightness/#bundle",
     "strength": "/strength/",
     "mentoring": "/mentoring/",
@@ -62,19 +62,17 @@
   "system_nodes": [
     {
       "route_id": "S01",
-      "canonical": "/test-arhetipov/",
-      "purpose": "canonical_natal_calculation_entry",
-      "publication_status": "required_before_test_routes",
+      "canonical": "/arhetipy.html",
+      "purpose": "direction_map",
+      "publication_status": "required_before_cluster_release",
       "live_status_checked_at": "2026-07-27",
       "live_http_status": 200
     },
     {
       "route_id": "S02",
       "canonical": "/arhetipy/",
-      "purpose": "content_and_direction_hub",
+      "purpose": "article_library_hub",
       "publication_status": "required_before_cluster_release",
-      "legacy_url": "/arhetipy.html",
-      "legacy_migration": "301_to_canonical",
       "live_status_checked_at": "2026-07-27",
       "live_http_status": 200
     },
@@ -198,7 +196,7 @@
       "publication_status": "draft",
       "page_safety_class": "sensitive",
       "next_intent": "personal_map",
-      "destination": "/test-arhetipov/"
+      "destination": "/arhetipy.html"
     },
     {
       "route_id": "R02",
@@ -210,7 +208,7 @@
       "publication_status": "draft",
       "page_safety_class": "sensitive",
       "next_intent": "personal_map",
-      "destination": "/test-arhetipov/"
+      "destination": "/arhetipy.html"
     },
     {
       "route_id": "R03",
@@ -222,7 +220,7 @@
       "publication_status": "draft",
       "page_safety_class": "sensitive",
       "next_intent": "personal_map",
-      "destination": "/test-arhetipov/"
+      "destination": "/arhetipy.html"
     },
     {
       "route_id": "R04",
@@ -234,7 +232,7 @@
       "publication_status": "draft",
       "page_safety_class": "sensitive",
       "next_intent": "personal_map",
-      "destination": "/test-arhetipov/"
+      "destination": "/arhetipy.html"
     },
     {
       "route_id": "R05",
@@ -246,7 +244,7 @@
       "publication_status": "draft",
       "page_safety_class": "critical_route",
       "next_intent": "personal_map",
-      "destination": "/test-arhetipov/"
+      "destination": "/arhetipy.html"
     },
     {
       "route_id": "L03",
@@ -306,7 +304,7 @@
       "publication_status": "draft",
       "page_safety_class": "normal",
       "next_intent": "personal_map",
-      "destination": "/test-arhetipov/"
+      "destination": "/arhetipy.html"
     },
     {
       "route_id": "L02",
@@ -330,7 +328,7 @@
       "publication_status": "draft",
       "page_safety_class": "sensitive",
       "next_intent": "personal_map",
-      "destination": "/test-arhetipov/"
+      "destination": "/arhetipy.html"
     },
     {
       "route_id": "R07",
@@ -342,7 +340,7 @@
       "publication_status": "draft",
       "page_safety_class": "critical_route",
       "next_intent": "personal_map",
-      "destination": "/test-arhetipov/"
+      "destination": "/arhetipy.html"
     },
     {
       "route_id": "R08",
@@ -354,7 +352,7 @@
       "publication_status": "draft",
       "page_safety_class": "critical_route",
       "next_intent": "personal_map",
-      "destination": "/test-arhetipov/"
+      "destination": "/arhetipy.html"
     },
     {
       "route_id": "L07",
@@ -402,7 +400,7 @@
       "publication_status": "draft",
       "page_safety_class": "normal",
       "next_intent": "personal_map",
-      "destination": "/test-arhetipov/"
+      "destination": "/arhetipy.html"
     },
     {
       "route_id": "S04",
@@ -414,7 +412,7 @@
       "publication_status": "draft",
       "page_safety_class": "normal",
       "next_intent": "personal_map",
-      "destination": "/test-arhetipov/"
+      "destination": "/arhetipy.html"
     },
     {
       "route_id": "L10",

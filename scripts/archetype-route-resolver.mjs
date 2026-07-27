@@ -6,17 +6,10 @@ export function resolveArchetypeNextStep(state = {}) {
       label: "Найти подходящую поддержку",
     };
   }
-  if (state.codeKnown === false && state.birthTimeKnown === true) {
-    return {
-      kind: "test",
-      href: "/test-arhetipov/",
-      label: "Рассчитать код архетипов",
-    };
-  }
   return {
     kind: "reading",
-    href: "/arhetipy/#temy",
-    label: "Выбрать материал по своей теме",
+    href: "/arhetipy.html",
+    label: "Открыть карту пути архетипов",
   };
 }
 
@@ -24,7 +17,7 @@ if (process.argv[1]?.endsWith("archetype-route-resolver.mjs")) {
   const fixtures = [
     [
       { safetyState: "normal", codeKnown: false, birthTimeKnown: true },
-      "test",
+      "reading",
     ],
     [
       { safetyState: "normal", codeKnown: true, birthTimeKnown: true },

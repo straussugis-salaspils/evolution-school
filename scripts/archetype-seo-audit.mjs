@@ -10,7 +10,7 @@ const manifest = JSON.parse(
   ),
 );
 const articles = manifest.assets.filter((item) => item.index_state === "index");
-const systemRoutes = ["/arhetipy/", "/zhenskie-arhetipy/", "/test-arhetipov/"];
+const systemRoutes = ["/arhetipy.html", "/arhetipy/", "/zhenskie-arhetipy/"];
 const routes = [...systemRoutes, ...articles.map((item) => item.canonical)];
 const failures = [];
 const incoming = new Map(articles.map((item) => [item.canonical, 0]));
@@ -18,6 +18,7 @@ const titles = new Set();
 const descriptions = new Set();
 
 function fileFor(route) {
+  if (route.endsWith(".html")) return path.join(root, route.replace(/^\//, ""));
   return path.join(root, route.replace(/^\/|\/$/g, ""), "index.html");
 }
 
@@ -70,7 +71,7 @@ for (const article of articles) {
   if (!html.includes('type="application/ld+json"')) {
     failures.push(`${article.canonical}: Article and Breadcrumb schema missing`);
   }
-  if (!html.includes(`href="/arhetipy/#stati"`)) {
+  if (!html.includes(`href="/arhetipy/"`)) {
     failures.push(`${article.canonical}: return link to archetype hub missing`);
   }
   if (!html.includes('class="article-author"')) {

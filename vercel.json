@@ -4,8 +4,8 @@
   "outputDirectory": ".",
   "redirects": [
     {
-      "source": "/arhetipy.html",
-      "destination": "/arhetipy/",
+      "source": "/test-arhetipov/",
+      "destination": "/arhetipy.html",
       "permanent": true
     },
     {

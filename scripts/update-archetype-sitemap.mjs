@@ -15,8 +15,8 @@ const current = fs.readFileSync(sitemapPath, "utf8");
 const urls = new Set(
   [...current.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]),
 );
-urls.delete(`${baseUrl}/arhetipy.html`);
-for (const route of ["/arhetipy/", "/zhenskie-arhetipy/", "/test-arhetipov/"]) {
+urls.delete(`${baseUrl}/test-arhetipov/`);
+for (const route of ["/arhetipy.html", "/arhetipy/", "/zhenskie-arhetipy/"]) {
   urls.add(`${baseUrl}${route}`);
 }
 for (const article of manifest.assets.filter((item) => item.index_state === "index")) {
