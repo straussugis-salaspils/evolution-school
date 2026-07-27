@@ -4,6 +4,11 @@
   "outputDirectory": ".",
   "redirects": [
     {
+      "source": "/arhetipy.html",
+      "destination": "/arhetipy/",
+      "permanent": true
+    },
+    {
       "source": "/individualnyj-retrit.html",
       "destination": "/urovni-zhizni/individualnyj-retrit/",
       "permanent": true

@@ -1,0 +1,737 @@
+import fs from "node:fs";
+import path from "node:path";
+
+const root = path.resolve(import.meta.dirname, "..");
+const productionRoot = path.join(root, "docs", "seo", "archetypes", "production");
+const draftsRoot = path.join(productionRoot, "drafts");
+const manifestPath = path.join(productionRoot, "portfolio-routes.json");
+const baseUrl = "https://evolution.yourbalancerestored.com";
+const publishedDate = "2026-07-27";
+const author = "Светлана Страусс";
+const authorUrl = "/o-shkole.html";
+
+const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
+const articles = manifest.assets.filter((item) => item.index_state === "index");
+const byId = new Map(articles.map((item) => [item.route_id, item]));
+
+const visualAlt = {
+  L01: "Женщина отделяет живое желание от накопившихся обязательств",
+  R01: "Женщина замечает первый самостоятельный шаг на развилке",
+  R02: "Женщина выбирает цвета и фактуры, сверяясь со своим вкусом",
+  R03: "Женщина идёт по своему маршруту, сохраняя близость и границы",
+  R04: "Женщина собирает ясную систему из нескольких решений",
+  R05: "Партнёры согласуют общий план, сохраняя равную ответственность",
+  L03: "Две женщины передают друг другу целую задачу вместо части нагрузки",
+  L05: "Женщина снимает требование заслуживать одобрение",
+  L04: "Женщина замечает напряжение в спокойной повседневной обстановке",
+  L06: "Женщина возвращает себе личное пространство в отношениях",
+  S05: "Три обычные жизненные сцены показывают разные способы действовать",
+  R06: "Женщина сохраняет внутренний центр среди обычных домашних дел",
+  R07: "Забота передаёт опору, но не забирает самостоятельность",
+  R08: "Женщина спокойно выбирает путь в ситуации неопределённости",
+  L07: "Женщина отказывает в лишней нагрузке и сохраняет контакт",
+  L08: "Женщина возвращает место собственному делу в жизни семьи",
+  L09: "Забота за общим столом распределяется между несколькими людьми",
+  S06: "Одна и та же функция показана как опора и как перегрузка",
+  S04: "Мужчины разных возрастов используют разные способы действовать",
+  L10: "Женщина отделяет свою ответственность от задач других людей",
+  L12: "Женщина принимает помощь, не отказываясь от своей ответственности",
+  L13: "После завершённого проекта женщина замечает пространство для нового",
+  L15: "Женщина переводит желание в одно конкретное действие",
+  L16: "Женщина добавляет вкус и живой выбор в точную стратегию",
+};
+
+const groups = [
+  {
+    id: "start",
+    title: "С чего начать",
+    description: "Сначала разобраться в языке метода и увидеть общую карту.",
+    ids: ["S05", "S06", "S03"],
+  },
+  {
+    id: "women",
+    title: "Восемь женских архетипов",
+    description: "Не восемь типов женщин, а восемь функций и способов действовать.",
+    ids: ["R01", "R02", "R03", "R04", "R05", "R06", "R07", "R08"],
+  },
+  {
+    id: "themes",
+    title: "Жизненные темы",
+    description: "Материалы для конкретной ситуации — без попытки угадать свой код по одной проблеме.",
+    ids: ["L01", "L03", "L05", "L04", "L06", "L07", "L08", "L09", "L10", "L12", "L13", "L15", "L16"],
+  },
+  {
+    id: "men",
+    title: "Мужская система",
+    description: "Отдельная карта мужских архетипов без смешения двух систем.",
+    ids: ["S04"],
+  },
+];
+
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
+}
+
+function stripHtml(value) {
+  return String(value)
+    .replace(/<[^>]+>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function parseInline(value) {
+  const tokens = [];
+  let text = String(value).replace(
+    /\[([^\]]+)\]\(([^)\s]+)(?:\s+"[^"]*")?\)/g,
+    (_, label, href) => {
+      const token = `\u0000LINK${tokens.length}\u0000`;
+      tokens.push(`<a href="${escapeHtml(href)}">${escapeHtml(label)}</a>`);
+      return token;
+    },
+  );
+  text = escapeHtml(text)
+    .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
+    .replace(/(?<!\*)\*([^*]+)\*(?!\*)/g, "<em>$1</em>")
+    .replace(/`([^`]+)`/g, "<code>$1</code>");
+  return text.replace(/\u0000LINK(\d+)\u0000/g, (_, index) => tokens[Number(index)]);
+}
+
+function slugify(value) {
+  return String(value)
+    .toLowerCase()
+    .normalize("NFKD")
+    .replace(/[^\p{Letter}\p{Number}]+/gu, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+function renderTable(lines) {
+  const rows = lines.map((line) =>
+    line
+      .trim()
+      .replace(/^\||\|$/g, "")
+      .split("|")
+      .map((cell) => cell.trim()),
+  );
+  return `<div class="article-table-wrap"><table>
+    <thead><tr>${rows[0].map((cell) => `<th>${parseInline(cell)}</th>`).join("")}</tr></thead>
+    <tbody>${rows
+      .slice(2)
+      .map((row) => `<tr>${row.map((cell) => `<td>${parseInline(cell)}</td>`).join("")}</tr>`)
+      .join("")}</tbody>
+  </table></div>`;
+}
+
+function renderBlocks(lines) {
+  const output = [];
+  let index = 0;
+  while (index < lines.length) {
+    const line = lines[index].trim();
+    if (!line || line === "---") {
+      index += 1;
+      continue;
+    }
+    if (/^<!--[\s\S]*-->$/.test(line)) {
+      index += 1;
+      continue;
+    }
+    if (line.startsWith("### ")) {
+      output.push(`<h3>${parseInline(line.slice(4))}</h3>`);
+      index += 1;
+      continue;
+    }
+    if (line.startsWith(">")) {
+      const quote = [];
+      while (index < lines.length && lines[index].trim().startsWith(">")) {
+        quote.push(lines[index].trim().replace(/^>\s?/, ""));
+        index += 1;
+      }
+      output.push(`<blockquote>${quote.map((item) => `<p>${parseInline(item)}</p>`).join("")}</blockquote>`);
+      continue;
+    }
+    if (/^[-*]\s+/.test(line)) {
+      const items = [];
+      while (index < lines.length && /^[-*]\s+/.test(lines[index].trim())) {
+        items.push(lines[index].trim().replace(/^[-*]\s+/, ""));
+        index += 1;
+      }
+      output.push(`<ul>${items.map((item) => `<li>${parseInline(item)}</li>`).join("")}</ul>`);
+      continue;
+    }
+    if (/^\d+\.\s+/.test(line)) {
+      const items = [];
+      while (index < lines.length && /^\d+\.\s+/.test(lines[index].trim())) {
+        items.push(lines[index].trim().replace(/^\d+\.\s+/, ""));
+        index += 1;
+      }
+      output.push(`<ol>${items.map((item) => `<li>${parseInline(item)}</li>`).join("")}</ol>`);
+      continue;
+    }
+    if (line.startsWith("|")) {
+      const table = [];
+      while (index < lines.length && lines[index].trim().startsWith("|")) {
+        table.push(lines[index].trim());
+        index += 1;
+      }
+      output.push(renderTable(table));
+      continue;
+    }
+    const paragraph = [line];
+    index += 1;
+    while (
+      index < lines.length &&
+      lines[index].trim() &&
+      !/^(### |>|[-*]\s+|\d+\.\s+|\||<!--)/.test(lines[index].trim())
+    ) {
+      paragraph.push(lines[index].trim());
+      index += 1;
+    }
+    output.push(`<p>${parseInline(paragraph.join(" "))}</p>`);
+  }
+  return output.join("\n");
+}
+
+function parseDraft(article) {
+  const source = fs
+    .readFileSync(path.join(productionRoot, article.source), "utf8")
+    .replace(/^\uFEFF/, "")
+    .replace(/\r/g, "");
+  const lines = source.split("\n");
+  const h1Index = lines.findIndex((line) => line.startsWith("# "));
+  if (h1Index < 0) throw new Error(`Missing H1 in ${article.source}.`);
+  const h1 = lines[h1Index].slice(2).trim();
+  const sections = [];
+  const intro = [];
+  let current = null;
+  for (const line of lines.slice(h1Index + 1)) {
+    if (line.startsWith("## ")) {
+      if (current) sections.push(current);
+      current = { title: line.slice(3).trim(), lines: [] };
+      continue;
+    }
+    (current ? current.lines : intro).push(line);
+  }
+  if (current) sections.push(current);
+  return { h1, intro, sections, source };
+}
+
+function renderRouteChooser(routeId) {
+  return `<section class="archetype-route-card" data-archetype-route data-route-id="${routeId}">
+    <p class="archetype-route-card__eyebrow">Следующий шаг</p>
+    <h2>Выберите маршрут по тому, что уже известно</h2>
+    <p>Одна жизненная тема не определяет ваш код и не назначает программу.</p>
+    <div class="archetype-route-card__choices" aria-label="Что уже известно">
+      <button type="button" data-route-choice="test" aria-pressed="false">Код не рассчитан, точное время знаю</button>
+      <button type="button" data-route-choice="reading" aria-pressed="false">Код уже есть или время неизвестно</button>
+    </div>
+    <div class="archetype-route-card__result" data-route-result hidden>
+      <a class="button button--primary" data-route-link href="/arhetipy/#temy">Выбрать материал по теме</a>
+      <p data-route-note></p>
+    </div>
+    <noscript><p><a href="/arhetipy/#temy">Выбрать материал по своей теме</a></p></noscript>
+  </section>`;
+}
+
+function renderSection(section, index, routeId) {
+  const marker = section.lines.findIndex((line) => line.includes("ROUTE_CTA"));
+  const lines = marker >= 0 ? section.lines.filter((_, lineIndex) => lineIndex !== marker) : section.lines;
+  return `<section id="section-${index + 1}">
+    <h2>${parseInline(section.title)}</h2>
+    ${renderBlocks(lines)}
+    ${marker >= 0 ? renderRouteChooser(routeId) : ""}
+  </section>`;
+}
+
+function shell() {
+  const source = fs.readFileSync(
+    path.join(root, "biblioteka", "reiki", "chto-takoe-reiki", "index.html"),
+    "utf8",
+  );
+  let header = source.slice(source.indexOf("<header"), source.indexOf("</header>") + 9);
+  let footer = source.slice(source.indexOf("<footer"), source.indexOf("<script src=\"/script.js\""));
+  const localStrip = `<nav class="eh-local-strip" aria-label="Навигация по Пути архетипов">
+      <div class="eh-shell-container">
+        <a href="/arhetipy/">Карта пути</a>
+        <a href="/arhetipy-method.html">Метод архетипов</a>
+        <a href="/lightness/">Вкус лёгкости</a>
+        <a href="/strength/">Вкус силы</a>
+        <a href="/mentoring/">Высокая Глубина</a>
+        <a href="/retreats/">Ретриты</a>
+        <a href="/test-arhetipov/">Рассчитать код</a>
+        <a class="eh-local-strip__articles" href="/arhetipy/#stati">Статьи об архетипах</a>
+      </div>
+    </nav>`;
+  header = header
+    .replace(/<nav class="eh-local-strip"[\s\S]*?<\/nav>/, localStrip)
+    .replaceAll("/arhetipy.html", "/arhetipy/");
+  footer = footer.replaceAll("/arhetipy.html", "/arhetipy/");
+  return { header, footer };
+}
+
+function responsivePicture(article, variant = "hero") {
+  const id = article.route_id.toLowerCase();
+  const base = `/assets/archetype-articles/${id}`;
+  if (variant === "card") {
+    return `<picture>
+      <source type="image/webp" srcset="${base}/card-480.webp 480w, ${base}/card-800.webp 800w, ${base}/card-1200.webp 1200w" sizes="(max-width: 720px) calc(100vw - 40px), 360px">
+      <img src="${base}/card-800.jpg" alt="${escapeHtml(visualAlt[article.route_id])}" width="800" height="500" loading="lazy" decoding="async">
+    </picture>`;
+  }
+  return `<picture class="article-responsive-image article-responsive-image--hero">
+    <source type="image/webp" srcset="${base}/hero-480.webp 480w, ${base}/hero-768.webp 768w, ${base}/hero-1200.webp 1200w, ${base}/hero-1600.webp 1600w" sizes="(max-width: 900px) calc(100vw - 40px), 42vw">
+    <img src="${base}/hero-1200.jpg" alt="${escapeHtml(visualAlt[article.route_id])}" width="1200" height="900" decoding="async" fetchpriority="high">
+  </picture>`;
+}
+
+function relatedArticles(article) {
+  const index = articles.findIndex((item) => item.route_id === article.route_id);
+  const candidates = [
+    articles[(index + 1) % articles.length],
+    articles[(index + articles.length - 1) % articles.length],
+    byId.get(article.route_id.startsWith("R") ? "S06" : "S05"),
+  ].filter(Boolean);
+  const unique = [...new Map(candidates.map((item) => [item.route_id, item])).values()]
+    .filter((item) => item.route_id !== article.route_id)
+    .slice(0, 3);
+  return `<aside class="article-related" aria-labelledby="related-${article.route_id}">
+    <div class="article-related__head">
+      <div>
+        <p class="article-related__eyebrow">Продолжить разбираться</p>
+        <h2 id="related-${article.route_id}">Связанные материалы</h2>
+      </div>
+      <a href="/arhetipy/#stati">Все статьи об архетипах →</a>
+    </div>
+    <div class="article-related__grid">
+      ${unique
+        .map((item) => {
+          const draft = parseDraft(item);
+          return `<a class="article-related__card clickable-card" href="${item.canonical}">
+            <span>Материал</span>
+            <strong>${escapeHtml(draft.h1)}</strong>
+            <em>Читать →</em>
+          </a>`;
+        })
+        .join("")}
+    </div>
+  </aside>`;
+}
+
+function schemaFor(article, draft) {
+  const canonical = `${baseUrl}${article.canonical}`;
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "@id": `${canonical}#article`,
+        headline: draft.h1,
+        description: article.meta_description,
+        datePublished: publishedDate,
+        dateModified: publishedDate,
+        inLanguage: "ru",
+        mainEntityOfPage: canonical,
+        image: `${baseUrl}/assets/archetype-articles/${article.route_id.toLowerCase()}/og-1200.jpg`,
+        author: {
+          "@type": "Person",
+          name: author,
+          url: `${baseUrl}${authorUrl}`,
+        },
+        publisher: {
+          "@type": "Organization",
+          name: "Evolution House",
+          url: `${baseUrl}/`,
+          logo: {
+            "@type": "ImageObject",
+            url: `${baseUrl}/assets/evolution-house-logo-approved.png`,
+          },
+        },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Библиотека",
+            item: `${baseUrl}/biblioteka.html`,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Архетипы",
+            item: `${baseUrl}/arhetipy/`,
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: draft.h1,
+            item: canonical,
+          },
+        ],
+      },
+    ],
+  };
+}
+
+function articleHtml(article) {
+  const draft = parseDraft(article);
+  const canonical = `${baseUrl}${article.canonical}`;
+  const image = `${baseUrl}/assets/archetype-articles/${article.route_id.toLowerCase()}/og-1200.jpg`;
+  const sourceWords = stripHtml(draft.source).split(/\s+/).filter(Boolean).length;
+  const readingTime = Math.max(4, Math.round(sourceWords / 180));
+  const shellParts = shell();
+  const header = shellParts.header.replace(
+    'class="eh-local-strip__articles" href="/arhetipy/#stati"',
+    'class="eh-local-strip__articles" href="/arhetipy/#stati" aria-current="location"',
+  );
+  const introHtml = renderBlocks(draft.intro);
+  const toc = draft.sections
+    .map((section, index) => `<a href="#section-${index + 1}">${escapeHtml(section.title)}</a>`)
+    .join("");
+  const body = draft.sections
+    .map((section, index) => renderSection(section, index, article.route_id))
+    .join("");
+  const outputPath = path.join(root, article.canonical.replace(/^\/|\/$/g, ""), "index.html");
+
+  return {
+    outputPath,
+    html: `<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>${escapeHtml(article.seo_title)}</title>
+  <meta name="description" content="${escapeHtml(article.meta_description)}">
+  <meta name="author" content="${author}">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="${escapeHtml(draft.h1)}">
+  <meta property="og:description" content="${escapeHtml(article.meta_description)}">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:site_name" content="Evolution House">
+  <meta property="og:image" content="${image}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="${escapeHtml(visualAlt[article.route_id])}">
+  <meta property="og:url" content="${canonical}">
+  <meta property="article:published_time" content="${publishedDate}">
+  <meta property="article:modified_time" content="${publishedDate}">
+  <meta property="article:author" content="${author}">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="${canonical}">
+  <link rel="icon" type="image/png" href="/assets/evolution-house-logo-approved.png">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/article-library.css?v=20260727-archetypes">
+  <link rel="stylesheet" href="/cookie-consent.css">
+  <script src="/analytics.js" defer></script>
+  <script type="application/ld+json">${JSON.stringify(schemaFor(article, draft), null, 2)}</script>
+</head>
+<body class="article-page article-page--archetypes eh-context--archetypes">
+  ${header}
+  <main>
+    <nav class="library-breadcrumb" aria-label="Путь страницы">
+      <div class="eh-shell-container">
+        <a href="/biblioteka.html">Библиотека</a><span>→</span>
+        <a href="/arhetipy/#stati">Архетипы</a><span>→</span>
+        <span>${escapeHtml(draft.h1)}</span>
+      </div>
+    </nav>
+    <header class="article-hero">
+      <div class="eh-shell-container article-hero__grid">
+        <div>
+          <a class="article-back-link" href="/arhetipy/#stati">← Все статьи об архетипах</a>
+          <p class="article-kicker">Библиотека · Путь архетипов</p>
+          <h1>${escapeHtml(draft.h1)}</h1>
+          <p class="article-hero__lead">${escapeHtml(article.meta_description)}</p>
+          <div class="article-meta">
+            <span>${author}</span>
+            <span><time datetime="${publishedDate}">27.07.2026</time></span>
+            <span>${readingTime} минут чтения</span>
+          </div>
+        </div>
+        <figure class="article-hero__visual">${responsivePicture(article)}</figure>
+      </div>
+    </header>
+    <div class="eh-shell-container article-layout">
+      <aside class="article-toc" aria-label="Содержание">
+        <strong>В этой статье</strong>
+        <nav>${toc}</nav>
+      </aside>
+      <article class="article-body">
+        <div class="article-intro">${introHtml}</div>
+        ${body}
+        ${relatedArticles(article)}
+        <aside class="article-author" aria-label="Об авторе">
+          <img src="/assets/svetlana-archetype-yellow.jpg" alt="${author}" width="1200" height="1600" loading="lazy">
+          <div>
+            <p class="article-author__label">Автор статьи</p>
+            <h2>${author}</h2>
+            <p>Основательница Evolution House и автор прикладной системы архетипов. Использует архетипический язык как карту для наблюдения и выбора, а не как диагноз или обещание судьбы.</p>
+            <a href="${authorUrl}">Об авторе и школе →</a>
+          </div>
+        </aside>
+      </article>
+    </div>
+  </main>
+  ${shellParts.footer}
+  <script src="/archetype-route.js" defer></script>
+  <script src="/script.js"></script>
+</body>
+</html>`,
+  };
+}
+
+function card(article, featured = false) {
+  const draft = parseDraft(article);
+  return `<a class="article-list-card clickable-card${featured ? " article-list-card--featured" : ""}" href="${article.canonical}">
+    <div class="article-list-card__visual">${responsivePicture(article, "card")}</div>
+    <div class="article-list-card__body">
+      <span class="article-list-card__eyebrow">Материал · ${article.route_id}</span>
+      <h3>${escapeHtml(draft.h1)}</h3>
+      <p>${escapeHtml(article.meta_description)}</p>
+      <span class="article-list-card__link">Читать →</span>
+    </div>
+  </a>`;
+}
+
+function collectionSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Статьи об архетипах",
+    url: `${baseUrl}/arhetipy/`,
+    isPartOf: { "@type": "WebSite", name: "Evolution House", url: `${baseUrl}/` },
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: articles.map((article, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        url: `${baseUrl}${article.canonical}`,
+      })),
+    },
+  };
+}
+
+function hubHtml() {
+  const shellParts = shell();
+  const header = shellParts.header.replace(
+    'class="eh-local-strip__articles" href="/arhetipy/#stati"',
+    'class="eh-local-strip__articles" href="/arhetipy/#stati" aria-current="page"',
+  );
+  const featured = ["S05", "S06", "L01"].map((id) => card(byId.get(id), true)).join("");
+  const sections = groups
+    .filter((group) => group.id !== "start")
+    .map(
+      (group) => `<section id="${group.id}" class="library-section library-section--paper">
+        <div class="eh-shell-container">
+          <div class="library-section__head">
+            <div><p class="library-kicker">Путь архетипов</p><h2>${group.title}</h2></div>
+            <p>${group.description}</p>
+          </div>
+          <div class="article-list-grid">${group.ids.map((id) => card(byId.get(id))).join("")}</div>
+        </div>
+      </section>`,
+    )
+    .join("");
+  const formats = [
+    {
+      eyebrow: "мягкий старт",
+      title: "Вкус лёгкости",
+      description:
+        "Онлайн-неделя женских архетипов: короткий формат с практиками, чтобы вернуть контакт с телом, желанием, вкусом и живым «я хочу».",
+      href: "/lightness/",
+      image: "/assets/archetype-lightness.webp",
+    },
+    {
+      eyebrow: "сила и опора",
+      title: "Вкус силы",
+      description:
+        "Онлайн-неделя мужских архетипов: формат про границы, действие, опору, масштаб и способность держать свой следующий шаг.",
+      href: "/strength/",
+      image: "/assets/archetype-strength.webp",
+    },
+    {
+      eyebrow: "глубокая тема",
+      title: "Высокая Глубина",
+      description:
+        "Онлайн-менторинг, где вокруг одной важной темы собирается индивидуальный маршрут, практика и сопровождение.",
+      href: "/mentoring/",
+      image: "/assets/archetype-mentoring.jpg",
+    },
+    {
+      eyebrow: "живое погружение",
+      title: "Острова Везения",
+      description:
+        "Ретриты, в которых архетипическая работа соединяется с телом, движением, практикой и живой группой.",
+      href: "/retreats/",
+      image: "/assets/retreat-phuket-line-of-luck.png",
+    },
+  ];
+  return `<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Архетипы: статьи, метод и карта пути | Evolution House</title>
+  <meta name="description" content="Статьи Светланы Страусс об архетипах, жизненных темах, ресурсе и тени. Карта женской и мужской системы и вход в расчёт кода.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Статьи об архетипах | Evolution House">
+  <meta property="og:description" content="Архетипы без ярлыков: функции, жизненные темы и карта следующего шага.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:site_name" content="Evolution House">
+  <meta property="og:image" content="${baseUrl}/assets/archetype-articles/s05/og-1200.jpg">
+  <meta property="og:url" content="${baseUrl}/arhetipy/">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="${baseUrl}/arhetipy/">
+  <link rel="icon" type="image/png" href="/assets/evolution-house-logo-approved.png">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/article-library.css?v=20260727-archetypes">
+  <link rel="stylesheet" href="/cookie-consent.css">
+  <script src="/analytics.js" defer></script>
+  <script type="application/ld+json">${JSON.stringify(collectionSchema(), null, 2)}</script>
+</head>
+<body class="library-page library-page--archetypes eh-context--archetypes">
+  ${header}
+  <main>
+    <nav class="library-breadcrumb" aria-label="Путь страницы">
+      <div class="eh-shell-container"><a href="/biblioteka.html">Библиотека</a><span>→</span><span>Архетипы</span></div>
+    </nav>
+    <section class="article-list-hero" id="stati">
+      <div class="eh-shell-container article-list-hero__grid">
+        <div>
+          <p class="library-kicker">Библиотека · Путь архетипов</p>
+          <h1>Статьи об архетипах</h1>
+          <p>Не набор красивых типов, а понятный язык для жизненных функций: желания, выбора, границ, заботы, действия и внутреннего центра.</p>
+        </div>
+        <p class="article-list-hero__count"><strong>${articles.length}</strong> материала</p>
+      </div>
+    </section>
+    <section class="library-section library-section--featured">
+      <div class="eh-shell-container">
+        <div class="library-section__head"><div><p class="library-kicker">Начать здесь</p><h2>Сначала — общая карта</h2></div><p>Три входа: понять термин, различить ресурс и тень, увидеть тему «хочу» и «надо».</p></div>
+        <div class="article-list-grid article-list-grid--featured">${featured}</div>
+      </div>
+    </section>
+    ${sections}
+    <section class="library-section library-section--formats">
+      <div class="eh-shell-container">
+        <div class="library-section__head"><div><p class="library-kicker">Форматы пути</p><h2>От чтения — к практике</h2></div><p>Статьи помогают разобраться. Формат выбирается отдельно — по теме, готовности и нужной глубине сопровождения.</p></div>
+        <div class="archetype-format-grid">
+          ${formats
+            .map(
+              (item) => `<a class="archetype-format-card clickable-card" href="${item.href}">
+                <img src="${item.image}" alt="" width="1200" height="750" loading="lazy">
+                <div><span>${item.eyebrow}</span><h3>${item.title}</h3><p>${item.description}</p><em>Посмотреть формат →</em></div>
+              </a>`,
+            )
+            .join("")}
+        </div>
+      </div>
+    </section>
+    <section class="archetype-path-bridge">
+      <div class="eh-shell-container archetype-path-bridge__grid">
+        <div><p class="library-kicker">Продолжить путь</p><h2>От статьи — к своей карте</h2><p>Если точное время рождения известно, можно рассчитать три позиции кода. Если нет — идти от жизненной темы без вымышленной точности.</p></div>
+        <div class="archetype-path-bridge__actions"><a class="button button--primary" href="/test-arhetipov/">Рассчитать код</a><a class="button button--secondary" href="/arhetipy-method.html">Как устроен метод</a></div>
+      </div>
+    </section>
+  </main>
+  ${shellParts.footer}
+  <script src="/script.js"></script>
+</body>
+</html>`;
+}
+
+function womenHubHtml() {
+  const shellParts = shell();
+  const women = ["R01", "R02", "R03", "R04", "R05", "R06", "R07", "R08"].map((id) => byId.get(id));
+  return `<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Женские архетипы: 8 функций и их значение | Evolution House</title>
+  <meta name="description" content="Персефона, Афродита, Артемида, Афина, Гера, Гестия, Деметра и Геката: восемь функций женской архетипической системы без ярлыков и типирования.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Женские архетипы | Evolution House">
+  <meta property="og:description" content="Восемь функций женской архетипической системы — ресурс, перегрузка и жизненное проявление.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:site_name" content="Evolution House">
+  <meta property="og:image" content="${baseUrl}/assets/archetype-articles/r01/og-1200.jpg">
+  <meta property="og:url" content="${baseUrl}/zhenskie-arhetipy/">
+  <meta name="robots" content="index, follow">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="${baseUrl}/zhenskie-arhetipy/">
+  <link rel="icon" type="image/png" href="/assets/evolution-house-logo-approved.png">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/article-library.css?v=20260727-archetypes">
+  <link rel="stylesheet" href="/cookie-consent.css">
+  <script src="/analytics.js" defer></script>
+</head>
+<body class="library-page library-page--archetypes eh-context--archetypes">
+  ${shellParts.header}
+  <main>
+    <nav class="library-breadcrumb" aria-label="Путь страницы"><div class="eh-shell-container"><a href="/arhetipy/">Архетипы</a><span>→</span><span>Женские архетипы</span></div></nav>
+    <section class="article-list-hero"><div class="eh-shell-container article-list-hero__grid"><div><p class="library-kicker">Карта системы</p><h1>Восемь женских архетипов</h1><p>Это не восемь типов женщин. Это восемь функций, которые по-разному проявляются в ресурсе и перегрузке.</p></div><p class="article-list-hero__count"><strong>8</strong> функций</p></div></section>
+    <section class="library-section library-section--paper"><div class="eh-shell-container"><div class="article-list-grid">${women.map((item) => card(item)).join("")}</div></div></section>
+    <section class="archetype-path-bridge"><div class="eh-shell-container archetype-path-bridge__grid"><div><p class="library-kicker">Важно</p><h2>Описание не определяет ваш код</h2><p>Сутевой код в системе Evolution House рассчитывается по точным данным рождения и содержит три упорядоченные позиции.</p></div><div class="archetype-path-bridge__actions"><a class="button button--primary" href="/test-arhetipov/">Рассчитать код</a><a class="button button--secondary" href="/arhetipy/chto-eto/">Как устроен расчёт</a></div></div></section>
+  </main>
+  ${shellParts.footer}<script src="/script.js"></script>
+</body>
+</html>`;
+}
+
+function testEntryHtml() {
+  const shellParts = shell();
+  return `<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Рассчитать код архетипов | Evolution House</title>
+  <meta name="description" content="Расчёт трёх сутевых архетипов по имени, точной дате, времени и месту рождения в авторской системе Светланы Страусс.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Рассчитать код архетипов | Evolution House">
+  <meta property="og:description" content="Три упорядоченные позиции архетипического кода по точным данным рождения.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:site_name" content="Evolution House">
+  <meta property="og:image" content="${baseUrl}/assets/archetype-articles/s05/og-1200.jpg">
+  <meta property="og:url" content="${baseUrl}/test-arhetipov/">
+  <meta name="robots" content="index, follow">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="${baseUrl}/test-arhetipov/">
+  <link rel="icon" type="image/png" href="/assets/evolution-house-logo-approved.png">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/article-library.css?v=20260727-archetypes">
+  <link rel="stylesheet" href="/cookie-consent.css">
+  <script src="/analytics.js" defer></script>
+</head>
+<body class="library-page library-page--archetypes eh-context--archetypes">
+  ${shellParts.header}
+  <main>
+    <section class="archetype-test-hero"><div class="eh-shell-container"><p class="library-kicker">Авторский расчёт Evolution House</p><h1>Рассчитать код архетипов</h1><p>Для расчёта нужны имя, точные дата, местное время и место рождения, а также выбор женской или мужской системы.</p><div class="archetype-test-notice"><strong>Если точное время неизвестно</strong><p>Не подставляйте приблизительный час. Лучше выберите материал по текущей теме — без ложной точности.</p><a href="/arhetipy/#temy">Перейти к темам →</a></div></div></section>
+    <section class="archetype-test-frame"><div class="eh-shell-container"><iframe src="https://archetype-code.vercel.app" title="Расчёт кода архетипов Evolution House" loading="eager" referrerpolicy="strict-origin-when-cross-origin" allow="clipboard-write" height="940"></iframe><p class="archetype-test-frame__fallback">Если форма не открылась, <a href="https://archetype-code.vercel.app" target="_blank" rel="noopener">откройте расчёт в новой вкладке</a>.</p></div></section>
+  </main>
+  ${shellParts.footer}<script src="/script.js"></script>
+</body>
+</html>`;
+}
+
+for (const article of articles) {
+  const output = articleHtml(article);
+  fs.mkdirSync(path.dirname(output.outputPath), { recursive: true });
+  fs.writeFileSync(output.outputPath, output.html, "utf8");
+}
+fs.mkdirSync(path.join(root, "arhetipy"), { recursive: true });
+fs.writeFileSync(path.join(root, "arhetipy", "index.html"), hubHtml(), "utf8");
+fs.mkdirSync(path.join(root, "zhenskie-arhetipy"), { recursive: true });
+fs.writeFileSync(path.join(root, "zhenskie-arhetipy", "index.html"), womenHubHtml(), "utf8");
+fs.mkdirSync(path.join(root, "test-arhetipov"), { recursive: true });
+fs.writeFileSync(path.join(root, "test-arhetipov", "index.html"), testEntryHtml(), "utf8");
+
+console.log(`Generated ${articles.length} archetype articles and 3 system pages.`);

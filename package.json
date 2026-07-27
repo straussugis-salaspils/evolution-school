@@ -31,6 +31,13 @@
     "transitions:insert-layout": "node scripts/transition-insert-layout-audit.mjs",
     "transitions:responsive": "node scripts/verify-transition-pages.mjs",
     "transitions:refresh": "npm run transitions:visuals && npm run transitions:generate",
-    "transitions:check": "npm run transitions:seo-audit && npm run transitions:visual-audit"
+    "transitions:check": "npm run transitions:seo-audit && npm run transitions:visual-audit",
+    "archetypes:visuals": "\"C:\\Users\\Ugis\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" scripts/prepare-archetype-visuals.py",
+    "archetypes:generate": "node scripts/generate-archetype-articles.mjs",
+    "archetypes:seo-audit": "node scripts/archetype-seo-audit.mjs",
+    "archetypes:visual-audit": "node scripts/archetype-visual-audit.mjs",
+    "archetypes:responsive": "node scripts/verify-archetype-pages.mjs",
+    "archetypes:sitemap": "node scripts/update-archetype-sitemap.mjs",
+    "archetypes:check": "node scripts/archetype-route-resolver.mjs && npm run archetypes:seo-audit && npm run archetypes:visual-audit"
   }
 }

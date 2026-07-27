@@ -41,7 +41,7 @@
       "L04",
       "L09"
     ],
-    "publication_state": "not_implemented",
+    "publication_state": "implemented_locally",
     "required_before_publication": [
       "markdown_to_html_generator",
       "route_cta_component",
