@@ -1,4 +1,22 @@
 (() => {
+  const localStrip = document.querySelector(
+    ".eh-local-strip .eh-shell-container",
+  );
+  const currentLocalLink = localStrip?.querySelector("[aria-current]");
+
+  if (
+    localStrip &&
+    currentLocalLink &&
+    window.matchMedia("(max-width: 980px)").matches
+  ) {
+    requestAnimationFrame(() => {
+      localStrip.scrollTo({
+        left: Math.max(0, currentLocalLink.offsetLeft - 10),
+        behavior: "instant",
+      });
+    });
+  }
+
   const destinations = {
     test: {
       href: "/test-arhetipov/",
