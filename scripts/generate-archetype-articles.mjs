@@ -1,5 +1,9 @@
 import fs from "node:fs";
 import path from "node:path";
+import {
+  archetypeArticleInserts,
+  archetypeCharacters,
+} from "./archetype-article-inserts.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
 const productionRoot = path.join(root, "docs", "seo", "archetypes", "production");
@@ -274,12 +278,59 @@ function parseDraft(article) {
   return { h1, intro, sections, source };
 }
 
-function renderSection(section, index) {
+function characterPicture(slug) {
+  const character = archetypeCharacters[slug];
+  const base = `/assets/archetype-articles/inserts/characters/${slug}`;
+  return `<figure class="archetype-insert__character archetype-insert__character--${slug}">
+    <picture>
+      <source type="image/webp" srcset="${base}/portrait-360.webp 360w, ${base}/portrait-560.webp 560w, ${base}/portrait-760.webp 760w" sizes="(max-width: 720px) 42vw, 270px">
+      <img src="${base}/portrait-560.jpg" alt="${escapeHtml(character.alt)}" width="560" height="700" loading="lazy" decoding="async">
+    </picture>
+    <figcaption>${escapeHtml(character.name)}</figcaption>
+  </figure>`;
+}
+
+function renderArchetypeInsert(article) {
+  const insert = archetypeArticleInserts[article.route_id];
+  if (!insert) return "";
+  const routeClass = `archetype-insert--route-${article.route_id.toLowerCase()}`;
+  const layoutClass = insert.layout ? ` archetype-insert--layout-${insert.layout}` : "";
+  const characters = insert.characters.map(characterPicture).join("");
+  const characterNames = insert.characters
+    .map((slug) => archetypeCharacters[slug].name)
+    .join(" · ");
+  const nodes = insert.items
+    .map(
+      ([title, text], index) => `<li style="--node-index:${index}">
+        <span>${escapeHtml(title)}</span>
+        <strong>${escapeHtml(text)}</strong>
+      </li>`,
+    )
+    .join("");
+  return `<figure class="archetype-insert archetype-insert--${insert.type} ${routeClass}${layoutClass}" aria-labelledby="archetype-insert-${article.route_id}">
+    <div class="archetype-insert__portrait${insert.characters.length > 1 ? " archetype-insert__portrait--multi" : ""}" aria-label="Архетипические образы">
+      ${characters}
+      ${insert.characters.length > 1 ? `<p class="archetype-insert__character-legend">${escapeHtml(characterNames)}</p>` : ""}
+    </div>
+    <div class="archetype-insert__explanation">
+      <p class="archetype-insert__eyebrow">${escapeHtml(insert.eyebrow)}</p>
+      <h3 id="archetype-insert-${article.route_id}">${escapeHtml(insert.title)}</h3>
+      <p class="archetype-insert__description">${escapeHtml(insert.description)}</p>
+      <ol class="archetype-insert__nodes">${nodes}</ol>
+    </div>
+  </figure>`;
+}
+
+function renderSection(section, index, article) {
   const marker = section.lines.findIndex((line) => line.includes("ROUTE_CTA"));
   const lines = marker >= 0 ? section.lines.filter((_, lineIndex) => lineIndex !== marker) : section.lines;
+  const insert = archetypeArticleInserts[article.route_id]?.after === section.title
+    ? renderArchetypeInsert(article)
+    : "";
   return `<section id="section-${index + 1}">
     <h2>${parseInline(section.title)}</h2>
     ${renderBlocks(lines)}
+    ${insert}
   </section>`;
 }
 
@@ -424,13 +475,14 @@ function articleHtml(article) {
         <span>${escapeHtml(draft.h1)}</span>
       </div>
     </nav>`;
-  const header = shellParts.header
+  const themedHeader = shellParts.header
     .replaceAll("eh-context--reiki", "eh-context--archetypes")
     .replace(
       'class="eh-local-strip__articles" href="/arhetipy/"',
       'class="eh-local-strip__articles" href="/arhetipy/" aria-current="location"',
-    )
-    .replace("</header>", `${articleBreadcrumb}\n  </header>`);
+    );
+  const localStrip = themedHeader.match(/<nav class="eh-local-strip"[\s\S]*?<\/nav>/)?.[0] ?? "";
+  const header = themedHeader.replace(/<nav class="eh-local-strip"[\s\S]*?<\/nav>/, "");
   const introHtml = renderBlocks(draft.intro);
   const articleBodyClass = introHtml
     ? "article-body"
@@ -442,7 +494,7 @@ function articleHtml(article) {
     )
     .join("");
   const body = draft.sections
-    .map((section, index) => renderSection(section, index))
+    .map((section, index) => renderSection(section, index, article))
     .join("");
   const outputPath = path.join(root, article.canonical.replace(/^\/|\/$/g, ""), "index.html");
 
@@ -475,12 +527,15 @@ function articleHtml(article) {
   <link rel="icon" type="image/png" href="/assets/evolution-house-logo-approved.png">
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="/article-library.css?v=20260727-archetypes-purple">
+  <link rel="stylesheet" href="/assets/archetype-articles/inserts/archetype-inserts.css?v=20260727-visual-audit">
   <link rel="stylesheet" href="/cookie-consent.css">
   <script src="/analytics.js" defer></script>
   <script type="application/ld+json">${JSON.stringify(schemaFor(article, draft), null, 2)}</script>
 </head>
 <body class="article-page article-page--archetypes eh-context--archetypes">
   ${header}
+  ${localStrip}
+  ${articleBreadcrumb}
   <main>
     <header class="article-hero">
       <div class="eh-shell-container article-hero__grid">
@@ -766,13 +821,28 @@ function womenHubHtml() {
 </html>`;
 }
 
+function cleanGeneratedHtml(html) {
+  return html
+    .split("\n")
+    .map((line) => line.trimEnd())
+    .join("\n");
+}
+
 for (const article of articles) {
   const output = articleHtml(article);
   fs.mkdirSync(path.dirname(output.outputPath), { recursive: true });
-  fs.writeFileSync(output.outputPath, output.html, "utf8");
+  fs.writeFileSync(output.outputPath, cleanGeneratedHtml(output.html), "utf8");
 }
 fs.mkdirSync(path.join(root, "arhetipy"), { recursive: true });
-fs.writeFileSync(path.join(root, "arhetipy", "index.html"), hubHtml(), "utf8");
+fs.writeFileSync(
+  path.join(root, "arhetipy", "index.html"),
+  cleanGeneratedHtml(hubHtml()),
+  "utf8",
+);
 fs.mkdirSync(path.join(root, "zhenskie-arhetipy"), { recursive: true });
-fs.writeFileSync(path.join(root, "zhenskie-arhetipy", "index.html"), womenHubHtml(), "utf8");
+fs.writeFileSync(
+  path.join(root, "zhenskie-arhetipy", "index.html"),
+  cleanGeneratedHtml(womenHubHtml()),
+  "utf8",
+);
 console.log(`Generated ${articles.length} archetype articles and 2 system pages.`);

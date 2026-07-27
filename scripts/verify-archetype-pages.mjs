@@ -59,6 +59,9 @@ for (const width of viewports) {
       sectionCount: document.querySelectorAll(".article-body > section[id^='section-']").length,
       tocItemCount: document.querySelectorAll(".article-toc > ol > li").length,
       emptyIntroCount: document.querySelectorAll(".article-intro:empty").length,
+      breadcrumbPresent: Boolean(
+        document.querySelector(".library-breadcrumb--header"),
+      ),
       breadcrumbInHeader: Boolean(
         document.querySelector(".eh-shell-header .library-breadcrumb--header"),
       ),
@@ -86,9 +89,11 @@ for (const width of viewports) {
         const breadcrumb = document
           .querySelector(".library-breadcrumb--header")
           ?.getBoundingClientRect();
+        const localStrip = document.querySelector(".eh-local-strip")?.getBoundingClientRect();
         return {
           headerTop: header?.top,
           breadcrumbTop: breadcrumb?.top,
+          localStripTop: localStrip?.top,
           breadcrumbWithinHeader:
             Boolean(header && breadcrumb) &&
             breadcrumb.top >= header.top - 1 &&
@@ -105,11 +110,14 @@ for (const width of viewports) {
       (state.isArticle &&
         (state.sectionCount !== state.tocItemCount ||
           state.emptyIntroCount !== 0 ||
-          !state.breadcrumbInHeader ||
+          !state.breadcrumbPresent ||
+          state.breadcrumbInHeader ||
            !state.mapLocalLinkVisible)) ||
       (stickyState &&
         (Math.abs(stickyState.headerTop ?? 999) > 1 ||
-          !stickyState.breadcrumbWithinHeader)) ||
+          stickyState.breadcrumbWithinHeader ||
+          (stickyState.breadcrumbTop ?? 1) >= 0 ||
+          (stickyState.localStripTop ?? 1) >= 0)) ||
       runtimeErrors.length
     ) {
       failures.push({
