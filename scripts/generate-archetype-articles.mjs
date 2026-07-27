@@ -439,13 +439,29 @@ function articleHtml(article) {
   const sourceWords = stripHtml(draft.source).split(/\s+/).filter(Boolean).length;
   const readingTime = Math.max(4, Math.round(sourceWords / 180));
   const shellParts = shell();
-  const header = shellParts.header.replace(
-    'class="eh-local-strip__articles" href="/arhetipy/#stati"',
-    'class="eh-local-strip__articles" href="/arhetipy/#stati" aria-current="location"',
-  );
+  const articleBreadcrumb = `<nav class="library-breadcrumb library-breadcrumb--header" aria-label="Путь страницы">
+      <div class="eh-shell-container">
+        <a href="/biblioteka.html">Библиотека</a><span>→</span>
+        <a href="/arhetipy/#stati">Архетипы</a><span>→</span>
+        <span>${escapeHtml(draft.h1)}</span>
+      </div>
+    </nav>`;
+  const header = shellParts.header
+    .replaceAll("eh-context--reiki", "eh-context--archetypes")
+    .replace(
+      'class="eh-local-strip__articles" href="/arhetipy/#stati"',
+      'class="eh-local-strip__articles" href="/arhetipy/#stati" aria-current="location"',
+    )
+    .replace("</header>", `${articleBreadcrumb}\n  </header>`);
   const introHtml = renderBlocks(draft.intro);
+  const articleBodyClass = introHtml
+    ? "article-body"
+    : "article-body article-body--without-intro";
   const toc = draft.sections
-    .map((section, index) => `<a href="#section-${index + 1}">${escapeHtml(section.title)}</a>`)
+    .map(
+      (section, index) =>
+        `<li><a href="#section-${index + 1}">${escapeHtml(section.title)}</a></li>`,
+    )
     .join("");
   const body = draft.sections
     .map((section, index) => renderSection(section, index, article.route_id))
@@ -480,7 +496,7 @@ function articleHtml(article) {
   <link rel="canonical" href="${canonical}">
   <link rel="icon" type="image/png" href="/assets/evolution-house-logo-approved.png">
   <link rel="stylesheet" href="/styles.css">
-  <link rel="stylesheet" href="/article-library.css?v=20260727-archetypes">
+  <link rel="stylesheet" href="/article-library.css?v=20260727-archetypes-article-layout-v2">
   <link rel="stylesheet" href="/cookie-consent.css">
   <script src="/analytics.js" defer></script>
   <script type="application/ld+json">${JSON.stringify(schemaFor(article, draft), null, 2)}</script>
@@ -488,13 +504,6 @@ function articleHtml(article) {
 <body class="article-page article-page--archetypes eh-context--archetypes">
   ${header}
   <main>
-    <nav class="library-breadcrumb" aria-label="Путь страницы">
-      <div class="eh-shell-container">
-        <a href="/biblioteka.html">Библиотека</a><span>→</span>
-        <a href="/arhetipy/#stati">Архетипы</a><span>→</span>
-        <span>${escapeHtml(draft.h1)}</span>
-      </div>
-    </nav>
     <header class="article-hero">
       <div class="eh-shell-container article-hero__grid">
         <div>
@@ -512,16 +521,18 @@ function articleHtml(article) {
       </div>
     </header>
     <div class="eh-shell-container article-layout">
-      <aside class="article-toc" aria-label="Содержание">
+      <nav class="article-toc" aria-label="Содержание статьи">
         <strong>В этой статье</strong>
-        <nav>${toc}</nav>
-      </aside>
-      <article class="article-body">
-        <div class="article-intro">${introHtml}</div>
+        <ol>${toc}</ol>
+      </nav>
+      <article class="${articleBodyClass}">${introHtml ? `
+        <div class="article-intro">${introHtml}</div>` : ""}
         ${body}
         ${relatedArticles(article)}
         <aside class="article-author" aria-label="Об авторе">
-          <img src="/assets/svetlana-archetype-yellow.jpg" alt="${author}" width="1200" height="1600" loading="lazy">
+          <div class="article-author__portrait">
+            <img src="/assets/svetlana-archetype-yellow.jpg" alt="${author}" width="1200" height="1600" loading="lazy">
+          </div>
           <div>
             <p class="article-author__label">Автор статьи</p>
             <h2>${author}</h2>

@@ -57,15 +57,71 @@ for (const width of viewports) {
         .filter((image) => image.complete && image.naturalWidth === 0)
         .map((image) => image.currentSrc || image.src),
       h1: document.querySelectorAll("h1").length,
+      isArticle: document.body.classList.contains("article-page--archetypes"),
+      sectionCount: document.querySelectorAll(".article-body > section[id^='section-']").length,
+      tocItemCount: document.querySelectorAll(".article-toc > ol > li").length,
+      emptyIntroCount: document.querySelectorAll(".article-intro:empty").length,
+      breadcrumbInHeader: Boolean(
+        document.querySelector(".eh-shell-header .library-breadcrumb--header"),
+      ),
+      currentLocalLinkVisible: (() => {
+        const strip = document.querySelector(".eh-local-strip .eh-shell-container");
+        const current = strip?.querySelector("[aria-current]");
+        if (!strip || !current) return false;
+        const stripRect = strip.getBoundingClientRect();
+        const currentRect = current.getBoundingClientRect();
+        return (
+          currentRect.left >= stripRect.left - 1 &&
+          currentRect.right <= stripRect.right + 1
+        );
+      })(),
     }));
+    let stickyState = null;
+    if (
+      state.isArticle &&
+      (width === 1440 || width === 390)
+    ) {
+      await page.evaluate(() => window.scrollTo(0, Math.min(1800, document.body.scrollHeight - innerHeight)));
+      await page.waitForTimeout(60);
+      stickyState = await page.evaluate(() => {
+        const header = document.querySelector(".eh-shell-header")?.getBoundingClientRect();
+        const breadcrumb = document
+          .querySelector(".library-breadcrumb--header")
+          ?.getBoundingClientRect();
+        return {
+          headerTop: header?.top,
+          breadcrumbTop: breadcrumb?.top,
+          breadcrumbWithinHeader:
+            Boolean(header && breadcrumb) &&
+            breadcrumb.top >= header.top - 1 &&
+            breadcrumb.bottom <= header.bottom + 1,
+        };
+      });
+      await page.evaluate(() => window.scrollTo(0, 0));
+    }
     if (
       response?.status() !== 200 ||
       state.overflow ||
       state.brokenImages.length ||
       state.h1 !== 1 ||
+      (state.isArticle &&
+        (state.sectionCount !== state.tocItemCount ||
+          state.emptyIntroCount !== 0 ||
+          !state.breadcrumbInHeader ||
+          !state.currentLocalLinkVisible)) ||
+      (stickyState &&
+        (Math.abs(stickyState.headerTop ?? 999) > 1 ||
+          !stickyState.breadcrumbWithinHeader)) ||
       runtimeErrors.length
     ) {
-      failures.push({ width, route, status: response?.status(), ...state, runtimeErrors });
+      failures.push({
+        width,
+        route,
+        status: response?.status(),
+        ...state,
+        stickyState,
+        runtimeErrors,
+      });
     }
     if (screenshotRoutes.has(route) && (width === 1440 || width === 390)) {
       await page.evaluate(async () => {
