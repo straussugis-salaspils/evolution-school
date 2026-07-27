@@ -461,6 +461,96 @@ body.article-page {
   text-underline-offset: 0.2em;
 }
 
+body.article-page.eh-context--reiki .library-breadcrumb--header,
+body.article-page--transitions .library-breadcrumb--header {
+  background: rgba(255, 253, 248, 0.97);
+  box-shadow: 0 8px 22px rgba(55, 42, 18, 0.07);
+}
+
+body.article-page .eh-local-strip a[aria-current="location"] {
+  border-color: color-mix(in srgb, var(--shell-context-primary) 22%, transparent);
+  background: var(--shell-context-wash);
+  color: var(--shell-context-deep);
+  font-weight: 860;
+}
+
+body.article-page.eh-context--reiki .article-toc,
+body.article-page--transitions .article-toc {
+  top: 10.5rem;
+  max-height: calc(100vh - 12rem);
+  overflow-y: auto;
+  padding: 1.5rem 1.2rem 1.35rem;
+  border: 1px solid var(--library-line);
+  border-top: 3px solid var(--library-gold);
+  border-radius: 0.9rem;
+  background: color-mix(in srgb, var(--library-paper) 96%, transparent);
+  box-shadow: var(--library-shadow);
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--library-gold-deep) 34%, transparent) transparent;
+}
+
+body.article-page.eh-context--reiki .article-toc strong,
+body.article-page--transitions .article-toc strong {
+  display: block;
+  padding: 0 0.7rem 0.85rem;
+  border-bottom: 1px solid var(--library-line);
+  color: var(--library-ink);
+}
+
+body.article-page.eh-context--reiki .article-toc ol,
+body.article-page--transitions .article-toc ol {
+  gap: 0.18rem;
+  margin-top: 0.65rem;
+}
+
+body.article-page.eh-context--reiki .article-toc a,
+body.article-page--transitions .article-toc a {
+  display: flex;
+  align-items: center;
+  min-height: 2.75rem;
+  margin: 0;
+  padding: 0.56rem 0.68rem 0.56rem 0.82rem;
+  border-left: 2px solid transparent;
+  border-radius: 0.45rem;
+  line-height: 1.42;
+  text-decoration: none;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease;
+}
+
+body.article-page.eh-context--reiki .article-toc a:hover,
+body.article-page.eh-context--reiki .article-toc a:focus-visible,
+body.article-page--transitions .article-toc a:hover,
+body.article-page--transitions .article-toc a:focus-visible {
+  border-left-color: color-mix(in srgb, var(--library-gold) 62%, transparent);
+  background: color-mix(in srgb, var(--library-gold-soft) 36%, var(--library-paper));
+  color: var(--library-gold-deep);
+  text-decoration: none;
+}
+
+body.article-page.eh-context--reiki .article-toc a[aria-current="location"],
+body.article-page--transitions .article-toc a[aria-current="location"] {
+  border-left-color: var(--library-gold-deep);
+  background: color-mix(in srgb, var(--library-gold-soft) 58%, var(--library-paper));
+  color: var(--library-gold-deep);
+  font-weight: 650;
+}
+
+body.article-page.eh-context--reiki .article-body section,
+body.article-page--transitions .article-body section {
+  scroll-margin-top: 11rem;
+}
+
+@media (min-width: 981px) and (max-width: 1120px) {
+  body.article-page.eh-context--reiki .article-toc,
+  body.article-page--transitions .article-toc {
+    top: 15.75rem;
+    max-height: calc(100vh - 17rem);
+  }
+}
+
 .article-body {
   min-width: 0;
 }
@@ -1733,12 +1823,12 @@ body.library-page--archetypes {
   --library-muted: #6a5b70;
   --library-line: rgba(91, 45, 104, 0.2);
   --library-shadow: 0 20px 55px rgba(36, 21, 47, 0.11);
-  --articles-hero-color-deep: #24152f;
-  --articles-hero-color-mid: #5b2d68;
-  --articles-hero-color-edge: #72507f;
+  --articles-hero-color-deep: #4c3857;
+  --articles-hero-color-mid: #6d5578;
+  --articles-hero-color-edge: #88728f;
   --articles-hero-color-glow: #b88f49;
   --articles-hero-color-ink: #fffcff;
-  --articles-hero-color-muted: #e8dcec;
+  --articles-hero-color-muted: #f1e9f3;
   --articles-hero-bg:
     radial-gradient(circle at 84% 12%, rgba(184, 143, 73, 0.26), transparent 26rem),
     linear-gradient(112deg, var(--articles-hero-color-deep) 0%, var(--articles-hero-color-mid) 56%, var(--articles-hero-color-edge) 100%);
@@ -1876,8 +1966,8 @@ body.article-page--archetypes .article-toc a:focus-visible {
 }
 
 body.article-page--archetypes .library-breadcrumb--header {
-  background: rgba(255, 250, 242, 0.97);
-  box-shadow: 0 8px 22px rgba(53, 19, 29, 0.07);
+  background: rgba(255, 252, 255, 0.98);
+  box-shadow: 0 8px 22px rgba(36, 21, 47, 0.07);
 }
 
 body.article-page--archetypes .article-toc {
@@ -1885,7 +1975,7 @@ body.article-page--archetypes .article-toc {
   max-height: calc(100vh - 12rem);
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: rgba(138, 52, 66, 0.34) transparent;
+  scrollbar-color: rgba(91, 45, 104, 0.34) transparent;
 }
 
 body.article-page--archetypes .article-body--without-intro > section:first-child {
@@ -1926,24 +2016,10 @@ body.article-page--archetypes .article-author__portrait img {
   }
 }
 
-body.eh-context--archetypes .eh-local-strip {
-  background: #5b2d68;
-  border-color: rgba(255, 252, 255, 0.16);
-}
-
-body.eh-context--archetypes .eh-local-strip a {
-  color: #eee3f1;
-}
-
-body.eh-context--archetypes .eh-local-strip a:hover,
-body.eh-context--archetypes .eh-local-strip a:focus-visible,
-body.eh-context--archetypes .eh-local-strip a[aria-current] {
-  background: rgba(255, 252, 255, 0.14);
-  color: #fffcff;
-}
-
 @media (max-width: 980px) {
-  body.article-page--archetypes .article-toc {
+  body.article-page--archetypes .article-toc,
+  body.article-page.eh-context--reiki .article-toc,
+  body.article-page--transitions .article-toc {
     position: static;
     max-height: none;
     overflow: visible;
@@ -1968,6 +2044,25 @@ body.eh-context--archetypes .eh-local-strip a[aria-current] {
 }
 
 @media (max-width: 720px) {
+  body.article-page .library-breadcrumb--header .eh-shell-container {
+    width: calc(100% - 40px);
+    min-width: 0;
+    flex-wrap: nowrap;
+    overflow: hidden;
+  }
+
+  body.article-page .library-breadcrumb--header .eh-shell-container > * {
+    flex: 0 0 auto;
+  }
+
+  body.article-page .library-breadcrumb--header .eh-shell-container > span:last-child {
+    min-width: 0;
+    flex: 1 1 auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
   body.article-page--archetypes .library-breadcrumb--header .eh-shell-container {
     width: calc(100% - 40px);
     min-width: 0;
@@ -2284,7 +2379,7 @@ body.library-page--archetypes .library-section--paper:nth-of-type(odd) {
   gap: 0.8rem;
 }
 
-.archetype-path-bridge .button--secondary {
+body.library-page--archetypes .archetype-path-bridge .button--secondary {
   border: 1px solid rgba(255, 252, 255, 0.52) !important;
   background: transparent !important;
   color: #fffcff !important;

@@ -290,7 +290,12 @@ function commonShell() {
     path.join(siteRoot, "biblioteka", "reiki", "chto-takoe-reiki", "index.html"),
     "utf8",
   );
-  const sourceHeader = sample.match(/<header class="eh-shell-header[\s\S]*?<\/header>/)?.[0];
+  const sourceHeader = sample
+    .match(/<header class="eh-shell-header[\s\S]*?<\/header>/)?.[0]
+    ?.replace(
+      /<nav class="library-breadcrumb library-breadcrumb--header"[\s\S]*?<\/nav>/,
+      "",
+    );
   const footer = sample.match(
     /<footer class="eh-global-footer"[\s\S]*?<\/footer>\s*<script src="\/script\.js"><\/script>/,
   )?.[0];
@@ -407,10 +412,11 @@ function renderRelated(article, articles) {
             ${article.related
               .map((link) => {
                 const target = articles.find((item) => item.route === link.url);
-                if (!target) throw new Error(`Missing related article ${link.url}.`);
-                return `<a class="article-related__card clickable-card" href="${target.route}">
-              <span>Статья ${String(target.number).padStart(2, "0")}</span>
-              <strong>${escapeHtml(link.label || target.h1)}</strong>
+                const label = link.label || target?.h1;
+                if (!label) throw new Error(`Missing label for related material ${link.url}.`);
+                return `<a class="article-related__card clickable-card" href="${target?.route || link.url}">
+              <span>${target ? `Статья ${String(target.number).padStart(2, "0")}` : "Материал"}</span>
+              <strong>${escapeHtml(label)}</strong>
               <em>Читать →</em>
             </a>`;
               })
@@ -491,7 +497,17 @@ function articleSchema(article) {
 function renderArticle(article, articles, shell) {
   const canonical = `${baseUrl}${article.route}`;
   const imageUrl = `${baseUrl}${article.visual.basePath}/og-1200.jpg`;
-  const header = shell.header.replace('aria-current="page">Статьи о пересборке', 'aria-current="location">Статьи о пересборке');
+  const articleBreadcrumb = `<nav class="library-breadcrumb library-breadcrumb--header" aria-label="Путь страницы">
+      <div class="eh-shell-container">
+        <a href="/biblioteka.html">Библиотека</a><span>→</span>
+        <a href="${hubRoute}">Пересборка жизни и переходы</a><span>→</span>
+        <span>${escapeHtml(article.h1)}</span>
+      </div>
+    </nav>`;
+  const header = shell.header
+    .replace('aria-current="page">Статьи о пересборке', 'aria-current="location">Статьи о пересборке')
+    .replace("</header>", `${articleBreadcrumb}
+  </header>`);
   const related = renderRelated(article, articles);
   const toc = article.sections
     .map(
@@ -565,7 +581,7 @@ function renderArticle(article, articles, shell) {
   <link rel="canonical" href="${canonical}">
   <link rel="icon" type="image/png" href="/assets/evolution-house-logo-approved.png">
   <link rel="stylesheet" href="/styles.css">
-  <link rel="stylesheet" href="/article-library.css?v=20260724-transitions-1">
+  <link rel="stylesheet" href="/article-library.css?v=20260727-reading-nav-2">
   <link rel="stylesheet" href="/assets/transition-articles/inserts/transition-inserts.css?v=20260725-1">
   <link rel="stylesheet" href="/cookie-consent.css">
   <script src="/analytics.js" defer></script>
@@ -576,13 +592,6 @@ ${JSON.stringify(articleSchema(article), null, 2)}
 <body class="article-page article-page--transitions eh-context--levels">
   ${header}
   <main>
-    <nav class="library-breadcrumb" aria-label="Путь страницы">
-      <div class="eh-shell-container">
-        <a href="/biblioteka.html">Библиотека</a><span>→</span>
-        <a href="${hubRoute}">Пересборка жизни и переходы</a><span>→</span>
-        <span>${escapeHtml(article.h1)}</span>
-      </div>
-    </nav>
     <header class="article-hero${article.h1.length > 62 ? " article-hero--long-title" : ""}">
       <div class="eh-shell-container article-hero__grid">
         <div>
@@ -620,6 +629,7 @@ ${JSON.stringify(articleSchema(article), null, 2)}
     </div>
   </main>
   ${shell.footer}
+  <script src="/archetype-route.js?v=20260727-reading-nav-1" defer></script>
 </body>
 </html>`;
 }

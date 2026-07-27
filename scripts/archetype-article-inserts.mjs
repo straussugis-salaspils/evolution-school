@@ -46,6 +46,7 @@ export const archetypeArticleInserts = {
     after: "Где здесь появляются архетипы",
     characters: ["persephone", "athena", "artemis"],
     type: "relay",
+    layout: "ensemble",
     eyebrow: "От желания к действию",
     title: "Три функции собирают один живой шаг",
     description:
@@ -219,6 +220,10 @@ export const archetypeArticleInserts = {
     after: "Где забота незаметно становится контролем",
     characters: ["demeter"],
     type: "support-line",
+    layout: "scene",
+    sceneAsset: "/assets/archetype-articles/r07",
+    sceneAlt:
+      "Две женщины вместе ухаживают за растениями: поддержка помогает действовать самостоятельно",
     eyebrow: "Деметра и самостоятельность",
     title: "Поддержка даёт опору, но не забирает чужой путь",
     description:

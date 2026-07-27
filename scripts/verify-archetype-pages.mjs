@@ -98,6 +98,10 @@ for (const width of viewports) {
             Boolean(header && breadcrumb) &&
             breadcrumb.top >= header.top - 1 &&
             breadcrumb.bottom <= header.bottom + 1,
+          localStripWithinHeader:
+            Boolean(header && localStrip) &&
+            localStrip.top >= header.top - 1 &&
+            localStrip.bottom <= header.bottom + 1,
         };
       });
       await page.evaluate(() => window.scrollTo(0, 0));
@@ -111,13 +115,14 @@ for (const width of viewports) {
         (state.sectionCount !== state.tocItemCount ||
           state.emptyIntroCount !== 0 ||
           !state.breadcrumbPresent ||
-          state.breadcrumbInHeader ||
+          !state.breadcrumbInHeader ||
            !state.mapLocalLinkVisible)) ||
       (stickyState &&
         (Math.abs(stickyState.headerTop ?? 999) > 1 ||
-          stickyState.breadcrumbWithinHeader ||
-          (stickyState.breadcrumbTop ?? 1) >= 0 ||
-          (stickyState.localStripTop ?? 1) >= 0)) ||
+          !stickyState.breadcrumbWithinHeader ||
+          !stickyState.localStripWithinHeader ||
+          (stickyState.breadcrumbTop ?? -1) < -1 ||
+          (stickyState.localStripTop ?? -1) < -1)) ||
       runtimeErrors.length
     ) {
       failures.push({
