@@ -1817,6 +1817,29 @@ body.article-page--archetypes .article-toc strong {
   color: var(--library-ink);
 }
 
+body.article-page--archetypes .article-author {
+  grid-template-columns: 176px minmax(0, 1fr);
+  gap: 2rem;
+}
+
+body.article-page--archetypes .article-author__portrait {
+  width: 176px;
+  height: 176px;
+  overflow: hidden;
+  border-radius: 50%;
+  background: #ead8c3;
+}
+
+body.article-page--archetypes .article-author__portrait img {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  object-fit: cover;
+  object-position: 50% 22%;
+  transform: scale(1.55);
+  transform-origin: 50% 34%;
+}
+
 @media (min-width: 981px) and (max-width: 1120px) {
   body.article-page--archetypes .article-toc {
     top: 15.75rem;
@@ -1849,6 +1872,16 @@ body.eh-context--archetypes .eh-local-strip a[aria-current] {
 }
 
 @media (max-width: 720px) {
+  body.article-page--archetypes .article-author {
+    grid-template-columns: 112px minmax(0, 1fr);
+    gap: 1rem;
+  }
+
+  body.article-page--archetypes .article-author__portrait {
+    width: 112px;
+    height: 112px;
+  }
+
   body.article-page--archetypes .library-breadcrumb--header .eh-shell-container {
     width: calc(100% - 40px);
     min-width: 0;
