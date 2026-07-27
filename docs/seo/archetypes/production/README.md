@@ -248,3 +248,8 @@ profile. Сайт, тест, Навигатор и Telegram не должны п
 
 Полный протокол и доказательства решений лежат в `portfolio-audit/`, начиная с
 `00-second-wave-horizontal-audit-system.md`.
+
+Исполнимый handoff для отдельного чата, который будет собирать и публиковать
+кластер на сайте:
+
+`portfolio-audit/17-site-publication-handoff-brief.md`
