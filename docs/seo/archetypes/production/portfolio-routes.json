@@ -1,9 +1,18 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "updated_at": "2026-07-27",
+  "default_author_id": "svetlana-strauss",
+  "author_entity": {
+    "author_id": "svetlana-strauss",
+    "name": "Светлана Страусс",
+    "role": "основательница Evolution House и автор метода",
+    "public_page": "/o-shkole.html"
+  },
+  "evidence_ledger": "portfolio-evidence.json",
   "product_destinations": {
     "test": "/test-arhetipov/",
     "two_week": "/lightness/#bundle",
+    "strength": "/strength/",
     "mentoring": "/mentoring/",
     "navigator": "/pervyi-shag.html",
     "retreats": "/retreats/"
@@ -15,23 +24,167 @@
       "/retreats/"
     ],
     "requirements": [
-      "safety_normal",
+      "user_safety_state_normal",
       "product_interest",
       "product_active",
       "audience_fit"
     ],
     "on_failure": "hide_product_without_fallback"
   },
+  "render_contract": {
+    "metadata_source": "portfolio-routes.json",
+    "body_source": "drafts",
+    "final_cta_marker": "ROUTE_CTA",
+    "markdown_destination_field": "editorial_candidate_only",
+    "state_based_component_required": true,
+    "direct_article_routes": [
+      "L04",
+      "L09"
+    ],
+    "publication_state": "not_implemented",
+    "required_before_publication": [
+      "markdown_to_html_generator",
+      "route_cta_component",
+      "system_nodes_200",
+      "schema_and_breadcrumbs",
+      "staging_link_crawl"
+    ]
+  },
+  "state_dimensions": [
+    "user_safety_state",
+    "code_known",
+    "birth_time_known",
+    "concern",
+    "audience_fit",
+    "readiness",
+    "product_active"
+  ],
+  "system_nodes": [
+    {
+      "route_id": "S01",
+      "canonical": "/test-arhetipov/",
+      "purpose": "canonical_natal_calculation_entry",
+      "publication_status": "required_before_test_routes",
+      "live_status_checked_at": "2026-07-27",
+      "live_http_status": 404
+    },
+    {
+      "route_id": "S02",
+      "canonical": "/arhetipy/",
+      "purpose": "content_and_direction_hub",
+      "publication_status": "required_before_cluster_release",
+      "legacy_url": "/arhetipy.html",
+      "legacy_migration": "301_to_canonical",
+      "live_status_checked_at": "2026-07-27",
+      "live_http_status": 404
+    },
+    {
+      "route_id": "S03",
+      "canonical": "/zhenskie-arhetipy/",
+      "purpose": "female_archetype_map",
+      "publication_status": "required_before_role_pages",
+      "live_status_checked_at": "2026-07-27",
+      "live_http_status": 404
+    }
+  ],
+  "routing_profiles": {
+    "personal_map": {
+      "route_ids": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "S05",
+        "R06",
+        "R07",
+        "R08",
+        "S06",
+        "S04"
+      ],
+      "branches": {
+        "cold_birth_time_known_code_unknown": "TEST",
+        "code_known": "CONCERN_PICKER",
+        "birth_time_unknown": "CONCERN_PICKER"
+      }
+    },
+    "short_experience": {
+      "route_ids": [
+        "L01",
+        "L03",
+        "L05",
+        "L02",
+        "L07",
+        "L10",
+        "L15",
+        "L16"
+      ],
+      "branches": {
+        "information_or_no_product_interest": "RELATED_READING",
+        "short_experience_female_audience": "PRODUCT_CANDIDATE_TWO_WEEK",
+        "short_experience_male_or_mixed_audience": "PRODUCT_CANDIDATE_STRENGTH",
+        "guided_work_female_audience": "PRODUCT_CANDIDATE_MENTORING",
+        "unknown_or_failed_gate": "RELATED_READING"
+      }
+    },
+    "guided_work": {
+      "route_ids": [
+        "L08",
+        "L12"
+      ],
+      "branches": {
+        "guided_work_female_audience": "PRODUCT_CANDIDATE_MENTORING",
+        "short_experience_female_audience": "PRODUCT_CANDIDATE_TWO_WEEK",
+        "unknown_or_failed_gate": "RELATED_READING"
+      }
+    },
+    "navigator": {
+      "route_ids": [
+        "L06",
+        "L13",
+        "L14"
+      ],
+      "branches": {
+        "normal_and_explicit_route_choice": "NAVIGATOR",
+        "unknown_or_failed_gate": "RELATED_READING"
+      }
+    },
+    "direct_article": {
+      "route_ids": [
+        "L04",
+        "L09"
+      ],
+      "branches": {
+        "default": "ARTICLE"
+      }
+    }
+  },
+  "consolidations": [
+    {
+      "route_id": "L02",
+      "proposed_canonical": "/zhizn/ne-znayu-chego-hochu/",
+      "owner_canonical": "/biblioteka/perehody/kak-ponyat-chego-ya-hochu/",
+      "action": "merge_into_existing_owner",
+      "render_separate_url": false
+    },
+    {
+      "route_id": "L14",
+      "proposed_canonical": "/zhizn/vnutrenniy-vybor/",
+      "owner_canonical": "/biblioteka/perehody/ne-mogu-prinyat-reshenie/",
+      "action": "merge_into_existing_owner",
+      "render_separate_url": false
+    }
+  ],
   "assets": [
     {
       "route_id": "L01",
       "source": "drafts/01-zhizn-cherez-nado.md",
       "canonical": "/zhizn/cherez-nado/",
       "seo_title": "Жизнь через «надо»: как услышать своё «хочу» | Evolution House",
-      "meta_description": "Светлана Страус объясняет, почему за обязанностями становится трудно понять свои желания, как сделать первый безопасный шаг и чем может помочь карта архетипов.",
+      "meta_description": "Светлана Страусс объясняет, почему за обязанностями становится трудно понять свои желания, как сделать первый безопасный шаг и чем может помочь карта архетипов.",
       "index_state": "index",
       "publication_status": "draft",
-      "safety_state": "sensitive",
+      "page_safety_class": "sensitive",
       "next_intent": "short_experience",
       "destination": "/lightness/#bundle"
     },
@@ -40,10 +193,10 @@
       "source": "drafts/02-persefona.md",
       "canonical": "/arhetipy/persefona/",
       "seo_title": "Архетип Персефоны: желание и взросление | Evolution House",
-      "meta_description": "Светлана Страус объясняет архетип Персефоны без ярлыков: его ресурс, перегрузку, путь от желания к действию и способ узнать свой код из трёх архетипов.",
+      "meta_description": "Светлана Страусс объясняет архетип Персефоны без ярлыков: его ресурс, перегрузку, путь от желания к действию и способ узнать свой код из трёх архетипов.",
       "index_state": "index",
       "publication_status": "draft",
-      "safety_state": "sensitive",
+      "page_safety_class": "sensitive",
       "next_intent": "personal_map",
       "destination": "/test-arhetipov/"
     },
@@ -52,10 +205,10 @@
       "source": "drafts/03-afrodita.md",
       "canonical": "/arhetipy/afrodita/",
       "seo_title": "Архетип Афродиты: чувственность и вкус к жизни | Evolution House",
-      "meta_description": "Светлана Страус объясняет архетип Афродиты без стереотипа соблазнительницы: его ресурс, перегрузку, проявление в отношениях и место в коде из трёх архетипов.",
+      "meta_description": "Светлана Страусс объясняет архетип Афродиты без стереотипа соблазнительницы: его ресурс, перегрузку, проявление в отношениях и место в коде из трёх архетипов.",
       "index_state": "index",
       "publication_status": "draft",
-      "safety_state": "sensitive",
+      "page_safety_class": "sensitive",
       "next_intent": "personal_map",
       "destination": "/test-arhetipov/"
     },
@@ -64,10 +217,10 @@
       "source": "drafts/04-artemida.md",
       "canonical": "/arhetipy/artemida/",
       "seo_title": "Архетип Артемиды: действие, границы и внутренняя сила | Evolution House",
-      "meta_description": "Светлана Страус объясняет архетип Артемиды через действие, границы и сотрудничество с телом: его ресурс, перегрузку и место в коде из трёх архетипов.",
+      "meta_description": "Светлана Страусс объясняет архетип Артемиды через действие, границы и сотрудничество с телом: его ресурс, перегрузку и место в коде из трёх архетипов.",
       "index_state": "index",
       "publication_status": "draft",
-      "safety_state": "sensitive",
+      "page_safety_class": "sensitive",
       "next_intent": "personal_map",
       "destination": "/test-arhetipov/"
     },
@@ -76,10 +229,10 @@
       "source": "drafts/05-afina.md",
       "canonical": "/arhetipy/afina/",
       "seo_title": "Архетип Афины: стратегия, выбор и ясность пути | Evolution House",
-      "meta_description": "Светлана Страус объясняет архетип Афины без образа холодной карьеристки: стратегия, последовательность, теневая сторона и место в коде из трёх архетипов.",
+      "meta_description": "Светлана Страусс объясняет архетип Афины без образа холодной карьеристки: стратегия, последовательность, теневая сторона и место в коде из трёх архетипов.",
       "index_state": "index",
       "publication_status": "draft",
-      "safety_state": "sensitive",
+      "page_safety_class": "sensitive",
       "next_intent": "personal_map",
       "destination": "/test-arhetipov/"
     },
@@ -88,10 +241,10 @@
       "source": "drafts/06-gera.md",
       "canonical": "/arhetipy/gera/",
       "seo_title": "Архетип Геры: отношения, выбор и зрелый союз | Evolution House",
-      "meta_description": "Светлана Страус объясняет архетип Геры без образа «идеальной жены»: договорённости, общий выбор, контроль, страх потери и место в коде из трёх архетипов.",
+      "meta_description": "Светлана Страусс объясняет архетип Геры без образа «идеальной жены»: договорённости, общий выбор, контроль, страх потери и место в коде из трёх архетипов.",
       "index_state": "index",
       "publication_status": "draft",
-      "safety_state": "critical_route",
+      "page_safety_class": "critical_route",
       "next_intent": "personal_map",
       "destination": "/test-arhetipov/"
     },
@@ -103,7 +256,7 @@
       "meta_description": "Что делать, если вы устали быть сильной и всё держится на вас: как разобрать нагрузку, передать ответственность и заметить момент, когда нужна не статья, а помощь специалиста.",
       "index_state": "index",
       "publication_status": "draft",
-      "safety_state": "critical_route",
+      "page_safety_class": "critical_route",
       "next_intent": "short_experience",
       "destination": "/lightness/#bundle"
     },
@@ -115,7 +268,7 @@
       "meta_description": "Что называют синдромом хорошей девочки и как перестать автоматически соглашаться ради одобрения: безопасная практика, жизненный пример и архетипическая карта.",
       "index_state": "index",
       "publication_status": "draft",
-      "safety_state": "critical_route",
+      "page_safety_class": "critical_route",
       "next_intent": "short_experience",
       "destination": "/lightness/#bundle"
     },
@@ -127,7 +280,7 @@
       "meta_description": "Что делать, если не получается расслабиться даже в тишине: как отличить незавершённые дела, тревогу и телесные симптомы, сделать безопасную паузу и понять, когда нужна помощь.",
       "index_state": "index",
       "publication_status": "draft",
-      "safety_state": "critical_route",
+      "page_safety_class": "critical_route",
       "next_intent": "keep_reading",
       "destination": "/arhetipy/gestiya/"
     },
@@ -139,7 +292,7 @@
       "meta_description": "Что делать, если вы подстраиваетесь под партнёра и перестаёте слышать себя: как отличить компромисс от самоутраты, вернуть один свой выбор и проверить безопасность.",
       "index_state": "index",
       "publication_status": "draft",
-      "safety_state": "critical_route",
+      "page_safety_class": "critical_route",
       "next_intent": "guided_work",
       "destination": "/pervyi-shag.html"
     },
@@ -151,7 +304,7 @@
       "meta_description": "Архетип простыми словами: чем он отличается от роли и типа личности, как Evolution House рассчитывает три сутевых архетипа и чего этот метод не определяет.",
       "index_state": "index",
       "publication_status": "draft",
-      "safety_state": "normal",
+      "page_safety_class": "normal",
       "next_intent": "personal_map",
       "destination": "/test-arhetipov/"
     },
@@ -161,9 +314,9 @@
       "canonical": "/zhizn/ne-znayu-chego-hochu/",
       "seo_title": "Не знаю, чего хочу: как понять свои желания | Evolution House",
       "meta_description": "Что делать, если вы не понимаете, чего хотите от жизни: как отличить неопределённость от потери интереса и проверить одно желание небольшим действием.",
-      "index_state": "index",
-      "publication_status": "draft",
-      "safety_state": "critical_route",
+      "index_state": "noindex_follow",
+      "publication_status": "hold_consolidation",
+      "page_safety_class": "critical_route",
       "next_intent": "short_experience",
       "destination": "/lightness/#bundle"
     },
@@ -171,11 +324,11 @@
       "route_id": "R06",
       "source": "drafts/13-gestiya.md",
       "canonical": "/arhetipy/gestiya/",
-      "seo_title": "Архетип Гестии: значение, ресурс и тень | Evolution House",
+      "seo_title": "Архетип Гестии: внутренний центр и тишина | Evolution House",
       "meta_description": "Что означает архетип Гестии в женщине: внутренняя тишина, личное пространство, ресурс и риск ухода от жизни. Практика и границы натального расчёта.",
       "index_state": "index",
       "publication_status": "draft",
-      "safety_state": "sensitive",
+      "page_safety_class": "sensitive",
       "next_intent": "personal_map",
       "destination": "/test-arhetipov/"
     },
@@ -183,11 +336,11 @@
       "route_id": "R07",
       "source": "drafts/14-demetra.md",
       "canonical": "/arhetipy/demetra/",
-      "seo_title": "Архетип Деметры: значение, ресурс и тень | Evolution House",
+      "seo_title": "Архетип Деметры: забота без самоутраты | Evolution House",
       "meta_description": "Что означает архетип Деметры в женщине: забота, которая поддерживает, но не превращается в контроль, спасательство и отказ от себя. Практика и границы натального расчёта.",
       "index_state": "index",
       "publication_status": "draft",
-      "safety_state": "critical_route",
+      "page_safety_class": "critical_route",
       "next_intent": "personal_map",
       "destination": "/test-arhetipov/"
     },
@@ -195,11 +348,11 @@
       "route_id": "R08",
       "source": "drafts/15-gekata.md",
       "canonical": "/arhetipy/gekata/",
-      "seo_title": "Архетип Гекаты: значение, ресурс и тень | Evolution House",
+      "seo_title": "Архетип Гекаты: границы и завершение | Evolution House",
       "meta_description": "Что означает архетип Гекаты в женщине: границы, завершение и способность придать замыслу конкретную форму — без обещаний магической защиты, предвидения и материализации.",
       "index_state": "index",
       "publication_status": "draft",
-      "safety_state": "critical_route",
+      "page_safety_class": "critical_route",
       "next_intent": "personal_map",
       "destination": "/test-arhetipov/"
     },
@@ -211,7 +364,7 @@
       "meta_description": "Как спокойно отказать человеку, взять паузу и не объясняться бесконечно. Готовые фразы, практика для безопасных ситуаций и архетипическая карта границ.",
       "index_state": "index",
       "publication_status": "draft",
-      "safety_state": "critical_route",
+      "page_safety_class": "critical_route",
       "next_intent": "short_experience",
       "destination": "/lightness/#bundle"
     },
@@ -223,7 +376,7 @@
       "meta_description": "Как вернуть своим желаниям место в жизни, не бросая близких и обязанности. Практика карты недели, живой пример и архетипическая карта заботы и выбора.",
       "index_state": "index",
       "publication_status": "draft",
-      "safety_state": "critical_route",
+      "page_safety_class": "critical_route",
       "next_intent": "guided_work",
       "destination": "/mentoring/"
     },
@@ -235,7 +388,7 @@
       "meta_description": "Как отличить помощь от привычки делать за других, ограничить объём участия и вернуть человеку его ответственность — без жестокости и чувства, что вы всех бросили.",
       "index_state": "index",
       "publication_status": "draft",
-      "safety_state": "critical_route",
+      "page_safety_class": "critical_route",
       "next_intent": "keep_reading",
       "destination": "/otnosheniya/zhivu-radi-drugih/"
     },
@@ -247,7 +400,7 @@
       "meta_description": "Почему один архетип может помогать или перегружать: как отличить ресурс от автоматической «тени», прочитать результат теста и выбрать один следующий шаг без ярлыков.",
       "index_state": "index",
       "publication_status": "draft",
-      "safety_state": "normal",
+      "page_safety_class": "normal",
       "next_intent": "personal_map",
       "destination": "/test-arhetipov/"
     },
@@ -255,11 +408,11 @@
       "route_id": "S04",
       "source": "drafts/21-muzhskie-arhetipy.md",
       "canonical": "/muzhskie-arhetipy/",
-      "seo_title": "Мужские архетипы: 8 ролей и их значение | Evolution House",
+      "seo_title": "Мужские архетипы: 8 функций и их значение | Evolution House",
       "meta_description": "Гермес, Арес, Зевс, Посейдон, Гефест, Аполлон, Гадес и Дионис: чем отличаются восемь мужских архетипов и как работает натальный расчёт кода без типирования и ярлыков.",
       "index_state": "index",
       "publication_status": "draft",
-      "safety_state": "normal",
+      "page_safety_class": "normal",
       "next_intent": "personal_map",
       "destination": "/test-arhetipov/"
     },
@@ -271,7 +424,7 @@
       "meta_description": "Как отличить ответственность и границу от давления: что оставить в своей зоне, о чём договориться и как перестать управлять решениями партнёра, близкого или коллеги.",
       "index_state": "index",
       "publication_status": "draft",
-      "safety_state": "critical_route",
+      "page_safety_class": "critical_route",
       "next_intent": "short_experience",
       "destination": "/lightness/#bundle"
     },
@@ -283,7 +436,7 @@
       "meta_description": "Почему помощь не снимает ответственность и как передать человеку целую задачу: результат, срок, полномочия и последствия — без молчаливого переделывания.",
       "index_state": "index",
       "publication_status": "draft",
-      "safety_state": "critical_route",
+      "page_safety_class": "critical_route",
       "next_intent": "guided_work",
       "destination": "/mentoring/"
     },
@@ -291,11 +444,11 @@
       "route_id": "L13",
       "source": "drafts/24-dostigla-no-ne-zhivu.md",
       "canonical": "/zhizn/dostigla-no-ne-zhivu/",
-      "seo_title": "Цель достигнута, а радости нет: что делать | Evolution House",
-      "meta_description": "Почему после важного результата может прийти пустота, как отличить усталость от потери следующего ориентира и когда нужна профессиональная помощь.",
+      "seo_title": "Пустота после достижения цели: почему радости нет | Evolution House",
+      "meta_description": "Что делать с пустотой после одной достигнутой цели: как отделить результат от ожиданий, завершить прежний маршрут и заметить, когда нужна профессиональная помощь.",
       "index_state": "index",
       "publication_status": "draft",
-      "safety_state": "critical_route",
+      "page_safety_class": "critical_route",
       "next_intent": "guided_work",
       "destination": "/pervyi-shag.html"
     },
@@ -307,7 +460,7 @@
       "meta_description": "Почему желание не превращается в действие, как отличить неясную цель от реального препятствия и выбрать первый шаг без войны с собой.",
       "index_state": "index",
       "publication_status": "draft",
-      "safety_state": "critical_route",
+      "page_safety_class": "critical_route",
       "next_intent": "short_experience",
       "destination": "/lightness/#bundle"
     },
@@ -319,7 +472,7 @@
       "meta_description": "Что делать, если всё организовано и работает, но дни проходят на автомате: как проверить свою стратегию, вернуть в неё выбор и когда нужна профессиональная помощь.",
       "index_state": "index",
       "publication_status": "draft",
-      "safety_state": "critical_route",
+      "page_safety_class": "critical_route",
       "next_intent": "short_experience",
       "destination": "/lightness/#bundle"
     },
@@ -329,9 +482,9 @@
       "canonical": "/zhizn/vnutrenniy-vybor/",
       "seo_title": "Не могу принять решение: как сделать выбор | Evolution House",
       "meta_description": "Что делать, если оба варианта важны и полной уверенности нет: как отделить факты от прогнозов, сравнить цену решений и определить следующий шаг.",
-      "index_state": "index",
-      "publication_status": "draft",
-      "safety_state": "critical_route",
+      "index_state": "noindex_follow",
+      "publication_status": "hold_consolidation",
+      "page_safety_class": "critical_route",
       "next_intent": "guided_work",
       "destination": "/pervyi-shag.html"
     }

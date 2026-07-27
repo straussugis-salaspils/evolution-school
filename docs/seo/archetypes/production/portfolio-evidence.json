@@ -1,0 +1,950 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-27",
+  "scope": {
+    "corpus": "Evolution House archetypes SEO production drafts",
+    "route_count": 26,
+    "purpose": "Trace every published-attribution scene or method claim from route_id and draft locator to its source, permission boundary, allowed claim, and forbidden extension.",
+    "primary_source_rule": "Full VTT files are primary for training content. Clean Markdown files are navigation aids only. A brief or critic audit is used as the source_path only when the primary source lacks an exact locator in the production record.",
+    "publication_rule": "status=needs_locator is a publication evidence gap for the attributed item; it must not be presented as primary-source-verified until an exact locator is added."
+  },
+  "source_roots": {
+    "repo_root": "C:\\Users\\Ugis\\Documents\\Codex\\2026-07-24\\files-mentioned-by-the-user-codex\\production\\evolution-school-archetypes",
+    "archetypes_source_root": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi",
+    "transitions_source_root": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Perehodi arhetipi"
+  },
+  "status_values": {
+    "verified": "The cited source and locator are specific enough to retrieve the supporting passage.",
+    "needs_locator": "The production brief or audit confirms the source relationship, but no exact primary-source locator is recorded."
+  },
+  "consent_states": {
+    "author_first_person": "Author-owned first-person material; publish only the facts supported by the cited passage.",
+    "user_confirmed_except_margarita": "The user confirmed permission to use training cases, except Margarita and any recognisable anonymisation of her story.",
+    "editorial_illustration": "A constructed ordinary-life illustration, not a participant or client history.",
+    "method_or_public_source": "No participant consent is implicated; normal attribution and claim-boundary rules still apply."
+  },
+  "global_deny_rules": [
+    {
+      "deny_id": "DENY-MARGARITA-001",
+      "subject": "Маргарита / Margarita",
+      "scope": "all_routes_all_sources_all_outputs",
+      "match_policy": [
+        "name_or_transliteration",
+        "direct_quote",
+        "paraphrased_case",
+        "recognisable_anonymisation",
+        "composite_scene_reconstructing_identifying_details"
+      ],
+      "action": "deny_publication_and_remove_from_evidence_selection",
+      "note": "The prohibition remains in force even when general permission exists for other training cases."
+    }
+  ],
+  "routes": [
+    {
+      "route_id": "L01",
+      "draft_source": "drafts/01-zhizn-cherez-nado.md",
+      "evidence_items": [
+        {
+          "evidence_id": "L01-scene-macrame",
+          "draft_locator": "source-refresh case about macrame and turning pleasure into a large business",
+          "scene_summary": "A participant postponed macrame for almost half a year; it had been pleasurable until she immediately framed it as a large business.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Персефона. Итоги.vtt",
+          "locator": {
+            "kind": "line_range",
+            "value": "541-761"
+          },
+          "source_type": "participant_case",
+          "speaker": "anonymous training participant; Svetlana Strauss",
+          "consent_state": "user_confirmed_except_margarita",
+          "allowed_claim": "Pleasure can be displaced when a desired activity is immediately converted into a large obligation; Svetlana suggested first restoring its right to remain pleasurable.",
+          "forbidden_extension": "Do not claim that the participant returned to macrame, built a business, or achieved a later result; the source does not report the continuation.",
+          "verified_at": "2026-07-27",
+          "trace_basis": "briefs/01-zhizn-cherez-nado-brief.md; audits/00-outcome-transcript-source-refresh.md"
+        }
+      ]
+    },
+    {
+      "route_id": "R01",
+      "draft_source": "drafts/02-persefona.md",
+      "evidence_items": [
+        {
+          "evidence_id": "R01-scene-svetlana-singing",
+          "draft_locator": "## В 49 лет я начала петь",
+          "scene_summary": "Svetlana began singing at about forty-nine, created the programme Five Seasons of a Woman, and performed it in different hotels.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Знакомство с Персефоной.vtt",
+          "locator": {
+            "kind": "line_range",
+            "value": "799-877"
+          },
+          "source_type": "author_first_person",
+          "speaker": "Svetlana Strauss",
+          "consent_state": "author_first_person",
+          "allowed_claim": "The singing history may illustrate desire followed by real participation and action.",
+          "forbidden_extension": "Do not invent preparation details, clients, audience reaction, commercial outcomes, or causal effects of an archetype.",
+          "verified_at": "2026-07-27"
+        }
+      ]
+    },
+    {
+      "route_id": "R02",
+      "draft_source": "drafts/03-afrodita.md",
+      "evidence_items": [
+        {
+          "evidence_id": "R02-scene-sunlight-movement",
+          "draft_locator": "## «Жалюзи — это тюрьма»",
+          "scene_summary": "Svetlana describes morning sun, calls blinds a prison, and compares unwatched stretching and bathing in sunlight to a cat.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Знакомство с Афродитой.vtt",
+          "locator": {
+            "kind": "line_range",
+            "value": "2871-2945"
+          },
+          "source_type": "author_first_person",
+          "speaker": "Svetlana Strauss",
+          "consent_state": "author_first_person",
+          "allowed_claim": "The scene may illustrate sensory presence and movement without an audience.",
+          "forbidden_extension": "Do not add an unverified to-do list, therapeutic result, body transformation, sexuality claim, or financial effect.",
+          "verified_at": "2026-07-27"
+        },
+        {
+          "evidence_id": "R02-scene-mother-at-table",
+          "draft_locator": "## Когда даже дома приходится быть правильной",
+          "scene_summary": "A participant responds to her mother's remark, says she cannot meet every expectation, and names the quality of contact she wants; her mother approaches and hugs her.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Афродита. Итоги.vtt",
+          "locator": {
+            "kind": "line_range",
+            "value": "501-837"
+          },
+          "source_type": "participant_case",
+          "speaker": "anonymous training participant and her mother",
+          "consent_state": "user_confirmed_except_margarita",
+          "allowed_claim": "This single episode can show a person naming the desired quality of a close contact instead of trying to meet every expectation.",
+          "forbidden_extension": "Do not promise reconciliation, generalise the mother's response, or claim that the method caused a lasting relationship change.",
+          "verified_at": "2026-07-27",
+          "trace_basis": "briefs/03-afrodita-brief.md; audits/00-outcome-transcript-source-refresh.md"
+        }
+      ]
+    },
+    {
+      "route_id": "R03",
+      "draft_source": "drafts/04-artemida.md",
+      "evidence_items": [
+        {
+          "evidence_id": "R03-scene-walk-by-sea",
+          "draft_locator": "## «Иди погуляй по морю, подыши»",
+          "scene_summary": "Svetlana describes a sea or forest walk that once required self-pushing and later became a stable routine.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Знакомство с Артемидой.vtt",
+          "locator": {
+            "kind": "line_range",
+            "value": "720-777"
+          },
+          "source_type": "author_first_person",
+          "speaker": "Svetlana Strauss",
+          "consent_state": "author_first_person",
+          "allowed_claim": "A repeated ordinary action can become a sustainable routine without being framed as heroism.",
+          "forbidden_extension": "Do not claim medical, metabolic, longevity, weight-loss, or infallible body-navigation effects.",
+          "verified_at": "2026-07-27"
+        },
+        {
+          "evidence_id": "R03-scene-delayed-boundary-conversation",
+          "draft_locator": "## Когда возвращается собственное слово",
+          "scene_summary": "A participant who habitually adapted to her husband, children, and circumstances names boundaries in a long-delayed conversation.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Артемида. Общие итоги курса.vtt",
+          "locator": {
+            "kind": "line_range",
+            "value": "125-489"
+          },
+          "source_type": "participant_case",
+          "speaker": "anonymous training participant",
+          "consent_state": "user_confirmed_except_margarita",
+          "allowed_claim": "The participant took the observable action of naming her position and boundaries.",
+          "forbidden_extension": "Do not claim that her husband changed, that the relationship improved, or that an archetype caused the action.",
+          "verified_at": "2026-07-27",
+          "trace_basis": "briefs/04-artemida-brief.md; audits/00-outcome-transcript-source-refresh.md"
+        }
+      ]
+    },
+    {
+      "route_id": "R04",
+      "draft_source": "drafts/05-afina.md",
+      "evidence_items": [
+        {
+          "evidence_id": "R04-scene-presentation-task",
+          "draft_locator": "## Ясная задача в папке",
+          "scene_summary": "Svetlana says the clear task is in a folder and that she asked her husband to assemble the presentation.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Презентация 10.04 Афина.vtt",
+          "locator": {
+            "kind": "line_range",
+            "value": "75-93"
+          },
+          "source_type": "author_first_person",
+          "speaker": "Svetlana Strauss",
+          "consent_state": "author_first_person",
+          "allowed_claim": "The scene may illustrate defining a task clearly and separating strategy from execution.",
+          "forbidden_extension": "Do not add unverified timing, dialogue, reactions, or promise that clear delegation guarantees a result.",
+          "verified_at": "2026-07-27"
+        },
+        {
+          "evidence_id": "R04-scene-icy-tone",
+          "draft_locator": "## «Мама, не говори со мной таким тоном»",
+          "scene_summary": "Svetlana's son challenged her tone; she asked for her speech to be recorded and later described her tired working voice with the children as icy.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Презентация 10.04 Афина.vtt",
+          "locator": {
+            "kind": "line_range",
+            "value": "4143-4197"
+          },
+          "source_type": "author_first_person",
+          "speaker": "Svetlana Strauss and her son",
+          "consent_state": "author_first_person",
+          "allowed_claim": "The episode may show self-observation followed by searching for another way to communicate.",
+          "forbidden_extension": "Do not infer a diagnosis, family outcome, or claim that one archetypal function caused the tone.",
+          "verified_at": "2026-07-27"
+        },
+        {
+          "evidence_id": "R04-scene-dance-long-horizon",
+          "draft_locator": "## План длиной в двадцать лет",
+          "scene_summary": "A participant named life in the rhythm of dance around fifty, studied systematically after sixty, and by seventy had a concrete idea for a club for women aged seventy plus.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Афина. Итоги.vtt",
+          "locator": {
+            "kind": "line_range",
+            "value": "1077-1205"
+          },
+          "source_type": "participant_case",
+          "speaker": "anonymous training participant",
+          "consent_state": "user_confirmed_except_margarita",
+          "allowed_claim": "A direction can develop over a long horizon from an orienting phrase to repeated practice and then a concrete idea.",
+          "forbidden_extension": "Do not state that the club was created, succeeded, or resulted from the archetype programme.",
+          "verified_at": "2026-07-27",
+          "trace_basis": "briefs/05-afina-brief.md; audits/00-outcome-transcript-source-refresh.md"
+        }
+      ]
+    },
+    {
+      "route_id": "R05",
+      "draft_source": "drafts/06-gera.md",
+      "evidence_items": [
+        {
+          "evidence_id": "R05-scene-household-redistribution",
+          "draft_locator": "## Как я поняла, что тащу быт одна",
+          "scene_summary": "Svetlana noticed that she carried the household alone, explained that the old arrangement did not work for her, and redistributed cleaning among family members.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Знакомство с Герой.vtt",
+          "locator": {
+            "kind": "line_range",
+            "value": "1529-1613"
+          },
+          "source_type": "author_first_person",
+          "speaker": "Svetlana Strauss",
+          "consent_state": "author_first_person",
+          "allowed_claim": "The scene may illustrate revising an implicit household agreement and distributing participation.",
+          "forbidden_extension": "Do not prescribe this family arrangement universally or infer the husband's motives and response beyond the source.",
+          "verified_at": "2026-07-27"
+        },
+        {
+          "evidence_id": "R05-scene-daughter-guests-rule",
+          "draft_locator": "## Граница, которую другой человек может пережить",
+          "scene_summary": "A participant directly tells her adult daughter a rule about guests and an overnight stay instead of shifting the decision to her husband; the daughter accepts the refusal.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Гера. Итоги.vtt",
+          "locator": {
+            "kind": "line_range",
+            "value": "3385-3469"
+          },
+          "source_type": "participant_case",
+          "speaker": "anonymous training participant and her adult daughter",
+          "consent_state": "user_confirmed_except_margarita",
+          "allowed_claim": "The episode can show a person stating a family boundary herself and a refusal being tolerated in that specific case.",
+          "forbidden_extension": "Do not turn the private rule into a universal norm or promise that other relatives will accept boundaries similarly.",
+          "verified_at": "2026-07-27",
+          "trace_basis": "briefs/06-gera-brief.md; audits/00-outcome-transcript-source-refresh.md"
+        }
+      ]
+    },
+    {
+      "route_id": "L03",
+      "draft_source": "drafts/07-ustala-byt-silnoy.md",
+      "evidence_items": [
+        {
+          "evidence_id": "L03-scene-retreat-centre-role",
+          "draft_locator": "## Проект, который я не стала тащить сама",
+          "scene_summary": "Svetlana had land and a concrete vision for a retreat centre, but recognised that she did not want to manage the physical construction herself.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Perehodi arhetipi\\Perehodi Dina interview.md",
+          "locator": {
+            "kind": "fragment_id",
+            "value": "[0070]"
+          },
+          "source_type": "author_first_person",
+          "speaker": "Svetlana Strauss",
+          "consent_state": "author_first_person",
+          "allowed_claim": "A person may retain authorship and vision of a project without assuming every execution role.",
+          "forbidden_extension": "Do not invent who built it, claim the centre's completion, or attribute success to an archetype.",
+          "verified_at": "2026-07-27",
+          "trace_basis": "briefs/07-ustala-byt-silnoy-brief.md; audits/07-ustala-byt-silnoy-critic-audit.md"
+        }
+      ]
+    },
+    {
+      "route_id": "L05",
+      "draft_source": "drafts/08-khoroshaya-devochka.md",
+      "evidence_items": [
+        {
+          "evidence_id": "L05-scene-natural-quality-or-role",
+          "draft_locator": "## Естественное качество или выученная роль",
+          "scene_summary": "A participant recalls family messages that a woman should be intelligent and distinguishes a natural quality from an acquired family role.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Beseda is cainogo domika.md",
+          "locator": {
+            "kind": "line_range",
+            "value": "704-716"
+          },
+          "source_type": "participant_case",
+          "speaker": "anonymous conversation participant; Svetlana Strauss",
+          "consent_state": "user_confirmed_except_margarita",
+          "allowed_claim": "The scene can illustrate the participant's own distinction between an authentic quality and a learned role.",
+          "forbidden_extension": "Do not diagnose a syndrome, invent a later outcome, or state that intelligence itself is inauthentic.",
+          "verified_at": "2026-07-27",
+          "trace_basis": "briefs/08-khoroshaya-devochka-brief.md"
+        }
+      ]
+    },
+    {
+      "route_id": "L04",
+      "draft_source": "drafts/09-ne-mogu-rasslabitsya.md",
+      "evidence_items": [
+        {
+          "evidence_id": "L04-scene-stop-the-wheel",
+          "draft_locator": "## Сначала остановить гонку, потом искать ответ",
+          "scene_summary": "During a business-coaching conversation, Svetlana interrupts a rush toward goals and values, first helps the host slow down, and only then returns to the question of desire.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Perehodi arhetipi\\Biznes Koucing Anna.md",
+          "locator": {
+            "kind": "line_range",
+            "value": "344-382"
+          },
+          "source_type": "author_first_person",
+          "speaker": "Svetlana Strauss and interview host",
+          "consent_state": "author_first_person",
+          "allowed_claim": "The host reported slowing down during that conversation; the next question was postponed until after the pause.",
+          "forbidden_extension": "Do not claim treatment, lasting change, universal suitability of visualisation, or reproduce neighbouring substance and retreat recommendations.",
+          "verified_at": "2026-07-27",
+          "trace_basis": "briefs/09-ne-mogu-rasslabitsya-brief.md"
+        },
+        {
+          "evidence_id": "L04-scene-friend-meeting-becomes-work",
+          "draft_locator": "## Когда встреча с подругой снова становится работой",
+          "scene_summary": "A meeting with a friend becomes an unpaid professional analysis, so the intended rest does not begin.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Гестия. Итоги.vtt",
+          "locator": {
+            "kind": "line_range",
+            "value": "2997-3097"
+          },
+          "source_type": "participant_case",
+          "speaker": "anonymous training participant",
+          "consent_state": "user_confirmed_except_margarita",
+          "allowed_claim": "The episode may show a boundary between friendly contact and professional work in that participant's experience.",
+          "forbidden_extension": "Do not devalue friendship, label all emotional support as labour, or invent the result after the boundary.",
+          "verified_at": "2026-07-27",
+          "trace_basis": "briefs/09-ne-mogu-rasslabitsya-brief.md; audits/00-outcome-transcript-source-refresh.md"
+        }
+      ]
+    },
+    {
+      "route_id": "L06",
+      "draft_source": "drafts/10-teryayu-sebya.md",
+      "evidence_items": [
+        {
+          "evidence_id": "L06-scene-closeness-became-tight",
+          "draft_locator": "## Когда близости стало тесно",
+          "scene_summary": "A participant values very close contact yet notices that both partners need more freedom and room to manoeuvre.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Beseda is cainogo domika.md",
+          "locator": {
+            "kind": "line_range",
+            "value": "128-180"
+          },
+          "source_type": "participant_case",
+          "speaker": "anonymous conversation participant; Svetlana Strauss",
+          "consent_state": "user_confirmed_except_margarita",
+          "allowed_claim": "The conversation records recognition that intimacy can coexist with a need for individual space.",
+          "forbidden_extension": "Do not invent a later conversation, new boundaries, improved relationship, or diagnose dependency.",
+          "verified_at": "2026-07-27",
+          "trace_basis": "briefs/10-teryayu-sebya-brief.md"
+        }
+      ]
+    },
+    {
+      "route_id": "S05",
+      "draft_source": "drafts/11-chto-takoe-arhetip.md",
+      "evidence_items": [
+        {
+          "evidence_id": "S05-method-multiple-archetypes",
+          "draft_locator": "## Сутевой архетип, роль и текущая тема — не одно и то же",
+          "scene_summary": "The method distinguishes multiple essential archetypes from learned skills and situational roles.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Beseda is cainogo domika.md",
+          "locator": {
+            "kind": "line_range",
+            "value": "254-358"
+          },
+          "source_type": "method_definition",
+          "speaker": "Svetlana Strauss",
+          "consent_state": "method_or_public_source",
+          "allowed_claim": "Use the piano metaphor and the distinction between recurring patterns, combinations, and learned skills.",
+          "forbidden_extension": "Do not forbid professions by code, promise outcomes, or present the method as scientifically validated clinical typing.",
+          "verified_at": "2026-07-27",
+          "trace_basis": "briefs/11-chto-takoe-arhetip-brief.md"
+        },
+        {
+          "evidence_id": "S05-scene-editorial-function-example",
+          "draft_locator": "## Архетип — это функция, а не маска",
+          "scene_summary": "Ordinary-life examples show one person using different functions; they are editorial illustrations rather than client histories.",
+          "status": "verified",
+          "source_path": "docs/seo/archetypes/production/briefs/11-chto-takoe-arhetip-brief.md",
+          "locator": {
+            "kind": "heading",
+            "value": "## Проверка авторских пробелов"
+          },
+          "source_type": "illustrative_scene",
+          "speaker": "editorial narrator",
+          "consent_state": "editorial_illustration",
+          "allowed_claim": "Use clearly generic scenes to explain function, role, and context.",
+          "forbidden_extension": "Do not imply that an illustrative person is a client or that the scene demonstrates the validity of the method.",
+          "verified_at": "2026-07-27"
+        }
+      ]
+    },
+    {
+      "route_id": "L02",
+      "draft_source": "drafts/12-ne-znayu-chego-hochu.md",
+      "evidence_items": [
+        {
+          "evidence_id": "L02-scene-personal-reset",
+          "draft_locator": "## У каждого может быть свой способ вернуться к сигналу",
+          "scene_summary": "A participant says that when confused she sings, dances, plays, or drinks tea, and for her these actions help her hear her own desire again.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Beseda is cainogo domika.md",
+          "locator": {
+            "kind": "line_range",
+            "value": "788-790"
+          },
+          "source_type": "participant_case",
+          "speaker": "anonymous conversation participant",
+          "consent_state": "user_confirmed_except_margarita",
+          "allowed_claim": "These are one participant's already-discovered low-risk ways of regaining access to her preferences.",
+          "forbidden_extension": "Do not present singing, dance, play, or tea as a universal prescription or claim that they solved her life direction.",
+          "verified_at": "2026-07-27",
+          "trace_basis": "briefs/12-ne-znayu-chego-hochu-brief.md"
+        },
+        {
+          "evidence_id": "L02-safety-depression-boundary",
+          "draft_locator": "## Сначала различите три разных состояния",
+          "scene_summary": "Persistent broad loss of interest or pleasure with functional impairment is separated from ordinary uncertainty and routed to professional assessment.",
+          "status": "verified",
+          "source_path": "https://www.who.int/ru/news-room/fact-sheets/detail/depression",
+          "locator": {
+            "kind": "web_page_topic",
+            "value": "depressive disorder symptoms, duration, impairment, and help-seeking"
+          },
+          "source_type": "external_safety",
+          "speaker": "World Health Organization",
+          "consent_state": "method_or_public_source",
+          "allowed_claim": "Use the source to support a non-diagnostic boundary and recommendation to seek professional help.",
+          "forbidden_extension": "Do not diagnose the reader or turn two weeks into a required waiting period or home test.",
+          "verified_at": "2026-07-27"
+        }
+      ]
+    },
+    {
+      "route_id": "R06",
+      "draft_source": "drafts/13-gestiya.md",
+      "evidence_items": [
+        {
+          "evidence_id": "R06-scene-door-sign",
+          "draft_locator": "opening first-person scene",
+          "scene_summary": "When Svetlana needs concentrated creation time, she makes the boundary visible with a sign saying that people should not enter.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Знакомство с Гестией.vtt",
+          "locator": {
+            "kind": "line_range",
+            "value": "1573-1629"
+          },
+          "source_type": "author_first_person",
+          "speaker": "Svetlana Strauss",
+          "consent_state": "author_first_person",
+          "allowed_claim": "A visible, time-bounded sign can make an otherwise invisible work boundary understandable to close people.",
+          "forbidden_extension": "Do not invent conflict or outcome, call it a client case, or add neighbouring spiritual, entity, health, or energy claims.",
+          "verified_at": "2026-07-27",
+          "trace_basis": "briefs/13-gestiya-brief.md; audits/13-gestiya-critic-audit.md"
+        },
+        {
+          "evidence_id": "R06-safety-depression-boundary",
+          "draft_locator": "## Когда дело не в архетипе",
+          "scene_summary": "Sustained loss of interest or pleasure and functional impairment are separated from chosen restorative solitude.",
+          "status": "verified",
+          "source_path": "https://www.who.int/ru/news-room/fact-sheets/detail/depression",
+          "locator": {
+            "kind": "web_page_topic",
+            "value": "depressive disorder symptoms, duration, impairment, and help-seeking"
+          },
+          "source_type": "external_safety",
+          "speaker": "World Health Organization",
+          "consent_state": "method_or_public_source",
+          "allowed_claim": "Use only as a referral boundary for persistent loss of interest or pleasure.",
+          "forbidden_extension": "Do not explain depression through Gestiya or diagnose solitude as illness.",
+          "verified_at": "2026-07-27"
+        }
+      ]
+    },
+    {
+      "route_id": "R07",
+      "draft_source": "drafts/14-demetra.md",
+      "evidence_items": [
+        {
+          "evidence_id": "R07-scene-editorial-rescue-chain",
+          "draft_locator": "opening scene before ## Что в этой сцене связано с Деметрой",
+          "scene_summary": "A generic chain moves from offering a solution to reminding, calling, arranging, and completing another person's task.",
+          "status": "verified",
+          "source_path": "docs/seo/archetypes/production/drafts/14-demetra.md",
+          "locator": {
+            "kind": "section",
+            "value": "opening scene"
+          },
+          "source_type": "illustrative_scene",
+          "speaker": "editorial narrator",
+          "consent_state": "editorial_illustration",
+          "allowed_claim": "Use as a recognisable hypothetical illustration of care becoming substitution.",
+          "forbidden_extension": "Do not present it as a participant or client history or as proof that the reader has a specific archetype.",
+          "verified_at": "2026-07-27",
+          "trace_basis": "briefs/14-demetra-brief.md; audits/14-demetra-critic-audit.md"
+        },
+        {
+          "evidence_id": "R07-method-care-without-substitution",
+          "draft_locator": "## Где забота незаметно становится контролем",
+          "scene_summary": "The author corpus distinguishes care from pressure, help from rescuing, giving from sacrifice, and support from control.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Знакомство с Деметрой.vtt",
+          "locator": {
+            "kind": "line_ranges",
+            "value": "565-721; 1481-1521"
+          },
+          "source_type": "method_definition",
+          "speaker": "Svetlana Strauss",
+          "consent_state": "method_or_public_source",
+          "allowed_claim": "Describe care as support that leaves another person a real step and does not require self-erasure.",
+          "forbidden_extension": "Do not publish a participant's private quotation, promise family change, diagnose rescuing, or add reproductive, medical, or spiritual claims.",
+          "verified_at": "2026-07-27"
+        }
+      ]
+    },
+    {
+      "route_id": "R08",
+      "draft_source": "drafts/15-gekata.md",
+      "evidence_items": [
+        {
+          "evidence_id": "R08-scene-editorial-unfinished-form",
+          "draft_locator": "opening scene before ## Что в этой сцене связано с Гекатой",
+          "scene_summary": "A generic idea remains in notes and versions because no sendable form, date, decision, or finished file exists.",
+          "status": "verified",
+          "source_path": "docs/seo/archetypes/production/drafts/15-gekata.md",
+          "locator": {
+            "kind": "section",
+            "value": "opening scene"
+          },
+          "source_type": "illustrative_scene",
+          "speaker": "editorial narrator",
+          "consent_state": "editorial_illustration",
+          "allowed_claim": "Use as a hypothetical illustration of the gap between an understood intention and a concrete form.",
+          "forbidden_extension": "Do not present it as a client outcome or as evidence of magical materialisation.",
+          "verified_at": "2026-07-27",
+          "trace_basis": "briefs/15-gekata-brief.md; audits/15-gekata-critic-audit.md"
+        },
+        {
+          "evidence_id": "R08-method-boundary-completion-form",
+          "draft_locator": "## Форма требует точки завершения",
+          "scene_summary": "Svetlana's method links the role to stopping, finishing, crossing a boundary, and giving a project a concrete name, format, package, or other visible form.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Знакомство с Гекатой.vtt",
+          "locator": {
+            "kind": "line_ranges",
+            "value": "1567-1574; 1579-1601; 2781-2905"
+          },
+          "source_type": "method_definition",
+          "speaker": "Svetlana Strauss",
+          "consent_state": "method_or_public_source",
+          "allowed_claim": "Use boundary, completion, and concrete form as symbolic working functions.",
+          "forbidden_extension": "Do not claim prediction, magical protection, supernatural materialisation, medical effects, or publish private participant stories.",
+          "verified_at": "2026-07-27"
+        }
+      ]
+    },
+    {
+      "route_id": "L07",
+      "draft_source": "drafts/16-ne-umeyu-govorit-net.md",
+      "evidence_items": [
+        {
+          "evidence_id": "L07-scene-it-does-not-need-doing",
+          "draft_locator": "## Как вопрос «Это надо делать?» остановил автоматическое согласие",
+          "scene_summary": "A participant responds at work with I do not know, asks whether the task actually needs doing, and declines when no need is established.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Гера. Итоги.vtt",
+          "locator": {
+            "kind": "time_range",
+            "value": "00:12:01-00:15:39"
+          },
+          "source_type": "participant_case",
+          "speaker": "training participant, publicly anonymised",
+          "consent_state": "user_confirmed_except_margarita",
+          "allowed_claim": "The observable episode supports pausing, clarifying whether a task exists, and not automatically proving competence through extra work.",
+          "forbidden_extension": "Do not publish her name, employer, role, or identifying details, and do not claim the programme caused a lasting change.",
+          "verified_at": "2026-07-27",
+          "trace_basis": "briefs/16-ne-umeyu-govorit-net-brief.md"
+        }
+      ]
+    },
+    {
+      "route_id": "L08",
+      "draft_source": "drafts/17-zhivu-radi-drugih.md",
+      "evidence_items": [
+        {
+          "evidence_id": "L08-scene-step-back-from-argument",
+          "draft_locator": "## «Главное, чтобы другим было хорошо»",
+          "scene_summary": "A participant recognises a pattern of putting everyone else first and, in a disagreement with her brother, keeps her view without spending more energy proving it.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Гера. Итоги.vtt",
+          "locator": {
+            "kind": "time_range",
+            "value": "01:07:51-01:10:39"
+          },
+          "source_type": "participant_case",
+          "speaker": "anonymous training participant",
+          "consent_state": "user_confirmed_except_margarita",
+          "allowed_claim": "The participant describes preserving her opinion and stepping back from a nonessential argument without abandoning the relationship.",
+          "forbidden_extension": "Do not promise that others will approve, claim causal transformation by the training, or reproduce a long quotation.",
+          "verified_at": "2026-07-27",
+          "trace_basis": "briefs/17-zhivu-radi-drugih-brief.md"
+        }
+      ]
+    },
+    {
+      "route_id": "L09",
+      "draft_source": "drafts/18-zabochus-o-vseh.md",
+      "evidence_items": [
+        {
+          "evidence_id": "L09-scene-did-not-transfer",
+          "draft_locator": "## «Я сама ему не передавала»",
+          "scene_summary": "A participant notices that she had carried labour and emotional load and had also not created a concrete transfer of responsibility to her husband.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Деметра. Итоги.vtt",
+          "locator": {
+            "kind": "time_range",
+            "value": "00:05:16-00:05:45"
+          },
+          "source_type": "participant_case",
+          "speaker": "anonymous training participant",
+          "consent_state": "user_confirmed_except_margarita",
+          "allowed_claim": "The observation may show that absence of help can coexist with not explicitly transferring a task.",
+          "forbidden_extension": "Do not infer the husband's motives, assign all blame to the participant, or invent a later conversation and redistribution.",
+          "verified_at": "2026-07-27",
+          "trace_basis": "briefs/18-zabochus-o-vseh-brief.md"
+        }
+      ]
+    },
+    {
+      "route_id": "S06",
+      "draft_source": "drafts/19-resurs-i-ten.md",
+      "evidence_items": [
+        {
+          "evidence_id": "S06-scene-care-and-control",
+          "draft_locator": "## Когда хотелось убрать саму заботу",
+          "scene_summary": "A participant notices less control in her care and moves from trying to reduce the caring function itself to distinguishing the function from its pressured expression.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Деметра. Итоги.vtt",
+          "locator": {
+            "kind": "time_range",
+            "value": "00:16:10-00:19:09"
+          },
+          "source_type": "participant_case",
+          "speaker": "training participant, publicly anonymised",
+          "consent_state": "user_confirmed_except_margarita",
+          "allowed_claim": "The episode supports distinguishing a useful function from a controlling way of expressing it.",
+          "forbidden_extension": "Do not publish names, a child's identity, sexual metaphors, or claim that the relationship objectively improved.",
+          "verified_at": "2026-07-27",
+          "trace_basis": "briefs/19-resurs-i-ten-brief.md"
+        }
+      ]
+    },
+    {
+      "route_id": "S04",
+      "draft_source": "drafts/21-muzhskie-arhetipy.md",
+      "evidence_items": [
+        {
+          "evidence_id": "S04-method-male-eight",
+          "draft_locator": "## Восемь мужских архетипов",
+          "scene_summary": "The active product method defines eight male-system roles and returns exactly three ordered roles.",
+          "status": "verified",
+          "source_path": "https://github.com/janisstrauss450-beep/archetype-code",
+          "locator": {
+            "kind": "git_commit_and_files",
+            "value": "a98550f027faffad81f1f6a5e8db043536e0f463; server/prompts/archetype_skill.md; server/prompt.js; server/chart.js; src/components/BirthForm.jsx; src/components/ResultScreen.jsx"
+          },
+          "source_type": "method_definition",
+          "speaker": "Evolution House test implementation",
+          "consent_state": "method_or_public_source",
+          "allowed_claim": "Name Hermes, Ares, Zeus, Poseidon, Hephaestus, Apollo, Hades, and Dionysus and describe each as a function with resource and overload; the result contains three ordered roles.",
+          "forbidden_extension": "Do not call them scientific types, type a person by recognition, mix systems, or predict character, profession, compatibility, health, income, sexuality, or fate.",
+          "verified_at": "2026-07-27",
+          "trace_basis": "briefs/21-muzhskie-arhetipy-brief.md"
+        },
+        {
+          "evidence_id": "S04-scene-editorial-one-person-many-functions",
+          "draft_locator": "## Один человек — несколько способов действовать",
+          "scene_summary": "A generic person negotiates, protects a boundary, repairs something, and asks for solitude to illustrate several functions in one day.",
+          "status": "verified",
+          "source_path": "docs/seo/archetypes/production/briefs/21-muzhskie-arhetipy-brief.md",
+          "locator": {
+            "kind": "heading",
+            "value": "### Source-gate"
+          },
+          "source_type": "illustrative_scene",
+          "speaker": "editorial narrator",
+          "consent_state": "editorial_illustration",
+          "allowed_claim": "Use short generic illustrations of functions without treating them as personal histories.",
+          "forbidden_extension": "Do not create live cases, infer a code from the illustration, or imply that all men fit one role.",
+          "verified_at": "2026-07-27"
+        }
+      ]
+    },
+    {
+      "route_id": "L10",
+      "draft_source": "drafts/22-sila-bez-kontrolya.md",
+      "evidence_items": [
+        {
+          "evidence_id": "L10-scene-editorial-control-patterns",
+          "draft_locator": "## Когда ответственность незаметно становится давлением",
+          "scene_summary": "Generic colleague, partner, and adult-relative scenes illustrate reminders, surveillance, and solving another person's problem before being asked.",
+          "status": "verified",
+          "source_path": "docs/seo/archetypes/production/briefs/22-sila-bez-kontrolya-brief.md",
+          "locator": {
+            "kind": "heading",
+            "value": "### Source-gate"
+          },
+          "source_type": "illustrative_scene",
+          "speaker": "editorial narrator",
+          "consent_state": "editorial_illustration",
+          "allowed_claim": "Use as hypothetical examples of control replacing another person's decision space.",
+          "forbidden_extension": "Do not present any scene as Svetlana's client case or diagnose the reader, partner, colleague, or relative.",
+          "verified_at": "2026-07-27"
+        },
+        {
+          "evidence_id": "L10-method-support-without-pressure",
+          "draft_locator": "## Поддержка без давления — не равнодушие",
+          "scene_summary": "The primary corpus distinguishes help, rescuing, control, pressure, and leaving responsibility with another person.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Знакомство с Деметрой.vtt",
+          "locator": {
+            "kind": "line_ranges",
+            "value": "449-705; 1481-1529"
+          },
+          "source_type": "method_definition",
+          "speaker": "Svetlana Strauss",
+          "consent_state": "method_or_public_source",
+          "allowed_claim": "Support without pressure can leave the other person responsibility and does not equal indifference.",
+          "forbidden_extension": "Do not claim that control proves an archetype, excuse harmful behaviour, or add medical, energetic, or gender causality.",
+          "verified_at": "2026-07-27",
+          "trace_basis": "briefs/22-sila-bez-kontrolya-brief.md"
+        }
+      ]
+    },
+    {
+      "route_id": "L12",
+      "draft_source": "drafts/23-vse-delayu-sama.md",
+      "evidence_items": [
+        {
+          "evidence_id": "L12-scene-book-role-boundary",
+          "draft_locator": "## Написать книгу — не значит самой её издавать",
+          "scene_summary": "Svetlana separated her role of writing a book from promotion and publishing; a publisher appeared later.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Презентация 10.04 Афина.vtt",
+          "locator": {
+            "kind": "time_range",
+            "value": "00:49:13-00:50:15"
+          },
+          "source_type": "author_first_person",
+          "speaker": "Svetlana Strauss",
+          "consent_state": "author_first_person",
+          "allowed_claim": "An author can define her own project role without automatically taking promotion and publishing; in this case a publisher was later found.",
+          "forbidden_extension": "Do not promise that role clarity attracts help, guarantees publication, or removes the need for agreements and work.",
+          "verified_at": "2026-07-27",
+          "trace_basis": "briefs/23-vse-delayu-sama-brief.md"
+        }
+      ]
+    },
+    {
+      "route_id": "L13",
+      "draft_source": "drafts/24-dostigla-no-ne-zhivu.md",
+      "evidence_items": [
+        {
+          "evidence_id": "L13-scene-150th-event",
+          "draft_locator": "## «Зачем мне делать сто пятидесятый праздник?»",
+          "scene_summary": "An event-industry client who had repeatedly demonstrated mastery asks why she should produce roughly the 150th event.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Perehodi arhetipi\\Biznes Koucing Anna.md",
+          "locator": {
+            "kind": "named_sections",
+            "value": "Переход из бизнеса в коучинг; Баланс реализации, личной жизни и смысла"
+          },
+          "source_type": "participant_case",
+          "speaker": "anonymous client as retold by Svetlana Strauss",
+          "consent_state": "user_confirmed_except_margarita",
+          "allowed_claim": "A meaning question can emerge after repeated successful mastery rather than because of failure.",
+          "forbidden_extension": "Do not invent biography, diagnosis, the client's later decision, work result, or fate.",
+          "verified_at": "2026-07-27",
+          "trace_basis": "briefs/24-dostigla-no-ne-zhivu-brief.md; audits/24-dostigla-no-ne-zhivu-critic-audit.md"
+        },
+        {
+          "evidence_id": "L13-safety-loss-of-interest",
+          "draft_locator": "## Когда одной статьи недостаточно",
+          "scene_summary": "Broad persistent loss of interest or pleasure and changes affecting ordinary functioning are separated from a short post-achievement pause.",
+          "status": "verified",
+          "source_path": "https://www.who.int/health-topics/depression",
+          "locator": {
+            "kind": "web_page_topic",
+            "value": "loss of interest or pleasure and help-seeking"
+          },
+          "source_type": "external_safety",
+          "speaker": "World Health Organization",
+          "consent_state": "method_or_public_source",
+          "allowed_claim": "Use as a non-diagnostic referral boundary.",
+          "forbidden_extension": "Do not diagnose depression from post-achievement emptiness or require the reader to wait before seeking help.",
+          "verified_at": "2026-07-27"
+        }
+      ]
+    },
+    {
+      "route_id": "L15",
+      "draft_source": "drafts/25-hochyu-no-ne-deystvuyu.md",
+      "evidence_items": [
+        {
+          "evidence_id": "L15-scene-first-concert-india",
+          "draft_locator": "## Первый концерт Светланы: страшно, слова забыты, шаг состоялся",
+          "scene_summary": "At her first concert before an unfamiliar international audience in India, Svetlana was afraid, forgot some words, made mistakes, and still completed the performance.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Персефона. Итоги.vtt",
+          "locator": {
+            "kind": "time_range",
+            "value": "00:45:05-00:45:53"
+          },
+          "source_type": "author_first_person",
+          "speaker": "Svetlana Strauss",
+          "consent_state": "author_first_person",
+          "allowed_claim": "A real first action can occur before full confidence and can provide facts that imagination alone cannot.",
+          "forbidden_extension": "Do not promise that any first step leads to a stage, success, healing, or a guaranteed next level.",
+          "verified_at": "2026-07-27",
+          "trace_basis": "briefs/25-hochyu-no-ne-deystvuyu-brief.md"
+        }
+      ]
+    },
+    {
+      "route_id": "L16",
+      "draft_source": "drafts/26-strategiya-bez-vkusa.md",
+      "evidence_items": [
+        {
+          "evidence_id": "L16-scene-work-format-rebuild",
+          "draft_locator": "## Как Светлана пересобрала рабочие форматы",
+          "scene_summary": "Svetlana says that she continued some work formats she did not like, later created formats she preferred, and distinguishes understanding what not to do from actually changing participation.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Perehodi arhetipi\\Skola Olga interview.md",
+          "locator": {
+            "kind": "line_range",
+            "value": "255-255"
+          },
+          "source_type": "author_first_person",
+          "speaker": "Svetlana Strauss",
+          "consent_state": "author_first_person",
+          "allowed_claim": "A working system can be revised gradually by changing one's participation and formats rather than declaring the whole past invalid.",
+          "forbidden_extension": "Do not claim the change was instant, risk-free, complete, or financially guaranteed.",
+          "verified_at": "2026-07-27"
+        },
+        {
+          "evidence_id": "L16-safety-loss-of-interest",
+          "draft_locator": "## Когда дело не в одном формате",
+          "scene_summary": "Persistent broad loss of pleasure and functional changes are separated from dissatisfaction with one work format.",
+          "status": "verified",
+          "source_path": "https://www.who.int/health-topics/depression",
+          "locator": {
+            "kind": "web_page_topic",
+            "value": "depression symptoms and help-seeking"
+          },
+          "source_type": "external_safety",
+          "speaker": "World Health Organization",
+          "consent_state": "method_or_public_source",
+          "allowed_claim": "Use to support a non-diagnostic professional-help boundary.",
+          "forbidden_extension": "Do not explain anhedonia through archetypes or diagnose the reader from one boring project.",
+          "verified_at": "2026-07-27"
+        }
+      ]
+    },
+    {
+      "route_id": "L14",
+      "draft_source": "drafts/27-vnutrenniy-vybor.md",
+      "evidence_items": [
+        {
+          "evidence_id": "L14-scene-ten-day-decision-practice",
+          "draft_locator": "## Практика: один лист для одного решения",
+          "scene_summary": "Svetlana gave participants ten days to choose and refine one real task, discussing it and separating their own decision from an inherited formula.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Презентация 10.04 Афина.vtt",
+          "locator": {
+            "kind": "time_ranges",
+            "value": "01:06:48-01:07:03; 01:07:31-01:08:18; 01:08:21-01:08:36"
+          },
+          "source_type": "method_definition",
+          "speaker": "Svetlana Strauss",
+          "consent_state": "method_or_public_source",
+          "allowed_claim": "A decision practice can use a bounded deadline, one real task, clarification, and separation of facts from inherited instructions.",
+          "forbidden_extension": "Do not claim that joy proves correctness, promise eighty-percent success, or offer clairvoyance, market prediction, diagnosis, or a guaranteed life trajectory.",
+          "verified_at": "2026-07-27",
+          "trace_basis": "briefs/27-vnutrenniy-vybor-brief.md"
+        },
+        {
+          "evidence_id": "L14-safety-anxiety-boundary",
+          "draft_locator": "## Когда упражнение не подходит",
+          "scene_summary": "Long-lasting difficult-to-control anxiety with functional impairment is routed to professional help rather than explained as indecision or an archetype.",
+          "status": "verified",
+          "source_path": "https://www.who.int/en/news-room/fact-sheets/detail/anxiety-disorders",
+          "locator": {
+            "kind": "web_page_topic",
+            "value": "anxiety symptoms, duration, impairment, and treatment"
+          },
+          "source_type": "external_safety",
+          "speaker": "World Health Organization",
+          "consent_state": "method_or_public_source",
+          "allowed_claim": "Use for a non-diagnostic boundary and recommendation to seek professional assessment.",
+          "forbidden_extension": "Do not diagnose an anxiety disorder from ordinary uncertainty or imply that archetype work treats it.",
+          "verified_at": "2026-07-27"
+        }
+      ]
+    }
+  ],
+  "coverage": {
+    "routes_total": 26,
+    "routes_with_evidence": 26,
+    "routes_without_evidence": 0,
+    "evidence_items_total": 42,
+    "verified_items": 42,
+    "needs_locator_items": 0,
+    "needs_locator_evidence_ids": [],
+    "coverage_note": "All 26 route IDs are represented. All 42 evidence items have retrievable locators; L16 uses the only available full speaker-labelled Markdown transcript and remains not audio/VTT-verified."
+  },
+  "gaps": []
+}
