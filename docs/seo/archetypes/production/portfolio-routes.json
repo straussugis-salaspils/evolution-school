@@ -41,7 +41,7 @@
       "L04",
       "L09"
     ],
-    "publication_state": "implemented_locally",
+    "publication_state": "implemented",
     "required_before_publication": [
       "markdown_to_html_generator",
       "route_cta_component",
@@ -66,7 +66,7 @@
       "purpose": "canonical_natal_calculation_entry",
       "publication_status": "required_before_test_routes",
       "live_status_checked_at": "2026-07-27",
-      "live_http_status": 404
+      "live_http_status": 200
     },
     {
       "route_id": "S02",
@@ -76,7 +76,7 @@
       "legacy_url": "/arhetipy.html",
       "legacy_migration": "301_to_canonical",
       "live_status_checked_at": "2026-07-27",
-      "live_http_status": 404
+      "live_http_status": 200
     },
     {
       "route_id": "S03",
@@ -84,7 +84,7 @@
       "purpose": "female_archetype_map",
       "publication_status": "required_before_role_pages",
       "live_status_checked_at": "2026-07-27",
-      "live_http_status": 404
+      "live_http_status": 200
     }
   ],
   "routing_profiles": {
