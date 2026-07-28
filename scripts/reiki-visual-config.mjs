@@ -6,12 +6,12 @@ const familyForType = (type) =>
       : type;
 
 const toneForInsert = (id, type) => {
-  if (id === "18-red-flags") return "default";
+  if (id === "19-red-flags") return "default";
   if (type === "warning-poster") return "warning";
   if (type === "spectrum") return "dark";
   if (
     id === "09-medical-boundary" ||
-    id === "12-professional-boundaries"
+    id === "13-professional-boundaries"
   ) {
     return "medical";
   }
@@ -74,7 +74,7 @@ export const reikiVisuals = [
         "/assets/reiki-articles/inserts/01/editorial",
         "Одна река связывает три ситуации: получить поддержку, учиться навигации с Мастером и самостоятельно продолжать путь",
         "Сеанс, обучение и самостоятельная практика — три разных отношения к одному методу.",
-        "Редакционная метафора показывает переход от получаемой поддержки к собственной практике без телесных Reiki-поз.",
+        "Представленная картинка как метафора показывает переход от поддержки Мастера к собственному пути в практике Рейки.",
         "/assets/reiki-articles/inserts/01/provenance.md",
       ),
     ],
@@ -237,145 +237,159 @@ export const reikiVisuals = [
   ),
   visual(
     12,
+    "Две взрослые женщины спокойно разговаривают за домашним столом, сохраняя уважительную дистанцию",
+    [
+      fragment(
+        "12-four-questions",
+        "decision-map",
+        "Четыре вопроса перед словом «да»",
+        "/assets/reiki-articles/inserts/12/four-questions-before-yes.html",
+        "Четыре вопроса помогают уточнить запрос, собственный ресурс, компетенцию и следующий шаг самого человека.",
+        "/docs/seo/reiki/visuals/article-12-image-provenance.md",
+      ),
+    ],
+  ),
+  visual(
+    13,
     "Мастер-Учитель слушает вопрос участницы небольшой онлайн-группы",
     [
       fragment(
-        "12-responsibility-timeline",
+        "13-responsibility-timeline",
         "sequence",
         "До, во время и после",
-        "/assets/reiki-articles/inserts/12/master-responsibility-timeline.html",
+        "/assets/reiki-articles/inserts/13/master-responsibility-timeline.html",
         "Временная линия ответственности Мастера-Учителя до, во время и после обучения.",
         notesB,
       ),
       fragment(
-        "12-professional-boundaries",
+        "13-professional-boundaries",
         "decision-map",
         "Уметь сказать: «Это не ко мне»",
-        "/assets/reiki-articles/inserts/12/professional-boundaries-map.html",
+        "/assets/reiki-articles/inserts/13/professional-boundaries-map.html",
         "Карта профессиональных границ между компетенцией Мастера, врачом, психологической и экстренной помощью.",
         notesB,
       ),
     ],
   ),
   visual(
-    13,
+    14,
     "Человек рассматривает несколько равноправных путей после второй ступени Рейки",
     [
       fragment(
-        "13-three-routes",
+        "14-three-routes",
         "route",
         "Как устроен путь дальше",
-        "/assets/reiki-articles/inserts/13/three-routes.html",
+        "/assets/reiki-articles/inserts/14/three-routes.html",
         "Три равноправных маршрута после Рейки II без лестницы и обязательного продвижения.",
-        "/assets/reiki-articles/inserts/13/notes.md",
+        "/assets/reiki-articles/inserts/14/notes.md",
       ),
       fragment(
-        "13-decision-compass",
+        "14-decision-compass",
         "decision-map",
         "Как понять, что пора обсуждать следующий шаг",
-        "/assets/reiki-articles/inserts/13/decision-compass.html",
+        "/assets/reiki-articles/inserts/14/decision-compass.html",
         "Компас вопросов помогает назвать текущую задачу, но не выдаёт автоматический ответ.",
-        "/assets/reiki-articles/inserts/13/notes.md",
+        "/assets/reiki-articles/inserts/14/notes.md",
       ),
     ],
   ),
   visual(
-    14,
+    15,
     "Участница сравнивает три программы мастерской ступени Рейки",
     [
       fragment(
-        "14-third-degree-models",
+        "15-third-degree-models",
         "comparison",
         "Три модели мастерской ступени, которые важно различать",
-        "/assets/reiki-articles/inserts/14/third-degree-models.html",
+        "/assets/reiki-articles/inserts/15/third-degree-models.html",
         "Три разных значения одинакового номера третьей ступени.",
-        "/assets/reiki-articles/inserts/14/notes.md",
+        "/assets/reiki-articles/inserts/15/notes.md",
       ),
       fragment(
-        "14-evolution-house-route",
+        "15-evolution-house-route",
         "route",
         "Как устроена третья ступень в Evolution House",
-        "/assets/reiki-articles/inserts/14/evolution-house-route.html",
+        "/assets/reiki-articles/inserts/15/evolution-house-route.html",
         "Горизонтальная карта линии Evolution House без пьедесталов и искусственной иерархии.",
         notesC,
       ),
     ],
   ),
   visual(
-    15,
+    16,
     "Участница обсуждает продолжение обучения с новым Мастером, сохраняя материалы прежней школы",
     [
       fragment(
-        "15-learning-history",
+        "16-learning-history",
         "editorial",
         "Что подготовить к первому разговору",
-        "/assets/reiki-articles/inserts/15/learning-history-collage.html",
+        "/assets/reiki-articles/inserts/16/learning-history-collage.html",
         "Редакционный коллаж истории обучения: программа, сертификат, практика, вопросы и хронология.",
         notesC,
       ),
       fragment(
-        "15-possible-decisions",
+        "16-possible-decisions",
         "decision-map",
         "Какие решения могут появиться после разговора",
-        "/assets/reiki-articles/inserts/15/possible-decisions.html",
+        "/assets/reiki-articles/inserts/16/possible-decisions.html",
         "Равноправные ветви возможных решений после разговора с новым Мастером.",
         notesC,
       ),
     ],
   ),
   visual(
-    16,
+    17,
     "Мастер и ученица спокойно обсуждают опыт и готовность к следующей ступени Рейки",
     [
       fragment(
-        "16-readiness-constellation",
+        "17-readiness-constellation",
         "spectrum",
         "На что я смотрю перед Подмастерьем",
-        "/assets/reiki-articles/inserts/16/readiness-constellation.html",
+        "/assets/reiki-articles/inserts/17/readiness-constellation.html",
         "Шесть ориентиров вокруг разговора с Мастером; пауза показана как допустимая часть маршрута, а не отказ.",
         notesC,
       ),
       fragment(
-        "16-pause-is-part-of-route",
+        "17-pause-is-part-of-route",
         "route",
         "Что делать, если вы пока не уверены",
-        "/assets/reiki-articles/inserts/16/pause-is-part-of-route.html",
+        "/assets/reiki-articles/inserts/17/pause-is-part-of-route.html",
         "Маршрут с отдельной остановкой показывает, что пауза меняет темп, но не превращается в отказ и не закрывает возвращение к разговору.",
         notesC,
       ),
     ],
   ),
   visual(
-    17,
+    18,
     "Мастерство Рейки проявляется в обычной жизни человека без преподавания группе",
     [
       fragment(
-        "17-master-vs-teacher",
+        "18-master-vs-teacher",
         "comparison",
         "Почему слово «Мастер» часто путают со словом «Учитель»",
-        "/assets/reiki-articles/inserts/17/master-vs-teacher.html",
+        "/assets/reiki-articles/inserts/18/master-vs-teacher.html",
         "Ненумерованная развилка равных ролей: личное мастерство и дополнительная подготовка к преподаванию.",
         notesC,
       ),
     ],
   ),
   visual(
-    18,
+    19,
     "Участница и новый Мастер разбирают прежние материалы и причины возможной переинициации",
     [
       fragment(
-        "18-four-situations",
+        "19-four-situations",
         "decision-map",
         "Четыре ситуации, которые важно не смешивать",
-        "/assets/reiki-articles/inserts/18/four-situations-matrix.html",
+        "/assets/reiki-articles/inserts/19/four-situations-matrix.html",
         "Матрица четырёх разных задач, для которых переинициация не является обязательным общим финалом.",
-        "/assets/reiki-articles/inserts/18/notes.md",
+        "/assets/reiki-articles/inserts/19/notes.md",
       ),
       fragment(
-        "18-red-flags",
+        "19-red-flags",
         "warning-poster",
         "Какие обещания должны насторожить",
-        "/assets/reiki-articles/inserts/18/red-flags-poster.html",
+        "/assets/reiki-articles/inserts/19/red-flags-poster.html",
         "Плакат красных флагов без образа сломанного канала и без давления на человека.",
         notesC,
       ),

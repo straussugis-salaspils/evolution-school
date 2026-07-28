@@ -8,7 +8,7 @@ import {
 const siteRoot = path.resolve(import.meta.dirname, "..");
 const sourceRoot =
   process.env.REIKI_SEO_SOURCE ||
-  "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO\\docs\\seo\\reiki";
+  path.join(siteRoot, "docs", "seo", "reiki");
 const draftsRoot = path.join(sourceRoot, "drafts");
 const metadataPath = path.join(
   sourceRoot,
@@ -16,7 +16,7 @@ const metadataPath = path.join(
   "publication-metadata-and-links.md",
 );
 const baseUrl = "https://evolution.yourbalancerestored.com";
-const modifiedDate = "2026-07-24";
+const modifiedDate = "2026-07-25";
 const author = "\u0421\u0432\u0435\u0442\u043b\u0430\u043d\u0430 \u0421\u0442\u0440\u0430\u0443\u0441";
 const hubTitle = "\u0421\u0442\u0430\u0442\u044c\u0438 \u043e \u0420\u0435\u0439\u043a\u0438 | Evolution House";
 const hubDescription =
@@ -36,13 +36,14 @@ const sources = [
   "article-09-reiki-safety-draft-v2.md",
   "article-10-choose-reiki-master-draft-v2.md",
   "article-11-beginner-mistakes-draft.md",
-  "article-12-master-teacher-responsibility-draft-v2.md",
-  "article-13-after-reiki-ii-draft-v3.md",
-  "article-14-reiki-third-degree-differences-draft.md",
-  "article-15-change-reiki-master-school-draft.md",
-  "article-16-ready-for-reiki-master-level-draft.md",
-  "article-17-reiki-master-for-self-draft.md",
-  "article-18-reiki-reinitiation-draft.md",
+  "article-12-help-others-without-exhaustion.md",
+  "article-13-master-teacher-responsibility-draft-v2.md",
+  "article-14-after-reiki-ii-draft-v3.md",
+  "article-15-reiki-third-degree-differences-draft.md",
+  "article-16-change-reiki-master-school-draft.md",
+  "article-17-ready-for-reiki-master-level-draft.md",
+  "article-18-reiki-master-for-self-draft.md",
+  "article-19-reiki-reinitiation-draft.md",
 ];
 
 function escapeHtml(value) {
@@ -295,8 +296,8 @@ function parseMetadata(markdown) {
     }
   }
 
-  if (metadata.length !== 18) {
-    throw new Error(`Expected 18 metadata rows, found ${metadata.length}.`);
+  if (metadata.length !== 19) {
+    throw new Error(`Expected 19 metadata rows, found ${metadata.length}.`);
   }
   return { metadata, links };
 }
@@ -486,7 +487,10 @@ function commonShell() {
   const sample = fs.readFileSync(samplePath, "utf8");
   const sourceHeader = sample.match(
     /<header class="eh-shell-header[\s\S]*?<\/header>/,
-  )?.[0];
+  )?.[0]?.replace(
+    /<nav class="library-breadcrumb library-breadcrumb--header"[\s\S]*?<\/nav>/,
+    "",
+  );
   const footer = sample.match(/<footer class="eh-global-footer"[\s\S]*?<\/footer>\s*<script src="\/script\.js"><\/script>/)?.[0];
   if (!sourceHeader || !footer) {
     throw new Error("Could not extract shared article shell.");
@@ -555,10 +559,20 @@ function renderFaq(section) {
 function renderArticle(article, allArticles, relatedMap, shell) {
   const canonical = `${baseUrl}${article.route}`;
   const imageUrl = `${baseUrl}${article.visual.basePath}/og-1200.jpg`;
+  const articleBreadcrumb = `<nav class="library-breadcrumb library-breadcrumb--header" aria-label="&#1055;&#1091;&#1090;&#1100; &#1089;&#1090;&#1088;&#1072;&#1085;&#1080;&#1094;&#1099;">
+      <div class="eh-shell-container">
+        <a href="/biblioteka.html">&#1041;&#1080;&#1073;&#1083;&#1080;&#1086;&#1090;&#1077;&#1082;&#1072;</a>
+        <span>&#8594;</span>
+        <a href="/biblioteka/reiki/">&#1042;&#1089;&#1077; &#1089;&#1090;&#1072;&#1090;&#1100;&#1080; &#1086; &#1056;&#1077;&#1081;&#1082;&#1080;</a>
+        <span>&#8594;</span>
+        <span>${escapeHtml(article.h1)}</span>
+      </div>
+    </nav>`;
   const articleHeader = shell.header.replace(
     'class="eh-local-strip__articles" href="/biblioteka/reiki/" aria-current="page"',
     'class="eh-local-strip__articles" href="/biblioteka/reiki/" aria-current="location"',
-  );
+  ).replace("</header>", `${articleBreadcrumb}
+  </header>`);
   const faq = article.sections.flatMap(extractFaq);
   const schema = {
     "@context": "https://schema.org",
@@ -678,8 +692,11 @@ function renderArticle(article, allArticles, relatedMap, shell) {
     );
   }
 
-  const publishedLabel =
-    article.publishedDate === "2026-07-23" ? "23.07.2026" : "24.07.2026";
+  const publishedLabel = {
+    "2026-07-23": "23.07.2026",
+    "2026-07-24": "24.07.2026",
+    "2026-07-25": "25.07.2026",
+  }[article.publishedDate];
 
   return `<!doctype html>
 <html lang="ru">
@@ -707,7 +724,7 @@ function renderArticle(article, allArticles, relatedMap, shell) {
   <link rel="canonical" href="${canonical}">
   <link rel="icon" type="image/png" href="/assets/evolution-house-logo-approved.png">
   <link rel="stylesheet" href="/styles.css">
-  <link rel="stylesheet" href="/article-library.css?v=20260724-2">
+  <link rel="stylesheet" href="/article-library.css?v=20260727-reading-nav-2">
   <link rel="stylesheet" href="/cookie-consent.css">
   <script src="/analytics.js" defer></script>
   <script type="application/ld+json">
@@ -718,16 +735,6 @@ ${JSON.stringify(schema, null, 2)}
   ${articleHeader}
 
   <main>
-    <nav class="library-breadcrumb" aria-label="&#1055;&#1091;&#1090;&#1100; &#1089;&#1090;&#1088;&#1072;&#1085;&#1080;&#1094;&#1099;">
-      <div class="eh-shell-container">
-        <a href="/biblioteka.html">&#1041;&#1080;&#1073;&#1083;&#1080;&#1086;&#1090;&#1077;&#1082;&#1072;</a>
-        <span>&#8594;</span>
-        <a href="/biblioteka/reiki/">&#1042;&#1089;&#1077; &#1089;&#1090;&#1072;&#1090;&#1100;&#1080; &#1086; &#1056;&#1077;&#1081;&#1082;&#1080;</a>
-        <span>&#8594;</span>
-        <span>${escapeHtml(article.h1)}</span>
-      </div>
-    </nav>
-
     <header class="article-hero">
       <div class="eh-shell-container article-hero__grid">
         <div>
@@ -773,6 +780,7 @@ ${JSON.stringify(schema, null, 2)}
   </main>
 
   ${shell.footer}
+  <script src="/archetype-route.js?v=20260727-reading-nav-1" defer></script>
 </body>
 </html>
 `;
@@ -891,7 +899,7 @@ ${JSON.stringify(schema, null, 2)}
           <h1>&#1057;&#1090;&#1072;&#1090;&#1100;&#1080; &#1086; &#1056;&#1077;&#1081;&#1082;&#1080;</h1>
           <p>&#1055;&#1086;&#1085;&#1103;&#1090;&#1085;&#1099;&#1077; &#1086;&#1090;&#1074;&#1077;&#1090;&#1099; &#1086; &#1087;&#1088;&#1072;&#1082;&#1090;&#1080;&#1082;&#1077;, &#1086;&#1073;&#1091;&#1095;&#1077;&#1085;&#1080;&#1080; &#1080; &#1080;&#1085;&#1080;&#1094;&#1080;&#1072;&#1094;&#1080;&#1080; &#8212; &#1076;&#1083;&#1103; &#1090;&#1077;&#1093;, &#1082;&#1090;&#1086; &#1093;&#1086;&#1095;&#1077;&#1090; &#1089;&#1085;&#1072;&#1095;&#1072;&#1083;&#1072; &#1088;&#1072;&#1079;&#1086;&#1073;&#1088;&#1072;&#1090;&#1100;&#1089;&#1103;, &#1072; &#1087;&#1086;&#1090;&#1086;&#1084; &#1087;&#1088;&#1080;&#1085;&#1080;&#1084;&#1072;&#1090;&#1100; &#1088;&#1077;&#1096;&#1077;&#1085;&#1080;&#1077;.</p>
         </div>
-        <p class="article-list-hero__count"><strong>18</strong> &#1084;&#1072;&#1090;&#1077;&#1088;&#1080;&#1072;&#1083;&#1086;&#1074;</p>
+        <p class="article-list-hero__count"><strong>19</strong> &#1084;&#1072;&#1090;&#1077;&#1088;&#1080;&#1072;&#1083;&#1086;&#1074;</p>
       </div>
     </section>
 
@@ -914,7 +922,7 @@ ${JSON.stringify(schema, null, 2)}
           <p>&#1054;&#1090; &#1087;&#1077;&#1088;&#1074;&#1099;&#1093; 21 &#1076;&#1085;&#1077;&#1081; &#1076;&#1086; &#1074;&#1099;&#1073;&#1086;&#1088;&#1072; &#1052;&#1072;&#1089;&#1090;&#1077;&#1088;&#1072; &#1080; &#1075;&#1088;&#1072;&#1085;&#1080;&#1094; &#1084;&#1077;&#1090;&#1086;&#1076;&#1072;.</p>
         </div>
         <div class="article-compact-grid">
-          ${allArticles.slice(3, 11).map(renderCompactCard).join("\n          ")}
+          ${allArticles.slice(3, 12).map(renderCompactCard).join("\n          ")}
         </div>
       </div>
     </section>
@@ -926,7 +934,7 @@ ${JSON.stringify(schema, null, 2)}
           <p>&#1063;&#1090;&#1086; &#1087;&#1086;&#1089;&#1083;&#1077; &#1056;&#1077;&#1081;&#1082;&#1080; II, &#1082;&#1072;&#1082; &#1091;&#1089;&#1090;&#1088;&#1086;&#1077;&#1085;&#1099; &#1052;&#1072;&#1089;&#1090;&#1077;&#1088; &#1078;&#1080;&#1079;&#1085;&#1080; &#1080; &#1052;&#1072;&#1089;&#1090;&#1077;&#1088;-&#1059;&#1095;&#1080;&#1090;&#1077;&#1083;&#1100; &#1080; &#1082;&#1072;&#1082; &#1087;&#1088;&#1086;&#1076;&#1086;&#1083;&#1078;&#1080;&#1090;&#1100; &#1087;&#1091;&#1090;&#1100; &#1087;&#1086;&#1089;&#1083;&#1077; &#1076;&#1088;&#1091;&#1075;&#1086;&#1081; &#1096;&#1082;&#1086;&#1083;&#1099;.</p>
         </div>
         <div class="article-compact-grid">
-          ${allArticles.slice(11).map(renderCompactCard).join("\n          ")}
+          ${allArticles.slice(12).map(renderCompactCard).join("\n          ")}
         </div>
 
         <aside class="reiki-path-bridge">
@@ -956,7 +964,7 @@ function cleanGeneratedHtml(html) {
 
 function main() {
   const insertCount = getReikiInsertCount();
-  if (insertCount < 18) {
+  if (insertCount < 19) {
     throw new Error(
       `Every Reiki article needs at least one insert; found ${insertCount}.`,
     );
@@ -975,7 +983,12 @@ function main() {
       ...item,
       source,
       visual,
-      publishedDate: index < 3 ? "2026-07-23" : "2026-07-24",
+      publishedDate:
+        source === "article-12-help-others-without-exhaustion.md"
+          ? "2026-07-25"
+          : index < 3
+            ? "2026-07-23"
+            : "2026-07-24",
     });
   });
 

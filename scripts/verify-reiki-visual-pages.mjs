@@ -37,9 +37,11 @@ const representativeScreenshots = new Map([
   ["chto-takoe-reiki:390", "article-01-mobile-390.png"],
   ["opasno-li-reiki:1440", "article-09-desktop-1440.png"],
   ["opasno-li-reiki:390", "article-09-mobile-390.png"],
-  ["chto-posle-reiki-2:1440", "article-13-desktop-1440.png"],
-  ["chto-posle-reiki-2:390", "article-13-mobile-390.png"],
-  ["pereiniciaciya-reiki:390", "article-18-mobile-390.png"],
+  ["kak-pomogat-drugim-i-ne-istoshchatsya:1440", "article-12-desktop-1440.png"],
+  ["kak-pomogat-drugim-i-ne-istoshchatsya:390", "article-12-mobile-390.png"],
+  ["chto-posle-reiki-2:1440", "article-14-desktop-1440.png"],
+  ["chto-posle-reiki-2:390", "article-14-mobile-390.png"],
+  ["pereiniciaciya-reiki:390", "article-19-mobile-390.png"],
 ]);
 
 fs.mkdirSync(screenshotRoot, { recursive: true });
@@ -144,7 +146,7 @@ fs.writeFileSync(
   "utf8",
 );
 
-if (articleSlugs.length !== 18 || failures.length > 0) {
+if (articleSlugs.length !== 19 || failures.length > 0) {
   console.error(
     `Reiki page verification failed: ${articleSlugs.length} articles, ${failures.length} failing checks.`,
   );

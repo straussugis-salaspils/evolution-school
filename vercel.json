@@ -4,6 +4,11 @@
   "outputDirectory": ".",
   "redirects": [
     {
+      "source": "/test-arhetipov/",
+      "destination": "/arhetipy.html",
+      "permanent": true
+    },
+    {
       "source": "/individualnyj-retrit.html",
       "destination": "/urovni-zhizni/individualnyj-retrit/",
       "permanent": true

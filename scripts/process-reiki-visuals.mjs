@@ -122,8 +122,8 @@ async function main() {
   }
   const selection = JSON.parse(fs.readFileSync(selectionPath, "utf8"));
   const numbers = Object.keys(selection).sort((a, b) => Number(a) - Number(b));
-  if (numbers.length !== 18) {
-    throw new Error(`Expected 18 selected Hero images, found ${numbers.length}.`);
+  if (numbers.length !== 19) {
+    throw new Error(`Expected 19 selected Hero images, found ${numbers.length}.`);
   }
 
   const manifest = [];
