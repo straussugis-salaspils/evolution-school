@@ -50,19 +50,27 @@ for (const width of [1440, 390]) {
   });
   const page = await context.newPage();
   for (const article of articles) {
+    const insertConfig = archetypeArticleInserts[article.route_id];
+    const isSplitInsert = Boolean(insertConfig.sceneAfter || insertConfig.diagramAfter);
     const response = await page.goto(`${baseUrl}${article.canonical}`, {
       waitUntil: "domcontentloaded",
       timeout: 30_000,
     });
     await page.waitForLoadState("networkidle", { timeout: 8_000 }).catch(() => {});
-    const state = await page.evaluate((expectedHeading) => {
+    const state = await page.evaluate((expected) => {
       const insert = document.querySelector(".archetype-insert");
-      const section = insert?.closest("section");
-      const images = insert ? [...insert.querySelectorAll("img")] : [];
+      const story = document.querySelector(".archetype-story-image");
+      const diagramSection = insert?.closest("section");
+      const storySection = story?.closest("section");
+      const images = [...document.querySelectorAll(".archetype-insert img, .archetype-story-image img")];
       const nodes = insert ? [...insert.querySelectorAll(".archetype-insert__nodes li")] : [];
       return {
         insertCount: document.querySelectorAll(".archetype-insert").length,
-        sectionHeading: section?.querySelector(":scope > h2")?.textContent?.trim() || "",
+        storyCount: document.querySelectorAll(".archetype-story-image").length,
+        diagramSectionHeading:
+          diagramSection?.querySelector(":scope > h2")?.textContent?.trim() || "",
+        storySectionHeading:
+          storySection?.querySelector(":scope > h2")?.textContent?.trim() || "",
         pageOverflow:
           document.documentElement.scrollWidth > document.documentElement.clientWidth + 1,
         brokenImages: images
@@ -70,18 +78,27 @@ for (const width of [1440, 390]) {
           .map((image) => image.currentSrc),
         clippedNodes: nodes.filter((node) => node.scrollHeight > node.clientHeight + 1).length,
         insertWidth: insert?.getBoundingClientRect().width || 0,
-        expectedHeading,
+        storyWidth: story?.getBoundingClientRect().width || 0,
+        expected,
       };
-    }, archetypeArticleInserts[article.route_id].after);
+    }, {
+      isSplitInsert,
+      diagramHeading: insertConfig.diagramAfter || insertConfig.after,
+      storyHeading: insertConfig.sceneAfter || "",
+    });
 
     if (
       response?.status() !== 200 ||
       state.insertCount !== 1 ||
-      state.sectionHeading !== state.expectedHeading ||
+      state.diagramSectionHeading !== state.expected.diagramHeading ||
+      (isSplitInsert && state.storyCount !== 1) ||
+      (!isSplitInsert && state.storyCount !== 0) ||
+      (isSplitInsert && state.storySectionHeading !== state.expected.storyHeading) ||
       state.pageOverflow ||
       state.brokenImages.length ||
       state.clippedNodes ||
-      state.insertWidth <= 0
+      state.insertWidth <= 0 ||
+      (isSplitInsert && state.storyWidth <= 0)
     ) {
       failures.push({
         width,
@@ -102,6 +119,17 @@ for (const width of [1440, 390]) {
           `${article.route_id.toLowerCase()}-${width}.png`,
         ),
       });
+      if (isSplitInsert) {
+        const story = page.locator(".archetype-story-image");
+        await story.scrollIntoViewIfNeeded();
+        await page.waitForTimeout(120);
+        await story.screenshot({
+          path: path.join(
+            artifactRoot,
+            `${article.route_id.toLowerCase()}-story-${width}.png`,
+          ),
+        });
+      }
     }
   }
   await context.close();
