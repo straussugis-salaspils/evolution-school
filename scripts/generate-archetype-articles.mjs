@@ -299,6 +299,44 @@ function insertScenePicture(insert) {
   </figure>`;
 }
 
+function insertNodes(insert) {
+  return insert.items
+    .map(
+      ([title, text], index) => `<li style="--node-index:${index}">
+        <span>${escapeHtml(title)}</span>
+        <strong>${escapeHtml(text)}</strong>
+      </li>`,
+    )
+    .join("");
+}
+
+function renderArchetypeScene(article) {
+  const insert = archetypeArticleInserts[article.route_id];
+  if (!insert?.sceneAsset) return "";
+  const routeClass = `archetype-story-image--route-${article.route_id.toLowerCase()}`;
+  return `<figure class="archetype-story-image ${routeClass}">
+    <picture>
+      <source type="image/webp" srcset="${insert.sceneAsset}/hero-480.webp 480w, ${insert.sceneAsset}/hero-768.webp 768w, ${insert.sceneAsset}/hero-1200.webp 1200w" sizes="(max-width: 780px) calc(100vw - 2rem), 760px">
+      <img src="${insert.sceneAsset}/hero-1200.jpg" alt="${escapeHtml(insert.sceneAlt)}" width="1200" height="900" loading="lazy" decoding="async">
+    </picture>
+  </figure>`;
+}
+
+function renderArchetypeDiagram(article) {
+  const insert = archetypeArticleInserts[article.route_id];
+  if (!insert) return "";
+  const routeClass = `archetype-insert--route-${article.route_id.toLowerCase()}`;
+  const nodes = insertNodes(insert);
+  return `<figure class="archetype-insert archetype-insert--${insert.type} ${routeClass} archetype-insert--diagram-only" aria-labelledby="archetype-diagram-${article.route_id}">
+    <div class="archetype-insert__explanation">
+      <p class="archetype-insert__eyebrow">${escapeHtml(insert.eyebrow)}</p>
+      <h3 id="archetype-diagram-${article.route_id}">${escapeHtml(insert.title)}</h3>
+      <p class="archetype-insert__description">${escapeHtml(insert.description)}</p>
+      <ol class="archetype-insert__nodes">${nodes}</ol>
+    </div>
+  </figure>`;
+}
+
 function renderArchetypeInsert(article) {
   const insert = archetypeArticleInserts[article.route_id];
   if (!insert) return "";
@@ -310,16 +348,9 @@ function renderArchetypeInsert(article) {
   const characterNames = insert.characters
     .map((slug) => archetypeCharacters[slug].name)
     .join(" · ");
-  const nodes = insert.items
-    .map(
-      ([title, text], index) => `<li style="--node-index:${index}">
-        <span>${escapeHtml(title)}</span>
-        <strong>${escapeHtml(text)}</strong>
-      </li>`,
-    )
-    .join("");
+  const nodes = insertNodes(insert);
   return `<figure class="archetype-insert archetype-insert--${insert.type} ${routeClass}${layoutClass}" aria-labelledby="archetype-insert-${article.route_id}">
-    <div class="archetype-insert__portrait${insert.characters.length > 1 ? " archetype-insert__portrait--multi" : ""}${insert.sceneAsset ? " archetype-insert__portrait--scene" : ""}" aria-label="Архетипические образы">
+    <div class="archetype-insert__portrait${insert.characters.length > 1 ? " archetype-insert__portrait--multi" : ""}${insert.sceneAsset ? " archetype-insert__portrait--scene" : ""}" aria-label="${insert.sceneAsset ? "Смысловая иллюстрация" : "Архетипические образы"}">
       ${characters}
       ${insert.characters.length > 1 && !insert.sceneAsset ? `<p class="archetype-insert__character-legend">${escapeHtml(characterNames)}</p>` : ""}
     </div>
@@ -335,13 +366,28 @@ function renderArchetypeInsert(article) {
 function renderSection(section, index, article) {
   const marker = section.lines.findIndex((line) => line.includes("ROUTE_CTA"));
   const lines = marker >= 0 ? section.lines.filter((_, lineIndex) => lineIndex !== marker) : section.lines;
-  const insert = archetypeArticleInserts[article.route_id]?.after === section.title
-    ? renderArchetypeInsert(article)
-    : "";
-  return `<section id="section-${index + 1}">
+  const insertConfig = archetypeArticleInserts[article.route_id];
+  const isSplitInsert = Boolean(insertConfig?.sceneAfter || insertConfig?.diagramAfter);
+  if (!isSplitInsert) {
+    const legacyInsert = insertConfig?.after === section.title
+      ? renderArchetypeInsert(article)
+      : "";
+    return `<section id="section-${index + 1}">
     <h2>${parseInline(section.title)}</h2>
     ${renderBlocks(lines)}
-    ${insert}
+    ${legacyInsert}
+  </section>`;
+  }
+  const scene = insertConfig?.sceneAfter === section.title
+    ? renderArchetypeScene(article)
+    : "";
+  const diagram = insertConfig?.diagramAfter === section.title
+    ? renderArchetypeDiagram(article)
+    : "";
+  const inserts = [scene, diagram].filter(Boolean).join("\n");
+  return `<section id="section-${index + 1}">
+    <h2>${parseInline(section.title)}</h2>
+    ${renderBlocks(lines)}${inserts ? `\n${inserts}` : ""}
   </section>`;
 }
 
@@ -355,7 +401,7 @@ function shell() {
   header = header.replace(
     /<nav class="library-breadcrumb library-breadcrumb--header"[\s\S]*?<\/nav>/,
     "",
-  );
+  ).replace(/\n{3,}/g, "\n\n");
   const localStrip = `<nav class="eh-local-strip" aria-label="Навигация по Пути архетипов">
       <div class="eh-shell-container">
         <a href="/arhetipy.html">Карта пути</a>

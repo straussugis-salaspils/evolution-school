@@ -1217,3 +1217,74 @@
     transform: none !important;
   }
 }
+
+/* Life-theme articles use two separate reading beats: an editorial scene and a diagram. */
+.archetype-story-image,
+.archetype-story-image picture,
+.archetype-story-image img {
+  display: block;
+  width: 100%;
+}
+
+.article-body .archetype-story-image {
+  width: min(100%, 760px);
+  margin: 1.55rem auto 0.2rem;
+}
+
+.archetype-story-image img {
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center;
+  border: 1px solid rgba(91, 45, 104, 0.14);
+  border-radius: 18px;
+  background: #eadff0;
+  box-shadow: 0 18px 42px rgba(50, 23, 59, 0.12);
+}
+
+.article-body .archetype-insert--diagram-only {
+  grid-template-columns: minmax(0, 1fr);
+  width: min(100%, 760px);
+  margin: 1.7rem auto 0.2rem;
+  padding: clamp(1.05rem, 4vw, 1.45rem);
+  border-radius: 22px;
+}
+
+.archetype-insert--diagram-only .archetype-insert__explanation {
+  align-self: stretch;
+  padding: 0;
+}
+
+.article-body .archetype-insert--diagram-only h3 {
+  max-width: 24ch;
+  font-size: clamp(1.42rem, 6.2vw, 1.85rem);
+  line-height: 1.08;
+}
+
+.article-body .archetype-insert--diagram-only .archetype-insert__description {
+  margin: 0.85rem 0 1.15rem;
+}
+
+@media (min-width: 721px) {
+  .article-body .archetype-story-image {
+    margin-top: clamp(2rem, 4vw, 2.65rem);
+    margin-bottom: 0.35rem;
+  }
+
+  .archetype-story-image img {
+    border-radius: 24px;
+    box-shadow: 0 24px 54px rgba(50, 23, 59, 0.14);
+  }
+
+  .article-body .archetype-insert--diagram-only {
+    margin-top: clamp(2rem, 4vw, 2.65rem);
+    margin-bottom: 0.35rem;
+    padding: clamp(1.35rem, 3vw, 1.8rem);
+    border-radius: 26px;
+  }
+
+  .article-body .archetype-insert--diagram-only h3 {
+    max-width: 27ch;
+    font-size: clamp(1.7rem, 2.8vw, 2.2rem);
+  }
+}

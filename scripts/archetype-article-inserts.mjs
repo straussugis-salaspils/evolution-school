@@ -43,10 +43,14 @@ export const archetypeCharacters = {
 
 export const archetypeArticleInserts = {
   L01: {
-    after: "Где здесь появляются архетипы",
-    characters: ["persephone", "athena", "artemis"],
+    sceneAfter: "«Надо» не требуется отменять",
+    diagramAfter: "Где здесь появляются архетипы",
+    characters: [],
     type: "relay",
-    layout: "ensemble",
+    layout: "scene",
+    sceneAsset: "/assets/archetype-articles/inserts/life/l01",
+    sceneAlt:
+      "Женщина освобождает среди обязательств место для собственного желания и первого шага",
     eyebrow: "От желания к действию",
     title: "Три функции собирают один живой шаг",
     description:
@@ -128,10 +132,14 @@ export const archetypeArticleInserts = {
     ],
   },
   L03: {
-    after: "Если нужно передать задачу целиком",
-    characters: ["artemis", "athena"],
+    sceneAfter: "Проект, который я не стала тащить сама",
+    diagramAfter: "Если нужно передать задачу целиком",
+    characters: [],
     type: "workload-map",
-    layout: "diagram",
+    layout: "scene",
+    sceneAsset: "/assets/archetype-articles/inserts/life/l03",
+    sceneAlt:
+      "Две женщины передают целую конструкцию ответственности вместе с задачей и полномочиями",
     eyebrow: "Передача без скрытого контроля",
     title: "Передаётся не кусок работы, а целая зона ответственности",
     description:
@@ -143,10 +151,14 @@ export const archetypeArticleInserts = {
     ],
   },
   L05: {
-    after: "Пауза перед автоматическим «да»",
-    characters: ["persephone", "hera"],
+    sceneAfter: "Неодобрение и опасность — не одно и то же",
+    diagramAfter: "Пауза перед автоматическим «да»",
+    characters: [],
     type: "pause",
-    layout: "diagram",
+    layout: "scene",
+    sceneAsset: "/assets/archetype-articles/inserts/life/l05",
+    sceneAlt:
+      "Женщина отворачивается от внешнего одобрения и выбирает собственное направление",
     eyebrow: "Между просьбой и ответом",
     title: "Пауза возвращает в разговор собственный выбор",
     description:
@@ -158,10 +170,14 @@ export const archetypeArticleInserts = {
     ],
   },
   L04: {
-    after: "Практика: закрыть петлю, а не заставить себя отдыхать",
-    characters: ["hestia"],
+    sceneAfter: "«Не могу расслабиться» может означать разные вещи",
+    diagramAfter: "Практика: закрыть петлю, а не заставить себя отдыхать",
+    characters: [],
     type: "closure-map",
-    layout: "diagram",
+    layout: "scene",
+    sceneAsset: "/assets/archetype-articles/inserts/life/l04",
+    sceneAlt:
+      "Женщина собирает нити незавершённых дел в одну ограниченную и понятную связку",
     eyebrow: "Не вся тишина становится отдыхом",
     title: "Напряжение уменьшается, когда незавершённое получает границу",
     description:
@@ -173,10 +189,14 @@ export const archetypeArticleInserts = {
     ],
   },
   L06: {
-    after: "Карта того, что исчезло",
-    characters: ["hera", "aphrodite"],
+    sceneAfter: "Компромисс не стирает человека",
+    diagramAfter: "Карта того, что исчезло",
+    characters: [],
     type: "territory",
-    layout: "diagram",
+    layout: "scene",
+    sceneAsset: "/assets/archetype-articles/inserts/life/l06",
+    sceneAlt:
+      "Пара сохраняет общее пространство и одновременно создаёт личное место для каждого",
     eyebrow: "Близость без исчезновения",
     title: "В отношениях остаются три пространства",
     description:
@@ -249,10 +269,14 @@ export const archetypeArticleInserts = {
     ],
   },
   L07: {
-    after: "Четыре шага вместо одного идеального «нет»",
-    characters: ["artemis", "hecate"],
+    sceneAfter: "Если «нет» приходится говорить близкому человеку",
+    diagramAfter: "Четыре шага вместо одного идеального «нет»",
+    characters: [],
     type: "boundary",
-    layout: "diagram",
+    layout: "scene",
+    sceneAsset: "/assets/archetype-articles/inserts/life/l07",
+    sceneAlt:
+      "Женщина спокойно останавливает передачу лишней нагрузки, сохраняя контакт с собеседницей",
     eyebrow: "Граница как последовательность",
     title: "Спокойное «нет» начинается до произнесённого ответа",
     description:
@@ -264,10 +288,14 @@ export const archetypeArticleInserts = {
     ],
   },
   L08: {
-    after: "Карта недели: кому сейчас принадлежит ваше время",
-    characters: ["demeter", "aphrodite"],
+    sceneAfter: "«Главное, чтобы другим было хорошо»",
+    diagramAfter: "Карта недели: кому сейчас принадлежит ваше время",
+    characters: [],
     type: "week-map",
-    layout: "diagram",
+    layout: "scene",
+    sceneAsset: "/assets/archetype-articles/inserts/life/l08",
+    sceneAlt:
+      "Женщина освобождает на общем семейном столе заметное место для собственного занятия",
     eyebrow: "Своё место в общей жизни",
     title: "Забота и собственное желание могут быть видны одновременно",
     description:
@@ -279,10 +307,14 @@ export const archetypeArticleInserts = {
     ],
   },
   L09: {
-    after: "Четыре шага до автоматической помощи",
-    characters: ["demeter", "hera"],
+    sceneAfter: "«Я сама ему не передавала»",
+    diagramAfter: "Четыре шага до автоматической помощи",
+    characters: [],
     type: "request",
-    layout: "diagram",
+    layout: "scene",
+    sceneAsset: "/assets/archetype-articles/inserts/life/l09",
+    sceneAlt:
+      "За общим столом забота и подготовка еды распределены между всеми участниками",
     eyebrow: "Помощь с ясными границами",
     title: "Одна просьба не обязана превращаться в целый проект",
     description:
@@ -328,10 +360,14 @@ export const archetypeArticleInserts = {
     ],
   },
   L10: {
-    after: "Четыре зоны, которые возвращают ясность",
-    characters: ["zeus", "hera"],
+    sceneAfter: "Договорённость вместо непрерывной проверки",
+    diagramAfter: "Четыре зоны, которые возвращают ясность",
+    characters: [],
     type: "responsibility-zones",
-    layout: "diagram",
+    layout: "scene",
+    sceneAsset: "/assets/archetype-articles/inserts/life/l10",
+    sceneAlt:
+      "Три человека собирают общий проект, отвечая каждый за свою часть конструкции",
     eyebrow: "Сила без давления",
     title: "Ответственность начинается со своей зоны",
     description:
@@ -343,10 +379,14 @@ export const archetypeArticleInserts = {
     ],
   },
   L12: {
-    after: "Передайте одну целую задачу",
-    characters: ["athena", "artemis"],
+    sceneAfter: "Написать книгу — не значит самой её издавать",
+    diagramAfter: "Передайте одну целую задачу",
+    characters: [],
     type: "delegation-contract",
-    layout: "diagram",
+    layout: "scene",
+    sceneAsset: "/assets/archetype-articles/inserts/life/l12",
+    sceneAlt:
+      "Женщина передаёт коллеге полный проектный набор вместе с инструментами и ключом",
     eyebrow: "Делегирование, которое уменьшает нагрузку",
     title: "Целая задача имеет результат, срок и полномочия",
     description:
@@ -358,10 +398,14 @@ export const archetypeArticleInserts = {
     ],
   },
   L13: {
-    after: "Практика: завершить цель до того, как ставить новую",
-    characters: ["hecate", "aphrodite"],
+    sceneAfter: "Радости может не быть по разным причинам",
+    diagramAfter: "Практика: завершить цель до того, как ставить новую",
+    characters: [],
     type: "after-finish",
-    layout: "diagram",
+    layout: "scene",
+    sceneAsset: "/assets/archetype-articles/inserts/life/l13",
+    sceneAlt:
+      "После завершённой работы женщина замечает свободное пространство и первый новый интерес",
     eyebrow: "После финиша",
     title: "Между завершённой целью и новой жизнью есть пространство",
     description:
@@ -373,10 +417,14 @@ export const archetypeArticleInserts = {
     ],
   },
   L15: {
-    after: "Практика: один обратимый шаг",
-    characters: ["persephone", "artemis"],
+    sceneAfter: "Возможно, вы назвали результат, а не действие",
+    diagramAfter: "Практика: один обратимый шаг",
+    characters: [],
     type: "bridge",
-    layout: "diagram",
+    layout: "scene",
+    sceneAsset: "/assets/archetype-articles/inserts/life/l15",
+    sceneAlt:
+      "Женщина проверяет желание одним небольшим шагом по переносному камню через воду",
     eyebrow: "Мост от желания к действию",
     title: "Первый шаг не доказывает судьбу — он даёт новую информацию",
     description:
@@ -388,10 +436,14 @@ export const archetypeArticleInserts = {
     ],
   },
   L16: {
-    after: "Практика: проверить один элемент стратегии",
-    characters: ["athena", "aphrodite"],
+    sceneAfter: "У работающей стратегии тоже есть срок пересмотра",
+    diagramAfter: "Практика: проверить один элемент стратегии",
+    characters: [],
     type: "tuning",
-    layout: "diagram",
+    layout: "scene",
+    sceneAsset: "/assets/archetype-articles/inserts/life/l16",
+    sceneAlt:
+      "Женщина добавляет живой цветник и изгиб в точную работающую систему сада",
     eyebrow: "Стратегия встречается со вкусом",
     title: "Работающую систему не обязательно разрушать, чтобы снова выбрать её",
     description:
