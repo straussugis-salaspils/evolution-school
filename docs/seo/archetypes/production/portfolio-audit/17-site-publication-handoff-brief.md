@@ -2,6 +2,12 @@
 
 ## Опубликовать SEO-кластер «Архетипы» на сайте Evolution House
 
+> **Редакционная пауза от 29 июля 2026 года.** Этот handoff нельзя запускать
+> повторно для публикации или считать разрешением сохранить нынешние тексты без
+> переработки. Сначала калибровочная статья об Афине должна пройти
+> `18-interesting-article-editorial-standard.md` и получить личное одобрение
+> Светланы. Затем корпус перерабатывается по утверждённому образцу.
+
 Это задача на полную реализацию, а не на дополнительное исследование или
 редактуру статей.
 
@@ -68,15 +74,16 @@ Blockers: 0
 Сначала полностью прочитать:
 
 1. `docs/seo/archetypes/production/README.md`;
-2. `docs/seo/archetypes/production/portfolio-routes.json`;
-3. `docs/seo/archetypes/production/portfolio-evidence.json`;
-4. `docs/seo/archetypes/production/portfolio-audit/14-second-wave-integrated-matrix.md`;
-5. `docs/seo/archetypes/production/portfolio-audit/15-second-wave-final-qa.md`;
-6. `docs/seo/archetypes/production/portfolio-audit/16-second-wave-final-report.md`;
-7. внешний нормативный документ:
+2. `docs/seo/archetypes/production/18-interesting-article-editorial-standard.md`;
+3. `docs/seo/archetypes/production/portfolio-routes.json`;
+4. `docs/seo/archetypes/production/portfolio-evidence.json`;
+5. `docs/seo/archetypes/production/portfolio-audit/14-second-wave-integrated-matrix.md`;
+6. `docs/seo/archetypes/production/portfolio-audit/15-second-wave-final-qa.md`;
+7. `docs/seo/archetypes/production/portfolio-audit/16-second-wave-final-report.md`;
+8. внешний нормативный документ:
    `C:\Users\Ugis\Documents\Codex\2026-07-24\files-mentioned-by-the-user-codex\outputs\docs\seo\archetypes\editorial-architecture\16-unified-routing-matrix.md`;
-8. `00-real-test-contract.md` из утверждённой архитектуры;
-9. фактический код теста:
+9. `00-real-test-contract.md` из утверждённой архитектуры;
+10. фактический код теста:
    `https://github.com/janisstrauss450-beep/archetype-code`.
 
 Если старый документ, существующая landing page или прежний текст противоречат
@@ -113,7 +120,7 @@ manifest v2 и финальному QA, приоритет имеют переч
 - тот же основной shell сайта;
 - та же типографическая дисциплина;
 - тот же уровень воздуха и читаемости;
-- hero, содержание, основной текст, safety-блок, связанные материалы;
+- hero, содержание, основной текст и связанные материалы;
 - нормальная мобильная версия;
 - единый авторский блок;
 - предсказуемые breadcrumbs;
@@ -331,7 +338,7 @@ generator, manifest, источник Markdown или visual config.
 - для женских role-pages дополнительный уровень `/zhenskie-arhetipy/`;
 - содержание статьи;
 - основной Markdown без сокращений;
-- видимую границу метода и safety-блок там, где он есть в источнике;
+- отсутствие стандартного блока с перенаправлением к специалистам;
 - блок из 2–3 связанных бесплатных материалов;
 - максимум один главный следующий шаг;
 - нормальные focus states, клавиатурную навигацию и доступные подписи.
@@ -372,7 +379,7 @@ Breadcrumbs:
 - никакого мистического тумана, свечей ради свечей, псевдоантичного kitsch и
   одинаковых женских лиц;
 - серия визуально родственна, но hero не повторяются;
-- юмор и лёгкость возможны в бытовых деталях, не в safety-сценах.
+- юмор и лёгкость рождаются из подтверждённых бытовых деталей и самоиронии.
 
 Минимальный производственный стандарт изображения:
 
@@ -503,9 +510,9 @@ Marker не должен попасть в live HTML.
 
 - честного авторского byline;
 - ссылки на метод;
-- компактной формулы, что архетипическая карта является авторской символической
-  системой, а не медицинской диагностикой или доказанной моделью судьбы;
-- источника медицинской границы там, где он реально нужен.
+- точного текста без диагнозов, гарантий и универсальных причинных обещаний;
+- отсутствия стандартных отсылок к психологам, психотерапевтам, врачам,
+  юристам и другим специалистам.
 
 Запрещено упоминать Маргариту, пересказывать её кейс или делать узнаваемую
 анонимизацию.
