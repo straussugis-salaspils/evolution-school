@@ -1,0 +1,136 @@
+/* Shared purchase-window design approved on the Off-Switch payment pilot. */
+
+.modal-overlay > .modal,
+.gc-payment-modal .gc-payment-modal__panel {
+  border-color: rgba(23, 63, 49, 0.18);
+  background:
+    radial-gradient(circle at 100% 0, rgba(223, 237, 199, 0.48), transparent 38%),
+    #fffaf1;
+}
+
+.modal-overlay > .modal::before,
+.gc-payment-modal .gc-payment-modal__panel::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 4px;
+  border-radius: 18px 18px 0 0;
+  background: linear-gradient(90deg, #2f7882 0 34%, #9abf69 34% 67%, #d9b75f 67%);
+}
+
+.modal-overlay > .modal .modal-close,
+.gc-payment-modal .gc-payment-modal__close {
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(20, 80, 72, 0.16);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.82);
+  color: #173f31;
+}
+
+.modal-overlay > .modal .modal-header .label-tag,
+.gc-payment-modal .gc-payment-modal__eyebrow {
+  margin: 0 0 8px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #52645c;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.modal-overlay > .modal .modal-header h3,
+.gc-payment-modal .gc-payment-modal__title {
+  color: #173f31 !important;
+  font-family: Georgia, "Times New Roman", serif !important;
+  font-size: clamp(30px, 4vw, 46px) !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: 1.05;
+  margin-bottom: 26px;
+}
+
+.modal-overlay > .modal .modal-header > p,
+.gc-payment-modal .gc-payment-modal__product {
+  margin: 0 0 30px;
+  padding: 12px 14px;
+  border-left: 3px solid #2f7882;
+  border-radius: 0 10px 10px 0;
+  background: rgba(239, 244, 224, 0.78);
+  color: #294d3e;
+  font-size: 15px;
+  font-weight: 650;
+  line-height: 1.4;
+}
+
+.modal-overlay > .modal .payment-choice,
+.gc-payment-modal .gc-payment-choice {
+  gap: 14px;
+  margin-top: 0;
+}
+
+body .modal-overlay > .modal .payment-choice a.btn.btn--primary,
+html body .gc-payment-modal .gc-payment-choice a.gc-payment-choice__primary {
+  min-height: 56px;
+  border-color: #173f31 !important;
+  border-radius: 10px !important;
+  background: #173f31 !important;
+  color: #fff !important;
+  font-size: 18px;
+  box-shadow: 0 10px 24px rgba(23, 63, 49, 0.16);
+}
+
+body .modal-overlay > .modal .payment-choice a.btn.btn--primary:hover,
+body .modal-overlay > .modal .payment-choice a.btn.btn--primary:focus-visible,
+html body .gc-payment-modal .gc-payment-choice a.gc-payment-choice__primary:hover,
+html body .gc-payment-modal .gc-payment-choice a.gc-payment-choice__primary:focus-visible {
+  border-color: #245b47 !important;
+  background: #245b47 !important;
+  color: #fff !important;
+}
+
+.modal-overlay > .modal .payment-choice__merchant,
+.gc-payment-modal .gc-payment-choice__merchant {
+  max-width: 54ch;
+  margin: 0 auto;
+  color: #6d7771;
+  font-size: 11px;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.modal-overlay > .modal .payment-choice__russian,
+.gc-payment-modal .gc-payment-choice__russian {
+  position: relative;
+  min-height: 50px;
+  margin-top: 12px;
+  border-color: rgba(23, 63, 49, 0.32);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.44);
+  color: #52645c;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.modal-overlay > .modal .payment-choice__russian:hover,
+.modal-overlay > .modal .payment-choice__russian:focus-visible,
+.gc-payment-modal .gc-payment-choice__russian:hover,
+.gc-payment-modal .gc-payment-choice__russian:focus-visible {
+  border-color: #173f31;
+  background: rgba(23, 63, 49, 0.06);
+  color: #173f31;
+}
+
+.modal-overlay > .modal .payment-choice__russian::before,
+.gc-payment-modal .gc-payment-choice__russian::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  right: 0;
+  left: 0;
+  height: 1px;
+  background: rgba(23, 63, 49, 0.14);
+}
