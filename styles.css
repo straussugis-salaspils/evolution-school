@@ -66062,12 +66062,36 @@ body.gc-payment-modal-is-open {
 
 /* Off-Switch payment pilot: a clearer hierarchy for the three payment lines.
    Other product modals intentionally keep the shared defaults above. */
+.gc-payment-modal--off-switch-training .gc-payment-modal__panel {
+  border-color: rgba(23, 63, 49, .18);
+  background:
+    radial-gradient(circle at 100% 0, rgba(223, 237, 199, .48), transparent 38%),
+    #fffaf1;
+}
+
+.gc-payment-modal--off-switch-training .gc-payment-modal__panel::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 4px;
+  border-radius: 18px 18px 0 0;
+  background: linear-gradient(90deg, #2f7882 0 34%, #9abf69 34% 67%, #d9b75f 67%);
+}
+
 .gc-payment-modal--off-switch-training .gc-payment-modal__title {
   margin-bottom: 26px;
 }
 
 .gc-payment-modal--off-switch-training .gc-payment-modal__product {
-  margin: 0 0 28px;
+  margin: 0 0 30px;
+  padding: 12px 14px;
+  border-left: 3px solid #2f7882;
+  border-radius: 0 10px 10px 0;
+  background: rgba(239, 244, 224, .78);
+  color: #294d3e;
+  font-size: 15px;
+  font-weight: 650;
+  line-height: 1.4;
 }
 
 .gc-payment-modal--off-switch-training .gc-payment-choice {
@@ -66075,7 +66099,9 @@ body.gc-payment-modal-is-open {
 }
 
 .gc-payment-modal--off-switch-training .gc-payment-choice__primary {
+  min-height: 56px;
   font-size: 18px;
+  box-shadow: 0 10px 24px rgba(23, 63, 49, .16);
 }
 
 .gc-payment-modal--off-switch-training .gc-payment-choice__merchant {
@@ -66086,7 +66112,21 @@ body.gc-payment-modal-is-open {
 }
 
 .gc-payment-modal--off-switch-training .gc-payment-choice__russian {
+  position: relative;
+  min-height: 50px;
+  margin-top: 12px;
+  background: rgba(255, 255, 255, .44);
   font-size: 15px;
+}
+
+.gc-payment-modal--off-switch-training .gc-payment-choice__russian::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  right: 0;
+  left: 0;
+  height: 1px;
+  background: rgba(23, 63, 49, .14);
 }
 
 .gc-payment-choice[hidden],
