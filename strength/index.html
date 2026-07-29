@@ -358,6 +358,40 @@
     border-top: 1px solid var(--border-card);
     padding-top: 26px;
   }
+  .payment-choice {
+    display: grid;
+    gap: 12px;
+    margin-top: 28px;
+  }
+  .payment-choice .btn { width: 100%; text-align: center; }
+  .payment-choice__merchant {
+    margin: 4px 0 0;
+    color: var(--text-muted);
+    font-size: 12px;
+    line-height: 1.5;
+    text-align: center;
+  }
+  .payment-choice__russian {
+    width: 100%;
+    min-height: 48px;
+    padding: 12px 18px;
+    border: 1px solid rgba(38, 49, 64, 0.35);
+    border-radius: 8px;
+    background: transparent;
+    color: var(--text-mid);
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.35;
+    cursor: pointer;
+  }
+  .payment-choice__russian:hover,
+  .payment-choice__russian:focus-visible {
+    border-color: var(--navy);
+    background: rgba(38, 49, 64, 0.05);
+    color: var(--navy);
+  }
+  .modal-widget[hidden] { display: none; }
   .gc-widget-container { min-height: 420px; }
   @media (max-width: 600px) {
     .modal { padding: 30px 22px; border-radius: var(--radius); max-height: 92vh; }
@@ -3286,10 +3320,15 @@ body.eh-standalone-retreat {
     <button class="modal-close" type="button" onclick="closeModal('modalSingle')" aria-label="Закрыть">&times;</button>
     <div class="modal-header">
       <span class="label-tag">Участие в неделе</span>
-      <h3 id="modalSingleTitle">Вкус силы</h3>
+      <h3 id="modalSingleTitle">Выберите способ оплаты</h3>
       <p>Участие в неделе — 150 €</p>
     </div>
-    <div class="modal-widget gc-widget-container" id="gc-single-container"></div>
+    <div class="payment-choice" id="payment-choice-single">
+      <a class="btn btn--primary" href="https://buy.stripe.com/4gM00beU5b2Egeb2Yn9Zm02">Оплата картой</a>
+      <p class="payment-choice__merchant">Международную оплату картой принимает Resulta Consulting FZ-LLC, Ras Al Khaimah, UAE.</p>
+      <button class="payment-choice__russian" type="button" onclick="openRussianSinglePayment()">Оплата картой российского банка</button>
+    </div>
+    <div class="modal-widget gc-widget-container" id="gc-single-container" hidden aria-live="polite"></div>
   </div>
 </div>
 
@@ -3298,10 +3337,15 @@ body.eh-standalone-retreat {
     <button class="modal-close" type="button" onclick="closeModal('modalBundle')" aria-label="Закрыть">&times;</button>
     <div class="modal-header">
       <span class="label-tag">Можно пройти две недели вместе</span>
-      <h3 id="modalBundleTitle">Вкус лёгкости + Вкус силы</h3>
+      <h3 id="modalBundleTitle">Выберите способ оплаты</h3>
       <p>Две недели вместе — 230 €</p>
     </div>
-    <div class="modal-widget gc-widget-container" id="gc-bundle-container"></div>
+    <div class="payment-choice" id="payment-choice-bundle">
+      <a class="btn btn--primary" href="https://buy.stripe.com/6oU8wH3bn9YA5zx6az9Zm03">Оплата картой</a>
+      <p class="payment-choice__merchant">Международную оплату картой принимает Resulta Consulting FZ-LLC, Ras Al Khaimah, UAE.</p>
+      <button class="payment-choice__russian" type="button" onclick="openRussianBundlePayment()">Оплата картой российского банка</button>
+    </div>
+    <div class="modal-widget gc-widget-container" id="gc-bundle-container" hidden aria-live="polite"></div>
   </div>
 </div>
 
@@ -3369,14 +3413,42 @@ body.eh-standalone-retreat {
     if (!modal) return;
     modal.classList.remove('is-open');
     document.body.classList.remove('modal-open');
+    if (modalId === 'modalSingle') resetSinglePaymentChoice();
+    if (modalId === 'modalBundle') resetBundlePaymentChoice();
   }
 
   function openSingleModal() {
+    resetSinglePaymentChoice();
     openModal('modalSingle');
-    requestAnimationFrame(() => setTimeout(loadSingleWidget, 60));
   }
   function openBundleModal() {
+    resetBundlePaymentChoice();
     openModal('modalBundle');
+  }
+  function resetSinglePaymentChoice() {
+    const choice = document.getElementById('payment-choice-single');
+    const widget = document.getElementById('gc-single-container');
+    if (choice) choice.hidden = false;
+    if (widget) widget.hidden = true;
+  }
+  function resetBundlePaymentChoice() {
+    const choice = document.getElementById('payment-choice-bundle');
+    const widget = document.getElementById('gc-bundle-container');
+    if (choice) choice.hidden = false;
+    if (widget) widget.hidden = true;
+  }
+  function openRussianSinglePayment() {
+    const choice = document.getElementById('payment-choice-single');
+    const widget = document.getElementById('gc-single-container');
+    if (choice) choice.hidden = true;
+    if (widget) widget.hidden = false;
+    requestAnimationFrame(() => setTimeout(loadSingleWidget, 60));
+  }
+  function openRussianBundlePayment() {
+    const choice = document.getElementById('payment-choice-bundle');
+    const widget = document.getElementById('gc-bundle-container');
+    if (choice) choice.hidden = true;
+    if (widget) widget.hidden = false;
     requestAnimationFrame(() => setTimeout(loadBundleWidget, 60));
   }
 

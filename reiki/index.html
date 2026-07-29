@@ -546,8 +546,14 @@
       <div class="gc-payment-modal__panel" role="document">
         <button class="gc-payment-modal__close" type="button" aria-label="Закрыть оплату" data-gc-payment-close>&times;</button>
         <p class="gc-payment-modal__eyebrow">Оплата</p>
-        <h2 class="gc-payment-modal__title" id="reiki-1-payment-modal-title">Рейки I</h2>
-        <div class="gc-payment-widget" id="reiki-1-payment" aria-label="Оплата Рейки I">
+        <h2 class="gc-payment-modal__title" id="reiki-1-payment-modal-title">Выберите способ оплаты</h2>
+        <p class="gc-payment-modal__product">Рейки I</p>
+        <div class="gc-payment-choice">
+          <a class="gc-payment-choice__primary" href="https://buy.stripe.com/00wbIT13f8Uw7HF1Uj9Zm04">Оплата картой</a>
+          <p class="gc-payment-choice__merchant">Международную оплату картой принимает Resulta Consulting FZ-LLC, Ras Al Khaimah, UAE.</p>
+          <button class="gc-payment-choice__russian" type="button" data-gc-payment-russian>Оплата картой российского банка</button>
+        </div>
+        <div class="gc-payment-widget" id="reiki-1-payment" aria-label="Оплата Рейки I картой российского банка" hidden>
           <div class="gc-payment-widget__frame" data-gc-widget-script-id="c13cf130d41365713f3248e47a36902522d5749c" data-gc-widget-url="https://smarttraining.getcourse.ru/pl/lite/widget/script?id=1623511"></div>
         </div>
       </div>

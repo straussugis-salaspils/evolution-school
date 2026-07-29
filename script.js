@@ -695,21 +695,25 @@ if (levelsModal) {
   const products = {
     'off-switch-training': {
       title: 'Тренинг Off-Switch в записи',
+      stripeUrl: 'https://buy.stripe.com/6oUeV5bHT0o05zxcyX9Zm07',
       scriptId: '8c4baf5aa37859ad854bd548ca519f4e66eb9a7a',
       url: 'https://smarttraining.getcourse.ru/pl/lite/widget/script?id=1630846',
     },
     'quantum-single': {
       title: 'Одна Квантовая активация',
+      stripeUrl: 'https://buy.stripe.com/6oUaEP13f5Ik8LJ9mL9Zm08',
       scriptId: '23909eee5aae73ba498e9104141020281bf448bf',
       url: 'https://smarttraining.getcourse.ru/pl/lite/widget/script?id=1630435',
     },
     'quantum-100': {
       title: 'Квантовые активации на 100 дней',
+      stripeUrl: 'https://buy.stripe.com/8x2fZ9cLXfiU1jh9mL9Zm09',
       scriptId: '70440d18a05458ace468506e96a04935e679135b',
       url: 'https://smarttraining.getcourse.ru/pl/lite/widget/script?id=1630433',
     },
     'navigator-svetlana': {
       title: 'Сессия «Навигатор»',
+      stripeUrl: 'https://buy.stripe.com/4gM14ffY9daMfa7buT9Zm0a',
       scriptId: '9f4bf0c8c8c28f8c5d6b3bdf17fa7a5058aea8cd',
       url: 'https://smarttraining.getcourse.ru/pl/lite/widget/script?id=1630285',
     },
@@ -760,12 +764,18 @@ if (levelsModal) {
       <div class="gc-payment-modal__panel" role="document">
         <button class="gc-payment-modal__close" type="button" aria-label="Закрыть оплату" data-gc-payment-close>&times;</button>
         <p class="gc-payment-modal__eyebrow">Оплата</p>
-        <h2 class="gc-payment-modal__title" id="${modalId}-title"></h2>
-        <div class="gc-payment-widget" aria-label="Оплата">
+        <h2 class="gc-payment-modal__title" id="${modalId}-title">Выберите способ оплаты</h2>
+        <p class="gc-payment-modal__product"></p>
+        <div class="gc-payment-choice">
+          <a class="gc-payment-choice__primary" href="${product.stripeUrl}">Оплата картой</a>
+          <p class="gc-payment-choice__merchant">Международную оплату картой принимает Resulta Consulting FZ-LLC, Ras Al Khaimah, UAE.</p>
+          <button class="gc-payment-choice__russian" type="button" data-gc-payment-russian>Оплата картой российского банка</button>
+        </div>
+        <div class="gc-payment-widget" aria-label="Оплата картой российского банка" hidden>
           <div class="gc-payment-widget__frame"></div>
         </div>
       </div>`;
-    modal.querySelector('.gc-payment-modal__title').textContent = product.title;
+    modal.querySelector('.gc-payment-modal__product').textContent = product.title;
     document.body.appendChild(modal);
     return modal;
   };
@@ -788,10 +798,13 @@ if (levelsModal) {
     if (!modal) return;
     closeOpen();
     lastTrigger = trigger;
+    const choice = modal.querySelector('.gc-payment-choice');
+    const widget = modal.querySelector('.gc-payment-widget');
+    if (choice) choice.hidden = false;
+    if (widget) widget.hidden = true;
     modal.hidden = false;
     modal.setAttribute('aria-hidden', 'false');
     document.body.classList.add('gc-payment-modal-is-open');
-    requestAnimationFrame(() => loadWidget(modal, key));
     modal.querySelector('[data-gc-payment-close]')?.focus({ preventScroll: true });
   };
 
@@ -800,6 +813,18 @@ if (levelsModal) {
     const closeControl = event.target.closest('[data-gc-payment-close]');
     if (closeControl) {
       close(closeControl.closest('.gc-payment-modal'));
+      return;
+    }
+    const russianPayment = event.target.closest('[data-gc-payment-russian]');
+    if (russianPayment) {
+      const modal = russianPayment.closest('.gc-payment-modal');
+      const key = modal?.id.replace('gc-payment-', '') || '';
+      const choice = modal?.querySelector('.gc-payment-choice');
+      const widget = modal?.querySelector('.gc-payment-widget');
+      if (!modal || !products[key] || !choice || !widget) return;
+      choice.hidden = true;
+      widget.hidden = false;
+      requestAnimationFrame(() => loadWidget(modal, key));
       return;
     }
     const trigger = event.target.closest('[data-gc-product], [data-getcourse-product], [data-off-switch-checkout]');

@@ -2900,9 +2900,25 @@ body.reiki-method-page main > section.faq-section .faq-grid {
   }
 
   html[data-level] .eh-global-footer__nav a,
-  body[data-level] .eh-global-footer__nav a {
+body[data-level] .eh-global-footer__nav a {
     color: var(--eh-context-primary, #315a3d) !important;
     font-weight: 550 !important;
+  }
+
+  html[data-level] .gc-payment-choice__primary,
+  body[data-level] .gc-payment-choice__primary {
+    border-color: var(--level-deep) !important;
+    background: var(--level-deep) !important;
+    color: #FFFFFF !important;
+  }
+
+  html[data-level] .gc-payment-choice__primary:hover,
+  html[data-level] .gc-payment-choice__primary:focus-visible,
+  body[data-level] .gc-payment-choice__primary:hover,
+  body[data-level] .gc-payment-choice__primary:focus-visible {
+    border-color: var(--level-primary-hover, var(--level-deep)) !important;
+    background: var(--level-primary-hover, var(--level-deep)) !important;
+    color: #FFFFFF !important;
   }
 
   html[data-level] .eh-global-footer__bottom,

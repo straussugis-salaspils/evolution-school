@@ -2714,10 +2714,15 @@ body.eh-standalone-retreat {
     <button class="modal-close" type="button" onclick="closeModal('modalBundle')" aria-label="Закрыть">×</button>
     <div class="modal-header">
       <span class="label-tag">Можно пройти две недели вместе</span>
-      <h3 id="modalBundleTitle">Вкус лёгкости + Вкус силы</h3>
+      <h3 id="modalBundleTitle">Выберите способ оплаты</h3>
       <p class="modal-sub">Две недели вместе — 230 €</p>
     </div>
-    <div class="modal-widget gc-widget-container" id="gc-bundle-container"></div>
+    <div class="payment-choice" id="payment-choice-bundle">
+      <a class="btn btn--primary" href="https://buy.stripe.com/6oU8wH3bn9YA5zx6az9Zm03">Оплата картой</a>
+      <p class="payment-choice__merchant">Международную оплату картой принимает Resulta Consulting FZ-LLC, Ras Al Khaimah, UAE.</p>
+      <button class="payment-choice__russian" type="button" onclick="openRussianBundlePayment()">Оплата картой российского банка</button>
+    </div>
+    <div class="modal-widget gc-widget-container" id="gc-bundle-container" hidden aria-live="polite"></div>
   </div>
 </div>
 
@@ -3374,6 +3379,7 @@ body.eh-standalone-retreat {
     modal.classList.remove('open');
     document.body.style.overflow = '';
     if (modalId === 'modalSingle') resetSinglePaymentChoice();
+    if (modalId === 'modalBundle') resetBundlePaymentChoice();
   }
   function handleOverlayClick(e, modalId) {
     if (e.target === document.getElementById(modalId)) closeModal(modalId);
@@ -3402,7 +3408,20 @@ body.eh-standalone-retreat {
     requestAnimationFrame(() => setTimeout(loadFemaleWidget, 60));
   }
   function openBundleModal() {
+    resetBundlePaymentChoice();
     openModalById('modalBundle');
+  }
+  function resetBundlePaymentChoice() {
+    const choice = document.getElementById('payment-choice-bundle');
+    const widget = document.getElementById('gc-bundle-container');
+    if (choice) choice.hidden = false;
+    if (widget) widget.hidden = true;
+  }
+  function openRussianBundlePayment() {
+    const choice = document.getElementById('payment-choice-bundle');
+    const widget = document.getElementById('gc-bundle-container');
+    if (choice) choice.hidden = true;
+    if (widget) widget.hidden = false;
     requestAnimationFrame(() => setTimeout(loadBundleWidget, 60));
   }
 

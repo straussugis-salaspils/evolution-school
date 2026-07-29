@@ -55,10 +55,13 @@
 
   function openGetCoursePaymentModal(modal, trigger) {
     lastPaymentTrigger = trigger || null;
+    const choice = modal.querySelector(".gc-payment-choice");
+    const widget = modal.querySelector(".gc-payment-widget");
+    if (choice) choice.hidden = false;
+    if (widget) widget.hidden = true;
     modal.hidden = false;
     modal.setAttribute("aria-hidden", "false");
     document.body.classList.add("gc-payment-modal-is-open");
-    loadGetCourseWidget(modal);
     const closeButton = modal.querySelector("[data-gc-payment-close]");
     if (closeButton) closeButton.focus({ preventScroll: true });
   }
@@ -81,6 +84,17 @@
 
   document.addEventListener("click", (event) => {
     if (!(event.target instanceof Element)) return;
+    const russianPayment = event.target.closest("[data-gc-payment-russian]");
+    if (russianPayment) {
+      const modal = russianPayment.closest(".gc-payment-modal");
+      const choice = modal?.querySelector(".gc-payment-choice");
+      const widget = modal?.querySelector(".gc-payment-widget");
+      if (!modal || !choice || !widget) return;
+      choice.hidden = true;
+      widget.hidden = false;
+      requestAnimationFrame(() => loadGetCourseWidget(modal));
+      return;
+    }
     const closeControl = event.target.closest("[data-gc-payment-close]");
     if (!closeControl) return;
     const modal = closeControl.closest(".gc-payment-modal");
