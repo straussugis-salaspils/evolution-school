@@ -66060,6 +66060,35 @@ body.gc-payment-modal-is-open {
   color: #173f31;
 }
 
+/* Off-Switch payment pilot: a clearer hierarchy for the three payment lines.
+   Other product modals intentionally keep the shared defaults above. */
+.gc-payment-modal--off-switch-training .gc-payment-modal__title {
+  margin-bottom: 26px;
+}
+
+.gc-payment-modal--off-switch-training .gc-payment-modal__product {
+  margin: 0 0 28px;
+}
+
+.gc-payment-modal--off-switch-training .gc-payment-choice {
+  gap: 14px;
+}
+
+.gc-payment-modal--off-switch-training .gc-payment-choice__primary {
+  font-size: 18px;
+}
+
+.gc-payment-modal--off-switch-training .gc-payment-choice__merchant {
+  max-width: 54ch;
+  margin-inline: auto;
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.gc-payment-modal--off-switch-training .gc-payment-choice__russian {
+  font-size: 15px;
+}
+
 .gc-payment-choice[hidden],
 .gc-payment-widget[hidden] {
   display: none !important;
