@@ -752,7 +752,7 @@ if (levelsModal) {
     if (existing) return existing;
 
     const modal = document.createElement('div');
-    modal.className = 'gc-payment-modal';
+    modal.className = `gc-payment-modal gc-payment-modal--${key}`;
     modal.id = modalId;
     modal.hidden = true;
     modal.setAttribute('role', 'dialog');
