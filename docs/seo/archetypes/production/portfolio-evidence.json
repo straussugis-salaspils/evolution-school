@@ -69,21 +69,106 @@
       "draft_source": "drafts/02-persefona.md",
       "evidence_items": [
         {
-          "evidence_id": "R01-scene-svetlana-singing",
+          "evidence_id": "R01-scene-macrame-business",
+          "draft_locator": "opening before first H2",
+          "scene_summary": "A participant had not made macrame for nearly half a year and realised that the pleasure disappeared when she decided it had to become a large business.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Персефона. Итоги.vtt",
+          "locator": {
+            "kind": "timestamp",
+            "value": "00:09:43-00:10:35"
+          },
+          "source_type": "training_participant_case",
+          "speaker": "anonymous training participant; Svetlana Strauss",
+          "consent_state": "user_confirmed_except_margarita",
+          "allowed_claim": "Pleasure disappeared when the participant immediately converted macrame into a large business obligation; Svetlana answered: «Отстань от меня, дай мне сначала получить удовольствие».",
+          "forbidden_extension": "Do not identify the participant or claim that she returned to macrame, built a business, earned money, or achieved a later result.",
+          "verified_at": "2026-07-30"
+        },
+        {
+          "evidence_id": "R01-author-singing",
           "draft_locator": "## В 49 лет я начала петь",
           "scene_summary": "Svetlana began singing at about forty-nine, created the programme Five Seasons of a Woman, and performed it in different hotels.",
           "status": "verified",
           "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Знакомство с Персефоной.vtt",
           "locator": {
-            "kind": "line_range",
-            "value": "799-877"
+            "kind": "timestamp",
+            "value": "00:11:36-00:13:18"
           },
           "source_type": "author_first_person",
           "speaker": "Svetlana Strauss",
           "consent_state": "author_first_person",
           "allowed_claim": "The singing history may illustrate desire followed by real participation and action.",
           "forbidden_extension": "Do not invent preparation details, clients, audience reaction, commercial outcomes, or causal effects of an archetype.",
-          "verified_at": "2026-07-27"
+          "verified_at": "2026-07-30"
+        },
+        {
+          "evidence_id": "R01-author-first-concert",
+          "draft_locator": "## В 49 лет я начала петь",
+          "scene_summary": "Svetlana's first concert before an unfamiliar foreign audience was in India on her birthday; she was frightened, forgot many words, made mistakes, and still treated it as an important passage.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Персефона. Итоги.vtt",
+          "locator": {
+            "kind": "timestamp",
+            "value": "00:44:58-00:45:45"
+          },
+          "source_type": "author_first_person",
+          "speaker": "Svetlana Strauss",
+          "consent_state": "author_first_person",
+          "allowed_claim": "The imperfect first concert may illustrate a desired life beginning through participation rather than instant mastery.",
+          "forbidden_extension": "Do not invent the venue, programme reception, audience size, income, later success, or a guaranteed archetypal cause.",
+          "verified_at": "2026-07-30"
+        },
+        {
+          "evidence_id": "R01-author-five-minute-whine",
+          "draft_locator": "## Взрослая Персефона не носит серьёзное лицо",
+          "scene_summary": "Svetlana asked her husband to notice subtle manipulation; they used a direct five-minute agreement for whining and sympathy before she resumed responsibility.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Персефона. Итоги.vtt",
+          "locator": {
+            "kind": "timestamp",
+            "value": "00:30:43-00:31:34"
+          },
+          "source_type": "author_first_person",
+          "speaker": "Svetlana Strauss",
+          "consent_state": "author_first_person",
+          "allowed_claim": "The agreement may illustrate retaining softness while asking directly and taking back responsibility for one's own wish.",
+          "forbidden_extension": "Do not present the five-minute agreement as a universal relationship technique or claim a clinical effect.",
+          "verified_at": "2026-07-30"
+        },
+        {
+          "evidence_id": "R01-method-desire-strategy-action",
+          "draft_locator": "## Кто помогает желанию не пропасть",
+          "scene_summary": "Svetlana distinguishes Persephone's right to want life from Athena's strategy and Artemis's embodied action, and describes play as an important way to begin.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Знакомство с Персефоной.vtt",
+          "locator": {
+            "kind": "timestamp",
+            "value": "00:02:51-00:03:30; 00:13:22-00:16:01; 00:25:25-00:29:50"
+          },
+          "source_type": "author_method_explanation",
+          "speaker": "Svetlana Strauss",
+          "consent_state": "author_first_person",
+          "allowed_claim": "Use desire, strategy and action as distinct archetypical functions that may support one another.",
+          "forbidden_extension": "Do not diagnose a reader, claim that a body predicts the future, or present the model as a validated psychological or medical classification.",
+          "verified_at": "2026-07-30"
+        },
+        {
+          "evidence_id": "R01-ppt-system",
+          "draft_locator": "article-wide method claims",
+          "scene_summary": "The presentation frames Persephone through desire, joy, creativity, play, the right to choose one's life, blocks created by control and prohibitions on joy, and alliances with other archetypical functions.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Персфона.pptx",
+          "locator": {
+            "kind": "slide_numbers",
+            "value": "2; 4; 5; 6; 8; 10; 11"
+          },
+          "source_type": "author_presentation",
+          "speaker": "Svetlana Strauss",
+          "consent_state": "author_first_person",
+          "allowed_claim": "Use the presentation as the system source for Persephone's resource, blocks, maturity and alliances.",
+          "forbidden_extension": "Do not publish mystical, energetic, medical or guaranteed causal claims as objective facts.",
+          "verified_at": "2026-07-30"
         }
       ]
     },
