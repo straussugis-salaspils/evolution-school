@@ -286,39 +286,94 @@
       "draft_source": "drafts/04-artemida.md",
       "evidence_items": [
         {
-          "evidence_id": "R03-scene-walk-by-sea",
-          "draft_locator": "## «Иди погуляй по морю, подыши»",
-          "scene_summary": "Svetlana describes a sea or forest walk that once required self-pushing and later became a stable routine.",
+          "evidence_id": "R03-case-sixteen-hour-workday",
+          "draft_locator": "opening",
+          "scene_summary": "A participant recalls working sixteen-hour days, organizing everything at work, and coming home completely spent; she later contrasts this with another kind of strength.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Артемида. Общие итоги курса.vtt",
+          "locator": {
+            "kind": "time_range",
+            "value": "00:44:21-00:47:38"
+          },
+          "source_type": "participant_case",
+          "speaker": "anonymous training participant",
+          "consent_state": "user_confirmed_except_margarita",
+          "allowed_claim": "The participant may illustrate a learned equation between strength and relentless work.",
+          "forbidden_extension": "Do not identify the participant, include medical details, claim recovery, or promise the same outcome.",
+          "verified_at": "2026-07-30",
+          "trace_basis": "briefs/04-artemida-brief.md"
+        },
+        {
+          "evidence_id": "R03-metaphor-body-as-soldier",
+          "draft_locator": "## Между рывком и замиранием",
+          "scene_summary": "Svetlana describes an overdriven Artemis saying she will finish even if she dies and treating the body like a soldier who can sleep later.",
           "status": "verified",
           "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Знакомство с Артемидой.vtt",
           "locator": {
-            "kind": "line_range",
-            "value": "720-777"
+            "kind": "time_range",
+            "value": "00:12:31-00:12:55"
+          },
+          "source_type": "author_method",
+          "speaker": "Svetlana Strauss",
+          "consent_state": "author_first_person",
+          "allowed_claim": "The metaphor may show the difference between action and self-exploitation.",
+          "forbidden_extension": "Do not turn the metaphor into a medical or diagnostic claim.",
+          "verified_at": "2026-07-30",
+          "trace_basis": "briefs/04-artemida-brief.md"
+        },
+        {
+          "evidence_id": "R03-scene-team-slows-svetlana",
+          "draft_locator": "## Точный шаг сильнее большого рывка",
+          "scene_summary": "Svetlana says her Artemis sometimes runs ahead until the team reminds her that an earlier task is not yet complete.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Знакомство с Артемидой.vtt",
+          "locator": {
+            "kind": "time_range",
+            "value": "00:44:33-00:44:55"
+          },
+          "source_type": "author_first_person",
+          "speaker": "Svetlana Strauss and her team",
+          "consent_state": "author_first_person",
+          "allowed_claim": "The scene may show that speed and precise action are not identical.",
+          "forbidden_extension": "Do not claim that Svetlana's first impulse is infallible or guarantees the right timing.",
+          "verified_at": "2026-07-30",
+          "trace_basis": "briefs/04-artemida-brief.md"
+        },
+        {
+          "evidence_id": "R03-scene-walk-by-sea",
+          "draft_locator": "## Прогулка, на которую больше не нужно себя пинать",
+          "scene_summary": "Svetlana describes a sea or forest walk that once required self-pushing and later became part of her routine.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Знакомство с Артемидой.vtt",
+          "locator": {
+            "kind": "time_range",
+            "value": "00:11:36-00:12:00"
           },
           "source_type": "author_first_person",
           "speaker": "Svetlana Strauss",
           "consent_state": "author_first_person",
-          "allowed_claim": "A repeated ordinary action can become a sustainable routine without being framed as heroism.",
-          "forbidden_extension": "Do not claim medical, metabolic, longevity, weight-loss, or infallible body-navigation effects.",
-          "verified_at": "2026-07-27"
+          "allowed_claim": "A repeated ordinary action may become a sustainable routine without being framed as heroism.",
+          "forbidden_extension": "Do not add mileage or claim health, weight, sleep, or universal routine effects.",
+          "verified_at": "2026-07-30",
+          "trace_basis": "briefs/04-artemida-brief.md"
         },
         {
           "evidence_id": "R03-scene-delayed-boundary-conversation",
-          "draft_locator": "## Когда возвращается собственное слово",
+          "draft_locator": "## Граница — это место, где появляется ваше слово",
           "scene_summary": "A participant who habitually adapted to her husband, children, and circumstances names boundaries in a long-delayed conversation.",
           "status": "verified",
           "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Артемида. Общие итоги курса.vtt",
           "locator": {
-            "kind": "line_range",
-            "value": "125-489"
+            "kind": "time_range",
+            "value": "00:01:40-00:06:52"
           },
           "source_type": "participant_case",
           "speaker": "anonymous training participant",
           "consent_state": "user_confirmed_except_margarita",
           "allowed_claim": "The participant took the observable action of naming her position and boundaries.",
           "forbidden_extension": "Do not claim that her husband changed, that the relationship improved, or that an archetype caused the action.",
-          "verified_at": "2026-07-27",
-          "trace_basis": "briefs/04-artemida-brief.md; audits/00-outcome-transcript-source-refresh.md"
+          "verified_at": "2026-07-30",
+          "trace_basis": "briefs/04-artemida-brief.md"
         }
       ]
     },
