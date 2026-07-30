@@ -621,39 +621,107 @@
       "draft_source": "drafts/15-gekata.md",
       "evidence_items": [
         {
-          "evidence_id": "R08-scene-editorial-unfinished-form",
-          "draft_locator": "opening scene before ## Что в этой сцене связано с Гекатой",
-          "scene_summary": "A generic idea remains in notes and versions because no sendable form, date, decision, or finished file exists.",
+          "evidence_id": "R08-scene-eight-people",
+          "draft_locator": "opening scene before ## Не страшная женщина. Точка перехода",
+          "scene_summary": "Natalia names eight participants as the condition for holding a dance format; four are already present and another woman is helping gather the group.",
           "status": "verified",
-          "source_path": "docs/seo/archetypes/production/drafts/15-gekata.md",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Геката. Итоги.vtt",
           "locator": {
-            "kind": "section",
-            "value": "opening scene"
+            "kind": "time_range",
+            "value": "00:41:45-00:43:29"
           },
-          "source_type": "illustrative_scene",
-          "speaker": "editorial narrator",
-          "consent_state": "editorial_illustration",
-          "allowed_claim": "Use as a hypothetical illustration of the gap between an understood intention and a concrete form.",
-          "forbidden_extension": "Do not present it as a client outcome or as evidence of magical materialisation.",
-          "verified_at": "2026-07-27",
-          "trace_basis": "briefs/15-gekata-brief.md; audits/15-gekata-critic-audit.md"
+          "source_type": "participant_case",
+          "speaker": "Natalia and Svetlana Strauss",
+          "consent_state": "user_confirmed_except_margarita",
+          "allowed_claim": "Use the observable episode to show how an idea acquires a number, a condition, and a form other people can join.",
+          "forbidden_extension": "Do not claim the workshop happened, produced income, or was filled automatically by the archetype.",
+          "verified_at": "2026-07-30",
+          "trace_basis": "briefs/15-gekata-brief.md"
         },
         {
-          "evidence_id": "R08-method-boundary-completion-form",
-          "draft_locator": "## Форма требует точки завершения",
-          "scene_summary": "Svetlana's method links the role to stopping, finishing, crossing a boundary, and giving a project a concrete name, format, package, or other visible form.",
+          "evidence_id": "R08-case-good-past",
+          "draft_locator": "## Что вы до сих пор несёте через закрытую дверь",
+          "scene_summary": "A woman compares partners with a father who adored her; Svetlana advises thanking him, taking the experience, closing the story, and turning toward the present.",
           "status": "verified",
           "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Знакомство с Гекатой.vtt",
           "locator": {
-            "kind": "line_ranges",
-            "value": "1567-1574; 1579-1601; 2781-2905"
+            "kind": "time_range",
+            "value": "00:35:34-00:36:49"
+          },
+          "source_type": "client_case",
+          "speaker": "Svetlana Strauss",
+          "consent_state": "user_confirmed_except_margarita",
+          "allowed_claim": "Use the anonymised episode to show that completion can preserve love and experience without continuing to live in the old story.",
+          "forbidden_extension": "Do not identify the client or claim that the advice caused a particular relationship result.",
+          "verified_at": "2026-07-30"
+        },
+        {
+          "evidence_id": "R08-author-fire",
+          "draft_locator": "## Граница без огненного шоу",
+          "scene_summary": "Svetlana describes a past fire and says that ten years later she saw it as an image of what had fallen away; her practical conclusion is not to wait for such fireworks and to release things willingly.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Знакомство с Гекатой.vtt",
+          "locator": {
+            "kind": "time_ranges",
+            "value": "00:16:45-00:17:43;00:53:12-00:53:27"
+          },
+          "source_type": "author_case",
+          "speaker": "Svetlana Strauss",
+          "consent_state": "method_or_public_source",
+          "allowed_claim": "Use the fire as Svetlana's retrospective image and preserve her humorous warning not to wait for dramatic fireworks.",
+          "forbidden_extension": "Do not state that Hecate caused the fire or that external destruction guarantees growth, scale, or success.",
+          "verified_at": "2026-07-30"
+        },
+        {
+          "evidence_id": "R08-method-protection-shadow-blow",
+          "draft_locator": "## Где защита превращается в ответный удар",
+          "scene_summary": "Svetlana distinguishes protection from a blow made out of pain, envy, or an old reaction and names attack instead of protection as a shadow expression.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Знакомство с Гекатой.vtt",
+          "locator": {
+            "kind": "time_range",
+            "value": "00:24:35-00:28:08"
           },
           "source_type": "method_definition",
           "speaker": "Svetlana Strauss",
           "consent_state": "method_or_public_source",
-          "allowed_claim": "Use boundary, completion, and concrete form as symbolic working functions.",
-          "forbidden_extension": "Do not claim prediction, magical protection, supernatural materialisation, medical effects, or publish private participant stories.",
-          "verified_at": "2026-07-27"
+          "allowed_claim": "Distinguish a boundary that stops an action from retaliation that tries to return pain.",
+          "forbidden_extension": "Do not romanticise revenge, intimidation, or violence as strength.",
+          "verified_at": "2026-07-30"
+        },
+        {
+          "evidence_id": "R08-method-form-completion",
+          "draft_locator": "## Форма — место, где заканчивается мистика",
+          "scene_summary": "The method links Hecate with recognising resources, naming, formatting, packaging a course or product, completing a process, and moving from intention to a concrete result.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Знакомство с Гекатой.vtt",
+          "locator": {
+            "kind": "time_ranges",
+            "value": "00:21:15-00:23:17;00:41:18-00:41:54"
+          },
+          "source_type": "method_definition",
+          "speaker": "Svetlana Strauss",
+          "consent_state": "method_or_public_source",
+          "allowed_claim": "Use a name, format, number, date, file, or condition as observable examples of form.",
+          "forbidden_extension": "Do not promise supernatural materialisation, guaranteed sales, money, or success.",
+          "verified_at": "2026-07-30"
+        },
+        {
+          "evidence_id": "R08-ppt-boundary-system",
+          "draft_locator": "definition, archetype links, practical question and closing thesis",
+          "scene_summary": "The deck presents Hecate as the boundary between possibility and form, distinguishes protection from a shadow blow, links the role with Athena and Persephone, and asks what must be protected so it can be born in matter.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Геката.pptx",
+          "locator": {
+            "kind": "slide_numbers",
+            "value": "1;2;5;6;7;9;11;13;14;15"
+          },
+          "source_type": "author_presentation",
+          "speaker": "Svetlana Strauss",
+          "consent_state": "method_or_public_source",
+          "allowed_claim": "Use the symbolic model of boundary, completion, form, and cooperation between functions.",
+          "forbidden_extension": "Do not publish supernatural protection, prediction, medical, anti-ageing, or afterlife claims as fact.",
+          "verified_at": "2026-07-30"
         }
       ]
     },
