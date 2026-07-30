@@ -6,6 +6,8 @@
 Route ID: `R05`
 Canonical: `/arhetipy/gera/`
 Внешний редактор: Claude Opus 4.8 High, проект «Света»
+Чат аудита:
+`https://claude.ai/chat/15630a16-dfa3-4f9c-9df4-4ae609233564`
 
 ## Итог
 

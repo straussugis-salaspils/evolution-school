@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "updated_at": "2026-07-27",
+  "updated_at": "2026-07-30",
   "default_author_id": "svetlana-strauss",
   "author_entity": {
     "author_id": "svetlana-strauss",
@@ -234,9 +234,9 @@
       "modified_date": "2026-07-30",
       "index_state": "index",
       "publication_status": "draft",
-      "page_safety_class": "sensitive",
-      "next_intent": "personal_map",
-      "destination": "/arhetipy.html"
+      "page_safety_class": "standard",
+      "next_intent": "mentoring",
+      "destination": "/mentoring/"
     },
     {
       "route_id": "R05",
