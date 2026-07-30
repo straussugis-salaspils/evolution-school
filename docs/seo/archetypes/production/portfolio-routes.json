@@ -304,12 +304,12 @@
       "source": "drafts/11-chto-takoe-arhetip.md",
       "canonical": "/arhetipy/chto-eto/",
       "seo_title": "Что такое архетип простыми словами: значение и примеры | Evolution House",
-      "meta_description": "Архетип простыми словами: чем он отличается от роли и типа личности, как Evolution House рассчитывает три сутевых архетипа и чего этот метод не определяет.",
+      "meta_description": "Что такое архетип простыми словами: живые примеры, отличие функции от ярлыка и способ увидеть повторяющийся сценарий без попытки объяснить себя одной богиней.",
       "index_state": "index",
       "publication_status": "draft",
       "page_safety_class": "normal",
-      "next_intent": "personal_map",
-      "destination": "/arhetipy.html"
+      "next_intent": "keep_reading",
+      "destination": "/arhetipy/resurs-i-ten/"
     },
     {
       "route_id": "L02",
@@ -403,12 +403,12 @@
       "source": "drafts/19-resurs-i-ten.md",
       "canonical": "/arhetipy/resurs-i-ten/",
       "seo_title": "Ресурс и тень архетипа: что это значит | Evolution House",
-      "meta_description": "Почему один архетип может помогать или перегружать: как отличить ресурс от автоматической «тени», прочитать результат теста и выбрать один следующий шаг без ярлыков.",
+      "meta_description": "Ресурс и тень архетипа простыми словами: как одна полезная сила превращается в перегрузку, где проходит момент перехода и как вернуть себе выбор.",
       "index_state": "index",
       "publication_status": "draft",
       "page_safety_class": "normal",
-      "next_intent": "personal_map",
-      "destination": "/arhetipy.html"
+      "next_intent": "keep_reading",
+      "destination": "/arhetipy/"
     },
     {
       "route_id": "S04",
