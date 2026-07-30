@@ -52,7 +52,7 @@ const hubTeasers = {
   R01: "Персефона помогает услышать желание, повзрослеть в выборе и превратить внутреннее «хочу» в собственный шаг.",
   R02: "Афродита возвращает чувствительность к красоте, телу и удовольствию — и помогает снова почувствовать вкус своей жизни.",
   R03: "Артемида соединяет направление, границы и действие: как двигаться к цели, сохраняя контакт с собой и другими.",
-  R04: "Афина видит структуру и собирает стратегию. Материал о ясных решениях, последовательности и живом выборе внутри плана.",
+  R04: "Афина видит направление и возвращает каждому его работу. Живая статья о стратегии, которая помогает двигаться, а не держать всё под контролем.",
   R05: "Гера раскрывает зрелый союз: общие решения, договорённости, верность своему выбору и равное место двух людей.",
   R06: "Гестия создаёт внутренний центр — тихое пространство, из которого легче слышать себя и возвращаться к главному.",
   R07: "Деметра показывает заботу, которая питает самостоятельность: поддержать, передать опору и сохранить место для собственной жизни.",
@@ -476,7 +476,7 @@ function schemaFor(article, draft) {
         headline: draft.h1,
         description: article.meta_description,
         datePublished: publishedDate,
-        dateModified: publishedDate,
+        dateModified: article.modified_date || publishedDate,
         inLanguage: "ru",
         mainEntityOfPage: canonical,
         image: `${baseUrl}/assets/archetype-articles/${article.route_id.toLowerCase()}/og-1200.jpg`,
@@ -591,7 +591,7 @@ function articleHtml(article) {
   <link rel="icon" type="image/png" href="/assets/evolution-house-logo-approved.png">
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="/article-library.css?v=20260727-reading-nav-2">
-  <link rel="stylesheet" href="/assets/archetype-articles/inserts/archetype-inserts.css?v=20260727-visual-fix-2">
+  <link rel="stylesheet" href="/assets/archetype-articles/inserts/archetype-inserts.css?v=20260730-athena-v2">
   <link rel="stylesheet" href="/cookie-consent.css">
   <script src="/analytics.js" defer></script>
   <script type="application/ld+json">${JSON.stringify(schemaFor(article, draft), null, 2)}</script>
@@ -631,7 +631,7 @@ function articleHtml(article) {
           <div>
             <p class="article-author__label">Автор статьи</p>
             <h2>${author}</h2>
-            <p>Основательница Evolution House и автор прикладной системы архетипов. Использует архетипический язык как карту для наблюдения и выбора, а не как диагноз или обещание судьбы.</p>
+            <p>Основательница Evolution House и автор прикладной системы архетипов. Соединяет архетипический язык с наблюдением за жизнью, телом, выбором и реальными изменениями.</p>
             <a href="${authorUrl}">Об авторе и школе →</a>
           </div>
         </aside>
