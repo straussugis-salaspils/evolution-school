@@ -337,13 +337,14 @@
       "route_id": "R07",
       "source": "drafts/14-demetra.md",
       "canonical": "/arhetipy/demetra/",
-      "seo_title": "Архетип Деметры: забота без самоутраты | Evolution House",
-      "meta_description": "Что означает архетип Деметры в женщине: забота, которая поддерживает, но не превращается в контроль, спасательство и отказ от себя. Практика и границы натального расчёта.",
+      "seo_title": "Архетип Деметры: любовь, которая помогает расти | Evolution House",
+      "meta_description": "Что означает архетип Деметры в женщине: как забота создаёт тепло и опору, почему помощь превращается в контроль и как любить, не живя вместо другого.",
+      "modified_date": "2026-07-30",
       "index_state": "index",
       "publication_status": "draft",
-      "page_safety_class": "critical_route",
-      "next_intent": "personal_map",
-      "destination": "/arhetipy.html"
+      "page_safety_class": "standard",
+      "next_intent": "mentoring",
+      "destination": "/mentoring/"
     },
     {
       "route_id": "R08",

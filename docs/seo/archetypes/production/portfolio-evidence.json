@@ -510,39 +510,109 @@
       "draft_source": "drafts/14-demetra.md",
       "evidence_items": [
         {
-          "evidence_id": "R07-scene-editorial-rescue-chain",
-          "draft_locator": "opening scene before ## Что в этой сцене связано с Деметрой",
-          "scene_summary": "A generic chain moves from offering a solution to reminding, calling, arranging, and completing another person's task.",
+          "evidence_id": "R07-scene-teaching-without-pressure",
+          "draft_locator": "opening scene; ## Деметра вообще не только про детей",
+          "scene_summary": "A participant teaches without pressure; the student says she usually closes when someone tries to teach her, but this time they spend ten hours with smiles and the work is evaluated at nine.",
           "status": "verified",
-          "source_path": "docs/seo/archetypes/production/drafts/14-demetra.md",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Деметра. Итоги.vtt",
           "locator": {
-            "kind": "section",
-            "value": "opening scene"
+            "kind": "time_range",
+            "value": "00:39:11-00:43:50"
           },
-          "source_type": "illustrative_scene",
-          "speaker": "editorial narrator",
-          "consent_state": "editorial_illustration",
-          "allowed_claim": "Use as a recognisable hypothetical illustration of care becoming substitution.",
-          "forbidden_extension": "Do not present it as a participant or client history or as proof that the reader has a specific archetype.",
-          "verified_at": "2026-07-27",
-          "trace_basis": "briefs/14-demetra-brief.md; audits/14-demetra-critic-audit.md"
+          "source_type": "participant_case",
+          "speaker": "training participant Inta and her student",
+          "consent_state": "user_confirmed_except_margarita",
+          "allowed_claim": "Use the teaching scene to show support that leaves the learner her own work and reduces fear of mistakes.",
+          "forbidden_extension": "Do not promise the same score, diagnose the student, or claim that Demeter directly caused the result.",
+          "verified_at": "2026-07-30",
+          "trace_basis": "briefs/14-demetra-brief.md"
+        },
+        {
+          "evidence_id": "R07-scene-exam-week-mess",
+          "draft_locator": "## Не сделать за. Дать вырасти",
+          "scene_summary": "During her daughter's exam period, a participant leaves the room mess for the daughter to handle later instead of starting the usual conflict; the necessary tasks are eventually completed.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Деметра. Итоги.vtt",
+          "locator": {
+            "kind": "time_range",
+            "value": "00:35:22-00:38:39"
+          },
+          "source_type": "participant_case",
+          "speaker": "training participant Inta",
+          "consent_state": "user_confirmed_except_margarita",
+          "allowed_claim": "Use the single household scene to contrast automatic pressure with leaving a child a real responsibility.",
+          "forbidden_extension": "Do not generalise about the family, prescribe parenting, or claim that every task was solved by the archetype.",
+          "verified_at": "2026-07-30",
+          "trace_basis": "briefs/14-demetra-brief.md"
+        },
+        {
+          "evidence_id": "R07-scene-woman-inside-mother-role",
+          "draft_locator": "## Любовь не должна оставлять женщину пустой",
+          "scene_summary": "A participant says she usually serves everyone as a mother; during the week her family gives her time for herself, and she notices a softer form of request from her husband.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Деметра. Итоги.vtt",
+          "locator": {
+            "kind": "time_range",
+            "value": "00:07:46-00:10:00"
+          },
+          "source_type": "participant_case",
+          "speaker": "training participant Natalia",
+          "consent_state": "user_confirmed_except_margarita",
+          "allowed_claim": "Show the participant's own contrast between serving everyone as a mother and retaining time for herself as a woman.",
+          "forbidden_extension": "Do not claim the training caused a permanent relationship change or infer the husband's motives.",
+          "verified_at": "2026-07-30",
+          "trace_basis": "briefs/14-demetra-brief.md"
         },
         {
           "evidence_id": "R07-method-care-without-substitution",
-          "draft_locator": "## Где забота незаметно становится контролем",
-          "scene_summary": "The author corpus distinguishes care from pressure, help from rescuing, giving from sacrifice, and support from control.",
+          "draft_locator": "## Очень вкусный контроль; ## Спросите: что бы сделала любовь?",
+          "scene_summary": "The author distinguishes care from control, help from rescuing, giving from sacrifice, and support from pressure, then proposes asking what love would do before intervening.",
           "status": "verified",
           "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Знакомство с Деметрой.vtt",
           "locator": {
-            "kind": "line_ranges",
-            "value": "565-721; 1481-1521"
+            "kind": "time_ranges",
+            "value": "00:05:44-00:14:06; 00:22:06-00:24:04"
           },
           "source_type": "method_definition",
           "speaker": "Svetlana Strauss",
           "consent_state": "method_or_public_source",
-          "allowed_claim": "Describe care as support that leaves another person a real step and does not require self-erasure.",
-          "forbidden_extension": "Do not publish a participant's private quotation, promise family change, diagnose rescuing, or add reproductive, medical, or spiritual claims.",
-          "verified_at": "2026-07-27"
+          "allowed_claim": "Describe mature care as support that leaves another person a real step and does not require self-erasure.",
+          "forbidden_extension": "Do not diagnose the reader, promise family change, or add reproductive, medical, energetic, or spiritual effects.",
+          "verified_at": "2026-07-30"
+        },
+        {
+          "evidence_id": "R07-method-life-can-grow",
+          "draft_locator": "definition in opening; ## Не сделать за. Дать вырасти; final thesis",
+          "scene_summary": "The presentation defines Demeter as love through which life comes into the world and contrasts feeding that suffocates with love that lets life grow.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Деметра.pptx",
+          "locator": {
+            "kind": "slide_numbers",
+            "value": "1; 3; 4; 6; 7; 12; 16"
+          },
+          "source_type": "method_definition",
+          "speaker": "Svetlana Strauss",
+          "consent_state": "method_or_public_source",
+          "allowed_claim": "Use the symbolic method language to frame Demeter as creating conditions in which life can grow.",
+          "forbidden_extension": "Do not turn the metaphor into a universal causal law, health claim, or guarantee of fertility, money, or project growth.",
+          "verified_at": "2026-07-30"
+        },
+        {
+          "evidence_id": "R07-author-humor-and-rest",
+          "draft_locator": "## Когда все вдруг становятся лапочками",
+          "scene_summary": "Svetlana contrasts impatience with the feeling that everyone is lovable and recounts her husband falling asleep in the next room during the Demeter meeting.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Деметра. Итоги.vtt",
+          "locator": {
+            "kind": "time_ranges",
+            "value": "00:24:33-00:25:29; 00:48:51-00:49:39"
+          },
+          "source_type": "author_first_person",
+          "speaker": "Svetlana Strauss",
+          "consent_state": "method_or_public_source",
+          "allowed_claim": "Use the author's own humorous observations to convey pace, warmth, and non-demanding presence.",
+          "forbidden_extension": "Do not promise that Demeter will relax a partner or make other people compliant.",
+          "verified_at": "2026-07-30"
         }
       ]
     },
