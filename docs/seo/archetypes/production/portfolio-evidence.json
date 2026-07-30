@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-27",
+  "generated_at": "2026-07-30",
   "scope": {
     "corpus": "Evolution House archetypes SEO production drafts",
     "route_count": 26,
@@ -52,15 +52,51 @@
           "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Персефона. Итоги.vtt",
           "locator": {
             "kind": "line_range",
-            "value": "541-761"
+            "value": "697-761"
           },
           "source_type": "participant_case",
           "speaker": "anonymous training participant; Svetlana Strauss",
           "consent_state": "user_confirmed_except_margarita",
           "allowed_claim": "Pleasure can be displaced when a desired activity is immediately converted into a large obligation; Svetlana suggested first restoring its right to remain pleasurable.",
           "forbidden_extension": "Do not claim that the participant returned to macrame, built a business, or achieved a later result; the source does not report the continuation.",
-          "verified_at": "2026-07-27",
+          "verified_at": "2026-07-30",
           "trace_basis": "briefs/01-zhizn-cherez-nado-brief.md; audits/00-outcome-transcript-source-refresh.md"
+        },
+        {
+          "evidence_id": "L01-author-credit-and-wheel",
+          "draft_locator": "## «Я хочу закрыть кредит»",
+          "scene_summary": "Svetlana asks what a person wants, hears «Я хочу закрыть кредит», and explains that a person first needs free energy and a pause from the constant wheel.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Perehodi arhetipi\\Biznes Koucing Anna.md",
+          "locator": {
+            "kind": "section_heading",
+            "value": "11. Как выйти из беличьего колеса и замедлиться"
+          },
+          "source_type": "author_interview",
+          "speaker": "Svetlana Strauss",
+          "consent_state": "author_first_person",
+          "allowed_claim": "The answer about closing a loan may illustrate a task replacing a personal wish; Svetlana connects hearing desire with free energy and stopping the constant rush.",
+          "forbidden_extension": "Do not devalue financial obligations or claim that a pause guarantees a clear life decision.",
+          "verified_at": "2026-07-30",
+          "trace_basis": "briefs/01-zhizn-cherez-nado-brief.md"
+        },
+        {
+          "evidence_id": "L01-method-persephone-nose",
+          "draft_locator": "## Кто внутри нас вообще умеет хотеть",
+          "scene_summary": "Svetlana describes a newly appearing Persephone as having shown only her nose, while the participant had already moved, danced and stamped her hands and feet.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Персефона. Итоги.vtt",
+          "locator": {
+            "kind": "line_range",
+            "value": "761-789"
+          },
+          "source_type": "author_method_explanation",
+          "speaker": "Svetlana Strauss",
+          "consent_state": "user_confirmed_except_margarita",
+          "allowed_claim": "Use the nose image to show that a wish may first appear in a small, playful form rather than as a finished plan.",
+          "forbidden_extension": "Do not present the image as a universal developmental sequence or infer the participant's later outcome.",
+          "verified_at": "2026-07-30",
+          "trace_basis": "briefs/01-zhizn-cherez-nado-brief.md"
         }
       ]
     },
@@ -69,21 +105,89 @@
       "draft_source": "drafts/02-persefona.md",
       "evidence_items": [
         {
-          "evidence_id": "R01-scene-svetlana-singing",
-          "draft_locator": "## В 49 лет я начала петь",
+          "evidence_id": "R01-author-singing",
+          "draft_locator": "opening before first H2",
           "scene_summary": "Svetlana began singing at about forty-nine, created the programme Five Seasons of a Woman, and performed it in different hotels.",
           "status": "verified",
           "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Знакомство с Персефоной.vtt",
           "locator": {
-            "kind": "line_range",
-            "value": "799-877"
+            "kind": "timestamp",
+            "value": "00:11:36-00:13:18"
           },
           "source_type": "author_first_person",
           "speaker": "Svetlana Strauss",
           "consent_state": "author_first_person",
           "allowed_claim": "The singing history may illustrate desire followed by real participation and action.",
           "forbidden_extension": "Do not invent preparation details, clients, audience reaction, commercial outcomes, or causal effects of an archetype.",
-          "verified_at": "2026-07-27"
+          "verified_at": "2026-07-30"
+        },
+        {
+          "evidence_id": "R01-author-first-concert",
+          "draft_locator": "opening before first H2",
+          "scene_summary": "Svetlana's first concert before an unfamiliar foreign audience was in India on her birthday; she was frightened, forgot many words, made mistakes, and still treated it as an important passage.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Персефона. Итоги.vtt",
+          "locator": {
+            "kind": "timestamp",
+            "value": "00:44:58-00:45:45"
+          },
+          "source_type": "author_first_person",
+          "speaker": "Svetlana Strauss",
+          "consent_state": "author_first_person",
+          "allowed_claim": "The imperfect first concert may illustrate a desired life beginning through participation rather than instant mastery.",
+          "forbidden_extension": "Do not invent the venue, programme reception, audience size, income, later success, or a guaranteed archetypal cause.",
+          "verified_at": "2026-07-30"
+        },
+        {
+          "evidence_id": "R01-author-five-minute-whine",
+          "draft_locator": "## «Опять твоя Персефона манипулирует»",
+          "scene_summary": "Svetlana asked her husband to notice subtle manipulation; they used a direct five-minute agreement for whining and sympathy before she resumed responsibility.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Персефона. Итоги.vtt",
+          "locator": {
+            "kind": "timestamp",
+            "value": "00:30:43-00:31:34"
+          },
+          "source_type": "author_first_person",
+          "speaker": "Svetlana Strauss",
+          "consent_state": "author_first_person",
+          "allowed_claim": "The agreement may illustrate retaining softness while asking directly and taking back responsibility for one's own wish.",
+          "forbidden_extension": "Do not present the five-minute agreement as a universal relationship technique or claim a clinical effect.",
+          "verified_at": "2026-07-30"
+        },
+        {
+          "evidence_id": "R01-method-desire-strategy-action",
+          "draft_locator": "## Персефоне нужна хорошая взрослая компания",
+          "scene_summary": "Svetlana distinguishes Persephone's right to want life from Athena's strategy and Artemis's embodied action, and describes play as an important way to begin.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Знакомство с Персефоной.vtt",
+          "locator": {
+            "kind": "timestamp",
+            "value": "00:02:51-00:03:30; 00:13:22-00:16:01; 00:25:25-00:29:50"
+          },
+          "source_type": "author_method_explanation",
+          "speaker": "Svetlana Strauss",
+          "consent_state": "author_first_person",
+          "allowed_claim": "Use desire, strategy and action as distinct archetypical functions that may support one another.",
+          "forbidden_extension": "Do not diagnose a reader, claim that a body predicts the future, or present the model as a validated psychological or medical classification.",
+          "verified_at": "2026-07-30"
+        },
+        {
+          "evidence_id": "R01-ppt-system",
+          "draft_locator": "article-wide method claims",
+          "scene_summary": "The presentation frames Persephone through desire, joy, creativity, play, the right to choose one's life, blocks created by control and prohibitions on joy, and alliances with other archetypical functions.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Персфона.pptx",
+          "locator": {
+            "kind": "slide_numbers",
+            "value": "2; 4; 5; 6; 8; 10; 11"
+          },
+          "source_type": "author_presentation",
+          "speaker": "Svetlana Strauss",
+          "consent_state": "author_first_person",
+          "allowed_claim": "Use the presentation as the system source for Persephone's resource, blocks, maturity and alliances.",
+          "forbidden_extension": "Do not publish mystical, energetic, medical or guaranteed causal claims as objective facts.",
+          "verified_at": "2026-07-30"
         }
       ]
     },
@@ -93,20 +197,20 @@
       "evidence_items": [
         {
           "evidence_id": "R02-scene-sunlight-movement",
-          "draft_locator": "## «Жалюзи — это тюрьма»",
+          "draft_locator": "opening before first H2",
           "scene_summary": "Svetlana describes morning sun, calls blinds a prison, and compares unwatched stretching and bathing in sunlight to a cat.",
           "status": "verified",
           "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Знакомство с Афродитой.vtt",
           "locator": {
-            "kind": "line_range",
-            "value": "2871-2945"
+            "kind": "timestamp",
+            "value": "00:41:28-00:43:30"
           },
           "source_type": "author_first_person",
           "speaker": "Svetlana Strauss",
           "consent_state": "author_first_person",
           "allowed_claim": "The scene may illustrate sensory presence and movement without an audience.",
           "forbidden_extension": "Do not add an unverified to-do list, therapeutic result, body transformation, sexuality claim, or financial effect.",
-          "verified_at": "2026-07-27"
+          "verified_at": "2026-07-30"
         },
         {
           "evidence_id": "R02-scene-mother-at-table",
@@ -115,16 +219,84 @@
           "status": "verified",
           "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Афродита. Итоги.vtt",
           "locator": {
-            "kind": "line_range",
-            "value": "501-837"
+            "kind": "timestamp",
+            "value": "00:06:53-00:11:41"
           },
           "source_type": "participant_case",
           "speaker": "anonymous training participant and her mother",
           "consent_state": "user_confirmed_except_margarita",
           "allowed_claim": "This single episode can show a person naming the desired quality of a close contact instead of trying to meet every expectation.",
           "forbidden_extension": "Do not promise reconciliation, generalise the mother's response, or claim that the method caused a lasting relationship change.",
-          "verified_at": "2026-07-27",
-          "trace_basis": "briefs/03-afrodita-brief.md; audits/00-outcome-transcript-source-refresh.md"
+          "verified_at": "2026-07-30",
+          "trace_basis": "briefs/03-afrodita-brief.md"
+        },
+        {
+          "evidence_id": "R02-scene-bicycle-eclair",
+          "draft_locator": "## Артемида едет на велосипеде за эклером",
+          "scene_summary": "Svetlana describes reconciling Artemis's wish to move and Aphrodite's wish for pleasure by cycling to a café for good coffee and an éclair.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Знакомство с Афродитой.vtt",
+          "locator": {
+            "kind": "timestamp",
+            "value": "00:27:43-00:28:27"
+          },
+          "source_type": "author_first_person",
+          "speaker": "Svetlana Strauss",
+          "consent_state": "author_first_person",
+          "allowed_claim": "The scene may illustrate two archetypical functions finding one ordinary route that includes both movement and pleasure.",
+          "forbidden_extension": "Do not claim weight, health, discipline, metabolic, motivational or therapeutic outcomes.",
+          "verified_at": "2026-07-30"
+        },
+        {
+          "evidence_id": "R02-practice-breakfast-date",
+          "draft_locator": "## Устройте свидание с завтраком",
+          "scene_summary": "Svetlana recommends a slow breakfast encounter: noticing one bite through the senses rather than eating quickly.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Знакомство с Афродитой.vtt",
+          "locator": {
+            "kind": "timestamp",
+            "value": "00:46:18-00:47:15"
+          },
+          "source_type": "author_practice",
+          "speaker": "Svetlana Strauss",
+          "consent_state": "author_first_person",
+          "allowed_claim": "Use the breakfast scene as a small sensory observation practice.",
+          "forbidden_extension": "Do not present it as a diet, treatment, diagnostic test, eating-disorder intervention or guaranteed way to activate an archetype.",
+          "verified_at": "2026-07-30"
+        },
+        {
+          "evidence_id": "R02-method-chemistry-not-love",
+          "draft_locator": "## Мурашки — плохой нотариус",
+          "scene_summary": "Svetlana distinguishes the first sensory and hormonal experience of attraction from love and from what later becomes visible in a relationship.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Знакомство с Афродитой.vtt",
+          "locator": {
+            "kind": "timestamp",
+            "value": "00:21:20-00:23:15"
+          },
+          "source_type": "author_method_explanation",
+          "speaker": "Svetlana Strauss",
+          "consent_state": "author_first_person",
+          "allowed_claim": "Attraction may be described as meaningful sensory information that does not by itself establish love or a lasting union.",
+          "forbidden_extension": "Do not diagnose compatibility, safety, hormones, trauma, attachment style or future relationship outcomes.",
+          "verified_at": "2026-07-30"
+        },
+        {
+          "evidence_id": "R02-ppt-system",
+          "draft_locator": "article-wide method claims",
+          "scene_summary": "The presentation frames Aphrodite as quality of life in the body, movement from external confirmation to self-selection, sensory presence, chemistry that is not yet love, and alliances with other functions.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Афродита.pptx",
+          "locator": {
+            "kind": "slide_numbers",
+            "value": "2; 4; 5; 8; 10; 14; 15"
+          },
+          "source_type": "author_presentation",
+          "speaker": "Svetlana Strauss",
+          "consent_state": "author_first_person",
+          "allowed_claim": "Use the presentation as the system source for Aphrodite's resource, external/internal source, sensory presence, relationships and alliances.",
+          "forbidden_extension": "Do not publish medical, energetic, financial, materialisation, body-transformation or guaranteed attraction claims as objective facts.",
+          "verified_at": "2026-07-30"
         }
       ]
     },
@@ -133,39 +305,94 @@
       "draft_source": "drafts/04-artemida.md",
       "evidence_items": [
         {
-          "evidence_id": "R03-scene-walk-by-sea",
-          "draft_locator": "## «Иди погуляй по морю, подыши»",
-          "scene_summary": "Svetlana describes a sea or forest walk that once required self-pushing and later became a stable routine.",
+          "evidence_id": "R03-case-sixteen-hour-workday",
+          "draft_locator": "opening",
+          "scene_summary": "A participant recalls working sixteen-hour days, organizing everything at work, and coming home completely spent; she later contrasts this with another kind of strength.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Артемида. Общие итоги курса.vtt",
+          "locator": {
+            "kind": "time_range",
+            "value": "00:44:21-00:47:38"
+          },
+          "source_type": "participant_case",
+          "speaker": "anonymous training participant",
+          "consent_state": "user_confirmed_except_margarita",
+          "allowed_claim": "The participant may illustrate a learned equation between strength and relentless work.",
+          "forbidden_extension": "Do not identify the participant, include medical details, claim recovery, or promise the same outcome.",
+          "verified_at": "2026-07-30",
+          "trace_basis": "briefs/04-artemida-brief.md"
+        },
+        {
+          "evidence_id": "R03-metaphor-body-as-soldier",
+          "draft_locator": "## Между рывком и замиранием",
+          "scene_summary": "Svetlana describes an overdriven Artemis saying she will finish even if she dies and treating the body like a soldier who can sleep later.",
           "status": "verified",
           "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Знакомство с Артемидой.vtt",
           "locator": {
-            "kind": "line_range",
-            "value": "720-777"
+            "kind": "time_range",
+            "value": "00:12:31-00:12:55"
+          },
+          "source_type": "author_method",
+          "speaker": "Svetlana Strauss",
+          "consent_state": "author_first_person",
+          "allowed_claim": "The metaphor may show the difference between action and self-exploitation.",
+          "forbidden_extension": "Do not turn the metaphor into a medical or diagnostic claim.",
+          "verified_at": "2026-07-30",
+          "trace_basis": "briefs/04-artemida-brief.md"
+        },
+        {
+          "evidence_id": "R03-scene-team-slows-svetlana",
+          "draft_locator": "## Точный шаг сильнее большого рывка",
+          "scene_summary": "Svetlana says her Artemis sometimes runs ahead until the team reminds her that an earlier task is not yet complete.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Знакомство с Артемидой.vtt",
+          "locator": {
+            "kind": "time_range",
+            "value": "00:44:33-00:44:55"
+          },
+          "source_type": "author_first_person",
+          "speaker": "Svetlana Strauss and her team",
+          "consent_state": "author_first_person",
+          "allowed_claim": "The scene may show that speed and precise action are not identical.",
+          "forbidden_extension": "Do not claim that Svetlana's first impulse is infallible or guarantees the right timing.",
+          "verified_at": "2026-07-30",
+          "trace_basis": "briefs/04-artemida-brief.md"
+        },
+        {
+          "evidence_id": "R03-scene-walk-by-sea",
+          "draft_locator": "## Прогулка, на которую больше не нужно себя пинать",
+          "scene_summary": "Svetlana describes a sea or forest walk that once required self-pushing and later became part of her routine.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Знакомство с Артемидой.vtt",
+          "locator": {
+            "kind": "time_range",
+            "value": "00:11:36-00:12:00"
           },
           "source_type": "author_first_person",
           "speaker": "Svetlana Strauss",
           "consent_state": "author_first_person",
-          "allowed_claim": "A repeated ordinary action can become a sustainable routine without being framed as heroism.",
-          "forbidden_extension": "Do not claim medical, metabolic, longevity, weight-loss, or infallible body-navigation effects.",
-          "verified_at": "2026-07-27"
+          "allowed_claim": "A repeated ordinary action may become a sustainable routine without being framed as heroism.",
+          "forbidden_extension": "Do not add mileage or claim health, weight, sleep, or universal routine effects.",
+          "verified_at": "2026-07-30",
+          "trace_basis": "briefs/04-artemida-brief.md"
         },
         {
           "evidence_id": "R03-scene-delayed-boundary-conversation",
-          "draft_locator": "## Когда возвращается собственное слово",
+          "draft_locator": "## Граница — это место, где появляется ваше слово",
           "scene_summary": "A participant who habitually adapted to her husband, children, and circumstances names boundaries in a long-delayed conversation.",
           "status": "verified",
           "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Артемида. Общие итоги курса.vtt",
           "locator": {
-            "kind": "line_range",
-            "value": "125-489"
+            "kind": "time_range",
+            "value": "00:01:40-00:06:52"
           },
           "source_type": "participant_case",
           "speaker": "anonymous training participant",
           "consent_state": "user_confirmed_except_margarita",
           "allowed_claim": "The participant took the observable action of naming her position and boundaries.",
           "forbidden_extension": "Do not claim that her husband changed, that the relationship improved, or that an archetype caused the action.",
-          "verified_at": "2026-07-27",
-          "trace_basis": "briefs/04-artemida-brief.md; audits/00-outcome-transcript-source-refresh.md"
+          "verified_at": "2026-07-30",
+          "trace_basis": "briefs/04-artemida-brief.md"
         }
       ]
     },
@@ -510,39 +737,109 @@
       "draft_source": "drafts/14-demetra.md",
       "evidence_items": [
         {
-          "evidence_id": "R07-scene-editorial-rescue-chain",
-          "draft_locator": "opening scene before ## Что в этой сцене связано с Деметрой",
-          "scene_summary": "A generic chain moves from offering a solution to reminding, calling, arranging, and completing another person's task.",
+          "evidence_id": "R07-scene-teaching-without-pressure",
+          "draft_locator": "opening scene; ## Деметра вообще не только про детей",
+          "scene_summary": "A participant teaches without pressure; the student says she usually closes when someone tries to teach her, but this time they spend ten hours with smiles and the work is evaluated at nine.",
           "status": "verified",
-          "source_path": "docs/seo/archetypes/production/drafts/14-demetra.md",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Деметра. Итоги.vtt",
           "locator": {
-            "kind": "section",
-            "value": "opening scene"
+            "kind": "time_range",
+            "value": "00:39:11-00:43:50"
           },
-          "source_type": "illustrative_scene",
-          "speaker": "editorial narrator",
-          "consent_state": "editorial_illustration",
-          "allowed_claim": "Use as a recognisable hypothetical illustration of care becoming substitution.",
-          "forbidden_extension": "Do not present it as a participant or client history or as proof that the reader has a specific archetype.",
-          "verified_at": "2026-07-27",
-          "trace_basis": "briefs/14-demetra-brief.md; audits/14-demetra-critic-audit.md"
+          "source_type": "participant_case",
+          "speaker": "training participant Inta and her student",
+          "consent_state": "user_confirmed_except_margarita",
+          "allowed_claim": "Use the teaching scene to show support that leaves the learner her own work and reduces fear of mistakes.",
+          "forbidden_extension": "Do not promise the same score, diagnose the student, or claim that Demeter directly caused the result.",
+          "verified_at": "2026-07-30",
+          "trace_basis": "briefs/14-demetra-brief.md"
+        },
+        {
+          "evidence_id": "R07-scene-exam-week-mess",
+          "draft_locator": "## Не сделать за. Дать вырасти",
+          "scene_summary": "During her daughter's exam period, a participant leaves the room mess for the daughter to handle later instead of starting the usual conflict; the necessary tasks are eventually completed.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Деметра. Итоги.vtt",
+          "locator": {
+            "kind": "time_range",
+            "value": "00:35:22-00:38:39"
+          },
+          "source_type": "participant_case",
+          "speaker": "training participant Inta",
+          "consent_state": "user_confirmed_except_margarita",
+          "allowed_claim": "Use the single household scene to contrast automatic pressure with leaving a child a real responsibility.",
+          "forbidden_extension": "Do not generalise about the family, prescribe parenting, or claim that every task was solved by the archetype.",
+          "verified_at": "2026-07-30",
+          "trace_basis": "briefs/14-demetra-brief.md"
+        },
+        {
+          "evidence_id": "R07-scene-woman-inside-mother-role",
+          "draft_locator": "## Любовь не должна оставлять женщину пустой",
+          "scene_summary": "A participant says she usually serves everyone as a mother; during the week her family gives her time for herself, and she notices a softer form of request from her husband.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Деметра. Итоги.vtt",
+          "locator": {
+            "kind": "time_range",
+            "value": "00:07:46-00:10:00"
+          },
+          "source_type": "participant_case",
+          "speaker": "training participant Natalia",
+          "consent_state": "user_confirmed_except_margarita",
+          "allowed_claim": "Show the participant's own contrast between serving everyone as a mother and retaining time for herself as a woman.",
+          "forbidden_extension": "Do not claim the training caused a permanent relationship change or infer the husband's motives.",
+          "verified_at": "2026-07-30",
+          "trace_basis": "briefs/14-demetra-brief.md"
         },
         {
           "evidence_id": "R07-method-care-without-substitution",
-          "draft_locator": "## Где забота незаметно становится контролем",
-          "scene_summary": "The author corpus distinguishes care from pressure, help from rescuing, giving from sacrifice, and support from control.",
+          "draft_locator": "## Очень вкусный контроль; ## Спросите: что бы сделала любовь?",
+          "scene_summary": "The author distinguishes care from control, help from rescuing, giving from sacrifice, and support from pressure, then proposes asking what love would do before intervening.",
           "status": "verified",
           "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Знакомство с Деметрой.vtt",
           "locator": {
-            "kind": "line_ranges",
-            "value": "565-721; 1481-1521"
+            "kind": "time_ranges",
+            "value": "00:05:44-00:14:06; 00:22:06-00:24:04"
           },
           "source_type": "method_definition",
           "speaker": "Svetlana Strauss",
           "consent_state": "method_or_public_source",
-          "allowed_claim": "Describe care as support that leaves another person a real step and does not require self-erasure.",
-          "forbidden_extension": "Do not publish a participant's private quotation, promise family change, diagnose rescuing, or add reproductive, medical, or spiritual claims.",
-          "verified_at": "2026-07-27"
+          "allowed_claim": "Describe mature care as support that leaves another person a real step and does not require self-erasure.",
+          "forbidden_extension": "Do not diagnose the reader, promise family change, or add reproductive, medical, energetic, or spiritual effects.",
+          "verified_at": "2026-07-30"
+        },
+        {
+          "evidence_id": "R07-method-life-can-grow",
+          "draft_locator": "definition in opening; ## Не сделать за. Дать вырасти; final thesis",
+          "scene_summary": "The presentation defines Demeter as love through which life comes into the world and contrasts feeding that suffocates with love that lets life grow.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Деметра.pptx",
+          "locator": {
+            "kind": "slide_numbers",
+            "value": "1; 3; 4; 6; 7; 12; 16"
+          },
+          "source_type": "method_definition",
+          "speaker": "Svetlana Strauss",
+          "consent_state": "method_or_public_source",
+          "allowed_claim": "Use the symbolic method language to frame Demeter as creating conditions in which life can grow.",
+          "forbidden_extension": "Do not turn the metaphor into a universal causal law, health claim, or guarantee of fertility, money, or project growth.",
+          "verified_at": "2026-07-30"
+        },
+        {
+          "evidence_id": "R07-author-humor-and-rest",
+          "draft_locator": "## Когда все вдруг становятся лапочками",
+          "scene_summary": "Svetlana contrasts impatience with the feeling that everyone is lovable and recounts her husband falling asleep in the next room during the Demeter meeting.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Деметра. Итоги.vtt",
+          "locator": {
+            "kind": "time_ranges",
+            "value": "00:24:33-00:25:29; 00:48:51-00:49:39"
+          },
+          "source_type": "author_first_person",
+          "speaker": "Svetlana Strauss",
+          "consent_state": "method_or_public_source",
+          "allowed_claim": "Use the author's own humorous observations to convey pace, warmth, and non-demanding presence.",
+          "forbidden_extension": "Do not promise that Demeter will relax a partner or make other people compliant.",
+          "verified_at": "2026-07-30"
         }
       ]
     },
@@ -551,39 +848,107 @@
       "draft_source": "drafts/15-gekata.md",
       "evidence_items": [
         {
-          "evidence_id": "R08-scene-editorial-unfinished-form",
-          "draft_locator": "opening scene before ## Что в этой сцене связано с Гекатой",
-          "scene_summary": "A generic idea remains in notes and versions because no sendable form, date, decision, or finished file exists.",
+          "evidence_id": "R08-scene-eight-people",
+          "draft_locator": "opening scene before ## Не страшная женщина. Точка перехода",
+          "scene_summary": "Natalia names eight participants as the condition for holding a dance format; four are already present and another woman is helping gather the group.",
           "status": "verified",
-          "source_path": "docs/seo/archetypes/production/drafts/15-gekata.md",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Геката. Итоги.vtt",
           "locator": {
-            "kind": "section",
-            "value": "opening scene"
+            "kind": "time_range",
+            "value": "00:41:45-00:43:29"
           },
-          "source_type": "illustrative_scene",
-          "speaker": "editorial narrator",
-          "consent_state": "editorial_illustration",
-          "allowed_claim": "Use as a hypothetical illustration of the gap between an understood intention and a concrete form.",
-          "forbidden_extension": "Do not present it as a client outcome or as evidence of magical materialisation.",
-          "verified_at": "2026-07-27",
-          "trace_basis": "briefs/15-gekata-brief.md; audits/15-gekata-critic-audit.md"
+          "source_type": "participant_case",
+          "speaker": "Natalia and Svetlana Strauss",
+          "consent_state": "user_confirmed_except_margarita",
+          "allowed_claim": "Use the observable episode to show how an idea acquires a number, a condition, and a form other people can join.",
+          "forbidden_extension": "Do not claim the workshop happened, produced income, or was filled automatically by the archetype.",
+          "verified_at": "2026-07-30",
+          "trace_basis": "briefs/15-gekata-brief.md"
         },
         {
-          "evidence_id": "R08-method-boundary-completion-form",
-          "draft_locator": "## Форма требует точки завершения",
-          "scene_summary": "Svetlana's method links the role to stopping, finishing, crossing a boundary, and giving a project a concrete name, format, package, or other visible form.",
+          "evidence_id": "R08-case-good-past",
+          "draft_locator": "## Что вы до сих пор несёте через закрытую дверь",
+          "scene_summary": "A woman compares partners with a father who adored her; Svetlana advises thanking him, taking the experience, closing the story, and turning toward the present.",
           "status": "verified",
           "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Знакомство с Гекатой.vtt",
           "locator": {
-            "kind": "line_ranges",
-            "value": "1567-1574; 1579-1601; 2781-2905"
+            "kind": "time_range",
+            "value": "00:35:34-00:36:49"
+          },
+          "source_type": "client_case",
+          "speaker": "Svetlana Strauss",
+          "consent_state": "user_confirmed_except_margarita",
+          "allowed_claim": "Use the anonymised episode to show that completion can preserve love and experience without continuing to live in the old story.",
+          "forbidden_extension": "Do not identify the client or claim that the advice caused a particular relationship result.",
+          "verified_at": "2026-07-30"
+        },
+        {
+          "evidence_id": "R08-author-fire",
+          "draft_locator": "## Граница без огненного шоу",
+          "scene_summary": "Svetlana describes a past fire and says that ten years later she saw it as an image of what had fallen away; her practical conclusion is not to wait for such fireworks and to release things willingly.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Знакомство с Гекатой.vtt",
+          "locator": {
+            "kind": "time_ranges",
+            "value": "00:16:45-00:17:43;00:53:12-00:53:27"
+          },
+          "source_type": "author_case",
+          "speaker": "Svetlana Strauss",
+          "consent_state": "method_or_public_source",
+          "allowed_claim": "Use the fire as Svetlana's retrospective image and preserve her humorous warning not to wait for dramatic fireworks.",
+          "forbidden_extension": "Do not state that Hecate caused the fire or that external destruction guarantees growth, scale, or success.",
+          "verified_at": "2026-07-30"
+        },
+        {
+          "evidence_id": "R08-method-protection-shadow-blow",
+          "draft_locator": "## Где защита превращается в ответный удар",
+          "scene_summary": "Svetlana distinguishes protection from a blow made out of pain, envy, or an old reaction and names attack instead of protection as a shadow expression.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Знакомство с Гекатой.vtt",
+          "locator": {
+            "kind": "time_range",
+            "value": "00:24:35-00:28:08"
           },
           "source_type": "method_definition",
           "speaker": "Svetlana Strauss",
           "consent_state": "method_or_public_source",
-          "allowed_claim": "Use boundary, completion, and concrete form as symbolic working functions.",
-          "forbidden_extension": "Do not claim prediction, magical protection, supernatural materialisation, medical effects, or publish private participant stories.",
-          "verified_at": "2026-07-27"
+          "allowed_claim": "Distinguish a boundary that stops an action from retaliation that tries to return pain.",
+          "forbidden_extension": "Do not romanticise revenge, intimidation, or violence as strength.",
+          "verified_at": "2026-07-30"
+        },
+        {
+          "evidence_id": "R08-method-form-completion",
+          "draft_locator": "## Форма — место, где заканчивается мистика",
+          "scene_summary": "The method links Hecate with recognising resources, naming, formatting, packaging a course or product, completing a process, and moving from intention to a concrete result.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Знакомство с Гекатой.vtt",
+          "locator": {
+            "kind": "time_ranges",
+            "value": "00:21:15-00:23:17;00:41:18-00:41:54"
+          },
+          "source_type": "method_definition",
+          "speaker": "Svetlana Strauss",
+          "consent_state": "method_or_public_source",
+          "allowed_claim": "Use a name, format, number, date, file, or condition as observable examples of form.",
+          "forbidden_extension": "Do not promise supernatural materialisation, guaranteed sales, money, or success.",
+          "verified_at": "2026-07-30"
+        },
+        {
+          "evidence_id": "R08-ppt-boundary-system",
+          "draft_locator": "definition, archetype links, practical question and closing thesis",
+          "scene_summary": "The deck presents Hecate as the boundary between possibility and form, distinguishes protection from a shadow blow, links the role with Athena and Persephone, and asks what must be protected so it can be born in matter.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Геката.pptx",
+          "locator": {
+            "kind": "slide_numbers",
+            "value": "1;2;5;6;7;9;11;13;14;15"
+          },
+          "source_type": "author_presentation",
+          "speaker": "Svetlana Strauss",
+          "consent_state": "method_or_public_source",
+          "allowed_claim": "Use the symbolic model of boundary, completion, form, and cooperation between functions.",
+          "forbidden_extension": "Do not publish supernatural protection, prediction, medical, anti-ageing, or afterlife claims as fact.",
+          "verified_at": "2026-07-30"
         }
       ]
     },
