@@ -629,6 +629,14 @@
   transform: none;
 }
 
+.archetype-insert--route-r04 .archetype-insert__portrait {
+  align-items: center;
+}
+
+.archetype-insert--route-r04 .archetype-insert__character img {
+  height: auto;
+}
+
 /* R05: two independent sides overlap only in the agreed common field. */
 .archetype-insert--overlap .archetype-insert__nodes {
   grid-template-columns: 1fr 0.88fr 1fr;
@@ -944,6 +952,21 @@
 
   .archetype-insert__character img {
     max-height: 290px;
+  }
+
+  .archetype-insert--route-r04 .archetype-insert__portrait {
+    justify-content: center;
+    max-height: none;
+    padding-inline: 0;
+  }
+
+  .archetype-insert--route-r04 .archetype-insert__character {
+    flex: 0 1 74%;
+    max-width: 74%;
+  }
+
+  .archetype-insert--route-r04 .archetype-insert__character img {
+    max-height: none;
   }
 
   .archetype-insert--layout-ensemble {

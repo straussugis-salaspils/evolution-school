@@ -591,7 +591,7 @@ function articleHtml(article) {
   <link rel="icon" type="image/png" href="/assets/evolution-house-logo-approved.png">
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="/article-library.css?v=20260727-reading-nav-2">
-  <link rel="stylesheet" href="/assets/archetype-articles/inserts/archetype-inserts.css?v=20260727-visual-fix-2">
+  <link rel="stylesheet" href="/assets/archetype-articles/inserts/archetype-inserts.css?v=20260730-athena-v2">
   <link rel="stylesheet" href="/cookie-consent.css">
   <script src="/analytics.js" defer></script>
   <script type="application/ld+json">${JSON.stringify(schemaFor(article, draft), null, 2)}</script>
