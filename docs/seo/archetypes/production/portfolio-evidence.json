@@ -178,20 +178,20 @@
       "evidence_items": [
         {
           "evidence_id": "R02-scene-sunlight-movement",
-          "draft_locator": "## «Жалюзи — это тюрьма»",
+          "draft_locator": "opening before first H2",
           "scene_summary": "Svetlana describes morning sun, calls blinds a prison, and compares unwatched stretching and bathing in sunlight to a cat.",
           "status": "verified",
           "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Знакомство с Афродитой.vtt",
           "locator": {
-            "kind": "line_range",
-            "value": "2871-2945"
+            "kind": "timestamp",
+            "value": "00:41:28-00:43:30"
           },
           "source_type": "author_first_person",
           "speaker": "Svetlana Strauss",
           "consent_state": "author_first_person",
           "allowed_claim": "The scene may illustrate sensory presence and movement without an audience.",
           "forbidden_extension": "Do not add an unverified to-do list, therapeutic result, body transformation, sexuality claim, or financial effect.",
-          "verified_at": "2026-07-27"
+          "verified_at": "2026-07-30"
         },
         {
           "evidence_id": "R02-scene-mother-at-table",
@@ -200,16 +200,84 @@
           "status": "verified",
           "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Афродита. Итоги.vtt",
           "locator": {
-            "kind": "line_range",
-            "value": "501-837"
+            "kind": "timestamp",
+            "value": "00:06:53-00:11:41"
           },
           "source_type": "participant_case",
           "speaker": "anonymous training participant and her mother",
           "consent_state": "user_confirmed_except_margarita",
           "allowed_claim": "This single episode can show a person naming the desired quality of a close contact instead of trying to meet every expectation.",
           "forbidden_extension": "Do not promise reconciliation, generalise the mother's response, or claim that the method caused a lasting relationship change.",
-          "verified_at": "2026-07-27",
-          "trace_basis": "briefs/03-afrodita-brief.md; audits/00-outcome-transcript-source-refresh.md"
+          "verified_at": "2026-07-30",
+          "trace_basis": "briefs/03-afrodita-brief.md"
+        },
+        {
+          "evidence_id": "R02-scene-bicycle-eclair",
+          "draft_locator": "## Артемида едет на велосипеде за эклером",
+          "scene_summary": "Svetlana describes reconciling Artemis's wish to move and Aphrodite's wish for pleasure by cycling to a café for good coffee and an éclair.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Знакомство с Афродитой.vtt",
+          "locator": {
+            "kind": "timestamp",
+            "value": "00:27:43-00:28:27"
+          },
+          "source_type": "author_first_person",
+          "speaker": "Svetlana Strauss",
+          "consent_state": "author_first_person",
+          "allowed_claim": "The scene may illustrate two archetypical functions finding one ordinary route that includes both movement and pleasure.",
+          "forbidden_extension": "Do not claim weight, health, discipline, metabolic, motivational or therapeutic outcomes.",
+          "verified_at": "2026-07-30"
+        },
+        {
+          "evidence_id": "R02-practice-breakfast-date",
+          "draft_locator": "## Устройте свидание с завтраком",
+          "scene_summary": "Svetlana recommends a slow breakfast encounter: noticing one bite through the senses rather than eating quickly.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Знакомство с Афродитой.vtt",
+          "locator": {
+            "kind": "timestamp",
+            "value": "00:46:18-00:47:15"
+          },
+          "source_type": "author_practice",
+          "speaker": "Svetlana Strauss",
+          "consent_state": "author_first_person",
+          "allowed_claim": "Use the breakfast scene as a small sensory observation practice.",
+          "forbidden_extension": "Do not present it as a diet, treatment, diagnostic test, eating-disorder intervention or guaranteed way to activate an archetype.",
+          "verified_at": "2026-07-30"
+        },
+        {
+          "evidence_id": "R02-method-chemistry-not-love",
+          "draft_locator": "## Мурашки — плохой нотариус",
+          "scene_summary": "Svetlana distinguishes the first sensory and hormonal experience of attraction from love and from what later becomes visible in a relationship.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Знакомство с Афродитой.vtt",
+          "locator": {
+            "kind": "timestamp",
+            "value": "00:21:20-00:23:15"
+          },
+          "source_type": "author_method_explanation",
+          "speaker": "Svetlana Strauss",
+          "consent_state": "author_first_person",
+          "allowed_claim": "Attraction may be described as meaningful sensory information that does not by itself establish love or a lasting union.",
+          "forbidden_extension": "Do not diagnose compatibility, safety, hormones, trauma, attachment style or future relationship outcomes.",
+          "verified_at": "2026-07-30"
+        },
+        {
+          "evidence_id": "R02-ppt-system",
+          "draft_locator": "article-wide method claims",
+          "scene_summary": "The presentation frames Aphrodite as quality of life in the body, movement from external confirmation to self-selection, sensory presence, chemistry that is not yet love, and alliances with other functions.",
+          "status": "verified",
+          "source_path": "C:\\Users\\Ugis\\Documents\\000 LifeOS\\ugis-aiu-memory\\Sveta\\SEO ishodniki\\Arhetipi\\Афродита.pptx",
+          "locator": {
+            "kind": "slide_numbers",
+            "value": "2; 4; 5; 8; 10; 14; 15"
+          },
+          "source_type": "author_presentation",
+          "speaker": "Svetlana Strauss",
+          "consent_state": "author_first_person",
+          "allowed_claim": "Use the presentation as the system source for Aphrodite's resource, external/internal source, sensory presence, relationships and alliances.",
+          "forbidden_extension": "Do not publish medical, energetic, financial, materialisation, body-transformation or guaranteed attraction claims as objective facts.",
+          "verified_at": "2026-07-30"
         }
       ]
     },
