@@ -200,9 +200,17 @@
     .detail__label { display: block; color: var(--plum); font-size: 11px; font-weight: 600; letter-spacing: .11em; text-transform: uppercase; }
     .detail__value { display: block; margin-top: 7px; font-family: var(--serif); font-size: 24px; line-height: 1.24; }
     .payment-note { position: relative; z-index: 1; margin-top: 30px; padding: 22px 24px; border-radius: 16px; background: var(--sage); color: #355149; }
-    .continuation { max-width: 760px; margin: 54px auto 0; text-align: center; }
-    .continuation h3 { color: var(--plum); }
+    .continuation { max-width: 920px; margin: 64px auto 0; text-align: center; }
+    .continuation .eyebrow { margin-bottom: 18px; }
+    .continuation h3 { color: var(--plum); font-size: clamp(38px, 5vw, 58px); }
     .continuation p { margin-top: 18px; color: var(--ink-soft); }
+    .continuation__lead { max-width: 760px; margin-inline: auto; font-size: 18px; }
+    .continuation__routes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 30px; text-align: left; }
+    .continuation__route { padding: 26px; border: 1px solid var(--line); border-radius: 18px; background: rgba(255, 255, 255, .58); }
+    .continuation__route-label { display: block; color: var(--gold); font-size: 11px; font-weight: 600; letter-spacing: .11em; line-height: 1.4; text-transform: uppercase; }
+    .continuation__route-name { display: block; margin-top: 10px; color: var(--plum); font-family: var(--serif); font-size: 31px; line-height: 1.05; }
+    .continuation__route p { margin-top: 14px; }
+    .continuation__summary { max-width: 720px; margin-inline: auto; font-family: var(--serif); font-size: 23px; line-height: 1.4; }
     .continuation__cta {
       display: inline-flex;
       align-items: center;
@@ -272,6 +280,9 @@
       .details { margin-top: 32px; }
       .detail { padding: 17px 0; }
       .payment-note { padding: 18px; }
+      .continuation { margin-top: 48px; }
+      .continuation__routes { grid-template-columns: 1fr; }
+      .continuation__route { padding: 22px; }
       .continuation__cta { width: 100%; }
     }
 
@@ -476,11 +487,23 @@
           <p class="payment-note"><strong>Оплата — на месте.</strong> Процедуры до программы — по желанию; они бронируются и оплачиваются отдельно по прайсу Ampermy.</p>
         </div>
         <div class="continuation">
-          <h3>Если захочется продолжить глубже</h3>
-          <p>После встречи Светлана сможет предложить персональные рекомендации для укрепления полученного состояния в течение следующих 21 дня: самостоятельные практики, процедуры Ampermy или индивидуальную работу.</p>
-          <p>Для тех, кому важно не просто сохранить впечатление от одного дня, а дать новому состоянию больше времени, пространства и глубины, следующим маршрутом могут стать выездные ретриты Светланы «Острова везения».</p>
-          <p>Пхукет посвящён Линии удачи — направлению, движению и следующему шагу. Лангкави — Ядру силы: внутренней опоре, тишине и способности удерживать выбранное направление.</p>
-          <a class="continuation__cta" href="/472861-ostrova-vezeniya/">Посмотреть лендинг «Острова везения»</a>
+          <p class="eyebrow">Выездные ретриты Светланы Страусс</p>
+          <h3>«Острова везения»</h3>
+          <p class="continuation__lead">Один wellness-день помогает услышать новое состояние. Ретрит даёт ему время стать опытом: выйти из привычного ритма, глубже увидеть свой маршрут, проверить новые решения в движении и собрать опору, которую можно перенести в повседневную жизнь.</p>
+          <div class="continuation__routes">
+            <article class="continuation__route">
+              <span class="continuation__route-label">Пхукет · 5–12 ноября 2026</span>
+              <strong class="continuation__route-name">Линия удачи</strong>
+              <p>Чтобы яснее увидеть направление, вернуть движение наружу и превратить внутреннее «хочу» в следующий реальный шаг.</p>
+            </article>
+            <article class="continuation__route">
+              <span class="continuation__route-label">Лангкави · 15–22 ноября 2026</span>
+              <strong class="continuation__route-name">Ядро силы</strong>
+              <p>Чтобы собрать внутренний центр, вернуть себе силу и устойчивее удерживать выбранное направление без прежнего надрыва.</p>
+            </article>
+          </div>
+          <p class="continuation__summary">Можно выбрать один остров или пройти оба как единый маршрут: сначала увидеть направление, затем собрать состояние, способное его выдержать.</p>
+          <a class="continuation__cta" href="/472861-ostrova-vezeniya/">Посмотреть программу «Острова везения»</a>
         </div>
       </div>
     </section>
