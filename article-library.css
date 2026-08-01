@@ -2723,10 +2723,24 @@ body.article-page--transitions .article-body a {
   color: #8c4733;
 }
 
+body.article-page--transitions .article-body .article-next-step a {
+  color: #ffe2ce;
+  text-decoration-color: #e6b99d;
+}
+
+body.article-page--transitions .article-body .article-next-step a:hover,
+body.article-page--transitions .article-body .article-next-step a:focus-visible {
+  color: #fff;
+}
+
 body.article-page--transitions .article-body blockquote {
   border-left-color: #b86b4a;
   background: #f7e9df;
   color: #4b261e;
+}
+
+body.article-page--transitions .article-next-step blockquote p {
+  color: #4b261e !important;
 }
 
 body.article-page--transitions .article-card,
