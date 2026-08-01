@@ -1,6 +1,6 @@
 {
-  "schema_version": 2,
-  "updated_at": "2026-07-30",
+  "schema_version": 3,
+  "updated_at": "2026-08-01",
   "default_author_id": "svetlana-strauss",
   "author_entity": {
     "author_id": "svetlana-strauss",
@@ -17,30 +17,501 @@
     "navigator": "/pervyi-shag.html",
     "retreats": "/retreats/"
   },
+  "corpus_routing": {
+    "L01": {
+      "primary_query": "жизнь через надо",
+      "search_intent": "вернуть собственные желания в жизнь, собранную из обязанностей",
+      "query_owner_scope": "узкий supporting URL; не владеет запросами «как понять, чего я хочу» и «как жить для себя»",
+      "audience": "mixed",
+      "priority": "P1",
+      "related": [
+        { "route_id": "R01", "anchor": "Персефона и право хотеть", "reason": "архетипическая карта желания" },
+        { "route_id": "R02", "anchor": "Афродита и возвращение вкуса", "reason": "чувственный отклик" },
+        { "route_id": "L15", "anchor": "как сделать первый шаг, когда хотите, но не действуете", "reason": "перевести желание в действие" }
+      ],
+      "cta": {
+        "variant": "desire_back_into_life",
+        "eyebrow": "Следующий шаг",
+        "title": "Вернуть желаниям место в реальной жизни",
+        "body": "Двухнедельный маршрут соединяет вкус, действие и маленькие решения — без требования немедленно менять всю жизнь.",
+        "primary": { "kind": "product", "product_id": "two_week", "label": "Посмотреть двухнедельный маршрут" }
+      }
+    },
+    "R01": {
+      "primary_query": "архетип Персефоны",
+      "search_intent": "понять значение и проявления архетипа Персефоны",
+      "query_owner_scope": "архетипическая роль; не владеет общим запросом «не знаю, чего хочу»",
+      "audience": "women",
+      "priority": "P2",
+      "related": [
+        { "route_id": "L01", "anchor": "как услышать своё «хочу» среди «надо»", "reason": "жизненная проблема читателя" },
+        { "route_id": "L15", "anchor": "как перевести желание в первый шаг", "reason": "продолжить путь" },
+        { "route_id": "R02", "anchor": "как Афродита возвращает вкус к жизни", "reason": "соседняя функция желания" }
+      ],
+      "cta": {
+        "variant": "persephone_grow_desire",
+        "eyebrow": "Если тема повторяется",
+        "title": "Не выдавливать желание, а научиться его выращивать",
+        "body": "В женском менторинге архетипы собираются в целую систему: что помогает услышать «хочу», что даёт ему форму и где вы снова передаёте выбор наружу.",
+        "primary": { "kind": "product", "product_id": "mentoring", "label": "Посмотреть, как устроен менторинг" },
+        "secondary": { "kind": "product", "product_id": "two_week", "label": "Начать с двухнедельного маршрута" }
+      }
+    },
+    "R02": {
+      "primary_query": "архетип Афродиты",
+      "search_intent": "понять значение архетипа Афродиты, вкус и собственный выбор",
+      "query_owner_scope": "архетипическая роль; общий запрос «как вернуть вкус к жизни» принадлежит L16",
+      "audience": "women",
+      "priority": "P0",
+      "related": [
+        { "route_id": "L16", "anchor": "как вернуть вкус в работающую систему", "reason": "практическое продолжение" },
+        { "route_id": "L04", "anchor": "почему даже отдых не приносит расслабления", "reason": "связь тела и перегрузки" },
+        { "route_id": "R01", "anchor": "как не потерять собственное желание", "reason": "отличить вкус от чужого выбора" }
+      ],
+      "cta": {
+        "variant": "aphrodite_taste_as_system",
+        "eyebrow": "Для более глубокого пути",
+        "title": "Вернуть вкус не на один вечер, а в систему жизни",
+        "body": "Женский менторинг помогает увидеть, почему живость исчезает даже из хорошо устроенной жизни и какие функции возвращают выбор, движение и удовольствие.",
+        "primary": { "kind": "product", "product_id": "mentoring", "label": "Посмотреть программу менторинга" },
+        "secondary": { "kind": "product", "product_id": "two_week", "label": "Попробовать двухнедельный маршрут" }
+      }
+    },
+    "R03": {
+      "primary_query": "архетип Артемиды",
+      "search_intent": "понять действие, границы и силу архетипа Артемиды",
+      "query_owner_scope": "архетипическая роль; жизненные запросы о перегрузке принадлежат L03 и L12",
+      "audience": "women",
+      "priority": "P2",
+      "related": [
+        { "route_id": "L07", "anchor": "как говорить «нет» без длинных оправданий", "reason": "граница" },
+        { "route_id": "L03", "anchor": "что делать, если устала быть сильной", "reason": "сила без мобилизации" },
+        { "route_id": "L15", "anchor": "как выбрать первый точный шаг", "reason": "действие" }
+      ],
+      "cta": {
+        "variant": "artemis_strength_without_overload",
+        "eyebrow": "Когда силы много, а свободы мало",
+        "title": "Найти силу, которой не нужна ещё одна перегрузка",
+        "body": "В женском менторинге мы смотрим не только на способность действовать, но и на всю систему, которая выбирает цель, темп и момент остановки.",
+        "primary": { "kind": "product", "product_id": "mentoring", "label": "Посмотреть программу менторинга" },
+        "secondary": { "kind": "product", "product_id": "strength", "label": "Познакомиться со «Вкусом силы»" }
+      }
+    },
+    "R04": {
+      "primary_query": "архетип Афины",
+      "search_intent": "понять стратегию, ясность и тень контроля в архетипе Афины",
+      "query_owner_scope": "архетипическая роль и направление; объём спроса требует отдельного обновления",
+      "audience": "women",
+      "priority": "P1",
+      "related": [
+        { "route_id": "L12", "anchor": "как перестать всё делать самой", "reason": "делегирование" },
+        { "route_id": "L10", "anchor": "где стратегия превращается в контроль", "reason": "теневая сторона" },
+        { "route_id": "L16", "anchor": "что делать, если рабочая стратегия потеряла вкус", "reason": "пересборка плана" }
+      ],
+      "cta": {
+        "variant": "athena_rebuild_the_system",
+        "eyebrow": "Следующая глубина",
+        "title": "Перестроить систему, которую больше не нужно держать вручную",
+        "body": "В женском менторинге стратегия встречается с другими функциями: желанием, действием, границами и способностью доверить часть пути не только себе.",
+        "primary": { "kind": "product", "product_id": "mentoring", "label": "Посмотреть программу менторинга" },
+        "secondary": { "kind": "product", "product_id": "strength", "label": "Начать со «Вкуса силы»" }
+      }
+    },
+    "R05": {
+      "primary_query": "архетип Геры",
+      "search_intent": "понять союз, договорённости и общее дело в архетипе Геры",
+      "query_owner_scope": "архетипическая роль; практический запрос «всё делаю сама» принадлежит L12",
+      "audience": "women",
+      "priority": "P1",
+      "related": [
+        { "route_id": "L06", "anchor": "как не потерять себя в отношениях", "reason": "союз и самоустранение" },
+        { "route_id": "L12", "anchor": "как распределять общее, а не тащить одной", "reason": "совместная ответственность" },
+        { "route_id": "L07", "anchor": "как обозначать границы в союзе", "reason": "договорённости" }
+      ],
+      "cta": {
+        "variant": "hera_build_together",
+        "eyebrow": "Если союз держится на вас",
+        "title": "Перестать обслуживать союз и начать строить его вдвоём",
+        "body": "Женский менторинг помогает разобрать устойчивый сценарий целиком: выбор, договорённости, границы и место, которое вы оставляете себе в общем деле.",
+        "primary": { "kind": "product", "product_id": "mentoring", "label": "Посмотреть программу менторинга" }
+      }
+    },
+    "L03": {
+      "primary_query": "устала быть сильной",
+      "search_intent": "снизить постоянную мобилизацию и реальный объём нагрузки",
+      "query_owner_scope": "нагрузка, отсутствие опоры, упрощение и отмена; полный алгоритм передачи задачи принадлежит L12",
+      "audience": "mixed",
+      "priority": "P0",
+      "related": [
+        { "route_id": "L12", "anchor": "как перестать всё делать самой", "reason": "передача целого участка" },
+        { "route_id": "R03", "anchor": "Артемида: сила без постоянного рывка", "reason": "точное действие" },
+        { "route_id": "L10", "anchor": "сила без контроля и давления", "reason": "граница ответственности" }
+      ],
+      "cta": {
+        "variant": "strength_without_carrying_all",
+        "eyebrow": "Практический вход",
+        "title": "Попробовать силу, которая не требует всё тащить",
+        "body": "«Вкус силы» исследует действие, границы и ответственность так, чтобы сила снова стала опорой, а не круглосуточной сменой.",
+        "primary": { "kind": "product", "product_id": "strength", "label": "Посмотреть «Вкус силы»" },
+        "secondary": { "kind": "product", "product_id": "mentoring", "label": "Менторинг для женщин с повторяющейся темой" }
+      }
+    },
+    "L05": {
+      "primary_query": "синдром хорошей девочки",
+      "search_intent": "перестать автоматически соглашаться ради одобрения",
+      "query_owner_scope": "зависимость выбора от одобрения; техника отказа принадлежит L07",
+      "audience": "women",
+      "priority": "P2",
+      "related": [
+        { "route_id": "L07", "anchor": "как говорить «нет» без чувства вины", "reason": "следующий навык" },
+        { "route_id": "L06", "anchor": "как вернуть себя в отношениях", "reason": "близкий сценарий" },
+        { "route_id": "R07", "anchor": "Деметра: забота, которая не поглощает", "reason": "архетипическая карта" }
+      ],
+      "cta": {
+        "variant": "choice_without_goodness_exam",
+        "eyebrow": "Мягкий практический шаг",
+        "title": "Проверить своё «хочу» без экзамена на хорошесть",
+        "body": "Двухнедельный маршрут даёт место вкусу, желанию и действию — не как новой обязанности быть правильной, а как живому эксперименту.",
+        "primary": { "kind": "product", "product_id": "two_week", "label": "Посмотреть двухнедельный маршрут" }
+      }
+    },
+    "L04": {
+      "primary_query": "не могу расслабиться",
+      "search_intent": "понять, почему пауза не начинается, и освободить внутреннее пространство",
+      "query_owner_scope": "напряжение в паузе; не владеет медицинским или диагностическим интентом",
+      "audience": "mixed",
+      "priority": "P2",
+      "related": [
+        { "route_id": "R06", "anchor": "Гестия: тишина, из которой рождается дело", "reason": "архетип паузы" },
+        { "route_id": "L13", "anchor": "пауза после достигнутой цели", "reason": "завершение" },
+        { "route_id": "L01", "anchor": "как отличить своё «хочу» от бесконечного «надо»", "reason": "источник перегрузки" }
+      ],
+      "cta": {
+        "variant": "pause_without_earning_it",
+        "eyebrow": "Практический вход",
+        "title": "Попробовать паузу, которую не нужно заслуживать",
+        "body": "Двухнедельный маршрут соединяет телесный вкус, действие и смену темпа — чтобы отдых перестал быть ещё одним пунктом плана.",
+        "primary": { "kind": "product", "product_id": "two_week", "label": "Посмотреть двухнедельный маршрут" }
+      }
+    },
+    "L06": {
+      "primary_query": "теряю себя в отношениях",
+      "search_intent": "вернуть собственные желания и границы внутри отношений",
+      "query_owner_scope": "самоутрата в паре; не владеет общей темой «живу не свою жизнь»",
+      "audience": "women",
+      "priority": "P2",
+      "related": [
+        { "route_id": "R05", "anchor": "Гера: союз без самоустранения", "reason": "архетип союза" },
+        { "route_id": "L05", "anchor": "как перестать заслуживать одобрение", "reason": "соседний сценарий" },
+        { "route_id": "L08", "anchor": "как снова включить себя в собственную жизнь", "reason": "восстановление выбора" }
+      ],
+      "cta": {
+        "variant": "self_inside_relationship",
+        "eyebrow": "Если сценарий повторяется",
+        "title": "Вернуть себя внутрь отношений, а не выйти из них",
+        "body": "В женском менторинге можно увидеть всю конструкцию близости: где исчезает голос, как устроены границы и что позволяет оставаться собой рядом с другим.",
+        "primary": { "kind": "product", "product_id": "mentoring", "label": "Посмотреть программу менторинга" },
+        "secondary": { "kind": "product", "product_id": "two_week", "label": "Начать с двухнедельного маршрута" }
+      }
+    },
+    "S05": {
+      "primary_query": "что такое архетип",
+      "search_intent": "получить простое определение архетипа и живые примеры",
+      "query_owner_scope": "системное определение; не страница отдельной богини и не публичный тест",
+      "audience": "mixed",
+      "priority": "P2",
+      "related": [
+        { "route_id": "S06", "anchor": "как ресурс архетипа превращается в тень", "reason": "углубить определение" },
+        { "route_id": "S04", "anchor": "как устроена мужская система архетипов", "reason": "расширить карту" },
+        { "route_id": "R01", "anchor": "как желание проявляется в архетипе Персефоны", "reason": "живой пример функции" }
+      ],
+      "cta": {
+        "variant": "definition_to_dynamic",
+        "eyebrow": "Продолжить разбираться",
+        "title": "Увидеть, как одна функция становится опорой или перегрузкой",
+        "body": "Следующая статья показывает архетип не как ярлык, а в движении — от точной силы к автоматизму и обратно.",
+        "primary": { "kind": "article", "route_id": "S06", "label": "Читать о ресурсе и тени" },
+        "secondary": { "kind": "product", "product_id": "mentoring", "label": "Менторинг для женщин" }
+      }
+    },
+    "R06": {
+      "primary_query": "архетип Гестии",
+      "search_intent": "понять внутренний центр, тишину и действие архетипа Гестии",
+      "query_owner_scope": "архетипическая роль; общий запрос о расслаблении принадлежит L04",
+      "audience": "women",
+      "priority": "P2",
+      "related": [
+        { "route_id": "L04", "anchor": "почему не получается расслабиться", "reason": "тишина против незавершённости" },
+        { "route_id": "L13", "anchor": "как прожить тишину после достигнутой цели", "reason": "пауза между этапами" },
+        { "route_id": "R08", "anchor": "как Геката помогает завершить этап", "reason": "от тишины к форме" }
+      ],
+      "cta": {
+        "variant": "hestia_rebuild_rhythm",
+        "eyebrow": "Когда тишины всегда мало",
+        "title": "Перестроить ритм, а не искать тишину между делами",
+        "body": "Женский менторинг помогает увидеть, какие внутренние функции заполняют всё пространство и как вернуть центру реальное место в жизни.",
+        "primary": { "kind": "product", "product_id": "mentoring", "label": "Посмотреть программу менторинга" },
+        "secondary": { "kind": "product", "product_id": "two_week", "label": "Начать с двухнедельного маршрута" }
+      }
+    },
+    "R07": {
+      "primary_query": "архетип Деметры",
+      "search_intent": "понять заботу, рост и тень контроля в архетипе Деметры",
+      "query_owner_scope": "архетипическая роль; жизненные запросы о помощи принадлежат L08 и L09",
+      "audience": "women",
+      "priority": "P2",
+      "related": [
+        { "route_id": "L09", "anchor": "как помогать, не делая за другого", "reason": "зрелая забота" },
+        { "route_id": "L08", "anchor": "как заботиться о других, не забывая о себе", "reason": "собственное место" },
+        { "route_id": "L05", "anchor": "как выйти из роли хорошей девочки", "reason": "забота и одобрение" }
+      ],
+      "cta": {
+        "variant": "demeter_growth_for_both",
+        "eyebrow": "Для устойчивой темы заботы",
+        "title": "Оставить в заботе место для роста обоих",
+        "body": "В женском менторинге мы разбираем не отдельный совет, а систему: кому принадлежит ответственность, где помощь поддерживает и где начинает жить вместо другого.",
+        "primary": { "kind": "product", "product_id": "mentoring", "label": "Посмотреть программу менторинга" },
+        "secondary": { "kind": "product", "product_id": "strength", "label": "Попробовать «Вкус силы»" }
+      }
+    },
+    "R08": {
+      "primary_query": "архетип Гекаты",
+      "search_intent": "понять завершение, границу и переход в архетипе Гекаты",
+      "query_owner_scope": "архетипическая роль; общий запрос о новом этапе жизни принадлежит кластеру переходов",
+      "audience": "women",
+      "priority": "P2",
+      "related": [
+        { "route_id": "L13", "anchor": "что делать с пустотой после завершения цели", "reason": "переход" },
+        { "route_id": "L07", "anchor": "как поставить точку спокойным «нет»", "reason": "граница" },
+        { "route_id": "R06", "anchor": "как найти тишину после завершения", "reason": "следующий этап" }
+      ],
+      "cta": {
+        "variant": "hecate_completion_to_transition",
+        "eyebrow": "Когда заканчивается целый этап",
+        "title": "Превратить завершение в настоящий переход",
+        "body": "Женский менторинг помогает собрать следующий этап не из новой спешки, а из того, что действительно закончено, выбрано и готово получить форму.",
+        "primary": { "kind": "product", "product_id": "mentoring", "label": "Посмотреть программу менторинга" },
+        "secondary": { "kind": "product", "product_id": "retreats", "label": "Посмотреть формат ретрита" }
+      }
+    },
+    "L07": {
+      "primary_query": "как научиться говорить нет",
+      "search_intent": "научиться спокойно отказывать в конкретной просьбе",
+      "query_owner_scope": "практика отказа; зависимость выбора от одобрения принадлежит L05",
+      "audience": "mixed",
+      "priority": "P2",
+      "related": [
+        { "route_id": "R03", "anchor": "Артемида и ясная граница", "reason": "архетипическая функция" },
+        { "route_id": "R08", "anchor": "Геката и сила поставить точку", "reason": "завершение" },
+        { "route_id": "L05", "anchor": "от хорошей девочки к собственному ответу", "reason": "причина трудности" }
+      ],
+      "cta": {
+        "variant": "calm_no_as_strength",
+        "eyebrow": "Практика силы",
+        "title": "Потренировать силу короткого и спокойного «нет»",
+        "body": "«Вкус силы» помогает попробовать границу не как нападение или длинное оправдание, а как ясное действие, которое оставляет место обоим.",
+        "primary": { "kind": "product", "product_id": "strength", "label": "Посмотреть «Вкус силы»" }
+      }
+    },
+    "L08": {
+      "primary_query": "как научиться жить для себя",
+      "search_intent": "вернуть собственным желаниям место в структуре жизни",
+      "query_owner_scope": "вся жизнь отдана другим; отдельный конфликт «хочу/надо» принадлежит L01",
+      "audience": "women",
+      "priority": "P2",
+      "related": [
+        { "route_id": "R07", "anchor": "Деметра: забота, рядом с которой можно расти", "reason": "зрелая забота" },
+        { "route_id": "L09", "anchor": "как перестать помогать всем в ущерб себе", "reason": "частный сценарий" },
+        { "route_id": "L06", "anchor": "как не терять себя в близости", "reason": "отношения" }
+      ],
+      "cta": {
+        "variant": "include_your_life",
+        "eyebrow": "Если одного окна в календаре мало",
+        "title": "Включить собственную жизнь в общую систему",
+        "body": "В женском менторинге мы разбираем, как устроена привычка жить через нужды других и какие архетипические функции возвращают желание, границы и действие.",
+        "primary": { "kind": "product", "product_id": "mentoring", "label": "Посмотреть программу менторинга" },
+        "secondary": { "kind": "product", "product_id": "two_week", "label": "Начать с двухнедельного маршрута" }
+      }
+    },
+    "L09": {
+      "primary_query": "как перестать всем помогать в ущерб себе",
+      "search_intent": "ограничить автоматическую помощь и вернуть ответственность владельцу",
+      "query_owner_scope": "конкретная помощь за другого; общая структура жизни принадлежит L08",
+      "audience": "mixed",
+      "priority": "P2",
+      "related": [
+        { "route_id": "R07", "anchor": "ресурс Деметры без контроля", "reason": "архетипическая карта" },
+        { "route_id": "L08", "anchor": "как жить для себя, не бросая других", "reason": "более широкий сценарий" },
+        { "route_id": "L07", "anchor": "как сказать «нет» просьбе, а не человеку", "reason": "конкретный навык" }
+      ],
+      "cta": {
+        "variant": "help_without_taking_power",
+        "eyebrow": "Практика зрелой силы",
+        "title": "Помогать, не забирая чужую силу и не отдавая свою",
+        "body": "«Вкус силы» помогает различать участие, границу и ответственность в живых ситуациях — без необходимости становиться жёстче.",
+        "primary": { "kind": "product", "product_id": "strength", "label": "Посмотреть «Вкус силы»" },
+        "secondary": { "kind": "product", "product_id": "mentoring", "label": "Менторинг для женщин с повторяющейся темой" }
+      }
+    },
+    "S06": {
+      "primary_query": "тень архетипа",
+      "search_intent": "понять, как полезная архетипическая функция становится перегрузкой",
+      "query_owner_scope": "ресурс и перегрузка функции; не юнгианская Тень как отдельное понятие",
+      "audience": "mixed",
+      "priority": "P1",
+      "related": [
+        { "route_id": "S05", "anchor": "что такое архетип простыми словами", "reason": "вернуть основу" },
+        { "route_id": "R07", "anchor": "забота Деметры: ресурс и перегрузка", "reason": "пример перехода в тень" },
+        { "route_id": "R04", "anchor": "стратегия Афины: ясность без контроля", "reason": "второй пример" }
+      ],
+      "cta": {
+        "variant": "dynamic_to_library",
+        "eyebrow": "Выберите живой пример",
+        "title": "Посмотреть, как функции работают в обычных ситуациях",
+        "body": "В библиотеке можно идти не от красивого имени, а от темы, которая узнаётся сейчас: желание, границы, забота, контроль, завершение или действие.",
+        "primary": { "kind": "url", "href": "/arhetipy/", "route_id": "S02", "label": "Открыть библиотеку архетипов" },
+        "secondary": { "kind": "product", "product_id": "mentoring", "label": "Менторинг для женщин" }
+      }
+    },
+    "S04": {
+      "primary_query": "мужские архетипы",
+      "search_intent": "увидеть восемь мужских архетипов как разные функции силы и действия",
+      "query_owner_scope": "мужская система и архетипы мужчин; без публичного теста и женского универсального CTA",
+      "audience": "mixed",
+      "priority": "P1",
+      "related": [
+        { "route_id": "S06", "anchor": "ресурс и тень архетипической функции", "reason": "объяснить динамику" },
+        { "route_id": "L10", "anchor": "как сохранить силу без контроля", "reason": "жизненное применение" },
+        { "route_id": "S05", "anchor": "архетип — функция, а не тип человека", "reason": "снять типологический ярлык" }
+      ],
+      "cta": {
+        "variant": "male_functions_in_practice",
+        "eyebrow": "Практический маршрут",
+        "title": "Попробовать две функции зрелой силы на практике",
+        "body": "«Вкус силы» работает с действием, границей, территорией и ответственностью; формат открыт мужчинам, женщинам и парам.",
+        "primary": { "kind": "product", "product_id": "strength", "label": "Посмотреть «Вкус силы»" }
+      }
+    },
+    "L10": {
+      "primary_query": "как перестать контролировать партнёра",
+      "search_intent": "перестать управлять решениями другого, сохранив свою ответственность",
+      "query_owner_scope": "контроль другого взрослого; делегирование рабочей задачи принадлежит L12",
+      "audience": "mixed",
+      "priority": "P1",
+      "related": [
+        { "route_id": "S04", "anchor": "мужские архетипы силы и порядка", "reason": "расширить карту" },
+        { "route_id": "R04", "anchor": "Афина: ясность без жёсткого контроля", "reason": "стратегия" },
+        { "route_id": "L12", "anchor": "как передать ответственность, а не поручение", "reason": "практическое применение" }
+      ],
+      "cta": {
+        "variant": "replace_checking_with_strength",
+        "eyebrow": "Практика силы",
+        "title": "Заменить постоянную проверку зрелой силой",
+        "body": "«Вкус силы» помогает различать рамку, давление и действие — и оставлять другому человеку его часть реальности.",
+        "primary": { "kind": "product", "product_id": "strength", "label": "Посмотреть «Вкус силы»" },
+        "secondary": { "kind": "product", "product_id": "mentoring", "label": "Менторинг для женщин с устойчивым сценарием" }
+      }
+    },
+    "L12": {
+      "primary_query": "всё делаю сама",
+      "search_intent": "передать другому владельцу целую задачу, а не отдельное поручение",
+      "query_owner_scope": "полный алгоритм передачи результата; общий объём нагрузки принадлежит L03",
+      "audience": "women",
+      "priority": "P0",
+      "related": [
+        { "route_id": "R04", "anchor": "Афина: видеть путь, не выполняя всё самой", "reason": "стратегия делегирования" },
+        { "route_id": "R05", "anchor": "Гера и распределённая ответственность", "reason": "общее дело" },
+        { "route_id": "L03", "anchor": "если всё держится на вас", "reason": "родительская тема" }
+      ],
+      "cta": {
+        "variant": "rebuild_responsibility_system",
+        "eyebrow": "Когда дело не в одной задаче",
+        "title": "Перестроить способ нести ответственность",
+        "body": "В женском менторинге можно увидеть, почему помощь снова оставляет вас главной, какие функции не включаются и как меняется вся система, а не одно поручение.",
+        "primary": { "kind": "product", "product_id": "mentoring", "label": "Посмотреть программу менторинга" },
+        "secondary": { "kind": "product", "product_id": "strength", "label": "Начать со «Вкуса силы»" }
+      }
+    },
+    "L13": {
+      "primary_query": "пустота после достижения цели",
+      "search_intent": "завершить прежний маршрут и заметить начало следующего этапа",
+      "query_owner_scope": "нет ожидаемой радости после конкретного результата; общий запрос «цель достигнута, что дальше» принадлежит кластеру переходов",
+      "audience": "women",
+      "priority": "P1",
+      "related": [
+        { "route_id": "R08", "anchor": "Геката и завершение этапа", "reason": "закрытие цикла" },
+        { "route_id": "R06", "anchor": "Гестия и тишина после финиша", "reason": "пауза" },
+        { "route_id": "L16", "anchor": "как понять, что прежняя стратегия закончилась", "reason": "новый маршрут" }
+      ],
+      "cta": {
+        "variant": "achievement_to_next_stage",
+        "eyebrow": "Когда закончился не только проект",
+        "title": "Не искать следующую цель, а собрать следующий этап",
+        "body": "В женском менторинге завершение становится частью новой системы жизни: с местом для тишины, вкуса, выбора и направления.",
+        "primary": { "kind": "product", "product_id": "mentoring", "label": "Посмотреть программу менторинга" },
+        "secondary": { "kind": "product", "product_id": "retreats", "label": "Посмотреть формат ретрита" }
+      }
+    },
+    "L15": {
+      "primary_query": "хочу но не делаю",
+      "search_intent": "перевести названное желание в первый реальный шаг",
+      "query_owner_scope": "желание уже названо; тема отсутствия собственного желания принадлежит L01",
+      "audience": "mixed",
+      "priority": "P1",
+      "related": [
+        { "route_id": "R01", "anchor": "Персефона: услышать настоящее «хочу»", "reason": "желание" },
+        { "route_id": "R03", "anchor": "Артемида: выбрать действие", "reason": "первый шаг" },
+        { "route_id": "R04", "anchor": "Афина: увидеть направление", "reason": "стратегия" }
+      ],
+      "cta": {
+        "variant": "desire_touches_reality",
+        "eyebrow": "Практический вход",
+        "title": "Дать желанию коснуться реальности",
+        "body": "Двухнедельный маршрут соединяет удовольствие и действие: не идеальный план, а опыт, в котором желание получает форму.",
+        "primary": { "kind": "product", "product_id": "two_week", "label": "Посмотреть двухнедельный маршрут" }
+      }
+    },
+    "L16": {
+      "primary_query": "жизнь на автомате",
+      "search_intent": "вернуть вкус к жизни, не разрушая работающую систему",
+      "query_owner_scope": "единственный владелец общего запроса «как вернуть вкус к жизни»",
+      "audience": "mixed",
+      "priority": "P0",
+      "related": [
+        { "route_id": "R02", "anchor": "Афродита: вернуть вкус", "reason": "удовольствие и выбор" },
+        { "route_id": "R04", "anchor": "Афина: пересобрать стратегию", "reason": "обновление системы" },
+        { "route_id": "L13", "anchor": "что делать, когда прежняя цель уже не ведёт дальше", "reason": "переход" }
+      ],
+      "cta": {
+        "variant": "taste_without_breaking_life",
+        "eyebrow": "Практический вход",
+        "title": "Вернуть вкус, не разрушая работающую жизнь",
+        "body": "Двухнедельный маршрут соединяет вкус и силу: сначала маленький живой опыт, затем действие, которое можно встроить в реальность.",
+        "primary": { "kind": "product", "product_id": "two_week", "label": "Посмотреть двухнедельный маршрут" },
+        "secondary": { "kind": "product", "product_id": "mentoring", "label": "Менторинг для женщин с повторяющейся темой" }
+      }
+    }
+  },
   "runtime_gates": {
     "product_destinations": [
       "/lightness/#bundle",
+      "/strength/",
       "/mentoring/",
       "/retreats/"
     ],
     "requirements": [
-      "user_safety_state_normal",
-      "product_interest",
       "product_active",
       "audience_fit"
     ],
-    "on_failure": "hide_product_without_fallback"
+    "on_failure": "show_editorial_related_reading"
   },
   "render_contract": {
     "metadata_source": "portfolio-routes.json",
     "body_source": "drafts",
     "final_cta_marker": "ROUTE_CTA",
     "markdown_destination_field": "editorial_candidate_only",
-    "state_based_component_required": true,
-    "direct_article_routes": [
-      "L04",
-      "L09"
-    ],
+    "state_based_component_required": false,
+    "direct_article_routes": [],
     "publication_state": "implemented",
     "required_before_publication": [
       "markdown_to_html_generator",
@@ -51,9 +522,6 @@
     ]
   },
   "state_dimensions": [
-    "user_safety_state",
-    "code_known",
-    "birth_time_known",
     "concern",
     "audience_fit",
     "readiness",
@@ -86,74 +554,13 @@
     }
   ],
   "routing_profiles": {
-    "personal_map": {
-      "route_ids": [
-        "R01",
-        "R02",
-        "R03",
-        "R04",
-        "R05",
-        "S05",
-        "R06",
-        "R07",
-        "R08",
-        "S06",
-        "S04"
-      ],
+    "public_article_routes": {
+      "source": "corpus_routing",
+      "selection": "one_primary_and_at_most_one_secondary",
       "branches": {
-        "cold_birth_time_known_code_unknown": "TEST",
-        "code_known": "CONCERN_PICKER",
-        "birth_time_unknown": "CONCERN_PICKER"
-      }
-    },
-    "short_experience": {
-      "route_ids": [
-        "L01",
-        "L03",
-        "L05",
-        "L02",
-        "L07",
-        "L10",
-        "L15",
-        "L16"
-      ],
-      "branches": {
-        "information_or_no_product_interest": "RELATED_READING",
-        "short_experience_female_audience": "PRODUCT_CANDIDATE_TWO_WEEK",
-        "short_experience_male_or_mixed_audience": "PRODUCT_CANDIDATE_STRENGTH",
-        "guided_work_female_audience": "PRODUCT_CANDIDATE_MENTORING",
-        "unknown_or_failed_gate": "RELATED_READING"
-      }
-    },
-    "guided_work": {
-      "route_ids": [
-        "L08",
-        "L12"
-      ],
-      "branches": {
-        "guided_work_female_audience": "PRODUCT_CANDIDATE_MENTORING",
-        "short_experience_female_audience": "PRODUCT_CANDIDATE_TWO_WEEK",
-        "unknown_or_failed_gate": "RELATED_READING"
-      }
-    },
-    "navigator": {
-      "route_ids": [
-        "L06",
-        "L13",
-        "L14"
-      ],
-      "branches": {
-        "normal_and_explicit_route_choice": "NAVIGATOR",
-        "unknown_or_failed_gate": "RELATED_READING"
-      }
-    },
-    "direct_article": {
-      "route_ids": [
-        "L04",
-        "L09"
-      ],
-      "branches": {
-        "default": "ARTICLE"
+        "information_first": "RELATED_READING",
+        "product_ready": "DECLARED_PRODUCT_ROUTE",
+        "product_unavailable_or_audience_mismatch": "RELATED_READING"
       }
     }
   },
@@ -203,8 +610,8 @@
       "route_id": "R02",
       "source": "drafts/03-afrodita.md",
       "canonical": "/arhetipy/afrodita/",
-      "seo_title": "Архетип Афродиты: как вернуть вкус к жизни | Evolution House",
-      "meta_description": "Что означает архетип Афродиты в женщине: почему чувственность начинается не с соблазнения, а с собственного вкуса — и как научиться выбирать самой.",
+      "seo_title": "Архетип Афродиты в женщине: вкус и выбор | Evolution House",
+      "meta_description": "Что означает архетип Афродиты в женщине: почему чувственность начинается с собственного вкуса и способности выбирать самой, а не с чужого взгляда.",
       "modified_date": "2026-07-30",
       "index_state": "index",
       "publication_status": "draft",
@@ -242,8 +649,8 @@
       "route_id": "R05",
       "source": "drafts/06-gera.md",
       "canonical": "/arhetipy/gera/",
-      "seo_title": "Архетип Геры: союз, выбор и жизнь без контроля | Evolution House",
-      "meta_description": "Что означает архетип Геры в обычной жизни: как создавать договорённости, распределять участие и не удерживать семью, дело или союз в одиночку. Объясняет Светлана Страусс.",
+      "seo_title": "Архетип Геры: союз и договорённости | Evolution House",
+      "meta_description": "Что означает архетип Геры: как создавать договорённости, распределять участие и строить семью, дело или союз вместе, а не в одиночку.",
       "modified_date": "2026-07-30",
       "index_state": "index",
       "publication_status": "draft",
@@ -402,8 +809,8 @@
       "route_id": "S06",
       "source": "drafts/19-resurs-i-ten.md",
       "canonical": "/arhetipy/resurs-i-ten/",
-      "seo_title": "Ресурс и тень архетипа: что это значит | Evolution House",
-      "meta_description": "Ресурс и тень архетипа простыми словами: как одна полезная сила превращается в перегрузку, где проходит момент перехода и как вернуть себе выбор.",
+      "seo_title": "Тень архетипа: как ресурс становится перегрузкой | Evolution House",
+      "meta_description": "Тень архетипа простыми словами: как полезная сила превращается в перегрузку, где проходит момент перехода и как вернуть себе выбор.",
       "index_state": "index",
       "publication_status": "draft",
       "page_safety_class": "normal",
@@ -426,8 +833,8 @@
       "route_id": "L10",
       "source": "drafts/22-sila-bez-kontrolya.md",
       "canonical": "/zhizn/sila-bez-kontrolya/",
-      "seo_title": "Как перестать контролировать партнёра и других людей | Evolution House",
-      "meta_description": "Как отличить ответственность и границу от давления: что оставить в своей зоне, о чём договориться и как перестать управлять решениями партнёра, близкого или коллеги.",
+      "seo_title": "Как перестать контролировать партнёра | Evolution House",
+      "meta_description": "Как отличить ответственность от давления, договориться о рамках и перестать управлять решениями партнёра, близкого или коллеги.",
       "index_state": "index",
       "publication_status": "draft",
       "page_safety_class": "critical_route",

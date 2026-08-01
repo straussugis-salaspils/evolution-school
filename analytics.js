@@ -6,9 +6,12 @@
   const CONSENT_KEY = "eh_consent_v2";
   const CONSENT_COOKIE = "eh_consent_v2";
   const FIRST_TOUCH_KEY = "eh_first_touch_v1";
+  const ARTICLE_ATTRIBUTION_KEY = "eh_article_product_attribution_v1";
   const EVENTS = new Set([
     "generate_lead", "navigator_start", "navigator_complete", "test_start", "test_complete",
     "telegram_click", "program_cta_click", "payment_click", "outbound_click",
+    "article_view", "related_article_click", "cta_impression", "product_click",
+    "lead_start", "lead_submit",
   ]);
   const PARAMS = {
     generate_lead: ["lead_type", "program_name", "page_path"],
@@ -20,6 +23,12 @@
     program_cta_click: ["program_name", "cta_label", "cta_location", "page_path"],
     payment_click: ["program_name", "payment_provider", "currency", "value", "page_path"],
     outbound_click: ["destination_domain", "link_label", "page_path"],
+    article_view: ["route_id", "product_id", "cta_variant", "placement"],
+    related_article_click: ["route_id", "product_id", "cta_variant", "placement"],
+    cta_impression: ["route_id", "product_id", "cta_variant", "placement"],
+    product_click: ["route_id", "product_id", "cta_variant", "placement"],
+    lead_start: ["route_id", "product_id", "cta_variant", "placement"],
+    lead_submit: ["route_id", "product_id", "cta_variant", "placement"],
   };
   const PRODUCTS = {
     "off-switch-training": ["Тренинг Off-Switch в записи", "EUR", 300],
@@ -32,6 +41,10 @@
   const storage = {
     get: (key) => { try { return localStorage.getItem(key); } catch { return null; } },
     set: (key, value) => { try { localStorage.setItem(key, value); } catch { /* Storage may be disabled. */ } },
+  };
+  const session = {
+    get: (key) => { try { return sessionStorage.getItem(key); } catch { return null; } },
+    set: (key, value) => { try { sessionStorage.setItem(key, value); } catch { /* Session storage may be disabled. */ } },
   };
   const cookie = {
     get: (key) => {
@@ -190,9 +203,84 @@
   const locationFor = (node) => node.closest("header") ? "header" : node.closest("footer") ? "footer" : node.closest("section")?.id || "content";
   const productName = () => clean(document.documentElement.dataset.programName || document.querySelector("h1")?.textContent || document.title);
 
+  const articleContext = (node = document.body) => ({
+    route_id: clean(node?.dataset.routeId || document.body?.dataset.routeId),
+    product_id: clean(node?.dataset.productId || document.body?.dataset.primaryProductId || "related_article"),
+    cta_variant: clean(node?.dataset.ctaVariant || document.body?.dataset.ctaVariant || "editorial_graph"),
+    placement: clean(node?.dataset.placement || "article"),
+  });
+  const attributionFromQuery = () => {
+    const query = new URLSearchParams(location.search);
+    if (query.get("source") !== "archetype_article") return null;
+    const values = {
+      route_id: clean(query.get("route_id")),
+      product_id: clean(query.get("product_id")),
+      cta_variant: clean(query.get("cta_variant")),
+      placement: clean(query.get("placement") || "article_end"),
+    };
+    return values.route_id && values.product_id && values.cta_variant ? values : null;
+  };
+  const readArticleAttribution = () => {
+    try {
+      const saved = JSON.parse(session.get(ARTICLE_ATTRIBUTION_KEY) || "") || null;
+      const queried = attributionFromQuery();
+      if (queried && !saved) session.set(ARTICLE_ATTRIBUTION_KEY, JSON.stringify(queried));
+      return saved || queried;
+    } catch { return attributionFromQuery(); }
+  };
+  const saveArticleAttribution = (node) => {
+    const attribution = articleContext(node);
+    if (!attribution.route_id || !attribution.product_id) return null;
+    session.set(ARTICLE_ATTRIBUTION_KEY, JSON.stringify(attribution));
+    return attribution;
+  };
+  let articleViewSent = false;
+  const trackArticleView = () => {
+    if (articleViewSent || !document.body?.dataset.routeId) return false;
+    articleViewSent = track("article_view", articleContext(document.body));
+    return articleViewSent;
+  };
+  const seenCtas = new WeakSet();
+  const observeArticleCtas = () => {
+    const nodes = [...document.querySelectorAll("[data-article-product-cta]")];
+    if (!nodes.length || typeof IntersectionObserver !== "function") return;
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting || seenCtas.has(entry.target)) continue;
+        if (track("cta_impression", articleContext(entry.target))) {
+          seenCtas.add(entry.target);
+          observer.unobserve(entry.target);
+        }
+      }
+    }, { threshold: 0.35 });
+    nodes.forEach((node) => observer.observe(node));
+  };
+  const leadStartSent = new Set();
+  const trackAttributedLead = (eventName, placement) => {
+    const attribution = readArticleAttribution();
+    if (!attribution) return false;
+    const values = { ...attribution, placement: clean(placement) || attribution.placement || "product_page" };
+    if (eventName === "lead_start") {
+      const key = `${values.route_id}:${values.product_id}:${values.cta_variant}`;
+      if (leadStartSent.has(key)) return false;
+      if (track(eventName, values)) leadStartSent.add(key);
+      return leadStartSent.has(key);
+    }
+    return track(eventName, values);
+  };
+
   document.addEventListener("click", (event) => {
     const node = event.target.closest?.("a,button,[role='button']");
     if (!node) return;
+    if (node.matches("[data-related-route-id]")) {
+      track("related_article_click", articleContext(node));
+    }
+    if (node.matches("[data-product-id]:not([data-related-route-id])")) {
+      const attribution = saveArticleAttribution(node);
+      if (attribution) track("product_click", attribution);
+    } else if (readArticleAttribution() && node.matches(".button,.btn,.fs-button,[class*='cta'],[data-analytics-program],[data-gc-payment-target],[data-off-switch-checkout]")) {
+      trackAttributedLead("lead_start", locationFor(node));
+    }
     const label = text(node);
     const productKey = node.dataset.gcProduct || (node.hasAttribute("data-off-switch-checkout") ? "off-switch-training" : "");
     const payment = PRODUCTS[productKey];
@@ -211,6 +299,8 @@
   }, { capture: true });
 
   document.addEventListener("eh:lead-success", (event) => track("generate_lead", { ...(event.detail || {}), page_path: pagePath() }));
+  document.addEventListener("eh:lead-success", () => trackAttributedLead("lead_submit", "lead_success"));
+  document.addEventListener("submit", () => trackAttributedLead("lead_submit", "form_submit"), { capture: true });
   document.addEventListener("eh:test-start", (event) => track("test_start", { ...(event.detail || {}), entry_page: pagePath() }));
   document.addEventListener("eh:test-complete", (event) => track("test_complete", event.detail || {}));
 
@@ -247,6 +337,15 @@
     metrikaId: METRIKA_ID,
     consentPayload,
   });
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", renderBanner, { once: true });
-  else renderBanner();
+  const initialisePageAnalytics = () => {
+    renderBanner();
+    trackArticleView();
+    observeArticleCtas();
+  };
+  document.addEventListener("eh:consent-change", () => {
+    trackArticleView();
+    observeArticleCtas();
+  });
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", initialisePageAnalytics, { once: true });
+  else initialisePageAnalytics();
 })();

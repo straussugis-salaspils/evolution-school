@@ -4,7 +4,7 @@ import os from "node:os";
 import path from "node:path";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
-const PORT = 3025;
+const PORT = Number(process.env.ANALYTICS_SMOKE_PORT || 3035);
 const BASE_URL = `http://127.0.0.1:${PORT}`;
 const CHROME = process.env.CHROME_PATH || "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe";
 const DEBUG_PORT = 9343;
@@ -52,7 +52,12 @@ try {
     if (message.method === "Network.requestWillBeSent") requests.push(message.params.request.url);
   });
   const send = (method, params = {}) => new Promise((resolve, reject) => {
-    nextId += 1; pending.set(nextId, { resolve, reject }); socket.send(JSON.stringify({ id: nextId, method, params }));
+    nextId += 1;
+    pending.set(nextId, {
+      resolve,
+      reject: (error) => reject(new Error(`${method}: ${error.message}; params=${JSON.stringify(params)}`)),
+    });
+    socket.send(JSON.stringify({ id: nextId, method, params }));
   });
   const evaluate = async (expression) => (await send("Runtime.evaluate", { expression, returnByValue: true, awaitPromise: true })).result.value;
   const navigate = async (url) => { requests.length = 0; await send("Page.navigate", { url }); await wait(650); };
@@ -122,6 +127,22 @@ try {
   await evaluate("window.ehAnalytics.track('program_cta_click', { cta_label: 'Safe CTA', page_path: '/' }); window.ehAnalytics.track('payment_click', { program_name: 'Safe', value: 300, currency: 'EUR', page_path: '/' }); window.ehAnalytics.track('outbound_click', { destination_domain: 'example.org', page_path: '/' })");
   check("custom events are dispatched exactly once with safe parameters", await evaluate("['program_cta_click','payment_click','outbound_click'].every((eventName) => window.dataLayer.filter((item) => item?.[0] === 'event' && item?.[1] === eventName).length === 1)"));
   check("custom events reach Yandex goals exactly once", await evaluate(`['program_cta_click','payment_click','outbound_click'].every((eventName) => window.ym.a.filter((args) => args?.[0] === ${METRIKA_ID} && args?.[1] === 'reachGoal' && args?.[2] === eventName).length === 1)`));
+
+  await navigate(`${BASE_URL}/arhetipy/afina/`);
+  check("article_view fires with the complete route contract", await evaluate("(() => { const event = window.dataLayer.filter((item) => item?.[0] === 'event' && item?.[1] === 'article_view').at(-1)?.[2]; return ['route_id','product_id','cta_variant','placement'].every((key) => Boolean(event?.[key])); })()"));
+  await evaluate("document.querySelector('[data-article-product-cta]').scrollIntoView({ block: 'center' })");
+  await wait(250);
+  check("cta_impression fires after the CTA becomes visible", await evaluate("window.dataLayer.some((item) => item?.[0] === 'event' && item?.[1] === 'cta_impression')"));
+  await evaluate("(() => { const node = document.querySelector('[data-related-route-id]'); node.addEventListener('click', (event) => event.preventDefault(), { once: true }); node.click(); })() ");
+  check("related_article_click fires from an editorial graph link", await evaluate("window.dataLayer.some((item) => item?.[0] === 'event' && item?.[1] === 'related_article_click')"));
+  const productHref = await evaluate("(() => { const node = document.querySelector('.article-product-cta a[data-product-id]'); if (!node) return ''; const href = node.href; node.addEventListener('click', (event) => event.preventDefault(), { once: true, capture: true }); node.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true })); return href; })() ");
+  if (!productHref) throw new Error(`Article product href not found on ${await evaluate("location.href")}; body=${await evaluate("document.body?.className")}; ctas=${await evaluate("document.querySelectorAll('.article-product-cta').length")}; links=${await evaluate("document.querySelectorAll('a[data-product-id]').length")}`);
+  check("product_click fires and saves route attribution", await evaluate("window.dataLayer.some((item) => item?.[0] === 'event' && item?.[1] === 'product_click') && Boolean(sessionStorage.getItem('eh_article_product_attribution_v1'))"));
+  await navigate(productHref);
+  await evaluate("(() => { const node = document.querySelector('.btn,.button,[class*=\"cta\"]'); if (!node) return false; node.addEventListener('click', (event) => event.preventDefault(), { once: true }); node.click(); return true; })() ");
+  check("lead_start fires on the attributed product page", await evaluate("window.dataLayer.some((item) => item?.[0] === 'event' && item?.[1] === 'lead_start')"));
+  await evaluate("document.dispatchEvent(new CustomEvent('eh:lead-success'))");
+  check("lead_submit success hook fires with complete attribution", await evaluate("(() => { const event = window.dataLayer.filter((item) => item?.[0] === 'event' && item?.[1] === 'lead_submit').at(-1)?.[2]; return ['route_id','product_id','cta_variant','placement'].every((key) => Boolean(event?.[key])); })()"));
 
   await navigate(`${BASE_URL}/pervyi-shag.html`);
   check("saved permission initializes one direct tag", await evaluate(`${gaScript} === 1 && window.dataLayer.filter((item) => item?.[0] === 'config' && item?.[1] === '${GA4_ID}').length === 1`));

@@ -38,10 +38,12 @@
     "archetypes:inserts:refresh": "npm run archetypes:inserts:prepare && npm run archetypes:generate",
     "archetypes:generate": "node scripts/generate-archetype-articles.mjs",
     "archetypes:seo-audit": "node scripts/archetype-seo-audit.mjs",
+    "archetypes:corpus-audit": "node scripts/archetype-corpus-audit.mjs",
+    "archetypes:baseline": "node scripts/build-archetype-baseline.mjs",
     "archetypes:visual-audit": "node scripts/archetype-visual-audit.mjs",
     "archetypes:responsive": "node scripts/verify-archetype-pages.mjs",
     "archetypes:insert-audit": "node scripts/archetype-insert-audit.mjs",
     "archetypes:sitemap": "node scripts/update-archetype-sitemap.mjs",
-    "archetypes:check": "node scripts/archetype-route-resolver.mjs && npm run archetypes:seo-audit && npm run archetypes:visual-audit"
+    "archetypes:check": "node scripts/archetype-route-resolver.mjs && npm run archetypes:seo-audit && npm run archetypes:corpus-audit && npm run archetypes:visual-audit"
   }
 }
