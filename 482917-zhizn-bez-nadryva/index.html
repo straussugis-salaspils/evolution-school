@@ -203,6 +203,25 @@
     .continuation { max-width: 760px; margin: 54px auto 0; text-align: center; }
     .continuation h3 { color: var(--plum); }
     .continuation p { margin-top: 18px; color: var(--ink-soft); }
+    .continuation__cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      margin-top: 30px;
+      padding: 14px 24px;
+      border: 1px solid var(--plum);
+      border-radius: 12px;
+      background: var(--plum);
+      color: #fffaf0;
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.3;
+      text-decoration: none;
+      transition: background-color .2s ease, border-color .2s ease, transform .2s ease;
+    }
+    .continuation__cta:hover { border-color: var(--plum-deep); background: var(--plum-deep); transform: translateY(-2px); }
+    .continuation__cta:focus-visible { outline: 3px solid rgba(189, 147, 68, .5); outline-offset: 4px; }
 
     .eh-sales-landing-header { background: rgba(251, 247, 239, .94); border-bottom-color: rgba(91, 45, 104, .1); }
     .eh-sales-landing-footer { background: #ebe5d9; color: #5e5c55; }
@@ -253,6 +272,7 @@
       .details { margin-top: 32px; }
       .detail { padding: 17px 0; }
       .payment-note { padding: 18px; }
+      .continuation__cta { width: 100%; }
     }
 
     @media (max-width: 420px) {
@@ -456,9 +476,11 @@
           <p class="payment-note"><strong>Оплата — на месте.</strong> Процедуры до программы — по желанию; они бронируются и оплачиваются отдельно по прайсу Ampermy.</p>
         </div>
         <div class="continuation">
-          <h3>Продолжение</h3>
+          <h3>Если захочется продолжить глубже</h3>
           <p>После встречи Светлана сможет предложить персональные рекомендации для укрепления полученного состояния в течение следующих 21 дня: самостоятельные практики, процедуры Ampermy или индивидуальную работу.</p>
-          <p>Более глубокое продолжение этой темы — выездные ретриты Светланы «Острова везения» на Пхукете и Лангкави.</p>
+          <p>Для тех, кому важно не просто сохранить впечатление от одного дня, а дать новому состоянию больше времени, пространства и глубины, следующим маршрутом могут стать выездные ретриты Светланы «Острова везения».</p>
+          <p>Пхукет посвящён Линии удачи — направлению, движению и следующему шагу. Лангкави — Ядру силы: внутренней опоре, тишине и способности удерживать выбранное направление.</p>
+          <a class="continuation__cta" href="/472861-ostrova-vezeniya/">Посмотреть лендинг «Острова везения»</a>
         </div>
       </div>
     </section>
