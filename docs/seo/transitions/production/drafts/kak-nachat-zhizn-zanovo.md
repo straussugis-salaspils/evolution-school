@@ -26,7 +26,7 @@ main_cta:
   label: "Посмотреть формат менторинга"
   context: "Для системной пересборки нескольких сфер жизни."
 contextual_links:
-  - url: "/urovni-zhizni/metod/#svoya-energiya"
+  - url: "/urovni-zhizni/metod/"
     label: "Метод уровней эволюции"
   - url: "/biblioteka/perehody/kak-ponyat-chego-ya-hochu/"
     label: "Как понять, чего я хочу"
@@ -109,7 +109,7 @@ adjacent_articles_not_to_duplicate:
 в реальности и видим, что просится дальше.
 
 На этом принципе построен
-[Метод уровней эволюции](/urovni-zhizni/metod/#svoya-energiya): он помогает
+[Метод уровней эволюции](/urovni-zhizni/metod/): он помогает
 увидеть, где силы заняты прежней системой, вернуть их своему направлению и
 закрепить новое в действиях, среде и результате. Позже таким способом я собирала
 книгу, программы и школу.
