@@ -17,6 +17,7 @@ const authorUrl = "/o-shkole.html";
 const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
 const articles = manifest.assets.filter((item) => item.index_state === "index");
 const byId = new Map(articles.map((item) => [item.route_id, item]));
+const corpusRouting = manifest.corpus_routing || {};
 
 const visualAlt = {
   L01: "Женщина отделяет живое желание от накопившихся обязательств",
@@ -433,15 +434,7 @@ function responsivePicture(article, variant = "hero") {
 }
 
 function relatedArticles(article) {
-  const index = articles.findIndex((item) => item.route_id === article.route_id);
-  const candidates = [
-    articles[(index + 1) % articles.length],
-    articles[(index + articles.length - 1) % articles.length],
-    byId.get(article.route_id.startsWith("R") ? "S06" : "S05"),
-  ].filter(Boolean);
-  const unique = [...new Map(candidates.map((item) => [item.route_id, item])).values()]
-    .filter((item) => item.route_id !== article.route_id)
-    .slice(0, 3);
+  const links = corpusRouting[article.route_id]?.related || [];
   return `<aside class="article-related" aria-labelledby="related-${article.route_id}">
     <div class="article-related__head">
       <div>
@@ -451,16 +444,76 @@ function relatedArticles(article) {
       <a href="/arhetipy/">Все статьи об архетипах →</a>
     </div>
     <div class="article-related__grid">
-      ${unique
-        .map((item) => {
+      ${links
+        .map((link) => {
+          const item = byId.get(link.route_id);
+          if (!item) throw new Error(`Unknown related route ${link.route_id} for ${article.route_id}`);
           const draft = parseDraft(item);
-          return `<a class="article-related__card clickable-card" href="${item.canonical}">
-            <span>Материал</span>
-            <strong>${escapeHtml(draft.h1)}</strong>
+          return `<a class="article-related__card clickable-card" href="${item.canonical}" data-route-id="${article.route_id}" data-related-route-id="${item.route_id}" data-product-id="related_article" data-cta-variant="editorial_graph" data-placement="related_materials">
+            <span>${escapeHtml(link.reason)}</span>
+            <strong>${escapeHtml(link.anchor || draft.h1)}</strong>
             <em>Читать →</em>
           </a>`;
         })
         .join("")}
+    </div>
+  </aside>`;
+}
+
+function targetHref(target, article) {
+  if (target.kind === "product") {
+    const raw = manifest.product_destinations[target.product_id];
+    if (!raw) throw new Error(`Unknown product ${target.product_id} for ${article.route_id}`);
+    const [pathname, hash = ""] = raw.split("#");
+    const separator = pathname.includes("?") ? "&" : "?";
+    return `${pathname}${separator}source=archetype_article&route_id=${encodeURIComponent(article.route_id)}&product_id=${encodeURIComponent(target.product_id)}&cta_variant=${encodeURIComponent(corpusRouting[article.route_id].cta.variant)}&placement=article_end${hash ? `#${hash}` : ""}`;
+  }
+  if (target.kind === "article") {
+    const linked = byId.get(target.route_id);
+    if (!linked) throw new Error(`Unknown CTA article ${target.route_id} for ${article.route_id}`);
+    return linked.canonical;
+  }
+  if (target.kind === "url" && target.href?.startsWith("/")) return target.href;
+  throw new Error(`Unsupported CTA target for ${article.route_id}`);
+}
+
+function ctaAnchor(target, article, importance) {
+  const href = targetHref(target, article);
+  const routing = corpusRouting[article.route_id];
+  const attributes = [
+    `href="${href}"`,
+    `class="article-product-cta__${importance}"`,
+    `data-route-id="${article.route_id}"`,
+    `data-cta-variant="${routing.cta.variant}"`,
+    `data-placement="article_end"`,
+  ];
+  if (target.kind === "product") attributes.push(`data-product-id="${target.product_id}"`);
+  if (target.kind === "article") {
+    attributes.push(`data-related-route-id="${target.route_id}"`);
+    attributes.push('data-product-id="related_article"');
+  }
+  if (target.kind === "url" && target.route_id) {
+    attributes.push(`data-related-route-id="${target.route_id}"`);
+    attributes.push('data-product-id="related_article"');
+  }
+  return `<a ${attributes.join(" ")}>${escapeHtml(target.label)}${importance === "primary" ? " →" : ""}</a>`;
+}
+
+function productCta(article) {
+  const routing = corpusRouting[article.route_id];
+  if (!routing?.cta?.primary) throw new Error(`CTA routing missing for ${article.route_id}`);
+  const productTarget = [routing.cta.primary, routing.cta.secondary]
+    .find((target) => target?.kind === "product");
+  const impressionProduct = productTarget?.product_id || "educational";
+  return `<aside class="article-product-cta" aria-labelledby="product-cta-${article.route_id}" data-article-product-cta data-route-id="${article.route_id}" data-product-id="${impressionProduct}" data-cta-variant="${routing.cta.variant}" data-placement="article_end">
+    <div class="article-product-cta__copy">
+      <p class="article-product-cta__eyebrow">${escapeHtml(routing.cta.eyebrow)}</p>
+      <h2 id="product-cta-${article.route_id}">${escapeHtml(routing.cta.title)}</h2>
+      <p>${escapeHtml(routing.cta.body)}</p>
+    </div>
+    <div class="article-product-cta__actions">
+      ${ctaAnchor(routing.cta.primary, article, "primary")}
+      ${routing.cta.secondary ? ctaAnchor(routing.cta.secondary, article, "secondary") : ""}
     </div>
   </aside>`;
 }
@@ -590,13 +643,13 @@ function articleHtml(article) {
   <link rel="canonical" href="${canonical}">
   <link rel="icon" type="image/png" href="/assets/evolution-house-logo-approved.png">
   <link rel="stylesheet" href="/styles.css">
-  <link rel="stylesheet" href="/article-library.css?v=20260727-reading-nav-2">
+  <link rel="stylesheet" href="/article-library.css?v=20260801-product-routes-1">
   <link rel="stylesheet" href="/assets/archetype-articles/inserts/archetype-inserts.css?v=20260730-athena-v2">
   <link rel="stylesheet" href="/cookie-consent.css">
   <script src="/analytics.js" defer></script>
   <script type="application/ld+json">${JSON.stringify(schemaFor(article, draft), null, 2)}</script>
 </head>
-<body class="article-page article-page--archetypes eh-context--archetypes">
+<body class="article-page article-page--archetypes eh-context--archetypes" data-route-id="${article.route_id}" data-primary-product-id="${(corpusRouting[article.route_id]?.cta?.primary?.product_id || corpusRouting[article.route_id]?.cta?.secondary?.product_id || "educational")}" data-cta-variant="${corpusRouting[article.route_id]?.cta?.variant || "missing"}">
   ${header}
   <main>
     <header class="article-hero">
@@ -623,6 +676,7 @@ function articleHtml(article) {
       <article class="${articleBodyClass}">${introHtml ? `
         <div class="article-intro">${introHtml}</div>` : ""}
         ${body}
+        ${productCta(article)}
         ${relatedArticles(article)}
         <aside class="article-author" aria-label="Об авторе">
           <div class="article-author__portrait">
