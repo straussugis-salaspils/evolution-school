@@ -103,6 +103,26 @@
     .hero__grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(420px, 1.1fr); gap: clamp(42px, 6vw, 82px); align-items: center; }
     .hero__title span { display: block; color: var(--plum); }
     .hero__sub { margin-top: 28px; max-width: 640px; font-family: var(--serif); font-size: clamp(24px, 2.5vw, 34px); line-height: 1.28; }
+    .hero__format { max-width: 600px; margin-top: 18px; color: var(--ink-soft); font-size: 16px; line-height: 1.6; }
+    .primary-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      padding: 14px 24px;
+      border: 1px solid var(--plum);
+      border-radius: 12px;
+      background: var(--plum);
+      color: #fffaf0;
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.3;
+      text-decoration: none;
+      transition: background-color .2s ease, border-color .2s ease, transform .2s ease;
+    }
+    .primary-cta:hover { border-color: var(--plum-deep); background: var(--plum-deep); transform: translateY(-2px); }
+    .primary-cta:focus-visible { outline: 3px solid rgba(189, 147, 68, .5); outline-offset: 4px; }
+    .primary-cta--hero { margin-top: 24px; }
     .hero__visual { position: relative; min-height: 560px; border-radius: 170px 24px 24px 24px; overflow: hidden; box-shadow: 0 28px 70px rgba(40, 34, 26, .17); }
     .hero__visual img { height: 100%; min-height: 560px; object-fit: cover; object-position: 52% center; }
     .hero__visual figcaption {
@@ -144,6 +164,18 @@
     .art-caption { margin-top: 14px; color: var(--ink-soft); font-size: 13px; line-height: 1.55; }
     .strength-visual { align-self: stretch; display: grid; align-content: start; }
     .strength-visual .art-frame { aspect-ratio: 1 / 1; }
+
+    .live-format { background: #f5eee4; }
+    .live-format__grid { display: grid; grid-template-columns: minmax(0, .88fr) minmax(460px, 1.12fr); gap: clamp(44px, 7vw, 92px); align-items: start; }
+    .live-format__intro .lead { margin-top: 24px; }
+    .live-format__date { margin-top: 22px; color: var(--ink-soft); }
+    .value-statement { padding: 0 0 28px 28px; border-left: 3px solid var(--gold); color: var(--plum-deep); font-family: var(--serif); font-size: clamp(25px, 2.8vw, 34px); line-height: 1.34; }
+    .format-points { margin-top: 34px; border-top: 1px solid var(--line); }
+    .format-point { display: grid; grid-template-columns: 38px 150px 1fr; gap: 18px; padding: 22px 0; border-bottom: 1px solid var(--line); }
+    .format-point__index { color: var(--gold); font-size: 12px; font-weight: 600; letter-spacing: .12em; }
+    .format-point h3 { color: var(--plum); font-size: 22px; line-height: 1.2; }
+    .format-point p { color: var(--ink-soft); font-size: 15px; line-height: 1.6; }
+    .readiness-note { margin-top: 28px; padding: 20px 22px; border-radius: 14px; background: rgba(222, 233, 224, .72); color: #355149; font-size: 15px; line-height: 1.65; }
 
     .day-head { max-width: 760px; }
     .timeline { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 26px; margin-top: 60px; }
@@ -199,7 +231,10 @@
     .detail { padding: 22px 0; border-bottom: 1px solid var(--line); }
     .detail__label { display: block; color: var(--plum); font-size: 11px; font-weight: 600; letter-spacing: .11em; text-transform: uppercase; }
     .detail__value { display: block; margin-top: 7px; font-family: var(--serif); font-size: 24px; line-height: 1.24; }
+    .participation-value { position: relative; z-index: 1; max-width: 900px; margin-top: 32px; color: var(--ink-soft); }
     .payment-note { position: relative; z-index: 1; margin-top: 30px; padding: 22px 24px; border-radius: 16px; background: var(--sage); color: #355149; }
+    .participation-actions { position: relative; z-index: 1; display: flex; align-items: center; gap: 18px; margin-top: 26px; }
+    .participation-actions p { color: var(--ink-soft); font-size: 13px; }
     .continuation { max-width: 920px; margin: 48px auto 0; text-align: center; }
     .continuation .eyebrow { margin-bottom: 18px; }
     .continuation h3 { color: var(--plum); font-size: clamp(38px, 5vw, 58px); }
@@ -220,15 +255,15 @@
       padding: 14px 24px;
       border: 1px solid var(--plum);
       border-radius: 12px;
-      background: var(--plum);
-      color: #fffaf0;
+      background: transparent;
+      color: var(--plum);
       font-size: 15px;
       font-weight: 600;
       line-height: 1.3;
       text-decoration: none;
       transition: background-color .2s ease, border-color .2s ease, transform .2s ease;
     }
-    .continuation__cta:hover { border-color: var(--plum-deep); background: var(--plum-deep); transform: translateY(-2px); }
+    .continuation__cta:hover { border-color: var(--plum-deep); background: rgba(91, 45, 104, .07); transform: translateY(-2px); }
     .continuation__cta:focus-visible { outline: 3px solid rgba(189, 147, 68, .5); outline-offset: 4px; }
 
     .eh-sales-landing-header { background: rgba(251, 247, 239, .94); border-bottom-color: rgba(91, 45, 104, .1); }
@@ -236,7 +271,7 @@
     .eh-sales-landing-footer a { color: var(--plum); }
 
     @media (max-width: 960px) {
-      .hero__grid, .editorial-grid, .venue-grid, .outcome-grid, .host-grid { grid-template-columns: 1fr; }
+      .hero__grid, .editorial-grid, .live-format__grid, .venue-grid, .outcome-grid, .host-grid { grid-template-columns: 1fr; }
       .hero__visual { min-height: 460px; border-radius: 110px 24px 24px 24px; }
       .hero__visual img { min-height: 460px; }
       .editorial-grid { gap: 46px; }
@@ -255,6 +290,8 @@
       .hero { padding: 38px 0 48px; }
       .hero__grid { gap: 28px; }
       .hero__sub { margin-top: 20px; }
+      .hero__format { margin-top: 14px; }
+      .primary-cta--hero { width: 100%; margin-top: 20px; }
       .hero__visual { min-height: 290px; overflow: visible; border-radius: 0; background: transparent; box-shadow: none; }
       .hero__visual img { min-height: 290px; border-radius: 78px 18px 18px 18px; box-shadow: 0 20px 48px rgba(40, 34, 26, .16); }
       .hero__visual figcaption { position: static; display: block; margin-top: 10px; padding: 0; border-radius: 0; background: transparent; color: var(--ink-soft); font-size: 12px; backdrop-filter: none; }
@@ -262,6 +299,9 @@
       .fact { min-height: 0; padding: 14px 16px; }
       .fact:last-child { grid-column: 1 / -1; }
       .fact__value { font-size: 22px; }
+      .value-statement { padding: 0 0 22px 20px; }
+      .format-point { grid-template-columns: 30px 1fr; gap: 8px 14px; }
+      .format-point p { grid-column: 2; }
       .timeline { grid-template-columns: 1fr; gap: 0; margin-top: 38px; }
       .moment { padding: 0 0 34px 34px; border-left: 1px solid rgba(91, 45, 104, .24); }
       .moment:last-child { padding-bottom: 0; border-left-color: transparent; }
@@ -281,6 +321,8 @@
       .details { margin-top: 32px; }
       .detail { padding: 17px 0; }
       .payment-note { padding: 18px; }
+      .participation-actions { align-items: stretch; flex-direction: column; }
+      .participation-actions .primary-cta { width: 100%; }
       .continuation { margin-top: 40px; }
       .continuation__routes { grid-template-columns: 1fr; }
       .continuation__route { padding: 22px; }
@@ -320,6 +362,8 @@
           <p class="eyebrow">Wellness-день со Светланой Страусс · 8 августа · Москва</p>
           <h1 id="page-title" class="hero__title">Жизнь <span>без надрыва</span></h1>
           <p class="hero__sub">Для тех, кто хочет соединить внутреннюю силу с лёгкостью, яснее услышать себя и почувствовать следующий шаг не только головой, но и телом.</p>
+          <p class="hero__format">Живая авторская практика, которую Светлана собирает под состояние конкретной группы 8 августа.</p>
+          <a class="primary-cta primary-cta--hero" href="https://t.me/evgenia_tatarkina" target="_blank" rel="noopener">Забронировать место</a>
           <div class="facts" aria-label="Основная информация о встрече">
             <div class="fact"><span class="fact__label">Дата</span><span class="fact__value">8 августа 2026</span></div>
             <div class="fact"><span class="fact__label">Основная программа</span><span class="fact__value">15:00–18:00</span></div>
@@ -353,7 +397,39 @@
           </div>
           <figcaption class="art-caption">Сила не исчезает — меняется качество движения.</figcaption>
         </figure>
-        <p class="pull">Светлана называет это состоянием везения: когда внутри появляется согласованность, собственное направление ощущается яснее, а действия требуют меньше внутренней борьбы.</p>
+        <p class="pull">Состояние везения — это внутренняя согласованность, при которой человек яснее чувствует своё направление, замечает доступные возможности и точнее выбирает действия.</p>
+      </div>
+    </section>
+
+    <section class="section live-format" aria-labelledby="live-format-title">
+      <div class="wrap live-format__grid">
+        <div class="live-format__intro">
+          <p class="eyebrow">Живой авторский формат</p>
+          <h2 id="live-format-title">Практика собирается под тех, кто будет в зале</h2>
+          <p class="lead">8 августа — выбранная Светланой московская точка для этой темы. У события будет собственная последовательность, которую она определит по состоянию присутствующих и моменту, в котором находится группа.</p>
+          <p class="live-format__date">Это первое живое знакомство с авторской темой «Состояние везения» — через внимание, тело, внутреннее решение, эмоции и движение.</p>
+        </div>
+        <div>
+          <p class="value-statement">Вы оплачиваете не набор упражнений, а специально собранный и проведённый Светланой живой процесс, в котором внутреннее решение получает телесное ощущение и направление для дальнейших действий.</p>
+          <div class="format-points">
+            <article class="format-point">
+              <span class="format-point__index">01</span>
+              <h3>Видение группы</h3>
+              <p>Светлана замечает общее состояние людей в зале и выбирает последовательность практики, которая точнее отвечает этому моменту.</p>
+            </article>
+            <article class="format-point">
+              <span class="format-point__index">02</span>
+              <h3>Цельный процесс</h3>
+              <p>Медитация, внимание к личному вопросу, дыхание, телесные ощущения, эмоции и движение соединяются в одну работу, а не существуют как отдельные упражнения.</p>
+            </article>
+            <article class="format-point">
+              <span class="format-point__index">03</span>
+              <h3>Своя точка готовности</h3>
+              <p>Каждый входит со своим вопросом и получает опыт, соответствующий той глубине изменений, к которой готов сейчас.</p>
+            </article>
+          </div>
+          <p class="readiness-note">Наибольшую глубину из встречи обычно берут те, у кого изменение уже созрело, кто готов включиться в процесс и затем применять рекомендации в жизни.</p>
+        </div>
       </div>
     </section>
 
@@ -399,7 +475,7 @@
           <h2 id="venue-title">Ampermy в центре Москвы</h2>
           <p class="lead">Внутреннюю работу можно дополнить телесной или восстановительной процедурой центра.</p>
           <p>День можно начать с выбранной процедуры, продолжить основной программой со Светланой, а после остаться на чайную церемонию и разговор.</p>
-          <p class="note">Процедуры не входят в стоимость wellness-дня: их нужно бронировать и оплачивать отдельно по прайсу Ampermy.</p>
+          <p class="note">Основная программа Светланы с 15:00 до 18:00 — самостоятельный и целостный процесс. Процедуры Ampermy остаются дополнительной возможностью для желающих: их бронируют и оплачивают отдельно.</p>
         </div>
       </div>
     </section>
@@ -435,7 +511,7 @@
         <div>
           <p class="eyebrow">После встречи</p>
           <h2 id="outcome-title">Что можно почувствовать после встречи</h2>
-          <p class="lead">Состояние везения начинается с внутреннего согласия — когда человек лучше чувствует себя, яснее видит возможности и точнее выбирает действия.</p>
+          <p class="lead">После живой практики новое решение может ощущаться не только как мысль, но как более ясная внутренняя опора для следующих действий.</p>
         </div>
         <div class="outcomes" role="list">
           <p class="outcomes__intro">После программы могут появиться:</p>
@@ -465,7 +541,7 @@
           <p class="eyebrow">Кто ведёт</p>
           <h2 id="host-title">Светлана Страусс</h2>
           <p class="host-name">Основательница авторской школы Evolution House — «Дома Эволюции»</p>
-          <p>Светлана ведёт практики, обучение и сопровождает людей с 2000 года. За это время через её программы, практики, обучение, менторинг и ретриты прошли более 1000 участников.</p>
+          <p>Светлана ведёт практики, обучение и сопровождает людей с 2000 года — 26 лет. За это время через её программы, практики, обучение, менторинг и ретриты прошли более 1000 участников.</p>
           <p>Она является автором метода «Персональный Код Архетипов», ведущей индивидуальных и групповых программ, менторингов и выездных ретритов.</p>
           <p>В работе Светлана соединяет понимание, тело, состояние и практический опыт, помогая человеку увидеть своё направление и перевести внутреннее решение в ежедневные действия.</p>
         </div>
@@ -485,7 +561,12 @@
             <div class="detail"><span class="detail__label">Адрес</span><span class="detail__value">Москва, Большой Каретный переулок, 19, стр. 2</span></div>
             <div class="detail"><span class="detail__label">Стоимость</span><span class="detail__value">8 880 ₽</span></div>
           </div>
-          <p class="payment-note"><strong>Оплата — на месте.</strong> Процедуры до программы — по желанию; они бронируются и оплачиваются отдельно по прайсу Ampermy.</p>
+          <p class="participation-value"><strong>В стоимость входит трёхчасовой живой процесс со Светланой:</strong> знакомство и настройка на личный вопрос, управляемая практика через внимание, дыхание, эмоции и движение, а также возможность остаться на чайную церемонию и разговор после программы.</p>
+          <p class="payment-note"><strong>Оплата — на месте.</strong> Основная программа обладает полной ценностью без процедур Ampermy; процедуры можно забронировать отдельно по желанию.</p>
+          <div class="participation-actions">
+            <a class="primary-cta" href="https://t.me/evgenia_tatarkina" target="_blank" rel="noopener">Забронировать место</a>
+            <p>Для записи откроется Telegram.</p>
+          </div>
         </div>
         <div class="continuation">
           <p class="eyebrow">Выездные ретриты Светланы Страусс</p>
