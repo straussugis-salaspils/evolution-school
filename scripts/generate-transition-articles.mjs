@@ -295,7 +295,8 @@ function commonShell() {
     ?.replace(
       /<nav class="library-breadcrumb library-breadcrumb--header"[\s\S]*?<\/nav>/,
       "",
-    );
+    )
+    ?.replace(/\n[ \t]*\n[ \t]*\n+/g, "\n\n");
   const footer = sample.match(
     /<footer class="eh-global-footer"[\s\S]*?<\/footer>\s*<script src="\/script\.js"><\/script>/,
   )?.[0];
@@ -581,7 +582,7 @@ function renderArticle(article, articles, shell) {
   <link rel="canonical" href="${canonical}">
   <link rel="icon" type="image/png" href="/assets/evolution-house-logo-approved.png">
   <link rel="stylesheet" href="/styles.css">
-  <link rel="stylesheet" href="/article-library.css?v=20260727-reading-nav-2">
+  <link rel="stylesheet" href="/article-library.css?v=20260801-transition-article-5">
   <link rel="stylesheet" href="/assets/transition-articles/inserts/transition-inserts.css?v=20260725-1">
   <link rel="stylesheet" href="/cookie-consent.css">
   <script src="/analytics.js" defer></script>
