@@ -219,6 +219,11 @@
   min-width: 0;
 }
 
+.eh-sales-index__link-groups.eh-sales-index__link-groups--single {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 32rem;
+}
+
 .eh-sales-index__link-group {
   display: grid;
   gap: .25rem;
