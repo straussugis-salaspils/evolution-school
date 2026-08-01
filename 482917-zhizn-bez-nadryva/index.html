@@ -38,7 +38,7 @@
       --sans: "Inter", system-ui, sans-serif;
       --max: 1160px;
       --text: 760px;
-      --space: clamp(64px, 8vw, 112px);
+      --space: clamp(52px, 5vw, 72px);
       --radius: 24px;
     }
 
@@ -87,7 +87,7 @@
 
     .hero {
       position: relative;
-      padding: clamp(56px, 8vw, 108px) 0 clamp(64px, 8vw, 96px);
+      padding: clamp(56px, 6vw, 76px) 0 clamp(52px, 5vw, 72px);
       background:
         radial-gradient(circle at 12% 18%, rgba(232, 215, 173, .55), transparent 29%),
         linear-gradient(145deg, #faf4e9 0%, #f5eee4 55%, #e5ebe4 100%);
@@ -167,7 +167,7 @@
     .entry p { font-family: var(--serif); font-size: clamp(23px, 2.5vw, 30px); line-height: 1.25; }
     .entry-note { margin: 28px auto 0; max-width: 640px; text-align: center; color: var(--plum); font-family: var(--serif); font-size: 27px; font-style: italic; }
 
-    .movement { padding-block: var(--space); }
+    .movement { padding: 0 0 var(--space); }
     .movement figure { width: min(calc(100% - 48px), 1240px); margin-inline: auto; border-radius: 28px; overflow: hidden; box-shadow: 0 22px 60px rgba(35, 28, 20, .14); }
     .movement img { height: auto; aspect-ratio: 3 / 2; object-fit: cover; filter: saturate(.86) contrast(.98); }
     .movement__caption { width: min(calc(100% - 48px), 760px); margin: 16px auto 0; color: var(--ink-soft); text-align: center; font-size: 16px; }
@@ -191,7 +191,7 @@
     .host-copy p:first-of-type { margin-top: 28px; }
     .host-name { margin-top: 12px; color: var(--plum); font-family: var(--serif); font-size: clamp(36px, 4.5vw, 54px); }
 
-    .participation { padding-bottom: clamp(72px, 10vw, 132px); }
+    .participation { padding-bottom: var(--space); }
     .participation-card { position: relative; overflow: hidden; padding: clamp(36px, 6vw, 72px); border: 1px solid rgba(189, 147, 68, .55); border-radius: 28px; background: linear-gradient(140deg, #fffaf1 0%, #f0e4d3 100%); box-shadow: 0 30px 75px rgba(42, 33, 24, .1); }
     .participation-card::after { content: ""; position: absolute; width: 380px; height: 380px; right: -180px; top: -220px; border: 1px solid rgba(91, 45, 104, .2); border-radius: 50%; box-shadow: 0 0 0 42px rgba(91, 45, 104, .04), 0 0 0 86px rgba(189, 147, 68, .05); }
     .participation-card h2 { max-width: 780px; }
@@ -200,7 +200,7 @@
     .detail__label { display: block; color: var(--plum); font-size: 11px; font-weight: 600; letter-spacing: .11em; text-transform: uppercase; }
     .detail__value { display: block; margin-top: 7px; font-family: var(--serif); font-size: 24px; line-height: 1.24; }
     .payment-note { position: relative; z-index: 1; margin-top: 30px; padding: 22px 24px; border-radius: 16px; background: var(--sage); color: #355149; }
-    .continuation { max-width: 920px; margin: 64px auto 0; text-align: center; }
+    .continuation { max-width: 920px; margin: 48px auto 0; text-align: center; }
     .continuation .eyebrow { margin-bottom: 18px; }
     .continuation h3 { color: var(--plum); font-size: clamp(38px, 5vw, 58px); }
     .continuation p { margin-top: 18px; color: var(--ink-soft); }
@@ -251,7 +251,7 @@
 
     @media (max-width: 700px) {
       .wrap { width: min(calc(100% - 40px), var(--max)); }
-      .section { padding-block: clamp(54px, 14vw, 76px); }
+      .section { padding-block: 52px; }
       .hero { padding: 38px 0 48px; }
       .hero__grid { gap: 28px; }
       .hero__sub { margin-top: 20px; }
@@ -272,6 +272,7 @@
       .entry::before { margin-bottom: 24px; }
       .pull { padding: 22px 0 22px 22px; background: transparent; }
       .movement figure { width: min(calc(100% - 32px), 1240px); border-radius: 18px; }
+      .movement { padding-top: 0; }
       .movement img { aspect-ratio: 3 / 2; object-fit: cover; object-position: center; }
       .movement__caption { width: min(calc(100% - 40px), 760px); }
       .outcome-grid { gap: 36px; }
@@ -280,7 +281,7 @@
       .details { margin-top: 32px; }
       .detail { padding: 17px 0; }
       .payment-note { padding: 18px; }
-      .continuation { margin-top: 48px; }
+      .continuation { margin-top: 40px; }
       .continuation__routes { grid-template-columns: 1fr; }
       .continuation__route { padding: 22px; }
       .continuation__cta { width: 100%; }
