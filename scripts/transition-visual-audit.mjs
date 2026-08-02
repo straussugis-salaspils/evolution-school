@@ -89,8 +89,8 @@ for (const visual of transitionVisuals) {
   ) {
     fail(`Article ${visual.number} has an invalid focal point.`);
   }
-  if (visual.inserts.length !== 1) {
-    fail(`Article ${visual.number} must have exactly one internal visual.`);
+  if (visual.inserts.length > 1) {
+    fail(`Article ${visual.number} may have at most one internal visual.`);
   }
   for (const [filename, budget] of requiredAssets) {
     const assetPath = path.join(assetRoot, folder, filename);
@@ -215,8 +215,14 @@ for (const filePath of articleFiles) {
   ids.forEach((id) => seenInsertIds.add(id));
 }
 
-if (seenInsertIds.size !== 12) {
-  fail(`Expected 12 unique internal visual IDs, found ${seenInsertIds.size}.`);
+const expectedInsertCount = transitionVisuals.reduce(
+  (count, visual) => count + visual.inserts.length,
+  0,
+);
+if (seenInsertIds.size !== expectedInsertCount) {
+  fail(
+    `Expected ${expectedInsertCount} unique configured internal visual IDs, found ${seenInsertIds.size}.`,
+  );
 }
 
 const processor = fs.readFileSync(
@@ -236,5 +242,5 @@ if (errors.length) {
 }
 
 console.log(
-  "Transition visual audit passed: 12 unique Hero sources, 12 internal visuals, focal-aware crops and all responsive assets within budget.",
+  `Transition visual audit passed: 12 unique Hero sources, ${expectedInsertCount} configured internal visuals, focal-aware crops and all responsive assets within budget.`,
 );

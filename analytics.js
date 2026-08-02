@@ -24,7 +24,7 @@
     payment_click: ["program_name", "payment_provider", "currency", "value", "page_path"],
     outbound_click: ["destination_domain", "link_label", "page_path"],
     article_view: ["route_id", "product_id", "cta_variant", "placement"],
-    related_article_click: ["route_id", "product_id", "cta_variant", "placement"],
+    related_article_click: ["route_id", "related_route_id", "product_id", "cta_variant", "placement"],
     cta_impression: ["route_id", "product_id", "cta_variant", "placement"],
     product_click: ["route_id", "product_id", "cta_variant", "placement"],
     lead_start: ["route_id", "product_id", "cta_variant", "placement"],
@@ -205,13 +205,14 @@
 
   const articleContext = (node = document.body) => ({
     route_id: clean(node?.dataset.routeId || document.body?.dataset.routeId),
+    related_route_id: clean(node?.dataset.relatedRouteId),
     product_id: clean(node?.dataset.productId || document.body?.dataset.primaryProductId || "related_article"),
     cta_variant: clean(node?.dataset.ctaVariant || document.body?.dataset.ctaVariant || "editorial_graph"),
     placement: clean(node?.dataset.placement || "article"),
   });
   const attributionFromQuery = () => {
     const query = new URLSearchParams(location.search);
-    if (query.get("source") !== "archetype_article") return null;
+    if (!["archetype_article", "transition_article"].includes(query.get("source"))) return null;
     const values = {
       route_id: clean(query.get("route_id")),
       product_id: clean(query.get("product_id")),

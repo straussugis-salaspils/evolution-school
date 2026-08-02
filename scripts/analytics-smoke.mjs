@@ -144,6 +144,18 @@ try {
   await evaluate("document.dispatchEvent(new CustomEvent('eh:lead-success'))");
   check("lead_submit success hook fires with complete attribution", await evaluate("(() => { const event = window.dataLayer.filter((item) => item?.[0] === 'event' && item?.[1] === 'lead_submit').at(-1)?.[2]; return ['route_id','product_id','cta_variant','placement'].every((key) => Boolean(event?.[key])); })()"));
 
+  await navigate(`${BASE_URL}/biblioteka/perehody/kak-ponyat-chego-ya-hochu/`);
+  check("transition article exposes the P01 route contract", await evaluate("document.body.dataset.routeId === 'P01' && document.body.dataset.primaryProductId === 'mentoring' && document.body.dataset.ctaVariant === 'transition_bridge_v1'"));
+  check("transition article_view fires with P01 attribution", await evaluate("(() => { const event = window.dataLayer.filter((item) => item?.[0] === 'event' && item?.[1] === 'article_view').at(-1)?.[2]; return event?.route_id === 'P01' && event?.product_id === 'mentoring' && event?.cta_variant === 'transition_bridge_v1'; })()"));
+  await evaluate("document.querySelector('[data-article-product-cta]').scrollIntoView({ block: 'center' })");
+  await wait(250);
+  check("transition cta_impression carries P01", await evaluate("window.dataLayer.filter((item) => item?.[0] === 'event' && item?.[1] === 'cta_impression').at(-1)?.[2]?.route_id === 'P01'"));
+  await evaluate("(() => { const node = document.querySelector('[data-placement=\"related_materials\"]'); node.addEventListener('click', (event) => event.preventDefault(), { once: true }); node.click(); })() ");
+  check("transition related_article_click carries source and destination", await evaluate("(() => { const event = window.dataLayer.filter((item) => item?.[0] === 'event' && item?.[1] === 'related_article_click').at(-1)?.[2]; return event?.route_id === 'P01' && Boolean(event?.related_route_id); })()"));
+  const transitionProductHref = await evaluate("(() => { const node = document.querySelector('.article-product-cta__primary'); const href = node?.href || ''; node?.addEventListener('click', (event) => event.preventDefault(), { once: true, capture: true }); node?.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true })); return href; })() ");
+  check("transition product URL carries explicit attribution", /source=transition_article/.test(transitionProductHref) && /route_id=P01/.test(transitionProductHref));
+  check("transition product_click carries P01", await evaluate("window.dataLayer.filter((item) => item?.[0] === 'event' && item?.[1] === 'product_click').at(-1)?.[2]?.route_id === 'P01'"));
+
   await navigate(`${BASE_URL}/pervyi-shag.html`);
   check("saved permission initializes one direct tag", await evaluate(`${gaScript} === 1 && window.dataLayer.filter((item) => item?.[0] === 'config' && item?.[1] === '${GA4_ID}').length === 1`));
   check("saved permission initializes one Yandex Metrika tag", await evaluate(`${metrikaScript} === 1 && window.ym.a.filter((args) => args?.[0] === ${METRIKA_ID} && args?.[1] === 'init').length === 1`));
