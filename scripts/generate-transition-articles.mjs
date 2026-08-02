@@ -234,6 +234,7 @@ function parseDraft(filename) {
   if (h1Index < 0) throw new Error(`Missing H1 in ${filename}.`);
   const h1 = lines[h1Index].slice(2).trim();
   const number = Number(topField(frontmatter, "article_number"));
+  const routeId = topField(frontmatter, "route_id") || `P${String(number).padStart(2, "0")}`;
   const route = topField(frontmatter, "slug");
   const declaredH1 = topField(frontmatter, "h1");
   if (declaredH1 && declaredH1 !== h1) {
@@ -255,7 +256,14 @@ function parseDraft(filename) {
   const secondaryCta =
     nestedObject(frontmatter, "secondary_cta") ||
     nestedObject(frontmatter, "soft_alternative");
-  const related = nestedObjectArray(frontmatter, "future_internal_links");
+  const futureRelated = nestedObjectArray(frontmatter, "future_internal_links");
+  const related = topField(frontmatter, "related_mode") === "none"
+    ? []
+    : futureRelated.length
+      ? futureRelated
+      : topField(frontmatter, "status") === "claude_stop"
+        ? nestedObjectArray(frontmatter, "contextual_links")
+        : [];
   let ctaIndex = -1;
   if (mainCta?.url) {
     ctaIndex = sections.findIndex((section) =>
@@ -268,11 +276,13 @@ function parseDraft(filename) {
     .filter(Boolean).length;
   return {
     number,
+    routeId,
     filename,
     route,
     h1,
     seoTitle: `${topField(frontmatter, "seo_title")} | Evolution House`,
     description: topField(frontmatter, "meta_description"),
+    modifiedDate: topField(frontmatter, "modified_date") || publishedDate,
     mainCta,
     secondaryCta,
     related,
@@ -305,9 +315,7 @@ function commonShell() {
       <div class="eh-shell-container">
         <a href="/urovni-zhizni/">Пересборка жизни</a>
         <a href="/urovni-zhizni/metod/">Метод уровней эволюции</a>
-        <a href="/urovni-zhizni/kvantovaya-aktivaciya/">Квантовая активация</a>
-        <a href="/urovni-zhizni/individualnyj-retrit/">Индивидуальный ретрит</a>
-        <a href="/urovni-zhizni/personalnyj-marshrut/">Маршрут 6–9 месяцев</a>
+        <a href="/mentoring/">Высокая Глубина</a>
         <a class="eh-local-strip__articles" href="${hubRoute}" aria-current="page">Статьи о пересборке жизни</a>
       </div>
     </nav>`;
@@ -395,11 +403,7 @@ function renderFaq(section) {
 
 function renderRelated(article, articles) {
   if (!article.related.length) return "";
-  const intro =
-    article.number === 7
-      ? article.relatedIntro ||
-        "К материалам о желаниях, идентичности и следующей цели переходите только тогда, когда вы способны заботиться о себе и выполнять обычные дела, состояние не ухудшается и не требует профессиональной оценки"
-      : "";
+  const intro = article.relatedIntro || "";
   return `<aside class="article-related" aria-labelledby="article-related-title-${article.number}">
           <div class="article-related__head">
             <div>
@@ -415,7 +419,8 @@ function renderRelated(article, articles) {
                 const target = articles.find((item) => item.route === link.url);
                 const label = link.label || target?.h1;
                 if (!label) throw new Error(`Missing label for related material ${link.url}.`);
-                return `<a class="article-related__card clickable-card" href="${target?.route || link.url}">
+                const relatedRouteId = target?.routeId || externalRouteId(link.url);
+                return `<a class="article-related__card clickable-card" href="${target?.route || link.url}" data-route-id="${article.routeId}" data-related-route-id="${relatedRouteId}" data-product-id="related_article" data-cta-variant="editorial_graph" data-placement="related_materials">
               <span>${target ? `Статья ${String(target.number).padStart(2, "0")}` : "Материал"}</span>
               <strong>${escapeHtml(label)}</strong>
               <em>Читать →</em>
@@ -424,6 +429,58 @@ function renderRelated(article, articles) {
               .join("\n            ")}
           </div>
         </aside>`;
+}
+
+function externalRouteId(url) {
+  return `EXT_${url
+    .replace(/^\/+|\/+$/g, "")
+    .split("/")
+    .at(-1)
+    .replace(/[^a-z0-9]+/gi, "_")
+    .toUpperCase()}`;
+}
+
+function trackedProductHref(article) {
+  const [pathname, hash = ""] = article.mainCta.url.split("#");
+  const separator = pathname.includes("?") ? "&" : "?";
+  const query = new URLSearchParams({
+    source: "transition_article",
+    route_id: article.routeId,
+    product_id: "mentoring",
+    cta_variant: "transition_bridge_v1",
+    placement: "article_end",
+  });
+  return `${pathname}${separator}${query.toString()}${hash ? `#${hash}` : ""}`;
+}
+
+function relatedRouteId(url, articles) {
+  return articles.find((item) => item.route === url)?.routeId || externalRouteId(url);
+}
+
+function renderProductCta(article, articles) {
+  const title = article.mainCta.title || article.mainCta.label;
+  const secondary = article.secondaryCta?.url
+    ? `<a class="article-product-cta__secondary" href="${article.secondaryCta.url}" data-route-id="${article.routeId}" data-related-route-id="${relatedRouteId(article.secondaryCta.url, articles)}" data-product-id="related_article" data-cta-variant="transition_bridge_v1" data-placement="article_end_secondary">${escapeHtml(article.secondaryCta.label)}</a>`
+    : "";
+  return `<aside class="article-product-cta" aria-labelledby="product-cta-${article.routeId}" data-article-product-cta data-route-id="${article.routeId}" data-product-id="mentoring" data-cta-variant="transition_bridge_v1" data-placement="article_end">
+          <div class="article-product-cta__copy">
+            <p class="article-product-cta__eyebrow">Групповой менторинг для женщин</p>
+            <h2 id="product-cta-${article.routeId}">${escapeHtml(title)}</h2>
+            <p>${escapeHtml(article.mainCta.context)}</p>
+          </div>
+          <div class="article-product-cta__actions">
+            <a class="article-product-cta__primary" href="${trackedProductHref(article)}" data-route-id="${article.routeId}" data-product-id="mentoring" data-cta-variant="transition_bridge_v1" data-placement="article_end">${escapeHtml(article.mainCta.label)} →</a>
+            ${secondary}
+          </div>
+        </aside>`;
+}
+
+function unlinkProduct(lines, url) {
+  return lines.map((line) =>
+    line.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match, label, href) =>
+      href === url ? label : match,
+    ),
+  );
 }
 
 function articleSchema(article) {
@@ -438,7 +495,7 @@ function articleSchema(article) {
         headline: article.h1,
         description: article.description,
         datePublished: publishedDate,
-        dateModified: publishedDate,
+        dateModified: article.modifiedDate,
         inLanguage: "ru",
         mainEntityOfPage: canonical,
         image: `${baseUrl}${article.visual.basePath}/og-1200.jpg`,
@@ -510,6 +567,7 @@ function renderArticle(article, articles, shell) {
     .replace("</header>", `${articleBreadcrumb}
   </header>`);
   const related = renderRelated(article, articles);
+  const productCta = renderProductCta(article, articles);
   const toc = article.sections
     .map(
       (section, index) =>
@@ -536,14 +594,17 @@ function renderArticle(article, articles, shell) {
           return renderTransitionInsert(insert);
         })
         .join("\n          ");
+      const sectionLines = index === article.ctaIndex
+        ? unlinkProduct(section.lines, article.mainCta.url)
+        : section.lines;
       const markup = `<section id="section-${index + 1}"${classes.length ? ` class="${classes.join(" ")}"` : ""}>
           ${eyebrow}
           <h2>${parseInline(section.title)}</h2>
           ${inserts}
-          ${faq || renderBlocks(section.lines)}
+          ${faq || renderBlocks(sectionLines)}
         </section>`;
-      return index === article.ctaIndex && article.number !== 7
-        ? `${markup}\n\n        ${related}`
+      return index === article.ctaIndex
+        ? `${markup}\n\n        ${productCta}\n\n        ${related}`
         : markup;
     })
     .join("\n\n        ");
@@ -554,8 +615,9 @@ function renderArticle(article, articles, shell) {
       .join(", ");
     throw new Error(`Transition article ${article.number} is missing inserts: ${missing}`);
   }
-  const relatedAtEnd =
-    article.number === 7 || article.ctaIndex < 0 ? related : "";
+  const relatedAtEnd = article.ctaIndex < 0
+    ? `${productCta}\n\n        ${related}`
+    : "";
   return `<!doctype html>
 <html lang="ru">
 <head>
@@ -576,13 +638,13 @@ function renderArticle(article, articles, shell) {
   <meta property="og:image:alt" content="${escapeHtml(article.visual.alt)}">
   <meta property="og:url" content="${canonical}">
   <meta property="article:published_time" content="${publishedDate}">
-  <meta property="article:modified_time" content="${publishedDate}">
+  <meta property="article:modified_time" content="${article.modifiedDate}">
   <meta property="article:author" content="${author}">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="${canonical}">
   <link rel="icon" type="image/png" href="/assets/evolution-house-logo-approved.png">
   <link rel="stylesheet" href="/styles.css">
-  <link rel="stylesheet" href="/article-library.css?v=20260801-transition-article-5">
+  <link rel="stylesheet" href="/article-library.css?v=20260802-transition-cta-1">
   <link rel="stylesheet" href="/assets/transition-articles/inserts/transition-inserts.css?v=20260725-1">
   <link rel="stylesheet" href="/cookie-consent.css">
   <script src="/analytics.js" defer></script>
@@ -590,7 +652,7 @@ function renderArticle(article, articles, shell) {
 ${JSON.stringify(articleSchema(article), null, 2)}
   </script>
 </head>
-<body class="article-page article-page--transitions eh-context--levels">
+<body class="article-page article-page--transitions eh-context--levels" data-route-id="${article.routeId}" data-primary-product-id="mentoring" data-cta-variant="transition_bridge_v1" data-placement="article_view">
   ${header}
   <main>
     <header class="article-hero${article.h1.length > 62 ? " article-hero--long-title" : ""}">
@@ -740,8 +802,8 @@ function renderHub(articles, shell) {
             <p>Статьи помогают назвать происходящее. Метод уровней эволюции показывает, что в прежней системе жизни завершилось, на что можно опереться и какой следующий этап уже собирается.</p>
           </div>
           <div class="reiki-path-bridge__actions">
-            <a class="button button--primary" href="/urovni-zhizni/metod/">Посмотреть метод</a>
-            <a class="button button--secondary" href="/pervyi-shag.html">Подобрать первый шаг</a>
+            <a class="button button--primary" href="/mentoring/">Посмотреть менторинг «Высокая Глубина»</a>
+            <a class="button button--secondary" href="/urovni-zhizni/metod/">Посмотреть метод</a>
           </div>
         </aside>
       </div>

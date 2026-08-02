@@ -22,9 +22,9 @@
       </figcaption>
       <div class="visual__stage">
         <div class="lenses">
-          <div class="lens lens--approval"><div><strong>Чьё одобрение важно?</strong><span>Внешний взгляд — данные, но не приговор.</span></div></div>
+          <div class="lens lens--approval"><div><strong>Чьё одобрение важно?</strong><span>Внешний взгляд — один источник данных.</span></div></div>
           <div class="lens lens--quiet"><div><strong>Что важно без аудитории?</strong><span>Собственное желание может быть тихим.</span></div></div>
-          <div class="lens lens--body"><div><strong>Что замечает тело?</strong><span>Ещё одно наблюдение, не готовый ответ.</span></div></div>
+          <div class="lens lens--body"><div><strong>Что замечает тело?</strong><span>Ещё одно наблюдение для проверки.</span></div></div>
           <div class="lenses__collector" aria-hidden="true">Три независимых наблюдения</div>
           <div class="lenses__centre">Гипотеза, которую стоит проверить небольшим действием</div>
         </div>
@@ -96,13 +96,13 @@
       <div class="visual__stage">
         <div class="role-flow">
           <div class="ribbon ribbon--ends">
-            <div class="ribbon__label">Ежедневное управление</div><div class="ribbon__path"></div><div class="ribbon__outcome">Больше не автоматическая задача родителя</div>
+            <div class="ribbon__label">Ежедневное управление</div><div class="ribbon__path"></div><div class="ribbon__outcome">Уходит из автоматических задач родителя</div>
           </div>
           <div class="ribbon ribbon--stays">
             <div class="ribbon__label">Связь и договорённая помощь</div><div class="ribbon__path"></div><div class="ribbon__outcome">Остаются частью отношений в удобном обеим сторонам формате</div>
           </div>
           <div class="ribbon ribbon--returns">
-            <div class="ribbon__label">Время и решения</div><div class="ribbon__path"></div><div class="ribbon__outcome">Возвращаются вам как реальный ресурс — без обязательной новой миссии</div>
+            <div class="ribbon__label">Время и решения</div><div class="ribbon__path"></div><div class="ribbon__outcome">Возвращаются вам как реальный ресурс для собственного выбора</div>
           </div>
         </div>
       </div>
@@ -120,9 +120,9 @@
         <div class="action-circuit">
           <div class="circuit-step"><span class="circuit-break">Место разрыва: нечёткий момент</span><div class="circuit-node"><strong>Сигнал</strong><span>Конкретное событие, после которого начинается действие</span></div></div>
           <div class="circuit-step"><span class="circuit-break">Место разрыва: слишком большой шаг</span><div class="circuit-node"><strong>Минимальное действие</strong><span>То, что можно закончить за один контакт с задачей</span></div></div>
-          <div class="circuit-step"><span class="circuit-break">Внешний результат зависит не только от вас</span><div class="circuit-node"><strong>Видимый след</strong><span>Письмо отправлено, разговор состоялся, заявка подана</span></div></div>
+          <div class="circuit-step"><span class="circuit-break">Внешний результат зависит от многих участников</span><div class="circuit-node"><strong>Видимый след</strong><span>Письмо отправлено, разговор состоялся, заявка подана</span></div></div>
           <div class="circuit-step"><span class="circuit-break">Место разрыва: повтор не назначен</span><div class="circuit-node"><strong>Повтор</strong><span>Следующая проверка появляется до закрытия первой</span></div></div>
-          <div class="action-circuit__return">Пропуск не обнуляет путь: вернитесь к одному звену и проверьте факты ещё раз</div>
+          <div class="action-circuit__return">После пропуска вернитесь к одному звену и проверьте факты ещё раз</div>
         </div>
       </div>
     </figure>
@@ -158,7 +158,7 @@
         <div class="decision-frame">
           <div class="decision-frame__option">Вариант А</div>
           <div class="decision-frame__guides">
-            <div class="decision-guide"><strong>Безопасность</strong><span>Есть ли риск, который сначала должен оценить специалист?</span></div>
+            <div class="decision-guide"><strong>Безопасность</strong><span>Есть ли риск, который важно оценить до выбора?</span></div>
             <div class="decision-guide"><strong>Ценности</strong><span>Что поддерживается в жизни, кроме внешнего одобрения?</span></div>
             <div class="decision-guide"><strong>Ресурсы</strong><span>Хватит ли времени, денег, сил, навыков и поддержки для первого этапа?</span></div>
             <div class="decision-guide"><strong>Последствия</strong><span>Что можно изменить позже, а что трудно вернуть?</span></div>
@@ -263,7 +263,7 @@
           <div class="week-weave__label">Продолжается</div><div class="week-weave__cell week-weave__row--continues"></div><div class="week-weave__cell week-weave__row--continues"></div><div class="week-weave__cell week-weave__row--continues"></div><div class="week-weave__cell week-weave__row--continues"></div><div class="week-weave__cell week-weave__row--continues"></div><div class="week-weave__cell week-weave__row--continues"></div><div class="week-weave__cell week-weave__row--continues"></div>
           <div class="week-weave__label">Быт работает</div><div class="week-weave__cell week-weave__row--stability"></div><div class="week-weave__cell week-weave__row--stability"></div><div class="week-weave__cell week-weave__row--stability"></div><div class="week-weave__cell week-weave__row--stability"></div><div class="week-weave__cell week-weave__row--stability"></div><div class="week-weave__cell week-weave__row--stability"></div><div class="week-weave__cell week-weave__row--stability"></div>
           <div class="week-weave__label">Решаю я</div><div class="week-weave__cell"></div><div class="week-weave__cell"></div><div class="week-weave__cell week-weave__row--mine week-weave__cell--chosen"></div><div class="week-weave__cell"></div><div class="week-weave__cell"></div><div class="week-weave__cell"></div><div class="week-weave__cell"></div>
-          <div class="week-weave__note">Один элемент недели принадлежит новой жизни — без требования немедленно стать другим человеком.</div>
+          <div class="week-weave__note">Один элемент недели уже принадлежит новой жизни.</div>
         </div>
       </div>
     </figure>
@@ -283,7 +283,7 @@
             <div class="completion-file__layer"><strong>Результат</strong><span>Что теперь существует и какой рубеж действительно пройден.</span></div>
             <div class="completion-file__layer"><strong>Цена</strong><span>Чего потребовал путь и что вы не обязаны платить снова.</span></div>
             <div class="completion-file__layer"><strong>Капитал</strong><span>Навыки, люди, система, репутация и право выбирать остаются.</span></div>
-            <div class="completion-file__layer"><strong>Завершённая функция</strong><span>То, что больше не нужно повторять или кому-то доказывать.</span></div>
+            <div class="completion-file__layer"><strong>Завершённая функция</strong><span>То, что уже выполнено и может остаться в прошлом.</span></div>
           </div>
         </div>
       </div>

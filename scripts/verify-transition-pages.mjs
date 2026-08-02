@@ -15,6 +15,8 @@ const playwrightPath = path.join(
   "index.mjs",
 );
 const { chromium } = await import(pathToFileURL(playwrightPath).href);
+const chromePath = process.env.CHROME_PATH || "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe";
+if (!fs.existsSync(chromePath)) throw new Error(`Chrome not found: ${chromePath}`);
 const root = path.resolve(import.meta.dirname, "..");
 const baseUrl = process.env.TRANSITION_PREVIEW_URL || "http://127.0.0.1:3026";
 const articleRoot = path.join(root, "biblioteka", "perehody");
@@ -28,7 +30,7 @@ const slugs = fs
   .sort();
 
 fs.mkdirSync(screenshotRoot, { recursive: true });
-const browser = await chromium.launch({ headless: true });
+const browser = await chromium.launch({ headless: true, executablePath: chromePath });
 const failures = [];
 
 for (const width of viewports) {
