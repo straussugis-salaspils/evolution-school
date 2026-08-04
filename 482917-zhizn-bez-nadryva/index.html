@@ -114,6 +114,8 @@
       border-radius: 12px;
       background: var(--plum);
       color: #fffaf0;
+      cursor: pointer;
+      font-family: inherit;
       font-size: 15px;
       font-weight: 600;
       line-height: 1.3;
@@ -266,6 +268,32 @@
     .continuation__cta:hover { border-color: var(--plum-deep); background: rgba(91, 45, 104, .07); transform: translateY(-2px); }
     .continuation__cta:focus-visible { outline: 3px solid rgba(189, 147, 68, .5); outline-offset: 4px; }
 
+    body.wellness-payment-is-open { overflow: hidden; }
+    .wellness-payment[hidden] { display: none !important; }
+    .wellness-payment { position: fixed; inset: 0; z-index: 9999; display: grid; place-items: center; padding: clamp(16px, 4vw, 40px); }
+    .wellness-payment__backdrop { position: absolute; inset: 0; border: 0; background: rgba(29, 18, 32, .64); cursor: pointer; backdrop-filter: blur(8px); }
+    .wellness-payment__panel {
+      position: relative;
+      width: min(640px, 100%);
+      max-height: min(780px, calc(100dvh - 32px));
+      overflow: auto;
+      padding: clamp(26px, 4vw, 42px);
+      border: 1px solid rgba(91, 45, 104, .18);
+      border-radius: 20px;
+      background:
+        radial-gradient(circle at 100% 0, rgba(232, 215, 173, .42), transparent 38%),
+        #fffaf1;
+      box-shadow: 0 34px 110px rgba(29, 18, 32, .32);
+    }
+    .wellness-payment__panel::before { content: ""; position: absolute; inset: 0 0 auto; height: 4px; border-radius: 20px 20px 0 0; background: linear-gradient(90deg, var(--plum) 0 58%, var(--gold) 58%); }
+    .wellness-payment__close { position: absolute; top: 14px; right: 14px; display: grid; width: 40px; height: 40px; place-items: center; border: 1px solid rgba(91, 45, 104, .2); border-radius: 50%; background: rgba(255, 255, 255, .82); color: var(--plum-deep); cursor: pointer; font: inherit; font-size: 25px; line-height: 1; }
+    .wellness-payment__eyebrow { margin: 0 48px 10px 0; color: var(--gold); font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
+    .wellness-payment__title { max-width: 520px; margin-right: 42px; color: var(--plum-deep); font-size: clamp(34px, 5vw, 52px); }
+    .wellness-payment__meta { margin-top: 14px; padding: 14px 16px; border-left: 3px solid var(--plum); border-radius: 0 10px 10px 0; background: rgba(239, 230, 240, .56); color: var(--ink-soft); font-size: 15px; line-height: 1.5; }
+    .wellness-payment__widget { min-height: 300px; margin-top: 24px; }
+    .wellness-payment__widget iframe { display: block; width: 100% !important; max-width: 100%; border: 0; background: transparent !important; }
+    .wellness-payment__loading { color: var(--ink-soft); font-size: 14px; }
+
     .eh-sales-landing-header { background: rgba(251, 247, 239, .94); border-bottom-color: rgba(91, 45, 104, .1); }
     .eh-sales-landing-footer { background: #ebe5d9; color: #5e5c55; }
     .eh-sales-landing-footer a { color: var(--plum); }
@@ -327,6 +355,10 @@
       .continuation__routes { grid-template-columns: 1fr; }
       .continuation__route { padding: 22px; }
       .continuation__cta { width: 100%; }
+      .wellness-payment { padding: 12px; }
+      .wellness-payment__panel { max-height: calc(100dvh - 24px); padding: 28px 20px 24px; border-radius: 16px; }
+      .wellness-payment__title { margin-right: 34px; font-size: 36px; }
+      .wellness-payment__widget { min-height: 260px; }
     }
 
     @media (max-width: 420px) {
@@ -363,11 +395,11 @@
           <h1 id="page-title" class="hero__title">Жизнь <span>без надрыва</span></h1>
           <p class="hero__sub">Для тех, кто хочет соединить внутреннюю силу с лёгкостью, яснее услышать себя и почувствовать следующий шаг не только головой, но и телом.</p>
           <p class="hero__format">Живая авторская практика, которую Светлана собирает под состояние конкретной группы 8 августа.</p>
-          <a class="primary-cta primary-cta--hero" href="https://t.me/evgenia_tatarkina" target="_blank" rel="noopener">Забронировать место</a>
+          <button class="primary-cta primary-cta--hero" type="button" data-gc-product="wellness-zhizn-bez-nadryva" data-wellness-payment-open>Оплатить 8 880 ₽</button>
           <div class="facts" aria-label="Основная информация о встрече">
             <div class="fact"><span class="fact__label">Дата</span><span class="fact__value">8 августа 2026</span></div>
             <div class="fact"><span class="fact__label">Основная программа</span><span class="fact__value">15:00–18:00</span></div>
-            <div class="fact"><span class="fact__label">Участие</span><span class="fact__value">8 880 ₽ · на месте</span></div>
+            <div class="fact"><span class="fact__label">Участие</span><span class="fact__value">8 880 ₽ · онлайн</span></div>
           </div>
         </div>
         <figure class="hero__visual">
@@ -562,10 +594,10 @@
             <div class="detail"><span class="detail__label">Стоимость</span><span class="detail__value">8 880 ₽</span></div>
           </div>
           <p class="participation-value"><strong>В стоимость входит трёхчасовой живой процесс со Светланой:</strong> знакомство и настройка на личный вопрос, управляемая практика через внимание, дыхание, эмоции и движение, а также возможность остаться на чайную церемонию и разговор после программы.</p>
-          <p class="payment-note"><strong>Оплата — на месте.</strong> Основная программа самостоятельна и целостна; процедуры Ampermy можно дополнительно забронировать по желанию.</p>
+          <p class="payment-note"><strong>Участие оплачивается онлайн через GetCourse.</strong> Основная программа самостоятельна и целостна; процедуры Ampermy можно дополнительно забронировать по желанию.</p>
           <div class="participation-actions">
-            <a class="primary-cta" href="https://t.me/evgenia_tatarkina" target="_blank" rel="noopener">Забронировать место</a>
-            <p>Евгения — куратор программ Evolution House. Она ответит на вопросы и запишет вас на встречу.</p>
+            <button class="primary-cta" type="button" data-gc-product="wellness-zhizn-bez-nadryva" data-wellness-payment-open>Оплатить 8 880 ₽</button>
+            <p>После нажатия откроется защищённая форма оплаты GetCourse.</p>
           </div>
         </div>
         <div class="continuation">
@@ -598,6 +630,75 @@
       <p><a href="/privacy-policy/">Политика конфиденциальности</a> · <a href="/terms/">Условия использования и оплаты</a></p>
     </div>
   </footer>
+  <div class="wellness-payment" id="wellness-payment" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="wellness-payment-title" hidden>
+    <button class="wellness-payment__backdrop" type="button" aria-label="Закрыть форму оплаты" data-wellness-payment-close></button>
+    <div class="wellness-payment__panel" role="document">
+      <button class="wellness-payment__close" type="button" aria-label="Закрыть форму оплаты" data-wellness-payment-close>&times;</button>
+      <p class="wellness-payment__eyebrow">Оплата участия</p>
+      <h2 class="wellness-payment__title" id="wellness-payment-title">Жизнь без надрыва</h2>
+      <p class="wellness-payment__meta">8 августа 2026 · Москва · 8 880 ₽</p>
+      <div class="wellness-payment__widget" data-wellness-payment-widget>
+        <p class="wellness-payment__loading" role="status">Загрузка формы оплаты…</p>
+      </div>
+    </div>
+  </div>
   <script src="/sales-landing-shell.js"></script>
+  <script>
+    (() => {
+      const modal = document.getElementById('wellness-payment');
+      const widget = modal?.querySelector('[data-wellness-payment-widget]');
+      const widgetScriptId = '623002b2c843775202be446a4e469577e65ba14d';
+      const widgetUrl = 'https://smarttraining.getcourse.ru/pl/lite/widget/script?id=1638498';
+      let lastTrigger = null;
+
+      const startWidget = () => {
+        const start = window[`startWidget${widgetScriptId}`];
+        if (typeof start === 'function') start();
+        else document.dispatchEvent(new Event(`StartWidget${widgetScriptId}`));
+      };
+
+      const loadWidget = () => {
+        if (!widget || widget.dataset.loaded === 'true') return;
+        widget.dataset.loaded = 'true';
+        const script = document.createElement('script');
+        script.id = widgetScriptId;
+        script.src = widgetUrl;
+        script.async = true;
+        script.addEventListener('load', () => {
+          widget.querySelector('.wellness-payment__loading')?.remove();
+          startWidget();
+        });
+        widget.appendChild(script);
+      };
+
+      const open = (trigger) => {
+        if (!modal) return;
+        lastTrigger = trigger;
+        modal.hidden = false;
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('wellness-payment-is-open');
+        modal.querySelector('.wellness-payment__close')?.focus({ preventScroll: true });
+        requestAnimationFrame(loadWidget);
+      };
+
+      const close = () => {
+        if (!modal || modal.hidden) return;
+        modal.hidden = true;
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('wellness-payment-is-open');
+        lastTrigger?.focus({ preventScroll: true });
+      };
+
+      document.querySelectorAll('[data-wellness-payment-open]').forEach((trigger) => {
+        trigger.addEventListener('click', () => open(trigger));
+      });
+      modal?.querySelectorAll('[data-wellness-payment-close]').forEach((trigger) => {
+        trigger.addEventListener('click', close);
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') close();
+      });
+    })();
+  </script>
 </body>
 </html>

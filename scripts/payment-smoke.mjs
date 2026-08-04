@@ -19,6 +19,7 @@ const SCENARIOS = [
   { name: "quantum single", route: "/915804-kvantovaya-aktivaciya/", opener: "[data-gc-product=\"quantum-single\"]", modal: ".gc-payment-modal:not([hidden])", stripe: "https://buy.stripe.com/6oUaEP13f5Ik8LJ9mL9Zm08" },
   { name: "quantum 100", route: "/915804-kvantovaya-aktivaciya/", opener: "[data-gc-product=\"quantum-100\"]", modal: ".gc-payment-modal:not([hidden])", stripe: "https://buy.stripe.com/8x2fZ9cLXfiU1jh9mL9Zm09" },
   { name: "Navigator", route: "/urovni-zhizni/personalnyj-marshrut/", opener: "[data-gc-product=\"navigator-svetlana\"]", modal: ".gc-payment-modal:not([hidden])", stripe: "https://buy.stripe.com/4gM14ffY9daMfa7buT9Zm0a" },
+  { name: "wellness day", mode: "getcourse-only", route: "/482917-zhizn-bez-nadryva/", opener: ".primary-cta--hero[data-wellness-payment-open]", modal: ".wellness-payment:not([hidden])" },
 ];
 
 const VIEWPORTS = [
@@ -157,7 +158,8 @@ try {
           primary: primary?.href || '',
           secondary: Boolean(secondary),
           merchant: merchant?.textContent?.trim() || '',
-          primaryColor
+          primaryColor,
+          hasPaymentChoice: Boolean(modal?.querySelector('.gc-payment-choice, .payment-choice'))
         };
       })()`);
       await wait(650);
@@ -165,20 +167,27 @@ try {
       const finalState = await evaluate(`(() => ({
         runtimeErrors: globalThis.__paymentSmokeErrors || [],
         scrollWidth: Math.max(document.documentElement.scrollWidth, document.body?.scrollWidth || 0),
-        innerWidth: window.innerWidth
+        innerWidth: window.innerWidth,
+        widgetIframe: Boolean(document.querySelector(${JSON.stringify(scenario.modal)})?.querySelector('iframe'))
       }))()`);
       const finalGetCourseRequests = requestedUrls.filter((url) => url.includes("smarttraining.getcourse.ru")).length;
 
       const problems = [];
       if (!initial.opener || !opened) problems.push("payment CTA missing");
-      if (initialGetCourseRequests !== 0) problems.push("GetCourse loaded before secondary choice");
+      if (initialGetCourseRequests !== 0) problems.push("GetCourse loaded before payment click");
       if (!modalState.modal) problems.push("payment modal did not open");
-      if (modalState.primary !== scenario.stripe) problems.push(`wrong Stripe URL: ${modalState.primary || "missing"}`);
-      if (modalState.primary.includes("/test_")) problems.push("Sandbox URL present");
-      if (!modalState.secondary) problems.push("Russian-card option missing");
-      if (!modalState.merchant.includes("Resulta Consulting FZ-LLC")) problems.push("merchant disclosure missing");
-      if (modalState.primaryColor !== "rgb(255, 255, 255)") problems.push(`primary button text is not white: ${modalState.primaryColor}`);
-      if (finalGetCourseRequests < 1) problems.push("GetCourse did not load after secondary choice");
+      if (scenario.mode === "getcourse-only") {
+        if (modalState.primary || modalState.secondary || modalState.hasPaymentChoice) problems.push("unexpected payment-provider choice");
+        if (finalGetCourseRequests < 1) problems.push("GetCourse did not load after payment click");
+        if (!finalState.widgetIframe) problems.push("GetCourse widget iframe missing");
+      } else {
+        if (modalState.primary !== scenario.stripe) problems.push(`wrong Stripe URL: ${modalState.primary || "missing"}`);
+        if (modalState.primary.includes("/test_")) problems.push("Sandbox URL present");
+        if (!modalState.secondary) problems.push("Russian-card option missing");
+        if (!modalState.merchant.includes("Resulta Consulting FZ-LLC")) problems.push("merchant disclosure missing");
+        if (modalState.primaryColor !== "rgb(255, 255, 255)") problems.push(`primary button text is not white: ${modalState.primaryColor}`);
+        if (finalGetCourseRequests < 1) problems.push("GetCourse did not load after secondary choice");
+      }
       if (finalState.runtimeErrors.length) problems.push(`${finalState.runtimeErrors.length} runtime error(s)`);
       if (initial.scrollWidth > initial.innerWidth + 2 || finalState.scrollWidth > finalState.innerWidth + 2) problems.push("horizontal overflow");
       results.push({ viewport: viewport.name, scenario: scenario.name, problems });
