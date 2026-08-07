@@ -77,8 +77,9 @@ try {
   const metrikaCookies = "!/(?:^|;\\s*)(?:_ym_|_yasc=|yuid=|ymex=)/i.test(document.cookie)";
 
   check("cookie banner is visible before a choice", await evaluate("Boolean(document.querySelector('.eh-consent:not([hidden])'))"));
-  check("gtag.js is absent before a choice", await evaluate(`${gaScript} === 0 && typeof window.gtag === 'undefined' && typeof window.dataLayer === 'undefined'`));
-  check("no Google analytics request before consent", googleRequests().length === 0);
+  check("one Google tag is present before a choice", await evaluate(`${gaScript} === 1 && typeof window.gtag === 'function' && Array.isArray(window.dataLayer)`));
+  check("Google sends cookieless requests before consent", googleRequests().length > 0);
+  check("denied consent is queued before the Google config", await evaluate(`window.dataLayer?.[0]?.[0] === 'consent' && window.dataLayer?.[0]?.[1] === 'default' && Object.values(window.dataLayer?.[0]?.[2] || {}).length === 4 && Object.values(window.dataLayer?.[0]?.[2] || {}).every((value) => value === 'denied') && window.dataLayer.findIndex((item) => item?.[0] === 'config' && item?.[1] === '${GA4_ID}') > 0`));
   check("Yandex Metrika is absent before a choice", await evaluate(`${metrikaScript} === 0 && typeof window.ym === 'undefined'`));
   check("no Yandex Metrika request before consent", yandexRequests().length === 0);
   check("no analytics cookie before consent", await evaluate(gaCookies));
@@ -90,13 +91,13 @@ try {
   await wait(100);
   check("essential-only choice persists", await evaluate("localStorage.getItem('eh_consent_v2') === 'essential_only'"));
   check("essential-only choice is mirrored in the consent cookie", await evaluate("document.cookie.includes('eh_consent_v2=essential_only')"));
-  check("reject keeps Google requests blocked", googleRequests().length === 0);
-  check("reject keeps gtag.js absent", await evaluate(`${gaScript} === 0 && typeof window.gtag === 'undefined'`));
+  check("reject keeps Google in cookieless mode", googleRequests().length > 0);
+  check("reject keeps one direct Google tag", await evaluate(`${gaScript} === 1 && typeof window.gtag === 'function'`));
   check("reject keeps Yandex Metrika requests blocked", yandexRequests().length === 0);
   check("reject keeps Yandex Metrika absent", await evaluate(`${metrikaScript} === 0 && typeof window.ym === 'undefined'`));
   await navigate(`${BASE_URL}/?after=essential-only`);
-  check("gtag.js remains absent after an essential-only refresh", await evaluate(`${gaScript} === 0 && typeof window.gtag === 'undefined'`));
-  check("essential-only refresh creates no Google requests", googleRequests().length === 0);
+  check("gtag.js remains present after an essential-only refresh", await evaluate(`${gaScript} === 1 && typeof window.gtag === 'function'`));
+  check("essential-only refresh creates cookieless Google requests", googleRequests().length > 0);
   check("Yandex Metrika remains absent after an essential-only refresh", await evaluate(`${metrikaScript} === 0 && typeof window.ym === 'undefined'`));
   check("essential-only refresh creates no Yandex requests", yandexRequests().length === 0);
   check("essential-only refresh creates no analytics cookies", await evaluate(gaCookies));
@@ -114,7 +115,7 @@ try {
   check("Yandex Metrika uses the approved counter ID", await evaluate(`window.ehAnalytics.metrikaId === ${METRIKA_ID}`));
   check("Yandex Metrika tag uses mc.yandex.ru", await evaluate("document.querySelector('script[data-eh-metrika]')?.src === 'https://mc.yandex.ru/metrika/tag.js'"));
   check("Yandex Metrika initializes once with optional features disabled", await evaluate(`window.ym.a.filter((args) => args?.[0] === ${METRIKA_ID} && args?.[1] === 'init' && args?.[2]?.clickmap === false && args?.[2]?.trackLinks === false && args?.[2]?.webvisor === false).length === 1`));
-  check("Consent Mode defaults precede the granted update", await evaluate("window.dataLayer?.[0]?.[0] === 'consent' && window.dataLayer?.[0]?.[1] === 'default' && Object.values(window.dataLayer?.[0]?.[2] || {}).every((value) => value === 'denied') && window.dataLayer?.[1]?.[0] === 'consent' && window.dataLayer?.[1]?.[1] === 'update' && window.dataLayer?.[1]?.[2]?.analytics_storage === 'granted' && ['ad_storage','ad_user_data','ad_personalization'].every((key) => window.dataLayer?.[1]?.[2]?.[key] === 'denied')"));
+  check("Consent Mode defaults precede config and the granted update follows it", await evaluate("(() => { const defaultIndex = window.dataLayer.findIndex((item) => item?.[0] === 'consent' && item?.[1] === 'default'); const configIndex = window.dataLayer.findIndex((item) => item?.[0] === 'config'); const updateIndex = window.dataLayer.findIndex((item) => item?.[0] === 'consent' && item?.[1] === 'update' && item?.[2]?.analytics_storage === 'granted'); const update = window.dataLayer?.[updateIndex]?.[2]; return defaultIndex === 0 && configIndex > defaultIndex && updateIndex > configIndex && ['ad_storage','ad_user_data','ad_personalization'].every((key) => update?.[key] === 'denied'); })()"));
   check("one GA4 config command creates one page_view", await evaluate(`window.dataLayer.filter((item) => item?.[0] === 'config' && item?.[1] === '${GA4_ID}').length === 1`));
   check("no duplicate direct Google tag requests", requests.filter((url) => /googletagmanager\.com\/gtag\/js/i.test(url)).length <= 1);
   check("no duplicate Yandex Metrika tag requests", yandexRequests().filter((url) => /\/metrika\/tag\.js/i.test(url)).length === 1);
@@ -170,10 +171,10 @@ try {
   check("revoke updates all four Consent Mode v2 states to denied", Object.values(revoke.denied || {}).length === 4 && Object.values(revoke.denied || {}).every((value) => value === "denied"));
   check("revoke blocks subsequent analytics events", revoke.eventBlocked);
   await navigate(`${BASE_URL}/?after=revoke`);
-  check("gtag.js is absent after revocation and refresh", await evaluate(`${gaScript} === 0 && typeof window.gtag === 'undefined'`));
+  check("gtag.js remains present in denied mode after revocation and refresh", await evaluate(`${gaScript} === 1 && typeof window.gtag === 'function'`));
   check("Yandex Metrika is absent after revocation and refresh", await evaluate(`${metrikaScript} === 0 && typeof window.ym === 'undefined'`));
   check("rejection persists after revocation", await evaluate("localStorage.getItem('eh_consent_v2') === 'essential_only'"));
-  check("revoke refresh creates no Google requests", googleRequests().length === 0);
+  check("revoke refresh creates cookieless Google requests", googleRequests().length > 0);
   check("revoke refresh creates no Yandex requests", yandexRequests().length === 0);
   check("revoke refresh creates no analytics cookies", await evaluate(gaCookies));
   check("revoke refresh creates no Yandex cookies", await evaluate(metrikaCookies));

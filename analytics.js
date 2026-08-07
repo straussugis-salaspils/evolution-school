@@ -102,14 +102,8 @@
   const consentDefault = () => gtag("consent", "default", consentPayload(false));
   const consentUpdate = (analytics) => gtag("consent", "update", consentPayload(analytics));
   const loadGoogleTag = () => {
-    if (ga4Loaded || !allowed()) return false;
+    if (ga4Loaded) return false;
     ga4Loaded = true;
-    window.dataLayer = window.dataLayer || [];
-    window.gtag = gtag;
-    // Keep this sequence together: Consent Mode defaults, the visitor's update,
-    // and only then the Google tag and its single GA4 configuration command.
-    consentDefault();
-    consentUpdate(true);
     const script = document.createElement("script");
     script.async = true;
     script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(GA4_ID)}`;
@@ -140,9 +134,8 @@
     return true;
   };
   const loadAnalytics = () => {
-    if (!allowed()) return false;
     const googleLoaded = loadGoogleTag();
-    const yandexLoaded = loadYandexMetrika();
+    const yandexLoaded = allowed() ? loadYandexMetrika() : false;
     return googleLoaded || yandexLoaded;
   };
   const clearAnalyticsCookies = () => {
@@ -163,19 +156,33 @@
   const setConsent = (choice) => {
     const analytics = choice === "analytics_granted";
     const savedChoice = analytics ? "analytics_granted" : "essential_only";
-    const wasLoaded = ga4Loaded || metrikaLoaded;
+    const wasAnalyticsAllowed = allowed();
     storage.set(CONSENT_KEY, savedChoice);
     cookie.set(CONSENT_COOKIE, savedChoice);
-    if (analytics) { persistFirstTouch(); loadAnalytics(); }
-    if (!analytics && wasLoaded) {
-      if (ga4Loaded) consentUpdate(false);
+    loadGoogleTag();
+    consentUpdate(analytics);
+    if (analytics) {
+      persistFirstTouch();
+      loadYandexMetrika();
+    }
+    if (!analytics) {
       clearAnalyticsCookies();
-      // Basic consent removes the loaded analytics scripts on the next page load.
-      window.setTimeout(() => location.reload(), 0);
+      // Reload only when full analytics was active, so Yandex is unloaded while
+      // Google restarts in cookieless denied mode.
+      if (wasAnalyticsAllowed || metrikaLoaded) window.setTimeout(() => location.reload(), 0);
     }
     document.dispatchEvent(new CustomEvent("eh:consent-change", { detail: { analytics } }));
   };
-  if (allowed()) { persistFirstTouch(); loadAnalytics(); }
+
+  // Advanced Consent Mode: Google loads on every visit after an all-denied
+  // default. It sends cookieless pings and writes no GA cookies until opt-in.
+  // Yandex has no supported equivalent, so it remains behind explicit consent.
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = gtag;
+  consentDefault();
+  if (allowed()) consentUpdate(true);
+  loadGoogleTag();
+  if (allowed()) { persistFirstTouch(); loadYandexMetrika(); }
 
   const sanitize = (eventName, values = {}) => {
     const result = {};
