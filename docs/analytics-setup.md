@@ -12,22 +12,22 @@ The same analytics layer loads **Yandex Metrika** counter:
 
 Google Tag Manager is not used. `GTM-WNV2B49K` is intentionally unused and must not be imported, published, embedded, or referenced by the site.
 
-The site uses **Basic Consent Mode v2**:
+The site uses **Advanced Consent Mode v2 for Google** and explicit opt-in for Yandex:
 
-- before a visitor chooses, neither GA4 nor Yandex Metrika is loaded; `gtag`, `dataLayer`, and `ym` are absent;
-- “Only necessary” keeps both systems blocked across pages and refreshes;
-- after “Allow analytics”, the site creates `dataLayer` and `gtag`, queues the Consent Mode default with all four keys denied, queues an update with only `analytics_storage: granted`, then loads one direct Google tag and one Yandex Metrika tag;
+- before a visitor chooses, GA4 loads after an all-denied Consent Mode default and sends cookieless pings without GA cookies; Yandex Metrika remains absent;
+- “Only necessary” keeps Google in denied cookieless mode and Yandex blocked across pages and refreshes;
+- after “Allow analytics”, the site updates only `analytics_storage` to granted and loads one Yandex Metrika tag; the already loaded Google tag begins full analytics collection;
 - `ad_storage`, `ad_user_data`, and `ad_personalization` always remain `denied`;
-- revoking analytics queues an all-denied Google consent update, removes safe first-party analytics cookies, blocks new events for both systems, and reloads into the no-tag state.
+- revoking analytics queues an all-denied Google consent update, removes safe first-party analytics cookies, blocks custom events, and reloads into Google cookieless mode with Yandex absent.
 
-The deterministic order after consent is:
+The deterministic order on every page is:
 
 1. `gtag('consent', 'default', { all four: 'denied' })`
-2. `gtag('consent', 'update', { analytics_storage: 'granted', advertising keys: 'denied' })`
-3. one `https://www.googletagmanager.com/gtag/js?id=G-RSEE3PKS5V` request
-4. one `gtag('config', 'G-RSEE3PKS5V', { send_page_view: true })`
-5. one `https://mc.yandex.ru/metrika/tag.js` request
-6. one `ym(111024711, 'init', …)` command with Webvisor, Click Map, and automatic link tracking disabled
+2. one `https://www.googletagmanager.com/gtag/js?id=G-RSEE3PKS5V` request
+3. one `gtag('config', 'G-RSEE3PKS5V', { send_page_view: true })`
+4. after opt-in, `gtag('consent', 'update', { analytics_storage: 'granted', advertising keys: 'denied' })`
+5. after opt-in, one `https://mc.yandex.ru/metrika/tag.js` request
+6. after opt-in, one `ym(111024711, 'init', …)` command with Webvisor, Click Map, and automatic link tracking disabled
 
 ## Repository files
 
@@ -40,7 +40,7 @@ No Google Tag Manager artefacts are part of the production deliverable. Nothing 
 
 ## Events and privacy
 
-Allowed events: `generate_lead`, `navigator_start`, `navigator_complete`, `test_start`, `test_complete`, `telegram_click`, `program_cta_click`, `payment_click`, and `outbound_click`.
+Allowed events also include the article funnel: `article_view`, `related_article_click`, `cta_impression`, `product_click`, `lead_start`, and `lead_submit`. Existing navigation, Telegram, payment, and compatibility events remain supported.
 
 Events are dispatched only after analytics consent is granted. GA4 receives the existing event name through `gtag`; Yandex Metrika receives the same sanitized event through `ym(111024711, 'reachGoal', …)`. Parameters are allowlisted and values that look like email addresses, phones, Telegram usernames, or other personal data are removed. `payment_click` is an interaction event, not a purchase event.
 

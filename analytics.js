@@ -9,6 +9,7 @@
   const EVENTS = new Set([
     "generate_lead", "navigator_start", "navigator_complete", "test_start", "test_complete",
     "telegram_click", "program_cta_click", "payment_click", "outbound_click",
+    "article_view", "related_article_click", "cta_impression", "product_click", "lead_start", "lead_submit",
   ]);
   const PARAMS = {
     generate_lead: ["lead_type", "program_name", "page_path"],
@@ -20,6 +21,12 @@
     program_cta_click: ["program_name", "cta_label", "cta_location", "page_path"],
     payment_click: ["program_name", "payment_provider", "currency", "value", "page_path"],
     outbound_click: ["destination_domain", "link_label", "page_path"],
+    article_view: ["route_id", "article_title", "page_path"],
+    related_article_click: ["route_id", "destination_path", "link_label", "placement"],
+    cta_impression: ["route_id", "product_id", "cta_variant", "placement"],
+    product_click: ["route_id", "product_id", "cta_variant", "placement", "link_label", "destination_path"],
+    lead_start: ["route_id", "product_id", "source", "page_path"],
+    lead_submit: ["route_id", "product_id", "source", "page_path"],
   };
   const PRODUCTS = {
     "off-switch-training": ["Тренинг Off-Switch в записи", "EUR", 300],
@@ -87,14 +94,8 @@
   const consentDefault = () => gtag("consent", "default", consentPayload(false));
   const consentUpdate = (analytics) => gtag("consent", "update", consentPayload(analytics));
   const loadGoogleTag = () => {
-    if (ga4Loaded || !allowed()) return false;
+    if (ga4Loaded) return false;
     ga4Loaded = true;
-    window.dataLayer = window.dataLayer || [];
-    window.gtag = gtag;
-    // Keep this sequence together: Consent Mode defaults, the visitor's update,
-    // and only then the Google tag and its single GA4 configuration command.
-    consentDefault();
-    consentUpdate(true);
     const script = document.createElement("script");
     script.async = true;
     script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(GA4_ID)}`;
@@ -125,9 +126,8 @@
     return true;
   };
   const loadAnalytics = () => {
-    if (!allowed()) return false;
     const googleLoaded = loadGoogleTag();
-    const yandexLoaded = loadYandexMetrika();
+    const yandexLoaded = allowed() ? loadYandexMetrika() : false;
     return googleLoaded || yandexLoaded;
   };
   const clearAnalyticsCookies = () => {
@@ -148,19 +148,35 @@
   const setConsent = (choice) => {
     const analytics = choice === "analytics_granted";
     const savedChoice = analytics ? "analytics_granted" : "essential_only";
-    const wasLoaded = ga4Loaded || metrikaLoaded;
+    const wasAnalyticsAllowed = allowed();
     storage.set(CONSENT_KEY, savedChoice);
     cookie.set(CONSENT_COOKIE, savedChoice);
-    if (analytics) { persistFirstTouch(); loadAnalytics(); }
-    if (!analytics && wasLoaded) {
-      if (ga4Loaded) consentUpdate(false);
+    loadGoogleTag();
+    consentUpdate(analytics);
+    if (analytics) {
+      persistFirstTouch();
+      loadYandexMetrika();
+      window.setTimeout(trackArticleView, 0);
+      window.setTimeout(trackVisibleCtas, 0);
+    }
+    if (!analytics) {
       clearAnalyticsCookies();
-      // Basic consent removes the loaded analytics scripts on the next page load.
-      window.setTimeout(() => location.reload(), 0);
+      // Reload only when consent is revoked after full analytics was active, so
+      // Yandex is unloaded while Google restarts in cookieless denied mode.
+      if (wasAnalyticsAllowed || metrikaLoaded) window.setTimeout(() => location.reload(), 0);
     }
     document.dispatchEvent(new CustomEvent("eh:consent-change", { detail: { analytics } }));
   };
-  if (allowed()) { persistFirstTouch(); loadAnalytics(); }
+
+  // Advanced Consent Mode: Google loads on every visit after a denied default.
+  // With denied analytics storage it sends cookieless pings and writes no GA
+  // cookies. Yandex remains blocked until the visitor explicitly opts in.
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = gtag;
+  consentDefault();
+  if (allowed()) consentUpdate(true);
+  loadGoogleTag();
+  if (allowed()) { persistFirstTouch(); loadYandexMetrika(); }
 
   const sanitize = (eventName, values = {}) => {
     const result = {};
@@ -189,18 +205,89 @@
   const urlFor = (node) => { try { return new URL(node.getAttribute("href"), location.href); } catch { return null; } };
   const locationFor = (node) => node.closest("header") ? "header" : node.closest("footer") ? "footer" : node.closest("section")?.id || "content";
   const productName = () => clean(document.documentElement.dataset.programName || document.querySelector("h1")?.textContent || document.title);
+  const routeId = () => clean(
+    document.documentElement.dataset.routeId ||
+    document.body?.dataset.routeId ||
+    document.querySelector(".article-related [id^='related-']")?.id.replace(/^related-/, "") ||
+    pagePath(),
+  );
+  const destinationPath = (url) => clean(`${url.pathname}${url.search}`);
+  const productIdFor = (node, url) => {
+    const explicit = clean(node?.dataset.productId || node?.closest("[data-product-id]")?.dataset.productId);
+    if (explicit) return explicit;
+    const path = url?.pathname?.replace(/\/+$/, "/") || "";
+    return new Map([
+      ["/mentoring/", "mentoring"],
+      ["/759214-vkus-sily/", "vkus-sily"],
+      ["/604918-vkus-legkosti/", "vkus-legkosti"],
+      ["/retreats/", "retreats"],
+      ["/568241-reiki-1/", "reiki-1"],
+      ["/731956-reiki-2/", "reiki-2"],
+      ["/reiki/", "reiki-1"],
+    ]).get(path) || "";
+  };
+  const ctaVariantFor = (node) => clean(node?.dataset.ctaVariant || node?.closest("[data-cta-variant]")?.dataset.ctaVariant || "inline_text");
+
+  let articleViewSent = false;
+  const trackedCtas = new WeakSet();
+  function trackArticleView() {
+    if (articleViewSent || !document.body?.classList.contains("article-page")) return false;
+    const sent = track("article_view", { route_id: routeId(), article_title: productName(), page_path: pagePath() });
+    if (sent) articleViewSent = true;
+    return sent;
+  }
+  function trackCtaImpression(node) {
+    if (!node || trackedCtas.has(node)) return false;
+    const link = node.matches("a[href]") ? node : node.querySelector("a[href]");
+    const url = link ? urlFor(link) : null;
+    const sent = track("cta_impression", {
+      route_id: routeId(), product_id: productIdFor(link, url) || "content_route",
+      cta_variant: ctaVariantFor(link || node), placement: locationFor(node),
+    });
+    if (sent) trackedCtas.add(node);
+    return sent;
+  }
+  function trackVisibleCtas() {
+    document.querySelectorAll(".article-next-step,[data-cta-variant]").forEach((node) => {
+      const bounds = node.getBoundingClientRect();
+      if (bounds.top < innerHeight && bounds.bottom > 0) trackCtaImpression(node);
+    });
+  }
+  const observeArticleSignals = () => {
+    trackArticleView();
+    if (!("IntersectionObserver" in window)) return;
+    const observer = new IntersectionObserver((entries) => {
+      entries.filter((entry) => entry.isIntersecting).forEach((entry) => trackCtaImpression(entry.target));
+    }, { threshold: 0.35 });
+    document.querySelectorAll(".article-next-step,[data-cta-variant]").forEach((node) => observer.observe(node));
+  };
 
   document.addEventListener("click", (event) => {
     const node = event.target.closest?.("a,button,[role='button']");
     if (!node) return;
     const label = text(node);
+    const url = urlFor(node);
+    if (url && node.closest(".article-related")) {
+      track("related_article_click", {
+        route_id: routeId(), destination_path: destinationPath(url), link_label: label, placement: "related_articles",
+      });
+      return;
+    }
+    const productId = productIdFor(node, url);
+    if (url && productId && (node.closest(".article-next-step") || node.closest("[data-product-id]"))) {
+      track("product_click", {
+        route_id: routeId(), product_id: productId, cta_variant: ctaVariantFor(node),
+        placement: locationFor(node), link_label: label, destination_path: destinationPath(url),
+      });
+      return;
+    }
     const productKey = node.dataset.gcProduct || (node.hasAttribute("data-off-switch-checkout") ? "off-switch-training" : "");
     const payment = PRODUCTS[productKey];
     if (payment || node.hasAttribute("data-gc-payment-target") || /\b(оплатить|забронировать)\b/i.test(label)) {
       track("payment_click", { program_name: payment?.[0] || productName(), payment_provider: "GetCourse", currency: payment?.[1], value: payment?.[2], page_path: pagePath() });
+      track("lead_start", { route_id: routeId(), product_id: productKey || "checkout", source: "payment_click", page_path: pagePath() });
       return;
     }
-    const url = urlFor(node);
     if (url && TELEGRAM_HOSTS.has(url.hostname)) {
       track("telegram_click", { link_location: locationFor(node), link_label: label, destination_type: "telegram", page_path: pagePath() });
     } else if (url && /^https?:$/.test(url.protocol) && url.origin !== location.origin) {
@@ -210,9 +297,15 @@
     }
   }, { capture: true });
 
-  document.addEventListener("eh:lead-success", (event) => track("generate_lead", { ...(event.detail || {}), page_path: pagePath() }));
+  document.addEventListener("eh:lead-success", (event) => {
+    track("generate_lead", { ...(event.detail || {}), page_path: pagePath() });
+    track("lead_submit", { ...(event.detail || {}), route_id: routeId(), page_path: pagePath() });
+  });
   document.addEventListener("eh:test-start", (event) => track("test_start", { ...(event.detail || {}), entry_page: pagePath() }));
   document.addEventListener("eh:test-complete", (event) => track("test_complete", event.detail || {}));
+
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", observeArticleSignals, { once: true });
+  else observeArticleSignals();
 
   const renderBanner = () => {
     const panel = document.createElement("section");
