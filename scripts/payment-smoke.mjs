@@ -20,6 +20,7 @@ const SCENARIOS = [
   { name: "quantum 100", route: "/915804-kvantovaya-aktivaciya/", opener: "[data-gc-product=\"quantum-100\"]", modal: ".gc-payment-modal:not([hidden])", stripe: "https://buy.stripe.com/8x2fZ9cLXfiU1jh9mL9Zm09" },
   { name: "Navigator", route: "/urovni-zhizni/personalnyj-marshrut/", opener: "[data-gc-product=\"navigator-svetlana\"]", modal: ".gc-payment-modal:not([hidden])", stripe: "https://buy.stripe.com/4gM14ffY9daMfa7buT9Zm0a" },
   { name: "wellness day", mode: "getcourse-only", route: "/482917-zhizn-bez-nadryva/", opener: ".primary-cta--hero[data-wellness-payment-open]", modal: ".wellness-payment:not([hidden])" },
+  { name: "love tea meeting", mode: "getcourse-only", route: "/818826-vypem-za-lyubov-chayu/", opener: "[data-love-payment-open]", modal: ".love-payment:not([hidden])" },
 ];
 
 const VIEWPORTS = [
