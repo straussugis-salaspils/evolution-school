@@ -45,6 +45,7 @@ for (const fragment of [
   "https://mc.yandex.ru/metrika/tag.js",
   'script.dataset.ehGa4 = "true"',
   'script.dataset.ehMetrika = "true"',
+  "window.dataLayer = window.dataLayer || []",
   'consentDefault();',
   'consentUpdate(true);',
   'gtag("config", GA4_ID, { send_page_view: true })',
@@ -53,12 +54,14 @@ for (const fragment of [
   "clickmap: false",
   "trackLinks: false",
   "webvisor: false",
-  'consentUpdate(false);',
+  'consentUpdate(analytics);',
   'clearAnalyticsCookies();',
-  "const yandexLoaded = loadYandexMetrika();",
+  "const yandexLoaded = allowed() ? loadYandexMetrika() : false;",
 ]) {
   if (!analytics.includes(fragment)) errors.push(`analytics.js: missing analytics-layer requirement: ${fragment}`);
 }
+if (!analytics.includes("if (ga4Loaded) return false")) errors.push("analytics.js: Google tag must load in denied cookieless mode before consent");
+if (/if \(ga4Loaded \|\| !allowed\(\)\) return false/.test(analytics)) errors.push("analytics.js: Basic Consent Mode gate is still blocking Google before consent");
 for (const key of ["analytics_storage", "ad_storage", "ad_user_data", "ad_personalization"]) {
   if (!analytics.includes(`${key}: analytics ? "granted" : "denied"`) && key === "analytics_storage") errors.push("analytics.js: analytics_storage consent state is missing");
   if (key !== "analytics_storage" && !analytics.includes(`${key}: "denied"`)) errors.push(`analytics.js: ${key} must remain denied`);
