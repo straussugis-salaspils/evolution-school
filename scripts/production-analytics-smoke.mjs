@@ -40,6 +40,13 @@ try {
   });
   const send = (method, params = {}) => new Promise((resolve, reject) => { id += 1; pending.set(id, { resolve, reject }); socket.send(JSON.stringify({ id, method, params })); });
   const value = async (expression) => (await send("Runtime.evaluate", { expression, returnByValue: true })).result.value;
+  const waitForAnalytics = async () => {
+    for (let attempt = 0; attempt < 20; attempt += 1) {
+      if (await value("document.readyState === 'complete' && Boolean(window.ehAnalytics)")) return true;
+      await wait(150);
+    }
+    return false;
+  };
   await Promise.all([send("Page.enable"), send("Runtime.enable"), send("Network.enable")]);
   const checks = [];
   const check = (name, pass) => checks.push({ name, pass: Boolean(pass) });
@@ -55,7 +62,9 @@ try {
     urls.length = 0;
     await send("Network.clearBrowserCache");
     await send("Page.navigate", { url: `${BASE_URL}${route}` });
-    await wait(850);
+    // The homepage contains heavier eager media than the article and product
+    // routes. Wait for its deferred shared analytics layer, not only navigation.
+    await waitForAnalytics();
     const protectedPreview = await value("document.title === 'Login – Vercel'");
     if (protectedPreview && new URL(BASE_URL).hostname.endsWith(".vercel.app")) {
       skipped += 1;
@@ -74,7 +83,7 @@ try {
   if (skipped === 0) {
     urls.length = 0;
     await send("Page.navigate", { url: `${BASE_URL}/?analytics_production_smoke=1` });
-    await wait(850);
+    await waitForAnalytics();
     check("production banner is visible before consent", await value("Boolean(document.querySelector('.eh-consent:not([hidden])'))"));
     await value("document.querySelector('[data-eh-consent=\"analytics_granted\"]')?.click()");
     await wait(550);
@@ -92,7 +101,7 @@ try {
     await wait(900);
     urls.length = 0;
     await send("Page.navigate", { url: `${BASE_URL}/?analytics_production_smoke=revoked` });
-    await wait(850);
+    await waitForAnalytics();
     check("production keeps Google cookieless and Yandex absent after revocation", await value(`${gaScript} === 1 && ${metrikaScript} === 0 && typeof window.gtag === 'function' && Array.isArray(window.dataLayer) && window.dataLayer?.[0]?.[2]?.analytics_storage === 'denied' && typeof window.ym === 'undefined'`));
     check("production clears GA cookies after revocation", await value(gaCookies));
     const remainingMetrikaCookies = await value("document.cookie.split(';').map((entry) => entry.trim().split('=')[0]).filter((name) => /^(?:_ym_|_yasc$|yuid$|ymex$)/i.test(name))");
