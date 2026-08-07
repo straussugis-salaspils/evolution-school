@@ -11,7 +11,7 @@
   <meta property="og:site_name" content="Evolution House">
   <meta property="og:title" content="Выпьем за любовь чаю — 18 августа, Москва">
   <meta property="og:description" content="Живая примерка архетипических состояний за чайным столом: узнать себя через отношения и почувствовать, как ещё можно быть рядом с другим.">
-  <meta property="og:image" content="https://evolution.yourbalancerestored.com/818826-vypem-za-lyubov-chayu/assets/hero-tea-choreography.jpg">
+  <meta property="og:image" content="https://evolution.yourbalancerestored.com/818826-vypem-za-lyubov-chayu/assets/hero-mutual-recognition.jpg">
   <meta property="og:url" content="https://evolution.yourbalancerestored.com/818826-vypem-za-lyubov-chayu/">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://evolution.yourbalancerestored.com/818826-vypem-za-lyubov-chayu/">
@@ -135,18 +135,18 @@
     .question-stack p { padding: 18px 0; border-bottom: 1px solid var(--line); font-family: var(--serif); font-size: clamp(23px, 2.6vw, 31px); line-height: 1.22; }
     .question-stack strong { color: var(--plum); font-weight: 500; }
 
-    .definition { max-width: 940px; margin-inline: auto; text-align: center; }
-    .definition__statement { font-family: var(--serif); font-size: clamp(34px, 5vw, 62px); line-height: 1.12; }
-    .definition__statement strong { color: var(--plum); font-weight: 500; }
-    .state-line { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 34px; }
+    .definition { max-width: 980px; margin-inline: auto; }
+    .definition__statement { max-width: 760px; padding-left: 28px; border-left: 3px solid var(--gold); }
+    .definition__statement strong { display: block; color: var(--plum); font-family: var(--serif); font-size: clamp(28px, 3.1vw, 36px); font-weight: 500; line-height: 1.2; }
+    .definition__statement span { display: block; margin-top: 10px; color: var(--ink-soft); font-size: 19px; line-height: 1.62; }
+    .state-line { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
     .state-line span { padding: 9px 16px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255, 255, 255, .45); color: var(--tea-deep); font-size: 14px; }
 
-    .code-flow { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 42px; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: rgba(255,255,255,.38); }
-    .code-step { position: relative; min-height: 230px; padding: 26px; }
-    .code-step + .code-step { border-left: 1px solid var(--line); }
-    .code-step__number { color: var(--tea); font-family: var(--serif); font-size: 42px; line-height: 1; }
-    .code-step h3 { margin-top: 28px; font-size: 30px; }
-    .code-step p { margin-top: 14px; color: var(--ink-soft); font-size: 15px; line-height: 1.55; }
+    .code-flow { margin-top: 38px; border-top: 1px solid var(--line); }
+    .code-step { display: grid; grid-template-columns: 58px minmax(160px, .42fr) 1fr; gap: 24px; align-items: baseline; padding: 22px 0; border-bottom: 1px solid var(--line); }
+    .code-step__number { color: var(--tea); font-family: var(--serif); font-size: 32px; line-height: 1; }
+    .code-step h3 { font-size: 27px; }
+    .code-step p { color: var(--ink-soft); font-size: 16px; line-height: 1.55; }
     .code-formula { margin-top: 24px; padding: 22px 26px; border-left: 4px solid var(--gold); border-radius: 0 14px 14px 0; background: var(--plum-deep); color: #fffaf0; font-family: var(--serif); font-size: clamp(24px, 3vw, 34px); }
 
     .relationship-grid { display: grid; grid-template-columns: 1fr .82fr; gap: clamp(44px, 7vw, 92px); align-items: center; }
@@ -157,7 +157,7 @@
     .outcome-lines { border-top: 1px solid var(--line); }
     .outcome-line { display: grid; grid-template-columns: 34px 1fr; gap: 16px; padding: 20px 0; border-bottom: 1px solid var(--line); }
     .outcome-line span { color: var(--tea); font-family: var(--serif); font-size: 24px; }
-    .outcome-statement { margin-top: 28px; padding: 26px 30px; border-radius: 18px; background: var(--plum-deep); color: #fffaf0; font-family: var(--serif); font-size: clamp(31px, 4vw, 48px); line-height: 1.08; }
+    .outcome-statement { margin-top: 28px; padding: 24px 28px; border-radius: 18px; background: var(--plum-deep); color: #fffaf0; font-family: var(--serif); font-size: clamp(28px, 3.2vw, 36px); line-height: 1.16; }
 
     .timeline { margin-top: 42px; border-top: 1px solid rgba(255,250,240,.25); }
     .timeline-step { display: grid; grid-template-columns: 72px minmax(210px, .55fr) 1fr; gap: 24px; padding: 24px 0; border-bottom: 1px solid rgba(255,250,240,.18); align-items: start; }
@@ -186,17 +186,15 @@
 
     .proof-grid { display: grid; grid-template-columns: .78fr 1.22fr; gap: clamp(42px, 7vw, 92px); align-items: start; }
     .chamber-grid { display: grid; grid-template-columns: 1fr .82fr; gap: clamp(42px, 7vw, 92px); align-items: center; }
-    .final-card { position: relative; overflow: hidden; padding: clamp(34px, 6vw, 72px); border-radius: var(--radius); background:
-      radial-gradient(circle at 88% 20%, rgba(232,215,173,.28), transparent 25%),
-      var(--plum-deep); color: #fffaf0; }
+    .final-card { position: relative; overflow: hidden; padding: clamp(34px, 6vw, 72px); border: 1px solid rgba(189,147,68,.34); border-radius: var(--radius); background: radial-gradient(circle at 88% 20%, rgba(232,215,173,.38), transparent 28%), linear-gradient(145deg, #fffaf1, #f2e5d8); color: var(--ink); box-shadow: 0 24px 62px rgba(63,32,73,.1); }
     .final-card__grid { display: grid; grid-template-columns: 1fr .82fr; gap: 48px; align-items: end; }
-    .final-card h2 span { display: block; color: var(--gold-pale); }
-    .final-meta { margin-top: 26px; color: rgba(255,250,240,.76); }
-    .included { list-style: none; padding: 0; border-top: 1px solid rgba(255,250,240,.22); }
-    .included li { padding: 12px 0; border-bottom: 1px solid rgba(255,250,240,.18); }
+    .final-card h2 span { display: block; color: var(--plum); }
+    .final-meta { margin-top: 26px; color: var(--ink-soft); }
+    .included { list-style: none; padding: 0; border-top: 1px solid var(--line); }
+    .included li { padding: 12px 0; border-bottom: 1px solid var(--line); }
     .final-price { font-family: var(--serif); font-size: clamp(52px, 7vw, 82px); line-height: .9; }
-    .final-price small { display: block; margin-bottom: 10px; color: var(--gold-pale); font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: .13em; text-transform: uppercase; }
-    .final-card .primary-cta { margin-top: 26px; border-color: var(--gold-pale); background: var(--gold-pale); color: var(--plum-deep); }
+    .final-price small { display: block; margin-bottom: 10px; color: var(--plum); font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: .13em; text-transform: uppercase; }
+    .final-card .primary-cta { margin-top: 26px; }
 
     .series { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--line); border-radius: 18px; overflow: hidden; }
     .series-card { padding: 26px; }
@@ -234,46 +232,35 @@
     }
     .editorial-image picture { display: block; height: 100%; }
     .editorial-image img { height: 100%; object-fit: cover; }
-    .editorial-image--hero { aspect-ratio: 16 / 10; }
-    .editorial-image--hero img { object-position: center; }
-    .aphrodite-feature {
-      overflow: hidden;
-      border-radius: 28px;
-      background: var(--plum-deep);
-      color: #fffaf0;
-      box-shadow: 0 30px 72px rgba(63,32,73,.16);
-    }
-    .aphrodite-feature__grid { display: grid; grid-template-columns: minmax(0, 1.18fr) minmax(310px, .82fr); align-items: stretch; }
-    .aphrodite-feature__image { position: relative; min-height: 560px; overflow: hidden; }
+    .editorial-image--hero { height: 560px; border-radius: 170px 24px 24px 24px; }
+    .editorial-image--hero img { object-position: center 46%; }
+    .aphrodite-feature { background: transparent; }
+    .aphrodite-feature__grid { display: grid; grid-template-columns: minmax(0, .84fr) minmax(440px, 1.16fr); gap: clamp(36px, 6vw, 72px); align-items: center; }
+    .aphrodite-feature__image { position: relative; aspect-ratio: 3 / 2; overflow: hidden; border-radius: 24px; box-shadow: 0 24px 54px rgba(57,38,33,.14); }
     .aphrodite-feature__image picture { display: block; height: 100%; }
     .aphrodite-feature__image img { height: 100%; object-fit: cover; object-position: 52% center; }
-    .aphrodite-feature__copy { display: flex; flex-direction: column; justify-content: center; padding: clamp(34px, 5vw, 62px); }
-    .aphrodite-feature__copy h2 { max-width: 510px; font-size: clamp(38px, 4vw, 52px); line-height: 1.02; }
-    .aphrodite-feature__copy blockquote { margin-top: 28px; color: var(--gold-pale); font-family: var(--serif); font-size: clamp(28px, 3vw, 40px); line-height: 1.12; }
-    .aphrodite-feature__copy p { margin-top: 22px; color: rgba(255,250,240,.78); }
-    .aphrodite-feature__copy strong { color: #fffaf0; }
+    .aphrodite-feature__copy h2 { max-width: 520px; font-size: clamp(36px, 3.8vw, 46px); line-height: 1.04; }
+    .aphrodite-feature__copy p { margin-top: 22px; color: var(--ink-soft); }
+    .aphrodite-feature__copy strong { color: var(--plum-deep); }
+    .aphrodite-pull { grid-column: 1 / -1; width: min(100%, 980px); margin: 0 auto; padding: 22px 30px; border-left: 3px solid var(--gold); background: linear-gradient(90deg, rgba(232,215,173,.28), transparent); color: var(--plum-deep); font-family: var(--serif); font-size: clamp(25px, 3vw, 34px); font-style: italic; line-height: 1.28; }
 
     .relationship-question {
-      display: grid;
-      align-content: center;
-      min-height: 390px;
-      padding: clamp(34px, 6vw, 68px);
-      border-left: 6px solid var(--tea);
-      background: linear-gradient(135deg, #f0ded0, #f8f1e8);
+      padding: 0 0 28px 28px;
+      border-left: 3px solid var(--gold);
       color: var(--plum-deep);
       font-family: var(--serif);
-      font-size: clamp(36px, 4.8vw, 58px);
-      line-height: 1.04;
+      font-size: clamp(27px, 3.1vw, 36px);
+      line-height: 1.28;
     }
     .relationship-question small { display: block; margin-top: 24px; color: var(--tea-deep); font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: .12em; line-height: 1.4; text-transform: uppercase; }
 
-    .tea-evening { overflow: hidden; border-radius: 28px; background: var(--plum-deep); box-shadow: 0 30px 72px rgba(63,32,73,.14); }
-    .tea-evening__image { position: relative; aspect-ratio: 2 / 1; overflow: hidden; }
+    .tea-evening { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(360px, .92fr); gap: clamp(38px, 6vw, 76px); align-items: center; }
+    .tea-evening__image { position: relative; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 24px; box-shadow: 0 28px 66px rgba(24,15,27,.22); }
     .tea-evening__image picture { display: block; height: 100%; }
     .tea-evening__image img { height: 100%; object-fit: cover; object-position: center 47%; }
-    .tea-evening__copy { display: grid; grid-template-columns: .86fr 1.14fr; gap: clamp(32px, 5vw, 68px); padding: clamp(30px, 4.4vw, 52px); color: #fffaf0; }
+    .tea-evening__copy { color: #fffaf0; }
+    .tea-evening__copy h2 { max-width: 500px; font-size: clamp(38px, 4.2vw, 54px); }
     .tea-evening__copy h2 span { color: var(--gold-pale); }
-    .tea-evening__copy .lead { margin-top: 0; }
     .tea-evening__copy .intro, .tea-evening__copy .quiet { color: rgba(255,250,240,.76); }
     .tea-evening__copy .quiet { margin-top: 20px; }
 
@@ -282,60 +269,55 @@
     .sync-node + .sync-node { border-left: 1px solid var(--line); }
     .sync-arrow { display: none; }
 
-    .proof-note, .chamber-note {
-      display: flex;
-      min-height: 320px;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: clamp(30px, 5vw, 52px);
-      border-radius: 26px;
-      background: linear-gradient(145deg, var(--plum-deep), #6e3d58);
-      color: #fffaf0;
-    }
-    .proof-note__mark { color: var(--gold-pale); font-family: var(--serif); font-size: 78px; line-height: .7; }
-    .proof-note p, .chamber-note p { margin-top: 24px; font-family: var(--serif); font-size: clamp(28px, 3.2vw, 42px); line-height: 1.08; }
-    .chamber-note { background: linear-gradient(145deg, #e8d6c7, #f5eadf); color: var(--plum-deep); }
-    .chamber-note small { margin-bottom: auto; color: var(--tea-deep); font-size: 11px; font-weight: 600; letter-spacing: .13em; text-transform: uppercase; }
+    .proof-note, .chamber-note { padding: 10px 0 24px 28px; border-left: 3px solid var(--gold); color: var(--plum-deep); }
+    .proof-note__mark { display: none; }
+    .proof-note p, .chamber-note p { font-family: var(--serif); font-size: clamp(27px, 3vw, 36px); line-height: 1.25; }
+    .chamber-note small { display: block; margin-bottom: 14px; color: var(--tea-deep); font-size: 11px; font-weight: 600; letter-spacing: .13em; text-transform: uppercase; }
 
     @media (max-width: 960px) {
       .hero__grid, .opening-grid, .aphrodite-feature__grid, .relationship-grid, .outcomes, .host-grid, .proof-grid, .chamber-grid, .final-card__grid { grid-template-columns: 1fr; }
-      .aphrodite-feature__image { min-height: 500px; }
-      .tea-evening__copy { grid-template-columns: 1fr; }
-      .code-flow { grid-template-columns: 1fr 1fr; }
-      .code-step:nth-child(3) { border-left: 0; border-top: 1px solid var(--line); }
-      .code-step:nth-child(4) { border-top: 1px solid var(--line); }
+      .aphrodite-feature__grid, .tea-evening { grid-template-columns: 1fr; }
       .host-photo { max-width: 620px; }
     }
 
     @media (max-width: 680px) {
       :root { --space: 52px; }
       body { font-size: 16px; }
-      .wrap { width: min(calc(100% - 32px), var(--max)); }
+      .wrap { width: min(calc(100% - 40px), var(--max)); }
       h1 { font-size: clamp(48px, 14vw, 64px); line-height: .94; }
       h2 { font-size: clamp(34px, 9.6vw, 42px); }
       .hero { padding-top: 44px; }
+      .hero__grid { display: flex; flex-direction: column; gap: 0; }
+      .hero__grid > div { display: contents; }
+      .hero__grid .eyebrow { order: 1; }
+      .hero__title { order: 2; }
+      .hero__sub { order: 3; }
+      .hero__format { order: 4; }
+      .hero .primary-cta { order: 5; }
+      .editorial-image--hero { order: 6; margin-top: 28px; }
+      .facts { order: 7; margin-top: 24px; }
       .hero__sub { font-size: 25px; }
       .hero__format { font-size: 15px; }
       .primary-cta { width: 100%; }
-      .facts { grid-template-columns: 1fr; }
+      .facts { grid-template-columns: 1fr 1fr; }
       .fact { min-height: 0; padding: 15px 18px; }
-      .fact + .fact { border-left: 0; border-top: 1px solid var(--line); }
+      .fact + .fact { border-left: 1px solid var(--line); }
+      .fact:nth-child(3) { grid-column: 1 / -1; border-top: 1px solid var(--line); border-left: 0; }
       .editorial-image { border-radius: 22px 22px 72px 22px; }
-      .editorial-image--hero { aspect-ratio: 4 / 3; }
-      .editorial-image--hero img { object-position: 50% center; }
-      .aphrodite-feature { border-radius: 20px; }
-      .aphrodite-feature__image { min-height: 0; aspect-ratio: 4 / 3; }
+      .editorial-image--hero { height: auto; aspect-ratio: 4 / 3; border-radius: 78px 20px 20px 20px; }
+      .editorial-image--hero img { object-position: 49% 46%; }
+      .aphrodite-feature__image { min-height: 0; aspect-ratio: 16 / 10; }
       .aphrodite-feature__image img { object-position: 56% center; }
-      .aphrodite-feature__copy { padding: 28px 22px 32px; }
       .aphrodite-feature__copy h2 { font-size: 34px; }
-      .aphrodite-feature__copy blockquote { font-size: 27px; }
-      .code-flow { grid-template-columns: 1fr; }
-      .code-step { min-height: 0; }
-      .code-step + .code-step { border-left: 0; border-top: 1px solid var(--line); }
-      .relationship-question { min-height: 0; padding: 34px 26px; font-size: 38px; }
-      .tea-evening { border-radius: 20px; }
+      .aphrodite-pull { padding: 20px 22px; font-size: 25px; }
+      .definition__statement { padding-left: 22px; }
+      .definition__statement strong { font-size: 27px; }
+      .definition__statement span { font-size: 17px; }
+      .code-step { grid-template-columns: 44px 1fr; gap: 10px 16px; }
+      .code-step p { grid-column: 2; }
+      .relationship-question { padding: 0 0 24px 22px; font-size: 29px; }
       .tea-evening__image { aspect-ratio: 16 / 10; }
-      .tea-evening__copy { padding: 28px 22px 32px; }
+      .tea-evening__copy h2 { font-size: 38px; }
       .timeline-step { grid-template-columns: 48px 1fr; gap: 16px; }
       .timeline-step p { grid-column: 2; }
       .sync-path { grid-template-columns: 1fr; }
@@ -344,7 +326,7 @@
       .interest-list { grid-template-columns: 1fr; }
       .host-facts { grid-template-columns: 1fr; }
       .host-fact:nth-child(even) { padding-left: 0; border-left: 0; }
-      .proof-note, .chamber-note { min-height: 260px; padding: 30px 26px; }
+      .proof-note, .chamber-note { padding: 8px 0 22px 22px; }
       .final-card { padding: 30px 22px; }
       .series { grid-template-columns: 1fr; }
       .series-card + .series-card { border-left: 0; border-top: 1px solid var(--line); }
@@ -385,8 +367,8 @@
         </div>
         <figure class="editorial-image editorial-image--hero">
           <picture>
-            <source srcset="/818826-vypem-za-lyubov-chayu/assets/hero-tea-choreography.webp" type="image/webp">
-            <img src="/818826-vypem-za-lyubov-chayu/assets/hero-tea-choreography.jpg" width="1600" height="1000" fetchpriority="high" alt="Два человека встречаются за чайным столом, сохраняя собственное пространство">
+            <source srcset="/818826-vypem-za-lyubov-chayu/assets/hero-mutual-recognition.webp" type="image/webp">
+            <img src="/818826-vypem-za-lyubov-chayu/assets/hero-mutual-recognition.jpg" width="1600" height="1000" fetchpriority="high" alt="Камерная компания за чайным столом и взаимное внимание между двумя людьми">
           </picture>
         </figure>
       </div>
@@ -411,21 +393,35 @@
       <div class="wrap">
         <div class="aphrodite-feature">
           <div class="aphrodite-feature__grid">
+            <div class="aphrodite-feature__copy">
+              <p class="eyebrow">Представьте…</p>
+              <h2>Примерить состояние Афродиты</h2>
+              <p>По-другому располагается тело. Меняется взгляд, манера двигаться, способ занимать пространство и входить в контакт.</p>
+              <p>Потом мы пробуем другой архетип — и проявляется уже совсем другое состояние.</p>
+              <p><strong>Не изучать архетипы со стороны, а почувствовать, как разные способы быть уже существуют внутри нас.</strong></p>
+            </div>
             <figure class="aphrodite-feature__image">
               <picture>
                 <source srcset="/818826-vypem-za-lyubov-chayu/assets/aphrodite-state-shift.webp" type="image/webp">
                 <img src="/818826-vypem-za-lyubov-chayu/assets/aphrodite-state-shift.jpg" width="1600" height="1067" loading="lazy" decoding="async" alt="Женщина меняет позу, взгляд и способ входить в контакт">
               </picture>
             </figure>
-            <div class="aphrodite-feature__copy">
-              <p class="eyebrow">Представьте…</p>
-              <h2>Что меняется, когда меняется состояние</h2>
-              <blockquote>«А теперь попробуем, как в тебе звучит Афродита».</blockquote>
-              <p>По-другому располагается тело. Меняется взгляд, манера двигаться, способ занимать пространство и входить в контакт.</p>
-              <p>Потом мы пробуем другой архетип — и проявляется уже совсем другое состояние.</p>
-              <p><strong>Не изучать архетипы со стороны, а почувствовать, как разные способы быть уже существуют внутри нас.</strong></p>
-            </div>
+            <blockquote class="aphrodite-pull">«А теперь попробуем, как в тебе звучит Афродита».</blockquote>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--plum">
+      <div class="wrap">
+        <p class="eyebrow">Как пройдёт встреча</p>
+        <h2>От своего Кода — к живому опыту</h2>
+        <div class="timeline">
+          <article class="timeline-step"><span class="timeline-step__number">01</span><h3>До встречи · свой Код</h3><p>Получаете тест в закрытом Telegram-чате, проходите его заранее и сохраняете результат.</p></article>
+          <article class="timeline-step"><span class="timeline-step__number">02</span><h3>За чайным столом · знакомство</h3><p>Собираемся и входим в тему любви и отношений через свои вопросы и ощущения.</p></article>
+          <article class="timeline-step"><span class="timeline-step__number">03</span><h3>Живая примерка · архетипы через людей</h3><p>Наблюдаем, как меняются тело, контакт, чувственность, сила, свобода, близость и границы — и примеряем состояния на себя.</p></article>
+          <article class="timeline-step"><span class="timeline-step__number">04</span><h3>Свой Код · отношения</h3><p>Соединяем увиденное с результатом и смотрим, какие состояния характерны именно для вас.</p></article>
+          <article class="timeline-step"><span class="timeline-step__number">05</span><h3>Завершение · следующий шаг</h3><p>Определяем, что хочется сохранить в своём способе строить отношения и какое новое качество попробовать привнести.</p></article>
         </div>
       </div>
     </section>
@@ -433,11 +429,11 @@
     <section class="section">
       <div class="wrap definition">
         <p class="eyebrow">Если совсем просто</p>
-        <p class="definition__statement"><strong>Архетип</strong> — это определённый способ чувствовать, выбирать, действовать и взаимодействовать с другим человеком.</p>
+        <p class="definition__statement"><strong>Архетип — это определённый способ</strong><span>чувствовать, выбирать, действовать и взаимодействовать с другим человеком.</span></p>
         <div class="state-line" aria-label="Состояния, которые можно исследовать">
           <span>желание</span><span>забота</span><span>выбор</span><span>свобода</span><span>близость</span><span>границы</span>
         </div>
-        <p class="intro" style="margin-inline:auto;">Мы можем быть очень разными в разных состояниях. Особенно хорошо эти различия становятся заметны именно в отношениях.</p>
+        <p class="intro">Мы можем быть очень разными в разных состояниях. Особенно хорошо эти различия становятся заметны именно в отношениях.</p>
       </div>
     </section>
 
@@ -474,9 +470,8 @@
       </div>
     </section>
 
-    <section class="section section--warm">
-      <div class="wrap">
-        <div class="tea-evening">
+    <section class="section section--plum">
+      <div class="wrap tea-evening">
           <figure class="tea-evening__image">
             <picture>
               <source srcset="/818826-vypem-za-lyubov-chayu/assets/evening-tea-salon.webp" type="image/webp">
@@ -484,19 +479,14 @@
             </picture>
           </figure>
           <div class="tea-evening__copy">
-            <div>
-              <p class="eyebrow">Эмоциональный центр</p>
-              <h2>Выпьем за <span>любовь чаю</span></h2>
-            </div>
-            <div>
-              <p class="lead">Мне совсем не хочется превращать этот вечер в тяжёлый разбор отношений.</p>
-              <p class="intro">За красивым чайным столом, в небольшой компании — с разговорами, наблюдением друг за другом, движением, примериванием новых состояний, неожиданными открытиями и смехом.</p>
-              <p class="intro">Можно прийти с важным вопросом или просто из любопытства к себе. Быть в отношениях или сейчас быть без пары.</p>
-              <p class="lead"><strong>Как мне хочется быть в любви?</strong></p>
-              <p class="quiet">Как чувствовать себя рядом с другим? Где оставаться собой? Что свободнее проявлять? Что позволять себе получать?</p>
-            </div>
+            <p class="eyebrow">Эмоциональный центр</p>
+            <h2>Выпьем за <span>любовь чаю</span></h2>
+            <p class="lead">Мне совсем не хочется превращать этот вечер в тяжёлый разбор отношений.</p>
+            <p class="intro">За красивым чайным столом, в небольшой компании — с разговорами, наблюдением друг за другом, движением, примериванием новых состояний, неожиданными открытиями и смехом.</p>
+            <p class="intro">Можно прийти с важным вопросом или просто из любопытства к себе. Быть в отношениях или сейчас быть без пары.</p>
+            <p class="lead"><strong>Как мне хочется быть в любви?</strong></p>
+            <p class="quiet">Как чувствовать себя рядом с другим? Где оставаться собой? Что свободнее проявлять? Что позволять себе получать?</p>
           </div>
-        </div>
       </div>
     </section>
 
@@ -516,20 +506,6 @@
             <p class="outcome-line"><span>05</span><strong>Что вы хотите попробовать делать иначе рядом с другим.</strong></p>
           </div>
           <p class="outcome-statement">«Вот как это чувствуется во мне».</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--plum">
-      <div class="wrap">
-        <p class="eyebrow">Как пройдёт встреча</p>
-        <h2>От своего Кода — к живому опыту</h2>
-        <div class="timeline">
-          <article class="timeline-step"><span class="timeline-step__number">01</span><h3>До встречи · свой Код</h3><p>Получаете тест в закрытом Telegram-чате, проходите его заранее и сохраняете результат.</p></article>
-          <article class="timeline-step"><span class="timeline-step__number">02</span><h3>За чайным столом · знакомство</h3><p>Собираемся и входим в тему любви и отношений через свои вопросы и ощущения.</p></article>
-          <article class="timeline-step"><span class="timeline-step__number">03</span><h3>Живая примерка · архетипы через людей</h3><p>Наблюдаем, как меняются тело, контакт, чувственность, сила, свобода, близость и границы — и примеряем состояния на себя.</p></article>
-          <article class="timeline-step"><span class="timeline-step__number">04</span><h3>Свой Код · отношения</h3><p>Соединяем увиденное с результатом и смотрим, какие состояния характерны именно для вас.</p></article>
-          <article class="timeline-step"><span class="timeline-step__number">05</span><h3>Завершение · следующий шаг</h3><p>Определяем, что хочется сохранить в своём способе строить отношения и какое новое качество попробовать привнести.</p></article>
         </div>
       </div>
     </section>
