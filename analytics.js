@@ -36,6 +36,7 @@
     "quantum-100": ["Квантовая активация — 100 дней", "EUR", 1500],
     "navigator-svetlana": ["Навигатор со Светланой", "EUR", 300],
     "wellness-zhizn-bez-nadryva": ["Wellness-день «Жизнь без надрыва»", "RUB", 8880],
+    "love-tea-moscow": ["Живая встреча «Выпьем за любовь чаю»", "RUB", 8880],
   };
   const TELEGRAM_HOSTS = new Set(["t.me", "telegram.me", "telegram.dog"]);
   const PII = /(?:[\w.%+-]+@[\w.-]+\.[a-z]{2,}|@\w{5,}|(?:\+?\d[\d\s().-]{7,}\d))/i;
