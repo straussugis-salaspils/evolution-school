@@ -264,6 +264,12 @@
     .tea-evening__copy .intro, .tea-evening__copy .quiet { color: rgba(255,250,240,.76); }
     .tea-evening__copy .quiet { margin-top: 20px; }
 
+    .venue-grid { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(340px, .88fr); gap: clamp(38px, 6vw, 76px); align-items: center; }
+    .venue-photo { aspect-ratio: 4 / 3; overflow: hidden; border-radius: 24px 110px 24px 24px; background: #d5d5d5; box-shadow: 0 28px 66px rgba(24,15,27,.22); }
+    .venue-photo img { height: 100%; object-fit: cover; object-position: center; }
+    .venue-copy p { color: rgba(255,250,240,.78); }
+    .venue-copy .venue-address { margin-top: 28px; padding-top: 22px; border-top: 1px solid rgba(232,215,173,.38); color: var(--gold-pale); font-size: 15px; }
+
     .sync-path { grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
     .sync-node { position: relative; min-height: 0; padding: 26px 28px; border: 0; border-radius: 0; background: transparent; font-size: 25px; }
     .sync-node + .sync-node { border-left: 1px solid var(--line); }
@@ -275,7 +281,7 @@
     .chamber-note small { display: block; margin-bottom: 14px; color: var(--tea-deep); font-size: 11px; font-weight: 600; letter-spacing: .13em; text-transform: uppercase; }
 
     @media (max-width: 960px) {
-      .hero__grid, .opening-grid, .aphrodite-feature__grid, .relationship-grid, .outcomes, .host-grid, .proof-grid, .chamber-grid, .final-card__grid { grid-template-columns: 1fr; }
+      .hero__grid, .opening-grid, .aphrodite-feature__grid, .relationship-grid, .outcomes, .host-grid, .proof-grid, .chamber-grid, .venue-grid, .final-card__grid { grid-template-columns: 1fr; }
       .aphrodite-feature__grid, .tea-evening { grid-template-columns: 1fr; }
       .host-photo { max-width: 620px; }
     }
@@ -318,6 +324,7 @@
       .relationship-question { padding: 0 0 24px 22px; font-size: 29px; }
       .tea-evening__image { aspect-ratio: 16 / 10; }
       .tea-evening__copy h2 { font-size: 38px; }
+      .venue-photo { aspect-ratio: 16 / 10; border-radius: 20px 70px 20px 20px; }
       .timeline-step { grid-template-columns: 48px 1fr; gap: 16px; }
       .timeline-step p { grid-column: 2; }
       .sync-path { grid-template-columns: 1fr; }
@@ -402,8 +409,8 @@
             </div>
             <figure class="aphrodite-feature__image">
               <picture>
-                <source srcset="/818826-vypem-za-lyubov-chayu/assets/aphrodite-state-shift.webp" type="image/webp">
-                <img src="/818826-vypem-za-lyubov-chayu/assets/aphrodite-state-shift.jpg" width="1600" height="1067" loading="lazy" decoding="async" alt="Женщина меняет позу, взгляд и способ входить в контакт">
+                <source srcset="/818826-vypem-za-lyubov-chayu/assets/aphrodite-clear.webp" type="image/webp">
+                <img src="/818826-vypem-za-lyubov-chayu/assets/aphrodite-clear.jpg" width="1600" height="1067" loading="lazy" decoding="async" alt="Женщина с открытой позой и спокойным уверенным взглядом">
               </picture>
             </figure>
             <blockquote class="aphrodite-pull">«А теперь попробуем, как в тебе звучит Афродита».</blockquote>
@@ -583,6 +590,20 @@
           <p class="intro">Это несколько часов непосредственной авторской работы Светланы с конкретными людьми и их Кодами — не лекция о методе и не массовое мероприятие.</p>
         </div>
         <aside class="chamber-note"><small>Камерность — часть метода</small><p>Один стол. Конкретные люди. Их вопросы, состояния и Персональные Коды.</p></aside>
+      </div>
+    </section>
+
+    <section class="section section--plum" aria-labelledby="love-tea-venue-title">
+      <div class="wrap venue-grid">
+        <figure class="venue-photo">
+          <img src="/818826-vypem-za-lyubov-chayu/assets/ampermy-lounge.webp" width="1920" height="1280" loading="lazy" decoding="async" alt="Светлое камерное пространство практик-центра Ampermy в Москве">
+        </figure>
+        <div class="venue-copy">
+          <p class="eyebrow">Место встречи</p>
+          <h2 id="love-tea-venue-title">Ampermy в центре Москвы</h2>
+          <p class="lead">«Выпьем за любовь чаю» пройдёт в том же пространстве, где состоится встреча «Жизнь без надрыва».</p>
+          <p class="venue-address">Москва, Большой Каретный переулок, 19, стр. 2</p>
+        </div>
       </div>
     </section>
 
