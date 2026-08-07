@@ -55,13 +55,19 @@ for (const fragment of [
   "trackLinks: false",
   "webvisor: false",
   'consentUpdate(analytics);',
-  'clearAnalyticsCookies();',
-  "const yandexLoaded = allowed() ? loadYandexMetrika() : false;",
+  'clearGoogleAnalyticsCookies();',
+  "const yandexLoaded = loadYandexMetrika();",
+  "loadGoogleTag();\n  loadYandexMetrika();",
+  'if (allowed() && ga4Loaded && typeof window.gtag === "function")',
+  "Яндекс Метрика работает при каждом посещении сайта",
 ]) {
   if (!analytics.includes(fragment)) errors.push(`analytics.js: missing analytics-layer requirement: ${fragment}`);
 }
 if (!analytics.includes("if (ga4Loaded) return false")) errors.push("analytics.js: Google tag must load in denied cookieless mode before consent");
 if (/if \(ga4Loaded \|\| !allowed\(\)\) return false/.test(analytics)) errors.push("analytics.js: Basic Consent Mode gate is still blocking Google before consent");
+if (!analytics.includes("if (metrikaLoaded) return false")) errors.push("analytics.js: Yandex Metrika must load exactly once on every visit");
+if (/metrikaLoaded\s*\|\|\s*!allowed\(\)|allowed\(\)\s*\?\s*loadYandexMetrika/.test(analytics)) errors.push("analytics.js: Yandex Metrika must not be gated by the Google analytics choice");
+if (/if \(!allowed\(\) \|\| !EVENTS\.has\(eventName\)\)/.test(analytics)) errors.push("analytics.js: custom events must continue to Yandex before the Google analytics choice");
 for (const key of ["analytics_storage", "ad_storage", "ad_user_data", "ad_personalization"]) {
   if (!analytics.includes(`${key}: analytics ? "granted" : "denied"`) && key === "analytics_storage") errors.push("analytics.js: analytics_storage consent state is missing");
   if (key !== "analytics_storage" && !analytics.includes(`${key}: "denied"`)) errors.push(`analytics.js: ${key} must remain denied`);

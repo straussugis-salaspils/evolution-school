@@ -114,7 +114,7 @@
     return true;
   };
   const loadYandexMetrika = () => {
-    if (metrikaLoaded || !allowed()) return false;
+    if (metrikaLoaded) return false;
     metrikaLoaded = true;
     window.ym = window.ym || function (...args) {
       (window.ym.a = window.ym.a || []).push(args);
@@ -135,17 +135,17 @@
   };
   const loadAnalytics = () => {
     const googleLoaded = loadGoogleTag();
-    const yandexLoaded = allowed() ? loadYandexMetrika() : false;
+    const yandexLoaded = loadYandexMetrika();
     return googleLoaded || yandexLoaded;
   };
-  const clearAnalyticsCookies = () => {
+  const clearGoogleAnalyticsCookies = () => {
     try {
       const domainAttributes = [""];
       if (location.hostname === "yourbalancerestored.com" || location.hostname.endsWith(".yourbalancerestored.com")) {
         domainAttributes.push(`; Domain=.${location.hostname}`, "; Domain=.yourbalancerestored.com");
       }
       document.cookie.split(";").map((entry) => entry.trim().split("=")[0]).filter((name) => (
-        /^_ga(?:_|$)|^_gid$|^_ym_|^_yasc$|^yuid$|^ymex$/i.test(name)
+        /^_ga(?:_|$)|^_gid$/i.test(name)
       )).forEach((name) => {
         for (const domain of domainAttributes) {
           document.cookie = `${name}=; Path=/; Max-Age=0; SameSite=Lax${domain}`;
@@ -156,33 +156,30 @@
   const setConsent = (choice) => {
     const analytics = choice === "analytics_granted";
     const savedChoice = analytics ? "analytics_granted" : "essential_only";
-    const wasAnalyticsAllowed = allowed();
     storage.set(CONSENT_KEY, savedChoice);
     cookie.set(CONSENT_COOKIE, savedChoice);
     loadGoogleTag();
     consentUpdate(analytics);
     if (analytics) {
       persistFirstTouch();
-      loadYandexMetrika();
     }
     if (!analytics) {
-      clearAnalyticsCookies();
-      // Reload only when full analytics was active, so Yandex is unloaded while
-      // Google restarts in cookieless denied mode.
-      if (wasAnalyticsAllowed || metrikaLoaded) window.setTimeout(() => location.reload(), 0);
+      clearGoogleAnalyticsCookies();
     }
     document.dispatchEvent(new CustomEvent("eh:consent-change", { detail: { analytics } }));
   };
 
   // Advanced Consent Mode: Google loads on every visit after an all-denied
   // default. It sends cookieless pings and writes no GA cookies until opt-in.
-  // Yandex has no supported equivalent, so it remains behind explicit consent.
+  // By owner decision, standard Yandex Metrika loads on every visit and keeps
+  // its browser identifiers regardless of the Google analytics choice.
   window.dataLayer = window.dataLayer || [];
   window.gtag = gtag;
   consentDefault();
   if (allowed()) consentUpdate(true);
   loadGoogleTag();
-  if (allowed()) { persistFirstTouch(); loadYandexMetrika(); }
+  loadYandexMetrika();
+  if (allowed()) persistFirstTouch();
 
   const sanitize = (eventName, values = {}) => {
     const result = {};
@@ -194,10 +191,10 @@
     return result;
   };
   const track = (eventName, values) => {
-    if (!allowed() || !EVENTS.has(eventName)) return false;
+    if (!EVENTS.has(eventName)) return false;
     const parameters = sanitize(eventName, values);
     let sent = false;
-    if (ga4Loaded && typeof window.gtag === "function") {
+    if (allowed() && ga4Loaded && typeof window.gtag === "function") {
       window.gtag("event", eventName, parameters);
       sent = true;
     }
@@ -320,7 +317,7 @@
     panel.hidden = true;
     panel.setAttribute("role", "region");
     panel.setAttribute("aria-label", "Настройки cookies");
-    panel.innerHTML = '<div class="eh-consent__copy"><strong>Настройки cookies</strong><p>Мы используем необязательные аналитические cookies, чтобы понимать, как работает сайт. Можно разрешить аналитику или оставить только необходимые cookies. <a href="/privacy-policy/">Подробнее</a>.</p></div><div class="eh-consent__actions"><button type="button" class="eh-consent__button eh-consent__button--secondary" data-eh-consent="essential_only">Только необходимые</button><button type="button" class="eh-consent__button eh-consent__button--primary" data-eh-consent="analytics_granted">Разрешить аналитику</button><button type="button" class="eh-consent__close" data-eh-consent-close aria-label="Закрыть настройки cookies">×</button></div>';
+    panel.innerHTML = '<div class="eh-consent__copy"><strong>Настройки cookies</strong><p>Яндекс Метрика работает при каждом посещении сайта. Здесь можно разрешить полные данные Google Analytics или оставить Google без аналитических cookies. <a href="/privacy-policy/">Подробнее</a>.</p></div><div class="eh-consent__actions"><button type="button" class="eh-consent__button eh-consent__button--secondary" data-eh-consent="essential_only">Google без cookies</button><button type="button" class="eh-consent__button eh-consent__button--primary" data-eh-consent="analytics_granted">Разрешить Google cookies</button><button type="button" class="eh-consent__close" data-eh-consent-close aria-label="Закрыть настройки cookies">×</button></div>';
     document.body.append(panel);
     const settings = document.createElement("button");
     settings.type = "button";
