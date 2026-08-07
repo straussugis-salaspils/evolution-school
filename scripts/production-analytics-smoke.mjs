@@ -53,7 +53,6 @@ try {
   const gaScript = "document.querySelectorAll('script[data-eh-ga4]').length";
   const metrikaScript = "document.querySelectorAll('script[data-eh-metrika]').length";
   const gaCookies = "!/(?:^|;\\s*)_(?:ga|gid)(?:_|=)/i.test(document.cookie)";
-  const metrikaCookies = "!/(?:^|;\\s*)(?:_ym_|_yasc=|yuid=|ymex=)/i.test(document.cookie)";
   const google = () => urls.filter((url) => /googletagmanager\.com|google-analytics\.com/i.test(url));
   const yandex = () => urls.filter((url) => /mc\.yandex\.ru/i.test(url));
   let failures = 0;
@@ -74,11 +73,11 @@ try {
     const banner = await value("Boolean(document.querySelector('.eh-consent:not([hidden])'))");
     const settings = await value("Boolean(document.querySelector('.eh-cookie-settings'))");
     const overflow = await value("document.documentElement.scrollWidth > innerWidth + 2");
-    const advancedConsentReady = await value(`${gaScript} === 1 && ${metrikaScript} === 0 && typeof window.gtag === 'function' && Array.isArray(window.dataLayer) && window.dataLayer?.[0]?.[0] === 'consent' && window.dataLayer?.[0]?.[1] === 'default' && window.dataLayer?.[0]?.[2]?.analytics_storage === 'denied' && typeof window.ym === 'undefined'`);
-    const noCookies = await value(`${gaCookies} && ${metrikaCookies}`);
-    const ok = banner && settings && google().length > 0 && yandex().length === 0 && advancedConsentReady && noCookies && !overflow;
+    const advancedConsentReady = await value(`${gaScript} === 1 && ${metrikaScript} === 1 && typeof window.gtag === 'function' && Array.isArray(window.dataLayer) && window.dataLayer?.[0]?.[0] === 'consent' && window.dataLayer?.[0]?.[1] === 'default' && window.dataLayer?.[0]?.[2]?.analytics_storage === 'denied' && typeof window.ym === 'function'`);
+    const noGoogleCookies = await value(gaCookies);
+    const ok = banner && settings && google().length > 0 && yandex().length > 0 && advancedConsentReady && noGoogleCookies && !overflow;
     failures += ok ? 0 : 1;
-    console.log(`${ok ? "PASS" : "FAIL"} ${route}: banner=${banner}, settings=${settings}, google-cookieless=${google().length}, yandex-before-consent=${yandex().length}, advanced-consent=${advancedConsentReady}, analytics-cookies-absent=${noCookies}, overflow=${overflow}`);
+    console.log(`${ok ? "PASS" : "FAIL"} ${route}: banner=${banner}, settings=${settings}, google-cookieless=${google().length}, yandex-always-on=${yandex().length}, advanced-consent=${advancedConsentReady}, google-cookies-absent=${noGoogleCookies}, overflow=${overflow}`);
   }
   if (skipped === 0) {
     urls.length = 0;
@@ -88,8 +87,8 @@ try {
     await value("document.querySelector('[data-eh-consent=\"analytics_granted\"]')?.click()");
     await wait(550);
     check("production loads one direct GA4 tag after consent", await value(`${gaScript} === 1 && document.querySelector('script[data-eh-ga4]')?.src.includes('${GA4_ID}')`));
-    check("production loads one Yandex Metrika tag after consent", await value(`${metrikaScript} === 1 && document.querySelector('script[data-eh-metrika]')?.src === 'https://mc.yandex.ru/metrika/tag.js' && window.ehAnalytics.metrikaId === ${METRIKA_ID}`));
-    check("production requests Yandex Metrika only after consent", yandex().some((url) => /\/metrika\/tag\.js/i.test(url)));
+    check("production keeps one always-on Yandex Metrika tag after Google consent", await value(`${metrikaScript} === 1 && document.querySelector('script[data-eh-metrika]')?.src === 'https://mc.yandex.ru/metrika/tag.js' && window.ehAnalytics.metrikaId === ${METRIKA_ID}`));
+    check("production requested Yandex Metrika before Google consent", yandex().some((url) => /\/metrika\/tag\.js/i.test(url)));
     check("production loads the Yandex Metrika tag only once", yandex().filter((url) => /\/metrika\/tag\.js/i.test(url)).length === 1);
     check("production queues denied default before config and the grant after it", await value("(() => { const defaultIndex = window.dataLayer.findIndex((item) => item?.[0] === 'consent' && item?.[1] === 'default'); const configIndex = window.dataLayer.findIndex((item) => item?.[0] === 'config'); const updateIndex = window.dataLayer.findIndex((item) => item?.[0] === 'consent' && item?.[1] === 'update' && item?.[2]?.analytics_storage === 'granted'); const update = window.dataLayer?.[updateIndex]?.[2]; return defaultIndex === 0 && configIndex > defaultIndex && updateIndex > configIndex && ['ad_storage','ad_user_data','ad_personalization'].every((key) => update?.[key] === 'denied'); })()"));
     check("production queues one GA4 config/page_view", await value(`window.dataLayer.filter((item) => item?.[0] === 'config' && item?.[1] === '${GA4_ID}').length === 1`));
@@ -102,17 +101,12 @@ try {
     urls.length = 0;
     await send("Page.navigate", { url: `${BASE_URL}/?analytics_production_smoke=revoked` });
     await waitForAnalytics();
-    check("production keeps Google cookieless and Yandex absent after revocation", await value(`${gaScript} === 1 && ${metrikaScript} === 0 && typeof window.gtag === 'function' && Array.isArray(window.dataLayer) && window.dataLayer?.[0]?.[2]?.analytics_storage === 'denied' && typeof window.ym === 'undefined'`));
+    check("production keeps Google cookieless and Yandex active after revocation", await value(`${gaScript} === 1 && ${metrikaScript} === 1 && typeof window.gtag === 'function' && Array.isArray(window.dataLayer) && window.dataLayer?.[0]?.[2]?.analytics_storage === 'denied' && typeof window.ym === 'function'`));
     check("production clears GA cookies after revocation", await value(gaCookies));
-    const remainingMetrikaCookies = await value("document.cookie.split(';').map((entry) => entry.trim().split('=')[0]).filter((name) => /^(?:_ym_|_yasc$|yuid$|ymex$)/i.test(name))");
-    check("production clears Yandex Metrika cookies after revocation", remainingMetrikaCookies.length === 0);
-    if (remainingMetrikaCookies.length) {
-      const { cookies } = await send("Network.getAllCookies");
-      const details = cookies.filter((item) => remainingMetrikaCookies.includes(item.name)).map((item) => `${item.name}@${item.domain}${item.path}`);
-      console.error(`Remaining Yandex Metrika cookies: ${details.join(", ")}`);
-    }
     check("production sends cookieless Google requests after revocation", google().length > 0);
-    check("production sends no Yandex request after revocation", yandex().length === 0);
+    check("production requests Yandex Metrika after revocation", yandex().length > 0);
+    const afterRevokeEvent = await value(`(() => { window.__ehYmCalls = []; window.__ehOriginalYm = window.ym; window.ym = (...args) => { window.__ehYmCalls.push(args); return window.__ehOriginalYm(...args); }; const googleBefore = window.dataLayer.filter((item) => item?.[0] === 'event' && item?.[1] === 'program_cta_click').length; const sent = window.ehAnalytics.track('program_cta_click', { cta_label: 'after_revoke' }); return { sent, googleBlocked: window.dataLayer.filter((item) => item?.[0] === 'event' && item?.[1] === 'program_cta_click').length === googleBefore, yandexGoal: window.__ehYmCalls.some((args) => args?.[0] === ${METRIKA_ID} && args?.[1] === 'reachGoal' && args?.[2] === 'program_cta_click') }; })()`);
+    check("production keeps Yandex goals active while GA4 custom events stay blocked after revocation", afterRevokeEvent.sent && afterRevokeEvent.googleBlocked && afterRevokeEvent.yandexGoal);
   }
   for (const item of checks) console.log(`${item.pass ? "PASS" : "FAIL"} ${item.name}`);
   const checkFailures = checks.filter((item) => !item.pass).length;
