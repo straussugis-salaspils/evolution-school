@@ -59,7 +59,8 @@ for (const fragment of [
   "const yandexLoaded = loadYandexMetrika();",
   "loadGoogleTag();\n  loadYandexMetrika();",
   'if (allowed() && ga4Loaded && typeof window.gtag === "function")',
-  "Помогите нам улучшать сайт",
+  "Чтобы нужное находилось быстрее",
+  "без рекламного отслеживания",
   '>Разрешить</button>',
   '>Google без cookies</button>',
 ]) {
