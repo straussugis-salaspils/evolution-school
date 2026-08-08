@@ -20,11 +20,19 @@ Robots: `https://evolution.yourbalancerestored.com/robots.txt`
    - `https://evolution.yourbalancerestored.com/napravleniya.html`
    - `https://evolution.yourbalancerestored.com/arhetipy.html`
    - `https://evolution.yourbalancerestored.com/urovni-zhizni/`
-   - `https://evolution.yourbalancerestored.com/vnutrennyaya-svoboda.html`
    - `https://evolution.yourbalancerestored.com/reiki-napravlenie.html`
-7. После первого обхода проверьте Page indexing, HTTPS и Core Web Vitals. Не отправляйте вручную все 43 URL: sitemap и внутренняя навигация предназначены для массового обнаружения.
+7. После первого обхода проверьте Page indexing, HTTPS и Core Web Vitals. Не отправляйте вручную все URL: sitemap и внутренняя навигация предназначены для массового обнаружения.
 
 Официальные инструкции: [добавление property](https://support.google.com/webmasters/answer/34592), [подтверждение владения](https://support.google.com/webmasters/answer/9008080), [sitemap report](https://support.google.com/webmasters/answer/7451001), [URL Inspection](https://support.google.com/webmasters/answer/9012289).
+
+## Яндекс Вебмастер
+
+1. Убедитесь, что сайт `https://evolution.yourbalancerestored.com/` подтверждён в Яндекс Вебмастере.
+2. В разделе «Индексирование → Файлы Sitemap» добавьте `https://evolution.yourbalancerestored.com/sitemap.xml` и проверьте, что файл обработан без ошибок.
+3. После этого релиза отправьте `https://evolution.yourbalancerestored.com/vnutrennyaya-svoboda.html` на переобход: робот должен увидеть `noindex, follow` и убрать страницу из поисковой базы, сохранив возможность обходить её ссылки.
+4. Не отправляйте сам `sitemap.xml` через инструмент переобхода страниц: sitemap обновляется через отдельный раздел Вебмастера.
+
+Официальные инструкции: [файлы Sitemap](https://yandex.ru/support/webmaster/ru/indexing-options/sitemap), [переобход страниц](https://yandex.com/support/webmaster/en/robot-workings/site-reindex), [запрет индексирования](https://yandex.ru/support/webmaster/ru/adding-site/indexing-prohibition).
 
 ## Bing Webmaster Tools
 
@@ -57,6 +65,7 @@ Invoke-WebRequest https://evolution.yourbalancerestored.com/sitemap.xml
 ## Правила поддержки
 
 - Новая публичная индексируемая страница должна иметь `index, follow`, абсолютный self-canonical, уникальные title/description, Open Graph и один H1.
+- Страница карты `/vnutrennyaya-svoboda.html` остаётся доступной в навигации, но имеет `noindex, follow` и не входит в sitemap: поисковым владельцем направления является отдельный сайт `https://method-ru.yourbalancerestored.com/`.
 - Скрытый продающий лендинг остаётся `noindex, nofollow`, не входит в sitemap и получает canonical на публичную версию продукта.
 - Служебная страница `/18-18-18/` остаётся `noindex, nofollow` и не входит в sitemap.
 - Redirect alias не должен входить в sitemap; основной redirect хранится в `vercel.json`.
