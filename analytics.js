@@ -317,7 +317,7 @@
     panel.hidden = true;
     panel.setAttribute("role", "region");
     panel.setAttribute("aria-label", "Настройки cookies");
-    panel.innerHTML = '<div class="eh-consent__copy"><strong>Настройки cookies</strong><p>Яндекс Метрика работает при каждом посещении сайта. Здесь можно разрешить полные данные Google Analytics или оставить Google без аналитических cookies. <a href="/privacy-policy/">Подробнее</a>.</p></div><div class="eh-consent__actions"><button type="button" class="eh-consent__button eh-consent__button--secondary" data-eh-consent="essential_only">Google без cookies</button><button type="button" class="eh-consent__button eh-consent__button--primary" data-eh-consent="analytics_granted">Разрешить Google cookies</button><button type="button" class="eh-consent__close" data-eh-consent-close aria-label="Закрыть настройки cookies">×</button></div>';
+    panel.innerHTML = '<div class="eh-consent__copy"><strong>Помогите нам улучшать сайт</strong><p>Разрешите Google Analytics использовать cookies — так мы точнее увидим, какие страницы полезны и что приводит к заявкам. <a href="/privacy-policy/">Подробнее</a>.</p></div><div class="eh-consent__actions"><button type="button" class="eh-consent__button eh-consent__button--primary" data-eh-consent="analytics_granted">Разрешить</button><button type="button" class="eh-consent__button eh-consent__button--secondary" data-eh-consent="essential_only">Google без cookies</button><button type="button" class="eh-consent__close" data-eh-consent-close aria-label="Закрыть настройки cookies">×</button></div>';
     document.body.append(panel);
     const settings = document.createElement("button");
     settings.type = "button";

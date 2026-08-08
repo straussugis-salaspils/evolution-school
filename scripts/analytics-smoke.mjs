@@ -76,6 +76,14 @@ try {
   const gaCookies = "!/(?:^|;\\s*)_(?:ga|gid)(?:_|=)/i.test(document.cookie)";
 
   check("cookie banner is visible before a choice", await evaluate("Boolean(document.querySelector('.eh-consent:not([hidden])'))"));
+  check("Google choice uses the approved copy and action order", await evaluate("(() => { const buttons = [...document.querySelectorAll('.eh-consent__button')]; return document.querySelector('.eh-consent__copy')?.textContent.includes('Google Analytics') && !document.querySelector('.eh-consent__copy')?.textContent.includes('Яндекс') && buttons[0]?.textContent.trim() === 'Разрешить' && buttons[1]?.textContent.trim() === 'Google без cookies'; })()"));
+  check("Google permission is visually dominant", await evaluate("(() => { const primary = document.querySelector('.eh-consent__button--primary'); const secondary = document.querySelector('.eh-consent__button--secondary'); const primaryStyle = getComputedStyle(primary); const secondaryStyle = getComputedStyle(secondary); return primaryStyle.backgroundColor !== 'rgba(0, 0, 0, 0)' && secondaryStyle.backgroundColor === 'rgba(0, 0, 0, 0)' && Number.parseFloat(primaryStyle.fontSize) > Number.parseFloat(secondaryStyle.fontSize); })()"));
+  for (const viewport of [{ width: 375, height: 667 }, { width: 414, height: 896 }, { width: 768, height: 1024 }, { width: 1024, height: 768 }, { width: 1440, height: 1000 }]) {
+    await send("Emulation.setDeviceMetricsOverride", { ...viewport, deviceScaleFactor: 1, mobile: viewport.width < 768 });
+    await wait(40);
+    check(`Google choice fits ${viewport.width}px with touch-sized actions`, await evaluate("(() => { const rect = document.querySelector('.eh-consent').getBoundingClientRect(); return rect.left >= 0 && rect.right <= innerWidth + 1 && rect.width <= innerWidth && [...document.querySelectorAll('.eh-consent__button')].every((node) => node.getBoundingClientRect().height >= 44); })()"));
+  }
+  await send("Emulation.setDeviceMetricsOverride", { width: 390, height: 844, deviceScaleFactor: 1, mobile: true });
   check("one Google tag is present before a choice", await evaluate(`${gaScript} === 1 && typeof window.gtag === 'function' && Array.isArray(window.dataLayer)`));
   check("Google sends cookieless requests before consent", googleRequests().length > 0);
   check("denied consent is queued before the Google config", await evaluate(`window.dataLayer?.[0]?.[0] === 'consent' && window.dataLayer?.[0]?.[1] === 'default' && Object.values(window.dataLayer?.[0]?.[2] || {}).length === 4 && Object.values(window.dataLayer?.[0]?.[2] || {}).every((value) => value === 'denied') && window.dataLayer.findIndex((item) => item?.[0] === 'config' && item?.[1] === '${GA4_ID}') > 0`));
