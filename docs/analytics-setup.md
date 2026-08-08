@@ -15,9 +15,10 @@ Google Tag Manager is not used. `GTM-WNV2B49K` is intentionally unused and must 
 The site uses **Advanced Consent Mode v2 for Google** and an owner-approved always-on standard Yandex Metrika tag:
 
 - before a visitor chooses, the site queues an all-denied Google consent default and loads GA4 in cookieless mode; `analytics_storage` remains denied and Google analytics cookies are not created;
+- the compact Google-only choice panel presents “Allow” as the dominant action and “Google without cookies” as the quieter secondary action; it does not describe the separately disclosed always-on Yandex setup;
 - “Google without cookies” keeps Google in cookieless mode across pages and refreshes;
 - Yandex Metrika loads on every visit, independently of the Google choice, and may use its standard cookies or `localStorage` identifiers;
-- after “Allow Google cookies”, the site updates Google with only `analytics_storage: granted`;
+- after “Allow”, the site updates Google with only `analytics_storage: granted`;
 - `ad_storage`, `ad_user_data`, and `ad_personalization` always remain `denied`;
 - revoking Google analytics queues an all-denied Google consent update and removes safe first-party Google Analytics cookies; Yandex remains active.
 
