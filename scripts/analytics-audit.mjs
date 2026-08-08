@@ -57,7 +57,6 @@ for (const fragment of [
   'consentUpdate(analytics);',
   'clearGoogleAnalyticsCookies();',
   "const yandexLoaded = loadYandexMetrika();",
-  "loadGoogleTag();\n  loadYandexMetrika();",
   'if (allowed() && ga4Loaded && typeof window.gtag === "function")',
   "Чтобы нужное находилось быстрее",
   "По этим данным мы упрощаем навигацию",
@@ -65,6 +64,9 @@ for (const fragment of [
   '>Google без cookies</button>',
 ]) {
   if (!analytics.includes(fragment)) errors.push(`analytics.js: missing analytics-layer requirement: ${fragment}`);
+}
+if (!/loadGoogleTag\(\);\s*loadYandexMetrika\(\);/.test(analytics)) {
+  errors.push("analytics.js: Google and Yandex loaders must both run during initialization");
 }
 if (!analytics.includes("if (ga4Loaded) return false")) errors.push("analytics.js: Google tag must load in denied cookieless mode before consent");
 if (/if \(ga4Loaded \|\| !allowed\(\)\) return false/.test(analytics)) errors.push("analytics.js: Basic Consent Mode gate is still blocking Google before consent");

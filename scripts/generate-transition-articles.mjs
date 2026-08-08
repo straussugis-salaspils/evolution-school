@@ -13,7 +13,7 @@ const draftsRoot = path.join(
 );
 const baseUrl = "https://evolution.yourbalancerestored.com";
 const publishedDate = "2026-07-24";
-const author = "Светлана Страус";
+const author = "Светлана Страусс";
 const hubRoute = "/biblioteka/perehody/";
 const hubTitle = "Статьи о пересборке жизни и переходах | Evolution House";
 const hubDescription =
