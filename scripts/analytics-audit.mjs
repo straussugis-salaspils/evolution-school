@@ -60,7 +60,7 @@ for (const fragment of [
   "loadGoogleTag();\n  loadYandexMetrika();",
   'if (allowed() && ga4Loaded && typeof window.gtag === "function")',
   "Чтобы нужное находилось быстрее",
-  "без рекламного отслеживания",
+  "По этим данным мы упрощаем навигацию",
   '>Разрешить</button>',
   '>Google без cookies</button>',
 ]) {
@@ -72,6 +72,7 @@ if (!analytics.includes("if (metrikaLoaded) return false")) errors.push("analyti
 if (/metrikaLoaded\s*\|\|\s*!allowed\(\)|allowed\(\)\s*\?\s*loadYandexMetrika/.test(analytics)) errors.push("analytics.js: Yandex Metrika must not be gated by the Google analytics choice");
 if (/if \(!allowed\(\) \|\| !EVENTS\.has\(eventName\)\)/.test(analytics)) errors.push("analytics.js: custom events must continue to Yandex before the Google analytics choice");
 if (/panel\.innerHTML\s*=\s*'[^']*Яндекс Метрика/.test(analytics)) errors.push("analytics.js: the Google choice panel must not mention Yandex Metrika");
+if (/panel\.innerHTML\s*=\s*'[^']*рекламного отслеживания/.test(analytics)) errors.push("analytics.js: the removed advertising-tracking copy must not return");
 for (const key of ["analytics_storage", "ad_storage", "ad_user_data", "ad_personalization"]) {
   if (!analytics.includes(`${key}: analytics ? "granted" : "denied"`) && key === "analytics_storage") errors.push("analytics.js: analytics_storage consent state is missing");
   if (key !== "analytics_storage" && !analytics.includes(`${key}: "denied"`)) errors.push(`analytics.js: ${key} must remain denied`);
