@@ -317,7 +317,7 @@
     panel.hidden = true;
     panel.setAttribute("role", "region");
     panel.setAttribute("aria-label", "Настройки cookies");
-    panel.innerHTML = '<div class="eh-consent__copy"><strong>Чтобы нужное находилось быстрее</strong><p>Google Analytics покажет, где на сайте сложно найти статью или следующий шаг. По этим данным мы упрощаем навигацию — без рекламного отслеживания. <a href="/privacy-policy/">Подробнее</a>.</p></div><div class="eh-consent__actions"><button type="button" class="eh-consent__button eh-consent__button--primary" data-eh-consent="analytics_granted">Разрешить</button><button type="button" class="eh-consent__button eh-consent__button--secondary" data-eh-consent="essential_only">Google без cookies</button><button type="button" class="eh-consent__close" data-eh-consent-close aria-label="Закрыть настройки cookies">×</button></div>';
+    panel.innerHTML = '<div class="eh-consent__copy"><strong>Чтобы нужное находилось быстрее</strong><p>Google Analytics покажет, где на сайте сложно найти статью или следующий шаг. По этим данным мы упрощаем навигацию. <a href="/privacy-policy/">Подробнее</a>.</p></div><div class="eh-consent__actions"><button type="button" class="eh-consent__button eh-consent__button--primary" data-eh-consent="analytics_granted">Разрешить</button><button type="button" class="eh-consent__button eh-consent__button--secondary" data-eh-consent="essential_only">Google без cookies</button><button type="button" class="eh-consent__close" data-eh-consent-close aria-label="Закрыть настройки cookies">×</button></div>';
     document.body.append(panel);
     const settings = document.createElement("button");
     settings.type = "button";
