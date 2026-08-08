@@ -571,7 +571,7 @@ function renderArticle(article, allArticles, relatedMap, shell) {
   const articleHeader = shell.header.replace(
     'class="eh-local-strip__articles" href="/biblioteka/reiki/" aria-current="page"',
     'class="eh-local-strip__articles" href="/biblioteka/reiki/" aria-current="location"',
-  ).replace("</header>", `${articleBreadcrumb}
+  ).replace(/\s*<\/header>$/, `\n\n\n\n\n  ${articleBreadcrumb}
   </header>`);
   const faq = article.sections.flatMap(extractFaq);
   const schema = {
@@ -582,6 +582,7 @@ function renderArticle(article, allArticles, relatedMap, shell) {
         "@id": `${canonical}#article`,
         headline: article.h1,
         description: article.description,
+        abstract: article.description,
         datePublished: article.publishedDate,
         dateModified: modifiedDate,
         inLanguage: "ru",
@@ -589,11 +590,13 @@ function renderArticle(article, allArticles, relatedMap, shell) {
         image: imageUrl,
         author: {
           "@type": "Person",
+          "@id": `${baseUrl}/o-shkole.html#svetlana-strauss`,
           name: author,
           url: `${baseUrl}/o-shkole.html`,
         },
         publisher: {
           "@type": "Organization",
+          "@id": `${baseUrl}/#organization`,
           name: "Evolution House",
           url: `${baseUrl}/`,
           logo: {
@@ -741,7 +744,7 @@ ${JSON.stringify(schema, null, 2)}
           <a class="article-back-link" href="/biblioteka/reiki/">&#8592; &#1042;&#1089;&#1077; &#1089;&#1090;&#1072;&#1090;&#1100;&#1080; &#1086; &#1056;&#1077;&#1081;&#1082;&#1080;</a>
           <p class="article-kicker">&#1052;&#1072;&#1090;&#1077;&#1088;&#1080;&#1072;&#1083; ${String(article.number).padStart(2, "0")} &#183; &#1055;&#1091;&#1090;&#1100; &#1056;&#1077;&#1081;&#1082;&#1080;</p>
           <h1>${escapeHtml(article.h1)}</h1>
-          <p class="article-hero__lead">${escapeHtml(article.description)}</p>
+          <p class="article-hero__lead" data-ai-summary itemprop="description">${escapeHtml(article.description)}</p>
           <div class="article-meta">
             <span>${escapeHtml(author)}</span>
             <span><time datetime="${article.publishedDate}">${publishedLabel}</time></span>
@@ -760,7 +763,7 @@ ${JSON.stringify(schema, null, 2)}
         <ol>${toc}</ol>
       </nav>
 
-      <article class="article-body">
+      <article class="article-body" itemscope itemtype="https://schema.org/Article">
         <div class="article-intro">
           ${renderBlocks(article.intro.lines)}
         </div>

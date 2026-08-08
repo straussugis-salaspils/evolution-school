@@ -1,3 +1,27 @@
+# ChatGPT Search crawler. The repeated exclusions keep internal working files
+# private because a specific user-agent group does not inherit the wildcard.
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /_qa/
+Disallow: /tests/
+Disallow: /visual-package/
+Disallow: /.codex-checkpoints/
+Disallow: /docs/
+Disallow: /scripts/
+Disallow: /package.json
+
+# OpenAI model-training crawler. Search visibility and model training are
+# independent, but the owner has approved both for this public site.
+User-agent: GPTBot
+Allow: /
+Disallow: /_qa/
+Disallow: /tests/
+Disallow: /visual-package/
+Disallow: /.codex-checkpoints/
+Disallow: /docs/
+Disallow: /scripts/
+Disallow: /package.json
+
 User-agent: *
 Allow: /
 

@@ -528,6 +528,7 @@ function schemaFor(article, draft) {
         "@id": `${canonical}#article`,
         headline: draft.h1,
         description: article.meta_description,
+        abstract: article.meta_description,
         datePublished: publishedDate,
         dateModified: article.modified_date || publishedDate,
         inLanguage: "ru",
@@ -535,11 +536,13 @@ function schemaFor(article, draft) {
         image: `${baseUrl}/assets/archetype-articles/${article.route_id.toLowerCase()}/og-1200.jpg`,
         author: {
           "@type": "Person",
+          "@id": `${baseUrl}${authorUrl}#svetlana-strauss`,
           name: author,
           url: `${baseUrl}${authorUrl}`,
         },
         publisher: {
           "@type": "Organization",
+          "@id": `${baseUrl}/#organization`,
           name: "Evolution House",
           url: `${baseUrl}/`,
           logo: {
@@ -596,8 +599,8 @@ function articleHtml(article) {
       'class="eh-local-strip__articles" href="/arhetipy/" aria-current="location"',
     );
   const header = themedHeader.replace(
-    "</header>",
-    `${articleBreadcrumb}
+    /\s*<\/header>$/,
+    `\n\n\n\n\n  ${articleBreadcrumb}
   </header>`,
   );
   const introHtml = renderBlocks(draft.intro);
@@ -658,7 +661,7 @@ function articleHtml(article) {
           <a class="article-back-link" href="/arhetipy/">← Все статьи об архетипах</a>
           <p class="article-kicker">Статья ${String(hubNumber.get(article.route_id)).padStart(2, "0")} · Путь архетипов</p>
           <h1>${escapeHtml(draft.h1)}</h1>
-          <p class="article-hero__lead">${escapeHtml(article.meta_description)}</p>
+          <p class="article-hero__lead" data-ai-summary itemprop="description">${escapeHtml(article.meta_description)}</p>
           <div class="article-meta">
             <span>${author}</span>
             <span><time datetime="${publishedDate}">27.07.2026</time></span>
@@ -673,7 +676,7 @@ function articleHtml(article) {
         <strong>В этой статье</strong>
         <ol>${toc}</ol>
       </nav>
-      <article class="${articleBodyClass}">${introHtml ? `
+      <article class="${articleBodyClass}" itemscope itemtype="https://schema.org/Article">${introHtml ? `
         <div class="article-intro">${introHtml}</div>` : ""}
         ${body}
         ${productCta(article)}

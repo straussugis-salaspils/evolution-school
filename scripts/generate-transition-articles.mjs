@@ -494,14 +494,16 @@ function articleSchema(article) {
         "@id": `${canonical}#article`,
         headline: article.h1,
         description: article.description,
+        abstract: article.description,
         datePublished: publishedDate,
         dateModified: article.modifiedDate,
         inLanguage: "ru",
         mainEntityOfPage: canonical,
         image: `${baseUrl}${article.visual.basePath}/og-1200.jpg`,
-        author: { "@type": "Person", name: author, url: `${baseUrl}/o-shkole.html` },
+        author: { "@type": "Person", "@id": `${baseUrl}/o-shkole.html#svetlana-strauss`, name: author, url: `${baseUrl}/o-shkole.html` },
         publisher: {
           "@type": "Organization",
+          "@id": `${baseUrl}/#organization`,
           name: "Evolution House",
           url: `${baseUrl}/`,
           logo: {
@@ -564,7 +566,7 @@ function renderArticle(article, articles, shell) {
     </nav>`;
   const header = shell.header
     .replace('aria-current="page">Статьи о пересборке', 'aria-current="location">Статьи о пересборке')
-    .replace("</header>", `${articleBreadcrumb}
+    .replace(/\s*<\/header>$/, `\n\n\n\n\n  ${articleBreadcrumb}
   </header>`);
   const related = renderRelated(article, articles);
   const productCta = renderProductCta(article, articles);
@@ -661,7 +663,7 @@ ${JSON.stringify(articleSchema(article), null, 2)}
           <a class="article-back-link" href="${hubRoute}">← Все статьи о переходах</a>
           <p class="article-kicker">Материал ${String(article.number).padStart(2, "0")} · Пересборка жизни</p>
           <h1>${escapeHtml(article.h1)}</h1>
-          <p class="article-hero__lead">${escapeHtml(article.description)}</p>
+          <p class="article-hero__lead" data-ai-summary itemprop="description">${escapeHtml(article.description)}</p>
           <div class="article-meta">
             <span>${author}</span>
             <span><time datetime="${publishedDate}">24.07.2026</time></span>
@@ -676,7 +678,7 @@ ${JSON.stringify(articleSchema(article), null, 2)}
         <strong>В статье</strong>
         <ol>${toc}</ol>
       </nav>
-      <article class="article-body">
+      <article class="article-body" itemscope itemtype="https://schema.org/Article">
         <div class="article-intro">${renderBlocks(article.intro.lines)}</div>
         ${sections}
         ${relatedAtEnd}

@@ -11,7 +11,7 @@
     "generate_lead", "navigator_start", "navigator_complete", "test_start", "test_complete",
     "telegram_click", "program_cta_click", "payment_click", "outbound_click",
     "article_view", "related_article_click", "cta_impression", "product_click",
-    "lead_start", "lead_submit",
+    "lead_start", "lead_submit", "ai_referral_visit",
   ]);
   const PARAMS = {
     generate_lead: ["lead_type", "program_name", "page_path"],
@@ -29,6 +29,7 @@
     product_click: ["route_id", "product_id", "cta_variant", "placement"],
     lead_start: ["route_id", "product_id", "cta_variant", "placement"],
     lead_submit: ["route_id", "product_id", "cta_variant", "placement"],
+    ai_referral_visit: ["ai_source", "landing_path", "referrer_host", "utm_source"],
   };
   const PRODUCTS = {
     "off-switch-training": ["Тренинг Off-Switch в записи", "EUR", 300],
@@ -247,6 +248,30 @@
     articleViewSent = track("article_view", articleContext(document.body));
     return articleViewSent;
   };
+  const trackAiReferral = () => {
+    const query = new URLSearchParams(location.search);
+    const utmSource = clean(query.get("utm_source")).toLowerCase();
+    let referrerHost = "";
+    try { referrerHost = document.referrer ? new URL(document.referrer).hostname.toLowerCase() : ""; } catch { /* no-op */ }
+    const source = utmSource === "chatgpt.com" || /(^|\.)chatgpt\.com$/.test(referrerHost)
+      ? "chatgpt"
+      : utmSource === "perplexity" || /(^|\.)perplexity\.ai$/.test(referrerHost)
+        ? "perplexity"
+        : utmSource === "copilot" || /(^|\.)copilot\.microsoft\.com$/.test(referrerHost)
+          ? "copilot"
+          : "";
+    if (!source) return false;
+    const key = `eh_ai_referral_${source}_${pagePath()}`;
+    if (session.get(key)) return false;
+    const sent = track("ai_referral_visit", {
+      ai_source: source,
+      landing_path: pagePath(),
+      referrer_host: referrerHost,
+      utm_source: utmSource,
+    });
+    if (sent) session.set(key, "1");
+    return sent;
+  };
   const seenCtas = new WeakSet();
   const observeArticleCtas = () => {
     const nodes = [...document.querySelectorAll("[data-article-product-cta]")];
@@ -346,6 +371,7 @@
   });
   const initialisePageAnalytics = () => {
     renderBanner();
+    trackAiReferral();
     trackArticleView();
     observeArticleCtas();
   };

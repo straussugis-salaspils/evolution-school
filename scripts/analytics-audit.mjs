@@ -35,7 +35,7 @@ for (const file of htmlFiles) {
   if (/google-analytics\.com|mc\.yandex\.ru|connect\.facebook\.net|\bym\s*\(|\bfbq\s*\(|\bttq\./i.test(html)) errors.push(`${relative}: direct third-party analytics or pixel code is not allowed`);
 }
 
-for (const eventName of ["generate_lead", "navigator_start", "navigator_complete", "test_start", "test_complete", "telegram_click", "program_cta_click", "payment_click", "outbound_click", "article_view", "related_article_click", "cta_impression", "product_click", "lead_start", "lead_submit"]) {
+for (const eventName of ["generate_lead", "navigator_start", "navigator_complete", "test_start", "test_complete", "telegram_click", "program_cta_click", "payment_click", "outbound_click", "article_view", "related_article_click", "cta_impression", "product_click", "lead_start", "lead_submit", "ai_referral_visit"]) {
   if (!analytics.includes(`"${eventName}"`)) errors.push(`analytics.js: missing ${eventName}`);
 }
 for (const fragment of [
@@ -82,6 +82,8 @@ for (const key of ["analytics_storage", "ad_storage", "ad_user_data", "ad_person
 if (/GTM-WNV2B49K|loadGtm|ehAddConsentListener|data-eh-gtm|\/gtm\.js\?/i.test(analytics)) errors.push("analytics.js: GTM runtime code must not be present");
 if (/clickmap:\s*true|webvisor:\s*true|\becommerce\s*:/i.test(analytics)) errors.push("analytics.js: disallowed Yandex Metrika feature is enabled");
 if (!analytics.includes("const PII")) errors.push("analytics.js: PII guard is missing");
+if (!analytics.includes('utmSource === "chatgpt.com"')) errors.push("analytics.js: ChatGPT referral detection is missing");
+if (!analytics.includes('track("ai_referral_visit"')) errors.push("analytics.js: AI referral event dispatch is missing");
 
 console.log(`Analytics audit: ${htmlFiles.length} HTML files, ${errors.length} error(s).`);
 for (const error of errors) console.error(`ERROR ${error}`);
