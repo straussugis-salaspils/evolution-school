@@ -54,7 +54,7 @@ for (const width of widths) {
       titleLines,
       ctaCount: document.querySelectorAll("[data-love-payment-open]").length,
       oldOnlineFormat: document.body.textContent.includes("8 880 ₽ · онлайн"),
-      paymentScriptBeforeClick: Boolean(document.querySelector("script[src*='id=1638498']")),
+      paymentScriptBeforeClick: Boolean(document.querySelector("script[src*='id=1640308']")),
     };
   });
   if (
