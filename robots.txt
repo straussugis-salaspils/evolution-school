@@ -22,6 +22,23 @@ Disallow: /docs/
 Disallow: /scripts/
 Disallow: /package.json
 
+# Confirmed answer-engine and AI discovery controls. Grok and DeepSeek do not
+# currently publish a stable crawler contract, so they inherit the wildcard
+# rules below instead of relying on invented user-agent names.
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: ClaudeBot
+User-agent: PerplexityBot
+User-agent: Google-Extended
+Allow: /
+Disallow: /_qa/
+Disallow: /tests/
+Disallow: /visual-package/
+Disallow: /.codex-checkpoints/
+Disallow: /docs/
+Disallow: /scripts/
+Disallow: /package.json
+
 User-agent: *
 Allow: /
 

@@ -82,7 +82,9 @@ for (const key of ["analytics_storage", "ad_storage", "ad_user_data", "ad_person
 if (/GTM-WNV2B49K|loadGtm|ehAddConsentListener|data-eh-gtm|\/gtm\.js\?/i.test(analytics)) errors.push("analytics.js: GTM runtime code must not be present");
 if (/clickmap:\s*true|webvisor:\s*true|\becommerce\s*:/i.test(analytics)) errors.push("analytics.js: disallowed Yandex Metrika feature is enabled");
 if (!analytics.includes("const PII")) errors.push("analytics.js: PII guard is missing");
-if (!analytics.includes('utmSource === "chatgpt.com"')) errors.push("analytics.js: ChatGPT referral detection is missing");
+for (const source of ["chatgpt", "perplexity", "copilot", "claude", "gemini", "grok", "deepseek", "mistral", "meta_ai"]) {
+  if (!analytics.includes(`"${source}"`)) errors.push(`analytics.js: ${source} referral detection is missing`);
+}
 if (!analytics.includes('track("ai_referral_visit"')) errors.push("analytics.js: AI referral event dispatch is missing");
 
 console.log(`Analytics audit: ${htmlFiles.length} HTML files, ${errors.length} error(s).`);

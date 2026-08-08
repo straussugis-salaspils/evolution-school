@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This is a repeatable baseline for checking whether answer engines discover and cite the correct Evolution House page. Run it monthly in a clean chat, record the engine, date, cited URL, answer position and whether the wording matches the page.
+This is a repeatable baseline for checking whether answer engines discover and cite the correct Evolution House page. Run it monthly in clean chats across ChatGPT, Claude, Perplexity, Gemini, Grok, DeepSeek and Copilot; record the engine, date, cited URL, answer position and whether the wording matches the page.
 
 ## Prompts
 

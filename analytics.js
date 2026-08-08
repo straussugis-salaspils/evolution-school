@@ -253,13 +253,25 @@
     const utmSource = clean(query.get("utm_source")).toLowerCase();
     let referrerHost = "";
     try { referrerHost = document.referrer ? new URL(document.referrer).hostname.toLowerCase() : ""; } catch { /* no-op */ }
-    const source = utmSource === "chatgpt.com" || /(^|\.)chatgpt\.com$/.test(referrerHost)
+    const source = ["chatgpt", "chatgpt.com", "openai"].includes(utmSource) || /(^|\.)chatgpt\.com$/.test(referrerHost)
       ? "chatgpt"
       : utmSource === "perplexity" || /(^|\.)perplexity\.ai$/.test(referrerHost)
         ? "perplexity"
         : utmSource === "copilot" || /(^|\.)copilot\.microsoft\.com$/.test(referrerHost)
           ? "copilot"
-          : "";
+          : ["claude", "anthropic"].includes(utmSource) || /(^|\.)(claude\.ai|claude\.com)$/.test(referrerHost)
+            ? "claude"
+            : ["gemini", "google-gemini"].includes(utmSource) || /(^|\.)gemini\.google\.com$/.test(referrerHost)
+              ? "gemini"
+              : ["grok", "xai"].includes(utmSource) || /(^|\.)grok\.com$/.test(referrerHost)
+                ? "grok"
+                : utmSource === "deepseek" || /(^|\.)(chat\.)?deepseek\.com$/.test(referrerHost)
+                  ? "deepseek"
+                  : ["mistral", "le-chat"].includes(utmSource) || /(^|\.)chat\.mistral\.ai$/.test(referrerHost)
+                    ? "mistral"
+                    : utmSource === "meta-ai" || /(^|\.)meta\.ai$/.test(referrerHost)
+                      ? "meta_ai"
+                      : "";
     if (!source) return false;
     const key = `eh_ai_referral_${source}_${pagePath()}`;
     if (session.get(key)) return false;
