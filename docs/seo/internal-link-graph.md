@@ -1,8 +1,8 @@
 # Internal link graph
 
-Generated 2026-08-08 from the rendered HTML and sitemap.
+Generated 2026-08-09 from the rendered HTML and sitemap.
 
-- Sitemap URLs: 100
+- Sitemap URLs: 97
 - Maximum click depth from home: 3
 - Unreachable sitemap URLs: 0
 - Sitemap URLs deeper than three clicks: 0
@@ -16,8 +16,6 @@ Generated 2026-08-08 from the rendered HTML and sitemap.
 | /mentoring/ | 1 | 56 |
 | /napravleniya.html | 1 | 104 |
 | /o-shkole.html | 1 | 104 |
-| /off-switch-1-1.html | 1 | 13 |
-| /off-switch-samostoyatelno.html | 1 | 13 |
 | /otkrytye-programmy.html | 1 | 104 |
 | /pervyi-shag.html | 1 | 104 |
 | /privacy-policy/ | 1 | 115 |
@@ -35,7 +33,6 @@ Generated 2026-08-08 from the rendered HTML and sitemap.
 | /arhetipy/ | 2 | 33 |
 | /biblioteka/perehody/ | 2 | 18 |
 | /biblioteka/reiki/ | 2 | 27 |
-| /off-switch-group.html | 2 | 4 |
 | /po-rekomendacii-mastera.html | 2 | 8 |
 | /prodolzhit-put.html | 2 | 1 |
 | /reiki/master-life.html | 2 | 27 |
