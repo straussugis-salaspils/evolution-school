@@ -4,16 +4,6 @@
   "outputDirectory": ".",
   "redirects": [
     {
-      "source": "/off-switch-1-1.html",
-      "destination": "https://method-ru.yourbalancerestored.com/one-to-one",
-      "permanent": true
-    },
-    {
-      "source": "/off-switch-group.html",
-      "destination": "https://method-ru.yourbalancerestored.com/group",
-      "permanent": true
-    },
-    {
       "source": "/test-arhetipov/",
       "destination": "/arhetipy.html",
       "permanent": true
