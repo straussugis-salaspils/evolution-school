@@ -46,16 +46,18 @@ const requiredCopy = [
   "Четыре архетипические энергии",
   "Мы будем создавать сцены возможной жизни",
   "Какое качество жизни создают ваши деньги?",
-  "Даже стоимость встречи станет частью мистерии",
-  "Только 15 участников",
+  "Участие — с персональным разбором или без",
+  "Только 10 участников",
   "Как пройдёт вечер",
   "Для тех, кому уже мало просто достигать",
   "Светлана Страусс",
   "Я могу открыть дверь.",
   "Острова везения",
   "Москва, Большой Каретный переулок, 19, стр. 2",
-  "12 200 ₽ или 18 800 ₽",
-  "из какого состояния я выбираю то, что создаёт мою жизнь?",
+  "12 200 ₽ — участие",
+  "18 800 ₽ — участие с разбором",
+  "Персональный код архетипов",
+  "Отдельно такой разбор стоит 10 000 ₽.",
 ];
 
 for (const text of requiredCopy) {
@@ -63,7 +65,7 @@ for (const text of requiredCopy) {
 }
 
 const paymentButtons = [...html.matchAll(/data-payment-choice="([^"]+)"/g)].map((match) => match[1]);
-pass(paymentButtons.filter((value) => value === "reserve12200").length === 3, "12,200 payment action must appear three times");
+pass(paymentButtons.filter((value) => value === "reserve12200").length === 2, "12,200 payment action must appear twice");
 pass(paymentButtons.filter((value) => value === "choose18800").length === 3, "18,800 payment action must appear three times");
 pass(script.includes("reserve12200"), "12,200 payment config is missing");
 pass(script.includes("choose18800"), "18,800 payment config is missing");
@@ -112,5 +114,5 @@ if (failures.length) {
 console.log("Preobrazhenie landing verification passed.");
 console.log(`- route: /${route}/`);
 console.log(`- local images: ${imageTags.length}`);
-console.log(`- payment actions: ${paymentButtons.length} (3 per amount)`);
+console.log(`- payment actions: ${paymentButtons.length} (2 for 12,200; 3 for 18,800)`);
 console.log("- sitemap: unchanged; hidden landing excluded");
