@@ -70,8 +70,22 @@ pass(paymentButtons.filter((value) => value === "choose18800").length === 3, "18
 pass(script.includes("reserve12200"), "12,200 payment config is missing");
 pass(script.includes("choose18800"), "18,800 payment config is missing");
 pass(script.includes('directUrl: ""'), "Unapproved payment destinations must stay empty");
-pass(script.includes("widgetScriptId"), "GetCourse widget configuration point is missing");
-pass(script.includes("widgetUrl"), "GetCourse widget URL configuration point is missing");
+pass(
+  script.includes('widgetScriptId: "a3074d7ab071154456c99b32d5b6a7fbea144525"'),
+  "12,200 GetCourse widget script ID is missing",
+);
+pass(
+  script.includes('widgetUrl: "https://smarttraining.getcourse.ru/pl/lite/widget/script?id=1642546"'),
+  "12,200 GetCourse widget URL is missing",
+);
+pass(
+  script.includes('widgetScriptId: "766c10570d7ee0cbbd80e85b9692d87641b68761"'),
+  "18,800 GetCourse widget script ID is missing",
+);
+pass(
+  script.includes('widgetUrl: "https://smarttraining.getcourse.ru/pl/lite/widget/script?id=1642555"'),
+  "18,800 GetCourse widget URL is missing",
+);
 
 pass(css.includes("prefers-reduced-motion: reduce"), "Reduced-motion support is missing");
 pass(css.includes(":focus-visible"), "Keyboard focus styles are missing");
