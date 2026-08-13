@@ -348,6 +348,10 @@
   padding: 1rem;
 }
 
+.eh-sales-index__utility-card + .eh-sales-index__utility-card {
+  margin-top: 1rem;
+}
+
 .eh-sales-index__utility-card .eh-sales-index__actions {
   align-items: stretch;
 }
