@@ -62,6 +62,10 @@
     script.id = config.widgetScriptId;
     script.src = config.widgetUrl;
     script.async = true;
+    script.addEventListener("load", () => {
+      loading.remove();
+      document.dispatchEvent(new Event(`StartWidget${config.widgetScriptId}`));
+    });
     script.addEventListener("error", () => {
       loading.textContent =
         "Форма оплаты не загрузилась. Пожалуйста, обновите страницу и попробуйте ещё раз.";

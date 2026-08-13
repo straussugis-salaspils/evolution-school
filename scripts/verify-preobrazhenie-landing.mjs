@@ -86,6 +86,10 @@ pass(
   script.includes('widgetUrl: "https://smarttraining.getcourse.ru/pl/lite/widget/script?id=1642555"'),
   "18,800 GetCourse widget URL is missing",
 );
+pass(
+  script.includes("document.dispatchEvent(new Event(`StartWidget${config.widgetScriptId}`))"),
+  "Dynamically loaded GetCourse widgets must receive their start event",
+);
 
 pass(css.includes("prefers-reduced-motion: reduce"), "Reduced-motion support is missing");
 pass(css.includes(":focus-visible"), "Keyboard focus styles are missing");
