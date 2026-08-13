@@ -1,20 +1,19 @@
 (function () {
   "use strict";
 
-  // Add the approved payment destination to the relevant entry before release.
   // Supported modes: a direct HTTPS URL or a GetCourse widget script.
   const PAYMENT_CONFIG = Object.freeze({
     reserve12200: Object.freeze({
       amount: "12 200 ₽",
       directUrl: "",
-      widgetScriptId: "",
-      widgetUrl: "",
+      widgetScriptId: "a3074d7ab071154456c99b32d5b6a7fbea144525",
+      widgetUrl: "https://smarttraining.getcourse.ru/pl/lite/widget/script?id=1642546",
     }),
     choose18800: Object.freeze({
       amount: "18 800 ₽",
       directUrl: "",
-      widgetScriptId: "",
-      widgetUrl: "",
+      widgetScriptId: "766c10570d7ee0cbbd80e85b9692d87641b68761",
+      widgetUrl: "https://smarttraining.getcourse.ru/pl/lite/widget/script?id=1642555",
     }),
   });
 
