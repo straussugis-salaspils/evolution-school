@@ -1,13 +1,15 @@
 const variants = {
   a: {
     title: "Почему отношения до сих пор не складываются?",
-    lead: "За 7 коротких вопросов вы увидите, <strong>в какой точке у вас чаще всего останавливаются отношения</strong> — ещё до того, как они успевают стать отношениями.",
+    lead: "Этот тест поможет увидеть свой повторяющийся сценарий в знакомствах — и понять, какой следующий шаг поддержит развитие отношений.",
+    insightContext: "Как он проявляется в знакомстве и выборе мужчины",
     reflection: "Отвечайте по тому, что реально происходило в знакомствах последних 2–3 лет, а не по тому, как хотелось бы поступать.",
     telegramUrl: "https://t.me/RelationshipScenarioBot?start=no_relationship_landing_a"
   },
   b: {
     title: "Почему меня не устраивают отношения, в которых я нахожусь?",
-    lead: "За 7 коротких вопросов вы увидите, <strong>в какой точке ваши отношения чаще всего теряют живость, близость или внутреннюю правду</strong>.",
+    lead: "Этот тест поможет увидеть повторяющийся сценарий внутри текущих отношений — и понять, какой следующий шаг поддержит близость и живой контакт в паре.",
+    insightContext: "Как он влияет на близость и живой контакт в паре",
     reflection: "Отвечайте по тому, что реально повторялось в ваших отношениях последние месяцы, а не по тому, как хотелось бы поступать.",
     telegramUrl: "https://t.me/RelationshipScenarioBot?start=relationship_challenges_landing_b"
   }
@@ -23,13 +25,15 @@ function applyVariant() {
   const variantId = variant === variants.b ? "b" : "a";
   const title = document.getElementById("hero-title");
   const lead = document.getElementById("hero-lead");
+  const insightContext = document.getElementById("insight-context");
   const reflection = document.getElementById("reflection");
   const links = [
     document.getElementById("telegram-cta")
   ];
 
   title.textContent = variant.title;
-  lead.innerHTML = variant.lead;
+  lead.textContent = variant.lead;
+  insightContext.textContent = variant.insightContext;
   reflection.textContent = variant.reflection;
   document.body.dataset.variant = variantId;
   document.title = `${variant.title} — тест Evolution House`;

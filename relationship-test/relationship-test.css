@@ -125,7 +125,7 @@ a {
   position: relative;
   isolation: isolate;
   overflow: clip;
-  padding: 3.5rem 0 4rem;
+  padding: 2.25rem 0 4rem;
 }
 
 .hero__wash {
@@ -146,9 +146,9 @@ a {
   display: grid;
   grid-template-areas:
     "copy"
-    "video"
-    "actions";
-  gap: 3.25rem;
+    "actions"
+    "video";
+  gap: 2.5rem;
 }
 
 .hero__copy {
@@ -160,7 +160,7 @@ a {
   display: flex;
   align-items: center;
   gap: 0.65rem;
-  margin: 0 0 1.25rem;
+  margin: 0 0 1.05rem;
   color: var(--sage-deep);
   font-size: 0.78rem;
   font-weight: 600;
@@ -184,7 +184,8 @@ h2 {
 }
 
 h1 {
-  max-width: 14ch;
+  max-width: 16ch;
+  color: var(--sage-dark);
   font-size: clamp(2.65rem, 11vw, 3.8rem);
 }
 
@@ -194,7 +195,7 @@ body[data-variant="b"] h1 {
 
 .hero__lead {
   max-width: 39rem;
-  margin: 1.3rem 0 0;
+  margin: 1.1rem 0 0;
   color: var(--ink-soft);
   font-size: clamp(1.05rem, 2vw, 1.18rem);
   line-height: 1.65;
@@ -205,34 +206,75 @@ body[data-variant="b"] h1 {
   font-weight: 600;
 }
 
-.result-path {
-  display: flex;
-  max-width: 39rem;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.45rem 0.7rem;
-  margin-top: 1.35rem;
-  color: var(--sage-deep);
-  font-family: var(--font-display);
-  font-size: 1.04rem;
-  font-style: italic;
+.test-insights {
+  max-width: 42rem;
+  margin-top: 1.1rem;
+  padding: 0.8rem 0;
+  border-top: 1px solid rgba(47, 107, 87, 0.2);
+  border-bottom: 1px solid rgba(47, 107, 87, 0.2);
 }
 
-.result-path i {
-  color: var(--gold);
+.test-insights h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: var(--sage-deep);
   font-family: var(--font-body);
-  font-style: normal;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.test-insights h2::after {
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg, rgba(47, 107, 87, 0.28), transparent);
+  content: "";
+}
+
+.test-insights ol {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0.8rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.test-insights li {
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr);
+  align-items: start;
+  gap: 0.65rem;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.test-insights__number {
+  display: grid;
+  width: 2rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid rgba(47, 107, 87, 0.24);
+  border-radius: 50%;
+  background: rgba(115, 144, 128, 0.1);
+  color: var(--sage-deep);
+  font-size: 0.67rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
 }
 
 .reflection {
   max-width: 36rem;
-  margin: 1.4rem 0 0;
-  padding: 1rem 1.15rem;
+  margin: 0.85rem 0 0;
+  padding: 0.75rem 0.95rem;
   border-left: 3px solid var(--sage);
   background: linear-gradient(90deg, rgba(115, 144, 128, 0.11), transparent);
   color: var(--ink-soft);
-  font-size: 1rem;
-  line-height: 1.65;
+  font-size: 0.9rem;
+  line-height: 1.55;
 }
 
 .hero__actions {
@@ -439,6 +481,28 @@ body[data-variant="b"] h1 {
     padding: 3.75rem 0 2rem;
   }
 
+  .test-insights ol {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0;
+  }
+
+  .test-insights li {
+    display: block;
+    padding-inline: 0.9rem;
+  }
+
+  .test-insights li:first-child {
+    padding-left: 0;
+  }
+
+  .test-insights li + li {
+    border-left: 1px solid rgba(47, 107, 87, 0.16);
+  }
+
+  .test-insights__number {
+    margin-bottom: 0.5rem;
+  }
+
 }
 
 @media (min-width: 64rem) {
@@ -447,14 +511,14 @@ body[data-variant="b"] h1 {
   }
 
   h1 {
-    max-width: 14ch;
+    max-width: 16ch;
     font-size: clamp(3.65rem, 4.7vw, 4.2rem);
     line-height: 1.03;
   }
 
   body[data-variant="b"] h1 {
-    max-width: 15ch;
-    font-size: clamp(3.4rem, 4.15vw, 3.7rem);
+    max-width: 18ch;
+    font-size: clamp(3.2rem, 3.85vw, 3.45rem);
   }
 
   .hero__grid {
@@ -472,14 +536,23 @@ body[data-variant="b"] h1 {
     line-height: 1.55;
   }
 
-  .result-path {
-    margin-top: 1rem;
+  .test-insights {
+    margin-top: 0.9rem;
+    padding: 0.7rem 0;
   }
 
-  .reflection {
-    margin-top: 1rem;
-    padding: 0.75rem 1rem;
-    font-size: 0.95rem;
+  .test-insights ol {
+    margin-top: 0.65rem;
+  }
+
+  .test-insights li {
+    font-size: 0.84rem;
+    line-height: 1.38;
+  }
+
+  .test-insights__number {
+    width: 1.75rem;
+    margin-bottom: 0.38rem;
   }
 
   .video-column {
