@@ -2,6 +2,11 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "buildCommand": "npm run build",
   "outputDirectory": ".",
+  "functions": {
+    "api/relationship-attribution.js": {
+      "maxDuration": 10
+    }
+  },
   "redirects": [
     {
       "source": "/relationship-test/relationship-challenges/",

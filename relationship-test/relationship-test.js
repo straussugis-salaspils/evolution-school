@@ -1,11 +1,13 @@
 const variants = {
   a: {
+    testId: "test_a_no_relationship",
     title: "Почему отношения до сих пор не складываются?",
     lead: "Этот тест поможет увидеть свой повторяющийся сценарий в знакомствах — и понять, какой следующий шаг поддержит развитие отношений.",
     insightContext: "Как он проявляется в знакомстве и выборе мужчины",
     telegramUrl: "https://t.me/RelationshipScenarioBot?start=no_relationship_landing_a"
   },
   b: {
+    testId: "test_b_relationship_challenges",
     title: "Почему меня не устраивают отношения, в которых я нахожусь?",
     lead: "Этот тест поможет увидеть повторяющийся сценарий внутри текущих отношений — и понять, какой следующий шаг поддержит близость и живой контакт в паре.",
     insightContext: "Как он влияет на близость и живой контакт в паре",
@@ -36,6 +38,69 @@ function applyVariant() {
   links.forEach((link) => {
     link.href = variant.telegramUrl;
   });
+  const params = new URLSearchParams(window.location.search);
+  const attribution = isMetaVisit(params) ? prepareMetaAttribution(variant, links) : null;
+  if (attribution) {
+    links.forEach((link) => {
+      link.addEventListener("click", async (event) => {
+        event.preventDefault();
+        await Promise.race([
+          attribution,
+          new Promise((resolve) => window.setTimeout(resolve, 1500))
+        ]);
+        window.location.assign(link.href);
+      });
+    });
+  }
+}
+
+function isMetaVisit(params) {
+  const source = (params.get("utm_source") || "").toLowerCase();
+  return Boolean(params.get("fbclid")) || ["meta", "facebook", "instagram", "fb", "ig"].includes(source);
+}
+
+function metaAttributionPayload(variant) {
+  const params = new URLSearchParams(window.location.search);
+  return {
+    test_id: variant.testId,
+    page_url: window.location.href,
+    fbclid: params.get("fbclid"),
+    fbc: params.get("fbc"),
+    utm_source: params.get("utm_source"),
+    utm_medium: params.get("utm_medium"),
+    utm_campaign: params.get("utm_campaign"),
+    utm_content: params.get("utm_content"),
+    campaign_id: params.get("campaign_id"),
+    adset_id: params.get("adset_id"),
+    ad_id: params.get("ad_id"),
+    campaign_name: params.get("campaign_name"),
+    adset_name: params.get("adset_name"),
+    ad_name: params.get("ad_name"),
+    placement: params.get("placement")
+  };
+}
+
+async function prepareMetaAttribution(variant, links) {
+  try {
+    const response = await fetch("/api/relationship-attribution", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(metaAttributionPayload(variant))
+    });
+    if (!response.ok) {
+      throw new Error(`Attribution request failed: ${response.status}`);
+    }
+    const result = await response.json();
+    if (typeof result.telegram_url !== "string" || !result.telegram_url.startsWith("https://t.me/")) {
+      throw new Error("Attribution response did not contain a Telegram URL");
+    }
+    links.forEach((link) => {
+      link.href = result.telegram_url;
+      link.dataset.attributionReady = "true";
+    });
+  } catch (error) {
+    console.warn("Meta attribution unavailable; using the standard Telegram link.", error);
+  }
 }
 
 function prepareVideo() {
