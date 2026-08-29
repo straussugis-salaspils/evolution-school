@@ -7,6 +7,8 @@
   --rose-deep: #784756;
   --rose-wash: #f3e1e5;
   --sage: #739080;
+  --sage-deep: #2f6b57;
+  --sage-dark: #245343;
   --gold: #bd8d4e;
   --ink: #2b211c;
   --ink-soft: #63544c;
@@ -108,11 +110,14 @@ a {
 }
 
 .landing-header__note {
+  max-width: 10rem;
   margin: 0;
   color: var(--ink-muted);
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   font-weight: 500;
   letter-spacing: 0.08em;
+  line-height: 1.45;
+  text-align: right;
   text-transform: uppercase;
 }
 
@@ -148,7 +153,7 @@ a {
 
 .hero__copy {
   grid-area: copy;
-  align-self: center;
+  align-self: start;
 }
 
 .eyebrow {
@@ -156,8 +161,8 @@ a {
   align-items: center;
   gap: 0.65rem;
   margin: 0 0 1.25rem;
-  color: var(--rose-deep);
-  font-size: 0.72rem;
+  color: var(--sage-deep);
+  font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.11em;
   text-transform: uppercase;
@@ -179,8 +184,8 @@ h2 {
 }
 
 h1 {
-  max-width: 13ch;
-  font-size: clamp(2.65rem, 11vw, 4.7rem);
+  max-width: 14ch;
+  font-size: clamp(2.65rem, 11vw, 3.8rem);
 }
 
 body[data-variant="b"] h1 {
@@ -189,10 +194,10 @@ body[data-variant="b"] h1 {
 
 .hero__lead {
   max-width: 39rem;
-  margin: 1.5rem 0 0;
+  margin: 1.3rem 0 0;
   color: var(--ink-soft);
-  font-size: clamp(1.03rem, 2vw, 1.18rem);
-  line-height: 1.7;
+  font-size: clamp(1.05rem, 2vw, 1.18rem);
+  line-height: 1.65;
 }
 
 .hero__lead strong {
@@ -206,8 +211,8 @@ body[data-variant="b"] h1 {
   flex-wrap: wrap;
   align-items: center;
   gap: 0.45rem 0.7rem;
-  margin-top: 1.65rem;
-  color: var(--rose-deep);
+  margin-top: 1.35rem;
+  color: var(--sage-deep);
   font-family: var(--font-display);
   font-size: 1.04rem;
   font-style: italic;
@@ -221,12 +226,13 @@ body[data-variant="b"] h1 {
 
 .reflection {
   max-width: 36rem;
-  margin: 1.7rem 0 0;
-  padding: 1rem 1.1rem;
-  border-left: 2px solid var(--gold);
-  background: linear-gradient(90deg, rgba(189, 141, 78, 0.08), transparent);
+  margin: 1.4rem 0 0;
+  padding: 1rem 1.15rem;
+  border-left: 3px solid var(--sage);
+  background: linear-gradient(90deg, rgba(115, 144, 128, 0.11), transparent);
   color: var(--ink-soft);
-  font-size: 0.92rem;
+  font-size: 1rem;
+  line-height: 1.65;
 }
 
 .hero__actions {
@@ -260,15 +266,15 @@ body[data-variant="b"] h1 {
 
 .button--primary {
   width: 100%;
-  background: var(--rose-deep);
-  box-shadow: 0 0.8rem 2.2rem rgba(120, 71, 86, 0.22);
+  background: var(--sage-deep);
+  box-shadow: 0 0.8rem 2.2rem rgba(47, 107, 87, 0.24);
   color: white;
 }
 
 .button--primary:hover {
   transform: translateY(-2px);
-  background: #673b49;
-  box-shadow: 0 1.15rem 2.7rem rgba(120, 71, 86, 0.28);
+  background: var(--sage-dark);
+  box-shadow: 0 1.15rem 2.7rem rgba(47, 107, 87, 0.3);
 }
 
 .button:focus-visible,
@@ -280,14 +286,15 @@ body[data-variant="b"] h1 {
 .privacy-note {
   margin: 0.8rem auto 0;
   color: var(--ink-muted);
-  font-size: 0.76rem;
+  font-size: 0.875rem;
   line-height: 1.55;
   text-align: center;
 }
 
 .video-column {
   grid-area: video;
-  width: min(100%, 25rem);
+  width: min(100%, 21rem);
+  align-self: start;
   justify-self: center;
 }
 
@@ -330,7 +337,7 @@ body[data-variant="b"] h1 {
   border: 1px solid rgba(255, 255, 255, 0.56);
   border-radius: 1rem;
   padding: 0.72rem 0.85rem;
-  background: rgba(39, 29, 25, 0.76);
+  background: rgba(36, 83, 67, 0.9);
   box-shadow: 0 0.8rem 2.3rem rgba(32, 24, 20, 0.24);
   color: white;
   cursor: pointer;
@@ -356,7 +363,7 @@ body[data-variant="b"] h1 {
   margin-left: 0.2rem;
   border-top: 0.4rem solid transparent;
   border-bottom: 0.4rem solid transparent;
-  border-left: 0.65rem solid var(--rose-deep);
+  border-left: 0.65rem solid var(--sage-deep);
   content: "";
 }
 
@@ -366,13 +373,13 @@ body[data-variant="b"] h1 {
 }
 
 .video-play__copy strong {
-  font-size: 0.84rem;
+  font-size: 0.9rem;
   font-weight: 600;
 }
 
 .video-play__copy small {
   color: rgba(255, 255, 255, 0.72);
-  font-size: 0.69rem;
+  font-size: 0.78rem;
 }
 
 .video-play[hidden] {
@@ -395,7 +402,7 @@ body[data-variant="b"] h1 {
 
 .video-caption span {
   color: var(--ink-muted);
-  font-size: 0.72rem;
+  font-size: 0.8125rem;
   line-height: 1.5;
 }
 
@@ -440,7 +447,7 @@ body[data-variant="b"] h1 {
 .quick-facts article p {
   margin: 0.12rem 0 0;
   color: var(--ink-muted);
-  font-size: 0.77rem;
+  font-size: 0.875rem;
 }
 
 .closing {
@@ -469,7 +476,7 @@ body[data-variant="b"] h1 {
   max-width: 34rem;
   margin: 0.9rem auto 0;
   color: var(--ink-muted);
-  font-size: 0.78rem;
+  font-size: 0.875rem;
 }
 
 .landing-footer {
@@ -491,7 +498,7 @@ body[data-variant="b"] h1 {
 .landing-footer p {
   margin: 0.25rem 0;
   color: var(--ink-muted);
-  font-size: 0.72rem;
+  font-size: 0.8125rem;
 }
 
 .landing-footer a:hover {
@@ -508,37 +515,7 @@ body[data-variant="b"] h1 {
   }
 
   .hero {
-    padding: 4rem 0 5rem;
-  }
-
-  body[data-variant="b"] h1 {
-    font-size: clamp(3.8rem, 5.2vw, 4.25rem);
-  }
-
-  .hero__grid {
-    grid-template-areas:
-      "copy video"
-      "actions video";
-    grid-template-columns: minmax(0, 1.08fr) minmax(18rem, 0.72fr);
-    grid-template-rows: auto 1fr;
-    align-items: center;
-    gap: 0 clamp(3rem, 7vw, 7rem);
-  }
-
-  .hero__actions {
-    align-self: start;
-    margin-top: 1.8rem;
-  }
-
-  .hero__actions .button {
-    width: auto;
-    min-width: 19rem;
-  }
-
-  .privacy-note {
-    max-width: 28rem;
-    margin-inline: 0;
-    text-align: left;
+    padding: 3.75rem 0 4.5rem;
   }
 
   .quick-facts__grid {
@@ -573,8 +550,41 @@ body[data-variant="b"] h1 {
 }
 
 @media (min-width: 64rem) {
+  h1 {
+    max-width: 14ch;
+    font-size: clamp(3.65rem, 4.7vw, 4.2rem);
+    line-height: 1.03;
+  }
+
+  body[data-variant="b"] h1 {
+    max-width: 15ch;
+    font-size: clamp(3.4rem, 4.15vw, 3.7rem);
+  }
+
   .hero__grid {
-    min-height: calc(100vh - 9rem);
+    grid-template-areas:
+      "copy video"
+      "actions video";
+    grid-template-columns: minmax(0, 1.12fr) minmax(18rem, 0.64fr);
+    grid-template-rows: auto 1fr;
+    align-items: start;
+    gap: 0 clamp(3.5rem, 6vw, 6rem);
+  }
+
+  .hero__actions {
+    align-self: start;
+    margin-top: 1.35rem;
+  }
+
+  .hero__actions .button {
+    width: auto;
+    min-width: 19rem;
+  }
+
+  .privacy-note {
+    max-width: 31rem;
+    margin-inline: 0;
+    text-align: left;
   }
 }
 
