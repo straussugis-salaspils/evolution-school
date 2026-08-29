@@ -4,6 +4,11 @@
   "outputDirectory": ".",
   "redirects": [
     {
+      "source": "/relationship-test/relationship-challenges/",
+      "destination": "/relationship-test/?test=b",
+      "permanent": false
+    },
+    {
       "source": "/test-arhetipov/",
       "destination": "/arhetipy.html",
       "permanent": true

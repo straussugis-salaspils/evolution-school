@@ -20,11 +20,16 @@ const walk = (dir) => fs.readdirSync(dir, { withFileTypes: true }).flatMap((entr
 });
 const includes = '  <link rel="stylesheet" href="/cookie-consent.css">\n  <script src="/analytics.js" defer></script>';
 const isVerificationFile = (file) => /^yandex_[a-f0-9]+\.html$/i.test(path.basename(file));
+const analyticsFreePages = new Set([
+  "relationship-test/index.html",
+]);
 let changed = 0;
 for (const file of walk(root).filter((file) => file.endsWith(".html") && !isVerificationFile(file))) {
+  const relative = path.relative(root, file).replaceAll("\\", "/");
+  if (analyticsFreePages.has(relative)) continue;
   const source = fs.readFileSync(file, "utf8");
   if (source.includes("/analytics.js")) continue;
-  if (!/<\/head>/i.test(source)) throw new Error(`Missing </head>: ${path.relative(root, file)}`);
+  if (!/<\/head>/i.test(source)) throw new Error(`Missing </head>: ${relative}`);
   fs.writeFileSync(file, source.replace(/\s*<\/head>/i, `\n${includes}\n</head>`), "utf8");
   changed += 1;
 }

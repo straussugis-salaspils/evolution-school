@@ -179,6 +179,15 @@
   --sales-card-copy-ink: #4C4218;
 }
 
+.eh-sales-index__card--relationships {
+  --sales-card-bg: #EEF5F1;
+  --sales-card-line: #2F6B57;
+  --sales-card-action: #2F6B57;
+  --sales-card-copy-bg: #F5FAF7;
+  --sales-card-copy-line: #BD8D4E;
+  --sales-card-copy-ink: #245343;
+}
+
 /* The same light surface and direction accents as the homepage programme rows. */
 .eh-sales-index__card {
   border-color: color-mix(in srgb, var(--sales-card-action) 28%, var(--sales-shell-line));

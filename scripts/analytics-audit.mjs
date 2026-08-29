@@ -24,13 +24,20 @@ const htmlFiles = walk(root).filter((file) => (
 ));
 const analytics = fs.readFileSync(path.join(root, "analytics.js"), "utf8");
 const errors = [];
+const analyticsFreePages = new Set([
+  "relationship-test/index.html",
+]);
 
 for (const file of htmlFiles) {
   const html = fs.readFileSync(file, "utf8");
   const relative = path.relative(root, file).replaceAll("\\", "/");
   const styles = (html.match(/\/cookie-consent\.css/g) || []).length;
   const scripts = (html.match(/\/analytics\.js/g) || []).length;
-  if (styles !== 1 || scripts !== 1) errors.push(`${relative}: analytics includes ${styles}/${scripts}, expected 1/1`);
+  if (analyticsFreePages.has(relative)) {
+    if (styles !== 0 || scripts !== 0) errors.push(`${relative}: analytics-free page includes ${styles}/${scripts}, expected 0/0`);
+  } else if (styles !== 1 || scripts !== 1) {
+    errors.push(`${relative}: analytics includes ${styles}/${scripts}, expected 1/1`);
+  }
   if (/GTM-WNV2B49K|\/gtm\.js\?|<noscript[^>]*>[^<]*<iframe/i.test(html)) errors.push(`${relative}: GTM code must not be present`);
   if (/google-analytics\.com|mc\.yandex\.ru|connect\.facebook\.net|\bym\s*\(|\bfbq\s*\(|\bttq\./i.test(html)) errors.push(`${relative}: direct third-party analytics or pixel code is not allowed`);
 }
