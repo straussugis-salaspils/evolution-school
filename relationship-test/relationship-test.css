@@ -190,7 +190,17 @@ h1 {
 }
 
 body[data-variant="b"] h1 {
-  max-width: 15ch;
+  max-width: 16ch;
+  font-size: clamp(2.2rem, 9.6vw, 3.8rem);
+}
+
+body[data-variant="b"] .hero__lead {
+  margin-top: 0.9rem;
+  line-height: 1.55;
+}
+
+body[data-variant="b"] .test-insights {
+  margin-top: 0.9rem;
 }
 
 .hero__lead {
@@ -557,7 +567,7 @@ body[data-variant="b"] h1 {
   }
 
   .test-insights li {
-    font-size: 0.84rem;
+    font-size: 0.875rem;
     line-height: 1.38;
   }
 
