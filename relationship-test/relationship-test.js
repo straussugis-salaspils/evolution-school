@@ -25,8 +25,7 @@ function applyVariant() {
   const lead = document.getElementById("hero-lead");
   const reflection = document.getElementById("reflection");
   const links = [
-    document.getElementById("telegram-cta"),
-    document.getElementById("telegram-cta-bottom")
+    document.getElementById("telegram-cta")
   ];
 
   title.textContent = variant.title;
