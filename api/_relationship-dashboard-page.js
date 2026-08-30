@@ -124,6 +124,15 @@ export const RELATIONSHIP_DASHBOARD_PAGE = String.raw`<!doctype html>
       color: #685239;
       font-size: .9rem;
     }
+    .change-log { margin: 1.5rem 0 1.2rem; padding: 1.35rem 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .change-log__head { display: flex; align-items: end; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; }
+    .change-log__head p { margin: 0 0 .2rem; color: var(--gold); font-size: .72rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .change-log h2 { margin: 0; color: var(--forest-deep); font-size: 1.35rem; }
+    .change-log ol { display: grid; gap: .9rem; margin: 0; padding: 0; list-style: none; }
+    .change-log li { display: grid; grid-template-columns: minmax(7.5rem,.28fr) minmax(0,1fr); gap: 1rem; padding-top: .9rem; border-top: 1px solid var(--line); }
+    .change-log time { color: var(--muted); font-size: .78rem; font-weight: 700; }
+    .change-log strong { display: block; color: var(--forest-deep); font-size: .92rem; }
+    .change-log li p { margin: .25rem 0 0; color: var(--muted); font-size: .8rem; line-height: 1.5; }
     .test-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; margin: 1rem 0; }
     .tab-button { border-radius: .85rem; white-space: normal; line-height: 1.25; }
     .funnels { display: grid; grid-template-columns: 1fr; gap: 1rem; align-items: start; }
@@ -177,6 +186,10 @@ export const RELATIONSHIP_DASHBOARD_PAGE = String.raw`<!doctype html>
       .date-row { grid-template-columns: minmax(9rem,1fr) minmax(9rem,1fr) auto auto; align-items: end; }
       .breakdowns { grid-template-columns: 1fr 1fr; }
     }
+    @media (max-width: 639px) {
+      .change-log__head { display: block; }
+      .change-log li { grid-template-columns: 1fr; gap: .3rem; }
+    }
     @media (min-width: 1024px) {
       .shell { padding: 1.8rem 2rem; }
       .hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: 4rem; align-items: end; padding: 3rem 0 2rem; }
@@ -220,6 +233,14 @@ export const RELATIONSHIP_DASHBOARD_PAGE = String.raw`<!doctype html>
         <div class="status-line"><span class="status-dot" id="updated">Загрузка данных…</span><span id="period-label"></span></div>
       </section>
       <div class="notice">В основную воронку входят размеченные рекламные сессии и посетители, которые действительно взаимодействовали со страницей. Повторные, служебные и неразмеченные загрузки показаны отдельно. Уникальные люди начинаются с Telegram, где одна женщина определяется по внутреннему <code>lead_id</code>.</div>
+      <section class="change-log" aria-labelledby="change-log-title">
+        <div class="change-log__head"><div><p>Контрольные точки</p><h2 id="change-log-title">Сделанные изменения</h2></div></div>
+        <ol>
+          <li><time datetime="2026-08-31">31 августа 2026</time><div><strong>Упростили путь с лендинга в Telegram</strong><p>CTA перенесён в первый экран, описание сокращено, видео удалено, переход больше не ждёт tracking API, а страница «Отношения не устраивают» открывается без дополнительного редиректа.</p></div></li>
+          <li><time datetime="2026-08-31">31 августа 2026</time><div><strong>Очистили внутреннюю статистику</strong><p>Добавлена дедупликация сессий; служебные, повторные и неразмеченные загрузки вынесены из основной воронки. Переход TelegramStart → ответ на вопрос 1 выделен как отдельная контрольная точка.</p></div></li>
+          <li><time datetime="2026-08-30">30 августа 2026</time><div><strong>Восстановили серверные конверсии Meta</strong><p>Исправлены отправка TelegramStart и подтверждение CompleteRegistration через CAPI, добавлена повторная сверка пропущенных регистраций.</p></div></li>
+        </ol>
+      </section>
       <div class="test-tabs" role="tablist" aria-label="Выбор воронки">
         <button class="tab-button" id="tab-a" type="button" role="tab" aria-selected="true" data-test="a">Почему нет отношений?</button>
         <button class="tab-button" id="tab-b" type="button" role="tab" aria-selected="false" data-test="b">Почему отношения не устраивают?</button>
