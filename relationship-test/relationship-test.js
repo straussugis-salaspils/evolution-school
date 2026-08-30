@@ -38,25 +38,23 @@ function applyVariant() {
   links.forEach((link) => {
     link.href = variant.telegramUrl;
   });
-  const params = new URLSearchParams(window.location.search);
-  const attribution = isMetaVisit(params) ? prepareMetaAttribution(variant, links) : null;
-  if (attribution) {
-    links.forEach((link) => {
-      link.addEventListener("click", async (event) => {
-        event.preventDefault();
+  const attribution = prepareAttribution(variant, links);
+  links.forEach((link) => {
+    link.addEventListener("click", async (event) => {
+      event.preventDefault();
+      const result = await Promise.race([
+        attribution,
+        new Promise((resolve) => window.setTimeout(() => resolve(null), 1500))
+      ]);
+      if (result?.token) {
         await Promise.race([
-          attribution,
-          new Promise((resolve) => window.setTimeout(resolve, 1500))
+          recordLandingCtaClick(variant, result.token),
+          new Promise((resolve) => window.setTimeout(resolve, 600))
         ]);
-        window.location.assign(link.href);
-      });
+      }
+      window.location.assign(link.href);
     });
-  }
-}
-
-function isMetaVisit(params) {
-  const source = (params.get("utm_source") || "").toLowerCase();
-  return Boolean(params.get("fbclid")) || ["meta", "facebook", "instagram", "fb", "ig"].includes(source);
+  });
 }
 
 function metaAttributionPayload(variant) {
@@ -76,11 +74,20 @@ function metaAttributionPayload(variant) {
     campaign_name: params.get("campaign_name"),
     adset_name: params.get("adset_name"),
     ad_name: params.get("ad_name"),
-    placement: params.get("placement")
+    placement: params.get("placement"),
+    referrer_host: referrerHost()
   };
 }
 
-async function prepareMetaAttribution(variant, links) {
+function referrerHost() {
+  try {
+    return document.referrer ? new URL(document.referrer).hostname : null;
+  } catch {
+    return null;
+  }
+}
+
+async function prepareAttribution(variant, links) {
   try {
     const response = await fetch("/api/relationship-attribution", {
       method: "POST",
@@ -98,8 +105,23 @@ async function prepareMetaAttribution(variant, links) {
       link.href = result.telegram_url;
       link.dataset.attributionReady = "true";
     });
+    return result;
   } catch (error) {
-    console.warn("Meta attribution unavailable; using the standard Telegram link.", error);
+    console.warn("Landing attribution unavailable; using the standard Telegram link.", error);
+    return null;
+  }
+}
+
+async function recordLandingCtaClick(variant, token) {
+  try {
+    await fetch("/api/relationship-attribution-click", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ test_id: variant.testId, token }),
+      keepalive: true
+    });
+  } catch {
+    // The Telegram transition must remain available even when tracking is down.
   }
 }
 

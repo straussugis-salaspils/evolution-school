@@ -5,8 +5,20 @@
   "functions": {
     "api/relationship-attribution.js": {
       "maxDuration": 10
+    },
+    "api/relationship-attribution-click.js": {
+      "maxDuration": 10
+    },
+    "api/relationship-funnel-dashboard.js": {
+      "maxDuration": 15
     }
   },
+  "rewrites": [
+    {
+      "source": "/18-18-18/relationship-funnel/",
+      "destination": "/api/relationship-funnel-dashboard"
+    }
+  ],
   "redirects": [
     {
       "source": "/relationship-test/relationship-challenges/",

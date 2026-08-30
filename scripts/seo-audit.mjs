@@ -61,6 +61,7 @@ const normalizePathname = (pathname) => {
 
 const vercel = JSON.parse(fs.readFileSync(path.join(ROOT, "vercel.json"), "utf8"));
 const redirects = new Map((vercel.redirects || []).map((item) => [normalizePathname(item.source), item.destination]));
+const rewrites = new Map((vercel.rewrites || []).map((item) => [normalizePathname(item.source), item.destination]));
 const routeToFile = new Map(htmlFiles.map((file) => [normalizePathname(routeForFile(file)), file]));
 
 const resolveSitePath = (value, currentRoute) => {
@@ -76,7 +77,7 @@ const resolveSitePath = (value, currentRoute) => {
 
 const localTargetExists = (sitePath) => {
   if (!sitePath || sitePath === "INVALID_URL") return sitePath !== "INVALID_URL";
-  if (routeToFile.has(sitePath) || redirects.has(sitePath)) return true;
+  if (routeToFile.has(sitePath) || redirects.has(sitePath) || rewrites.has(sitePath)) return true;
   const diskPath = path.join(ROOT, sitePath.replace(/^\//, ""));
   return fs.existsSync(diskPath) && fs.statSync(diskPath).isFile();
 };
