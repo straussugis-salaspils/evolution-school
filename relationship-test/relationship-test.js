@@ -2,14 +2,14 @@ const variants = {
   a: {
     testId: "test_a_no_relationship",
     title: "Почему отношения до сих пор не складываются?",
-    lead: "Этот тест поможет увидеть свой повторяющийся сценарий в знакомствах — и понять, какой следующий шаг поддержит развитие отношений.",
+    lead: "7 вопросов · около 3 минут · персональный результат в Telegram.",
     insightContext: "Как он проявляется в знакомстве и выборе мужчины",
     telegramUrl: "https://t.me/RelationshipScenarioBot?start=no_relationship_landing_a"
   },
   b: {
     testId: "test_b_relationship_challenges",
     title: "Почему меня не устраивают отношения, в которых я нахожусь?",
-    lead: "Этот тест поможет увидеть повторяющийся сценарий внутри текущих отношений — и понять, какой следующий шаг поддержит близость и живой контакт в паре.",
+    lead: "7 вопросов · около 3 минут · персональный результат в Telegram.",
     insightContext: "Как он влияет на близость и живой контакт в паре",
     telegramUrl: "https://t.me/RelationshipScenarioBot?start=relationship_challenges_landing_b"
   }
@@ -17,7 +17,8 @@ const variants = {
 
 function selectedVariant() {
   const requested = new URLSearchParams(window.location.search).get("test");
-  return requested === "b" ? variants.b : variants.a;
+  const relationshipChallengesPath = window.location.pathname.includes("/relationship-challenges/");
+  return requested === "b" || relationshipChallengesPath ? variants.b : variants.a;
 }
 
 function applyVariant() {
@@ -40,21 +41,12 @@ function applyVariant() {
   });
   const attribution = prepareAttribution(variant, links);
   links.forEach((link) => {
-    link.addEventListener("click", async (event) => {
-      event.preventDefault();
-      const result = await Promise.race([
-        attribution,
-        new Promise((resolve) => window.setTimeout(() => resolve(null), 1500))
-      ]);
-      if (result?.token) {
-        await Promise.race([
-          recordLandingCtaClick(variant, result.token),
-          new Promise((resolve) => window.setTimeout(resolve, 600))
-        ]);
-      }
-      window.location.assign(link.href);
+    link.addEventListener("click", () => {
+      const token = link.dataset.attributionToken;
+      if (token) recordLandingCtaClick(variant, token);
     });
   });
+  void attribution;
 }
 
 function metaAttributionPayload(variant) {
@@ -75,8 +67,22 @@ function metaAttributionPayload(variant) {
     adset_name: params.get("adset_name"),
     ad_name: params.get("ad_name"),
     placement: params.get("placement"),
+    landing_session_id: landingSessionId(variant.testId),
     referrer_host: referrerHost()
   };
+}
+
+function landingSessionId(testId) {
+  const key = `eh_relationship_landing:${testId}`;
+  try {
+    const existing = window.sessionStorage.getItem(key);
+    if (existing) return existing;
+    const generated = window.crypto?.randomUUID?.() || `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+    window.sessionStorage.setItem(key, generated);
+    return generated;
+  } catch {
+    return null;
+  }
 }
 
 function referrerHost() {
@@ -89,6 +95,7 @@ function referrerHost() {
 
 async function prepareAttribution(variant, links) {
   try {
+    await pageVisible();
     const response = await fetch("/api/relationship-attribution", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -104,6 +111,7 @@ async function prepareAttribution(variant, links) {
     links.forEach((link) => {
       link.href = result.telegram_url;
       link.dataset.attributionReady = "true";
+      link.dataset.attributionToken = result.token;
     });
     return result;
   } catch (error) {
@@ -112,38 +120,22 @@ async function prepareAttribution(variant, links) {
   }
 }
 
-async function recordLandingCtaClick(variant, token) {
-  try {
-    await fetch("/api/relationship-attribution-click", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ test_id: variant.testId, token }),
-      keepalive: true
-    });
-  } catch {
-    // The Telegram transition must remain available even when tracking is down.
-  }
+function pageVisible() {
+  if (document.visibilityState === "visible") return Promise.resolve();
+  return new Promise((resolve) => {
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "visible") resolve();
+    }, { once: true });
+  });
 }
 
-function prepareVideo() {
-  const video = document.getElementById("welcome-video");
-  const playButton = document.getElementById("video-play");
-
-  playButton.addEventListener("click", async () => {
-    video.dataset.playing = "true";
-    playButton.hidden = true;
-    try {
-      await video.play();
-    } catch {
-      playButton.hidden = false;
-    }
-  });
-
-  video.addEventListener("play", () => {
-    video.dataset.playing = "true";
-    playButton.hidden = true;
-  });
+function recordLandingCtaClick(variant, token) {
+  void fetch("/api/relationship-attribution-click", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ test_id: variant.testId, token }),
+    keepalive: true
+  }).catch(() => {});
 }
 
 applyVariant();
-prepareVideo();

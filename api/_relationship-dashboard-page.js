@@ -151,6 +151,8 @@ export const RELATIONSHIP_DASHBOARD_PAGE = String.raw`<!doctype html>
     .step:first-child::before { top: 50%; }
     .step:last-child::before { bottom: 50%; }
     .step-index { position: relative; z-index: 1; display: grid; place-items: center; width: 2.2rem; height: 2.2rem; border: 1px solid var(--line); border-radius: 50%; background: var(--paper); color: var(--forest); font-family: Georgia, serif; font-size: .88rem; }
+    .step--attention { background: rgba(234,217,189,.18); }
+    .step--attention .step-index { border-color: rgba(189,145,87,.55); }
     .step--result .step-index { border-color: rgba(189,145,87,.55); background: #f7ead6; color: #76542c; }
     .step-copy { min-width: 0; }
     .step-label { display: block; font-weight: 700; line-height: 1.28; }
@@ -217,7 +219,7 @@ export const RELATIONSHIP_DASHBOARD_PAGE = String.raw`<!doctype html>
         </form>
         <div class="status-line"><span class="status-dot" id="updated">Загрузка данных…</span><span id="period-label"></span></div>
       </section>
-      <div class="notice">Посещения считаются как загрузки лендинга. Уникальные люди начинаются с Telegram, где одна женщина определяется по внутреннему <code>lead_id</code>. Недавние остановки до 24 часов показаны как активные, а не потерянные.</div>
+      <div class="notice">В основную воронку входят размеченные рекламные сессии и посетители, которые действительно взаимодействовали со страницей. Повторные, служебные и неразмеченные загрузки показаны отдельно. Уникальные люди начинаются с Telegram, где одна женщина определяется по внутреннему <code>lead_id</code>.</div>
       <div class="test-tabs" role="tablist" aria-label="Выбор воронки">
         <button class="tab-button" id="tab-a" type="button" role="tab" aria-selected="true" data-test="a">Почему нет отношений?</button>
         <button class="tab-button" id="tab-b" type="button" role="tab" aria-selected="false" data-test="b">Почему отношения не устраивают?</button>
@@ -301,10 +303,13 @@ export const RELATIONSHIP_DASHBOARD_PAGE = String.raw`<!doctype html>
           var anomaly = previous != null && step.count > previous;
           var meta = anomaly ? "есть входы вне предыдущего шага" : (loss ? "−" + loss + " · " + conversion : conversion);
           previous = step.count;
-          return '<div class="step' + (step.result ? ' step--result' : '') + '"><span class="step-index">' + (stepIndex + 1) + '</span><span class="step-copy"><span class="step-label">' + escapeHtml(step.label) + '</span><span class="step-detail">' + escapeHtml(step.detail) + '</span></span><span class="step-value"><strong>' + step.count + '</strong><span' + (loss ? ' class="loss"' : '') + '>' + escapeHtml(meta) + '</span></span></div>';
+          return '<div class="step' + (step.result ? ' step--result' : '') + (stepIndex === 3 ? ' step--attention' : '') + '"><span class="step-index">' + (stepIndex + 1) + '</span><span class="step-copy"><span class="step-label">' + escapeHtml(step.label) + '</span><span class="step-detail">' + escapeHtml(step.detail) + '</span></span><span class="step-value"><strong>' + step.count + '</strong><span' + (loss ? ' class="loss"' : '') + '>' + escapeHtml(meta) + '</span></span></div>';
         }).join("");
+        var excluded = Number(test.excluded_landing_loads || 0);
+        var rawLoads = Number(test.raw_landing_loads || test.landing_visits || 0);
+        var filterNote = excluded ? '<div class="notice">Сырых загрузок: <strong>' + rawLoads + '</strong>. Служебных, повторных или неразмеченных вне основной воронки: <strong>' + excluded + '</strong>.</div>' : '';
         var note = test.unattributed_telegram_started ? '<div class="notice">Дополнительно запусков бота без связанного посещения лендинга: <strong>' + test.unattributed_telegram_started + '</strong>.</div>' : '';
-        return '<article class="funnel-card funnel-card--' + code + '" data-card="' + code + '"' + (code !== activeTest ? ' hidden' : '') + '><header class="funnel-head"><p class="funnel-kicker">Воронка ' + code.toUpperCase() + '</p><h2>' + escapeHtml(test.label) + '</h2><div class="headline-metrics"><div class="headline-metric"><strong>' + test.landing_visits + '</strong><span>посещений</span></div><div class="headline-metric"><strong>' + test.completed + '</strong><span>завершили тест</span></div><div class="headline-metric"><strong>' + test.registered + '</strong><span>регистраций</span></div></div></header><div class="journey">' + stepHtml + note + '</div><div class="breakdowns">' + renderBreakdown("Источники", test.sources) + renderBreakdown("Кампании", test.campaigns) + '</div></article>';
+        return '<article class="funnel-card funnel-card--' + code + '" data-card="' + code + '"' + (code !== activeTest ? ' hidden' : '') + '><header class="funnel-head"><p class="funnel-kicker">Воронка ' + code.toUpperCase() + '</p><h2>' + escapeHtml(test.label) + '</h2><div class="headline-metrics"><div class="headline-metric"><strong>' + test.landing_visits + '</strong><span>сессий</span></div><div class="headline-metric"><strong>' + test.completed + '</strong><span>завершили тест</span></div><div class="headline-metric"><strong>' + test.registered + '</strong><span>регистраций</span></div></div></header><div class="journey">' + stepHtml + filterNote + note + '</div><div class="breakdowns">' + renderBreakdown("Источники", test.sources) + renderBreakdown("Кампании", test.campaigns) + '</div></article>';
       }
       function applyMobileTabs() {
         document.querySelectorAll("[data-card]").forEach(function (card) { card.hidden = card.dataset.card !== activeTest; });

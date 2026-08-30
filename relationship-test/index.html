@@ -19,8 +19,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./relationship-test.css">
-  <script src="./relationship-test.js" defer></script>
+  <link rel="stylesheet" href="/relationship-test/relationship-test.css">
+  <script src="/relationship-test/relationship-test.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">К содержанию</a>
@@ -31,8 +31,8 @@
         <img
           width="736"
           height="144"
-          src="../assets/evolution-house-header-logo-320.webp"
-          srcset="../assets/evolution-house-header-logo-320.webp 320w, ../assets/evolution-house-header-logo-v2.webp 736w"
+          src="/assets/evolution-house-header-logo-320.webp"
+          srcset="/assets/evolution-house-header-logo-320.webp 320w, /assets/evolution-house-header-logo-v2.webp 736w"
           sizes="(max-width: 767px) 136px, 190px"
           alt="Evolution House"
           decoding="async"
@@ -49,7 +49,20 @@
         <div class="hero__copy">
           <p class="eyebrow"><span></span> Бесплатный диагностический тест</p>
           <h1 id="hero-title">Почему отношения до сих пор не складываются?</h1>
-          <p class="hero__lead" id="hero-lead">Этот тест поможет увидеть свой повторяющийся сценарий в знакомствах — и понять, какой следующий шаг поддержит развитие отношений.</p>
+          <p class="hero__lead" id="hero-lead">7 вопросов · около 3 минут · персональный результат в Telegram.</p>
+
+          <div class="hero__actions">
+            <a
+              class="button button--primary"
+              id="telegram-cta"
+              href="https://t.me/RelationshipScenarioBot?start=no_relationship_landing_a"
+              rel="noopener"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.7 3.1 18.6 20c-.2 1.2-.9 1.5-1.9.9l-4.8-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9 8.9-8c.4-.4-.1-.6-.6-.3l-11 6.9-4.7-1.5c-1-.3-1-1 .2-1.5L20.2 3.7c.9-.3 1.7.2 1.5-.6Z"/></svg>
+              <span>Пройти тест за 3 минуты</span>
+            </a>
+            <p class="privacy-note">Тест проходит в личном диалоге с ботом. Ваши ответы не публикуются в группе.</p>
+          </div>
 
           <section class="test-insights" aria-labelledby="test-insights-title">
             <h2 id="test-insights-title"><span>Что вы узнаете в тесте</span></h2>
@@ -68,43 +81,6 @@
               </li>
             </ol>
           </section>
-
-        </div>
-
-        <div class="video-column">
-          <div class="video-frame">
-            <div class="video-frame__halo" aria-hidden="true"></div>
-            <video
-              id="welcome-video"
-              class="welcome-video"
-              controls
-              playsinline
-              preload="metadata"
-              poster="./assets/svetlana-bot-welcome-poster.jpg"
-              aria-label="Короткое приветствие Светланы Страусс перед тестом"
-            >
-              <source src="./assets/svetlana-bot-welcome.mp4" type="video/mp4">
-              Ваш браузер не поддерживает видео. Вы можете сразу перейти к тесту в Telegram.
-            </video>
-            <button class="video-play" id="video-play" type="button" aria-label="Включить видео-приветствие Светланы">
-              <span class="video-play__icon" aria-hidden="true"></span>
-              <span class="video-play__copy"><strong>Видео</strong><small>24 секунды</small></span>
-            </button>
-          </div>
-          <p class="video-caption"><strong>Светлана Страусс</strong><span>дизайнер отношений, автор метода персонального кода архетипов</span></p>
-        </div>
-
-        <div class="hero__actions">
-          <a
-            class="button button--primary"
-            id="telegram-cta"
-            href="https://t.me/RelationshipScenarioBot?start=no_relationship_landing_a"
-            rel="noopener"
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.7 3.1 18.6 20c-.2 1.2-.9 1.5-1.9.9l-4.8-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9 8.9-8c.4-.4-.1-.6-.6-.3l-11 6.9-4.7-1.5c-1-.3-1-1 .2-1.5L20.2 3.7c.9-.3 1.7.2 1.5-.6Z"/></svg>
-            <span>Начать тест в Telegram</span>
-          </a>
-          <p class="privacy-note">Тест проходит в личном диалоге с ботом. Ваши ответы не публикуются в группе.</p>
         </div>
       </div>
     </section>

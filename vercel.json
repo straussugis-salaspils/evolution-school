@@ -17,14 +17,13 @@
     {
       "source": "/18-18-18/relationship-funnel/",
       "destination": "/api/relationship-funnel-dashboard"
+    },
+    {
+      "source": "/relationship-test/relationship-challenges/",
+      "destination": "/relationship-test/"
     }
   ],
   "redirects": [
-    {
-      "source": "/relationship-test/relationship-challenges/",
-      "destination": "/relationship-test/?test=b",
-      "permanent": false
-    },
     {
       "source": "/test-arhetipov/",
       "destination": "/arhetipy.html",
