@@ -124,6 +124,21 @@ export const RELATIONSHIP_DASHBOARD_PAGE = String.raw`<!doctype html>
       color: #685239;
       font-size: .9rem;
     }
+    .reconciliation { margin: 1.5rem 0; padding: 1.35rem 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .reconciliation-head { display: flex; align-items: end; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; }
+    .reconciliation-head p { margin: 0 0 .2rem; color: var(--gold); font-size: .72rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .reconciliation h2 { margin: 0; color: var(--forest-deep); font-size: 1.35rem; }
+    .reconciliation-grid { display: grid; gap: 1.2rem; }
+    .reconciliation-test { min-width: 0; }
+    .reconciliation-test h3 { margin: 0; color: var(--forest-deep); font-size: 1.05rem; }
+    .reconciliation-subtitle { margin: .2rem 0 .75rem; color: var(--muted); font-size: .78rem; }
+    .delivery-table { overflow-x: auto; border-top: 1px solid var(--line); }
+    .delivery-row { display: grid; grid-template-columns: minmax(8.5rem,1.4fr) repeat(4,minmax(4.8rem,.65fr)); min-width: 34rem; border-bottom: 1px solid var(--line); }
+    .delivery-row > span { padding: .65rem .45rem; font-size: .74rem; text-align: right; }
+    .delivery-row > span:first-child { padding-left: 0; color: var(--forest-deep); font-weight: 700; text-align: left; }
+    .delivery-row--head > span { color: var(--muted); font-size: .66rem; font-weight: 700; }
+    .delivery-good { color: var(--forest); font-weight: 800; }
+    .delivery-bad { color: var(--danger); font-weight: 800; }
     .change-log { margin: 1.5rem 0 1.2rem; padding: 1.35rem 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
     .change-log__head { display: flex; align-items: end; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; }
     .change-log__head p { margin: 0 0 .2rem; color: var(--gold); font-size: .72rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
@@ -185,6 +200,7 @@ export const RELATIONSHIP_DASHBOARD_PAGE = String.raw`<!doctype html>
       .shell { padding: 1.4rem; }
       .date-row { grid-template-columns: minmax(9rem,1fr) minmax(9rem,1fr) auto auto; align-items: end; }
       .breakdowns { grid-template-columns: 1fr 1fr; }
+      .reconciliation-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
     }
     @media (max-width: 639px) {
       .change-log__head { display: block; }
@@ -233,9 +249,14 @@ export const RELATIONSHIP_DASHBOARD_PAGE = String.raw`<!doctype html>
         <div class="status-line"><span class="status-dot" id="updated">Загрузка данных…</span><span id="period-label"></span></div>
       </section>
       <div class="notice">В основную воронку входят размеченные рекламные сессии и посетители, которые действительно взаимодействовали со страницей. Повторные, служебные и неразмеченные загрузки показаны отдельно. Уникальные люди начинаются с Telegram, где одна женщина определяется по внутреннему <code>lead_id</code>.</div>
+      <section class="reconciliation" aria-labelledby="reconciliation-title">
+        <div class="reconciliation-head"><div><p>Фактическое время события</p><h2 id="reconciliation-title">Сверка конверсий с Meta</h2></div></div>
+        <div class="reconciliation-grid" id="reconciliation"><div class="loading" aria-label="Загрузка"></div></div>
+      </section>
       <section class="change-log" aria-labelledby="change-log-title">
         <div class="change-log__head"><div><p>Контрольные точки</p><h2 id="change-log-title">Сделанные изменения</h2></div></div>
         <ol>
+          <li><time datetime="2026-08-31">31 августа 2026</time><div><strong>Разделили когорту и события за день</strong><p>Добавлена прямая сверка TelegramStart, Lead и CompleteRegistration по времени события: внутри Telegram, Meta-атрибуция, приём CAPI, очередь и ошибки показываются отдельно.</p></div></li>
           <li><time datetime="2026-08-31">31 августа 2026</time><div><strong>Упростили путь с лендинга в Telegram</strong><p>CTA перенесён в первый экран, описание сокращено, видео удалено, переход больше не ждёт tracking API, а страница «Отношения не устраивают» открывается без дополнительного редиректа.</p></div></li>
           <li><time datetime="2026-08-31">31 августа 2026</time><div><strong>Очистили внутреннюю статистику</strong><p>Добавлена дедупликация сессий; служебные, повторные и неразмеченные загрузки вынесены из основной воронки. Переход TelegramStart → ответ на вопрос 1 выделен как отдельная контрольная точка.</p></div></li>
           <li><time datetime="2026-08-30">30 августа 2026</time><div><strong>Восстановили серверные конверсии Meta</strong><p>Исправлены отправка TelegramStart и подтверждение CompleteRegistration через CAPI, добавлена повторная сверка пропущенных регистраций.</p></div></li>
@@ -258,6 +279,7 @@ export const RELATIONSHIP_DASHBOARD_PAGE = String.raw`<!doctype html>
       var fromInput = document.getElementById("date-from");
       var toInput = document.getElementById("date-to");
       var funnels = document.getElementById("funnels");
+      var reconciliation = document.getElementById("reconciliation");
       var updated = document.getElementById("updated");
       var periodLabel = document.getElementById("period-label");
 
@@ -332,12 +354,23 @@ export const RELATIONSHIP_DASHBOARD_PAGE = String.raw`<!doctype html>
         var note = test.unattributed_telegram_started ? '<div class="notice">Дополнительно запусков бота без связанного посещения лендинга: <strong>' + test.unattributed_telegram_started + '</strong>.</div>' : '';
         return '<article class="funnel-card funnel-card--' + code + '" data-card="' + code + '"' + (code !== activeTest ? ' hidden' : '') + '><header class="funnel-head"><p class="funnel-kicker">Воронка ' + code.toUpperCase() + '</p><h2>' + escapeHtml(test.label) + '</h2><div class="headline-metrics"><div class="headline-metric"><strong>' + test.landing_visits + '</strong><span>сессий</span></div><div class="headline-metric"><strong>' + test.completed + '</strong><span>завершили тест</span></div><div class="headline-metric"><strong>' + test.registered + '</strong><span>регистраций</span></div></div></header><div class="journey">' + stepHtml + filterNote + note + '</div><div class="breakdowns">' + renderBreakdown("Источники", test.sources) + renderBreakdown("Кампании", test.campaigns) + '</div></article>';
       }
+      function renderReconciliation(test) {
+        var rows = test.events.map(function (event) {
+          var problems = Number(event.retry || 0) + Number(event.discarded || 0) + Number(event.unqueued || 0);
+          var waiting = Number(event.pending || 0);
+          var capiClass = event.meta_eligible === event.sent && !waiting ? "delivery-good" : "";
+          var problemClass = problems ? "delivery-bad" : "delivery-good";
+          return '<div class="delivery-row"><span>' + escapeHtml(event.meta_event_name) + '</span><span>' + event.internal_events + ' / ' + event.internal_people + '</span><span>' + event.meta_eligible + '</span><span class="' + capiClass + '">' + event.sent + (waiting ? ' · ждёт ' + waiting : '') + '</span><span class="' + problemClass + '">' + problems + '</span></div>';
+        }).join("");
+        return '<article class="reconciliation-test"><h3>' + escapeHtml(test.label) + '</h3><p class="reconciliation-subtitle">Лендинг ' + test.landing_sessions + ' · CTA ' + test.landing_cta_clicks + '</p><div class="delivery-table"><div class="delivery-row delivery-row--head"><span>Событие</span><span>внутри / люди</span><span>из Meta</span><span>принято CAPI</span><span>проблемы</span></div>' + rows + '</div></article>';
+      }
       function applyMobileTabs() {
         document.querySelectorAll("[data-card]").forEach(function (card) { card.hidden = card.dataset.card !== activeTest; });
         document.querySelectorAll("[data-test]").forEach(function (button) { button.setAttribute("aria-selected", String(button.dataset.test === activeTest)); });
       }
       function render(data) {
         currentData = data;
+        reconciliation.innerHTML = (data.period_events || []).map(renderReconciliation).join("");
         funnels.innerHTML = data.tests.map(renderFunnel).join("");
         if (window.innerWidth < 1024) applyMobileTabs();
         updated.textContent = "Обновлено " + new Intl.DateTimeFormat("ru-RU", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit", timeZone: data.timezone }).format(new Date(data.generated_at));
@@ -360,11 +393,13 @@ export const RELATIONSHIP_DASHBOARD_PAGE = String.raw`<!doctype html>
       }
       async function load() {
         if (!fromInput.value || !toInput.value) return;
+        reconciliation.innerHTML = '<div class="loading" aria-label="Загрузка"></div>';
         funnels.innerHTML = '<div class="loading" aria-label="Загрузка"></div>';
         try {
           var params = new URLSearchParams({ data: "1", date_from: fromInput.value, date_to: toInput.value });
           render(await requestJson(location.pathname + "?" + params.toString()));
         } catch (error) {
+          reconciliation.innerHTML = '';
           funnels.innerHTML = '<div class="error"><strong>Не удалось загрузить статистику.</strong><br>Обновите страницу. Если ошибка повторяется, проверьте health backend и deployment.</div>';
           updated.textContent = "Ошибка обновления";
         }
@@ -373,6 +408,7 @@ export const RELATIONSHIP_DASHBOARD_PAGE = String.raw`<!doctype html>
         if (!currentData) return;
         var rows = [["Воронка","Этап","Количество"]];
         currentData.tests.forEach(function (test) { stepsFor(test).forEach(function (step) { rows.push([test.label, step.label, step.count]); }); });
+        (currentData.period_events || []).forEach(function (test) { test.events.forEach(function (event) { rows.push([test.label, event.meta_event_name + " — принято CAPI", event.sent]); }); });
         var csv = rows.map(function (row) { return row.map(function (cell) { return '"' + String(cell).replace(/"/g, '""') + '"'; }).join(","); }).join("\r\n");
         var link = document.createElement("a");
         link.href = URL.createObjectURL(new Blob(["\ufeff" + csv], { type: "text/csv;charset=utf-8" }));
