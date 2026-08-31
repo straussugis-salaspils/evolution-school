@@ -2,7 +2,7 @@ const variants = {
   a: {
     testId: "test_a_no_relationship",
     title: "Мужчины меняются. До отношений снова не доходит.",
-    titleHtml: "Мужчины меняются.<br>До отношений снова не доходит.",
+    titleHtml: "Мужчины меняются.<br>До <span class=\"title-accent title-accent--light\">отношений</span> снова не доходит.",
     lead: "За 3 минуты поймёте, почему знакомства не перерастают в отношения и что можно изменить.",
     ctaLabel: "Понять, что мешает",
     telegramUrl: "https://t.me/RelationshipScenarioBot?start=no_relationship_landing_a"

@@ -227,6 +227,11 @@ body[data-variant="b"] .title-accent {
   color: #d98d9a;
 }
 
+body[data-variant="a"] .title-accent--light {
+  color: #fff;
+  text-shadow: 0 1px 1px rgba(38, 61, 50, 0.55), 0 0.12em 0.45em rgba(38, 61, 50, 0.3);
+}
+
 body[data-variant="b"] .button--primary {
   background: var(--rose);
   box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.28);
