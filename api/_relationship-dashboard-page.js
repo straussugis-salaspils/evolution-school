@@ -132,6 +132,7 @@ export const RELATIONSHIP_DASHBOARD_PAGE = String.raw`<!doctype html>
     .reconciliation-test { min-width: 0; }
     .reconciliation-test h3 { margin: 0; color: var(--forest-deep); font-size: 1.05rem; }
     .reconciliation-subtitle { margin: .2rem 0 .75rem; color: var(--muted); font-size: .78rem; }
+    .meta-mode { margin: 0 0 1rem; padding: .75rem .9rem; border-left: 3px solid var(--gold); background: #fff8e7; color: var(--forest-deep); font-size: .8rem; line-height: 1.45; }
     .delivery-table { overflow-x: auto; border-top: 1px solid var(--line); }
     .delivery-row { display: grid; grid-template-columns: minmax(8.5rem,1.4fr) repeat(4,minmax(4.8rem,.65fr)); min-width: 34rem; border-bottom: 1px solid var(--line); }
     .delivery-row > span { padding: .65rem .45rem; font-size: .74rem; text-align: right; }
@@ -251,11 +252,13 @@ export const RELATIONSHIP_DASHBOARD_PAGE = String.raw`<!doctype html>
       <div class="notice">В основную воронку входят размеченные рекламные сессии и посетители, которые действительно взаимодействовали со страницей. Повторные, служебные и неразмеченные загрузки показаны отдельно. Уникальные люди начинаются с Telegram, где одна женщина определяется по внутреннему <code>lead_id</code>.</div>
       <section class="reconciliation" aria-labelledby="reconciliation-title">
         <div class="reconciliation-head"><div><p>Фактическое время события</p><h2 id="reconciliation-title">Сверка конверсий с Meta</h2></div></div>
+        <div id="meta-mode"></div>
         <div class="reconciliation-grid" id="reconciliation"><div class="loading" aria-label="Загрузка"></div></div>
       </section>
       <section class="change-log" aria-labelledby="change-log-title">
         <div class="change-log__head"><div><p>Контрольные точки</p><h2 id="change-log-title">Сделанные изменения</h2></div></div>
         <ol>
+          <li><time datetime="2026-08-31">31 августа 2026</time><div><strong>Отключили Meta Test Events для живого трафика</strong><p>Production больше не отправляет реальные TelegramStart, Lead и CompleteRegistration с test_event_code. Сегодняшние события поставлены на безопасную повторную отправку с прежними event_id.</p></div></li>
           <li><time datetime="2026-08-31">31 августа 2026</time><div><strong>Перенесли вступление в группу в конец воронки</strong><p>Убрано обязательное вступление перед вопросом 1. Теперь тест проходит в личном чате, а подтверждённое вступление после финальной CTA создаёт CompleteRegistration.</p></div></li>
           <li><time datetime="2026-08-31">31 августа 2026</time><div><strong>Разделили когорту и события за день</strong><p>Добавлена прямая сверка TelegramStart, Lead и CompleteRegistration по времени события: внутри Telegram, Meta-атрибуция, приём CAPI, очередь и ошибки показываются отдельно.</p></div></li>
           <li><time datetime="2026-08-31">31 августа 2026</time><div><strong>Упростили путь с лендинга в Telegram</strong><p>CTA перенесён в первый экран, описание сокращено, видео удалено, переход больше не ждёт tracking API, а страница «Отношения не устраивают» открывается без дополнительного редиректа.</p></div></li>
@@ -281,6 +284,7 @@ export const RELATIONSHIP_DASHBOARD_PAGE = String.raw`<!doctype html>
       var toInput = document.getElementById("date-to");
       var funnels = document.getElementById("funnels");
       var reconciliation = document.getElementById("reconciliation");
+      var metaMode = document.getElementById("meta-mode");
       var updated = document.getElementById("updated");
       var periodLabel = document.getElementById("period-label");
 
@@ -371,6 +375,13 @@ export const RELATIONSHIP_DASHBOARD_PAGE = String.raw`<!doctype html>
       }
       function render(data) {
         currentData = data;
+        if (data.meta_test_mode_effective) {
+          metaMode.innerHTML = '<div class="meta-mode"><strong>Внимание:</strong> CAPI работает в режиме Test Events. Эти события не попадут в боевые показатели Meta.</div>';
+        } else if (data.meta_test_code_configured) {
+          metaMode.innerHTML = '<div class="meta-mode"><strong>Живой режим:</strong> сохранённый test_event_code принудительно отключён для production.</div>';
+        } else {
+          metaMode.innerHTML = '';
+        }
         reconciliation.innerHTML = (data.period_events || []).map(renderReconciliation).join("");
         funnels.innerHTML = data.tests.map(renderFunnel).join("");
         if (window.innerWidth < 1024) applyMobileTabs();
