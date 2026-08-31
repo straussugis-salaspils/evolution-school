@@ -223,6 +223,10 @@ body[data-variant="b"] .telegram-start-note {
   color: #f8f4ed;
 }
 
+body[data-variant="b"] .title-accent {
+  color: #d98d9a;
+}
+
 body[data-variant="b"] .button--primary {
   background: var(--rose);
   box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.28);
@@ -314,6 +318,11 @@ body[data-variant="b"] .landing-footer p {
 }
 
 @media (min-width: 56rem) {
+  .landing-header__inner {
+    width: calc(100% - 4rem);
+    max-width: none;
+  }
+
   .hero {
     min-height: 90svh;
     align-items: center;

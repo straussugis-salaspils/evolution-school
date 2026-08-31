@@ -3,14 +3,16 @@ const variants = {
     testId: "test_a_no_relationship",
     title: "Мужчины меняются. До отношений снова не доходит.",
     titleHtml: "Мужчины меняются.<br>До отношений снова не доходит.",
-    lead: "За 3 минуты узнайте, где всё останавливается и какой сценарий повторяется в ваших знакомствах.",
+    lead: "За 3 минуты поймёте, почему знакомства не перерастают в отношения и что можно изменить.",
+    ctaLabel: "Понять, что мешает",
     telegramUrl: "https://t.me/RelationshipScenarioBot?start=no_relationship_landing_a"
   },
   b: {
     testId: "test_b_relationship_challenges",
     title: "В отношениях всё нормально. Почему мне в них плохо?",
-    titleHtml: "В отношениях всё нормально.<br>Почему мне в них плохо?",
-    lead: "За 3 минуты узнайте, что происходит между вами и какой сценарий создаёт дистанцию.",
+    titleHtml: "В отношениях всё нормально.<br>Почему мне в них <span class=\"title-accent\">плохо?</span>",
+    lead: "За 3 минуты поймёте, что создаёт дистанцию между вами и что можно изменить.",
+    ctaLabel: "Понять, что происходит",
     telegramUrl: "https://t.me/RelationshipScenarioBot?start=relationship_challenges_landing_b"
   }
 };
@@ -26,12 +28,14 @@ function applyVariant() {
   const variantId = variant === variants.b ? "b" : "a";
   const title = document.getElementById("hero-title");
   const lead = document.getElementById("hero-lead");
+  const ctaLabel = document.getElementById("telegram-cta-label");
   const links = [
     document.getElementById("telegram-cta")
   ];
 
   title.innerHTML = variant.titleHtml;
   lead.textContent = variant.lead;
+  ctaLabel.textContent = variant.ctaLabel;
   document.body.dataset.variant = variantId;
   document.title = `${variant.title} — тест Evolution House`;
   links.forEach((link) => {
