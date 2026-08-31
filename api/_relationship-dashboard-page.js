@@ -256,6 +256,7 @@ export const RELATIONSHIP_DASHBOARD_PAGE = String.raw`<!doctype html>
       <section class="change-log" aria-labelledby="change-log-title">
         <div class="change-log__head"><div><p>Контрольные точки</p><h2 id="change-log-title">Сделанные изменения</h2></div></div>
         <ol>
+          <li><time datetime="2026-08-31">31 августа 2026</time><div><strong>Перенесли вступление в группу в конец воронки</strong><p>Убрано обязательное вступление перед вопросом 1. Теперь тест проходит в личном чате, а подтверждённое вступление после финальной CTA создаёт CompleteRegistration.</p></div></li>
           <li><time datetime="2026-08-31">31 августа 2026</time><div><strong>Разделили когорту и события за день</strong><p>Добавлена прямая сверка TelegramStart, Lead и CompleteRegistration по времени события: внутри Telegram, Meta-атрибуция, приём CAPI, очередь и ошибки показываются отдельно.</p></div></li>
           <li><time datetime="2026-08-31">31 августа 2026</time><div><strong>Упростили путь с лендинга в Telegram</strong><p>CTA перенесён в первый экран, описание сокращено, видео удалено, переход больше не ждёт tracking API, а страница «Отношения не устраивают» открывается без дополнительного редиректа.</p></div></li>
           <li><time datetime="2026-08-31">31 августа 2026</time><div><strong>Очистили внутреннюю статистику</strong><p>Добавлена дедупликация сессий; служебные, повторные и неразмеченные загрузки вынесены из основной воронки. Переход TelegramStart → ответ на вопрос 1 выделен как отдельная контрольная точка.</p></div></li>
