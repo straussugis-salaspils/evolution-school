@@ -418,9 +418,12 @@ export const RELATIONSHIP_DASHBOARD_PAGE = String.raw`<!doctype html>
       }
       function exportCsv() {
         if (!currentData) return;
-        var rows = [["Воронка","Этап","Количество"]];
+        var rows = [["Воронка","Этап","Количество","Час UTC","Для Meta","fbc","IP+UA","Ответ Graph API"]];
         currentData.tests.forEach(function (test) { stepsFor(test).forEach(function (step) { rows.push([test.label, step.label, step.count]); }); });
-        (currentData.period_events || []).forEach(function (test) { test.events.forEach(function (event) { rows.push([test.label, event.meta_event_name + " — принято CAPI", event.sent]); }); });
+        (currentData.period_events || []).forEach(function (test) { test.events.forEach(function (event) {
+          rows.push([test.label, event.meta_event_name, event.internal_events, "", event.meta_eligible, event.with_fbc, event.with_ip_user_agent, event.sent]);
+          (event.hours || []).forEach(function (hour) { rows.push([test.label, event.meta_event_name + " — почасово", hour.internal_events, new Date(hour.hour_start * 1000).toISOString(), hour.meta_eligible, hour.with_fbc, "", hour.sent]); });
+        }); });
         var csv = rows.map(function (row) { return row.map(function (cell) { return '"' + String(cell).replace(/"/g, '""') + '"'; }).join(","); }).join("\r\n");
         var link = document.createElement("a");
         link.href = URL.createObjectURL(new Blob(["\ufeff" + csv], { type: "text/csv;charset=utf-8" }));
