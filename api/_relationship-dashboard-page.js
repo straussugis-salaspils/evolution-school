@@ -134,7 +134,7 @@ export const RELATIONSHIP_DASHBOARD_PAGE = String.raw`<!doctype html>
     .reconciliation-subtitle { margin: .2rem 0 .75rem; color: var(--muted); font-size: .78rem; }
     .meta-mode { margin: 0 0 1rem; padding: .75rem .9rem; border-left: 3px solid var(--gold); background: #fff8e7; color: var(--forest-deep); font-size: .8rem; line-height: 1.45; }
     .delivery-table { overflow-x: auto; border-top: 1px solid var(--line); }
-    .delivery-row { display: grid; grid-template-columns: minmax(8.5rem,1.4fr) repeat(4,minmax(4.8rem,.65fr)); min-width: 34rem; border-bottom: 1px solid var(--line); }
+    .delivery-row { display: grid; grid-template-columns: minmax(8.5rem,1.4fr) repeat(5,minmax(4.8rem,.65fr)); min-width: 39rem; border-bottom: 1px solid var(--line); }
     .delivery-row > span { padding: .65rem .45rem; font-size: .74rem; text-align: right; }
     .delivery-row > span:first-child { padding-left: 0; color: var(--forest-deep); font-weight: 700; text-align: left; }
     .delivery-row--head > span { color: var(--muted); font-size: .66rem; font-weight: 700; }
@@ -365,9 +365,9 @@ export const RELATIONSHIP_DASHBOARD_PAGE = String.raw`<!doctype html>
           var waiting = Number(event.pending || 0);
           var capiClass = event.meta_eligible === event.sent && !waiting ? "delivery-good" : "";
           var problemClass = problems ? "delivery-bad" : "delivery-good";
-          return '<div class="delivery-row"><span>' + escapeHtml(event.meta_event_name) + '</span><span>' + event.internal_events + ' / ' + event.internal_people + '</span><span>' + event.meta_eligible + '</span><span class="' + capiClass + '">' + event.sent + (waiting ? ' · ждёт ' + waiting : '') + '</span><span class="' + problemClass + '">' + problems + '</span></div>';
+          return '<div class="delivery-row"><span>' + escapeHtml(event.meta_event_name) + '</span><span>' + event.internal_events + ' / ' + event.internal_people + '</span><span>' + event.meta_eligible + '</span><span>' + event.with_fbc + ' / ' + event.with_ip_user_agent + '</span><span class="' + capiClass + '">' + event.sent + (waiting ? ' · ждёт ' + waiting : '') + '</span><span class="' + problemClass + '">' + problems + '</span></div>';
         }).join("");
-        return '<article class="reconciliation-test"><h3>' + escapeHtml(test.label) + '</h3><p class="reconciliation-subtitle">Лендинг ' + test.landing_sessions + ' · CTA ' + test.landing_cta_clicks + '</p><div class="delivery-table"><div class="delivery-row delivery-row--head"><span>Событие</span><span>внутри / люди</span><span>из Meta</span><span>принято CAPI</span><span>проблемы</span></div>' + rows + '</div></article>';
+        return '<article class="reconciliation-test"><h3>' + escapeHtml(test.label) + '</h3><p class="reconciliation-subtitle">Лендинг ' + test.landing_sessions + ' · CTA ' + test.landing_cta_clicks + '</p><div class="delivery-table"><div class="delivery-row delivery-row--head"><span>Событие</span><span>внутри / люди</span><span>для Meta</span><span>fbc / IP+UA</span><span>ответ Graph API</span><span>проблемы</span></div>' + rows + '</div></article>';
       }
       function applyMobileTabs() {
         document.querySelectorAll("[data-card]").forEach(function (card) { card.hidden = card.dataset.card !== activeTest; });
