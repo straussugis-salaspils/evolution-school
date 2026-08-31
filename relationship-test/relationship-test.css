@@ -315,8 +315,20 @@ body[data-variant="b"] .test-insights {
   outline-offset: 4px;
 }
 
+.telegram-start-note {
+  margin: 0.85rem auto 0;
+  color: var(--sage-dark);
+  font-size: 0.9rem;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.telegram-start-note strong {
+  font-weight: 600;
+}
+
 .privacy-note {
-  margin: 0.8rem auto 0;
+  margin: 0.4rem auto 0;
   color: var(--ink-muted);
   font-size: 0.875rem;
   line-height: 1.55;
