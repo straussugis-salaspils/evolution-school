@@ -1,16 +1,16 @@
 const variants = {
   a: {
     testId: "test_a_no_relationship",
-    title: "Почему отношения до сих пор не складываются?",
-    lead: "7 вопросов · около 3 минут · персональный результат в Telegram.",
-    insightContext: "Как он проявляется в знакомстве и выборе мужчины",
+    title: "Мужчины меняются. До отношений снова не доходит.",
+    titleHtml: "Мужчины меняются.<br>До отношений снова не доходит.",
+    lead: "За 3 минуты узнайте, где всё останавливается и какой сценарий повторяется в ваших знакомствах.",
     telegramUrl: "https://t.me/RelationshipScenarioBot?start=no_relationship_landing_a"
   },
   b: {
     testId: "test_b_relationship_challenges",
-    title: "Почему меня не устраивают отношения, в которых я нахожусь?",
-    lead: "7 вопросов · около 3 минут · персональный результат в Telegram.",
-    insightContext: "Как он влияет на близость и живой контакт в паре",
+    title: "В отношениях всё нормально. Почему мне в них плохо?",
+    titleHtml: "В отношениях всё нормально.<br>Почему мне в них плохо?",
+    lead: "За 3 минуты узнайте, что происходит между вами и какой сценарий создаёт дистанцию.",
     telegramUrl: "https://t.me/RelationshipScenarioBot?start=relationship_challenges_landing_b"
   }
 };
@@ -26,14 +26,12 @@ function applyVariant() {
   const variantId = variant === variants.b ? "b" : "a";
   const title = document.getElementById("hero-title");
   const lead = document.getElementById("hero-lead");
-  const insightContext = document.getElementById("insight-context");
   const links = [
     document.getElementById("telegram-cta")
   ];
 
-  title.textContent = variant.title;
+  title.innerHTML = variant.titleHtml;
   lead.textContent = variant.lead;
-  insightContext.textContent = variant.insightContext;
   document.body.dataset.variant = variantId;
   document.title = `${variant.title} — тест Evolution House`;
   links.forEach((link) => {

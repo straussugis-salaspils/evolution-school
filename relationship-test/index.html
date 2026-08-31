@@ -3,53 +3,56 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Почему отношения до сих пор не складываются? — тест Evolution House</title>
-  <meta name="description" content="Бесплатный диагностический тест об отношениях: 7 вопросов, персональный результат и понятный следующий шаг.">
+  <title>Мужчины меняются. До отношений снова не доходит. — тест Evolution House</title>
+  <meta name="description" content="За 3 минуты узнайте, где всё останавливается и какой сценарий повторяется в ваших знакомствах.">
   <meta name="robots" content="noindex, nofollow">
   <link rel="canonical" href="https://evolution.yourbalancerestored.com/relationship-test/">
-  <meta property="og:title" content="Диагностический тест об отношениях — Evolution House">
-  <meta property="og:description" content="7 вопросов, около 3 минут и персональный результат в Telegram.">
+  <meta property="og:title" content="Бесплатный тест об отношениях — Evolution House">
+  <meta property="og:description" content="7 вопросов, 3 минуты и персональный результат в Telegram.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://evolution.yourbalancerestored.com/relationship-test/">
   <meta property="og:locale" content="ru_RU">
   <meta property="og:site_name" content="Evolution House">
-  <meta property="og:image" content="https://evolution.yourbalancerestored.com/assets/evolution-house-social.jpg">
+  <meta property="og:image" content="https://evolution.yourbalancerestored.com/relationship-test/assets/flow-a-hero-desktop.webp">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/png" href="/assets/evolution-house-favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/relationship-test/relationship-test.css">
   <script src="/relationship-test/relationship-test.js" defer></script>
 </head>
-<body>
+<body data-variant="a">
+  <script>
+    if (new URLSearchParams(location.search).get("test") === "b" || location.pathname.includes("/relationship-challenges/")) {
+      document.body.dataset.variant = "b";
+    }
+  </script>
   <a class="skip-link" href="#main">К содержанию</a>
 
   <header class="landing-header">
     <div class="shell landing-header__inner">
-      <a class="brand" href="/" aria-label="Evolution House — на главную">
+      <div class="brand" aria-label="Evolution House">
         <img
           width="736"
           height="144"
           src="/assets/evolution-house-header-logo-320.webp"
           srcset="/assets/evolution-house-header-logo-320.webp 320w, /assets/evolution-house-header-logo-v2.webp 736w"
-          sizes="(max-width: 767px) 136px, 190px"
+          sizes="(max-width: 767px) 142px, 184px"
           alt="Evolution House"
           decoding="async"
         >
-      </a>
-      <p class="landing-header__note">Дом Эволюции · отношения</p>
+      </div>
     </div>
   </header>
 
   <main id="main">
     <section class="hero" aria-labelledby="hero-title">
-      <div class="hero__wash" aria-hidden="true"></div>
-      <div class="shell hero__grid">
+      <div class="shell hero__inner">
         <div class="hero__copy">
-          <p class="eyebrow"><span></span> Бесплатный диагностический тест</p>
-          <h1 id="hero-title">Почему отношения до сих пор не складываются?</h1>
-          <p class="hero__lead" id="hero-lead">7 вопросов · около 3 минут · персональный результат в Telegram.</p>
+          <p class="eyebrow">Бесплатный тест <span aria-hidden="true">·</span> 7 вопросов</p>
+          <h1 id="hero-title">Мужчины меняются.<br>До отношений снова не доходит.</h1>
+          <p class="hero__lead" id="hero-lead">За 3 минуты узнайте, где всё останавливается и какой сценарий повторяется в ваших знакомствах.</p>
 
           <div class="hero__actions">
             <a
@@ -58,34 +61,14 @@
               href="https://t.me/RelationshipScenarioBot?start=no_relationship_landing_a"
               rel="noopener"
             >
+              <span>Узнать свой сценарий</span>
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.7 3.1 18.6 20c-.2 1.2-.9 1.5-1.9.9l-4.8-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9 8.9-8c.4-.4-.1-.6-.6-.3l-11 6.9-4.7-1.5c-1-.3-1-1 .2-1.5L20.2 3.7c.9-.3 1.7.2 1.5-.6Z"/></svg>
-              <span>Пройти тест за 3 минуты</span>
             </a>
-            <p class="telegram-start-note"><strong>В Telegram нажмите «Запустить» / Start</strong> — тест начнётся автоматически.</p>
-            <p class="privacy-note">Тест проходит в личном диалоге с ботом. Ваши ответы не публикуются в группе.</p>
+            <p class="telegram-start-note">Откроется Telegram. Нажмите <strong>«Запустить» (Start)</strong>.</p>
           </div>
-
-          <section class="test-insights" aria-labelledby="test-insights-title">
-            <h2 id="test-insights-title"><span>Что вы узнаете в тесте</span></h2>
-            <ol>
-              <li>
-                <span class="test-insights__number" aria-hidden="true">01</span>
-                <span id="insight-scenario">Какой сценарий отношений повторяется именно у вас</span>
-              </li>
-              <li>
-                <span class="test-insights__number" aria-hidden="true">02</span>
-                <span id="insight-context">Как он проявляется в знакомстве и выборе мужчины</span>
-              </li>
-              <li>
-                <span class="test-insights__number" aria-hidden="true">03</span>
-                <span id="insight-next-step">Какой следующий шаг поможет отношениям развиваться</span>
-              </li>
-            </ol>
-          </section>
         </div>
       </div>
     </section>
-
   </main>
 
   <footer class="landing-footer">
