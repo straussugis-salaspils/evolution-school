@@ -365,9 +365,9 @@ export const RELATIONSHIP_DASHBOARD_PAGE = String.raw`<!doctype html>
           var waiting = Number(event.pending || 0);
           var capiClass = event.meta_eligible === event.sent && !waiting ? "delivery-good" : "";
           var problemClass = problems ? "delivery-bad" : "delivery-good";
-          return '<div class="delivery-row"><span>' + escapeHtml(event.meta_event_name) + '</span><span>' + event.internal_events + ' / ' + event.internal_people + '</span><span>' + event.meta_eligible + '</span><span>' + event.with_fbc + ' / ' + event.with_ip_user_agent + '</span><span class="' + capiClass + '">' + event.sent + (waiting ? ' · ждёт ' + waiting : '') + '</span><span class="' + problemClass + '">' + problems + '</span></div>';
+          return '<div class="delivery-row"><span>' + escapeHtml(event.meta_event_name) + '</span><span>' + event.internal_events + ' / ' + event.internal_people + '</span><span>' + event.meta_eligible + '</span><span>' + event.with_fbc + ' / ' + event.distinct_fbc + ' / ' + event.valid_fbc + ' · IP ' + event.with_ip_user_agent + '</span><span class="' + capiClass + '">' + event.sent + (waiting ? ' · ждёт ' + waiting : '') + '</span><span class="' + problemClass + '">' + problems + '</span></div>';
         }).join("");
-        return '<article class="reconciliation-test"><h3>' + escapeHtml(test.label) + '</h3><p class="reconciliation-subtitle">Лендинг ' + test.landing_sessions + ' · CTA ' + test.landing_cta_clicks + '</p><div class="delivery-table"><div class="delivery-row delivery-row--head"><span>Событие</span><span>внутри / люди</span><span>для Meta</span><span>fbc / IP+UA</span><span>ответ Graph API</span><span>проблемы</span></div>' + rows + '</div></article>';
+        return '<article class="reconciliation-test"><h3>' + escapeHtml(test.label) + '</h3><p class="reconciliation-subtitle">Лендинг ' + test.landing_sessions + ' · CTA ' + test.landing_cta_clicks + '</p><div class="delivery-table"><div class="delivery-row delivery-row--head"><span>Событие</span><span>внутри / люди</span><span>для Meta</span><span>fbc все / уник. / валид. · IP</span><span>ответ Graph API</span><span>проблемы</span></div>' + rows + '</div></article>';
       }
       function applyMobileTabs() {
         document.querySelectorAll("[data-card]").forEach(function (card) { card.hidden = card.dataset.card !== activeTest; });
@@ -421,7 +421,7 @@ export const RELATIONSHIP_DASHBOARD_PAGE = String.raw`<!doctype html>
         var rows = [["Воронка","Этап","Количество","Час UTC","Для Meta","fbc","IP+UA","Ответ Graph API"]];
         currentData.tests.forEach(function (test) { stepsFor(test).forEach(function (step) { rows.push([test.label, step.label, step.count]); }); });
         (currentData.period_events || []).forEach(function (test) { test.events.forEach(function (event) {
-          rows.push([test.label, event.meta_event_name, event.internal_events, "", event.meta_eligible, event.with_fbc, event.with_ip_user_agent, event.sent]);
+          rows.push([test.label, event.meta_event_name, event.internal_events, "", event.meta_eligible, event.with_fbc + " всего; " + event.distinct_fbc + " уник.; " + event.valid_fbc + " валид.", event.with_ip_user_agent, event.sent]);
           (event.hours || []).forEach(function (hour) { rows.push([test.label, event.meta_event_name + " — почасово", hour.internal_events, new Date(hour.hour_start * 1000).toISOString(), hour.meta_eligible, hour.with_fbc, "", hour.sent]); });
         }); });
         var csv = rows.map(function (row) { return row.map(function (cell) { return '"' + String(cell).replace(/"/g, '""') + '"'; }).join(","); }).join("\r\n");
