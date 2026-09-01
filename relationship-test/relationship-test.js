@@ -3,16 +3,16 @@ const variants = {
     testId: "test_a_no_relationship",
     title: "Знакомства начинаются. Но до отношений снова не доходит?",
     titleHtml: "Знакомства начинаются.<br>Но до отношений <span class=\"title-accent title-accent--a\">снова не доходит?</span>",
-    lead: "За 3 минуты поймёте, в какой момент всё останавливается и что можно изменить.",
-    ctaLabel: "Понять, где всё останавливается",
+    lead: "Ответьте на 7 вопросов — и за 3 минуты поймёте, в какой момент всё останавливается и что можно изменить.",
+    ctaLabel: "Начать тест и понять, что мешает",
     telegramUrl: "https://t.me/RelationshipScenarioBot?start=no_relationship_landing_a"
   },
   b: {
     testId: "test_b_relationship_challenges",
     title: "В отношениях всё нормально. Почему мне в них плохо?",
     titleHtml: "В отношениях всё нормально.<br>Почему мне в них <span class=\"title-accent\">плохо?</span>",
-    lead: "За 3 минуты поймёте, что создаёт дистанцию между вами и что можно изменить.",
-    ctaLabel: "Понять, что происходит",
+    lead: "Ответьте на 7 вопросов — и за 3 минуты поймёте, что создаёт дистанцию между вами и что можно изменить.",
+    ctaLabel: "Начать тест и понять, что происходит",
     telegramUrl: "https://t.me/RelationshipScenarioBot?start=relationship_challenges_landing_b"
   }
 };

@@ -94,7 +94,7 @@ a {
   overflow: clip;
   align-items: flex-start;
   background-color: #e9e3d9;
-  background-image: url("/relationship-test/assets/flow-a-hero-mobile-v2.webp");
+  background-image: url("/relationship-test/assets/flow-a-hero-mobile-v3.webp");
   background-position: center bottom;
   background-repeat: no-repeat;
   background-size: 100% auto;
@@ -106,7 +106,7 @@ body[data-variant="b"] .hero {
 }
 
 body[data-variant="a"] .hero {
-  background-position: center calc(100% + 3.25rem);
+  background-position: center calc(100% + 6rem);
 }
 
 .hero__inner {
@@ -125,7 +125,7 @@ body[data-variant="a"] .hero {
 .eyebrow {
   margin: 0 0 0.75rem;
   color: #426450;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   line-height: 1.4;
@@ -334,7 +334,7 @@ body[data-variant="b"] .landing-footer p {
   .hero {
     min-height: 90svh;
     align-items: center;
-    background-image: url("/relationship-test/assets/flow-a-hero-desktop-v2.webp");
+    background-image: url("/relationship-test/assets/flow-a-hero-desktop-v3.webp");
     background-position: center center;
     background-size: cover;
   }
