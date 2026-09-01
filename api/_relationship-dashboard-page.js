@@ -186,6 +186,16 @@ export const RELATIONSHIP_DASHBOARD_PAGE = String.raw`<!doctype html>
     .step-value strong { display: block; color: var(--forest-deep); font-family: Georgia, serif; font-size: 1.5rem; line-height: 1; }
     .step-value span { display: block; margin-top: .28rem; color: var(--muted); font-size: .72rem; }
     .loss { color: var(--danger) !important; }
+    .result-funnel { margin: 0 1rem 1rem; padding: 1rem 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .result-funnel__head { display: flex; align-items: baseline; justify-content: space-between; gap: .8rem; margin-bottom: .7rem; }
+    .result-funnel__head h3 { margin: 0; color: var(--forest-deep); font-size: .95rem; }
+    .result-funnel__head span { color: var(--muted); font-size: .72rem; }
+    .result-version + .result-version { margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed var(--line); }
+    .result-version__title { margin: 0 0 .45rem; color: var(--gold); font-size: .72rem; font-weight: 800; text-transform: uppercase; }
+    .result-step { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: .75rem; align-items: center; padding: .42rem 0; }
+    .result-step span { min-width: 0; color: var(--muted); font-size: .78rem; }
+    .result-step strong { color: var(--forest-deep); font-size: .84rem; }
+    .result-step em { margin-left: .4rem; color: var(--rose); font-size: .72rem; font-style: normal; font-weight: 700; }
     .breakdowns { display: grid; grid-template-columns: 1fr; gap: .8rem; padding: 0 1rem 1rem; }
     .breakdown { padding: 1rem; border-radius: 1rem; background: #f3f0e9; }
     .breakdown h3 { margin: 0 0 .65rem; color: var(--forest-deep); font-size: 1.1rem; }
@@ -258,6 +268,7 @@ export const RELATIONSHIP_DASHBOARD_PAGE = String.raw`<!doctype html>
       <section class="change-log" aria-labelledby="change-log-title">
         <div class="change-log__head"><div><p>Контрольные точки</p><h2 id="change-log-title">Сделанные изменения</h2></div></div>
         <ol>
+          <li><time datetime="2026-09-02">2 сентября 2026</time><div><strong>Пересобрали результаты Flow B и добавили поэкранную конверсию</strong><p>Результаты теста B сокращены с пяти до четырёх экранов: персональные сигналы из ответов, замкнутый круг, конкретный эксперимент и короткий переход к бесплатной «Неделе лёгкости». Аналитика теперь отдельно показывает конверсию каждого экрана, показ CTA и клик по версиям теста, не смешивая старую и новую архитектуру.</p></div></li>
           <li><time datetime="2026-09-01">1 сентября 2026</time><div><strong>Сделали путь до Telegram единым и явным</strong><p>На обоих лендингах усилено слово «тест», CTA теперь прямо предлагает начать тест, а подсказка объясняет обязательное нажатие Start. В Flow A мужчина придвинут ближе и увеличен. Telegram-бот переименован в «Тест об отношениях | Evolution House», добавлены понятные описания профиля и выпущены вводные тестов A v6.17 и B v8.7 без разрыва с лендингами.</p></div></li>
           <li><time datetime="2026-09-01">1 сентября 2026</time><div><strong>Запустили конверсионную версию A2</strong><p>Flow A переведён на новый первый экран для всего трафика: личный вопрос вместо рекламного утверждения, более конкретное обещание и CTA, задумчивая героиня и один уходящий мужчина. Flow B оставлен без изменений; текущая точка сравнения для A — 30% переходов от лендинга к CTA.</p></div></li>
           <li><time datetime="2026-09-01">1 сентября 2026</time><div><strong>Оспорили ошибочную категорию Meta Religion</strong><p>Для домена evolution.yourbalancerestored.com отправлен Request review. Meta подтвердила запрос, статус — Pending review. До решения часть серверных событий посетителей из Европейского региона может блокироваться.</p></div></li>
@@ -339,8 +350,8 @@ export const RELATIONSHIP_DASHBOARD_PAGE = String.raw`<!doctype html>
         steps.push(
           { label: "Завершили тест", count: test.completed, detail: "Получили персональный результат", result: true },
           { label: "Открыли результат", count: test.result_viewed, detail: "Просмотрели первый экран", result: true },
-          { label: "Увидели «Пройти бесплатно»", count: test.registration_cta_shown, detail: "Дошли до предложения", result: true },
-          { label: "Нажали «Пройти бесплатно»", count: test.registration_cta_clicked, detail: "Начали следующий шаг", result: true },
+          { label: "Увидели предложение", count: test.registration_cta_shown, detail: "Дошли до финального CTA", result: true },
+          { label: "Нажали CTA", count: test.registration_cta_clicked, detail: "Начали следующий шаг", result: true },
           { label: "Начали регистрацию", count: test.registration_started, detail: "Получили вход в группу", result: true },
           { label: "Регистрация завершена", count: test.registered, detail: "Membership подтверждён", result: true }
         );
@@ -351,6 +362,26 @@ export const RELATIONSHIP_DASHBOARD_PAGE = String.raw`<!doctype html>
         return '<div class="breakdown"><h3>' + title + '</h3>' + rows.slice(0, 8).map(function (row) {
           return '<div class="breakdown-row"><span title="' + escapeHtml(row.label) + '">' + escapeHtml(row.label) + '</span><span>' + row.visits + ' виз.</span><strong>' + row.telegram_started + ' старт.</strong></div>';
         }).join("") + '</div>';
+      }
+      function renderResultFunnel(test) {
+        var versions = (test.result_versions || []).filter(function (version) { return version.completed || (version.screens || []).length; });
+        if (!versions.length) return '';
+        var content = versions.map(function (version) {
+          var steps = [{ label: 'Завершили тест', count: version.completed }];
+          (version.screens || []).slice().sort(function (left, right) { return left.screen_index - right.screen_index; }).forEach(function (screen) {
+            steps.push({ label: 'Экран ' + (screen.screen_index + 1), count: screen.viewed });
+          });
+          steps.push({ label: 'Увидели предложение', count: version.cta_shown });
+          steps.push({ label: 'Нажали CTA', count: version.cta_clicked });
+          var previous = null;
+          var rows = steps.map(function (step) {
+            var conversion = previous == null ? '100%' : percent(step.count, previous);
+            previous = step.count;
+            return '<div class="result-step"><span>' + escapeHtml(step.label) + '</span><strong>' + step.count + '<em>' + conversion + '</em></strong></div>';
+          }).join('');
+          return '<div class="result-version"><p class="result-version__title">Версия ' + escapeHtml(version.test_version) + '</p>' + rows + '</div>';
+        }).join('');
+        return '<section class="result-funnel"><div class="result-funnel__head"><h3>Конверсия экранов результата</h3><span>от предыдущего шага</span></div>' + content + '</section>';
       }
       function renderFunnel(test, index) {
         var code = index === 0 ? "a" : "b";
@@ -369,7 +400,7 @@ export const RELATIONSHIP_DASHBOARD_PAGE = String.raw`<!doctype html>
         var filterNote = excluded ? '<div class="notice">Сырых загрузок: <strong>' + rawLoads + '</strong>. Служебных, повторных или неразмеченных вне основной воронки: <strong>' + excluded + '</strong>.</div>' : '';
         var note = test.unattributed_telegram_started ? '<div class="notice">Дополнительно запусков бота без связанного посещения лендинга: <strong>' + test.unattributed_telegram_started + '</strong>.</div>' : '';
         var observedNote = test.group_member_observed ? '<div class="notice">Уже были в группе при первой серверной сверке, точная дата вступления неизвестна: <strong>' + test.group_member_observed + '</strong>. В новые конверсии не включены.</div>' : '';
-        return '<article class="funnel-card funnel-card--' + code + '" data-card="' + code + '"' + (code !== activeTest ? ' hidden' : '') + '><header class="funnel-head"><p class="funnel-kicker">Воронка ' + code.toUpperCase() + '</p><h2>' + escapeHtml(test.label) + '</h2><div class="headline-metrics"><div class="headline-metric"><strong>' + test.landing_visits + '</strong><span>сессий</span></div><div class="headline-metric"><strong>' + test.completed + '</strong><span>завершили тест</span></div><div class="headline-metric"><strong>' + test.group_joined + '</strong><span>вступили в группу</span></div></div></header><div class="journey">' + stepHtml + filterNote + note + observedNote + '</div><div class="breakdowns">' + renderBreakdown("Источники", test.sources) + renderBreakdown("Кампании", test.campaigns) + '</div></article>';
+        return '<article class="funnel-card funnel-card--' + code + '" data-card="' + code + '"' + (code !== activeTest ? ' hidden' : '') + '><header class="funnel-head"><p class="funnel-kicker">Воронка ' + code.toUpperCase() + '</p><h2>' + escapeHtml(test.label) + '</h2><div class="headline-metrics"><div class="headline-metric"><strong>' + test.landing_visits + '</strong><span>сессий</span></div><div class="headline-metric"><strong>' + test.completed + '</strong><span>завершили тест</span></div><div class="headline-metric"><strong>' + test.group_joined + '</strong><span>вступили в группу</span></div></div></header><div class="journey">' + stepHtml + filterNote + note + observedNote + '</div>' + renderResultFunnel(test) + '<div class="breakdowns">' + renderBreakdown("Источники", test.sources) + renderBreakdown("Кампании", test.campaigns) + '</div></article>';
       }
       function renderReconciliation(test) {
         var rows = test.events.map(function (event) {
@@ -430,11 +461,30 @@ export const RELATIONSHIP_DASHBOARD_PAGE = String.raw`<!doctype html>
       }
       function exportCsv() {
         if (!currentData) return;
-        var rows = [["Воронка","Этап","Количество","Час UTC","Для Meta","fbc","IP+UA","Ответ Graph API"]];
-        currentData.tests.forEach(function (test) { stepsFor(test).forEach(function (step) { rows.push([test.label, step.label, step.count]); }); });
+        var rows = [["Воронка","Этап","Количество","Конверсия от предыдущего","Час UTC","Для Meta","fbc","IP+UA","Ответ Graph API"]];
+        currentData.tests.forEach(function (test) {
+          var previous = null;
+          stepsFor(test).forEach(function (step) {
+            rows.push([test.label, step.label, step.count, previous == null ? "100%" : percent(step.count, previous)]);
+            previous = step.count;
+          });
+          (test.result_versions || []).forEach(function (version) {
+            var resultSteps = [{ label: "Завершили тест", count: version.completed }];
+            (version.screens || []).slice().sort(function (left, right) { return left.screen_index - right.screen_index; }).forEach(function (screen) {
+              resultSteps.push({ label: "Экран " + (screen.screen_index + 1), count: screen.viewed });
+            });
+            resultSteps.push({ label: "Увидели предложение", count: version.cta_shown });
+            resultSteps.push({ label: "Нажали CTA", count: version.cta_clicked });
+            var previousResult = null;
+            resultSteps.forEach(function (step) {
+              rows.push([test.label, "Результат v" + version.test_version + " · " + step.label, step.count, previousResult == null ? "100%" : percent(step.count, previousResult)]);
+              previousResult = step.count;
+            });
+          });
+        });
         (currentData.period_events || []).forEach(function (test) { test.events.forEach(function (event) {
-          rows.push([test.label, event.meta_event_name, event.internal_events, "", event.meta_eligible, event.with_fbc + " всего; " + event.distinct_fbc + " уник.; " + event.valid_fbc + " валид.", event.with_ip_user_agent, event.sent]);
-          (event.hours || []).forEach(function (hour) { rows.push([test.label, event.meta_event_name + " — почасово", hour.internal_events, new Date(hour.hour_start * 1000).toISOString(), hour.meta_eligible, hour.with_fbc, "", hour.sent]); });
+          rows.push([test.label, event.meta_event_name, event.internal_events, "", "", event.meta_eligible, event.with_fbc + " всего; " + event.distinct_fbc + " уник.; " + event.valid_fbc + " валид.", event.with_ip_user_agent, event.sent]);
+          (event.hours || []).forEach(function (hour) { rows.push([test.label, event.meta_event_name + " — почасово", hour.internal_events, "", new Date(hour.hour_start * 1000).toISOString(), hour.meta_eligible, hour.with_fbc, "", hour.sent]); });
         }); });
         var csv = rows.map(function (row) { return row.map(function (cell) { return '"' + String(cell).replace(/"/g, '""') + '"'; }).join(","); }).join("\r\n");
         var link = document.createElement("a");
