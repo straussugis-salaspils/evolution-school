@@ -94,7 +94,7 @@ a {
   overflow: clip;
   align-items: flex-start;
   background-color: #e9e3d9;
-  background-image: url("/relationship-test/assets/flow-a-hero-mobile.webp");
+  background-image: url("/relationship-test/assets/flow-a-hero-mobile-v2.webp");
   background-position: center bottom;
   background-repeat: no-repeat;
   background-size: 100% auto;
@@ -103,6 +103,10 @@ a {
 body[data-variant="b"] .hero {
   background-color: #24211e;
   background-image: url("/relationship-test/assets/flow-b-hero-mobile.webp");
+}
+
+body[data-variant="a"] .hero {
+  background-position: center calc(100% + 3.25rem);
 }
 
 .hero__inner {
@@ -227,9 +231,8 @@ body[data-variant="b"] .title-accent {
   color: #d98d9a;
 }
 
-body[data-variant="a"] .title-accent--light {
-  color: #fff;
-  text-shadow: 0 1px 1px rgba(38, 61, 50, 0.55), 0 0.12em 0.45em rgba(38, 61, 50, 0.3);
+body[data-variant="a"] .title-accent--a {
+  color: var(--rose);
 }
 
 body[data-variant="b"] .button--primary {
@@ -331,7 +334,7 @@ body[data-variant="b"] .landing-footer p {
   .hero {
     min-height: 90svh;
     align-items: center;
-    background-image: url("/relationship-test/assets/flow-a-hero-desktop.webp");
+    background-image: url("/relationship-test/assets/flow-a-hero-desktop-v2.webp");
     background-position: center center;
     background-size: cover;
   }
@@ -340,15 +343,20 @@ body[data-variant="b"] .landing-footer p {
     background-image: url("/relationship-test/assets/flow-b-hero-desktop.webp");
   }
 
+  body[data-variant="a"] .hero {
+    background-position: center center;
+  }
+
   .hero__inner {
     padding-top: 7rem;
     padding-bottom: 4rem;
   }
 
   .hero__copy {
-    width: 40%;
-    max-width: 32rem;
-    margin-left: auto;
+    width: 47%;
+    max-width: 35rem;
+    margin-right: auto;
+    margin-left: 0;
   }
 
   body[data-variant="b"] .hero__copy {
@@ -388,6 +396,10 @@ body[data-variant="b"] .landing-footer p {
 
   .hero__actions {
     margin-top: 1rem;
+  }
+
+  body[data-variant="a"] .hero {
+    background-position: center calc(100% + 8.25rem);
   }
 }
 
