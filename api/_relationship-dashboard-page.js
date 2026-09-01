@@ -258,6 +258,7 @@ export const RELATIONSHIP_DASHBOARD_PAGE = String.raw`<!doctype html>
       <section class="change-log" aria-labelledby="change-log-title">
         <div class="change-log__head"><div><p>Контрольные точки</p><h2 id="change-log-title">Сделанные изменения</h2></div></div>
         <ol>
+          <li><time datetime="2026-09-01">1 сентября 2026</time><div><strong>Синхронизировали лендинги и Telegram-тесты</strong><p>Выпущены Flow A v6.16 и Flow B v8.6. Заголовки и первые сообщения продолжают обещания рекламных визуалов; уточнены вопросы без изменения пяти сценариев и логики подсчёта. Все десять результатов получили прямую связку с исходным запросом, а финальная кнопка теперь называется «Присоединиться к Неделе лёгкости».</p></div></li>
           <li><time datetime="2026-09-01">1 сентября 2026</time><div><strong>Усилили ключевое слово в заголовке Flow A</strong><p>Слово «отношений» выделено белым цветом с лёгкой контрастной тенью — по тому же принципу, по которому «плохо?» выделено розовым в Flow B.</p></div></li>
           <li><time datetime="2026-09-01">1 сентября 2026</time><div><strong>Уточнили пользу теста и композицию первого экрана</strong><p>В обоих flow термин «сценарий» заменён на прямое обещание: понять, что мешает и что можно изменить. CTA теперь соответствует задаче каждого теста. В Flow B слово «плохо?» выделено розовым акцентом; в десктопном Flow A люди убраны из зоны текста, а героиня отодвинута от логотипа.</p></div></li>
           <li><time datetime="2026-09-01">1 сентября 2026</time><div><strong>Синхронизировали лендинги с лучшими рекламными визуалами</strong><p>Flow A продолжает светлый городской сюжет объявления «Мужчины меняются. До отношений снова не доходит», Flow B — тёмный интерьер и вопрос «В отношениях всё нормально. Почему мне в них плохо?». Для мобильных подготовлены отдельные вертикальные кадры; лишние тексты, видео, список обещаний и ссылка с логотипа убраны. CTA заменён на «Узнать свой сценарий», подсказка про кнопку Start сохранена.</p></div></li>
@@ -274,8 +275,8 @@ export const RELATIONSHIP_DASHBOARD_PAGE = String.raw`<!doctype html>
         </ol>
       </section>
       <div class="test-tabs" role="tablist" aria-label="Выбор воронки">
-        <button class="tab-button" id="tab-a" type="button" role="tab" aria-selected="true" data-test="a">Почему нет отношений?</button>
-        <button class="tab-button" id="tab-b" type="button" role="tab" aria-selected="false" data-test="b">Почему отношения не устраивают?</button>
+        <button class="tab-button" id="tab-a" type="button" role="tab" aria-selected="true" data-test="a">Знакомства не доходят до отношений</button>
+        <button class="tab-button" id="tab-b" type="button" role="tab" aria-selected="false" data-test="b">Почему мне плохо в отношениях?</button>
       </div>
       <section class="funnels" id="funnels" aria-live="polite"><div class="loading" aria-label="Загрузка"></div></section>
     </main>
