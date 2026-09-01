@@ -265,9 +265,15 @@ export const RELATIONSHIP_DASHBOARD_PAGE = String.raw`<!doctype html>
         <div id="meta-mode"></div>
         <div class="reconciliation-grid" id="reconciliation"><div class="loading" aria-label="Загрузка"></div></div>
       </section>
+      <div class="test-tabs" role="tablist" aria-label="Выбор воронки">
+        <button class="tab-button" id="tab-a" type="button" role="tab" aria-selected="true" data-test="a">Знакомства не доходят до отношений</button>
+        <button class="tab-button" id="tab-b" type="button" role="tab" aria-selected="false" data-test="b">Почему мне плохо в отношениях?</button>
+      </div>
+      <section class="funnels" id="funnels" aria-live="polite"><div class="loading" aria-label="Загрузка"></div></section>
       <section class="change-log" aria-labelledby="change-log-title">
         <div class="change-log__head"><div><p>Контрольные точки</p><h2 id="change-log-title">Сделанные изменения</h2></div></div>
         <ol>
+          <li><time datetime="2026-09-02">2 сентября 2026</time><div><strong>Добавили названия экранов и перенесли журнал вниз</strong><p>Поэкранная конверсия актуальных версий теперь показывает не только номер, но и смысл этапа: «Ваш результат», «Как работает этот круг», «Точка изменения» и «Ваш следующий шаг». Названия сохраняются в событии и выгружаются в CSV. История изменений перенесена после всей статистики.</p></div></li>
           <li><time datetime="2026-09-02">2 сентября 2026</time><div><strong>Перевели Flow A на четырёхэкранный результат</strong><p>Выпущен тест A v6.18. Каждый из пяти результатов теперь проходит через четыре коротких шага: персональные сигналы из ответов, повторяющийся круг, конкретный эксперимент и переход к бесплатной «Неделе лёгкости». Семь вопросов, scoring и выбор профиля не менялись; CTA называется «Получить бесплатный доступ».</p></div></li>
           <li><time datetime="2026-09-02">2 сентября 2026</time><div><strong>Провели контрольную сверку обоих тестов и Meta</strong><p>За 1–2 сентября Graph API без ошибок принял 49 TelegramStart, 34 Lead и 5 CompleteRegistration с валидными fbc, IP и User-Agent. Ads Manager атрибутировал одну регистрацию Flow B; Flow A пока без атрибутированной регистрации. Ограничение ошибочной категории Religion остаётся в статусе Pending review. Поэкранный отчёт исправлен: непройденные экраны теперь показываются с нулём, а не исчезают.</p></div></li>
           <li><time datetime="2026-09-02">2 сентября 2026</time><div><strong>Пересобрали результаты Flow B и добавили поэкранную конверсию</strong><p>Результаты теста B сокращены с пяти до четырёх экранов: персональные сигналы из ответов, замкнутый круг, конкретный эксперимент и короткий переход к бесплатной «Неделе лёгкости». Аналитика теперь отдельно показывает конверсию каждого экрана, показ CTA и клик по версиям теста, не смешивая старую и новую архитектуру.</p></div></li>
@@ -290,11 +296,6 @@ export const RELATIONSHIP_DASHBOARD_PAGE = String.raw`<!doctype html>
           <li><time datetime="2026-08-30">30 августа 2026</time><div><strong>Восстановили серверные конверсии Meta</strong><p>Исправлены отправка TelegramStart и подтверждение CompleteRegistration через CAPI, добавлена повторная сверка пропущенных регистраций.</p></div></li>
         </ol>
       </section>
-      <div class="test-tabs" role="tablist" aria-label="Выбор воронки">
-        <button class="tab-button" id="tab-a" type="button" role="tab" aria-selected="true" data-test="a">Знакомства не доходят до отношений</button>
-        <button class="tab-button" id="tab-b" type="button" role="tab" aria-selected="false" data-test="b">Почему мне плохо в отношениях?</button>
-      </div>
-      <section class="funnels" id="funnels" aria-live="polite"><div class="loading" aria-label="Загрузка"></div></section>
     </main>
     <footer>Внутренняя агрегированная статистика · без имён, Telegram ID и индивидуальных ответов</footer>
   </div>
@@ -365,13 +366,20 @@ export const RELATIONSHIP_DASHBOARD_PAGE = String.raw`<!doctype html>
           return '<div class="breakdown-row"><span title="' + escapeHtml(row.label) + '">' + escapeHtml(row.label) + '</span><span>' + row.visits + ' виз.</span><strong>' + row.telegram_started + ' старт.</strong></div>';
         }).join("") + '</div>';
       }
+      function resultScreenLabel(screen) {
+        var position = 'Экран ' + (screen.screen_index + 1);
+        var heading = String(screen.label || '').trim();
+        if (!heading || heading.toLocaleLowerCase('ru-RU') === position.toLocaleLowerCase('ru-RU')) return position;
+        heading = heading.replace(/\s*·\s*\d+\s+ИЗ\s+\d+\s*$/i, '').trim();
+        return position + ' · ' + heading;
+      }
       function renderResultFunnel(test) {
         var versions = (test.result_versions || []).filter(function (version) { return version.completed || (version.screens || []).length; });
         if (!versions.length) return '';
         var content = versions.map(function (version) {
           var steps = [{ label: 'Завершили тест', count: version.completed }];
           (version.screens || []).slice().sort(function (left, right) { return left.screen_index - right.screen_index; }).forEach(function (screen) {
-            steps.push({ label: 'Экран ' + (screen.screen_index + 1), count: screen.viewed });
+            steps.push({ label: resultScreenLabel(screen), count: screen.viewed });
           });
           steps.push({ label: 'Увидели предложение', count: version.cta_shown });
           steps.push({ label: 'Нажали CTA', count: version.cta_clicked });
@@ -473,7 +481,7 @@ export const RELATIONSHIP_DASHBOARD_PAGE = String.raw`<!doctype html>
           (test.result_versions || []).forEach(function (version) {
             var resultSteps = [{ label: "Завершили тест", count: version.completed }];
             (version.screens || []).slice().sort(function (left, right) { return left.screen_index - right.screen_index; }).forEach(function (screen) {
-              resultSteps.push({ label: "Экран " + (screen.screen_index + 1), count: screen.viewed });
+              resultSteps.push({ label: resultScreenLabel(screen), count: screen.viewed });
             });
             resultSteps.push({ label: "Увидели предложение", count: version.cta_shown });
             resultSteps.push({ label: "Нажали CTA", count: version.cta_clicked });
