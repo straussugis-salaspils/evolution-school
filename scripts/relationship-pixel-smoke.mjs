@@ -93,6 +93,10 @@ function runClickSmoke({ query, pathname, landingId }) {
   assert.deepEqual(Array.from(window.fbq.queue[0]), ["init", "944041014863402"]);
   assert.deepEqual(Array.from(window.fbq.queue[1]), ["track", "PageView"]);
   assert.equal(cta.href, "https://t.me/RelationshipArchetypes");
+  assert.equal(cta.textContent, "");
+  assert.equal(elements.get("telegram-cta-label").textContent, "Перейти в Telegram и ПРОЙТИ ТЕСТ");
+  assert.match(elements.get("telegram-next-step").innerHTML, /Telegram-канал/);
+  assert.match(elements.get("telegram-next-step").innerHTML, /Архетипы в Отношениях/);
   assert.equal(fetchCalls.length, 0, "group-first landing must not call attribution API");
 
   let prevented = false;

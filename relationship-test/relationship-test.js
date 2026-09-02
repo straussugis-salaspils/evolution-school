@@ -17,8 +17,8 @@ const variants = {
     title: "В отношениях всё нормально. Почему мне в них плохо?",
     titleHtml: "В отношениях всё нормально.<br>Почему мне в них <span class=\"title-accent\">плохо?</span>",
     lead: "Пройдите бесплатный тест из 7 вопросов и поймите, что именно создаёт дистанцию между вами и что можно изменить.",
-    ctaLabel: "Присоединиться и пройти тест",
-    nextStepHtml: "В канале откройте закреплённый пост и нажмите <strong>«Пройти тест за 3 минуты»</strong>.",
+    ctaLabel: "Перейти в Telegram и ПРОЙТИ ТЕСТ",
+    nextStepHtml: "Откроется Telegram-канал <strong>«Архетипы в Отношениях»</strong>. Тест находится в закреплённом посте.",
     telegramUrl: "https://t.me/RelationshipArchetypes"
   },
   c: {
@@ -28,8 +28,8 @@ const variants = {
     title: "Уйти или остаться?",
     titleHtml: "Уйти<br><span class=\"title-accent\">или остаться?</span>",
     lead: "Ответьте на 7 вопросов и разберитесь, что происходит между вами: отношения исчерпаны или близость ещё можно вернуть.",
-    ctaLabel: "Присоединиться и пройти тест",
-    nextStepHtml: "В канале откройте закреплённый пост и нажмите <strong>«Пройти тест за 3 минуты»</strong>.",
+    ctaLabel: "Перейти в Telegram и ПРОЙТИ ТЕСТ",
+    nextStepHtml: "Откроется Telegram-канал <strong>«Архетипы в Отношениях»</strong>. Тест находится в закреплённом посте.",
     telegramUrl: "https://t.me/RelationshipArchetypes"
   }
 };
