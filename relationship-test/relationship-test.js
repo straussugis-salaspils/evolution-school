@@ -1,3 +1,5 @@
+const META_PIXEL_ID = "944041014863402";
+
 const variants = {
   a: {
     testId: "test_a_no_relationship",
@@ -32,6 +34,28 @@ const variants = {
   }
 };
 
+function initializeMetaPixel() {
+  if (typeof window.fbq === "function") return;
+  const fbq = function (...args) {
+    if (fbq.callMethod) fbq.callMethod(...args);
+    else fbq.queue.push(args);
+  };
+  window.fbq = fbq;
+  window._fbq = fbq;
+  fbq.push = fbq;
+  fbq.loaded = true;
+  fbq.version = "2.0";
+  fbq.queue = [];
+
+  const script = document.createElement("script");
+  script.async = true;
+  script.src = "https://connect.facebook.net/en_US/fbevents.js";
+  document.head.append(script);
+
+  fbq("init", META_PIXEL_ID);
+  fbq("track", "PageView");
+}
+
 function selectedVariant() {
   const requested = new URLSearchParams(window.location.search).get("test");
   const relationshipChallengesPath = window.location.pathname.includes("/relationship-challenges/");
@@ -60,29 +84,40 @@ function applyVariant() {
   links.forEach((link) => {
     link.href = variant.telegramUrl;
   });
-  const attribution = prepareAttribution(variant, links);
+  const groupFirst = variant.funnelVersion === "group_first_v1";
+  const attribution = groupFirst ? Promise.resolve(null) : prepareAttribution(variant, links);
   links.forEach((link) => {
-    link.addEventListener("click", async (event) => {
-      if (variant.funnelVersion === "group_first_v1" && !link.dataset.attributionToken) {
+    link.addEventListener("click", (event) => {
+      if (groupFirst) {
         event.preventDefault();
-        const originalLabel = ctaLabel.textContent;
+        trackMetaGroupJoinClick(variant);
         ctaLabel.textContent = "Открываем Telegram…";
-        const result = await Promise.race([
-          attribution,
-          new Promise((resolve) => window.setTimeout(() => resolve(null), 5500))
-        ]);
-        const token = result?.token;
-        if (token) recordLandingCtaClick(variant, token);
-        window.location.assign(result?.telegram_url || variant.telegramUrl);
-        window.setTimeout(() => {
-          ctaLabel.textContent = originalLabel;
-        }, 1500);
+        window.setTimeout(() => window.location.assign(variant.telegramUrl), 220);
         return;
       }
       const token = link.dataset.attributionToken;
       if (token) recordLandingCtaClick(variant, token);
     });
   });
+}
+
+function trackMetaGroupJoinClick(variant) {
+  if (typeof window.fbq !== "function") return false;
+  const sessionId = landingSessionId(variant.testId, variant.landingId);
+  const eventId = `group_join_click_${variant.landingId}_${sessionId || Date.now()}`;
+  window.fbq(
+    "track",
+    "CompleteRegistration",
+    {
+      content_name: "Telegram channel join click",
+      content_category: "relationship_test",
+      landing_id: variant.landingId,
+      funnel_version: variant.funnelVersion,
+      status: true
+    },
+    { eventID: eventId }
+  );
+  return true;
 }
 
 function metaAttributionPayload(variant) {
@@ -176,4 +211,5 @@ function recordLandingCtaClick(variant, token) {
   }).catch(() => {});
 }
 
+initializeMetaPixel();
 applyVariant();

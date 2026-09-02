@@ -11,7 +11,7 @@
     "lint": "node scripts/js-syntax-check.mjs",
     "typecheck": "node scripts/typecheck.mjs",
     "build": "npm run analytics:write && node scripts/seo-audit.mjs && node scripts/seo-graph-audit.mjs && node scripts/analytics-audit.mjs",
-    "test": "node scripts/seo-audit.mjs && node scripts/seo-graph-audit.mjs && node scripts/analytics-audit.mjs",
+    "test": "node scripts/seo-audit.mjs && node scripts/seo-graph-audit.mjs && node scripts/analytics-audit.mjs && node scripts/relationship-pixel-smoke.mjs",
     "seo:audit": "node scripts/seo-audit.mjs",
     "seo:graph": "node scripts/seo-graph-audit.mjs",
     "seo:graph:write": "node scripts/seo-graph-audit.mjs --write",
