@@ -1,6 +1,32 @@
 <!doctype html>
 <html lang="ru">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11049454372"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-11049454372');
+
+    function gtag_report_conversion(url) {
+      var navigated = false;
+      var callback = function () {
+        if (navigated) return;
+        navigated = true;
+        if (typeof url !== 'undefined') {
+          window.location = url;
+        }
+      };
+      gtag('event', 'conversion', {
+        'send_to': 'AW-11049454372/2-zbCNPu3-wcEKSW5ZQp',
+        'event_callback': callback,
+        'event_timeout': 1200
+      });
+      window.setTimeout(callback, 1300);
+      return false;
+    }
+  </script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Знакомства начинаются. Но до отношений снова не доходит? — тест Evolution House</title>

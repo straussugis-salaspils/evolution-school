@@ -92,13 +92,24 @@ function applyVariant() {
         event.preventDefault();
         trackMetaGroupJoinClick(variant);
         ctaLabel.textContent = "Открываем Telegram…";
-        window.setTimeout(() => window.location.assign(variant.telegramUrl), 220);
+        navigateWithGoogleConversion(variant.telegramUrl);
         return;
       }
       const token = link.dataset.attributionToken;
       if (token) recordLandingCtaClick(variant, token);
+      event.preventDefault();
+      ctaLabel.textContent = "Открываем Telegram…";
+      navigateWithGoogleConversion(link.href);
     });
   });
+}
+
+function navigateWithGoogleConversion(url) {
+  if (typeof window.gtag_report_conversion === "function") {
+    window.gtag_report_conversion(url);
+    return;
+  }
+  window.location.assign(url);
 }
 
 function trackMetaGroupJoinClick(variant) {

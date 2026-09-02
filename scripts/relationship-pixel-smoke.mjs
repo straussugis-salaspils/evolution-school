@@ -6,11 +6,20 @@ const source = fs.readFileSync(
   new URL("../relationship-test/relationship-test.js", import.meta.url),
   "utf8",
 );
+const html = fs.readFileSync(
+  new URL("../relationship-test/index.html", import.meta.url),
+  "utf8",
+);
+
+assert.match(html, /googletagmanager\.com\/gtag\/js\?id=AW-11049454372/);
+assert.match(html, /gtag\('config', 'AW-11049454372'\)/);
+assert.match(html, /AW-11049454372\/2-zbCNPu3-wcEKSW5ZQp/);
 
 function runClickSmoke({ query, pathname, landingId }) {
   const elements = new Map();
   const timers = [];
   const fetchCalls = [];
+  const googleConversions = [];
   let assignedUrl = null;
 
   function element(id) {
@@ -60,6 +69,11 @@ function runClickSmoke({ query, pathname, landingId }) {
       timers.push({ callback, delay });
       return timers.length;
     },
+    gtag_report_conversion(url) {
+      googleConversions.push(url);
+      assignedUrl = url;
+      return false;
+    },
   };
   const context = {
     console,
@@ -91,9 +105,8 @@ function runClickSmoke({ query, pathname, landingId }) {
   assert.equal(conversion[2].landing_id, landingId);
   assert.equal(conversion[2].funnel_version, "group_first_v1");
   assert.match(conversion[3].eventID, new RegExp(`^group_join_click_${landingId}_`));
-  assert.equal(timers.length, 1);
-  assert.equal(timers[0].delay, 220);
-  timers[0].callback();
+  assert.deepEqual(googleConversions, ["https://t.me/RelationshipArchetypes"]);
+  assert.equal(timers.length, 0);
   assert.equal(assignedUrl, "https://t.me/RelationshipArchetypes");
 }
 
@@ -108,4 +121,4 @@ runClickSmoke({
   landingId: "stay_or_leave",
 });
 
-console.log("Relationship Meta Pixel smoke: 2 landing variants passed.");
+console.log("Relationship Meta Pixel and Google Ads smoke: 2 landing variants passed.");
