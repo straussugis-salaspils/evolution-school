@@ -5,30 +5,48 @@ const variants = {
     titleHtml: "Знакомства начинаются.<br>Но до отношений <span class=\"title-accent title-accent--a\">снова не доходит?</span>",
     lead: "Ответьте на 7 вопросов — и за 3 минуты поймёте, в какой момент всё останавливается и что можно изменить.",
     ctaLabel: "Начать тест и понять, что мешает",
+    nextStepHtml: "В Telegram нажмите <strong>«Запустить» (Start)</strong> — и тест начнётся.",
     telegramUrl: "https://t.me/RelationshipScenarioBot?start=no_relationship_landing_a"
   },
   b: {
     testId: "test_b_relationship_challenges",
+    landingId: "relationship_challenges",
+    funnelVersion: "group_first_v1",
     title: "В отношениях всё нормально. Почему мне в них плохо?",
     titleHtml: "В отношениях всё нормально.<br>Почему мне в них <span class=\"title-accent\">плохо?</span>",
-    lead: "Ответьте на 7 вопросов — и за 3 минуты поймёте, что создаёт дистанцию между вами и что можно изменить.",
-    ctaLabel: "Начать тест и понять, что происходит",
-    telegramUrl: "https://t.me/RelationshipScenarioBot?start=relationship_challenges_landing_b"
+    lead: "Пройдите бесплатный тест из 7 вопросов и поймите, что именно создаёт дистанцию между вами и что можно изменить.",
+    ctaLabel: "Присоединиться и пройти тест",
+    nextStepHtml: "В канале откройте закреплённый пост и нажмите <strong>«Пройти тест за 3 минуты»</strong>.",
+    telegramUrl: "https://t.me/RelationshipArchetypes"
+  },
+  c: {
+    testId: "test_b_relationship_challenges",
+    landingId: "stay_or_leave",
+    funnelVersion: "group_first_v1",
+    title: "Уйти или остаться?",
+    titleHtml: "Уйти<br><span class=\"title-accent\">или остаться?</span>",
+    lead: "Ответьте на 7 вопросов и разберитесь, что происходит между вами: отношения исчерпаны или близость ещё можно вернуть.",
+    ctaLabel: "Присоединиться и пройти тест",
+    nextStepHtml: "В канале откройте закреплённый пост и нажмите <strong>«Пройти тест за 3 минуты»</strong>.",
+    telegramUrl: "https://t.me/RelationshipArchetypes"
   }
 };
 
 function selectedVariant() {
   const requested = new URLSearchParams(window.location.search).get("test");
   const relationshipChallengesPath = window.location.pathname.includes("/relationship-challenges/");
+  const stayOrLeavePath = window.location.pathname.includes("/stay-or-leave/");
+  if (requested === "c" || stayOrLeavePath) return variants.c;
   return requested === "b" || relationshipChallengesPath ? variants.b : variants.a;
 }
 
 function applyVariant() {
   const variant = selectedVariant();
-  const variantId = variant === variants.b ? "b" : "a";
+  const variantId = variant === variants.c ? "c" : variant === variants.b ? "b" : "a";
   const title = document.getElementById("hero-title");
   const lead = document.getElementById("hero-lead");
   const ctaLabel = document.getElementById("telegram-cta-label");
+  const nextStep = document.getElementById("telegram-next-step");
   const links = [
     document.getElementById("telegram-cta")
   ];
@@ -36,6 +54,7 @@ function applyVariant() {
   title.innerHTML = variant.titleHtml;
   lead.textContent = variant.lead;
   ctaLabel.textContent = variant.ctaLabel;
+  nextStep.innerHTML = variant.nextStepHtml;
   document.body.dataset.variant = variantId;
   document.title = `${variant.title} — тест Evolution House`;
   links.forEach((link) => {
@@ -43,12 +62,27 @@ function applyVariant() {
   });
   const attribution = prepareAttribution(variant, links);
   links.forEach((link) => {
-    link.addEventListener("click", () => {
+    link.addEventListener("click", async (event) => {
+      if (variant.funnelVersion === "group_first_v1" && !link.dataset.attributionToken) {
+        event.preventDefault();
+        const originalLabel = ctaLabel.textContent;
+        ctaLabel.textContent = "Открываем Telegram…";
+        const result = await Promise.race([
+          attribution,
+          new Promise((resolve) => window.setTimeout(() => resolve(null), 5500))
+        ]);
+        const token = result?.token;
+        if (token) recordLandingCtaClick(variant, token);
+        window.location.assign(result?.telegram_url || variant.telegramUrl);
+        window.setTimeout(() => {
+          ctaLabel.textContent = originalLabel;
+        }, 1500);
+        return;
+      }
       const token = link.dataset.attributionToken;
       if (token) recordLandingCtaClick(variant, token);
     });
   });
-  void attribution;
 }
 
 function metaAttributionPayload(variant) {
@@ -69,13 +103,15 @@ function metaAttributionPayload(variant) {
     adset_name: params.get("adset_name"),
     ad_name: params.get("ad_name"),
     placement: params.get("placement"),
-    landing_session_id: landingSessionId(variant.testId),
+    landing_session_id: landingSessionId(variant.testId, variant.landingId),
+    landing_id: variant.landingId || "no_relationship",
+    funnel_version: variant.funnelVersion || "bot_first_v1",
     referrer_host: referrerHost()
   };
 }
 
-function landingSessionId(testId) {
-  const key = `eh_relationship_landing:${testId}`;
+function landingSessionId(testId, landingId) {
+  const key = `eh_relationship_landing:${testId}:${landingId || "default"}`;
   try {
     const existing = window.sessionStorage.getItem(key);
     if (existing) return existing;

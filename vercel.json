@@ -11,15 +11,26 @@
     },
     "api/relationship-funnel-dashboard.js": {
       "maxDuration": 15
+    },
+    "api/relationship-funnel-v2-dashboard.js": {
+      "maxDuration": 15
     }
   },
   "rewrites": [
+    {
+      "source": "/18-18-18/relationship-funnel-v2/",
+      "destination": "/api/relationship-funnel-v2-dashboard"
+    },
     {
       "source": "/18-18-18/relationship-funnel/",
       "destination": "/api/relationship-funnel-dashboard"
     },
     {
       "source": "/relationship-test/relationship-challenges/",
+      "destination": "/relationship-test/"
+    },
+    {
+      "source": "/relationship-test/stay-or-leave/",
       "destination": "/relationship-test/"
     }
   ],

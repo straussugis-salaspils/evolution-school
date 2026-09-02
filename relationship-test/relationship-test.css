@@ -100,7 +100,8 @@ a {
   background-size: 100% auto;
 }
 
-body[data-variant="b"] .hero {
+body[data-variant="b"] .hero,
+body[data-variant="c"] .hero {
   background-color: #24211e;
   background-image: url("/relationship-test/assets/flow-b-hero-mobile.webp");
 }
@@ -213,21 +214,27 @@ h1 {
   font-weight: 600;
 }
 
-body[data-variant="b"] .brand img {
+body[data-variant="b"] .brand img,
+body[data-variant="c"] .brand img {
   filter: brightness(0) invert(1);
 }
 
-body[data-variant="b"] .eyebrow {
+body[data-variant="b"] .eyebrow,
+body[data-variant="c"] .eyebrow {
   color: #d5a0a8;
 }
 
 body[data-variant="b"] h1,
 body[data-variant="b"] .hero__lead,
-body[data-variant="b"] .telegram-start-note {
+body[data-variant="b"] .telegram-start-note,
+body[data-variant="c"] h1,
+body[data-variant="c"] .hero__lead,
+body[data-variant="c"] .telegram-start-note {
   color: #f8f4ed;
 }
 
-body[data-variant="b"] .title-accent {
+body[data-variant="b"] .title-accent,
+body[data-variant="c"] .title-accent {
   color: #d98d9a;
 }
 
@@ -235,12 +242,14 @@ body[data-variant="a"] .title-accent--a {
   color: var(--rose);
 }
 
-body[data-variant="b"] .button--primary {
+body[data-variant="b"] .button--primary,
+body[data-variant="c"] .button--primary {
   background: var(--rose);
   box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.28);
 }
 
-body[data-variant="b"] .button--primary:hover {
+body[data-variant="b"] .button--primary:hover,
+body[data-variant="c"] .button--primary:hover {
   background: var(--rose-hover);
   box-shadow: 0 1rem 2.3rem rgba(0, 0, 0, 0.34);
 }
@@ -266,12 +275,14 @@ body[data-variant="b"] .button--primary:hover {
   color: var(--rose-hover);
 }
 
-body[data-variant="b"] .landing-footer {
+body[data-variant="b"] .landing-footer,
+body[data-variant="c"] .landing-footer {
   border-color: rgba(255, 255, 255, 0.1);
   background: #1e1b19;
 }
 
-body[data-variant="b"] .landing-footer p {
+body[data-variant="b"] .landing-footer p,
+body[data-variant="c"] .landing-footer p {
   color: #b7ada6;
 }
 
@@ -339,7 +350,8 @@ body[data-variant="b"] .landing-footer p {
     background-size: cover;
   }
 
-  body[data-variant="b"] .hero {
+  body[data-variant="b"] .hero,
+  body[data-variant="c"] .hero {
     background-image: url("/relationship-test/assets/flow-b-hero-desktop.webp");
   }
 
@@ -359,7 +371,8 @@ body[data-variant="b"] .landing-footer p {
     margin-left: 0;
   }
 
-  body[data-variant="b"] .hero__copy {
+  body[data-variant="b"] .hero__copy,
+  body[data-variant="c"] .hero__copy {
     width: 47%;
     max-width: 35rem;
     margin-right: auto;
@@ -370,7 +383,8 @@ body[data-variant="b"] .landing-footer p {
     font-size: clamp(3.1rem, 4vw, 4rem);
   }
 
-  body[data-variant="b"] h1 {
+  body[data-variant="b"] h1,
+  body[data-variant="c"] h1 {
     max-width: 13ch;
     font-size: clamp(3rem, 4vw, 4rem);
   }
