@@ -39,11 +39,16 @@ export default async function handler(request, response) {
   response.setHeader("Cache-Control", "private, no-store, max-age=0");
   response.setHeader("X-Robots-Tag", "noindex, nofollow, noarchive");
   response.setHeader("X-Frame-Options", "DENY");
+  response.setHeader("Referrer-Policy", "no-referrer");
   if (!authenticated(request)) {
     response.setHeader("WWW-Authenticate", 'Basic realm="Evolution House analytics", charset="UTF-8"');
     return response.status(401).send("Authentication required.");
   }
   if (String(request.query.data || "") !== "1") {
+    response.setHeader(
+      "Content-Security-Policy",
+      "default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; connect-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'self'; frame-ancestors 'none'"
+    );
     response.setHeader("Content-Type", "text/html; charset=utf-8");
     return response.status(200).send(RELATIONSHIP_FUNNEL_V2_PAGE);
   }
