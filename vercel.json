@@ -18,7 +18,7 @@
   },
   "rewrites": [
     {
-      "source": "/18-18-18/relationship-funnel-v2/",
+      "source": "/18-18-18/relationship-statistics/",
       "destination": "/api/relationship-funnel-v2-dashboard"
     },
     {
@@ -33,7 +33,12 @@
   "redirects": [
     {
       "source": "/18-18-18/relationship-funnel/",
-      "destination": "/18-18-18/relationship-funnel-v2/",
+      "destination": "/18-18-18/relationship-statistics/",
+      "permanent": true
+    },
+    {
+      "source": "/18-18-18/relationship-funnel-v2/",
+      "destination": "/18-18-18/relationship-statistics/",
       "permanent": true
     },
     {
