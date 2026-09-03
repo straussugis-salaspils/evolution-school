@@ -41,7 +41,11 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
     th { background: #ecefe9; color: var(--muted); font-size: .72rem; line-height: 1.25; }
     th:first-child, td:first-child { width: 14rem; }
     tbody tr:last-child td { border-bottom: 0; }
+    .total-row { background: #fbfcfa; }
+    .total-row:not(:first-child) td { border-top: 2px solid var(--forest); }
+    .source-row td { padding-top: .68rem; padding-bottom: .68rem; }
     .idea { color: var(--forest-deep); font-weight: 800; }
+    .source { display: inline-block; padding-left: 1rem; color: var(--muted); font-size: .82rem; font-weight: 700; }
     .metric strong { display: block; color: var(--forest-deep); font: 1.55rem/1 Georgia,"Times New Roman",serif; }
     .metric span { display: block; margin-top: .35rem; color: var(--muted); font-size: .72rem; }
     .metric .weak { color: var(--danger); font-weight: 700; }
@@ -64,6 +68,8 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
       thead { display: none; }
       tbody { display: grid; gap: .8rem; }
       tr { overflow: hidden; border: 1px solid var(--line); border-radius: .5rem; background: var(--paper); }
+      .total-row:not(:first-child) td { border-top: 0; }
+      .source-row { margin-left: 1rem; }
       td { display: grid; grid-template-columns: minmax(8rem,1fr) auto; gap: .8rem; align-items: center; padding: .72rem .8rem; }
       td::before { content: attr(data-label); color: var(--muted); font-size: .75rem; }
       td:first-child { display: block; width: auto; background: #ecefe9; }
@@ -84,7 +90,7 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
       <section class="heading">
         <div>
           <h1>Воронка отношений</h1>
-          <p class="subtitle">Сегодня, две рекламные идеи и пять основных шагов.</p>
+          <p class="subtitle">Сегодня: общий результат, Facebook / Instagram и YouTube.</p>
         </div>
         <button class="refresh" id="refresh" type="button">Обновить</button>
       </section>
@@ -94,6 +100,7 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
         <h2 id="change-log-title">Сделанные изменения</h2>
         <p>Краткая история изменений воронки и отчёта.</p>
         <ol>
+          <li><time datetime="2026-09-03">3 сентября 2026</time><div><strong>Разделили результаты по источникам</strong><p>Под итогом каждой рекламной идеи отдельно показаны Facebook / Instagram и YouTube.</p></div></li>
           <li><time datetime="2026-09-03">3 сентября 2026</time><div><strong>Упростили статистику до пяти шагов</strong><p>На одном экране показаны две рекламные идеи: лендинг, переход в Telegram, вступление, начало и завершение теста.</p></div></li>
           <li><time datetime="2026-09-03">3 сентября 2026</time><div><strong>Разделили рекламу по двум идеям</strong><p>«Уйти или остаться» и «Почему мне плохо» получили отдельные тексты и отдельные лендинги.</p></div></li>
           <li><time datetime="2026-09-02">2 сентября 2026</time><div><strong>Запустили воронку «Сначала канал»</strong><p>Путь: рекламный лендинг → Telegram-канал → закреплённый тест → результат.</p></div></li>
@@ -129,6 +136,12 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
       }
       function formatTime(value) { return new Intl.DateTimeFormat("ru-RU",{timeZone:"Europe/Riga",hour:"2-digit",minute:"2-digit"}).format(new Date(value)); }
       function mapSteps(funnel) { var result = {}; (funnel || []).forEach(function (step) { result[step.key] = step; }); return result; }
+      function normalizeSource(value) {
+        var source = String(value || "").toLowerCase();
+        if (["meta","facebook","instagram","fb","ig","paid_social"].indexOf(source) >= 0) return "meta";
+        if (source.indexOf("youtube") >= 0 || source === "google" || source === "google_ads") return "youtube";
+        return source;
+      }
       function metric(step, index) {
         var conversion = index ? Number(step.from_previous_percent || 0) : null;
         var conversionClass = conversion !== null && conversion < 60 ? "weak" : "";
@@ -137,9 +150,17 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
       function render(data) {
         var rowsByLanding = {};
         (data.by_landing || []).forEach(function (row) { rowsByLanding[row.landing_id] = mapSteps(row.funnel); });
+        var rowsByLandingSource = {};
+        (data.by_landing_source || []).forEach(function (row) {
+          rowsByLandingSource[row.landing_id + ":" + normalizeSource(row.source)] = mapSteps(row.funnel);
+        });
+        function row(label, values, className, isIdea) {
+          return '<tr class="' + className + '"><td><span class="' + (isIdea ? "idea" : "source") + '">' + escapeHtml(label) + '</span></td>' + steps.map(function (definition,index) { return metric(values[definition[0]] || {count:0,from_previous_percent:0},index); }).join("") + '</tr>';
+        }
         var rows = ideas.map(function (idea) {
-          var values = rowsByLanding[idea[0]] || {};
-          return '<tr><td><span class="idea">' + escapeHtml(idea[1]) + '</span></td>' + steps.map(function (definition,index) { return metric(values[definition[0]] || {count:0,from_previous_percent:0},index); }).join("") + '</tr>';
+          return row(idea[1], rowsByLanding[idea[0]] || {}, "total-row", true)
+            + row("Facebook / Instagram", rowsByLandingSource[idea[0] + ":meta"] || {}, "source-row", false)
+            + row("YouTube", rowsByLandingSource[idea[0] + ":youtube"] || {}, "source-row", false);
         }).join("");
         dashboard.innerHTML = '<div class="table-wrap"><table><thead><tr><th>Рекламная идея</th>' + steps.map(function (step) { return '<th>' + escapeHtml(step[1]) + '</th>'; }).join("") + '</tr></thead><tbody>' + rows + '</tbody></table></div>';
       }
