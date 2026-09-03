@@ -25,9 +25,10 @@ const variants = {
     testId: "test_b_relationship_challenges",
     landingId: "stay_or_leave",
     funnelVersion: "group_first_v1",
-    title: "Уйти или остаться?",
-    titleHtml: "Уйти<br><span class=\"title-accent\">или остаться?</span>",
-    lead: "Ответьте на 7 вопросов и разберитесь, что происходит между вами: отношения исчерпаны или близость ещё можно вернуть.",
+    eyebrowHtml: "Бесплатный тест об отношениях <span aria-hidden=\"true\">·</span> 7 вопросов",
+    title: "Уйти или остаться в этих отношениях?",
+    titleHtml: "Уйти или остаться<br><span class=\"title-accent\">в этих отношениях?</span>",
+    lead: "Когда в отношениях всё чаще больно, холодно или одиноко, трудно понять: это кризис, который можно пройти, или связь уже исчерпана. Ответьте на 7 вопросов и увидьте ситуацию яснее.",
     ctaLabel: "Перейти в Telegram и ПРОЙТИ ТЕСТ",
     nextStepHtml: "Откроется Telegram-канал <strong>«Архетипы в Отношениях»</strong>. Тест находится в закреплённом посте.",
     telegramUrl: "https://t.me/RelationshipArchetypes"
@@ -68,6 +69,7 @@ function applyVariant() {
   const variant = selectedVariant();
   const variantId = variant === variants.c ? "c" : variant === variants.b ? "b" : "a";
   const title = document.getElementById("hero-title");
+  const eyebrow = document.getElementById("hero-eyebrow");
   const lead = document.getElementById("hero-lead");
   const ctaLabel = document.getElementById("telegram-cta-label");
   const nextStep = document.getElementById("telegram-next-step");
@@ -76,6 +78,7 @@ function applyVariant() {
   ];
 
   title.innerHTML = variant.titleHtml;
+  if (variant.eyebrowHtml && eyebrow) eyebrow.innerHTML = variant.eyebrowHtml;
   lead.textContent = variant.lead;
   ctaLabel.textContent = variant.ctaLabel;
   nextStep.innerHTML = variant.nextStepHtml;
