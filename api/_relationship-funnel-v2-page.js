@@ -33,6 +33,14 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
     .refresh { min-height: 2.6rem; border: 1px solid var(--forest); border-radius: .45rem; background: var(--forest); color: #fff; padding: .55rem .9rem; cursor: pointer; font-weight: 700; }
     .refresh:hover { background: var(--forest-deep); }
     .refresh:disabled { cursor: wait; opacity: .65; }
+    .filters { display: flex; flex-wrap: wrap; gap: .55rem; align-items: end; margin-bottom: .8rem; padding: .75rem; border: 1px solid var(--line); border-radius: .5rem; background: var(--paper); }
+    .ranges { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .range { min-height: 2.5rem; border: 1px solid var(--line); border-radius: .4rem; background: #fff; color: var(--forest-deep); padding: .5rem .75rem; cursor: pointer; }
+    .range[aria-pressed="true"] { border-color: var(--forest); background: var(--forest); color: #fff; }
+    .date-form { display: flex; flex-wrap: wrap; gap: .4rem; align-items: end; margin-left: auto; }
+    .date-field { display: grid; gap: .18rem; color: var(--muted); font-size: .7rem; font-weight: 700; }
+    .date-field input { min-height: 2.5rem; border: 1px solid var(--line); border-radius: .4rem; background: #fff; color: var(--ink); padding: .45rem .55rem; font: inherit; }
+    .date-submit { min-height: 2.5rem; border: 1px solid var(--forest); border-radius: .4rem; background: #fff; color: var(--forest); padding: .5rem .75rem; cursor: pointer; font-weight: 700; }
     .status { display: flex; flex-wrap: wrap; gap: .35rem 1rem; margin-bottom: 1rem; color: var(--muted); font-size: .8rem; }
     .status strong { color: var(--ink); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: .5rem; background: var(--paper); }
@@ -63,6 +71,9 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
       .shell { padding: .8rem; }
       .heading { align-items: start; padding-top: 1.35rem; }
       h1 { font-size: 1.65rem; }
+      .date-form { width: 100%; margin-left: 0; }
+      .date-field { flex: 1 1 8rem; }
+      .date-field input { width: 100%; }
       .table-wrap { overflow: visible; border: 0; background: transparent; }
       table, tbody, tr, td { display: block; min-width: 0; }
       thead { display: none; }
@@ -94,12 +105,25 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
         </div>
         <button class="refresh" id="refresh" type="button">Обновить</button>
       </section>
+      <section class="filters" aria-label="Выбор периода">
+        <div class="ranges" id="ranges">
+          <button class="range" type="button" data-range="today">Сегодня</button>
+          <button class="range" type="button" data-range="yesterday">Вчера</button>
+          <button class="range" type="button" data-range="7d">7 дней</button>
+        </div>
+        <form class="date-form" id="date-form">
+          <label class="date-field">С<input id="date-from" type="date" required></label>
+          <label class="date-field">По<input id="date-to" type="date" required></label>
+          <button class="date-submit" type="submit">Показать</button>
+        </form>
+      </section>
       <div class="status"><span>Период: <strong id="period">сегодня</strong></span><span id="updated">Загрузка данных...</span></div>
       <div id="dashboard"><div class="loading">Загрузка...</div></div>
       <section class="change-log" aria-labelledby="change-log-title">
         <h2 id="change-log-title">Сделанные изменения</h2>
         <p>Краткая история изменений воронки и отчёта.</p>
         <ol>
+          <li><time datetime="2026-09-03">3 сентября 2026</time><div><strong>Добавили выбор периода</strong><p>Доступны сегодня, вчера, последние 7 дней и произвольный диапазон дат.</p></div></li>
           <li><time datetime="2026-09-03">3 сентября 2026</time><div><strong>Разделили результаты по источникам</strong><p>Под итогом каждой рекламной идеи отдельно показаны Facebook / Instagram и YouTube.</p></div></li>
           <li><time datetime="2026-09-03">3 сентября 2026</time><div><strong>Упростили статистику до пяти шагов</strong><p>На одном экране показаны две рекламные идеи: лендинг, переход в Telegram, вступление, начало и завершение теста.</p></div></li>
           <li><time datetime="2026-09-03">3 сентября 2026</time><div><strong>Разделили рекламу по двум идеям</strong><p>«Уйти или остаться» и «Почему мне плохо» получили отдельные тексты и отдельные лендинги.</p></div></li>
@@ -116,6 +140,10 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
       var updated = document.getElementById("updated");
       var period = document.getElementById("period");
       var refresh = document.getElementById("refresh");
+      var fromInput = document.getElementById("date-from");
+      var toInput = document.getElementById("date-to");
+      var currentFrom = "";
+      var currentTo = "";
       var steps = [
         ["landing", "Посетили лендинг"],
         ["cta", "Нажали кнопку"],
@@ -134,6 +162,13 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
         parts.forEach(function (part) { values[part.type] = part.value; });
         return values.year + "-" + values.month + "-" + values.day;
       }
+      function shiftDate(value, days) {
+        var date = new Date(value + "T12:00:00Z");
+        date.setUTCDate(date.getUTCDate() + days);
+        return date.toISOString().slice(0,10);
+      }
+      function formatDate(value) { return new Intl.DateTimeFormat("ru-RU",{day:"numeric",month:"long",year:"numeric"}).format(new Date(value + "T12:00:00")); }
+      function formatPeriod(dateFrom, dateTo) { return dateFrom === dateTo ? formatDate(dateFrom) : formatDate(dateFrom) + " — " + formatDate(dateTo); }
       function formatTime(value) { return new Intl.DateTimeFormat("ru-RU",{timeZone:"Europe/Riga",hour:"2-digit",minute:"2-digit"}).format(new Date(value)); }
       function mapSteps(funnel) { var result = {}; (funnel || []).forEach(function (step) { result[step.key] = step; }); return result; }
       function normalizeSource(value) {
@@ -164,13 +199,28 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
         }).join("");
         dashboard.innerHTML = '<div class="table-wrap"><table><thead><tr><th>Рекламная идея</th>' + steps.map(function (step) { return '<th>' + escapeHtml(step[1]) + '</th>'; }).join("") + '</tr></thead><tbody>' + rows + '</tbody></table></div>';
       }
-      async function load() {
+      function markRange(kind) {
+        document.querySelectorAll("[data-range]").forEach(function (button) { button.setAttribute("aria-pressed",String(button.dataset.range === kind)); });
+      }
+      function setRange(kind) {
         var today = todayInRiga();
+        var dateFrom = today;
+        var dateTo = today;
+        if (kind === "yesterday") dateFrom = dateTo = shiftDate(today,-1);
+        if (kind === "7d") dateFrom = shiftDate(today,-6);
+        fromInput.value = dateFrom;
+        toInput.value = dateTo;
+        markRange(kind);
+        load(dateFrom,dateTo);
+      }
+      async function load(dateFrom, dateTo) {
+        currentFrom = dateFrom;
+        currentTo = dateTo;
         refresh.disabled = true;
         updated.textContent = "Обновляем...";
-        period.textContent = new Intl.DateTimeFormat("ru-RU",{day:"numeric",month:"long",year:"numeric"}).format(new Date(today + "T12:00:00"));
+        period.textContent = formatPeriod(dateFrom,dateTo);
         try {
-          var response = await fetch(location.pathname + "?data=1&date_from=" + today + "&date_to=" + today,{headers:{Accept:"application/json"},cache:"no-store"});
+          var response = await fetch(location.pathname + "?data=1&date_from=" + dateFrom + "&date_to=" + dateTo,{headers:{Accept:"application/json"},cache:"no-store"});
           if (!response.ok) throw new Error("HTTP " + response.status);
           var data = await response.json();
           render(data);
@@ -182,8 +232,10 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
           refresh.disabled = false;
         }
       }
-      refresh.addEventListener("click",load);
-      load();
+      document.getElementById("ranges").addEventListener("click",function (event) { var button = event.target.closest("[data-range]"); if (button) setRange(button.dataset.range); });
+      document.getElementById("date-form").addEventListener("submit",function (event) { event.preventDefault(); if (!fromInput.value || !toInput.value || fromInput.value > toInput.value) return; markRange(""); load(fromInput.value,toInput.value); });
+      refresh.addEventListener("click",function () { load(currentFrom,currentTo); });
+      setRange("today");
     })();
   </script>
 </body>
