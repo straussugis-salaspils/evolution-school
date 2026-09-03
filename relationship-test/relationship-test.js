@@ -88,20 +88,30 @@ function applyVariant() {
     link.href = variant.telegramUrl;
   });
   const groupFirst = variant.funnelVersion === "group_first_v1";
-  const attribution = groupFirst ? Promise.resolve(null) : prepareAttribution(variant, links);
+  const attribution = prepareAttribution(variant, links);
   links.forEach((link) => {
     link.addEventListener("click", (event) => {
+      event.preventDefault();
       if (groupFirst) {
-        event.preventDefault();
         trackMetaGroupJoinClick(variant);
-        ctaLabel.textContent = "Открываем Telegram…";
-        navigateWithGoogleConversion(variant.telegramUrl);
-        return;
       }
       const token = link.dataset.attributionToken;
-      if (token) recordLandingCtaClick(variant, token);
-      event.preventDefault();
       ctaLabel.textContent = "Открываем Telegram…";
+      if (token) {
+        recordLandingCtaClick(variant, token);
+        navigateWithGoogleConversion(link.href);
+        return;
+      }
+      if (groupFirst) {
+        void Promise.race([
+          attribution,
+          new Promise((resolve) => window.setTimeout(() => resolve(null), 800))
+        ]).then((result) => {
+          if (result?.token) recordLandingCtaClick(variant, result.token);
+          navigateWithGoogleConversion(result?.telegram_url || link.href);
+        });
+        return;
+      }
       navigateWithGoogleConversion(link.href);
     });
   });

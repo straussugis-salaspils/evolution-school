@@ -15,7 +15,7 @@ assert.match(html, /googletagmanager\.com\/gtag\/js\?id=AW-11049454372/);
 assert.match(html, /gtag\('config', 'AW-11049454372'\)/);
 assert.match(html, /AW-11049454372\/2-zbCNPu3-wcEKSW5ZQp/);
 
-function runClickSmoke({ query, pathname, landingId }) {
+async function runClickSmoke({ query, pathname, landingId }) {
   const elements = new Map();
   const timers = [];
   const fetchCalls = [];
@@ -49,6 +49,7 @@ function runClickSmoke({ query, pathname, landingId }) {
     head: { append(node) { this.lastScript = node; } },
     referrer: "",
     title: "",
+    visibilityState: "visible",
     createElement() { return {}; },
     getElementById(id) { return elements.get(id); },
   };
@@ -78,7 +79,21 @@ function runClickSmoke({ query, pathname, landingId }) {
   const context = {
     console,
     document,
-    fetch: (...args) => { fetchCalls.push(args); },
+    fetch: async (...args) => {
+      fetchCalls.push(args);
+      if (String(args[0]).includes("relationship-attribution-click")) {
+        return { ok: true, json: async () => ({ ok: true }) };
+      }
+      return {
+        ok: true,
+        json: async () => ({
+          token: "pixel-smoke-token",
+          telegram_url: "https://t.me/+pixelSmokeInvite",
+          source_code: "meta_pixel-smoke-token",
+          is_meta: true,
+        }),
+      };
+    },
     location: window.location,
     Math,
     Promise,
@@ -88,16 +103,17 @@ function runClickSmoke({ query, pathname, landingId }) {
   };
 
   vm.runInNewContext(source, context, { filename: "relationship-test.js" });
+  await new Promise((resolve) => setTimeout(resolve, 0));
 
   assert.equal(document.head.lastScript.src, "https://connect.facebook.net/en_US/fbevents.js");
   assert.deepEqual(Array.from(window.fbq.queue[0]), ["init", "944041014863402"]);
   assert.deepEqual(Array.from(window.fbq.queue[1]), ["track", "PageView"]);
-  assert.equal(cta.href, "https://t.me/RelationshipArchetypes");
+  assert.equal(cta.href, "https://t.me/+pixelSmokeInvite");
   assert.equal(cta.textContent, "");
   assert.equal(elements.get("telegram-cta-label").textContent, "Перейти в Telegram и ПРОЙТИ ТЕСТ");
   assert.match(elements.get("telegram-next-step").innerHTML, /Telegram-канал/);
   assert.match(elements.get("telegram-next-step").innerHTML, /Архетипы в Отношениях/);
-  assert.equal(fetchCalls.length, 0, "group-first landing must not call attribution API");
+  assert.equal(fetchCalls.length, 1, "group-first landing must create an attributed invite");
 
   let prevented = false;
   cta.listeners.click({ preventDefault() { prevented = true; } });
@@ -109,17 +125,18 @@ function runClickSmoke({ query, pathname, landingId }) {
   assert.equal(conversion[2].landing_id, landingId);
   assert.equal(conversion[2].funnel_version, "group_first_v1");
   assert.match(conversion[3].eventID, new RegExp(`^group_join_click_${landingId}_`));
-  assert.deepEqual(googleConversions, ["https://t.me/RelationshipArchetypes"]);
+  assert.equal(fetchCalls.length, 2, "attributed CTA click must be recorded");
+  assert.deepEqual(googleConversions, ["https://t.me/+pixelSmokeInvite"]);
   assert.equal(timers.length, 0);
-  assert.equal(assignedUrl, "https://t.me/RelationshipArchetypes");
+  assert.equal(assignedUrl, "https://t.me/+pixelSmokeInvite");
 }
 
-runClickSmoke({
+await runClickSmoke({
   query: "?test=b",
   pathname: "/relationship-test/",
   landingId: "relationship_challenges",
 });
-runClickSmoke({
+await runClickSmoke({
   query: "?test=c",
   pathname: "/relationship-test/",
   landingId: "stay_or_leave",

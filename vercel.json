@@ -22,10 +22,6 @@
       "destination": "/api/relationship-funnel-v2-dashboard"
     },
     {
-      "source": "/18-18-18/relationship-funnel/",
-      "destination": "/api/relationship-funnel-dashboard"
-    },
-    {
       "source": "/relationship-test/relationship-challenges/",
       "destination": "/relationship-test/"
     },
@@ -35,6 +31,11 @@
     }
   ],
   "redirects": [
+    {
+      "source": "/18-18-18/relationship-funnel/",
+      "destination": "/18-18-18/relationship-funnel-v2/",
+      "permanent": true
+    },
     {
       "source": "/test-arhetipov/",
       "destination": "/arhetipy.html",
