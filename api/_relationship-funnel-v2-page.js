@@ -62,6 +62,9 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
     .activity { margin-top: 2rem; }
     .activity > p { margin: .3rem 0 .8rem; color: var(--muted); font-size: .82rem; }
     .activity table { min-width: 82rem; }
+    .report-section { margin-bottom: 2rem; }
+    .report-section > p { margin: .3rem 0 .8rem; color: var(--muted); font-size: .82rem; }
+    .meta-table { min-width: 68rem; }
     .change-log { margin-top: 2.5rem; padding: 1.3rem 0; border-top: 1px solid var(--line); }
     .change-log p { margin: .25rem 0 1rem; color: var(--muted); font-size: .82rem; }
     .change-log ol { display: grid; gap: .75rem; margin: 0; padding: 0; list-style: none; }
@@ -121,7 +124,24 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
         </form>
       </section>
       <div class="status"><span>Период: <strong id="period">сегодня</strong></span><span id="updated">Загрузка данных...</span></div>
-      <div id="dashboard"><div class="loading">Загрузка...</div></div>
+      <section class="report-section" id="meta-snapshot">
+        <h2>Meta Ads сегодня</h2>
+        <p>Выгрузка Ads Manager за 3 сентября 2026 года, 20:03 по Риге.</p>
+        <div class="table-wrap">
+          <table class="meta-table">
+            <thead><tr><th>Рекламная идея</th><th>Результаты Meta</th><th>Показы</th><th>Охват</th><th>Клики по ссылке</th><th>Просмотры лендинга</th><th>CTR</th><th>Расход</th><th>Цена результата</th></tr></thead>
+            <tbody>
+              <tr><td><span class="idea">Уйти или остаться</span></td><td data-label="Результаты Meta"><div class="metric"><strong>9</strong></div></td><td data-label="Показы"><div class="metric"><strong>1 586</strong></div></td><td data-label="Охват"><div class="metric"><strong>1 316</strong></div></td><td data-label="Клики по ссылке"><div class="metric"><strong>43</strong></div></td><td data-label="Просмотры лендинга"><div class="metric"><strong>15</strong></div></td><td data-label="CTR"><div class="metric"><strong>2,71%</strong></div></td><td data-label="Расход"><div class="metric"><strong>$16,10</strong></div></td><td data-label="Цена результата"><div class="metric"><strong>$1,79</strong></div></td></tr>
+              <tr><td><span class="idea">Почему мне плохо</span></td><td data-label="Результаты Meta"><div class="metric"><strong>1</strong></div></td><td data-label="Показы"><div class="metric"><strong>983</strong></div></td><td data-label="Охват"><div class="metric"><strong>872</strong></div></td><td data-label="Клики по ссылке"><div class="metric"><strong>14</strong></div></td><td data-label="Просмотры лендинга"><div class="metric"><strong>3</strong></div></td><td data-label="CTR"><div class="metric"><strong>1,42%</strong></div></td><td data-label="Расход"><div class="metric"><strong>$12,04</strong></div></td><td data-label="Цена результата"><div class="metric"><strong>$12,04</strong></div></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <section class="report-section">
+        <h2>Внутренняя воронка</h2>
+        <p>Живые данные сайта и Telegram после восстановления отслеживания.</p>
+        <div id="dashboard"><div class="loading">Загрузка...</div></div>
+      </section>
       <section class="activity" aria-labelledby="activity-title">
         <h2 id="activity-title">Вся активность тестов</h2>
         <p>Все действия внутри Telegram-бота, включая людей без рекламной привязки.</p>
@@ -131,6 +151,7 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
         <h2 id="change-log-title">Сделанные изменения</h2>
         <p>Краткая история изменений воронки и отчёта.</p>
         <ol>
+          <li><time datetime="2026-09-03">3 сентября 2026</time><div><strong>Добавили полный снимок Meta Ads за сегодня</strong><p>Показы, охват, клики, просмотры лендинга, конверсии, расходы и стоимость результата взяты из выгрузки Ads Manager.</p></div></li>
           <li><time datetime="2026-09-03">3 сентября 2026</time><div><strong>Добавили всю активность тестов</strong><p>Отдельно показаны запуски, вопросы и результаты, даже если рекламная привязка посетителя не сохранилась.</p></div></li>
           <li><time datetime="2026-09-03">3 сентября 2026</time><div><strong>Добавили выбор периода</strong><p>Доступны сегодня, вчера, последние 7 дней и произвольный диапазон дат.</p></div></li>
           <li><time datetime="2026-09-03">3 сентября 2026</time><div><strong>Разделили результаты по источникам</strong><p>Под итогом каждой рекламной идеи отдельно показаны Facebook / Instagram и YouTube.</p></div></li>
@@ -147,6 +168,7 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
       "use strict";
       var dashboard = document.getElementById("dashboard");
       var testActivity = document.getElementById("test-activity");
+      var metaSnapshot = document.getElementById("meta-snapshot");
       var updated = document.getElementById("updated");
       var period = document.getElementById("period");
       var refresh = document.getElementById("refresh");
@@ -248,6 +270,7 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
       async function load(dateFrom, dateTo) {
         currentFrom = dateFrom;
         currentTo = dateTo;
+        metaSnapshot.hidden = dateFrom !== "2026-09-03" || dateTo !== "2026-09-03";
         refresh.disabled = true;
         updated.textContent = "Обновляем...";
         period.textContent = formatPeriod(dateFrom,dateTo);
