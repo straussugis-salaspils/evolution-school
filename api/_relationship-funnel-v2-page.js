@@ -59,6 +59,9 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
     .metric .weak { color: var(--danger); font-weight: 700; }
     .error { padding: 1rem; border: 1px solid #e0b7af; border-radius: .5rem; background: #fff4f1; color: var(--danger); }
     .loading { min-height: 10rem; display: grid; place-items: center; color: var(--muted); }
+    .activity { margin-top: 2rem; }
+    .activity > p { margin: .3rem 0 .8rem; color: var(--muted); font-size: .82rem; }
+    .activity table { min-width: 82rem; }
     .change-log { margin-top: 2.5rem; padding: 1.3rem 0; border-top: 1px solid var(--line); }
     .change-log p { margin: .25rem 0 1rem; color: var(--muted); font-size: .82rem; }
     .change-log ol { display: grid; gap: .75rem; margin: 0; padding: 0; list-style: none; }
@@ -119,10 +122,16 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
       </section>
       <div class="status"><span>Период: <strong id="period">сегодня</strong></span><span id="updated">Загрузка данных...</span></div>
       <div id="dashboard"><div class="loading">Загрузка...</div></div>
+      <section class="activity" aria-labelledby="activity-title">
+        <h2 id="activity-title">Вся активность тестов</h2>
+        <p>Все действия внутри Telegram-бота, включая людей без рекламной привязки.</p>
+        <div id="test-activity"><div class="loading">Загрузка...</div></div>
+      </section>
       <section class="change-log" aria-labelledby="change-log-title">
         <h2 id="change-log-title">Сделанные изменения</h2>
         <p>Краткая история изменений воронки и отчёта.</p>
         <ol>
+          <li><time datetime="2026-09-03">3 сентября 2026</time><div><strong>Добавили всю активность тестов</strong><p>Отдельно показаны запуски, вопросы и результаты, даже если рекламная привязка посетителя не сохранилась.</p></div></li>
           <li><time datetime="2026-09-03">3 сентября 2026</time><div><strong>Добавили выбор периода</strong><p>Доступны сегодня, вчера, последние 7 дней и произвольный диапазон дат.</p></div></li>
           <li><time datetime="2026-09-03">3 сентября 2026</time><div><strong>Разделили результаты по источникам</strong><p>Под итогом каждой рекламной идеи отдельно показаны Facebook / Instagram и YouTube.</p></div></li>
           <li><time datetime="2026-09-03">3 сентября 2026</time><div><strong>Упростили статистику до пяти шагов</strong><p>На одном экране показаны две рекламные идеи: лендинг, переход в Telegram, вступление, начало и завершение теста.</p></div></li>
@@ -137,6 +146,7 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
     (function () {
       "use strict";
       var dashboard = document.getElementById("dashboard");
+      var testActivity = document.getElementById("test-activity");
       var updated = document.getElementById("updated");
       var period = document.getElementById("period");
       var refresh = document.getElementById("refresh");
@@ -199,6 +209,28 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
         }).join("");
         dashboard.innerHTML = '<div class="table-wrap"><table><thead><tr><th>Рекламная идея</th>' + steps.map(function (step) { return '<th>' + escapeHtml(step[1]) + '</th>'; }).join("") + '</tr></thead><tbody>' + rows + '</tbody></table></div>';
       }
+      function renderTestActivity(tests) {
+        var activitySteps = ["Начали тест","Вопрос 1","Вопрос 2","Вопрос 3","Вопрос 4","Вопрос 5","Вопрос 6","Вопрос 7","Завершили тест","Результат 1","Результат 2","Результат 3","Результат 4","Вернулись в канал"];
+        var rows = (tests || []).map(function (test) {
+          var questions = {};
+          (test.questions || []).forEach(function (question) { questions[question.question_id] = Number(question.answered || 0); });
+          var screens = {};
+          (test.result_versions || []).forEach(function (version) {
+            (version.screens || []).forEach(function (screen) { screens[screen.screen_index] = Number(screens[screen.screen_index] || 0) + Number(screen.viewed || 0); });
+          });
+          var values = [Number(test.telegram_started || 0)];
+          for (var index = 1; index <= 7; index += 1) values.push(Number(questions["q" + index] || 0));
+          values.push(Number(test.completed || 0));
+          for (var screenIndex = 0; screenIndex < 4; screenIndex += 1) values.push(Number(screens[screenIndex] || 0));
+          values.push(Number(test.registration_cta_clicked || 0));
+          return '<tr><td><span class="idea">' + escapeHtml(test.label || test.test_id) + '</span></td>' + values.map(function (value, valueIndex) { return '<td data-label="' + escapeHtml(activitySteps[valueIndex]) + '"><div class="metric"><strong>' + value + '</strong></div></td>'; }).join("") + '</tr>';
+        }).join("");
+        if (!rows) {
+          testActivity.innerHTML = '<div class="error">Данные тестов за этот период отсутствуют.</div>';
+          return;
+        }
+        testActivity.innerHTML = '<div class="table-wrap"><table><thead><tr><th>Тест</th>' + activitySteps.map(function (label) { return '<th>' + escapeHtml(label) + '</th>'; }).join("") + '</tr></thead><tbody>' + rows + '</tbody></table></div>';
+      }
       function markRange(kind) {
         document.querySelectorAll("[data-range]").forEach(function (button) { button.setAttribute("aria-pressed",String(button.dataset.range === kind)); });
       }
@@ -224,9 +256,11 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
           if (!response.ok) throw new Error("HTTP " + response.status);
           var data = await response.json();
           render(data);
+          renderTestActivity(data.test_activity);
           updated.textContent = "Обновлено в " + formatTime(data.generated_at || new Date().toISOString());
         } catch (error) {
           dashboard.innerHTML = '<div class="error">Не удалось загрузить статистику. Обновите страницу через минуту.</div>';
+          testActivity.innerHTML = '<div class="error">Не удалось загрузить активность тестов.</div>';
           updated.textContent = "Ошибка обновления";
         } finally {
           refresh.disabled = false;
