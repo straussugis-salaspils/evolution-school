@@ -43,6 +43,11 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
     .date-submit { min-height: 2.5rem; border: 1px solid var(--forest); border-radius: .4rem; background: #fff; color: var(--forest); padding: .5rem .75rem; cursor: pointer; font-weight: 700; }
     .status { display: flex; flex-wrap: wrap; gap: .35rem 1rem; margin-bottom: 1rem; color: var(--muted); font-size: .8rem; }
     .status strong { color: var(--ink); }
+    .channel-facts { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); margin-top: .8rem; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .channel-fact { padding: 1rem 0; }
+    .channel-fact + .channel-fact { padding-left: 1.5rem; border-left: 1px solid var(--line); }
+    .channel-fact span { display: block; color: var(--muted); font-size: .76rem; font-weight: 700; }
+    .channel-fact strong { display: block; margin-top: .3rem; color: var(--forest-deep); font: 1.8rem/1 Georgia,"Times New Roman",serif; }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: .5rem; background: var(--paper); }
     table { width: 100%; min-width: 64rem; border-collapse: collapse; }
     th, td { padding: .9rem .8rem; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
@@ -93,6 +98,8 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
       td:first-child::before { display: none; }
       .metric { text-align: right; }
       .metric strong { font-size: 1.3rem; }
+      .channel-facts { grid-template-columns: 1fr; }
+      .channel-fact + .channel-fact { padding-left: 0; border-top: 1px solid var(--line); border-left: 0; }
       .change-log li { grid-template-columns: 1fr; gap: .2rem; }
     }
   </style>
@@ -124,6 +131,14 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
         </form>
       </section>
       <div class="status"><span>Период: <strong id="period">сегодня</strong></span><span id="updated">Загрузка данных...</span></div>
+      <section class="report-section" aria-labelledby="channel-title">
+        <h2 id="channel-title">Telegram-канал</h2>
+        <p>Общие вступления считаются независимо от рекламы. Разбивка по источникам ниже показывает только вступления, связанные с индивидуальной ссылкой.</p>
+        <div class="channel-facts">
+          <div class="channel-fact"><span>Вступили за выбранный период</span><strong id="channel-joined">—</strong></div>
+          <div class="channel-fact"><span>Подписчиков сейчас</span><strong id="channel-subscribers">—</strong></div>
+        </div>
+      </section>
       <section class="report-section" id="meta-snapshot">
         <h2>Meta Ads сегодня</h2>
         <p>Выгрузка Ads Manager за 3 сентября 2026 года, 20:03 по Риге.</p>
@@ -139,7 +154,7 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
       </section>
       <section class="report-section">
         <h2>Внутренняя воронка</h2>
-        <p>Живые данные сайта и Telegram после восстановления отслеживания.</p>
+        <p>Живые данные сайта. Вступления распределяются по рекламе только при переходе по индивидуальной ссылке Telegram.</p>
         <div id="dashboard"><div class="loading">Загрузка...</div></div>
       </section>
       <section class="activity" aria-labelledby="activity-title">
@@ -151,6 +166,7 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
         <h2 id="change-log-title">Сделанные изменения</h2>
         <p>Краткая история изменений воронки и отчёта.</p>
         <ol>
+          <li><time datetime="2026-09-03">3 сентября 2026</time><div><strong>Исправили подсчёт Telegram</strong><p>Добавили фактические вступления в канал, текущее число подписчиков и полную активность тестов без рекламной привязки.</p></div></li>
           <li><time datetime="2026-09-03">3 сентября 2026</time><div><strong>Добавили полный снимок Meta Ads за сегодня</strong><p>Показы, охват, клики, просмотры лендинга, конверсии, расходы и стоимость результата взяты из выгрузки Ads Manager.</p></div></li>
           <li><time datetime="2026-09-03">3 сентября 2026</time><div><strong>Добавили всю активность тестов</strong><p>Отдельно показаны запуски, вопросы и результаты, даже если рекламная привязка посетителя не сохранилась.</p></div></li>
           <li><time datetime="2026-09-03">3 сентября 2026</time><div><strong>Добавили выбор периода</strong><p>Доступны сегодня, вчера, последние 7 дней и произвольный диапазон дат.</p></div></li>
@@ -172,6 +188,8 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
       var updated = document.getElementById("updated");
       var period = document.getElementById("period");
       var refresh = document.getElementById("refresh");
+      var channelJoined = document.getElementById("channel-joined");
+      var channelSubscribers = document.getElementById("channel-subscribers");
       var fromInput = document.getElementById("date-from");
       var toInput = document.getElementById("date-to");
       var currentFrom = "";
@@ -179,7 +197,7 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
       var steps = [
         ["landing", "Посетили лендинг"],
         ["cta", "Нажали кнопку"],
-        ["group_joined", "Вступили в Telegram"],
+        ["group_joined", "Вступили (атрибутировано)"],
         ["test_started", "Начали тест"],
         ["completed", "Завершили тест"]
       ];
@@ -278,6 +296,8 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
           var response = await fetch(location.pathname + "?data=1&date_from=" + dateFrom + "&date_to=" + dateTo,{headers:{Accept:"application/json"},cache:"no-store"});
           if (!response.ok) throw new Error("HTTP " + response.status);
           var data = await response.json();
+          channelJoined.textContent = Number(data.channel_joined_total || 0);
+          channelSubscribers.textContent = data.channel_subscribers_current == null ? "—" : Number(data.channel_subscribers_current);
           render(data);
           renderTestActivity(data.test_activity);
           updated.textContent = "Обновлено в " + formatTime(data.generated_at || new Date().toISOString());
