@@ -1,31 +1,4 @@
-import { createHash, timingSafeEqual } from "node:crypto";
-
 import { RELATIONSHIP_FUNNEL_V2_PAGE } from "./_relationship-funnel-v2-page.js";
-
-const DEFAULT_USERNAME = "ugis";
-const DEFAULT_PASSWORD_SHA256 = "e7a32e016a43ba2450f4527cc036c2dfe539e67178396582d1461c5fb45bf295";
-
-function sameSecret(left, right) {
-  const a = Buffer.from(String(left || ""));
-  const b = Buffer.from(String(right || ""));
-  return a.length === b.length && timingSafeEqual(a, b);
-}
-
-function authenticated(request) {
-  const header = String(request.headers.authorization || "");
-  if (!header.startsWith("Basic ")) return false;
-  const decoded = Buffer.from(header.slice(6), "base64").toString("utf8");
-  const separator = decoded.indexOf(":");
-  if (separator < 0) return false;
-  const username = decoded.slice(0, separator);
-  const password = decoded.slice(separator + 1);
-  const configuredUsername = process.env.RELATIONSHIP_DASHBOARD_USERNAME || DEFAULT_USERNAME;
-  const configuredPassword = process.env.RELATIONSHIP_DASHBOARD_PASSWORD;
-  const passwordMatches = configuredPassword
-    ? sameSecret(password, configuredPassword)
-    : sameSecret(createHash("sha256").update(password).digest("hex"), DEFAULT_PASSWORD_SHA256);
-  return sameSecret(username, configuredUsername) && passwordMatches;
-}
 
 function backendUrl() {
   const attributionUrl = process.env.RELATIONSHIP_ATTRIBUTION_BACKEND_URL;
@@ -40,10 +13,6 @@ export default async function handler(request, response) {
   response.setHeader("X-Robots-Tag", "noindex, nofollow, noarchive");
   response.setHeader("X-Frame-Options", "DENY");
   response.setHeader("Referrer-Policy", "no-referrer");
-  if (!authenticated(request)) {
-    response.setHeader("WWW-Authenticate", 'Basic realm="Evolution House analytics", charset="UTF-8"');
-    return response.status(401).send("Authentication required.");
-  }
   if (String(request.query.data || "") !== "1") {
     response.setHeader(
       "Content-Security-Policy",
