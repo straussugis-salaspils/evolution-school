@@ -84,9 +84,17 @@ vm.runInNewContext(script, context, { filename: "relationship-funnel-v2-dashboar
 await new Promise((resolve) => setImmediate(resolve));
 
 const html = elements.get("dashboard").innerHTML;
-const relationshipSection = html.slice(html.indexOf("Почему мне плохо"));
-assert.match(relationshipSection, /Почему мне плохо[\s\S]*?<strong>110<\/strong>/);
-assert.match(relationshipSection, /Facebook \/ Instagram[\s\S]*?<strong>5<\/strong>/);
-assert.match(relationshipSection, /YouTube[\s\S]*?<strong>105<\/strong>[\s\S]*?<strong>11<\/strong>/);
+const relationshipStart = html.indexOf("Почему мне плохо");
+const youtubeLandingStart = html.indexOf("Уставшая функция · YouTube");
+const relationshipSection = html.slice(relationshipStart, youtubeLandingStart);
+const youtubeLandingSection = html.slice(youtubeLandingStart);
 
-console.log("Relationship dashboard smoke: Google, YouTube, and dedicated landing rows aggregate correctly.");
+assert.ok(relationshipStart >= 0 && youtubeLandingStart > relationshipStart);
+assert.match(relationshipSection, /Почему мне плохо[\s\S]*?<strong>106<\/strong>/);
+assert.match(relationshipSection, /Facebook \/ Instagram[\s\S]*?<strong>5<\/strong>/);
+assert.match(relationshipSection, /YouTube[\s\S]*?<strong>101<\/strong>[\s\S]*?<strong>10<\/strong>/);
+assert.match(youtubeLandingSection, /Уставшая функция · YouTube[\s\S]*?<strong>4<\/strong>[\s\S]*?<strong>1<\/strong>/);
+assert.match(youtubeLandingSection, /Facebook \/ Instagram[\s\S]*?<strong>0<\/strong>/);
+assert.match(youtubeLandingSection, /YouTube[\s\S]*?<strong>4<\/strong>[\s\S]*?<strong>1<\/strong>/);
+
+console.log("Relationship dashboard smoke: three landings and their traffic sources render separately.");

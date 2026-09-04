@@ -114,7 +114,7 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
       <section class="heading">
         <div>
           <h1>Воронка отношений</h1>
-          <p class="subtitle">Сегодня: общий результат, Facebook / Instagram и YouTube.</p>
+          <p class="subtitle">Три лендинга: общий результат и разбивка по Facebook / Instagram и YouTube.</p>
         </div>
         <button class="refresh" id="refresh" type="button">Обновить</button>
       </section>
@@ -166,7 +166,8 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
         <h2 id="change-log-title">Сделанные изменения</h2>
         <p>Краткая история изменений воронки и отчёта.</p>
         <ol>
-          <li><time datetime="2026-09-05">5 сентября 2026</time><div><strong>Восстановили статистику YouTube</strong><p>Объединили источники Google и YouTube без перезаписи данных и подключили новый YouTube-лендинг «Уставшая функция» к общей воронке «Почему мне плохо».</p></div></li>
+          <li><time datetime="2026-09-05">5 сентября 2026</time><div><strong>Добавили третий лендинг отдельной строкой</strong><p>Лендинг «Уставшая функция · YouTube» получил собственную воронку и больше не смешивается с лендингом «Почему мне плохо».</p></div></li>
+          <li><time datetime="2026-09-05">5 сентября 2026</time><div><strong>Восстановили статистику YouTube</strong><p>Объединили источники Google и YouTube без перезаписи данных и подключили новый YouTube-лендинг «Уставшая функция» к отчёту.</p></div></li>
           <li><time datetime="2026-09-03">3 сентября 2026</time><div><strong>Разделили рекламную когорту и весь Telegram-бот</strong><p>Связанная воронка теперь включает только персональные приглашения; старые несвязанные посещения показаны отдельно.</p></div></li>
           <li><time datetime="2026-09-03">3 сентября 2026</time><div><strong>Исправили подсчёт Telegram</strong><p>Добавили фактические вступления в канал, текущее число подписчиков и полную активность тестов без рекламной привязки.</p></div></li>
           <li><time datetime="2026-09-03">3 сентября 2026</time><div><strong>Добавили полный снимок Meta Ads за сегодня</strong><p>Показы, охват, клики, просмотры лендинга, конверсии, расходы и стоимость результата взяты из выгрузки Ads Manager.</p></div></li>
@@ -207,7 +208,8 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
       ];
       var ideas = [
         [["stay_or_leave"], "Уйти или остаться"],
-        [["relationship_challenges", "youtube_tired_function"], "Почему мне плохо"]
+        [["relationship_challenges"], "Почему мне плохо"],
+        [["youtube_tired_function"], "Уставшая функция · YouTube"]
       ];
       function escapeHtml(value) { return String(value == null ? "" : value).replace(/[&<>"']/g,function (char) { return ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"})[char]; }); }
       function todayInRiga() {
@@ -267,7 +269,7 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
             + row("Facebook / Instagram", combineRows(rowsByLandingSource,idea[0].map(function (landingId) { return landingId + ":meta"; })), "source-row", false)
             + row("YouTube", combineRows(rowsByLandingSource,idea[0].map(function (landingId) { return landingId + ":youtube"; })), "source-row", false);
         }).join("");
-        dashboard.innerHTML = '<div class="table-wrap"><table><thead><tr><th>Рекламная идея</th>' + steps.map(function (step) { return '<th>' + escapeHtml(step[1]) + '</th>'; }).join("") + '</tr></thead><tbody>' + rows + '</tbody></table></div>';
+        dashboard.innerHTML = '<div class="table-wrap"><table><thead><tr><th>Лендинг / рекламная идея</th>' + steps.map(function (step) { return '<th>' + escapeHtml(step[1]) + '</th>'; }).join("") + '</tr></thead><tbody>' + rows + '</tbody></table></div>';
       }
       function renderTestActivity(tests) {
         var activitySteps = ["Нажали Start в боте","Подтверждены в канале","Вопрос 1","Вопрос 2","Вопрос 3","Вопрос 4","Вопрос 5","Вопрос 6","Вопрос 7","Завершили тест","Результат 1","Результат 2","Результат 3","Результат 4","Нажали «Вернуться в канал»"];
