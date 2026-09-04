@@ -32,6 +32,18 @@ const variants = {
     ctaLabel: "Перейти в Telegram и ПРОЙТИ ТЕСТ",
     nextStepHtml: "Откроется Telegram-канал <strong>«Архетипы в Отношениях»</strong>. Тест находится в закреплённом посте.",
     telegramUrl: "https://t.me/RelationshipArchetypes"
+  },
+  d: {
+    testId: "test_b_relationship_challenges",
+    landingId: "youtube_tired_function",
+    funnelVersion: "group_first_v1",
+    title: "Рядом с мужем вы всё чаще чувствуете себя не женщиной, а уставшей функцией?",
+    titleHtml: "Рядом с мужем вы всё чаще чувствуете себя не женщиной, а <span class=\"title-accent\">уставшей функцией?</span>",
+    leadHtml: "<span>Вы тянете на себе быт, детей и сами отношения. Вас начинает раздражать даже его голос, близости и желания становится меньше, а муж всё чаще кажется ещё одним ребёнком.</span><span>Возможно, дело не только в усталости. За 3 минуты тест покажет, в каком сценарии отношений вы оказались, почему незаметно берёте на себя слишком много и где именно между вами возникает дистанция.</span><span class=\"hero__lead-emphasis\">Этому есть объяснение. Понять свой сценарий — первый шаг к тому, чтобы изменить отношения и снова почувствовать себя в них женщиной.</span>",
+    author: "Автор теста — Светлана Страус, дизайнер отношений. 26 лет в отношениях.",
+    ctaLabel: "ПРОЙТИ ТЕСТ ЗА 3 МИНУТЫ",
+    nextStepHtml: "Откроется Telegram-канал <strong>«Архетипы в Отношениях»</strong>. Тест находится в закреплённом посте.",
+    telegramUrl: "https://t.me/RelationshipArchetypes"
   }
 };
 
@@ -61,16 +73,19 @@ function selectedVariant() {
   const requested = new URLSearchParams(window.location.search).get("test");
   const relationshipChallengesPath = window.location.pathname.includes("/relationship-challenges/");
   const stayOrLeavePath = window.location.pathname.includes("/stay-or-leave/");
+  const tiredFunctionPath = window.location.pathname.includes("/tired-function/");
+  if (requested === "d" || tiredFunctionPath) return variants.d;
   if (requested === "c" || stayOrLeavePath) return variants.c;
   return requested === "b" || relationshipChallengesPath ? variants.b : variants.a;
 }
 
 function applyVariant() {
   const variant = selectedVariant();
-  const variantId = variant === variants.c ? "c" : variant === variants.b ? "b" : "a";
+  const variantId = variant === variants.d ? "d" : variant === variants.c ? "c" : variant === variants.b ? "b" : "a";
   const title = document.getElementById("hero-title");
   const eyebrow = document.getElementById("hero-eyebrow");
   const lead = document.getElementById("hero-lead");
+  const author = document.getElementById("hero-author");
   const ctaLabel = document.getElementById("telegram-cta-label");
   const nextStep = document.getElementById("telegram-next-step");
   const links = [
@@ -79,7 +94,12 @@ function applyVariant() {
 
   title.innerHTML = variant.titleHtml;
   if (variant.eyebrowHtml && eyebrow) eyebrow.innerHTML = variant.eyebrowHtml;
-  lead.textContent = variant.lead;
+  if (variant.leadHtml) lead.innerHTML = variant.leadHtml;
+  else lead.textContent = variant.lead;
+  if (author) {
+    author.textContent = variant.author || "";
+    author.hidden = !variant.author;
+  }
   ctaLabel.textContent = variant.ctaLabel;
   nextStep.innerHTML = variant.nextStepHtml;
   document.body.dataset.variant = variantId;

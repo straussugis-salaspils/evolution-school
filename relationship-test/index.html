@@ -51,7 +51,9 @@
 <body data-variant="a">
   <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=944041014863402&amp;ev=PageView&amp;noscript=1" alt=""></noscript>
   <script>
-    if (new URLSearchParams(location.search).get("test") === "c" || location.pathname.includes("/stay-or-leave/")) {
+    if (new URLSearchParams(location.search).get("test") === "d" || location.pathname.includes("/tired-function/")) {
+      document.body.dataset.variant = "d";
+    } else if (new URLSearchParams(location.search).get("test") === "c" || location.pathname.includes("/stay-or-leave/")) {
       document.body.dataset.variant = "c";
     } else if (new URLSearchParams(location.search).get("test") === "b" || location.pathname.includes("/relationship-challenges/")) {
       document.body.dataset.variant = "b";
@@ -82,6 +84,7 @@
           <p class="eyebrow" id="hero-eyebrow">Бесплатный тест <span aria-hidden="true">·</span> 7 вопросов</p>
           <h1 id="hero-title">Знакомства начинаются.<br>Но до отношений <span class="title-accent title-accent--a">снова не доходит?</span></h1>
           <p class="hero__lead" id="hero-lead">Ответьте на 7 вопросов — и за 3 минуты поймёте, в какой момент всё останавливается и что можно изменить.</p>
+          <p class="hero__author" id="hero-author" hidden></p>
 
           <div class="hero__actions">
             <a

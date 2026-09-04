@@ -8,6 +8,7 @@ const sitemap = fs.readFileSync(path.join(ROOT, "sitemap.xml"), "utf8");
 const publicUrls = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => match[1]);
 const hiddenRoutes = [
   "/18-18-18/",
+  "/relationship-test/tired-function/",
   "/472861-ostrova-vezeniya/",
   "/568241-reiki-1/",
   "/604918-vkus-legkosti/",

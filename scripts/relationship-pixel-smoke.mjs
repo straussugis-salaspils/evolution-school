@@ -15,7 +15,7 @@ assert.match(html, /googletagmanager\.com\/gtag\/js\?id=AW-11049454372/);
 assert.match(html, /gtag\('config', 'AW-11049454372'\)/);
 assert.match(html, /AW-11049454372\/2-zbCNPu3-wcEKSW5ZQp/);
 
-async function runClickSmoke({ query, pathname, landingId }) {
+async function runClickSmoke({ query, pathname, landingId, ctaLabel = "Перейти в Telegram и ПРОЙТИ ТЕСТ" }) {
   const elements = new Map();
   const timers = [];
   const fetchCalls = [];
@@ -39,6 +39,7 @@ async function runClickSmoke({ query, pathname, landingId }) {
 
   element("hero-title");
   element("hero-lead");
+  element("hero-author");
   element("telegram-cta-label");
   const cta = element("telegram-cta");
   element("telegram-next-step");
@@ -110,7 +111,7 @@ async function runClickSmoke({ query, pathname, landingId }) {
   assert.deepEqual(Array.from(window.fbq.queue[1]), ["track", "PageView"]);
   assert.equal(cta.href, "https://t.me/+pixelSmokeInvite");
   assert.equal(cta.textContent, "");
-  assert.equal(elements.get("telegram-cta-label").textContent, "Перейти в Telegram и ПРОЙТИ ТЕСТ");
+  assert.equal(elements.get("telegram-cta-label").textContent, ctaLabel);
   assert.match(elements.get("telegram-next-step").innerHTML, /Telegram-канал/);
   assert.match(elements.get("telegram-next-step").innerHTML, /Архетипы в Отношениях/);
   assert.equal(fetchCalls.length, 1, "group-first landing must create an attributed invite");
@@ -141,5 +142,11 @@ await runClickSmoke({
   pathname: "/relationship-test/",
   landingId: "stay_or_leave",
 });
+await runClickSmoke({
+  query: "",
+  pathname: "/relationship-test/tired-function/",
+  landingId: "youtube_tired_function",
+  ctaLabel: "ПРОЙТИ ТЕСТ ЗА 3 МИНУТЫ",
+});
 
-console.log("Relationship Meta Pixel and Google Ads smoke: 2 landing variants passed.");
+console.log("Relationship Meta Pixel and Google Ads smoke: 3 landing variants passed.");

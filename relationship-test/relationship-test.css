@@ -106,6 +106,23 @@ body[data-variant="c"] .hero {
   background-image: url("/relationship-test/assets/flow-b-hero-mobile.webp");
 }
 
+body[data-variant="d"] .hero {
+  min-height: max(58rem, 100svh);
+  background-color: #f5f2e9;
+  background-image: url("/relationship-test/assets/youtube-tired-function-hero.webp");
+  background-position: center bottom;
+  background-size: auto 48%;
+}
+
+body[data-variant="d"] .hero::before {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background: linear-gradient(180deg, #f5f2e9 0%, rgba(245, 242, 233, 0.98) 54%, rgba(245, 242, 233, 0.78) 68%, rgba(245, 242, 233, 0) 88%);
+  content: "";
+  pointer-events: none;
+}
+
 body[data-variant="a"] .hero {
   background-position: center calc(100% + 6rem);
 }
@@ -154,6 +171,27 @@ h1 {
   color: var(--ink-soft);
   font-size: 0.98rem;
   line-height: 1.5;
+}
+
+.hero__lead span {
+  display: block;
+}
+
+.hero__lead span + span {
+  margin-top: 0.7rem;
+}
+
+.hero__lead-emphasis {
+  font-weight: 500;
+}
+
+.hero__author {
+  max-width: 31rem;
+  margin: 0.85rem 0 0;
+  color: #315a49;
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1.45;
 }
 
 .hero__actions {
@@ -219,6 +257,10 @@ body[data-variant="c"] .brand img {
   filter: brightness(0) invert(1);
 }
 
+body[data-variant="d"] .brand img {
+  filter: brightness(0) saturate(100%) invert(28%) sepia(25%) saturate(1027%) hue-rotate(105deg) brightness(86%) contrast(87%);
+}
+
 body[data-variant="b"] .eyebrow,
 body[data-variant="c"] .eyebrow {
   color: #d5a0a8;
@@ -238,6 +280,24 @@ body[data-variant="c"] .title-accent {
   color: #d98d9a;
 }
 
+body[data-variant="d"] .eyebrow,
+body[data-variant="d"] .title-accent {
+  color: #256149;
+}
+
+body[data-variant="d"] h1 {
+  max-width: 17ch;
+  color: #263d32;
+  font-size: 2.15rem;
+  line-height: 1.03;
+}
+
+body[data-variant="d"] .hero__lead {
+  color: #3f4842;
+  font-size: 0.93rem;
+  line-height: 1.42;
+}
+
 body[data-variant="a"] .title-accent--a {
   color: var(--rose);
 }
@@ -246,6 +306,16 @@ body[data-variant="b"] .button--primary,
 body[data-variant="c"] .button--primary {
   background: var(--rose);
   box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.28);
+}
+
+body[data-variant="d"] .button--primary {
+  background: #256149;
+  box-shadow: 0 0.8rem 2rem rgba(37, 97, 73, 0.22);
+}
+
+body[data-variant="d"] .button--primary:hover {
+  background: #1d4d3a;
+  box-shadow: 0 1rem 2.3rem rgba(37, 97, 73, 0.3);
 }
 
 body[data-variant="b"] .button--primary:hover,
@@ -334,6 +404,10 @@ body[data-variant="c"] .landing-footer p {
     width: fit-content;
     max-width: 28rem;
   }
+
+  body[data-variant="d"] h1 {
+    font-size: 3.1rem;
+  }
 }
 
 @media (min-width: 56rem) {
@@ -353,6 +427,17 @@ body[data-variant="c"] .landing-footer p {
   body[data-variant="b"] .hero,
   body[data-variant="c"] .hero {
     background-image: url("/relationship-test/assets/flow-b-hero-desktop.webp");
+  }
+
+  body[data-variant="d"] .hero {
+    min-height: 90svh;
+    background-image: url("/relationship-test/assets/youtube-tired-function-hero.webp");
+    background-position: center center;
+    background-size: cover;
+  }
+
+  body[data-variant="d"] .hero::before {
+    background: linear-gradient(90deg, rgba(245, 242, 233, 0.98) 0%, rgba(245, 242, 233, 0.92) 34%, rgba(245, 242, 233, 0.48) 43%, rgba(245, 242, 233, 0) 56%);
   }
 
   body[data-variant="a"] .hero {
@@ -379,6 +464,36 @@ body[data-variant="c"] .landing-footer p {
     margin-left: 0;
   }
 
+  body[data-variant="d"] .hero__copy {
+    width: 48%;
+    max-width: 37rem;
+    margin-right: auto;
+    margin-left: 0;
+  }
+
+  body[data-variant="d"] .hero__inner {
+    padding-top: 5.5rem;
+    padding-bottom: 2rem;
+  }
+
+  body[data-variant="d"] .hero__lead {
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+    line-height: 1.36;
+  }
+
+  body[data-variant="d"] .hero__lead span + span {
+    margin-top: 0.5rem;
+  }
+
+  body[data-variant="d"] .hero__author {
+    margin-top: 0.65rem;
+  }
+
+  body[data-variant="d"] .hero__actions {
+    margin-top: 1rem;
+  }
+
   h1 {
     font-size: clamp(3.1rem, 4vw, 4rem);
   }
@@ -387,6 +502,12 @@ body[data-variant="c"] .landing-footer p {
   body[data-variant="c"] h1 {
     max-width: 13ch;
     font-size: clamp(3rem, 4vw, 4rem);
+  }
+
+
+  body[data-variant="d"] h1 {
+    max-width: 17ch;
+    font-size: clamp(2.55rem, 3.35vw, 3.3rem);
   }
 }
 

@@ -28,6 +28,10 @@
     {
       "source": "/relationship-test/stay-or-leave/",
       "destination": "/relationship-test/"
+    },
+    {
+      "source": "/relationship-test/tired-function/",
+      "destination": "/relationship-test/"
     }
   ],
   "redirects": [
