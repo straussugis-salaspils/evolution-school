@@ -146,7 +146,6 @@ await runClickSmoke({
   query: "",
   pathname: "/relationship-test/tired-function/",
   landingId: "youtube_tired_function",
-  ctaLabel: "ПРОЙТИ ТЕСТ ЗА 3 МИНУТЫ",
 });
 
 console.log("Relationship Meta Pixel and Google Ads smoke: 3 landing variants passed.");

@@ -318,6 +318,22 @@ body[data-variant="d"] .button--primary:hover {
   box-shadow: 0 1rem 2.3rem rgba(37, 97, 73, 0.3);
 }
 
+@media (max-width: 47.99rem) {
+  body[data-variant="d"] .button--primary {
+    gap: 0.45rem;
+    padding-inline: 0.8rem;
+    font-size: 0.82rem;
+  }
+}
+
+@media (max-width: 23rem) {
+  body[data-variant="d"] .button--primary {
+    gap: 0.3rem;
+    padding-inline: 0.5rem;
+    font-size: 0.75rem;
+  }
+}
+
 body[data-variant="b"] .button--primary:hover,
 body[data-variant="c"] .button--primary:hover {
   background: var(--rose-hover);
@@ -432,8 +448,8 @@ body[data-variant="c"] .landing-footer p {
   body[data-variant="d"] .hero {
     min-height: 90svh;
     background-image: url("/relationship-test/assets/youtube-tired-function-hero.webp");
-    background-position: center center;
-    background-size: cover;
+    background-position: calc(100% + 4rem) center;
+    background-size: auto 100%;
   }
 
   body[data-variant="d"] .hero::before {
@@ -508,6 +524,29 @@ body[data-variant="c"] .landing-footer p {
   body[data-variant="d"] h1 {
     max-width: 17ch;
     font-size: clamp(2.55rem, 3.35vw, 3.3rem);
+  }
+}
+
+@media (min-width: 56rem) and (max-width: 74.99rem) {
+  body[data-variant="d"] .hero {
+    min-height: max(68rem, 100svh);
+    align-items: flex-start;
+    background-position: center bottom;
+    background-size: auto 40%;
+  }
+
+  body[data-variant="d"] .hero::before {
+    background: linear-gradient(180deg, #f5f2e9 0%, rgba(245, 242, 233, 0.98) 58%, rgba(245, 242, 233, 0.76) 72%, rgba(245, 242, 233, 0) 88%);
+  }
+
+  body[data-variant="d"] .hero__copy {
+    width: 100%;
+    max-width: 35rem;
+  }
+
+  body[data-variant="d"] .hero__inner {
+    padding-top: 7rem;
+    padding-bottom: 2rem;
   }
 }
 
