@@ -166,6 +166,7 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
         <h2 id="change-log-title">Сделанные изменения</h2>
         <p>Краткая история изменений воронки и отчёта.</p>
         <ol>
+          <li><time datetime="2026-09-05">5 сентября 2026</time><div><strong>Восстановили статистику YouTube</strong><p>Объединили источники Google и YouTube без перезаписи данных и подключили новый YouTube-лендинг «Уставшая функция» к общей воронке «Почему мне плохо».</p></div></li>
           <li><time datetime="2026-09-03">3 сентября 2026</time><div><strong>Разделили рекламную когорту и весь Telegram-бот</strong><p>Связанная воронка теперь включает только персональные приглашения; старые несвязанные посещения показаны отдельно.</p></div></li>
           <li><time datetime="2026-09-03">3 сентября 2026</time><div><strong>Исправили подсчёт Telegram</strong><p>Добавили фактические вступления в канал, текущее число подписчиков и полную активность тестов без рекламной привязки.</p></div></li>
           <li><time datetime="2026-09-03">3 сентября 2026</time><div><strong>Добавили полный снимок Meta Ads за сегодня</strong><p>Показы, охват, клики, просмотры лендинга, конверсии, расходы и стоимость результата взяты из выгрузки Ads Manager.</p></div></li>
@@ -205,8 +206,8 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
         ["completed", "Завершили тест"]
       ];
       var ideas = [
-        ["stay_or_leave", "Уйти или остаться"],
-        ["relationship_challenges", "Почему мне плохо"]
+        [["stay_or_leave"], "Уйти или остаться"],
+        [["relationship_challenges", "youtube_tired_function"], "Почему мне плохо"]
       ];
       function escapeHtml(value) { return String(value == null ? "" : value).replace(/[&<>"']/g,function (char) { return ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"})[char]; }); }
       function todayInRiga() {
@@ -224,31 +225,47 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
       function formatPeriod(dateFrom, dateTo) { return dateFrom === dateTo ? formatDate(dateFrom) : formatDate(dateFrom) + " — " + formatDate(dateTo); }
       function formatTime(value) { return new Intl.DateTimeFormat("ru-RU",{timeZone:"Europe/Riga",hour:"2-digit",minute:"2-digit"}).format(new Date(value)); }
       function mapSteps(funnel) { var result = {}; (funnel || []).forEach(function (step) { result[step.key] = step; }); return result; }
+      function mergeStepMaps(target, source) {
+        Object.keys(source || {}).forEach(function (key) {
+          if (!target[key]) target[key] = {key:key,count:0};
+          target[key].count += Number(source[key].count || 0);
+        });
+        return target;
+      }
+      function combineRows(rows, keys) {
+        return keys.reduce(function (result,key) { return mergeStepMaps(result,rows[key] || {}); },{});
+      }
       function normalizeSource(value) {
         var source = String(value || "").toLowerCase();
         if (["meta","facebook","instagram","fb","ig","paid_social"].indexOf(source) >= 0) return "meta";
         if (source.indexOf("youtube") >= 0 || source === "google" || source === "google_ads") return "youtube";
         return source;
       }
-      function metric(step, index) {
-        var conversion = index ? Number(step.from_previous_percent || 0) : null;
+      function metric(values, key, index) {
+        var count = Number((values[key] || {}).count || 0);
+        var previousCount = index ? Number((values[steps[index - 1][0]] || {}).count || 0) : 0;
+        var conversion = index ? (previousCount ? count / previousCount * 100 : 0) : null;
         var conversionClass = conversion !== null && conversion < 60 ? "weak" : "";
-        return '<td data-label="' + escapeHtml(steps[index][1]) + '"><div class="metric"><strong>' + Number(step.count || 0) + '</strong><span class="' + conversionClass + '">' + (conversion === null ? "точка входа" : conversion.toFixed(1) + "% от прошлого шага") + '</span></div></td>';
+        return '<td data-label="' + escapeHtml(steps[index][1]) + '"><div class="metric"><strong>' + count + '</strong><span class="' + conversionClass + '">' + (conversion === null ? "точка входа" : conversion.toFixed(1) + "% от прошлого шага") + '</span></div></td>';
       }
       function render(data) {
         var rowsByLanding = {};
-        (data.by_landing || []).forEach(function (row) { rowsByLanding[row.landing_id] = mapSteps(row.funnel); });
+        (data.by_landing || []).forEach(function (row) {
+          rowsByLanding[row.landing_id] = mergeStepMaps(rowsByLanding[row.landing_id] || {},mapSteps(row.funnel));
+        });
         var rowsByLandingSource = {};
         (data.by_landing_source || []).forEach(function (row) {
-          rowsByLandingSource[row.landing_id + ":" + normalizeSource(row.source)] = mapSteps(row.funnel);
+          var source = row.landing_id === "youtube_tired_function" ? "youtube" : normalizeSource(row.source);
+          var key = row.landing_id + ":" + source;
+          rowsByLandingSource[key] = mergeStepMaps(rowsByLandingSource[key] || {},mapSteps(row.funnel));
         });
         function row(label, values, className, isIdea) {
-          return '<tr class="' + className + '"><td><span class="' + (isIdea ? "idea" : "source") + '">' + escapeHtml(label) + '</span></td>' + steps.map(function (definition,index) { return metric(values[definition[0]] || {count:0,from_previous_percent:0},index); }).join("") + '</tr>';
+          return '<tr class="' + className + '"><td><span class="' + (isIdea ? "idea" : "source") + '">' + escapeHtml(label) + '</span></td>' + steps.map(function (definition,index) { return metric(values,definition[0],index); }).join("") + '</tr>';
         }
         var rows = ideas.map(function (idea) {
-          return row(idea[1], rowsByLanding[idea[0]] || {}, "total-row", true)
-            + row("Facebook / Instagram", rowsByLandingSource[idea[0] + ":meta"] || {}, "source-row", false)
-            + row("YouTube", rowsByLandingSource[idea[0] + ":youtube"] || {}, "source-row", false);
+          return row(idea[1], combineRows(rowsByLanding,idea[0]), "total-row", true)
+            + row("Facebook / Instagram", combineRows(rowsByLandingSource,idea[0].map(function (landingId) { return landingId + ":meta"; })), "source-row", false)
+            + row("YouTube", combineRows(rowsByLandingSource,idea[0].map(function (landingId) { return landingId + ":youtube"; })), "source-row", false);
         }).join("");
         dashboard.innerHTML = '<div class="table-wrap"><table><thead><tr><th>Рекламная идея</th>' + steps.map(function (step) { return '<th>' + escapeHtml(step[1]) + '</th>'; }).join("") + '</tr></thead><tbody>' + rows + '</tbody></table></div>';
       }

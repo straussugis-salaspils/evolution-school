@@ -15,7 +15,7 @@ assert.match(html, /googletagmanager\.com\/gtag\/js\?id=AW-11049454372/);
 assert.match(html, /gtag\('config', 'AW-11049454372'\)/);
 assert.match(html, /AW-11049454372\/2-zbCNPu3-wcEKSW5ZQp/);
 
-async function runClickSmoke({ query, pathname, landingId, ctaLabel = "Перейти в Telegram и ПРОЙТИ ТЕСТ" }) {
+async function runClickSmoke({ query, pathname, landingId, ctaLabel = "Перейти в Telegram и ПРОЙТИ ТЕСТ", expectedSource = null }) {
   const elements = new Map();
   const timers = [];
   const fetchCalls = [];
@@ -115,6 +115,7 @@ async function runClickSmoke({ query, pathname, landingId, ctaLabel = "Пере�
   assert.match(elements.get("telegram-next-step").innerHTML, /Telegram-канал/);
   assert.match(elements.get("telegram-next-step").innerHTML, /Архетипы в Отношениях/);
   assert.equal(fetchCalls.length, 1, "group-first landing must create an attributed invite");
+  assert.equal(JSON.parse(fetchCalls[0][1].body).utm_source, expectedSource);
 
   let prevented = false;
   cta.listeners.click({ preventDefault() { prevented = true; } });
@@ -146,6 +147,7 @@ await runClickSmoke({
   query: "",
   pathname: "/relationship-test/tired-function/",
   landingId: "youtube_tired_function",
+  expectedSource: "youtube",
 });
 
 console.log("Relationship Meta Pixel and Google Ads smoke: 3 landing variants passed.");

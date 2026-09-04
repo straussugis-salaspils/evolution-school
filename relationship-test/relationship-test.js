@@ -166,12 +166,13 @@ function trackMetaGroupJoinClick(variant) {
 
 function metaAttributionPayload(variant) {
   const params = new URLSearchParams(window.location.search);
+  const defaultSource = variant.landingId === "youtube_tired_function" ? "youtube" : null;
   return {
     test_id: variant.testId,
     page_url: window.location.href,
     fbclid: params.get("fbclid"),
     fbc: params.get("fbc"),
-    utm_source: params.get("utm_source"),
+    utm_source: params.get("utm_source") || defaultSource,
     utm_medium: params.get("utm_medium"),
     utm_campaign: params.get("utm_campaign"),
     utm_content: params.get("utm_content"),
