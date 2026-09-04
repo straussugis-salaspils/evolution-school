@@ -298,6 +298,11 @@ body[data-variant="d"] .hero__lead {
   line-height: 1.42;
 }
 
+body[data-variant="d"] .hero__author {
+  max-width: 28rem;
+  text-align: center;
+}
+
 body[data-variant="a"] .title-accent--a {
   color: var(--rose);
 }
