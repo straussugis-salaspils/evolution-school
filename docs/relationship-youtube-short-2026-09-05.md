@@ -2,6 +2,8 @@
 
 Previous production revision: `1aa8c38`. The old HTML, CSS and copy are preserved in Git at that revision.
 
+Published on 2026-09-05 at 23:39:26 Europe/Riga (20:39:26 UTC), production revision `ea6319f`, Vercel deployment `dpl_EFq2ghmkDXRjtcy6dSTLWKMnkcfU`.
+
 Scope: only `youtube_tired_function`. Landing ID, test ID, session attribution, Telegram destination, Meta Pixel and Google conversion handlers are unchanged. Existing statistics are retained.
 
 Baseline on 2026-09-05 at 23:21 Europe/Riga, Google and YouTube combined: 194 sessions, 18 CTA clicks (9.3%), 10 attributed channel joins, 4 test starts, 3 completions. This is a partial-day snapshot, not a randomized experiment. The publication day mixes the old and short layouts; compare later full days with that limitation in mind.
