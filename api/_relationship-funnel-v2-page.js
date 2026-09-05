@@ -140,7 +140,7 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
         </div>
       </section>
       <section class="report-section" id="meta-snapshot">
-        <h2>Meta Ads сегодня</h2>
+        <h2>Meta Ads: сохранённый снимок за 3 сентября</h2>
         <p>Выгрузка Ads Manager за 3 сентября 2026 года, 20:03 по Риге.</p>
         <div class="table-wrap">
           <table class="meta-table">
@@ -153,19 +153,21 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
         </div>
       </section>
       <section class="report-section">
-        <h2>Связанная рекламная воронка</h2>
-        <p>Здесь один и тот же человек прослеживается от лендинга до теста. Учитываются только посещения, для которых Telegram создал персональную ссылку. Первый такой переход за период: <strong id="invite-tracking">—</strong>. Старых несвязанных посещений за период: <strong id="untracked-visits">—</strong>.</p>
+        <h2>Воронка посетителей лендингов</h2>
+        <p>Период выбирает дату посещения лендинга по Риге. Дальнейшие шаги показывают результат этих посещений на момент обновления. Посещения и нажатия считаются по сессиям; вступления подтверждены Telegram и связаны с персональной ссылкой. Без персональной ссылки: <strong id="untracked-visits">—</strong> посещений, <strong id="untracked-clicks">—</strong> нажатий. Первый связанный переход за период: <strong id="invite-tracking">—</strong>.</p>
+        <p>В Meta день считается по Дубаю (сейчас на час раньше Риги). «Клики по ссылке» в Meta — переходы из рекламы; «Нажали кнопку» здесь — переходы с лендинга в Telegram. Результат CompleteRegistration в рекламе настроен на нажатие этой кнопки.</p>
         <div id="dashboard"><div class="loading">Загрузка...</div></div>
       </section>
       <section class="activity" aria-labelledby="activity-title">
         <h2 id="activity-title">Весь Telegram-бот</h2>
-        <p>Это отдельная аудитория: все пользователи бота, включая старых подписчиков и прямые ссылки. «Нажали Start» не означает, что человек пришёл сегодня из рекламы. Последняя колонка — клик по кнопке после результата, а не новое вступление.</p>
+        <p>Люди, начавшие прохождение в выбранные даты, включая старых подписчиков и прямые ссылки. Каждый человек учитывается один раз по наиболее полному прохождению. Дальнейшие шаги могут быть пройдены позднее. Последняя колонка показывает нажатие кнопки программы недели.</p>
         <div id="test-activity"><div class="loading">Загрузка...</div></div>
       </section>
       <section class="change-log" aria-labelledby="change-log-title">
         <h2 id="change-log-title">Сделанные изменения</h2>
         <p>Краткая история изменений воронки и отчёта.</p>
         <ol>
+          <li><time datetime="2026-09-05">5 сентября 2026</time><div><strong>Перепроверили подсчёт и источники</strong><p>Вернули сохранённые посещения и нажатия без персональной Telegram-ссылки. Выделили прямые и прочие источники, убрали автоматическое присвоение YouTube по названию лендинга. Исправили смену дат и пояснили периоды и единицы подсчёта.</p></div></li>
           <li><time datetime="2026-09-05">5 сентября 2026</time><div><strong>Добавили третий лендинг отдельной строкой</strong><p>Лендинг «Уставшая функция · YouTube» получил собственную воронку и больше не смешивается с лендингом «Почему мне плохо».</p></div></li>
           <li><time datetime="2026-09-05">5 сентября 2026</time><div><strong>Восстановили статистику YouTube</strong><p>Объединили источники Google и YouTube без перезаписи данных и подключили новый YouTube-лендинг «Уставшая функция» к отчёту.</p></div></li>
           <li><time datetime="2026-09-03">3 сентября 2026</time><div><strong>Разделили рекламную когорту и весь Telegram-бот</strong><p>Связанная воронка теперь включает только персональные приглашения; старые несвязанные посещения показаны отдельно.</p></div></li>
@@ -195,10 +197,12 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
       var channelSubscribers = document.getElementById("channel-subscribers");
       var inviteTracking = document.getElementById("invite-tracking");
       var untrackedVisits = document.getElementById("untracked-visits");
+      var untrackedClicks = document.getElementById("untracked-clicks");
       var fromInput = document.getElementById("date-from");
       var toInput = document.getElementById("date-to");
       var currentFrom = "";
       var currentTo = "";
+      var requestId = 0;
       var steps = [
         ["landing", "Посетили лендинг"],
         ["cta", "Нажали кнопку"],
@@ -226,6 +230,7 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
       function formatDate(value) { return new Intl.DateTimeFormat("ru-RU",{day:"numeric",month:"long",year:"numeric"}).format(new Date(value + "T12:00:00")); }
       function formatPeriod(dateFrom, dateTo) { return dateFrom === dateTo ? formatDate(dateFrom) : formatDate(dateFrom) + " — " + formatDate(dateTo); }
       function formatTime(value) { return new Intl.DateTimeFormat("ru-RU",{timeZone:"Europe/Riga",hour:"2-digit",minute:"2-digit"}).format(new Date(value)); }
+      function formatTimestamp(value) { return new Intl.DateTimeFormat("ru-RU",{timeZone:"Europe/Riga",day:"numeric",month:"long",hour:"2-digit",minute:"2-digit"}).format(new Date(value)); }
       function mapSteps(funnel) { var result = {}; (funnel || []).forEach(function (step) { result[step.key] = step; }); return result; }
       function mergeStepMaps(target, source) {
         Object.keys(source || {}).forEach(function (key) {
@@ -238,41 +243,56 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
         return keys.reduce(function (result,key) { return mergeStepMaps(result,rows[key] || {}); },{});
       }
       function normalizeSource(value) {
-        var source = String(value || "").toLowerCase();
+        var source = String(value || "").trim().toLowerCase();
         if (["meta","facebook","instagram","fb","ig","paid_social"].indexOf(source) >= 0) return "meta";
         if (source.indexOf("youtube") >= 0 || source === "google" || source === "google_ads") return "youtube";
-        return source;
+        if (!source || ["direct","unknown","none","(none)"].indexOf(source) >= 0) return "direct";
+        return "other";
       }
       function metric(values, key, index) {
         var count = Number((values[key] || {}).count || 0);
         var previousCount = index ? Number((values[steps[index - 1][0]] || {}).count || 0) : 0;
-        var conversion = index ? (previousCount ? count / previousCount * 100 : 0) : null;
+        var conversion = index && previousCount ? count / previousCount * 100 : null;
         var conversionClass = conversion !== null && conversion < 60 ? "weak" : "";
-        return '<td data-label="' + escapeHtml(steps[index][1]) + '"><div class="metric"><strong>' + count + '</strong><span class="' + conversionClass + '">' + (conversion === null ? "точка входа" : conversion.toFixed(1) + "% от прошлого шага") + '</span></div></td>';
+        return '<td data-label="' + escapeHtml(steps[index][1]) + '"><div class="metric"><strong>' + count + '</strong><span class="' + conversionClass + '">' + (!index ? "сессии" : conversion === null ? "нет базы для %" : conversion.toFixed(1) + "% от прошлого шага") + '</span></div></td>';
       }
       function render(data) {
+        if (!Array.isArray(data.by_landing) || !Array.isArray(data.by_landing_source)) throw new Error("Incomplete statistics");
         var rowsByLanding = {};
         (data.by_landing || []).forEach(function (row) {
           rowsByLanding[row.landing_id] = mergeStepMaps(rowsByLanding[row.landing_id] || {},mapSteps(row.funnel));
         });
         var rowsByLandingSource = {};
         (data.by_landing_source || []).forEach(function (row) {
-          var source = row.landing_id === "youtube_tired_function" ? "youtube" : normalizeSource(row.source);
+          var source = normalizeSource(row.source);
           var key = row.landing_id + ":" + source;
           rowsByLandingSource[key] = mergeStepMaps(rowsByLandingSource[key] || {},mapSteps(row.funnel));
+        });
+        Object.keys(rowsByLanding).forEach(function (id) {
+          var sourceTotal = combineRows(rowsByLandingSource,["meta","youtube","direct","other"].map(function (source) { return id + ":" + source; }));
+          steps.forEach(function (step) {
+            var total = Number((rowsByLanding[id][step[0]] || {}).count || 0);
+            if (!Number.isInteger(total) || total < 0 || total !== Number((sourceTotal[step[0]] || {}).count || 0)) throw new Error("Source totals do not match");
+          });
         });
         function row(label, values, className, isIdea) {
           return '<tr class="' + className + '"><td><span class="' + (isIdea ? "idea" : "source") + '">' + escapeHtml(label) + '</span></td>' + steps.map(function (definition,index) { return metric(values,definition[0],index); }).join("") + '</tr>';
         }
-        var rows = ideas.map(function (idea) {
+        var displayedIdeas = ideas.slice();
+        Object.keys(rowsByLanding).forEach(function (id) {
+          if (!ideas.some(function (idea) { return idea[0].indexOf(id) >= 0; })) displayedIdeas.push([[id], "Другой лендинг: " + id]);
+        });
+        var rows = displayedIdeas.map(function (idea) {
           return row(idea[1], combineRows(rowsByLanding,idea[0]), "total-row", true)
             + row("Facebook / Instagram", combineRows(rowsByLandingSource,idea[0].map(function (landingId) { return landingId + ":meta"; })), "source-row", false)
-            + row("YouTube", combineRows(rowsByLandingSource,idea[0].map(function (landingId) { return landingId + ":youtube"; })), "source-row", false);
+            + row("YouTube / Google", combineRows(rowsByLandingSource,idea[0].map(function (landingId) { return landingId + ":youtube"; })), "source-row", false)
+            + row("Прямой / не определён", combineRows(rowsByLandingSource,idea[0].map(function (landingId) { return landingId + ":direct"; })), "source-row", false)
+            + row("Другие источники", combineRows(rowsByLandingSource,idea[0].map(function (landingId) { return landingId + ":other"; })), "source-row", false);
         }).join("");
         dashboard.innerHTML = '<div class="table-wrap"><table><thead><tr><th>Лендинг / рекламная идея</th>' + steps.map(function (step) { return '<th>' + escapeHtml(step[1]) + '</th>'; }).join("") + '</tr></thead><tbody>' + rows + '</tbody></table></div>';
       }
       function renderTestActivity(tests) {
-        var activitySteps = ["Нажали Start в боте","Подтверждены в канале","Вопрос 1","Вопрос 2","Вопрос 3","Вопрос 4","Вопрос 5","Вопрос 6","Вопрос 7","Завершили тест","Результат 1","Результат 2","Результат 3","Результат 4","Нажали «Вернуться в канал»"];
+        var activitySteps = ["Начали прохождение","Подтверждены в канале","Вопрос 1","Вопрос 2","Вопрос 3","Вопрос 4","Вопрос 5","Вопрос 6","Вопрос 7","Завершили тест","Результат 1","Результат 2","Результат 3","Результат 4","Нажали программу недели"];
         var rows = (tests || []).map(function (test) {
           var questions = {};
           (test.questions || []).forEach(function (question) { questions[question.question_id] = Number(question.answered || 0); });
@@ -309,29 +329,37 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
         load(dateFrom,dateTo);
       }
       async function load(dateFrom, dateTo) {
+        var thisRequest = ++requestId;
         currentFrom = dateFrom;
         currentTo = dateTo;
         metaSnapshot.hidden = dateFrom !== "2026-09-03" || dateTo !== "2026-09-03";
         refresh.disabled = true;
         updated.textContent = "Обновляем...";
         period.textContent = formatPeriod(dateFrom,dateTo);
+        dashboard.innerHTML = '<div class="loading">Загрузка...</div>';
+        testActivity.innerHTML = '<div class="loading">Загрузка...</div>';
+        channelJoined.textContent = channelSubscribers.textContent = inviteTracking.textContent = untrackedVisits.textContent = untrackedClicks.textContent = "—";
         try {
           var response = await fetch(location.pathname + "?data=1&date_from=" + dateFrom + "&date_to=" + dateTo,{headers:{Accept:"application/json"},cache:"no-store"});
           if (!response.ok) throw new Error("HTTP " + response.status);
           var data = await response.json();
-          channelJoined.textContent = Number(data.channel_joined_total || 0);
-          channelSubscribers.textContent = data.channel_subscribers_current == null ? "—" : Number(data.channel_subscribers_current);
-          inviteTracking.textContent = data.individual_invites_started_at ? formatDate(data.individual_invites_started_at.slice(0,10)) + ", " + formatTime(data.individual_invites_started_at) : "ещё не было";
-          untrackedVisits.textContent = Number(data.untracked_landing_visits || 0);
+          if (thisRequest !== requestId) return;
+          if ((data.date_from && data.date_from !== dateFrom) || (data.date_to && data.date_to !== dateTo)) throw new Error("Statistics period mismatch");
           render(data);
           renderTestActivity(data.test_activity);
+          channelJoined.textContent = Number(data.channel_joined_total || 0);
+          channelSubscribers.textContent = data.channel_subscribers_current == null ? "—" : Number(data.channel_subscribers_current);
+          inviteTracking.textContent = data.individual_invites_started_at ? formatTimestamp(data.individual_invites_started_at) : "ещё не было";
+          untrackedVisits.textContent = Number(data.untracked_landing_visits || 0);
+          untrackedClicks.textContent = data.untracked_cta_clicks == null ? "—" : Number(data.untracked_cta_clicks);
           updated.textContent = "Обновлено в " + formatTime(data.generated_at || new Date().toISOString());
         } catch (error) {
+          if (thisRequest !== requestId) return;
           dashboard.innerHTML = '<div class="error">Не удалось загрузить статистику. Обновите страницу через минуту.</div>';
           testActivity.innerHTML = '<div class="error">Не удалось загрузить активность тестов.</div>';
           updated.textContent = "Ошибка обновления";
         } finally {
-          refresh.disabled = false;
+          if (thisRequest === requestId) refresh.disabled = false;
         }
       }
       document.getElementById("ranges").addEventListener("click",function (event) { var button = event.target.closest("[data-range]"); if (button) setRange(button.dataset.range); });

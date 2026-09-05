@@ -166,7 +166,7 @@ function trackMetaGroupJoinClick(variant) {
 
 function metaAttributionPayload(variant) {
   const params = new URLSearchParams(window.location.search);
-  const defaultSource = variant.landingId === "youtube_tired_function" ? "youtube" : null;
+  const defaultSource = params.has("gclid") || params.has("wbraid") || params.has("gbraid") ? "google" : null;
   return {
     test_id: variant.testId,
     page_url: window.location.href,

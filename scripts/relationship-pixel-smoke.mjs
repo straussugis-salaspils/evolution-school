@@ -147,7 +147,18 @@ await runClickSmoke({
   query: "",
   pathname: "/relationship-test/tired-function/",
   landingId: "youtube_tired_function",
-  expectedSource: "youtube",
+});
+await runClickSmoke({
+  query: "?gclid=google-test-click",
+  pathname: "/relationship-test/tired-function/",
+  landingId: "youtube_tired_function",
+  expectedSource: "google",
+});
+await runClickSmoke({
+  query: "?utm_source=meta",
+  pathname: "/relationship-test/tired-function/",
+  landingId: "youtube_tired_function",
+  expectedSource: "meta",
 });
 
 console.log("Relationship Meta Pixel and Google Ads smoke: 3 landing variants passed.");
