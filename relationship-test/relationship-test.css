@@ -579,7 +579,7 @@ body[data-variant="c"] .landing-footer p {
 
   body[data-variant="d"] h1 {
     max-width: 21ch;
-    font-size: 2rem;
+    font-size: 1.8rem;
     line-height: 1.08;
   }
 
@@ -596,6 +596,20 @@ body[data-variant="c"] .landing-footer p {
   body[data-variant="d"] .button--primary {
     width: 100%;
     min-width: 0;
+  }
+}
+
+@media (max-width: 47.99rem) and (max-height: 38rem) {
+  body[data-variant="d"] .hero {
+    background-size: auto 11rem;
+  }
+
+  body[data-variant="d"] .hero::before {
+    background: linear-gradient(180deg, transparent 0, transparent 11rem, #f5f2e9 13rem);
+  }
+
+  body[data-variant="d"] .hero__inner {
+    padding-top: 13rem;
   }
 }
 
