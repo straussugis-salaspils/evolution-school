@@ -121,7 +121,7 @@ async function runClickSmoke({ query, pathname, landingId, ctaLabel = "Пере�
     assert.equal(elements.get("hero-title").innerHTML, "Рядом с мужем чувствуете себя <span class=\"title-accent\">уставшей функцией?</span>");
     assert.equal(elements.get("hero-lead").textContent, "Тест поможет понять, что истощает вас в отношениях и мешает чувствовать близость.");
     assert.match(elements.get("hero-eyebrow").innerHTML, /3 минуты/);
-    assert.equal(elements.get("hero-author").textContent, "Светлана Страус · 26 лет в отношениях");
+    assert.equal(elements.get("hero-author").textContent, "Светлана Страусс · 26 лет в отношениях");
     assert.doesNotMatch(html, /hero-after-cta/);
   } else {
     assert.equal(elements.get("hero-author").hidden, true);
