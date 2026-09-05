@@ -194,14 +194,6 @@ h1 {
   line-height: 1.45;
 }
 
-.hero__after-cta {
-  max-width: 28rem;
-  margin: 1.25rem 0 0;
-  color: #3f4842;
-  font-size: 0.88rem;
-  line-height: 1.5;
-}
-
 .hero__actions {
   max-width: 28rem;
   margin-top: 1.15rem;
@@ -288,9 +280,12 @@ body[data-variant="c"] .title-accent {
   color: #d98d9a;
 }
 
-body[data-variant="d"] .eyebrow,
-body[data-variant="d"] .title-accent {
+body[data-variant="d"] .eyebrow {
   color: #256149;
+}
+
+body[data-variant="d"] .title-accent {
+  color: #a8475a;
 }
 
 body[data-variant="d"] h1 {
@@ -302,7 +297,7 @@ body[data-variant="d"] h1 {
 
 body[data-variant="d"] .hero__lead {
   color: #3f4842;
-  font-size: 0.93rem;
+  font-size: 1rem;
   line-height: 1.42;
 }
 
@@ -507,7 +502,7 @@ body[data-variant="c"] .landing-footer p {
 
   body[data-variant="d"] .hero__lead {
     margin-top: 0.75rem;
-    font-size: 0.9rem;
+    font-size: 1rem;
     line-height: 1.36;
   }
 
@@ -579,13 +574,13 @@ body[data-variant="c"] .landing-footer p {
 
   body[data-variant="d"] h1 {
     max-width: 21ch;
-    font-size: 1.8rem;
+    font-size: 2rem;
     line-height: 1.08;
   }
 
   body[data-variant="d"] .hero__lead {
     margin-top: 0.8rem;
-    font-size: 0.98rem;
+    font-size: 1rem;
     line-height: 1.45;
   }
 

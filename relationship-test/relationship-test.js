@@ -41,8 +41,7 @@ const variants = {
     title: "Рядом с мужем чувствуете себя уставшей функцией?",
     titleHtml: "Рядом с мужем чувствуете себя <span class=\"title-accent\">уставшей функцией?</span>",
     lead: "Тест поможет понять, что истощает вас в отношениях и мешает чувствовать близость.",
-    afterCta: "Понять свой сценарий — первый шаг к тому, чтобы изменить отношения и снова почувствовать себя женщиной, а не функцией.",
-    author: "Автор теста — Светлана Страус. 26 лет в отношениях.",
+    author: "Светлана Страус · 26 лет в отношениях",
     ctaLabel: "Перейти в Telegram и ПРОЙТИ ТЕСТ",
     nextStepHtml: "Откроется Telegram-канал <strong>«Архетипы в Отношениях»</strong>. Тест находится в закреплённом посте.",
     telegramUrl: "https://t.me/RelationshipArchetypes"
@@ -88,7 +87,6 @@ function applyVariant() {
   const eyebrow = document.getElementById("hero-eyebrow");
   const lead = document.getElementById("hero-lead");
   const author = document.getElementById("hero-author");
-  const afterCta = document.getElementById("hero-after-cta");
   const ctaLabel = document.getElementById("telegram-cta-label");
   const nextStep = document.getElementById("telegram-next-step");
   const links = [
@@ -102,10 +100,6 @@ function applyVariant() {
   if (author) {
     author.textContent = variant.author || "";
     author.hidden = !variant.author;
-  }
-  if (afterCta) {
-    afterCta.textContent = variant.afterCta || "";
-    afterCta.hidden = !variant.afterCta;
   }
   ctaLabel.textContent = variant.ctaLabel;
   nextStep.innerHTML = variant.nextStepHtml;

@@ -40,7 +40,6 @@ async function runClickSmoke({ query, pathname, landingId, ctaLabel = "Пере�
   element("hero-title");
   element("hero-lead");
   element("hero-author");
-  element("hero-after-cta");
   element("hero-eyebrow");
   element("telegram-cta-label");
   const cta = element("telegram-cta");
@@ -118,18 +117,14 @@ async function runClickSmoke({ query, pathname, landingId, ctaLabel = "Пере�
   assert.match(elements.get("telegram-next-step").innerHTML, /Архетипы в Отношениях/);
   assert.equal(fetchCalls.length, 1, "group-first landing must create an attributed invite");
   assert.equal(JSON.parse(fetchCalls[0][1].body).utm_source, expectedSource);
-  const afterCta = elements.get("hero-after-cta");
   if (landingId === "youtube_tired_function") {
     assert.equal(elements.get("hero-title").innerHTML, "Рядом с мужем чувствуете себя <span class=\"title-accent\">уставшей функцией?</span>");
     assert.equal(elements.get("hero-lead").textContent, "Тест поможет понять, что истощает вас в отношениях и мешает чувствовать близость.");
     assert.match(elements.get("hero-eyebrow").innerHTML, /3 минуты/);
-    assert.equal(afterCta.hidden, false);
-    assert.match(afterCta.textContent, /Понять свой сценарий/);
-    assert.ok(html.indexOf('id="hero-after-cta"') > html.indexOf('id="telegram-next-step"'));
-    assert.ok(html.indexOf('id="hero-after-cta"') < html.indexOf('id="hero-author"'));
+    assert.equal(elements.get("hero-author").textContent, "Светлана Страус · 26 лет в отношениях");
+    assert.doesNotMatch(html, /hero-after-cta/);
   } else {
-    assert.equal(afterCta.hidden, true, "the new supporting text belongs only to the YouTube landing");
-    assert.equal(afterCta.textContent, "");
+    assert.equal(elements.get("hero-author").hidden, true);
   }
 
   let prevented = false;
