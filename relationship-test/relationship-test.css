@@ -107,18 +107,18 @@ body[data-variant="c"] .hero {
 }
 
 body[data-variant="d"] .hero {
-  min-height: max(58rem, 100svh);
+  min-height: 90svh;
   background-color: #f5f2e9;
   background-image: url("/relationship-test/assets/youtube-tired-function-hero.webp");
-  background-position: center calc(100% + 4rem);
-  background-size: auto 48%;
+  background-position: center 3.5rem;
+  background-size: auto 13rem;
 }
 
 body[data-variant="d"] .hero::before {
   position: absolute;
   z-index: 0;
   inset: 0;
-  background: linear-gradient(180deg, #f5f2e9 0%, rgba(245, 242, 233, 0.98) 54%, rgba(245, 242, 233, 0.78) 68%, rgba(245, 242, 233, 0) 88%);
+  background: linear-gradient(180deg, transparent 0, transparent 13rem, #f5f2e9 15rem);
   content: "";
   pointer-events: none;
 }
@@ -192,6 +192,14 @@ h1 {
   font-size: 0.82rem;
   font-weight: 600;
   line-height: 1.45;
+}
+
+.hero__after-cta {
+  max-width: 28rem;
+  margin: 1.25rem 0 0;
+  color: #3f4842;
+  font-size: 0.88rem;
+  line-height: 1.5;
 }
 
 .hero__actions {
@@ -300,7 +308,7 @@ body[data-variant="d"] .hero__lead {
 
 body[data-variant="d"] .hero__author {
   max-width: 28rem;
-  text-align: center;
+  text-align: left;
 }
 
 body[data-variant="a"] .title-accent--a {
@@ -528,30 +536,66 @@ body[data-variant="c"] .landing-footer p {
 
   body[data-variant="d"] h1 {
     max-width: 17ch;
-    font-size: clamp(2.55rem, 3.35vw, 3.3rem);
+    font-size: 3.1rem;
   }
 }
 
-@media (min-width: 56rem) and (max-width: 74.99rem) {
+@media (max-width: 74.99rem) {
+  body[data-variant="d"] .landing-header {
+    background: #f5f2e9;
+  }
+
+  body[data-variant="d"] .landing-header__inner {
+    min-height: 3.5rem;
+  }
+
   body[data-variant="d"] .hero {
-    min-height: max(68rem, 100svh);
+    min-height: 90svh;
     align-items: flex-start;
-    background-position: center bottom;
-    background-size: auto 40%;
+    background-position: center 3.5rem;
+    background-size: auto 13rem;
   }
 
   body[data-variant="d"] .hero::before {
-    background: linear-gradient(180deg, #f5f2e9 0%, rgba(245, 242, 233, 0.98) 58%, rgba(245, 242, 233, 0.76) 72%, rgba(245, 242, 233, 0) 88%);
+    background: linear-gradient(180deg, transparent 0, transparent 13rem, #f5f2e9 15rem);
   }
 
   body[data-variant="d"] .hero__copy {
     width: 100%;
     max-width: 35rem;
+    margin-inline: auto;
   }
 
   body[data-variant="d"] .hero__inner {
-    padding-top: 7rem;
+    padding-top: 15rem;
     padding-bottom: 2rem;
+  }
+
+  body[data-variant="d"] .eyebrow {
+    margin-bottom: 0.65rem;
+    font-size: 0.68rem;
+    letter-spacing: 0;
+  }
+
+  body[data-variant="d"] h1 {
+    max-width: 21ch;
+    font-size: 2rem;
+    line-height: 1.08;
+  }
+
+  body[data-variant="d"] .hero__lead {
+    margin-top: 0.8rem;
+    font-size: 0.98rem;
+    line-height: 1.45;
+  }
+
+  body[data-variant="d"] .hero__actions {
+    margin-top: 1rem;
+  }
+
+  body[data-variant="d"] .button--primary {
+    width: 100%;
+    min-width: 0;
   }
 }
 
