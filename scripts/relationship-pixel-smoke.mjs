@@ -141,6 +141,9 @@ async function runClickSmoke({ query, pathname, landingId, ctaLabel = "Пере�
   assert.deepEqual(googleConversions, ["https://t.me/+pixelSmokeInvite"]);
   assert.equal(timers.length, 0);
   assert.equal(assignedUrl, "https://t.me/+pixelSmokeInvite");
+
+  cta.listeners.click({ preventDefault() {} });
+  assert.equal(window.fbq.queue.length, 3, "Meta registration must fire once per landing session");
 }
 
 await runClickSmoke({

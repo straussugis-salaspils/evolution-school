@@ -1,4 +1,5 @@
 const META_PIXEL_ID = "944041014863402";
+const trackedMetaRegistrations = new Set();
 
 const variants = {
   a: {
@@ -149,6 +150,16 @@ function navigateWithGoogleConversion(url) {
 function trackMetaGroupJoinClick(variant) {
   if (typeof window.fbq !== "function") return false;
   const sessionId = landingSessionId(variant.testId, variant.landingId);
+  const conversionKey = `${variant.landingId}:${sessionId || "page"}`;
+  if (trackedMetaRegistrations.has(conversionKey)) return false;
+  const storageKey = `eh_meta_registration:${conversionKey}`;
+  try {
+    if (window.sessionStorage.getItem(storageKey)) return false;
+    window.sessionStorage.setItem(storageKey, "1");
+  } catch {
+    // The in-memory guard still prevents a double click on this page.
+  }
+  trackedMetaRegistrations.add(conversionKey);
   const eventId = `group_join_click_${variant.landingId}_${sessionId || Date.now()}`;
   window.fbq(
     "track",
