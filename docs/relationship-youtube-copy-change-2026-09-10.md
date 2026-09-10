@@ -1,5 +1,7 @@
 # YouTube: новый текст лендинга и точка сравнения
 
+> Историческая промежуточная версия с портретом. Она заменена 10 сентября 2026 в 23:35:09.847 по Риге новым текстом и шаблоном с парой. Актуальная версия и вторая точка отсчёта: [relationship-youtube-love-or-exhaustion-2026-09-10.md](relationship-youtube-love-or-exhaustion-2026-09-10.md). Для точного сравнения трёх версий нужен параметр `--second-cutover` из нового документа.
+
 ## Публикация
 
 - Страница: https://evolution.yourbalancerestored.com/relationship-test/tired-function/
