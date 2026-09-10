@@ -227,8 +227,9 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
       }
       function formatDate(value) { return new Intl.DateTimeFormat("ru-RU",{day:"numeric",month:"long",year:"numeric"}).format(new Date(value + "T12:00:00")); }
       function formatPeriod(dateFrom, dateTo) { return dateFrom === dateTo ? formatDate(dateFrom) : formatDate(dateFrom) + " — " + formatDate(dateTo); }
-      function formatTime(value) { return new Intl.DateTimeFormat("ru-RU",{timeZone:"Europe/Riga",hour:"2-digit",minute:"2-digit"}).format(new Date(value)); }
-      function formatTimestamp(value) { return new Intl.DateTimeFormat("ru-RU",{timeZone:"Europe/Riga",day:"numeric",month:"long",hour:"2-digit",minute:"2-digit"}).format(new Date(value)); }
+      function timezoneLabel() { return timezoneInput.value === 'Asia/Dubai' ? 'Дубай' : 'Рига'; }
+      function formatTime(value) { return new Intl.DateTimeFormat("ru-RU",{timeZone:timezoneInput.value,hour:"2-digit",minute:"2-digit"}).format(new Date(value)); }
+      function formatTimestamp(value) { return new Intl.DateTimeFormat("ru-RU",{timeZone:timezoneInput.value,day:"numeric",month:"long",hour:"2-digit",minute:"2-digit"}).format(new Date(value)); }
       function mapSteps(funnel) { var result = {}; (funnel || []).forEach(function (step) { result[step.key] = step; }); return result; }
       function mergeStepMaps(target, source) {
         Object.keys(source || {}).forEach(function (key) {
@@ -328,7 +329,7 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
         if (currentFrom <= '2026-09-06' && currentTo >= '2026-09-03') notes.push('До 6 сентября 10:54 по Риге CompleteRegistration смешивал браузерный и серверный учёт. Исторические результаты Meta не исправлены задним числом; не используйте их как число подписчиков.');
         if (data.untracked_landing_visits) notes.push('Есть '+data.untracked_landing_visits+' посещений без персонального приглашения: следующие шаги для них не восстановлены.');
         var statusRows=Object.keys(op.capi).map(function(name){var c=op.capi[name];return [name,c.eligible,c.sent,c.pending,c.retry,c.unqueued,c.discarded];});
-        dataHealth.innerHTML='<p>'+notes.map(escapeHtml).join('<br>')+'</p>'+simpleTable(['Событие бота за период','Подходит для CAPI','Meta приняла','В очереди','Ошибка/повтор','Не поставлено','Не отправлено: срок истёк'],statusRows)+'<p>«Meta приняла» — ответ API, не доказательство рекламной атрибуции. Подписка учитывается отдельно и не отправляется повторно как CompleteRegistration. Последняя успешная отправка: '+escapeHtml(op.last_capi_sent_at ? formatTimestamp(op.last_capi_sent_at)+' (Рига)' : 'нет')+'.</p>';
+        dataHealth.innerHTML='<p>'+notes.map(escapeHtml).join('<br>')+'</p>'+simpleTable(['Событие бота за период','Подходит для CAPI','Meta приняла','В очереди','Ошибка/повтор','Не поставлено','Не отправлено: срок истёк'],statusRows)+'<p>«Meta приняла» — ответ API, не доказательство рекламной атрибуции. Подписка учитывается отдельно и не отправляется повторно как CompleteRegistration. Последняя успешная отправка: '+escapeHtml(op.last_capi_sent_at ? formatTimestamp(op.last_capi_sent_at)+' ('+timezoneLabel()+')' : 'нет')+'.</p>';
         dailyFacts.innerHTML=simpleTable(['Дата','Вступили всего','Из Meta','Из Google','Без источника / прочие','Начали тест','Завершили тест','Нажали программу'],op.daily.map(function(d){return [d.date,d.channel_joined,d.joined_meta,d.joined_google,d.channel_joined-d.joined_meta-d.joined_google,d.test_started,d.test_completed,d.cta_clicked];}));
         // Verified Ads Manager export, fetched 10 September. Never present this as a live API feed.
         var metaRows=[
@@ -382,10 +383,10 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
           renderOperational(data);
           channelJoined.textContent = Number(data.channel_joined_total || 0);
           channelSubscribers.textContent = data.channel_subscribers_current == null ? "—" : Number(data.channel_subscribers_current);
-          inviteTracking.textContent = data.individual_invites_started_at ? formatTimestamp(data.individual_invites_started_at) : "ещё не было";
+          inviteTracking.textContent = data.individual_invites_started_at ? formatTimestamp(data.individual_invites_started_at)+' ('+timezoneLabel()+')' : "ещё не было";
           untrackedVisits.textContent = Number(data.untracked_landing_visits || 0);
           untrackedClicks.textContent = data.untracked_cta_clicks == null ? "—" : Number(data.untracked_cta_clicks);
-          updated.textContent = "Обновлено в " + formatTime(data.generated_at || new Date().toISOString());
+          updated.textContent = "Обновлено в " + formatTime(data.generated_at || new Date().toISOString())+' ('+timezoneLabel()+')';
         } catch (error) {
           if (thisRequest !== requestId) return;
           dashboard.innerHTML = '<div class="error">Не удалось загрузить статистику. Обновите страницу через минуту.</div>';
