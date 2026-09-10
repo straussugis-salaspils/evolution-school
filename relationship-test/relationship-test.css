@@ -101,26 +101,10 @@ a {
 }
 
 body[data-variant="b"] .hero,
-body[data-variant="c"] .hero {
+body[data-variant="c"] .hero,
+body[data-variant="d"] .hero {
   background-color: #24211e;
   background-image: url("/relationship-test/assets/flow-b-hero-mobile.webp");
-}
-
-body[data-variant="d"] .hero {
-  min-height: 90svh;
-  background-color: #f5f2e9;
-  background-image: url("/relationship-test/assets/youtube-tired-function-hero.webp");
-  background-position: center 3.5rem;
-  background-size: auto 13rem;
-}
-
-body[data-variant="d"] .hero::before {
-  position: absolute;
-  z-index: 0;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 0, transparent 13rem, #f5f2e9 15rem);
-  content: "";
-  pointer-events: none;
 }
 
 body[data-variant="a"] .hero {
@@ -253,16 +237,14 @@ h1 {
 }
 
 body[data-variant="b"] .brand img,
-body[data-variant="c"] .brand img {
+body[data-variant="c"] .brand img,
+body[data-variant="d"] .brand img {
   filter: brightness(0) invert(1);
 }
 
-body[data-variant="d"] .brand img {
-  filter: brightness(0) saturate(100%) invert(28%) sepia(25%) saturate(1027%) hue-rotate(105deg) brightness(86%) contrast(87%);
-}
-
 body[data-variant="b"] .eyebrow,
-body[data-variant="c"] .eyebrow {
+body[data-variant="c"] .eyebrow,
+body[data-variant="d"] .eyebrow {
   color: #d5a0a8;
 }
 
@@ -271,39 +253,17 @@ body[data-variant="b"] .hero__lead,
 body[data-variant="b"] .telegram-start-note,
 body[data-variant="c"] h1,
 body[data-variant="c"] .hero__lead,
-body[data-variant="c"] .telegram-start-note {
+body[data-variant="c"] .telegram-start-note,
+body[data-variant="d"] h1,
+body[data-variant="d"] .hero__lead,
+body[data-variant="d"] .telegram-start-note {
   color: #f8f4ed;
 }
 
 body[data-variant="b"] .title-accent,
-body[data-variant="c"] .title-accent {
-  color: #d98d9a;
-}
-
-body[data-variant="d"] .eyebrow {
-  color: #256149;
-}
-
+body[data-variant="c"] .title-accent,
 body[data-variant="d"] .title-accent {
-  color: #a8475a;
-}
-
-body[data-variant="d"] h1 {
-  max-width: 17ch;
-  color: #263d32;
-  font-size: 2.15rem;
-  line-height: 1.03;
-}
-
-body[data-variant="d"] .hero__lead {
-  color: #3f4842;
-  font-size: 1rem;
-  line-height: 1.42;
-}
-
-body[data-variant="d"] .hero__author {
-  max-width: 28rem;
-  text-align: left;
+  color: #d98d9a;
 }
 
 body[data-variant="a"] .title-accent--a {
@@ -311,39 +271,15 @@ body[data-variant="a"] .title-accent--a {
 }
 
 body[data-variant="b"] .button--primary,
-body[data-variant="c"] .button--primary {
+body[data-variant="c"] .button--primary,
+body[data-variant="d"] .button--primary {
   background: var(--rose);
   box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.28);
 }
 
-body[data-variant="d"] .button--primary {
-  background: #256149;
-  box-shadow: 0 0.8rem 2rem rgba(37, 97, 73, 0.22);
-}
-
-body[data-variant="d"] .button--primary:hover {
-  background: #1d4d3a;
-  box-shadow: 0 1rem 2.3rem rgba(37, 97, 73, 0.3);
-}
-
-@media (max-width: 47.99rem) {
-  body[data-variant="d"] .button--primary {
-    gap: 0.45rem;
-    padding-inline: 0.8rem;
-    font-size: 0.82rem;
-  }
-}
-
-@media (max-width: 23rem) {
-  body[data-variant="d"] .button--primary {
-    gap: 0.3rem;
-    padding-inline: 0.5rem;
-    font-size: 0.75rem;
-  }
-}
-
 body[data-variant="b"] .button--primary:hover,
-body[data-variant="c"] .button--primary:hover {
+body[data-variant="c"] .button--primary:hover,
+body[data-variant="d"] .button--primary:hover {
   background: var(--rose-hover);
   box-shadow: 0 1rem 2.3rem rgba(0, 0, 0, 0.34);
 }
@@ -370,13 +306,15 @@ body[data-variant="c"] .button--primary:hover {
 }
 
 body[data-variant="b"] .landing-footer,
-body[data-variant="c"] .landing-footer {
+body[data-variant="c"] .landing-footer,
+body[data-variant="d"] .landing-footer {
   border-color: rgba(255, 255, 255, 0.1);
   background: #1e1b19;
 }
 
 body[data-variant="b"] .landing-footer p,
-body[data-variant="c"] .landing-footer p {
+body[data-variant="c"] .landing-footer p,
+body[data-variant="d"] .landing-footer p {
   color: #b7ada6;
 }
 
@@ -429,9 +367,6 @@ body[data-variant="c"] .landing-footer p {
     max-width: 28rem;
   }
 
-  body[data-variant="d"] h1 {
-    font-size: 3.1rem;
-  }
 }
 
 @media (min-width: 56rem) {
@@ -449,19 +384,9 @@ body[data-variant="c"] .landing-footer p {
   }
 
   body[data-variant="b"] .hero,
-  body[data-variant="c"] .hero {
-    background-image: url("/relationship-test/assets/flow-b-hero-desktop.webp");
-  }
-
+  body[data-variant="c"] .hero,
   body[data-variant="d"] .hero {
-    min-height: 90svh;
-    background-image: url("/relationship-test/assets/youtube-tired-function-hero.webp");
-    background-position: calc(100% + 4rem) center;
-    background-size: auto 100%;
-  }
-
-  body[data-variant="d"] .hero::before {
-    background: linear-gradient(90deg, rgba(245, 242, 233, 0.98) 0%, rgba(245, 242, 233, 0.92) 34%, rgba(245, 242, 233, 0.48) 43%, rgba(245, 242, 233, 0) 56%);
+    background-image: url("/relationship-test/assets/flow-b-hero-desktop.webp");
   }
 
   body[data-variant="a"] .hero {
@@ -481,41 +406,12 @@ body[data-variant="c"] .landing-footer p {
   }
 
   body[data-variant="b"] .hero__copy,
-  body[data-variant="c"] .hero__copy {
+  body[data-variant="c"] .hero__copy,
+  body[data-variant="d"] .hero__copy {
     width: 47%;
     max-width: 35rem;
     margin-right: auto;
     margin-left: 0;
-  }
-
-  body[data-variant="d"] .hero__copy {
-    width: 48%;
-    max-width: 37rem;
-    margin-right: auto;
-    margin-left: 0;
-  }
-
-  body[data-variant="d"] .hero__inner {
-    padding-top: 5.5rem;
-    padding-bottom: 2rem;
-  }
-
-  body[data-variant="d"] .hero__lead {
-    margin-top: 0.75rem;
-    font-size: 1rem;
-    line-height: 1.36;
-  }
-
-  body[data-variant="d"] .hero__lead span + span {
-    margin-top: 0.5rem;
-  }
-
-  body[data-variant="d"] .hero__author {
-    margin-top: 0.65rem;
-  }
-
-  body[data-variant="d"] .hero__actions {
-    margin-top: 1rem;
   }
 
   h1 {
@@ -523,89 +419,12 @@ body[data-variant="c"] .landing-footer p {
   }
 
   body[data-variant="b"] h1,
-  body[data-variant="c"] h1 {
+  body[data-variant="c"] h1,
+  body[data-variant="d"] h1 {
     max-width: 13ch;
     font-size: clamp(3rem, 4vw, 4rem);
   }
 
-
-  body[data-variant="d"] h1 {
-    max-width: 17ch;
-    font-size: 3.1rem;
-  }
-}
-
-@media (max-width: 74.99rem) {
-  body[data-variant="d"] .landing-header {
-    background: #f5f2e9;
-  }
-
-  body[data-variant="d"] .landing-header__inner {
-    min-height: 3.5rem;
-  }
-
-  body[data-variant="d"] .hero {
-    min-height: 90svh;
-    align-items: flex-start;
-    background-position: center 3.5rem;
-    background-size: auto 13rem;
-  }
-
-  body[data-variant="d"] .hero::before {
-    background: linear-gradient(180deg, transparent 0, transparent 13rem, #f5f2e9 15rem);
-  }
-
-  body[data-variant="d"] .hero__copy {
-    width: 100%;
-    max-width: 35rem;
-    margin-inline: auto;
-  }
-
-  body[data-variant="d"] .hero__inner {
-    padding-top: 15rem;
-    padding-bottom: 2rem;
-  }
-
-  body[data-variant="d"] .eyebrow {
-    margin-bottom: 0.65rem;
-    font-size: 0.68rem;
-    letter-spacing: 0;
-  }
-
-  body[data-variant="d"] h1 {
-    max-width: 21ch;
-    font-size: 2rem;
-    line-height: 1.08;
-  }
-
-  body[data-variant="d"] .hero__lead {
-    margin-top: 0.8rem;
-    font-size: 1rem;
-    line-height: 1.45;
-  }
-
-  body[data-variant="d"] .hero__actions {
-    margin-top: 1rem;
-  }
-
-  body[data-variant="d"] .button--primary {
-    width: 100%;
-    min-width: 0;
-  }
-}
-
-@media (max-width: 47.99rem) and (max-height: 38rem) {
-  body[data-variant="d"] .hero {
-    background-size: auto 11rem;
-  }
-
-  body[data-variant="d"] .hero::before {
-    background: linear-gradient(180deg, transparent 0, transparent 11rem, #f5f2e9 13rem);
-  }
-
-  body[data-variant="d"] .hero__inner {
-    padding-top: 13rem;
-  }
 }
 
 @media (max-height: 43rem) and (max-width: 55.99rem) {
@@ -645,5 +464,46 @@ body[data-variant="c"] .landing-footer p {
   *::after {
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* YouTube uses the same couple image and dark treatment as variants B/C. */
+body[data-variant="d"] {
+  background: #1e1b19;
+}
+
+body[data-variant="d"] .hero__inner {
+  padding-bottom: 75vw;
+}
+
+body[data-variant="d"] h1 {
+  max-width: 20ch;
+  font-size: 2.05rem;
+  line-height: 1.08;
+}
+
+body[data-variant="d"] .hero__lead {
+  font-size: 1rem;
+}
+
+body[data-variant="d"] .hero__author {
+  color: #b7ada6;
+  font-size: 0.875rem;
+}
+
+body[data-variant="d"] .telegram-start-note {
+  font-size: 0.875rem;
+}
+
+@media (min-width: 48rem) {
+  body[data-variant="d"] h1 {
+    max-width: 18ch;
+    font-size: clamp(2.6rem, 3.5vw, 3.5rem);
+  }
+}
+
+@media (min-width: 56rem) {
+  body[data-variant="d"] .hero__inner {
+    padding-bottom: 4rem;
   }
 }

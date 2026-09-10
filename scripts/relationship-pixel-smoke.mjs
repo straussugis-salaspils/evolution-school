@@ -118,8 +118,8 @@ async function runClickSmoke({ query, pathname, landingId, ctaLabel = "Пере�
   assert.equal(fetchCalls.length, 1, "group-first landing must create an attributed invite");
   assert.equal(JSON.parse(fetchCalls[0][1].body).utm_source, expectedSource);
   if (landingId === "youtube_tired_function") {
-    assert.equal(elements.get("hero-title").innerHTML, "Я устала всё тянуть на себе — <span class=\"title-accent\">или больше не хочу этих отношений?</span>");
-    assert.equal(elements.get("hero-lead").textContent, "Когда рядом с мужем остаются только обязанности, легко перепутать усталость, обиды и потерю близости. Ответьте на 7 вопросов — получите разбор своей ситуации и ориентиры перед решением.");
+    assert.equal(elements.get("hero-title").innerHTML, "Я разлюбила мужа —<br>или просто устала <span class=\"title-accent\">всё тащить на себе?</span>");
+    assert.equal(elements.get("hero-lead").textContent, "Муж раздражает, близости не хочется, всё чаще думаете: зачем мне такие отношения? Пройдите 7 вопросов, чтобы разобраться, что стоит за этими чувствами и что важно понять перед решением — уйти или остаться.");
     assert.match(elements.get("hero-eyebrow").innerHTML, /3 минуты/);
     assert.equal(elements.get("hero-author").textContent, "Светлана Страусс · 26 лет в отношениях");
     assert.doesNotMatch(html, /hero-after-cta/);
