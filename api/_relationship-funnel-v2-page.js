@@ -87,6 +87,7 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
       .date-field input { width: 100%; }
       .table-wrap { overflow: visible; border: 0; background: transparent; }
       table, tbody, tr, td { display: block; min-width: 0; }
+      .activity table, .meta-table { min-width: 0; }
       thead { display: none; }
       tbody { display: grid; gap: .8rem; }
       tr { overflow: hidden; border: 1px solid var(--line); border-radius: .5rem; background: var(--paper); }
