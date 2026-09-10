@@ -35,7 +35,11 @@ const elements = new Map([
   "date-to",
   "ranges",
   "date-form",
+  "timezone",
+  "daily-facts",
+  "data-health",
 ].map((id) => [id, element()]));
+elements.get("timezone").value = "Europe/Riga";
 
 const funnel = (landing, cta, joined, started, completed) => [
   { key: "landing", count: landing },
@@ -46,6 +50,7 @@ const funnel = (landing, cta, joined, started, completed) => [
 ];
 
 const data = {
+  timezone: "Europe/Riga",
   generated_at: "2026-09-05T00:00:00Z",
   channel_joined_total: 3,
   channel_subscribers_current: 148,
