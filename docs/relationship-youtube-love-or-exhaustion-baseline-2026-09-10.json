@@ -1,0 +1,90 @@
+{
+  "observed_at_utc": "2026-09-10T20:35:38.311150+00:00",
+  "cutover_utc": "2026-09-10T14:29:26.387000+00:00",
+  "second_cutover_utc": "2026-09-10T20:35:09.847000+00:00",
+  "cohort_basis": "original landing visit created_at; downstream actions may arrive later",
+  "periods": [
+    {
+      "period": "old_copy_full_days_06_09_Riga",
+      "from_utc_inclusive": "2026-09-05T21:00:00+00:00",
+      "to_utc_exclusive": "2026-09-09T21:00:00+00:00",
+      "sources": [
+        {
+          "source": "google",
+          "counts": {
+            "landing": 1326,
+            "cta": 77,
+            "group_joined": 22,
+            "test_started": 8,
+            "completed": 6,
+            "returned_to_channel": 3
+          }
+        },
+        {
+          "source": "direct",
+          "counts": {
+            "landing": 8,
+            "cta": 0,
+            "group_joined": 0,
+            "test_started": 0,
+            "completed": 0,
+            "returned_to_channel": 0
+          }
+        }
+      ]
+    },
+    {
+      "period": "old_copy_today_before_cutover",
+      "from_utc_inclusive": "2026-09-09T21:00:00+00:00",
+      "to_utc_exclusive": "2026-09-10T14:29:26.387000+00:00",
+      "sources": [
+        {
+          "source": "google",
+          "counts": {
+            "landing": 280,
+            "cta": 20,
+            "group_joined": 7,
+            "test_started": 2,
+            "completed": 2,
+            "returned_to_channel": 1
+          }
+        }
+      ]
+    },
+    {
+      "period": "decision_copy_portrait",
+      "from_utc_inclusive": "2026-09-10T14:29:26.387000+00:00",
+      "to_utc_exclusive": "2026-09-10T20:35:09.847000+00:00",
+      "sources": [
+        {
+          "source": "google",
+          "counts": {
+            "landing": 103,
+            "cta": 5,
+            "group_joined": 0,
+            "test_started": 0,
+            "completed": 0,
+            "returned_to_channel": 0
+          }
+        },
+        {
+          "source": "direct",
+          "counts": {
+            "landing": 1,
+            "cta": 0,
+            "group_joined": 0,
+            "test_started": 0,
+            "completed": 0,
+            "returned_to_channel": 0
+          }
+        }
+      ]
+    },
+    {
+      "period": "love_or_exhaustion_couple",
+      "from_utc_inclusive": "2026-09-10T20:35:09.847000+00:00",
+      "to_utc_exclusive": "2026-09-10T20:35:38.311150+00:00",
+      "sources": []
+    }
+  ]
+}
