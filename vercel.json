@@ -4,16 +4,20 @@
   "outputDirectory": ".",
   "functions": {
     "api/relationship-attribution.js": {
+      "regions": ["fra1"],
       "maxDuration": 10
     },
     "api/relationship-attribution-click.js": {
+      "regions": ["fra1"],
       "maxDuration": 10
     },
     "api/relationship-funnel-dashboard.js": {
+      "regions": ["fra1"],
       "maxDuration": 15
     },
     "api/relationship-funnel-v2-dashboard.js": {
-      "maxDuration": 15
+      "regions": ["fra1"],
+      "maxDuration": 25
     }
   },
   "rewrites": [

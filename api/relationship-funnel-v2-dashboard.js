@@ -32,12 +32,18 @@ export default async function handler(request, response) {
   const timezone = String(request.query.timezone || "Europe/Riga");
   if (!["Europe/Riga", "Asia/Dubai"].includes(timezone)) return response.status(400).json({ error: "Invalid timezone" });
   url.searchParams.set("timezone", timezone);
-  try {
-    const upstream = await fetch(url, { headers: { "X-Attribution-Secret": secret }, signal: AbortSignal.timeout(12000) });
-    const text = await upstream.text();
-    response.setHeader("Content-Type", upstream.headers.get("content-type") || "application/json");
-    return response.status(upstream.status).send(text);
-  } catch {
-    return response.status(502).json({ error: "Statistics backend unavailable" });
+  // Statistics is a read-only GET; one bounded retry is safe. Do not apply
+  // this blindly to attribution POSTs, which can create an invitation.
+  for (let attempt = 0; attempt < 2; attempt += 1) {
+    try {
+      const upstream = await fetch(url, { headers: { "X-Attribution-Secret": secret }, signal: AbortSignal.timeout(9000) });
+      const text = await upstream.text();
+      if (attempt === 0 && [502,503,504].includes(upstream.status)) continue;
+      response.setHeader("Content-Type", upstream.headers.get("content-type") || "application/json");
+      return response.status(upstream.status).send(text);
+    } catch (error) {
+      console.warn("relationship_stats_upstream", { attempt: attempt + 1, name: error?.name, code: error?.cause?.code });
+    }
   }
+  return response.status(502).json({ error: "Statistics backend unavailable" });
 }
