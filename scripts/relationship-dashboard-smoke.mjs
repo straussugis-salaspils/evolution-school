@@ -5,6 +5,9 @@ import { RELATIONSHIP_FUNNEL_V2_PAGE } from "../api/_relationship-funnel-v2-page
 
 const script = RELATIONSHIP_FUNNEL_V2_PAGE.match(/<script>([\s\S]*?)<\/script>/)?.[1];
 assert.ok(script, "dashboard script must be present");
+assert.match(RELATIONSHIP_FUNNEL_V2_PAGE, /datetime="2026-09-10T14:29:26\.387Z"/);
+assert.match(RELATIONSHIP_FUNNEL_V2_PAGE, /первый полный день нового текста — 11 сентября/);
+assert.match(RELATIONSHIP_FUNNEL_V2_PAGE, /1326 посещений → 77 нажатий/);
 
 function element() {
   return {
