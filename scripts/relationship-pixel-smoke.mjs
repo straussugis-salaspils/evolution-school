@@ -118,8 +118,8 @@ async function runClickSmoke({ query, pathname, landingId, ctaLabel = "Пере�
   assert.equal(fetchCalls.length, 1, "group-first landing must create an attributed invite");
   assert.equal(JSON.parse(fetchCalls[0][1].body).utm_source, expectedSource);
   if (landingId === "youtube_tired_function") {
-    assert.equal(elements.get("hero-title").innerHTML, "Рядом с мужем чувствуете себя <span class=\"title-accent\">уставшей функцией?</span>");
-    assert.equal(elements.get("hero-lead").textContent, "Тест поможет понять, что истощает вас в отношениях и мешает чувствовать близость.");
+    assert.equal(elements.get("hero-title").innerHTML, "Я устала всё тянуть на себе — <span class=\"title-accent\">или больше не хочу этих отношений?</span>");
+    assert.equal(elements.get("hero-lead").textContent, "Когда рядом с мужем остаются только обязанности, легко перепутать усталость, обиды и потерю близости. Ответьте на 7 вопросов — получите разбор своей ситуации и ориентиры перед решением.");
     assert.match(elements.get("hero-eyebrow").innerHTML, /3 минуты/);
     assert.equal(elements.get("hero-author").textContent, "Светлана Страусс · 26 лет в отношениях");
     assert.doesNotMatch(html, /hero-after-cta/);
@@ -160,17 +160,20 @@ await runClickSmoke({
   query: "",
   pathname: "/relationship-test/tired-function/",
   landingId: "youtube_tired_function",
+  ctaLabel: "ПРОЙТИ ТЕСТ В TELEGRAM",
 });
 await runClickSmoke({
   query: "?gclid=google-test-click",
   pathname: "/relationship-test/tired-function/",
   landingId: "youtube_tired_function",
+  ctaLabel: "ПРОЙТИ ТЕСТ В TELEGRAM",
   expectedSource: "google",
 });
 await runClickSmoke({
   query: "?utm_source=meta",
   pathname: "/relationship-test/tired-function/",
   landingId: "youtube_tired_function",
+  ctaLabel: "ПРОЙТИ ТЕСТ В TELEGRAM",
   expectedSource: "meta",
 });
 
