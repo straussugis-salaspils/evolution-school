@@ -124,6 +124,14 @@ for (let start = 0; start < rows.length; start += 5) {
 }
 assert.deepEqual(rows[1].counts, [11, 4, 1, 1, 1]);
 
+elements.get("timezone").value = "Asia/Dubai";
+context.fetch = async () => ({ok:true, json:async()=>({...data, timezone:"Asia/Dubai"})});
+elements.get("timezone").listeners.change();
+await new Promise((resolve) => setImmediate(resolve));
+assert.match(elements.get("invite-tracking").textContent, /4 сентября.*01:10.*Дубай/);
+assert.match(elements.get("updated").textContent, /04:00.*Дубай/);
+elements.get("timezone").value = "Europe/Riga";
+
 const pending = [];
 context.fetch = (url) => new Promise((resolve) => pending.push({url, resolve}));
 vm.runInNewContext(script, context);
@@ -146,4 +154,4 @@ await new Promise((resolve) => setImmediate(resolve));
 assert.match(elements.get("dashboard").innerHTML, /Не удалось загрузить/);
 assert.equal(elements.get("channel-joined").textContent, "—");
 
-console.log("Dashboard audit: all source totals, Riga dates, stale responses and loading errors passed.");
+console.log("Dashboard audit: source totals, Riga/Dubai dates and timestamps, stale responses and loading errors passed.");
