@@ -127,6 +127,7 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
         <form class="date-form" id="date-form">
           <label class="date-field">С<input id="date-from" type="date" required></label>
           <label class="date-field">По<input id="date-to" type="date" required></label>
+          <label class="date-field">Часовой пояс<select id="timezone" style="min-height:2.75rem;font:inherit"><option value="Europe/Riga">Рига — как в отчёте бота</option><option value="Asia/Dubai">Дубай — как в Meta</option></select></label>
           <button class="date-submit" type="submit">Показать</button>
         </form>
       </section>
@@ -139,23 +140,13 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
           <div class="channel-fact"><span>Подписчиков сейчас</span><strong id="channel-subscribers">—</strong></div>
         </div>
       </section>
-      <section class="report-section" id="meta-snapshot">
-        <h2>Meta Ads: сохранённый снимок за 3 сентября</h2>
-        <p>Выгрузка Ads Manager за 3 сентября 2026 года, 20:03 по Риге.</p>
-        <div class="table-wrap">
-          <table class="meta-table">
-            <thead><tr><th>Рекламная идея</th><th>Результаты Meta</th><th>Показы</th><th>Охват</th><th>Клики по ссылке</th><th>Просмотры лендинга</th><th>CTR</th><th>Расход</th><th>Цена результата</th></tr></thead>
-            <tbody>
-              <tr><td><span class="idea">Уйти или остаться</span></td><td data-label="Результаты Meta"><div class="metric"><strong>9</strong></div></td><td data-label="Показы"><div class="metric"><strong>1 586</strong></div></td><td data-label="Охват"><div class="metric"><strong>1 316</strong></div></td><td data-label="Клики по ссылке"><div class="metric"><strong>43</strong></div></td><td data-label="Просмотры лендинга"><div class="metric"><strong>15</strong></div></td><td data-label="CTR"><div class="metric"><strong>2,71%</strong></div></td><td data-label="Расход"><div class="metric"><strong>$16,10</strong></div></td><td data-label="Цена результата"><div class="metric"><strong>$1,79</strong></div></td></tr>
-              <tr><td><span class="idea">Почему мне плохо</span></td><td data-label="Результаты Meta"><div class="metric"><strong>1</strong></div></td><td data-label="Показы"><div class="metric"><strong>983</strong></div></td><td data-label="Охват"><div class="metric"><strong>872</strong></div></td><td data-label="Клики по ссылке"><div class="metric"><strong>14</strong></div></td><td data-label="Просмотры лендинга"><div class="metric"><strong>3</strong></div></td><td data-label="CTR"><div class="metric"><strong>1,42%</strong></div></td><td data-label="Расход"><div class="metric"><strong>$12,04</strong></div></td><td data-label="Цена результата"><div class="metric"><strong>$12,04</strong></div></td></tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
+      <section class="report-section" id="meta-snapshot" hidden></section>
+      <section class="report-section"><h2>Проверка данных и передачи в Meta</h2><div id="data-health">Загрузка...</div></section>
+      <section class="report-section"><h2>Фактические события по дням</h2><p>Дата самого действия в выбранном часовом поясе. Все источники. Вступления — уникальные люди за день, включая повторные вступления; это не прирост подписчиков. Завершения здесь могут относиться к тестам, начатым раньше.</p><div id="daily-facts">Загрузка...</div></section>
       <section class="report-section">
         <h2>Воронка посетителей лендингов</h2>
-        <p>Период выбирает дату посещения лендинга по Риге. Дальнейшие шаги показывают результат этих посещений на момент обновления. Посещения и нажатия считаются по сессиям; вступления подтверждены Telegram и связаны с персональной ссылкой. Без персональной ссылки: <strong id="untracked-visits">—</strong> посещений, <strong id="untracked-clicks">—</strong> нажатий. Первый связанный переход за период: <strong id="invite-tracking">—</strong>.</p>
-        <p>В Meta день считается по Дубаю (сейчас на час раньше Риги). «Клики по ссылке» в Meta — переходы из рекламы; «Нажали кнопку» здесь — переходы с лендинга в Telegram. Результат CompleteRegistration в рекламе настроен на нажатие этой кнопки.</p>
+        <p>Период выбирает дату посещения лендинга в выбранном часовом поясе. Дальнейшие шаги — результат этих посещений на момент обновления. Посещения и нажатия — сессии, последующие шаги — уникальные люди внутри строки. Без персональной ссылки: <strong id="untracked-visits">—</strong> посещений, <strong id="untracked-clicks">—</strong> нажатий. Первый связанный переход за период: <strong id="invite-tracking">—</strong>.</p>
+        <p>Главный результат привлечения — подтверждённое вступление в канал; качество — завершённый тест. CompleteRegistration в действующей рекламе означает только нажатие кнопки Telegram, не подписку. TelegramStart — начало теста, Lead — завершение теста. Meta использует окно 7 дней после клика / 1 день после просмотра; её атрибутированные результаты не обязаны совпадать с нашими событиями день в день. Для сравнения календарных суток выберите Дубай.</p>
         <div id="dashboard"><div class="loading">Загрузка...</div></div>
       </section>
       <section class="activity" aria-labelledby="activity-title">
@@ -203,6 +194,9 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
       var untrackedClicks = document.getElementById("untracked-clicks");
       var fromInput = document.getElementById("date-from");
       var toInput = document.getElementById("date-to");
+      var timezoneInput = document.getElementById("timezone");
+      var dataHealth = document.getElementById("data-health");
+      var dailyFacts = document.getElementById("daily-facts");
       var currentFrom = "";
       var currentTo = "";
       var requestId = 0;
@@ -220,7 +214,7 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
       ];
       function escapeHtml(value) { return String(value == null ? "" : value).replace(/[&<>"']/g,function (char) { return ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"})[char]; }); }
       function todayInRiga() {
-        var parts = new Intl.DateTimeFormat("en",{timeZone:"Europe/Riga",year:"numeric",month:"2-digit",day:"2-digit"}).formatToParts(new Date());
+        var parts = new Intl.DateTimeFormat("en",{timeZone:timezoneInput.value,year:"numeric",month:"2-digit",day:"2-digit"}).formatToParts(new Date());
         var values = {};
         parts.forEach(function (part) { values[part.type] = part.value; });
         return values.year + "-" + values.month + "-" + values.day;
@@ -256,7 +250,7 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
         var count = Number((values[key] || {}).count || 0);
         var previousCount = index ? Number((values[steps[index - 1][0]] || {}).count || 0) : 0;
         var conversion = index && previousCount ? count / previousCount * 100 : null;
-        var conversionClass = conversion !== null && conversion < 60 ? "weak" : "";
+        var conversionClass = "";
         return '<td data-label="' + escapeHtml(steps[index][1]) + '"><div class="metric"><strong>' + count + '</strong><span class="' + conversionClass + '">' + (!index ? "сессии" : conversion === null ? "нет базы для %" : conversion.toFixed(1) + "% от прошлого шага") + '</span></div></td>';
       }
       function render(data) {
@@ -275,7 +269,8 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
           var sourceTotal = combineRows(rowsByLandingSource,["meta","youtube","direct","other"].map(function (source) { return id + ":" + source; }));
           steps.forEach(function (step) {
             var total = Number((rowsByLanding[id][step[0]] || {}).count || 0);
-            if (!Number.isInteger(total) || total < 0 || total !== Number((sourceTotal[step[0]] || {}).count || 0)) throw new Error("Source totals do not match");
+            var sourceCount=Number((sourceTotal[step[0]] || {}).count || 0);
+            if (!Number.isInteger(total) || total < 0 || (['landing','cta'].indexOf(step[0])>=0 ? total !== sourceCount : total > sourceCount)) throw new Error("Source totals do not match");
           });
         });
         function row(label, values, className, isIdea) {
@@ -320,6 +315,35 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
       function markRange(kind) {
         document.querySelectorAll("[data-range]").forEach(function (button) { button.setAttribute("aria-pressed",String(button.dataset.range === kind)); });
       }
+      function simpleTable(headers, rows) {
+        return '<div class="table-wrap"><table><thead><tr>'+headers.map(function(h){return '<th>'+escapeHtml(h)+'</th>';}).join('')+'</tr></thead><tbody>'+rows.map(function(row){return '<tr>'+row.map(function(v,i){return '<td data-label="'+escapeHtml(headers[i])+'">'+escapeHtml(v)+'</td>';}).join('')+'</tr>';}).join('')+'</tbody></table></div>';
+      }
+      function renderOperational(data) {
+        var op = data.operational;
+        if (!op) { dataHealth.textContent='Диагностика передачи пока недоступна. Это не означает отсутствие ошибок.'; dailyFacts.textContent='Нет данных'; return; }
+        var notes=[];
+        if (currentFrom <= '2026-09-03') notes.push('3 сентября учёт персональных посещений начался только вечером: этот день неполный, более ранние посещения восстановить нельзя.');
+        if (currentFrom <= '2026-09-06' && currentTo >= '2026-09-03') notes.push('До 6 сентября 10:54 по Риге CompleteRegistration смешивал браузерный и серверный учёт. Исторические результаты Meta не исправлены задним числом; не используйте их как число подписчиков.');
+        if (data.untracked_landing_visits) notes.push('Есть '+data.untracked_landing_visits+' посещений без персонального приглашения: следующие шаги для них не восстановлены.');
+        var statusRows=Object.keys(op.capi).map(function(name){var c=op.capi[name];return [name,c.eligible,c.sent,c.pending,c.retry,c.unqueued,c.discarded];});
+        dataHealth.innerHTML='<p>'+notes.map(escapeHtml).join('<br>')+'</p>'+simpleTable(['Событие бота за период','Подходит для CAPI','Meta приняла','В очереди','Ошибка/повтор','Не поставлено','Не отправлено: срок истёк'],statusRows)+'<p>«Meta приняла» — ответ API, не доказательство рекламной атрибуции. Подписка учитывается отдельно и не отправляется повторно как CompleteRegistration. Последняя успешная отправка: '+escapeHtml(op.last_capi_sent_at ? formatTimestamp(op.last_capi_sent_at)+' (Рига)' : 'нет')+'.</p>';
+        dailyFacts.innerHTML=simpleTable(['Дата','Вступили всего','Из Meta','Из Google','Без источника / прочие','Начали тест','Завершили тест','Нажали программу'],op.daily.map(function(d){return [d.date,d.channel_joined,d.joined_meta,d.joined_google,d.channel_joined-d.joined_meta-d.joined_google,d.test_started,d.test_completed,d.cta_clicked];}));
+        // Verified Ads Manager export, fetched 10 September. Never present this as a live API feed.
+        var metaRows=[
+          ['2026-09-03','stay_or_leave',9,53,19,18.46],['2026-09-03','relationship_challenges',2,25,7,20.29],
+          ['2026-09-04','stay_or_leave',8,67,13,19.47],['2026-09-04','relationship_challenges',5,41,10,17.74],
+          ['2026-09-05','stay_or_leave',4,17,8,6.43],['2026-09-05','relationship_challenges',9,22,15,6.25],
+          ['2026-09-06','stay_or_leave',18,60,51,14.35],['2026-09-06','relationship_challenges',17,71,52,18.66],
+          ['2026-09-07','stay_or_leave',0,0,0,0],['2026-09-07','relationship_challenges',0,0,0,0],
+          ['2026-09-08','stay_or_leave',12,39,32,13.12],['2026-09-08','relationship_challenges',5,39,25,15.40],
+          ['2026-09-09','stay_or_leave',31,122,67,25.13],['2026-09-09','relationship_challenges',11,53,38,25.93]
+        ].filter(function(r){return r[0]>=currentFrom && r[0]<=currentTo;});
+        metaSnapshot.hidden=false;
+        var metaNote='<h2>Сверка с Meta по дням</h2><p>Сохранённая выгрузка Ads Manager, получена 10 сентября 2026. Это не автоматическое обновление Meta. Период выгрузки: 3–9 сентября, Дубай; за другие даты данных Meta в этом отчёте нет. CR — нажатие Telegram, не вступление.</p>';
+        if (timezoneInput.value !== 'Asia/Dubai') { metaSnapshot.innerHTML=metaNote+'<p>Выберите часовой пояс «Дубай — как в Meta», чтобы сопоставить одинаковые календарные сутки.</p>'; return; }
+        var linked={}; op.meta_landing_daily.forEach(function(r){linked[r.date+':'+r.landing_id]=r;});
+        metaSnapshot.innerHTML=metaNote+simpleTable(['Дата','Идея','Клики Meta','LPV Meta','CR Meta','Наша кнопка Telegram','Наши посещения','Расход USD'],metaRows.map(function(r){var ours=linked[r[0]+':'+r[1]] || {cta:0,visits:0};return [r[0],r[1]==='stay_or_leave'?'Уйти или остаться':'Почему мне плохо',r[3],r[4],r[2],ours.cta,ours.visits,r[5].toFixed(2)];}));
+      }
       function setRange(kind) {
         var today = todayInRiga();
         var dateFrom = today;
@@ -335,21 +359,25 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
         var thisRequest = ++requestId;
         currentFrom = dateFrom;
         currentTo = dateTo;
-        metaSnapshot.hidden = dateFrom !== "2026-09-03" || dateTo !== "2026-09-03";
+        metaSnapshot.hidden = true;
         refresh.disabled = true;
         updated.textContent = "Обновляем...";
         period.textContent = formatPeriod(dateFrom,dateTo);
         dashboard.innerHTML = '<div class="loading">Загрузка...</div>';
         testActivity.innerHTML = '<div class="loading">Загрузка...</div>';
+        dataHealth.textContent = dailyFacts.textContent = 'Загрузка...';
         channelJoined.textContent = channelSubscribers.textContent = inviteTracking.textContent = untrackedVisits.textContent = untrackedClicks.textContent = "—";
         try {
-          var response = await fetch(location.pathname + "?data=1&date_from=" + dateFrom + "&date_to=" + dateTo,{headers:{Accept:"application/json"},cache:"no-store"});
+          var requestedTimezone = timezoneInput.value;
+          var response = await fetch(location.pathname + "?data=1&date_from=" + dateFrom + "&date_to=" + dateTo + "&timezone=" + encodeURIComponent(requestedTimezone),{headers:{Accept:"application/json"},cache:"no-store"});
           if (!response.ok) throw new Error("HTTP " + response.status);
           var data = await response.json();
           if (thisRequest !== requestId) return;
           if ((data.date_from && data.date_from !== dateFrom) || (data.date_to && data.date_to !== dateTo)) throw new Error("Statistics period mismatch");
+          if (data.timezone !== requestedTimezone) throw new Error('Statistics timezone mismatch');
           render(data);
           renderTestActivity(data.test_activity);
+          renderOperational(data);
           channelJoined.textContent = Number(data.channel_joined_total || 0);
           channelSubscribers.textContent = data.channel_subscribers_current == null ? "—" : Number(data.channel_subscribers_current);
           inviteTracking.textContent = data.individual_invites_started_at ? formatTimestamp(data.individual_invites_started_at) : "ещё не было";
@@ -361,6 +389,7 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
           dashboard.innerHTML = '<div class="error">Не удалось загрузить статистику. Обновите страницу через минуту.</div>';
           testActivity.innerHTML = '<div class="error">Не удалось загрузить активность тестов.</div>';
           updated.textContent = "Ошибка обновления";
+          dataHealth.textContent = dailyFacts.textContent = 'Данные недоступны. Нули не подставлены.';
         } finally {
           if (thisRequest === requestId) refresh.disabled = false;
         }
@@ -368,6 +397,7 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
       document.getElementById("ranges").addEventListener("click",function (event) { var button = event.target.closest("[data-range]"); if (button) setRange(button.dataset.range); });
       document.getElementById("date-form").addEventListener("submit",function (event) { event.preventDefault(); if (!fromInput.value || !toInput.value || fromInput.value > toInput.value) return; markRange(""); load(fromInput.value,toInput.value); });
       refresh.addEventListener("click",function () { load(currentFrom,currentTo); });
+      timezoneInput.addEventListener('change',function(){load(currentFrom,currentTo);});
       setRange("today");
     })();
   </script>

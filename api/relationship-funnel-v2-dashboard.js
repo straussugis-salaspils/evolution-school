@@ -29,6 +29,9 @@ export default async function handler(request, response) {
     if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return response.status(400).json({ error: `Invalid ${key}` });
     url.searchParams.set(key, value);
   }
+  const timezone = String(request.query.timezone || "Europe/Riga");
+  if (!["Europe/Riga", "Asia/Dubai"].includes(timezone)) return response.status(400).json({ error: "Invalid timezone" });
+  url.searchParams.set("timezone", timezone);
   try {
     const upstream = await fetch(url, { headers: { "X-Attribution-Secret": secret }, signal: AbortSignal.timeout(12000) });
     const text = await upstream.text();
