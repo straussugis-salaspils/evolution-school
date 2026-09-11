@@ -23,13 +23,17 @@ METRICS = {"landing", "cta", "group_joined", "test_started", "completed", "retur
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument("--second-cutover", help="ISO UTC timestamp of the couple-template release; splits the post-copy cohort into two versions")
 parser.add_argument("--third-cutover", help="ISO UTC timestamp of the 3-minute CTA release; requires --second-cutover")
+parser.add_argument("--fourth-cutover", help="ISO UTC timestamp of the short-heading and clear-result release; requires --third-cutover")
 args = parser.parse_args()
 second_cutover = datetime.fromisoformat(args.second_cutover.replace("Z", "+00:00")) if args.second_cutover else None
 third_cutover = datetime.fromisoformat(args.third_cutover.replace("Z", "+00:00")) if args.third_cutover else None
+fourth_cutover = datetime.fromisoformat(args.fourth_cutover.replace("Z", "+00:00")) if args.fourth_cutover else None
 if second_cutover and (second_cutover.tzinfo is None or second_cutover <= CUTOVER):
     parser.error("--second-cutover must include a timezone and be later than the first cutover")
 if third_cutover and (not second_cutover or third_cutover.tzinfo is None or third_cutover <= second_cutover):
     parser.error("--third-cutover requires --second-cutover, must include a timezone and be later than it")
+if fourth_cutover and (not third_cutover or fourth_cutover.tzinfo is None or fourth_cutover <= third_cutover):
+    parser.error("--fourth-cutover requires --third-cutover, must include a timezone and be later than it")
 
 
 async def main():
@@ -40,6 +44,8 @@ async def main():
         parser.error("--second-cutover cannot be in the future")
     if third_cutover and third_cutover > observed_at:
         parser.error("--third-cutover cannot be in the future")
+    if fourth_cutover and fourth_cutover > observed_at:
+        parser.error("--fourth-cutover cannot be in the future")
     periods = [
         ("old_copy_full_days_06_09_Riga", datetime.fromisoformat("2026-09-05T21:00:00+00:00"), datetime.fromisoformat("2026-09-09T21:00:00+00:00")),
         ("old_copy_today_before_cutover", datetime.fromisoformat("2026-09-09T21:00:00+00:00"), CUTOVER),
@@ -50,7 +56,9 @@ async def main():
             ("love_or_exhaustion_couple", second_cutover, third_cutover or observed_at),
         ])
         if third_cutover:
-            periods.append(("love_or_exhaustion_cta_3min", third_cutover, observed_at))
+            periods.append(("love_or_exhaustion_cta_3min", third_cutover, fourth_cutover or observed_at))
+            if fourth_cutover:
+                periods.append(("short_heading_clear_result", fourth_cutover, observed_at))
     else:
         periods.append(("new_copy_since_cutover", CUTOVER, observed_at))
     results = []
@@ -74,7 +82,7 @@ async def main():
             await session.rollback()
     finally:
         await engine.dispose()
-    print(json.dumps({"observed_at_utc": observed_at.isoformat(), "cutover_utc": CUTOVER.isoformat(), "second_cutover_utc": second_cutover.isoformat() if second_cutover else None, "third_cutover_utc": third_cutover.isoformat() if third_cutover else None, "cohort_basis": "original landing visit created_at; downstream actions may arrive later", "periods": results}, ensure_ascii=False))
+    print(json.dumps({"observed_at_utc": observed_at.isoformat(), "cutover_utc": CUTOVER.isoformat(), "second_cutover_utc": second_cutover.isoformat() if second_cutover else None, "third_cutover_utc": third_cutover.isoformat() if third_cutover else None, "fourth_cutover_utc": fourth_cutover.isoformat() if fourth_cutover else None, "cohort_basis": "original landing visit created_at; downstream actions may arrive later", "periods": results}, ensure_ascii=False))
 
 
 asyncio.run(main())
