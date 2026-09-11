@@ -269,7 +269,11 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
         document.getElementById('web-quiz-section').hidden = !webQuiz;
         if (webQuiz) {
           var webSteps = [['visits','Визиты'],['started','Начали'],['completed','Завершили'],['result_viewed','Увидели результат'],['offer_viewed','Увидели программу'],['telegram_clicks','Переход в Telegram'],['confirmed_joins','Вступили']];
-          document.getElementById('web-quiz-stats').innerHTML = '<div class="table-scroll"><table><thead><tr><th>Режим</th>'+webSteps.map(function(s){return '<th>'+s[1]+'</th>';}).join('')+'<th>Визит → вступление</th></tr></thead><tbody>'+[['live','Реклама'],['preview','Проверка']].map(function(mode){var row=webQuiz[mode[0]]||{};return '<tr><th>'+mode[1]+'</th>'+webSteps.map(function(s){return '<td>'+Number(row[s[0]]||0)+'</td>';}).join('')+'<td>'+(row.visits ? (Number(row.confirmed_joins||0)/row.visits*100).toFixed(1)+'%' : '—')+'</td></tr>';}).join('')+'</tbody></table></div><p>Когорта по дате посещения в выбранном периоде. Поздние вступления относятся к исходному посещению. На проверочных прохождениях эффективность рекламы не оцениваем.</p>';
+          var webRows = [['live','Реклама'],['preview','Проверка']].map(function(mode){
+            var row=webQuiz[mode[0]]||{};
+            return [mode[1]].concat(webSteps.map(function(s){return Number(row[s[0]]||0);}),[row.visits ? (Number(row.confirmed_joins||0)/row.visits*100).toFixed(1)+'%' : '—']);
+          });
+          document.getElementById('web-quiz-stats').innerHTML = simpleTable(['Режим'].concat(webSteps.map(function(s){return s[1];}),['Визит → вступление']),webRows)+'<p>Когорта по дате посещения в выбранном периоде. Поздние вступления относятся к исходному посещению. На проверочных прохождениях эффективность рекламы не оцениваем.</p>';
         }
         if (!Array.isArray(data.by_landing) || !Array.isArray(data.by_landing_source)) throw new Error("Incomplete statistics");
         var rowsByLanding = {};

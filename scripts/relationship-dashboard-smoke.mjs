@@ -108,8 +108,8 @@ await new Promise((resolve) => setImmediate(resolve));
 
 const html = elements.get("dashboard").innerHTML;
 assert.equal(elements.get("web-quiz-section").hidden, false);
-assert.match(elements.get("web-quiz-stats").innerHTML, /Проверка[\s\S]*?<td>3<\/td>[\s\S]*?<td>2<\/td>/);
-assert.match(elements.get("web-quiz-stats").innerHTML, /Реклама[\s\S]*?<td>0<\/td>/);
+assert.match(elements.get("web-quiz-stats").innerHTML, /Проверка[\s\S]*?<td data-label="Визиты">3<\/td>[\s\S]*?<td data-label="Начали">2<\/td>/);
+assert.match(elements.get("web-quiz-stats").innerHTML, /Реклама[\s\S]*?<td data-label="Визиты">0<\/td>/);
 const relationshipStart = html.indexOf("Почему мне плохо");
 const youtubeLandingStart = html.indexOf("Уставшая функция · YouTube");
 const relationshipSection = html.slice(relationshipStart, youtubeLandingStart);
