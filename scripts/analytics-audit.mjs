@@ -26,6 +26,7 @@ const analytics = fs.readFileSync(path.join(root, "analytics.js"), "utf8");
 const errors = [];
 const analyticsFreePages = new Set([
   "relationship-test/index.html",
+  "relationship-test/relationship-challenges-online/index.html",
 ]);
 
 for (const file of htmlFiles) {
