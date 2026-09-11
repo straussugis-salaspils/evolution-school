@@ -27,6 +27,8 @@ function element() {
 
 const elements = new Map([
   "dashboard",
+  "web-quiz-section",
+  "web-quiz-stats",
   "test-activity",
   "meta-snapshot",
   "updated",
@@ -80,6 +82,7 @@ const data = {
     { landing_id: "stay_or_leave", source: "telegram", funnel: funnel(1, 0, 0, 0, 0) },
   ],
   test_activity: [],
+  web_quiz: { preview_only: true, preview: {visits:3,started:2,completed:1,result_viewed:1,offer_viewed:1,telegram_clicks:1,confirmed_joins:0}, live:{visits:0} },
 };
 
 const context = {
@@ -104,6 +107,9 @@ vm.runInNewContext(script, context, { filename: "relationship-funnel-v2-dashboar
 await new Promise((resolve) => setImmediate(resolve));
 
 const html = elements.get("dashboard").innerHTML;
+assert.equal(elements.get("web-quiz-section").hidden, false);
+assert.match(elements.get("web-quiz-stats").innerHTML, /Проверка[\s\S]*?<td data-label="Визиты">3<\/td>[\s\S]*?<td data-label="Начали">2<\/td>/);
+assert.match(elements.get("web-quiz-stats").innerHTML, /Реклама[\s\S]*?<td data-label="Визиты">0<\/td>/);
 const relationshipStart = html.indexOf("Почему мне плохо");
 const youtubeLandingStart = html.indexOf("Уставшая функция · YouTube");
 const relationshipSection = html.slice(relationshipStart, youtubeLandingStart);

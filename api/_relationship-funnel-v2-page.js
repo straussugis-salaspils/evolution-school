@@ -148,6 +148,7 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
         </div>
       </section>
       <section class="report-section" id="meta-snapshot" hidden></section>
+      <section class="report-section" id="web-quiz-section" hidden><h2>Тест на сайте — отдельный эксперимент</h2><p>Проверочная версия. Рекламные адреса пока не переключены. Строка «Проверка» не входит в рекламные конверсии. Вступление считается только после подтверждения Telegram, а не по нажатию кнопки.</p><div id="web-quiz-stats"></div></section>
       <section class="report-section"><h2>Проверка данных и передачи в Meta</h2><div id="data-health">Загрузка...</div></section>
       <section class="report-section"><h2>Фактические события по дням</h2><p>Дата самого действия в выбранном часовом поясе. Все источники. Вступления — уникальные люди за день, включая повторные вступления; это не прирост подписчиков. Завершения здесь могут относиться к тестам, начатым раньше.</p><div id="daily-facts">Загрузка...</div></section>
       <section class="report-section">
@@ -264,6 +265,16 @@ export const RELATIONSHIP_FUNNEL_V2_PAGE = String.raw`<!doctype html>
         return '<td data-label="' + escapeHtml(steps[index][1]) + '"><div class="metric"><strong>' + count + '</strong><span class="' + conversionClass + '">' + (!index ? "сессии" : conversion === null ? "нет базы для %" : conversion.toFixed(1) + "% от прошлого шага") + '</span></div></td>';
       }
       function render(data) {
+        var webQuiz = data.web_quiz;
+        document.getElementById('web-quiz-section').hidden = !webQuiz;
+        if (webQuiz) {
+          var webSteps = [['visits','Визиты'],['started','Начали'],['completed','Завершили'],['result_viewed','Увидели результат'],['offer_viewed','Увидели программу'],['telegram_clicks','Переход в Telegram'],['confirmed_joins','Вступили']];
+          var webRows = [['live','Реклама'],['preview','Проверка']].map(function(mode){
+            var row=webQuiz[mode[0]]||{};
+            return [mode[1]].concat(webSteps.map(function(s){return Number(row[s[0]]||0);}),[row.visits ? (Number(row.confirmed_joins||0)/row.visits*100).toFixed(1)+'%' : '—']);
+          });
+          document.getElementById('web-quiz-stats').innerHTML = simpleTable(['Режим'].concat(webSteps.map(function(s){return s[1];}),['Визит → вступление']),webRows)+'<p>Когорта по дате посещения в выбранном периоде. Поздние вступления относятся к исходному посещению. На проверочных прохождениях эффективность рекламы не оцениваем.</p>';
+        }
         if (!Array.isArray(data.by_landing) || !Array.isArray(data.by_landing_source)) throw new Error("Incomplete statistics");
         var rowsByLanding = {};
         (data.by_landing || []).forEach(function (row) {
