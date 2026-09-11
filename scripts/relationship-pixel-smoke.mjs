@@ -113,18 +113,22 @@ async function runClickSmoke({ query, pathname, landingId, ctaLabel = "Пере�
   assert.equal(cta.href, "https://t.me/+pixelSmokeInvite");
   assert.equal(cta.textContent, "");
   assert.equal(elements.get("telegram-cta-label").textContent, ctaLabel);
-  assert.match(elements.get("telegram-next-step").innerHTML, /Telegram-канал/);
-  assert.match(elements.get("telegram-next-step").innerHTML, /Архетипы в Отношениях/);
+  assert.match(elements.get("telegram-next-step").innerHTML, /Telegram/);
   assert.equal(fetchCalls.length, 1, "group-first landing must create an attributed invite");
   assert.equal(JSON.parse(fetchCalls[0][1].body).utm_source, expectedSource);
   if (landingId === "youtube_tired_function") {
-    assert.equal(elements.get("hero-title").innerHTML, "Я разлюбила мужа —<br>или просто устала <span class=\"title-accent\">всё тащить на себе?</span>");
-    assert.equal(elements.get("hero-lead").textContent, "Муж раздражает, близости не хочется, всё чаще думаете: зачем мне такие отношения? Пройдите тест из 7 вопросов, чтобы разобраться, что стоит за этими чувствами и что важно понять перед решением — уйти или остаться.");
+    assert.equal(elements.get("hero-title").innerHTML, "Я разлюбила мужа —<br>или <span class=\"title-accent\">просто устала?</span>");
+    assert.equal(elements.get("hero-lead").textContent, "Получите разбор по вашим ответам: почему вам плохо в отношениях, как возникает эта ситуация и что важно понять перед решением — уйти или остаться.");
+    assert.equal(elements.get("telegram-next-step").innerHTML, "Тест в Telegram: вступите в канал и откройте закреплённый пост.");
+    assert.equal(document.title, "Я разлюбила мужа — или просто устала? — тест Evolution House");
+    assert.match(elements.get("hero-eyebrow").innerHTML, /7 вопросов/);
     assert.match(elements.get("hero-eyebrow").innerHTML, /3 минуты/);
     assert.equal(elements.get("hero-author").textContent, "");
     assert.equal(elements.get("hero-author").hidden, true);
     assert.doesNotMatch(html, /hero-after-cta/);
   } else {
+    assert.match(elements.get("telegram-next-step").innerHTML, /Telegram-канал/);
+    assert.match(elements.get("telegram-next-step").innerHTML, /Архетипы в Отношениях/);
     assert.equal(elements.get("hero-author").hidden, true);
   }
 
