@@ -45,7 +45,7 @@ window.EVOLUTION_START_NAVIGATOR = {
       text: 'Точечная работа, когда цель уже ясна, многое пройдено и для завершения конкретного перехода не хватает последнего сдвига.',
       href: 'urovni-zhizni/kvantovaya-aktivaciya/index.html',
       cta: 'Посмотреть квантовую активацию',
-      image: 'assets/quantum-scenes/quantum-scene-hero-old-reaction-v3.png',
+      image: 'assets/quantum-scenes/quantum-scene-hero-old-reaction-v3.webp',
       imageAlt: 'Человек выходит из прежней реакции и завершает созревший переход',
     },
     navigator: {
@@ -53,7 +53,7 @@ window.EVOLUTION_START_NAVIGATOR = {
       text: 'Онлайн-сессия со Светланой: разбор точки перехода и индивидуальная карта следующего движения.',
       cta: 'Оплатить сессию «Навигатор» — €300',
       buttonProduct: 'navigator-svetlana',
-      image: 'assets/method-different-paths.png',
+      image: 'assets/method-different-paths.webp',
       imageAlt: 'Карта возможных направлений и следующего жизненного шага',
     },
     personal: {
@@ -69,7 +69,7 @@ window.EVOLUTION_START_NAVIGATOR = {
       text: 'Формат для периода, когда одна проблема тянет другую и важно сменить накопившуюся траекторию, вернуть направление и способность замечать возможности.',
       href: 'retreats/index.html',
       cta: 'Посмотреть «Острова Везения»',
-      image: 'retreats/assets/images/hero-living-route.png',
+      image: 'retreats/assets/images/hero-living-route.webp',
       imageAlt: 'Маршрут ретрита к восстановлению направления и линии удачи',
     },
     coordinator: {
