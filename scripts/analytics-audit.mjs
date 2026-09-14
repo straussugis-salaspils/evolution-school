@@ -3,7 +3,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const skip = new Set([".git", "node_modules", "visual-package", "artifacts", "docs", "gtm"]);
+const skip = new Set([".git", "node_modules", "visual-package", "artifacts", "docs", "gtm", "dist"]);
 const sourceOnlyDirectories = new Set([
   path.join("assets", "reiki-articles", "inserts"),
 ]);

@@ -7,7 +7,7 @@ import { fileURLToPath } from "node:url";
 const require = createRequire(import.meta.url);
 const sharp = require("sharp");
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const skip = new Set([".git", "node_modules", "docs", "assets", "visual-package"]);
+const skip = new Set([".git", "node_modules", "docs", "assets", "visual-package", "dist"]);
 const trimTrailing = process.argv.includes("--trim-trailing");
 const normalizeLf = process.argv.includes("--lf");
 const normalizeCrlf = process.argv.includes("--crlf");

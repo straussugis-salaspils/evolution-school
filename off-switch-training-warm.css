@@ -607,7 +607,7 @@ body.off-switch-training-warm .training-kit-visual {
   border-radius: 8px !important;
   background:
     linear-gradient(180deg, rgba(255, 253, 248, .04), rgba(16, 47, 54, .08)),
-    url("assets/off-switch-story-training-toolkit-v2.png") center / cover no-repeat !important;
+    url("assets/off-switch-story-training-toolkit-v2.webp") center / cover no-repeat !important;
   box-shadow: var(--train-shadow) !important;
 }
 

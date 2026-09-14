@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const BASE_URL = "https://evolution.yourbalancerestored.com";
 const WRITE = process.argv.includes("--write");
-const SKIP_DIRS = new Set([".git", "node_modules", "artifacts", "visual-package", "docs"]);
+const SKIP_DIRS = new Set([".git", "node_modules", "artifacts", "visual-package", "docs", "dist"]);
 const SOURCE_ONLY_DIRS = new Set([
   path.join("assets", "reiki-articles", "inserts"),
 ]);

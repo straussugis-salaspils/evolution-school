@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const origin = "https://evolution.yourbalancerestored.com";
 const write = process.argv.includes("--write");
-const skip = new Set([".git", "node_modules", "docs", "assets", "visual-package"]);
+const skip = new Set([".git", "node_modules", "docs", "assets", "visual-package", "dist"]);
 
 const walk = (dir) => fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
   if (entry.isDirectory() && skip.has(entry.name)) return [];

@@ -4,7 +4,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const skip = new Set([".git", "node_modules", "visual-package", "artifacts"]);
+const skip = new Set([".git", "node_modules", "visual-package", "artifacts", "dist"]);
 const walk = (dir) => fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
   if (entry.isDirectory() && skip.has(entry.name)) return [];
   const absolute = path.join(dir, entry.name);

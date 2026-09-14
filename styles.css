@@ -26890,7 +26890,7 @@ body.off-switch-training-page.off-switch-training-cinematic .training-final-link
   align-items: center;
   background:
     linear-gradient(90deg, rgba(248, 244, 236, 0.98) 0%, rgba(248, 244, 236, 0.92) 50%, rgba(248, 244, 236, 0.72) 100%),
-    url("assets/off-switch-story-personal-room-v2.png") center / cover no-repeat;
+    url("assets/off-switch-story-personal-room-v2.webp") center / cover no-repeat;
 }
 
 .personal-hero__grid {
@@ -27475,7 +27475,7 @@ body.off-switch-training-page.off-switch-training-cinematic .training-final-link
   border: 0;
   background:
     linear-gradient(135deg, rgba(34, 48, 81, 0.92), rgba(23, 33, 59, 0.74)),
-    url("assets/off-switch-story-personal-room-v2.png") center / cover no-repeat;
+    url("assets/off-switch-story-personal-room-v2.webp") center / cover no-repeat;
 }
 
 .personal-video-card .off-switch-video-loader::after {
@@ -27570,7 +27570,7 @@ body.off-switch-training-page.off-switch-training-cinematic .training-final-link
 .personal-final {
   background:
     linear-gradient(135deg, rgba(23, 33, 59, 0.96), rgba(34, 48, 81, 0.9)),
-    url("assets/off-switch-story-personal-room-v2.png") center / cover no-repeat;
+    url("assets/off-switch-story-personal-room-v2.webp") center / cover no-repeat;
   color: #fffaf2;
 }
 
@@ -29139,7 +29139,7 @@ body.eh-context--freedom.direction-page--freedom .roadmap-step:focus-visible .ro
 .training-video-card .off-switch-video-loader {
   background:
     linear-gradient(135deg, rgba(11, 56, 64, .9), rgba(15, 111, 117, .72)),
-    url("assets/off-switch-story-training-desk-v2.png") center / cover no-repeat;
+    url("assets/off-switch-story-training-desk-v2.webp") center / cover no-repeat;
 }
 
 .training-final-panel {
@@ -29239,7 +29239,7 @@ body.eh-context--freedom.direction-page--freedom .roadmap-step:focus-visible .ro
 .personal-hero {
   background:
     linear-gradient(90deg, rgba(245, 244, 238, .98) 0%, rgba(245, 244, 238, .92) 48%, rgba(245, 244, 238, .7) 100%),
-    url("assets/off-switch-story-personal-room-v2.png") center / cover no-repeat;
+    url("assets/off-switch-story-personal-room-v2.webp") center / cover no-repeat;
 }
 
 .personal-hero h1 {
@@ -29301,7 +29301,7 @@ body.eh-context--freedom.direction-page--freedom .roadmap-step:focus-visible .ro
   overflow: hidden;
   border: 1px solid var(--personal-line);
   border-radius: 8px;
-  background: url("assets/off-switch-story-personal-room-v2.png") center / cover no-repeat;
+  background: url("assets/off-switch-story-personal-room-v2.webp") center / cover no-repeat;
   box-shadow: var(--freedom-shadow);
 }
 
@@ -29325,7 +29325,7 @@ body.eh-context--freedom.direction-page--freedom .roadmap-step:focus-visible .ro
 .personal-final {
   background:
     linear-gradient(135deg, rgba(11, 48, 56, .92), rgba(16, 58, 67, .76)),
-    url("assets/off-switch-story-personal-room-v2.png") center / cover no-repeat;
+    url("assets/off-switch-story-personal-room-v2.webp") center / cover no-repeat;
 }
 
 .personal-final h2 {
@@ -29441,7 +29441,7 @@ body.eh-context--freedom.direction-page--freedom .roadmap-step:focus-visible .ro
 .method-hero__image:has(img[src*="off-switch-story-pause-phone-v2"]) {
   background:
     linear-gradient(180deg, rgba(16, 47, 54, .08), rgba(16, 47, 54, .12)),
-    url("assets/off-switch-story-pause-phone-v2.png") center / cover no-repeat !important;
+    url("assets/off-switch-story-pause-phone-v2.webp") center / cover no-repeat !important;
 }
 
 .method-hero__image:has(img[src*="off-switch-story-pause-phone-v2"]) img {
@@ -29474,13 +29474,13 @@ body.eh-context--freedom.direction-page--freedom .roadmap-step:focus-visible .ro
 .training-hero__visual:has(img[src*="off-switch-story-training-desk-v2"]) {
   background:
     linear-gradient(180deg, rgba(16, 47, 54, .04), rgba(16, 47, 54, .10)),
-    url("assets/off-switch-story-training-desk-v2.png") center / cover no-repeat !important;
+    url("assets/off-switch-story-training-desk-v2.webp") center / cover no-repeat !important;
 }
 
 .training-kit-visual:has(img[src*="off-switch-story-training-toolkit-v2"]) {
   background:
     linear-gradient(180deg, rgba(255, 253, 248, .04), rgba(16, 47, 54, .08)),
-    url("assets/off-switch-story-training-toolkit-v2.png") center / cover no-repeat !important;
+    url("assets/off-switch-story-training-toolkit-v2.webp") center / cover no-repeat !important;
 }
 
 .training-hero__visual:has(img[src*="off-switch-story-training-desk-v2"]) img,
@@ -29489,19 +29489,19 @@ body.eh-context--freedom.direction-page--freedom .roadmap-step:focus-visible .ro
 }
 
 .direction-page--freedom .roadmap-step:has(.roadmap-step__image[src*="off-switch-story-pause-phone-v2"]) {
-  --freedom-card-image: url("assets/off-switch-story-pause-phone-v2.png");
+  --freedom-card-image: url("assets/off-switch-story-pause-phone-v2.webp");
 }
 
 .direction-page--freedom .roadmap-step:has(.roadmap-step__image[src*="off-switch-story-training-desk-v2"]) {
-  --freedom-card-image: url("assets/off-switch-story-training-desk-v2.png");
+  --freedom-card-image: url("assets/off-switch-story-training-desk-v2.webp");
 }
 
 .direction-page--freedom .roadmap-step:has(.roadmap-step__image[src*="off-switch-story-group-online-v2"]) {
-  --freedom-card-image: url("assets/off-switch-story-group-online-v2.png");
+  --freedom-card-image: url("assets/off-switch-story-group-online-v2.webp");
 }
 
 .direction-page--freedom .roadmap-step:has(.roadmap-step__image[src*="off-switch-story-personal-room-v2"]) {
-  --freedom-card-image: url("assets/off-switch-story-personal-room-v2.png");
+  --freedom-card-image: url("assets/off-switch-story-personal-room-v2.webp");
 }
 
 .direction-page--freedom .roadmap-step .roadmap-step__image[src*="off-switch-story-"] {
@@ -29514,7 +29514,7 @@ body.eh-context--freedom.direction-page--freedom .roadmap-step:focus-visible .ro
 .direction-page--freedom .hero__visual:has(img[src*="off-switch-story-route-cards-v2"]) {
   background:
     linear-gradient(180deg, rgba(16, 47, 54, .06), rgba(16, 47, 54, .12)),
-    url("assets/off-switch-story-route-cards-v2.png") center / cover no-repeat !important;
+    url("assets/off-switch-story-route-cards-v2.webp") center / cover no-repeat !important;
 }
 
 .direction-page--freedom .hero__visual:has(img[src*="off-switch-story-route-cards-v2"]) img {
@@ -29559,7 +29559,7 @@ body.direction-page--freedom .hero.hero--dark .hero__copy p:not(.eyebrow) {
 .personal-hero {
   background:
     linear-gradient(90deg, rgba(250, 246, 237, .98) 0%, rgba(250, 246, 237, .88) 42%, rgba(250, 246, 237, .54) 100%),
-    url("assets/off-switch-story-personal-room-v2.png") center / cover no-repeat;
+    url("assets/off-switch-story-personal-room-v2.webp") center / cover no-repeat;
   min-height: 0;
   padding: clamp(58px, 7vw, 92px) 0;
   align-items: center;
@@ -29577,7 +29577,7 @@ body.direction-page--freedom .hero.hero--dark .hero__copy p:not(.eyebrow) {
   .personal-hero {
     background:
       linear-gradient(180deg, rgba(250, 246, 237, .98), rgba(250, 246, 237, .76)),
-      url("assets/off-switch-story-personal-room-v2.png") 64% center / cover no-repeat;
+      url("assets/off-switch-story-personal-room-v2.webp") 64% center / cover no-repeat;
   }
 }
 
@@ -39233,7 +39233,7 @@ body.off-switch-training-page.off-switch-training-cinematic .training-video-card
 }
 
 body.off-switch-training-page.off-switch-training-cinematic .training-video-feature .training-video-card:nth-child(1) {
-  --training-video-poster: url("assets/testimonial-natalia-poster.png");
+  --training-video-poster: url("assets/testimonial-natalia-poster.webp");
 }
 
 body.off-switch-training-page.off-switch-training-cinematic .training-video-feature .training-video-card:nth-child(2) {
@@ -39241,19 +39241,19 @@ body.off-switch-training-page.off-switch-training-cinematic .training-video-feat
 }
 
 body.off-switch-training-page.off-switch-training-cinematic .training-video-feature .training-video-card:nth-child(3) {
-  --training-video-poster: url("assets/testimonial-anya-poster.png");
+  --training-video-poster: url("assets/testimonial-anya-poster.webp");
 }
 
 body.off-switch-training-page.off-switch-training-cinematic .training-more-video-grid .training-video-card:nth-child(1) {
-  --training-video-poster: url("assets/off-switch-story-driving-proof-v2.png");
+  --training-video-poster: url("assets/off-switch-story-driving-proof-v2.webp");
 }
 
 body.off-switch-training-page.off-switch-training-cinematic .training-more-video-grid .training-video-card:nth-child(2) {
-  --training-video-poster: url("assets/testimonial-natalia-poster.png");
+  --training-video-poster: url("assets/testimonial-natalia-poster.webp");
 }
 
 body.off-switch-training-page.off-switch-training-cinematic .training-more-video-grid .training-video-card:nth-child(3) {
-  --training-video-poster: url("assets/testimonial-anya-poster.png");
+  --training-video-poster: url("assets/testimonial-anya-poster.webp");
 }
 
 body.off-switch-training-page.off-switch-training-cinematic .training-written-proof__lead,
