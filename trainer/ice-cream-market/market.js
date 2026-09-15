@@ -1,10 +1,9 @@
 export const BLOCK_SIZE = 10_000;
 export const UNIT_PRICE = 2;
-export const YEAR_ONE_FORECASTS = Object.freeze({
-  winter: 280_000,
-  spring: 360_000,
-  summer: 400_000,
-  autumn: 320_000,
+export const MARKET_FORECASTS = Object.freeze({
+  1: Object.freeze({ winter: 280_000, spring: 360_000, summer: 400_000, autumn: 320_000 }),
+  2: Object.freeze({ winter: 410_000, spring: 550_000, summer: 650_000, autumn: 470_000 }),
+  3: Object.freeze({ winter: 540_000, spring: 750_000, summer: 900_000, autumn: 620_000 }),
 });
 
 export class MarketInputError extends Error {
@@ -28,17 +27,19 @@ function wholeNumber(value, label, errors) {
   return parsed;
 }
 
-export function calculateMarket({ season, actualMarket, teams }) {
+export function calculateMarket({ year, season, actualMarket, teams }) {
   const errors = [];
-  const forecast = YEAR_ONE_FORECASTS[season];
-  if (!forecast) errors.push("Choose a Year 1 season.");
+  const selectedYear = wholeNumber(year, "Year", errors);
+  if (selectedYear !== null && !MARKET_FORECASTS[selectedYear]) errors.push("Choose Year 1, 2 or 3.");
+  const forecast = MARKET_FORECASTS[selectedYear]?.[season];
+  if (selectedYear !== null && MARKET_FORECASTS[selectedYear] && !forecast) errors.push("Choose a season.");
 
-  const actual = wholeNumber(actualMarket, "Actual market", errors);
+  const actual = wholeNumber(actualMarket, "Market size", errors);
   if (actual !== null && forecast) {
     const minimum = Math.round(forecast * 0.8);
     const maximum = Math.round(forecast * 1.2);
     if (actual < minimum || actual > maximum) {
-      errors.push(`Actual market must be between ${minimum.toLocaleString("en-US")} and ${maximum.toLocaleString("en-US")} for ${season}.`);
+      errors.push(`Market size must be between ${minimum.toLocaleString("en-US")} and ${maximum.toLocaleString("en-US")} for Year ${selectedYear} ${season}.`);
     }
   }
 
@@ -122,6 +123,7 @@ export function calculateMarket({ season, actualMarket, teams }) {
   }
 
   return {
+    year: selectedYear,
     season,
     forecast,
     actualMarket: actual,

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
   <title>Ice Cream Market Desk · Evolution</title>
-  <meta name="description" content="A trainer-only market allocation calculator for six teams in the Evolution management accounting simulation.">
+  <meta name="description" content="A market allocation calculator for six teams across three years of the Evolution management accounting simulation.">
   <link rel="canonical" href="https://evolution.yourbalancerestored.com/trainer/ice-cream-market/">
   <meta property="og:title" content="Ice Cream Market Desk · Evolution">
   <meta property="og:description" content="Six-team market allocation calculator for the ice cream management accounting simulation.">
@@ -20,15 +20,22 @@
     <header class="masthead">
       <div class="eyebrow">EVOLUTION / TRAINER'S DESK</div>
       <h1>Ice cream market</h1>
-      <p>Enter the actual market and six teams' decisions. The desk allocates sales in whole 10,000-unit blocks.</p>
+      <p>Choose a year and season, enter the market size and six teams' decisions. The desk allocates sales in whole 10,000-unit blocks.</p>
     </header>
 
     <section class="workspace" aria-label="Market calculator">
       <form id="market-form" novalidate>
-        <div class="section-head"><span class="step">01</span><div><h2>Market setting</h2><p>Run one group and one season at a time. Actual market figures are not saved online.</p></div></div>
+        <div class="section-head"><span class="step">01</span><div><h2>Market setting</h2><p>Run one group and one season at a time. Market figures are not saved online.</p></div></div>
         <div class="market-grid">
           <label>Group name <input id="group-name" name="groupName" value="Group A" maxlength="40" autocomplete="off"></label>
-          <label>Year 1 season
+          <label>Year
+            <select id="year" name="year">
+              <option value="1">Year 1</option>
+              <option value="2">Year 2</option>
+              <option value="3">Year 3</option>
+            </select>
+          </label>
+          <label>Season
             <select id="season" name="season">
               <option value="winter">Winter</option>
               <option value="spring">Spring</option>
@@ -36,9 +43,9 @@
               <option value="autumn">Autumn</option>
             </select>
           </label>
-          <label>Actual market · units <input id="actual-market" name="actualMarket" type="number" min="0" step="1" placeholder="Enter after decisions" required></label>
+          <label>Market size · units <input id="actual-market" name="actualMarket" type="number" min="0" step="1" placeholder="Enter after decisions" required></label>
         </div>
-        <div class="forecast-band"><span>Forecast</span><strong id="forecast-value"></strong><span id="forecast-range"></span></div>
+        <div class="forecast-band"><span id="forecast-period"></span><strong id="forecast-value"></strong><span id="forecast-range"></span></div>
 
         <div class="section-head teams-head"><span class="step">02</span><div><h2>Six teams</h2><p>Investment determines rank. Use tie order 1–6 to decide equal bids. Requests must be in 10,000-unit blocks.</p></div></div>
         <div id="team-list" class="team-list"></div>
@@ -66,7 +73,7 @@
         <button id="print-button" class="secondary" type="button">Print results</button>
       </div>
     </section>
-    <footer>Year 1 · Sh2 per unit · Each team's market investment is a separate expense.</footer>
+    <footer>Years 1–3 · Sh2 per unit · Each team's market investment is a separate expense.</footer>
   </main>
 </body>
 </html>

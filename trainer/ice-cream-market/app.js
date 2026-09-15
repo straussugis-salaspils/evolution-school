@@ -1,6 +1,7 @@
-import { calculateMarket, YEAR_ONE_FORECASTS, MarketInputError } from "./market.js";
+import { calculateMarket, MARKET_FORECASTS, MarketInputError } from "./market.js";
 
 const form = document.querySelector("#market-form");
+const yearInput = document.querySelector("#year");
 const seasonInput = document.querySelector("#season");
 const actualInput = document.querySelector("#actual-market");
 const groupInput = document.querySelector("#group-name");
@@ -23,9 +24,10 @@ for (let i = 1; i <= 6; i += 1) {
 }
 
 function updateForecast() {
-  const forecast = YEAR_ONE_FORECASTS[seasonInput.value];
+  const forecast = MARKET_FORECASTS[yearInput.value][seasonInput.value];
+  document.querySelector("#forecast-period").textContent = `Year ${yearInput.value} ${seasonInput.value} forecast`;
   document.querySelector("#forecast-value").textContent = `${number(forecast)} units`;
-  document.querySelector("#forecast-range").textContent = `Allowed actual: ${number(forecast * .8)}–${number(forecast * 1.2)} (±20%)`;
+  document.querySelector("#forecast-range").textContent = `Allowed market size: ${number(forecast * .8)}–${number(forecast * 1.2)} (±20%)`;
 }
 
 function collectTeams() {
@@ -57,10 +59,10 @@ function cell(row, value) {
 function showResult(result) {
   lastResult = result;
   const group = groupInput.value.trim() || "Unnamed group";
-  document.querySelector("#result-caption").textContent = `${group} · ${result.season[0].toUpperCase() + result.season.slice(1)} · Year 1`;
+  document.querySelector("#result-caption").textContent = `${group} · Year ${result.year} · ${result.season[0].toUpperCase() + result.season.slice(1)}`;
   const summary = document.querySelector("#summary");
   summary.replaceChildren(
-    metric("Actual market", number(result.actualMarket)),
+    metric("Market size", number(result.actualMarket)),
     metric("Saleable market", number(result.saleableCapacity)),
     metric("Allocated sales", number(result.totalAllocated)),
     metric("Total revenue", `Sh ${number(result.totalRevenue)}`),
@@ -81,7 +83,7 @@ function showResult(result) {
     `Sh ${number(result.totalRevenue)}`].forEach((value) => cell(tr, value));
   foot.append(tr);
   const notes = [];
-  if (result.unassignableRemainder) notes.push(`${number(result.unassignableRemainder)} actual units cannot be allocated because only whole 10,000-unit blocks are sold.`);
+  if (result.unassignableRemainder) notes.push(`${number(result.unassignableRemainder)} market units cannot be allocated because only whole 10,000-unit blocks are sold.`);
   if (result.unusedSaleableCapacity) notes.push(`${number(result.unusedSaleableCapacity)} saleable units remain because teams requested less than the market could buy.`);
   if (result.totalCuts) notes.push(`${number(result.totalCuts)} requested units were cut, one block at a time from the lowest-ranked available team upward.`);
   document.querySelector("#allocation-note").textContent = notes.join(" ") || "Every team's request was fulfilled.";
@@ -93,7 +95,7 @@ form.addEventListener("submit", (event) => {
   event.preventDefault();
   errorBox.hidden = true;
   try {
-    const result = calculateMarket({ season: seasonInput.value, actualMarket: actualInput.value, teams: collectTeams() });
+    const result = calculateMarket({ year: yearInput.value, season: seasonInput.value, actualMarket: actualInput.value, teams: collectTeams() });
     showResult(result);
   } catch (error) {
     results.hidden = true;
@@ -104,14 +106,13 @@ form.addEventListener("submit", (event) => {
   }
 });
 
-seasonInput.addEventListener("change", () => {
-  updateForecast();
-  actualInput.value = "";
+form.addEventListener("input", () => {
   results.hidden = true;
   lastResult = null;
+  errorBox.hidden = true;
 });
 
-document.querySelector("#clear-button").addEventListener("click", () => {
+function clearFigures() {
   actualInput.value = "";
   for (const card of teamList.querySelectorAll(".team-card")) {
     card.querySelector(".team-investment").value = "";
@@ -120,13 +121,24 @@ document.querySelector("#clear-button").addEventListener("click", () => {
   errorBox.hidden = true;
   results.hidden = true;
   lastResult = null;
+}
+
+for (const periodInput of [yearInput, seasonInput]) {
+  periodInput.addEventListener("change", () => {
+    updateForecast();
+    clearFigures();
+  });
+}
+
+document.querySelector("#clear-button").addEventListener("click", () => {
+  clearFigures();
   actualInput.focus();
 });
 
 document.querySelector("#copy-button").addEventListener("click", async (event) => {
   if (!lastResult) return;
   const group = groupInput.value.trim() || "Unnamed group";
-  const lines = [`${group} | ${lastResult.season} | actual ${lastResult.actualMarket} | saleable ${lastResult.saleableCapacity}`,
+  const lines = [`${group} | Year ${lastResult.year} ${lastResult.season} | market ${lastResult.actualMarket} | saleable ${lastResult.saleableCapacity}`,
     "Rank\tTeam\tInvestment (Sh)\tRequested\tCut\tSales\tMarket share %\tRevenue (Sh)",
     ...lastResult.rows.map((team) => [team.rank, team.name, team.investment, team.requested,
       team.cut, team.allocated, team.sharePercent.toFixed(1), team.revenue].join("\t"))];
