@@ -23,6 +23,7 @@ const isVerificationFile = (file) => /^yandex_[a-f0-9]+\.html$/i.test(path.basen
 const analyticsFreePages = new Set([
   "relationship-test/index.html",
   "relationship-test/relationship-challenges-online/index.html",
+  "trainer/ice-cream-market/index.html",
 ]);
 let changed = 0;
 for (const file of walk(root).filter((file) => file.endsWith(".html") && !isVerificationFile(file))) {

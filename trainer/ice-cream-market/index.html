@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Ice Cream Market Desk · Evolution</title>
+  <meta name="description" content="A trainer-only market allocation calculator for six teams in the Evolution management accounting simulation.">
+  <link rel="canonical" href="https://evolution.yourbalancerestored.com/trainer/ice-cream-market/">
+  <meta property="og:title" content="Ice Cream Market Desk · Evolution">
+  <meta property="og:description" content="Six-team market allocation calculator for the ice cream management accounting simulation.">
+  <meta property="og:image" content="https://evolution.yourbalancerestored.com/assets/evolution-house-social.jpg">
+  <meta property="og:url" content="https://evolution.yourbalancerestored.com/trainer/ice-cream-market/">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="masthead">
+      <div class="eyebrow">EVOLUTION / TRAINER'S DESK</div>
+      <h1>Ice cream market</h1>
+      <p>Enter the actual market and six teams' decisions. The desk allocates sales in whole 10,000-unit blocks.</p>
+    </header>
+
+    <section class="workspace" aria-label="Market calculator">
+      <form id="market-form" novalidate>
+        <div class="section-head"><span class="step">01</span><div><h2>Market setting</h2><p>Run one group and one season at a time. Actual market figures are not saved online.</p></div></div>
+        <div class="market-grid">
+          <label>Group name <input id="group-name" name="groupName" value="Group A" maxlength="40" autocomplete="off"></label>
+          <label>Year 1 season
+            <select id="season" name="season">
+              <option value="winter">Winter</option>
+              <option value="spring">Spring</option>
+              <option value="summer">Summer</option>
+              <option value="autumn">Autumn</option>
+            </select>
+          </label>
+          <label>Actual market · units <input id="actual-market" name="actualMarket" type="number" min="0" step="1" placeholder="Enter after decisions" required></label>
+        </div>
+        <div class="forecast-band"><span>Forecast</span><strong id="forecast-value"></strong><span id="forecast-range"></span></div>
+
+        <div class="section-head teams-head"><span class="step">02</span><div><h2>Six teams</h2><p>Investment determines rank. Use tie order 1–6 to decide equal bids. Requests must be in 10,000-unit blocks.</p></div></div>
+        <div id="team-list" class="team-list"></div>
+        <div id="form-error" class="form-error" role="alert" hidden></div>
+        <div class="actions">
+          <button class="primary" type="submit">Calculate market <span aria-hidden="true">→</span></button>
+          <button id="clear-button" class="secondary" type="button">Clear figures</button>
+        </div>
+      </form>
+    </section>
+
+    <section id="results" class="results" aria-label="Allocation results" hidden>
+      <div class="section-head"><span class="step">03</span><div><h2>Market allocation</h2><p id="result-caption"></p></div></div>
+      <div id="summary" class="summary"></div>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Rank</th><th>Team</th><th>Investment</th><th>Requested</th><th>Cut</th><th>Sales</th><th>Share</th><th>Revenue</th></tr></thead>
+          <tbody id="result-rows"></tbody>
+          <tfoot id="result-total"></tfoot>
+        </table>
+      </div>
+      <p id="allocation-note" class="allocation-note"></p>
+      <div class="actions result-actions">
+        <button id="copy-button" class="secondary" type="button">Copy results</button>
+        <button id="print-button" class="secondary" type="button">Print results</button>
+      </div>
+    </section>
+    <footer>Year 1 · Sh2 per unit · Each team's market investment is a separate expense.</footer>
+  </main>
+</body>
+</html>
