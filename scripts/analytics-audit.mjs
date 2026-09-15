@@ -27,6 +27,7 @@ const errors = [];
 const analyticsFreePages = new Set([
   "relationship-test/index.html",
   "relationship-test/relationship-challenges-online/index.html",
+  "trainer/ice-cream-market/index.html",
 ]);
 
 for (const file of htmlFiles) {

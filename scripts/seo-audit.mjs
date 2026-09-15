@@ -139,7 +139,8 @@ for (const page of pages) page.incomingLinks = incoming.get(normalizePathname(pa
 const issues = [];
 const push = (severity, page, message) => issues.push({ severity, route: page.route, message });
 for (const page of pages) {
-  if (page.lang !== "ru") push("error", page, `html lang is '${page.lang || "missing"}'`);
+  const expectedLang = page.route === "/trainer/ice-cream-market/" ? "en" : "ru";
+  if (page.lang !== expectedLang) push("error", page, `html lang is '${page.lang || "missing"}'`);
   if (!page.title) push("error", page, "missing title");
   if (!page.robots) push("error", page, "missing robots meta");
   if (!page.isRedirect && !page.description) push("error", page, "missing description");
