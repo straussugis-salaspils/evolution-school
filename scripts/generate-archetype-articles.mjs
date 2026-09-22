@@ -15,6 +15,7 @@ const author = "Светлана Страусс";
 const authorUrl = "/o-shkole.html";
 
 const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
+const archivedProducts = new Set(manifest.archived_product_ids || []);
 const articles = manifest.assets.filter((item) => item.index_state === "index");
 const byId = new Map(articles.map((item) => [item.route_id, item]));
 const corpusRouting = manifest.corpus_routing || {};
@@ -407,8 +408,8 @@ function shell() {
       <div class="eh-shell-container">
         <a href="/arhetipy.html">Карта пути</a>
         <a href="/arhetipy-method.html">Метод архетипов</a>
-        <a href="/lightness/">Вкус лёгкости</a>
-        <a href="/strength/">Вкус силы</a>
+        ${archivedProducts.has("two_week") ? "" : '<a href="/lightness/">Вкус лёгкости</a>'}
+        ${archivedProducts.has("strength") ? "" : '<a href="/strength/">Вкус силы</a>'}
         <a href="/mentoring/">Высокая Глубина</a>
         <a href="/retreats/">Ретриты</a>
         <a class="eh-local-strip__articles" href="/arhetipy/">Статьи об архетипах</a>
@@ -495,6 +496,8 @@ function ctaAnchor(target, article, importance) {
   if (target.kind === "url" && target.route_id) {
     attributes.push(`data-related-route-id="${target.route_id}"`);
     attributes.push('data-product-id="related_article"');
+  } else if (target.kind === "url") {
+    attributes.push('data-product-id="educational"');
   }
   return `<a ${attributes.join(" ")}>${escapeHtml(target.label)}${importance === "primary" ? " →" : ""}</a>`;
 }
@@ -502,18 +505,35 @@ function ctaAnchor(target, article, importance) {
 function productCta(article) {
   const routing = corpusRouting[article.route_id];
   if (!routing?.cta?.primary) throw new Error(`CTA routing missing for ${article.route_id}`);
-  const productTarget = [routing.cta.primary, routing.cta.secondary]
+  const available = (target) => target && !(target.kind === "product" && archivedProducts.has(target.product_id));
+  const primary = available(routing.cta.primary)
+    ? routing.cta.primary
+    : available(routing.cta.secondary)
+      ? routing.cta.secondary
+      : { kind: "url", href: "/arhetipy-method.html", label: "Понять метод архетипов" };
+  const secondary = primary === routing.cta.primary && available(routing.cta.secondary)
+    ? routing.cta.secondary
+    : null;
+  const archivedPrimary = primary !== routing.cta.primary;
+  const copy = archivedPrimary
+    ? {
+        eyebrow: "О методе",
+        title: "Как работает Путь архетипов",
+        body: "Если тема статьи откликается, познакомьтесь с методом и доступными форматами работы.",
+      }
+    : routing.cta;
+  const productTarget = [primary, secondary]
     .find((target) => target?.kind === "product");
   const impressionProduct = productTarget?.product_id || "educational";
   return `<aside class="article-product-cta" aria-labelledby="product-cta-${article.route_id}" data-article-product-cta data-route-id="${article.route_id}" data-product-id="${impressionProduct}" data-cta-variant="${routing.cta.variant}" data-placement="article_end">
     <div class="article-product-cta__copy">
-      <p class="article-product-cta__eyebrow">${escapeHtml(routing.cta.eyebrow)}</p>
-      <h2 id="product-cta-${article.route_id}">${escapeHtml(routing.cta.title)}</h2>
-      <p>${escapeHtml(routing.cta.body)}</p>
+      <p class="article-product-cta__eyebrow">${escapeHtml(copy.eyebrow)}</p>
+      <h2 id="product-cta-${article.route_id}">${escapeHtml(copy.title)}</h2>
+      <p>${escapeHtml(copy.body)}</p>
     </div>
     <div class="article-product-cta__actions">
-      ${ctaAnchor(routing.cta.primary, article, "primary")}
-      ${routing.cta.secondary ? ctaAnchor(routing.cta.secondary, article, "secondary") : ""}
+      ${ctaAnchor(primary, article, "primary")}
+      ${secondary ? ctaAnchor(secondary, article, "secondary") : ""}
     </div>
   </aside>`;
 }
@@ -652,7 +672,7 @@ function articleHtml(article) {
   <script src="/analytics.js" defer></script>
   <script type="application/ld+json">${JSON.stringify(schemaFor(article, draft), null, 2)}</script>
 </head>
-<body class="article-page article-page--archetypes eh-context--archetypes" data-route-id="${article.route_id}" data-primary-product-id="${(corpusRouting[article.route_id]?.cta?.primary?.product_id || corpusRouting[article.route_id]?.cta?.secondary?.product_id || "educational")}" data-cta-variant="${corpusRouting[article.route_id]?.cta?.variant || "missing"}">
+<body class="article-page article-page--archetypes eh-context--archetypes" data-route-id="${article.route_id}" data-primary-product-id="${(archivedProducts.has(corpusRouting[article.route_id]?.cta?.primary?.product_id) ? corpusRouting[article.route_id]?.cta?.secondary?.product_id : corpusRouting[article.route_id]?.cta?.primary?.product_id) || "educational"}" data-cta-variant="${corpusRouting[article.route_id]?.cta?.variant || "missing"}">
   ${header}
   <main>
     <header class="article-hero">
@@ -794,22 +814,22 @@ function hubHtml() {
     })
     .join("");
   const formats = [
-    {
+    ...(archivedProducts.has("two_week") ? [] : [{
       eyebrow: "мягкий старт",
       title: "Вкус лёгкости",
       description:
         "Онлайн-неделя женских архетипов: короткий формат с практиками, чтобы вернуть контакт с телом, желанием, вкусом и живым «я хочу».",
       href: "/lightness/",
       image: "/assets/archetype-lightness.webp",
-    },
-    {
+    }]),
+    ...(archivedProducts.has("strength") ? [] : [{
       eyebrow: "сила и опора",
       title: "Вкус силы",
       description:
         "Онлайн-неделя мужских архетипов: формат про границы, действие, опору, масштаб и способность держать свой следующий шаг.",
       href: "/strength/",
       image: "/assets/archetype-strength.webp",
-    },
+    }]),
     {
       eyebrow: "глубокая тема",
       title: "Высокая Глубина",

@@ -9,6 +9,7 @@
     "public_page": "/o-shkole.html"
   },
   "evidence_ledger": "portfolio-evidence.json",
+  "archived_product_ids": ["two_week", "strength"],
   "product_destinations": {
     "map": "/arhetipy.html",
     "two_week": "/lightness/#bundle",

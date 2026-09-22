@@ -30501,6 +30501,7 @@ body.direction-page--freedom .hero.hero--dark .hero__copy p:not(.eyebrow) {
   gap: 18px;
 }
 
+
 .method-format-door {
   position: relative;
   display: grid;
@@ -34243,6 +34244,10 @@ body.archetype-method-v2 .method-format-doors {
   gap: 16px !important;
 }
 
+body.archetype-method-v2 .method-format-doors--two {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+
 body.archetype-method-v2 .method-format-door {
   grid-template-rows: 190px auto auto 1fr auto !important;
   min-height: 520px !important;
@@ -34688,6 +34693,7 @@ body.archetype-method-v2.archetype-method-cinematic .method-format-doors {
   gap: clamp(14px, 2vw, 24px) !important;
   align-items: stretch;
 }
+
 
 body.archetype-method-v2.archetype-method-cinematic .method-format-door {
   --door-image: 220px;
