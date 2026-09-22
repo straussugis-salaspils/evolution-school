@@ -256,8 +256,8 @@ if (startNavigator && window.EVOLUTION_START_NAVIGATOR) {
     const routePair = () => {
       if (state.territory === 'body') return ['reiki', 'offswitch'];
       if (state.territory === 'patterns') return ['offswitch', 'activation'];
-      if (state.gender === 'woman') return ['mentoring', 'weekWomen'];
-      if (state.gender === 'man') return ['weekMen', 'offswitch'];
+      if (state.gender === 'woman') return ['mentoring', null];
+      if (state.gender === 'man') return ['navigator', null];
       return ['offswitch', 'reiki'];
     };
 

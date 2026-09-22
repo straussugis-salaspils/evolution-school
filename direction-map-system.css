@@ -362,6 +362,15 @@ body.direction-map-page .direction-summary--four {
   grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
 }
 
+body.direction-map-page .roadmap--four,
+body.direction-map-page .direction-summary--two {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+
+body.direction-map-page .roadmap--four .roadmap-step:nth-child(even)::before {
+  content: none !important;
+}
+
 body.direction-map-page .direction-summary--six {
   grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
 }
@@ -592,7 +601,9 @@ body.direction-map-page .direction-summary .text-link {
   }
 
   body.direction-map-page .roadmap,
+  body.direction-map-page .roadmap--four,
   body.direction-map-page .direction-summary,
+  body.direction-map-page .direction-summary--two,
   body.direction-map-page .direction-summary--four,
   body.direction-map-page .direction-summary--six {
     grid-template-columns: minmax(0, 1fr) !important;
